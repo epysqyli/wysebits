@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { User } from "react-feather";
 
 export default function Home() {
   return (
@@ -12,7 +13,10 @@ export default function Home() {
         <div className="text-white text-center bg-gray-400 p-5">
           something is here
         </div>
-        <p>This is some text</p>
+        <div className="flex justify-around w-3/6 mx-auto border">
+          <User />
+          <div>User</div>
+        </div>
       </div>
     </div>
   );
