@@ -8,9 +8,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="md:container mx-auto">
-        <div className="bg-gray-300 h-12 shadow-sm"></div>
-      </div>
+      <h1 className="text-6xl font-bold mt-5 text-center">Wysebits.</h1>
+      <p className="text-center text-gray-500 text-2xl mt-5">
+        Knowledge. Distilled.
+      </p>
     </div>
   );
 }

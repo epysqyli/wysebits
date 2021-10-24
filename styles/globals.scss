@@ -1,5 +1,15 @@
 @import "tailwindcss/base";
 
+#__next {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  main {
+    flex-grow: 1;
+  }
+}
+
 body {
   background-color: #f9fafb;
 }
