@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from '../styles/index.module.scss';
 
 export default function Home() {
   return (
@@ -13,9 +12,8 @@ export default function Home() {
         <div className="text-white text-center bg-gray-400 p-5">
           something is here
         </div>
+        <p>This is some text</p>
       </div>
-
-      <div className={styles.example}>This is some red text</div>
     </div>
   );
 }
