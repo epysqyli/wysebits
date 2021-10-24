@@ -13,8 +13,8 @@ export default function Home() {
         <div className="text-white text-center bg-gray-400 p-5">
           something is here
         </div>
-        <div className="flex justify-around w-3/6 mx-auto border">
-          <User />
+        <div className="flex justify-around items-center w-4/6 mx-auto py-2 mt-4 border rounded-lg">
+          <User size={30}/>
           <div>User</div>
         </div>
       </div>
