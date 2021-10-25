@@ -1,6 +1,17 @@
 import Head from "next/head";
+import HomeTileEntry from "../components/HomeTileEntry";
 
-export default function Home() {
+export const getStaticProps = async () => {
+  const res = await fetch("http://localhost:3001/api/top_three_tiles");
+  const entries = await res.json();
+  return {
+    props: {
+      entry: entries.data[0],
+    },
+  };
+};
+
+export default function Home({ entry }) {
   return (
     <div>
       <Head>
@@ -8,7 +19,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="w-screen h-60 mx-auto bg-home-banner bg-cover bg-center">
+      <div className="h-60 mx-auto bg-home-banner bg-cover bg-center">
         <div className="bg-gray-900 h-full bg-opacity-80 relative">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <h1 className="text-white text-6xl font-bold text-center">
@@ -21,18 +32,20 @@ export default function Home() {
         </div>
       </div>
 
-      <form action="" className="w-screen mt-10">
+      <form action="" className="mt-10">
         <input
           type="text"
           name=""
           id=""
           placeholder="Search for any book"
-          className="block mx-auto w-3/6 transition-all duration-200 ease-out hover:w-5/6 focus:w-5/6 rounded-lg focus:ring-gray-700 focus:ring-2 outline-none focus:border-current focus:shadow-lg border-none shadow-sm hover:shadow-md text-center"
+          className="block mx-auto w-4/6 transition-all duration-200 ease-out hover:w-5/6 focus:w-5/6 rounded-lg focus:ring-gray-700 focus:ring-2 outline-none focus:border-current focus:shadow-lg border-none shadow-sm hover:shadow-md text-center"
         />
       </form>
 
-      <div className="mt-10 border h-32 text-center">
-        example book tiles go in here
+      <div className="my-20">
+        <div className="w-4/6 mx-auto my-5 border p-3 rounded-md shadow-md">
+          <HomeTileEntry entry={entry}/>
+        </div>
       </div>
 
       <div className="border mt-10 py-10">
@@ -85,7 +98,7 @@ export default function Home() {
       </div>
 
       <div className="w-3/6 mx-auto text-center py-3 my-10 border rounded-lg bg-white shadow-sm hover:shadow-lg hover:bg-gray-500 active:bg-gray-700 hover:text-white cursor-pointer active:shadow-lg transition-colors">
-        Join and start learning!
+        Join the community!
       </div>
     </div>
   );
