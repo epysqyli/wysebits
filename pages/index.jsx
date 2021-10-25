@@ -15,11 +15,23 @@ export default function Home() {
             <h1 className="text-white text-6xl font-bold text-center">
               Wysebits.
             </h1>
-            <p className="text-white text-center text-gray-500 text-2xl my-5">
+            <p className="text-white text-center text-gray-200 text-2xl my-5">
               Knowledge. Distilled.
             </p>
           </div>
         </div>
+      </div>
+
+      <div className="w-screen mt-10">
+        <form action="">
+          <input
+            type="text"
+            name=""
+            id=""
+            placeholder="Search for any book"
+            className="block mx-auto w-3/6 transition-all duration-200 ease-out hover:w-5/6 focus:w-5/6 rounded-lg focus:ring-0 outline-none focus:border-current border-none shadow-sm hover:shadow-md text-center"
+          />
+        </form>
       </div>
     </div>
   );
