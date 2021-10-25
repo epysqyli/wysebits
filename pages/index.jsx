@@ -1,17 +1,17 @@
 import Head from "next/head";
-import HomeTileEntry from "../components/HomeTileEntry";
+import Slider from "../components/Slider";
 
 export const getStaticProps = async () => {
   const res = await fetch("http://localhost:3001/api/top_three_tiles");
   const entries = await res.json();
   return {
     props: {
-      entry: entries.data[0],
+      entries: entries.data,
     },
   };
 };
 
-export default function Home({ entry }) {
+export default function Home({ entries }) {
   return (
     <div>
       <Head>
@@ -41,11 +41,10 @@ export default function Home({ entry }) {
           className="block mx-auto w-4/6 transition-all duration-200 ease-out hover:w-5/6 focus:w-5/6 rounded-lg focus:ring-gray-700 focus:ring-2 outline-none focus:border-current focus:shadow-lg border-none shadow-sm hover:shadow-md text-center"
         />
       </form>
-
+      
+      
       <div className="my-20">
-        <div className="w-4/6 mx-auto my-5 border p-3 rounded-md shadow-md">
-          <HomeTileEntry entry={entry}/>
-        </div>
+        <Slider entries={entries}/>
       </div>
 
       <div className="border mt-10 py-10">
@@ -58,7 +57,7 @@ export default function Home({ entry }) {
 
           <h4 className="text-xl font-bold mt-5 mb-3">Why should I care?</h4>
           <p className="text-justify">
-            I'm sure that every reader, in the curiosity-driven quest of
+            Every reader, in the curiosity-driven quest of
             knowledge building, has time and again encountered the annoying
             feeling of putting a book down without being able to easily
             recollect what the best takeways from the book were. You know that a
