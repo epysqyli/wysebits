@@ -32,7 +32,7 @@ export default function Home({ entries }) {
         </div>
       </div>
 
-      <form action="" className="mt-10">
+      <form action="" className="mt-20">
         <input
           type="text"
           name=""
@@ -41,7 +41,6 @@ export default function Home({ entries }) {
           className="block mx-auto w-4/6 transition-all duration-200 ease-out hover:w-5/6 focus:w-5/6 rounded-lg focus:ring-gray-700 focus:ring-2 outline-none focus:border-current focus:shadow-lg border-none shadow-sm hover:shadow-md text-center"
         />
       </form>
-      
       
       <div className="my-20">
         <Slider entries={entries}/>
@@ -96,7 +95,7 @@ export default function Home({ entries }) {
         </div>
       </div>
 
-      <div className="w-3/6 mx-auto text-center py-3 my-10 border rounded-lg bg-white shadow-sm hover:shadow-lg hover:bg-gray-500 active:bg-gray-700 hover:text-white cursor-pointer active:shadow-lg transition-colors">
+      <div className="w-3/6 mx-auto text-center py-3 mt-20 mb-5 border rounded-lg bg-white shadow-sm hover:shadow-lg hover:bg-gray-500 active:bg-gray-700 hover:text-white cursor-pointer active:shadow-lg transition-colors">
         Join the community!
       </div>
     </div>
