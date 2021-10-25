@@ -31,7 +31,11 @@ export default function Home() {
         />
       </form>
 
-      <div className="border mt-10 py-5">
+      <div className="mt-10 border h-32 text-center">
+        example book tiles go in here
+      </div>
+
+      <div className="border mt-10 py-10">
         <div className="w-4/5 mx-auto">
           <h3 className="text-3xl font-bold mb-5">What is Wysebits?</h3>
           <p className="text-justify">
@@ -78,6 +82,10 @@ export default function Home() {
             organization of knowledge, straight from the community.
           </p>
         </div>
+      </div>
+
+      <div className="w-3/6 mx-auto text-center py-3 my-10 border rounded-lg bg-white shadow-sm hover:shadow-lg hover:bg-gray-500 active:bg-gray-700 hover:text-white cursor-pointer active:shadow-lg transition-colors">
+        Join and start learning!
       </div>
     </div>
   );
