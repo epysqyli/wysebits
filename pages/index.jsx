@@ -20,7 +20,7 @@ export default function Home({ entries }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="h-60 mx-auto bg-library bg-cover bg-center mb-20">
+      <div className="h-60 mx-auto bg-library bg-cover bg-center mb-20 mt-10">
         <div className="bg-gray-900 h-full bg-opacity-80 relative">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <h1 className="text-white text-6xl font-bold text-center">
@@ -44,6 +44,7 @@ export default function Home({ entries }) {
       </form>
 
       <div className="mb-20">
+        <p className="text-2xl w-4/5 mx-auto text-center mb-5">Check trending insights</p>
         <Slider entries={entries} />
       </div>
 
@@ -51,7 +52,7 @@ export default function Home({ entries }) {
         <Button text="Join to share your knowledge" />
       </div>
 
-      <div className="border py-10 mb-20">
+      <div className="pt-10 pb-20 bg-gray-100 shadow">
         <div className="w-4/5 mx-auto">
           <h3 className="text-3xl font-bold mb-5">What is Wysebits?</h3>
           <p className="text-justify">
