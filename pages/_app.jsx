@@ -24,11 +24,11 @@ const MyApp = ({ Component, pageProps }) => {
     });
   };
 
-  const checkLoginUrl = "http://localhost:3001/api/logged_in";
   const loginStatus = () => {
     axios
-      .get(checkLoginUrl, { withCredentials: true })
+      .get("http://localhost:3001/api/logged_in", { withCredentials: true })
       .then((resp) => {
+        console.log(resp);
         if (resp.data.logged_in) {
           handleLogin(resp.data);
         } else {

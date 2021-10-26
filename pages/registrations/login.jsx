@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-const LogIn = () => {
+const LogIn = ({ handleLogin }) => {
   const [userData, setUserData] = useState({
     emailAddress: null,
     password: null,
@@ -19,7 +19,7 @@ const LogIn = () => {
 
   const logIn = async (e) => {
     e.preventDefault();
-    const { emailAddress, password} = userData;
+    const { emailAddress, password } = userData;
 
     axios
       .post(
@@ -27,7 +27,11 @@ const LogIn = () => {
         { email_address: emailAddress, password: password },
         { withCredentials: true }
       )
-      .then((resp) => console.log(resp))
+      .then((resp) => {
+        console.log(resp);
+        handleLogin(resp.data);
+        router.push("/user/homepage");
+      })
       .catch((error) => console.log(error));
   };
 

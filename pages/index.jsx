@@ -3,6 +3,7 @@ import Button from "../components/Button";
 import Slider from "../components/Slider";
 import CategoryButton from "../components/CategoryButton";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export const getStaticProps = async () => {
   let entries = null;
@@ -26,7 +27,11 @@ export const getStaticProps = async () => {
   };
 };
 
-const Home = ({ entries, categories }) => {
+const Home = ({ entries, categories, loginStatus }) => {
+  useEffect(() => {
+    loginStatus();
+  }, []);
+
   return (
     <div>
       <Head>
