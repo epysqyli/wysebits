@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Button from "../components/Button";
 import Slider from "../components/Slider";
 
 export const getStaticProps = async () => {
@@ -19,7 +20,7 @@ export default function Home({ entries }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="h-60 mx-auto bg-home-banner bg-cover bg-center">
+      <div className="h-60 mx-auto bg-home-banner bg-cover bg-center mb-20">
         <div className="bg-gray-900 h-full bg-opacity-80 relative">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <h1 className="text-white text-6xl font-bold text-center">
@@ -32,21 +33,23 @@ export default function Home({ entries }) {
         </div>
       </div>
 
-      <form action="" className="mt-20">
+      <form action="" className="mb-20">
         <input
           type="text"
           name=""
           id=""
           placeholder="Search for any book"
-          className="block mx-auto w-4/6 transition-all duration-200 ease-out hover:w-5/6 focus:w-5/6 rounded-lg focus:ring-gray-700 focus:ring-2 outline-none focus:border-current focus:shadow-lg border-none shadow-sm hover:shadow-md text-center"
+          className="block mx-auto w-4/6 transition-all duration-200 ease-out hover:w-5/6 focus:w-5/6 rounded-lg focus:ring-gray-700 focus:ring-2 outline-none focus:border-current focus:shadow-lg border-none shadow-md hover:shadow-lg text-center"
         />
       </form>
-      
-      <div className="my-20">
-        <Slider entries={entries}/>
+
+      <div className="mb-20">
+        <Slider entries={entries} />
       </div>
 
-      <div className="border mt-10 py-10">
+      <div className="mb-20"><Button text="Join the community!" /></div>
+
+      <div className="border py-10 mb-20">
         <div className="w-4/5 mx-auto">
           <h3 className="text-3xl font-bold mb-5">What is Wysebits?</h3>
           <p className="text-justify">
@@ -56,12 +59,12 @@ export default function Home({ entries }) {
 
           <h4 className="text-xl font-bold mt-5 mb-3">Why should I care?</h4>
           <p className="text-justify">
-            Every reader, in the curiosity-driven quest of
-            knowledge building, has time and again encountered the annoying
-            feeling of putting a book down without being able to easily
-            recollect what the best takeways from the book were. You know that a
-            couple of ideas in there were just great, and should never be
-            forgotten. Yet they somehow fade away. No one likes that.
+            Every reader, in the curiosity-driven quest of knowledge building,
+            has time and again encountered the annoying feeling of putting a
+            book down without being able to easily recollect what the best
+            takeways from the book were. You know that a couple of ideas in
+            there were just great, and should never be forgotten. Yet they
+            somehow fade away. No one likes that.
             <br />
             <span className="italic">
               Wysebits is my answer to this particular problem.
@@ -94,10 +97,8 @@ export default function Home({ entries }) {
           </p>
         </div>
       </div>
-
-      <div className="w-3/6 mx-auto text-center py-3 mt-20 mb-5 border rounded-lg bg-white shadow-sm hover:shadow-lg hover:bg-gray-500 active:bg-gray-700 hover:text-white cursor-pointer active:shadow-lg transition-colors">
-        Join the community!
-      </div>
+      
+      <Button text="Join the community!" />
     </div>
   );
 }
