@@ -3,11 +3,21 @@ import Button from "../components/Button";
 import Slider from "../components/Slider";
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:3001/api/top_tiles");
-  const entries = await res.json();
+  let entries = null;
+  let categories = null;
+
+  await Promise.all([
+    fetch("http://localhost:3001/api/top_tiles").then((resp) => resp.json()),
+    fetch("http://localhost:3001/api/categories").then((resp) => resp.json()),
+  ]).then((results) => {
+    entries = results[0].data;
+    categories = results[1].data;
+  });
+
   return {
     props: {
-      entries: entries.data,
+      entries: entries,
+      categories: categories,
     },
   };
 };
@@ -44,7 +54,9 @@ export default function Home({ entries }) {
       </form>
 
       <div className="mb-20">
-        <p className="text-3xl w-4/5 mx-auto text-center mb-5">Check trending insights</p>
+        <p className="text-3xl w-4/5 mx-auto text-center mb-5">
+          Check trending insights
+        </p>
         <Slider entries={entries} />
       </div>
 
