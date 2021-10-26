@@ -1,4 +1,47 @@
+import { useState } from "react";
+import { useRouter } from 'next/router';
+
 const SignUp = () => {
+  const [userData, setUserData] = useState({
+    username: null,
+    emailAddress: null,
+    password: null,
+    passwordConfirmation: null,
+  });
+  const router = useRouter();
+
+  const handleChange = (e) => {
+    setUserData({
+      ...userData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const makePostCall = async (e) => {
+    e.preventDefault();
+
+    let resp = await fetch("http://localhost:3001/api/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: {
+          username: userData.username,
+          email_address: userData.emailAddress,
+          password: userData.password,
+          password_confirmation: userData.passwordConfirmation,
+        },
+      }),
+    });
+
+    resp = await resp.json();
+    
+    if (resp.status === 'success') {
+      router.push('/user/homepage');
+    }
+  };
+
   return (
     <div>
       <div className="h-60 bg-signup-top bg-cover bg-center relative">
@@ -9,11 +52,7 @@ const SignUp = () => {
         </div>
       </div>
 
-      <form
-        action="http://localhost:3001/api/signup"
-        method="post"
-        className="mx-auto w-full py-10"
-      >
+      <form className="mx-auto w-full py-10" onSubmit={makePostCall}>
         <div className="w-4/6 mx-auto my-4">
           <label htmlFor="username" className="pl-1">
             Username
@@ -23,6 +62,8 @@ const SignUp = () => {
             name="username"
             id="username"
             className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow-sm focus:shadow-md"
+            onChange={handleChange}
+            required
           />
         </div>
 
@@ -32,9 +73,11 @@ const SignUp = () => {
           </label>
           <input
             type="email"
-            name="email_address"
+            name="emailAddress"
             id="email"
             className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow-sm focus:shadow-md"
+            onChange={handleChange}
+            required
           />
         </div>
 
@@ -47,6 +90,8 @@ const SignUp = () => {
             name="password"
             id="password"
             className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow-sm focus:shadow-md"
+            onChange={handleChange}
+            required
           />
         </div>
 
@@ -56,9 +101,11 @@ const SignUp = () => {
           </label>
           <input
             type="password"
-            name="password_confirmation"
+            name="passwordConfirmation"
             id="password_confirmation"
             className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow-sm focus:shadow-md"
+            onChange={handleChange}
+            required
           />
         </div>
 
