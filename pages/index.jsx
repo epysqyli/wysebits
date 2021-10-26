@@ -22,7 +22,7 @@ export const getStaticProps = async () => {
   };
 };
 
-export default function Home({ entries }) {
+const Home = ({ entries }) => {
   return (
     <div>
       <Head>
@@ -123,3 +123,5 @@ export default function Home({ entries }) {
     </div>
   );
 }
+
+export default Home;
