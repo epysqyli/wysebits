@@ -23,7 +23,7 @@ const Slider = ({ entries }) => {
   };
 
   return (
-    <div className="flex justify-around items-center border rounded-md shadow-md hover:shadow-lg w-5/6 mx-auto py-5">
+    <div className="flex justify-around items-center border rounded-md shadow-md hover:shadow-lg w-5/6 mx-auto py-5 bg-gray-100">
       <ArrowLeftCircle
         className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
         onClick={decrement}

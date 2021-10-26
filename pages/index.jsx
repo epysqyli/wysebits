@@ -44,7 +44,7 @@ export default function Home({ entries }) {
       </form>
 
       <div className="mb-20">
-        <p className="text-2xl w-4/5 mx-auto text-center mb-5">Check trending insights</p>
+        <p className="text-3xl w-4/5 mx-auto text-center mb-5">Check trending insights</p>
         <Slider entries={entries} />
       </div>
 
@@ -102,7 +102,7 @@ export default function Home({ entries }) {
       </div>
 
       <div className="h-60 mx-auto bg-home-banner bg-cover bg-center">
-        <div className="bg-gray-900 h-full bg-opacity-80 relative">
+        <div className="bg-gray-800 h-full bg-opacity-80 relative">
           <div className="w-4/6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <Button text="Join the community!" />
           </div>
