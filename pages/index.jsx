@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Button from "../components/Button";
 import Slider from "../components/Slider";
+import CategoryButton from "../components/CategoryButton";
 
 export const getStaticProps = async () => {
   let entries = null;
@@ -22,7 +23,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const Home = ({ entries }) => {
+const Home = ({ entries, categories }) => {
   return (
     <div>
       <Head>
@@ -62,6 +63,17 @@ const Home = ({ entries }) => {
 
       <div className="mb-20 w-4/6 mx-auto">
         <Button text="Join to share your knowledge" />
+      </div>
+
+      <div className="mb-20 w-4/5 mx-auto">
+        <p className="text-3xl mx-auto text-center mb-10">
+          Explore books by categories
+        </p>
+        <div className="grid grid-cols-2 gap-x-4 gap-y-4">
+          {categories.map((category) => {
+            return <CategoryButton category={category} key={category.id} />;
+          })}
+        </div>
       </div>
 
       <div className="pt-10 pb-20 bg-gray-100 shadow">
@@ -122,6 +134,6 @@ const Home = ({ entries }) => {
       </div>
     </div>
   );
-}
+};
 
 export default Home;
