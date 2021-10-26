@@ -20,7 +20,7 @@ export default function Home({ entries }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="h-60 mx-auto bg-home-banner bg-cover bg-center mb-20">
+      <div className="h-60 mx-auto bg-library bg-cover bg-center mb-20">
         <div className="bg-gray-900 h-full bg-opacity-80 relative">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <h1 className="text-white text-6xl font-bold text-center">
@@ -47,7 +47,9 @@ export default function Home({ entries }) {
         <Slider entries={entries} />
       </div>
 
-      <div className="mb-20"><Button text="Join the community!" /></div>
+      <div className="mb-20 w-4/6 mx-auto">
+        <Button text="Join to share your knowledge" />
+      </div>
 
       <div className="border py-10 mb-20">
         <div className="w-4/5 mx-auto">
@@ -97,8 +99,14 @@ export default function Home({ entries }) {
           </p>
         </div>
       </div>
-      
-      <Button text="Join the community!" />
+
+      <div className="h-60 mx-auto bg-home-banner bg-cover bg-center">
+        <div className="bg-gray-900 h-full bg-opacity-80 relative">
+          <div className="w-4/6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <Button text="Join the community!" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
