@@ -53,7 +53,7 @@ const MyApp = ({ Component, pageProps }) => {
   }, [router.events]);
 
   return (
-    <Layout>
+    <Layout userState={userState}>
       <Component
         {...pageProps}
         userState={userState}
