@@ -65,7 +65,7 @@ const Home = ({ entries, categories, loginStatus, userState }) => {
         <Slider entries={entries} />
       </div>
 
-      {userState.user ? null : (
+      {userState.isLogged ? null : (
         <div className="mb-20 w-4/6 mx-auto">
           <Link href="/registrations/signup">
             <a>
@@ -137,7 +137,7 @@ const Home = ({ entries, categories, loginStatus, userState }) => {
 
       <div className="h-60 mx-auto bg-home-banner bg-cover bg-center">
         <div className="bg-gray-800 h-full bg-opacity-80 relative">
-          {userState.user ? null : (
+          {userState.isLogged ? null : (
             <div className="w-4/6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
               <Link href="/registrations/signup">
                 <a>
