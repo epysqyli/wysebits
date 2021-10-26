@@ -27,7 +27,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const Home = ({ entries, categories, loginStatus }) => {
+const Home = ({ entries, categories, loginStatus, userState }) => {
   return (
     <div>
       <Head>
@@ -65,13 +65,15 @@ const Home = ({ entries, categories, loginStatus }) => {
         <Slider entries={entries} />
       </div>
 
-      <div className="mb-20 w-4/6 mx-auto">
-        <Link href="/registrations/signup">
-          <a>
-            <Button text="Join to share your knowledge" />
-          </a>
-        </Link>
-      </div>
+      {userState.user ? null : (
+        <div className="mb-20 w-4/6 mx-auto">
+          <Link href="/registrations/signup">
+            <a>
+              <Button text="Join to share your knowledge" />
+            </a>
+          </Link>
+        </div>
+      )}
 
       <div className="mb-20 w-4/5 mx-auto">
         <p className="text-3xl mx-auto text-center mb-10">
@@ -135,13 +137,15 @@ const Home = ({ entries, categories, loginStatus }) => {
 
       <div className="h-60 mx-auto bg-home-banner bg-cover bg-center">
         <div className="bg-gray-800 h-full bg-opacity-80 relative">
-          <div className="w-4/6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <Link href="/registrations/signup">
-              <a>
-                <Button text="Join the community!" />
-              </a>
-            </Link>
-          </div>
+          {userState.user ? null : (
+            <div className="w-4/6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <Link href="/registrations/signup">
+                <a>
+                  <Button text="Join the community!" />
+                </a>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
