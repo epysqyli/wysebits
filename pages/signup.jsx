@@ -3,7 +3,7 @@ const SignUp = () => {
     <div>
       <div className="h-60 bg-signup-top bg-cover bg-center relative">
         <div className="bg-gray-900 h-full bg-opacity-80">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white w-screen text-center text-2xl">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 text-white w-screen text-center text-2xl">
             Start learning. Start sharing.
           </div>
         </div>
@@ -12,7 +12,7 @@ const SignUp = () => {
       <form
         action="http://localhost:3001/api/signup"
         method="post"
-        className="mx-auto w-full bg-gray-100 py-10"
+        className="mx-auto w-full py-10"
       >
         <div className="w-4/6 mx-auto my-4">
           <label htmlFor="username" className="pl-1">

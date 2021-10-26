@@ -38,7 +38,7 @@ const Home = ({ entries, categories }) => {
             <h1 className="text-white text-6xl font-bold text-center">
               Wysebits.
             </h1>
-            <p className="text-white text-center text-gray-200 text-2xl my-5">
+            <p className="text-white text-center text-2xl my-5">
               Knowledge. Distilled.
             </p>
           </div>
