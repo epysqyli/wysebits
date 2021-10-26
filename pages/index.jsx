@@ -11,10 +11,12 @@ export const getStaticProps = async () => {
   await Promise.all([
     fetch("http://localhost:3001/api/top_tiles").then((resp) => resp.json()),
     fetch("http://localhost:3001/api/categories").then((resp) => resp.json()),
-  ]).then((results) => {
-    entries = results[0].data;
-    categories = results[1].data;
-  });
+  ])
+    .then((results) => {
+      entries = results[0].data;
+      categories = results[1].data;
+    })
+    .catch((error) => console.log(error));
 
   return {
     props: {
@@ -63,7 +65,7 @@ const Home = ({ entries, categories }) => {
       </div>
 
       <div className="mb-20 w-4/6 mx-auto">
-        <Link href="/signup">
+        <Link href="/registrations/signup">
           <a>
             <Button text="Join to share your knowledge" />
           </a>
@@ -133,11 +135,11 @@ const Home = ({ entries, categories }) => {
       <div className="h-60 mx-auto bg-home-banner bg-cover bg-center">
         <div className="bg-gray-800 h-full bg-opacity-80 relative">
           <div className="w-4/6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <Link href="/signup">
-          <a>
-            <Button text="Join the community!" />
-          </a>
-        </Link>
+            <Link href="/registrations/signup">
+              <a>
+                <Button text="Join the community!" />
+              </a>
+            </Link>
           </div>
         </div>
       </div>

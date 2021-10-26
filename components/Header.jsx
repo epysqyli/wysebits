@@ -11,10 +11,14 @@ const Header = () => {
           </div>
         </a>
       </Link>
-      <div className="flex items-center group cursor-pointer">
-        <LogIn size={20} className="group-hover:scale-110 transition-all" />
-        <div className="mx-3 group-active:text-white">Login</div>
-      </div>
+      <Link href="/registrations/login">
+        <a className="flex items-center group cursor-pointer">
+          <LogIn size={20} className="group-hover:scale-110 transition-all" />
+          <div className="mx-3 group-active:text-white transition-all">
+            Login
+          </div>
+        </a>
+      </Link>
     </header>
   );
 };

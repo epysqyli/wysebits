@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from 'next/router';
 
 const SignUp = () => {
   const [userData, setUserData] = useState({
@@ -7,6 +8,7 @@ const SignUp = () => {
     password: null,
     passwordConfirmation: null,
   });
+  const router = useRouter();
 
   const handleChange = (e) => {
     setUserData({
@@ -17,6 +19,7 @@ const SignUp = () => {
 
   const makePostCall = async (e) => {
     e.preventDefault();
+
     let resp = await fetch("http://localhost:3001/api/signup", {
       method: "POST",
       headers: {
@@ -31,8 +34,12 @@ const SignUp = () => {
         },
       }),
     });
+
     resp = await resp.json();
-    console.log(resp);
+    
+    if (resp.status === 'success') {
+      router.push('/user/homepage');
+    }
   };
 
   return (
