@@ -28,10 +28,6 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({ entries, categories, loginStatus }) => {
-  useEffect(() => {
-    loginStatus();
-  }, []);
-
   return (
     <div>
       <Head>

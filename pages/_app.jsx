@@ -2,7 +2,8 @@ import "tailwindcss/tailwind.css";
 import "../styles/globals.scss";
 import axios from "axios";
 import Layout from "../layouts/layout";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 const MyApp = ({ Component, pageProps }) => {
   const [userState, setUserState] = useState({
@@ -37,6 +38,19 @@ const MyApp = ({ Component, pageProps }) => {
       })
       .catch((error) => console.log(error));
   };
+
+  const router = useRouter();
+
+  useEffect(() => {
+    router.events.on("routeChangeComplete", () => {
+      loginStatus();
+    });
+    return () => {
+      router.events.off("routeChangeComplete", () => {
+        console.log("stopped");
+      });
+    };
+  }, [router.events]);
 
   return (
     <Layout>
