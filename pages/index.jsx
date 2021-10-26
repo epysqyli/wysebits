@@ -3,7 +3,7 @@ import Button from "../components/Button";
 import Slider from "../components/Slider";
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:3001/api/top_three_tiles");
+  const res = await fetch("http://localhost:3001/api/top_tiles");
   const entries = await res.json();
   return {
     props: {
