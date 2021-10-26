@@ -7,6 +7,7 @@ module.exports = {
       backgroundImage: {
         "home-banner": "url('/images/banner.jpg')",
         "library": "url('/images/library.jpg')",
+        "signup-top": "url('/images/signup-top.jpg')",
       },
     },
   },
