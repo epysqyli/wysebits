@@ -31,7 +31,7 @@ const Header = ({ userState }) => {
           </div>
         </a>
       </Link>
-      {userState.user ? loggedUser : login}
+      {userState.isLogged ? loggedUser : login}
     </header>
   );
 };
