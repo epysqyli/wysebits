@@ -38,7 +38,7 @@ const SignUp = () => {
     resp = await resp.json();
     
     if (resp.status === 'success') {
-      router.push('/user/homepage');
+      router.push('/users/homepage');
     }
   };
 

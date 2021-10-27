@@ -30,7 +30,7 @@ const LogIn = ({ handleLogin }) => {
       .then((resp) => {
         console.log(resp);
         handleLogin(resp.data);
-        router.push("/user/homepage");
+        router.push("/users/homepage");
       })
       .catch((error) => console.log(error));
   };

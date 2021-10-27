@@ -29,7 +29,6 @@ const MyApp = ({ Component, pageProps }) => {
     axios
       .get("http://localhost:3001/api/logged_in", { withCredentials: true })
       .then((resp) => {
-        console.log(resp);
         if (resp.data.logged_in) {
           handleLogin(resp.data);
         } else {
