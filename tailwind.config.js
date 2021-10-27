@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "home-banner": "url('/images/banner.jpg')",
+        "bottom-home": "url('/images/ai-banner.jpg')",
         "library": "url('/images/library.jpg')",
         "signup-top": "url('/images/signup-top.jpg')",
         "login-top": "url('/images/progress.jpg')",
