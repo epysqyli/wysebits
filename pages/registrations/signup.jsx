@@ -8,6 +8,7 @@ const SignUp = () => {
     password: null,
     passwordConfirmation: null,
   });
+  
   const router = useRouter();
 
   const handleChange = (e) => {
