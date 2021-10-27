@@ -29,7 +29,6 @@ const Home = ({ categories, loginStatus, userState }) => {
     "http://localhost:3001/api/top_tiles",
     fetcher
   );
-  console.log(data);
 
   return (
     <div>
