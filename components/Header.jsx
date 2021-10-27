@@ -1,7 +1,23 @@
-import { LogIn, User } from "react-feather";
+import { LogIn, User, LogOut } from "react-feather";
 import Link from "next/link";
+import { useRouter } from 'next/router';
 
 const Header = ({ userState }) => {
+  const router = useRouter();
+
+  const logoutCall = async () => {
+    let resp = await fetch("http://localhost:3001/api/logout", {
+      credentials: "include",
+    });
+    resp = await resp.json();
+
+    console.log(resp);
+    
+    if (resp.status === 'success') {
+      router.reload();
+    }
+  };
+
   const login = (
     <Link href="/registrations/login">
       <a className="flex items-center group cursor-pointer">
@@ -12,14 +28,21 @@ const Header = ({ userState }) => {
   );
 
   const loggedUser = (
-    <Link href="/user/homepage">
-      <a className="flex items-center group cursor-pointer">
-        <User size={20} className="group-hover:scale-110 transition-all" />
-        <div className="mx-3 group-active:text-white transition-all">
-          {userState.user.username}
-        </div>
-      </a>
-    </Link>
+    <div className="flex justify-around items-center">
+      <Link href="/user/homepage">
+        <a className="flex mr-3 group cursor-pointer">
+          <User size={20} className="group-hover:scale-110" />
+          <div className="mx-3 group-active:text-white transition-all">
+            {userState.user.username}
+          </div>
+        </a>
+      </Link>
+      <LogOut
+        size={20}
+        className="text-gray-500 hover:scale-110 hover:text-gray-700 cursor-pointer"
+        onClick={logoutCall}
+      />
+    </div>
   );
 
   return (
