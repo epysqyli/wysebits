@@ -2,31 +2,35 @@ import Head from "next/head";
 import Button from "../components/Button";
 import Slider from "../components/Slider";
 import CategoryButton from "../components/CategoryButton";
+import { ArrowLeftCircle, ArrowRightCircle } from "react-feather";
 import Link from "next/link";
+import useSWR from "swr";
 
 export const getStaticProps = async () => {
-  let entries = null;
-  let categories = null;
-
-  await Promise.all([
-    fetch("http://localhost:3001/api/top_tiles").then((resp) => resp.json()),
-    fetch("http://localhost:3001/api/categories").then((resp) => resp.json()),
-  ])
-    .then((results) => {
-      entries = results[0].data;
-      categories = results[1].data;
-    })
-    .catch((error) => console.log(error));
+  const resp = await fetch("http://localhost:3001/api/categories");
+  const categories = await resp.json();
 
   return {
     props: {
-      entries: entries,
-      categories: categories,
+      categories: categories.data,
     },
   };
 };
 
-const Home = ({ entries, categories, loginStatus, userState }) => {
+const Home = ({ categories, loginStatus, userState }) => {
+  // client side rendering for top tiles in an otherwise statically served page
+  const fetcher = async (url) => {
+    const resp = await fetch(url);
+    const entries = await resp.json();
+    return entries;
+  };
+
+  const { data, error } = useSWR(
+    "http://localhost:3001/api/top_tiles",
+    fetcher
+  );
+  console.log(data);
+
   return (
     <div>
       <Head>
@@ -57,12 +61,31 @@ const Home = ({ entries, categories, loginStatus, userState }) => {
         />
       </form>
 
-      <div className="mb-20">
-        <p className="text-3xl w-4/5 mx-auto text-center mb-5">
-          Check trending insights
-        </p>
-        <Slider entries={entries} />
-      </div>
+      {!data ? (
+        <div className="mb-20">
+          <p className="text-3xl w-4/5 mx-auto text-center mb-5">
+            Check trending insights
+          </p>
+          <div className="flex justify-around items-center border rounded-md shadow-md hover:shadow-lg w-5/6 mx-auto py-5 bg-gray-100">
+            <ArrowLeftCircle
+              className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
+              size={30}
+            />
+            <div></div>
+            <ArrowRightCircle
+              className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
+              size={30}
+            />
+          </div>
+        </div>
+      ) : (
+        <div className="mb-20">
+          <p className="text-3xl w-4/5 mx-auto text-center mb-5">
+            Check trending insights
+          </p>
+          <Slider entries={data.data} />
+        </div>
+      )}
 
       {userState.isLogged ? null : (
         <div className="mb-20 w-4/6 mx-auto">
@@ -138,7 +161,9 @@ const Home = ({ entries, categories, loginStatus, userState }) => {
         <div className="bg-gray-800 h-full bg-opacity-80 relative">
           {userState.isLogged ? (
             <div className="w-4/6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="text-3xl font-bold text-gray-200 text-center">Wbits.</div>
+              <div className="text-3xl font-bold text-gray-200 text-center">
+                Wbits.
+              </div>
             </div>
           ) : (
             <div className="w-4/6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
