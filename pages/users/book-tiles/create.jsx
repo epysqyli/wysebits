@@ -31,7 +31,7 @@ const Create = () => {
 
           <button
             type="submit"
-            className="block mx-auto w-2/6 border rounded-lg px-5 py-2 bg-white my-10 hover:shadow-md focus:bg-gray-200 focus:shadow-md"
+            className="block mx-auto w-4/6 border rounded-lg px-5 py-2 bg-white my-10 hover:shadow-md focus:bg-gray-200 focus:shadow-md"
           >
             Search book
           </button>
