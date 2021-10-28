@@ -70,7 +70,7 @@ const Home = ({ categories, loginStatus, userState }) => {
               className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
               size={30}
             />
-            <div></div>
+            <div className="py-20 h-52">Loading ...</div>
             <ArrowRightCircle
               className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
               size={30}
