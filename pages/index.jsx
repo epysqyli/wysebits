@@ -87,9 +87,9 @@ const Home = ({ categories, loginStatus, userState }) => {
       )}
 
       {userState.isLogged ? null : (
-        <div className="mb-20 w-4/6 mx-auto">
+        <div className="mb-20 w-full bg-gray-200 py-10">
           <Link href="/registrations/signup">
-            <a>
+            <a className="block w-4/6 mx-auto">
               <Button text="Join to share your knowledge" />
             </a>
           </Link>

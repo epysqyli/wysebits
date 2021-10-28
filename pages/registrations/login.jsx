@@ -7,6 +7,7 @@ const LogIn = ({ handleLogin }) => {
     emailAddress: null,
     password: null,
   });
+  
   const router = useRouter();
   const logInUrl = "http://localhost:3001/api/login";
 
