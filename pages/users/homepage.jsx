@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
+import HomepageButton from "../../components/users/HomepageButton";
 
 const Homepage = ({ userState }) => {
   if (userState.isLogged) {
@@ -15,17 +16,9 @@ const Homepage = ({ userState }) => {
             Welcome back, {userState.user.username}
           </div>
 
-          <Link href="#">
-            <div className="h-36 w-4/5 mx-auto my-20 bg-create-book-tile bg-cover bg-center rounded-md cursor-pointer shadow-md hover:shadow-lg group">
-              <div className="bg-gray-800 h-full bg-opacity-70 relative rounded-md group-hover:bg-opacity-75 transition">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                  <div className="text-white text-2xl font-bold text-center group-hover:scale-110 transition">
-                    Create new book tile
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Link>
+          <div className="w-11/12 mx-auto my-20">
+            <HomepageButton text="Create new book tile" href="#" />
+          </div>
         </div>
       </div>
     );
