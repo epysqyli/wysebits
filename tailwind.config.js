@@ -9,6 +9,7 @@ module.exports = {
         "library": "url('/images/library.jpg')",
         "signup-top": "url('/images/signup-top.jpg')",
         "login-top": "url('/images/progress.jpg')",
+        "create-book-tile": "url('/images/create-book-tile.jpg')",
       },
     },
   },
