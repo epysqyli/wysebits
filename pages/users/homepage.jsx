@@ -13,11 +13,20 @@ const Homepage = ({ userState }) => {
 
         <div className="w-4/5 mx-auto mt-20">
           <div className="text-3xl text-center">
-            Welcome back, {userState.user.username}
+            Welcome back, {userState.user.username}. <br /> What are you up to
+            today?
           </div>
 
           <div className="w-11/12 mx-auto my-20">
             <HomepageButton text="Create new book tile" href="#" />
+          </div>
+
+          <div className="w-11/12 mx-auto my-20">
+            <HomepageButton text="Check all of your book tiles" href="#" />
+          </div>
+
+          <div className="w-11/12 mx-auto my-20">
+            <HomepageButton text="Manage profile" href="#" />
           </div>
         </div>
       </div>
