@@ -5,8 +5,7 @@ const Create = () => {
   const [searchTerms, setSearchTerms] = useState([]);
 
   const handleChange = (e) => {
-    const terms = e.target.value.split(" ");
-    setSearchTerms({ ...searchTerms, terms });
+    setSearchTerms(e.target.value.split(" "));
   };
 
   return (
@@ -25,7 +24,7 @@ const Create = () => {
             type="text"
             name="tmp"
             id="tmp"
-            className="block mt-5 py-3 w-full border-none focus:ring-0 rounded-lg shadow-sm focus:shadow-md"
+            className="block mt-5 py-3 w-full border-none focus:ring-0 rounded-lg shadow-sm focus:shadow-md transition-shadow"
             onChange={handleChange}
             required
           />
