@@ -1,4 +1,5 @@
 import Head from "next/head";
+import axios from "axios";
 import { useState } from "react";
 
 const Create = () => {
@@ -8,6 +9,21 @@ const Create = () => {
     setSearchTerms(e.target.value.split(" "));
   };
 
+  const searchBooks = (e) => {
+    e.preventDefault();
+
+    axios
+      .post(
+        "http://localhost:3001/api/search/books",
+        { keywords: JSON.stringify(searchTerms) },
+        { withCredentials: true }
+      )
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div>
       <Head>
@@ -15,7 +31,7 @@ const Create = () => {
       </Head>
 
       <div className="w-4/5 mx-auto mt-20">
-        <form action="" method="post" className="w-full mx-auto py-10">
+        <form onSubmit={searchBooks} className="w-full mx-auto py-10">
           <label htmlFor="tmp" className="pl-1 text-lg font-medium">
             What book did you just read?
           </label>
