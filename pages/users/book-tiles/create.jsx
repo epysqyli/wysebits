@@ -1,9 +1,11 @@
 import Head from "next/head";
 import axios from "axios";
 import { useState } from "react";
+import BookResult from "../../../components/BookResult";
 
 const Create = () => {
   const [searchTerms, setSearchTerms] = useState(null);
+  const [searchResults, setSearchResults] = useState([]);
 
   const handleChange = (e) => {
     const newSearchTerms = e.target.value;
@@ -20,7 +22,7 @@ const Create = () => {
         { withCredentials: true }
       )
       .then((resp) => {
-        console.log(resp);
+        setSearchResults(resp.data);
       })
       .catch((error) => console.log(error));
   };
@@ -31,7 +33,7 @@ const Create = () => {
         <title>Create book tile</title>
       </Head>
 
-      <div className="w-4/5 mx-auto mt-20">
+      <div className="w-4/5 mx-auto my-20">
         <form onSubmit={searchBooks} className="w-full mx-auto py-10">
           <label htmlFor="tmp" className="pl-1 text-lg font-medium">
             What book did you just read?
@@ -54,6 +56,10 @@ const Create = () => {
             Search book
           </button>
         </form>
+
+        {searchResults.length != 0 ? searchResults.map((book) => {
+          return <BookResult bookData={book} key={book._id} />;
+        }) : null}
       </div>
     </div>
   );
