@@ -3,10 +3,11 @@ import axios from "axios";
 import { useState } from "react";
 
 const Create = () => {
-  const [searchTerms, setSearchTerms] = useState([]);
+  const [searchTerms, setSearchTerms] = useState(null);
 
   const handleChange = (e) => {
-    setSearchTerms(e.target.value.split(" "));
+    const newSearchTerms = e.target.value;
+    setSearchTerms(newSearchTerms);
   };
 
   const searchBooks = (e) => {
@@ -42,6 +43,7 @@ const Create = () => {
             id="tmp"
             className="block mt-5 py-3 w-full border-none focus:ring-0 rounded-lg shadow-sm focus:shadow-md transition-shadow"
             onChange={handleChange}
+            placeholder="search by title"
             required
           />
 
