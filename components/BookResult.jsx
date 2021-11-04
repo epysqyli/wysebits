@@ -1,8 +1,22 @@
+import { Image as ImageIcon } from "react-feather";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
 const BookResult = ({ bookData }) => {
   const [cover, setCover] = useState(null);
+
+  const imageLoader = (
+    <div>
+      <ImageIcon className="animate-bounce" />
+    </div>
+  );
+
+  const imageShower = (
+    <img
+      className="w-2/6 rounded-md"
+      src={`https://covers.openlibrary.org/w/olid/${bookData._source.ol_key}-M.jpg`}
+    />
+  );
 
   useEffect(() => {
     axios
@@ -23,7 +37,13 @@ const BookResult = ({ bookData }) => {
             className="text-xl mb-2"
             dangerouslySetInnerHTML={{ __html: bookData.highlight.title }}
           ></div>
-          <div className="text-sm">{bookData._source.category.name}</div>
+
+          <div className="text-sm">
+            {bookData._source.category.name == "CATCHALL"
+              ? "No category"
+              : bookData._source.category.name}
+          </div>
+
           <div className="text-sm italic">
             {bookData._source.authors.length
               ? bookData._source.authors[0].full_name
@@ -31,14 +51,7 @@ const BookResult = ({ bookData }) => {
           </div>
         </div>
 
-        {!cover ? (
-          <div>loading ...</div>
-        ) : (
-          <img
-            className="w-2/6 rounded-md"
-            src={`https://covers.openlibrary.org/w/olid/${bookData._source.ol_key}-M.jpg`}
-          />
-        )}
+        {!cover ? imageLoader : imageShower}
       </div>
     </div>
   );
