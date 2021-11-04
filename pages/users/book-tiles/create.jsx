@@ -43,7 +43,7 @@ const Create = () => {
             type="text"
             name="tmp"
             id="tmp"
-            className="block mt-5 py-3 w-full border-none focus:ring-0 rounded-lg shadow-sm focus:shadow-md transition-shadow"
+            className="block mt-5 py-3 w-full border-none focus:ring-0 rounded-lg shadow-sm focus:shadow-md transition-shadow text-center"
             onChange={handleChange}
             placeholder="search by title"
             required

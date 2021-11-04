@@ -1,20 +1,23 @@
 const BookResult = ({ bookData }) => {
   return (
-    <div className="border rounded-md shadow-sm my-10 px-3 py-5">
+    <div className="border rounded-md shadow-sm my-10 px-5 py-5 cursor-pointer hover:shadow-md transition hover:bg-gray-100">
       <div className="flex justify-between">
-        <img
-          className="w-2/6"
-          src={`https://covers.openlibrary.org/w/olid/${bookData._source.ol_key}-M.jpg`}
-        />
-        <div className="ml-5">
-          <div className="text-xl">{bookData._source.title}</div>
-          <div>{bookData._source.category.name}</div>
-          <div>
+        <div className="mr-5 flex flex-col justify-between">
+          <div
+            className="text-xl mb-2"
+            dangerouslySetInnerHTML={{ __html: bookData.highlight.title }}
+          ></div>
+          <div className="text-sm">{bookData._source.category.name}</div>
+          <div className="text-sm">
             {bookData._source.authors.length
               ? bookData._source.authors[0].full_name
               : "No authors found"}
           </div>
         </div>
+        <img
+          className="w-2/6 rounded-md"
+          src={`https://covers.openlibrary.org/w/olid/${bookData._source.ol_key}-M.jpg`}
+        />
       </div>
     </div>
   );
