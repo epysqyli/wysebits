@@ -31,7 +31,7 @@ const Header = ({ userState }) => {
     <div className="flex justify-around items-center">
       <Link href="/users/homepage">
         <a className="flex mr-3 group cursor-pointer">
-          <User size={20} className="group-hover:scale-110" />
+          <User size={20} strokeWidth={1.75} className="group-hover:scale-110" />
           <div className="mx-3 group-active:text-white transition-all">
             {userState.user.username}
           </div>
