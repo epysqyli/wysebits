@@ -3,8 +3,9 @@ import axios from "axios";
 import { Search } from "react-feather";
 import { useState } from "react";
 import BookResult from "../../../components/BookResult";
+import Link from "next/link";
 
-const Create = () => {
+const BookResultsSearch = () => {
   const [searchTerms, setSearchTerms] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [btnVisible, setBtnVisible] = useState(false);
@@ -16,7 +17,7 @@ const Create = () => {
 
   const showBtn = () => {
     setBtnVisible(true);
-  }
+  };
 
   const searchBooks = (e) => {
     e.preventDefault();
@@ -36,11 +37,13 @@ const Create = () => {
   };
 
   const createBookBtn = (
-    <div className="cursor-pointer py-5 text-center transition bg-gray-100 hover:bg-gray-300 active:bg-gray-400 fixed bottom-0 left-0 w-screen animate-show-up">
-      <div className="text-sm font-medium uppercase">
-        Book not there? Create it!
+    <Link href="/users/book-tiles/create-book">
+      <div className="cursor-pointer py-5 text-center transition bg-gray-100 hover:bg-gray-300 active:bg-gray-400 fixed bottom-0 left-0 w-screen animate-show-up">
+        <div className="text-sm font-medium uppercase">
+          Book not there? Create it!
+        </div>
       </div>
-    </div>
+    </Link>
   );
 
   return (
@@ -85,4 +88,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default BookResultsSearch;
