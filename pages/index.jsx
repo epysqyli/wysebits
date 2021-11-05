@@ -55,7 +55,7 @@ const Home = ({ categories, loginStatus, userState }) => {
           type="text"
           name=""
           id=""
-          placeholder="Search for any book"
+          placeholder="Search for any book(tiles)"
           className="block mx-auto w-4/6 transition-all duration-200 ease-out hover:w-5/6 focus:w-5/6 rounded-lg focus:ring-gray-700 focus:ring-2 outline-none focus:border-current focus:shadow-lg border-none shadow-md hover:shadow-lg text-center"
         />
       </form>

@@ -53,7 +53,7 @@ const Create = () => {
             type="text"
             name="tmp"
             id="tmp"
-            className="border-none bg-white w-4/6 rounded-tl-lg rounded-bl-lg focus:ring-0 group-hover:shadow-md transition"
+            className="border-none bg-white w-5/6 rounded-tl-lg rounded-bl-lg focus:ring-0 group-hover:shadow-md transition"
             onChange={handleChange}
             placeholder="search by title"
             required
@@ -61,7 +61,7 @@ const Create = () => {
 
           <button
             type="submit"
-            className="w-2/6 text-center bg-white border-l rounded-tr-lg rounded-br-lg hover:bg-gray-200 group-hover:shadow-md transition active:bg-gray-400 active:text-white"
+            className="w-1/6 text-center bg-white border-l rounded-tr-lg rounded-br-lg hover:bg-gray-200 group-hover:shadow-md transition active:bg-gray-400 active:text-white"
           >
             <Search size={20} className="mx-auto"/>
           </button>
