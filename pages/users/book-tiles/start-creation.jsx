@@ -43,16 +43,16 @@ const Create = () => {
       </Head>
 
       <div className="w-4/5 mx-auto my-20 pb-10">
-        <div className="text-lg font-medium text-center">
+        <div className="text-2xl font-medium text-center">
           What book did you just read?
         </div>
 
-        <form onSubmit={searchBooks} className="flex bg-white my-10 rounded-sm shadow-sm group">
+        <form onSubmit={searchBooks} className="flex my-10 group">
           <input
             type="text"
             name="tmp"
             id="tmp"
-            className="border-none w-4/6 focus:ring-0 group-hover:shadow-md transition"
+            className="border-none bg-white w-4/6 rounded-tl-lg rounded-bl-lg focus:ring-0 group-hover:shadow-md transition"
             onChange={handleChange}
             placeholder="search by title"
             required
@@ -60,7 +60,7 @@ const Create = () => {
 
           <button
             type="submit"
-            className="w-2/6 text-center border-l hover:bg-gray-200 group-hover:shadow-md transition active:bg-gray-400 active:text-white"
+            className="w-2/6 text-center bg-white border-l rounded-tr-lg rounded-br-lg hover:bg-gray-200 group-hover:shadow-md transition active:bg-gray-400 active:text-white"
           >
             Go!
           </button>
