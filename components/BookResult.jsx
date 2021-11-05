@@ -13,7 +13,7 @@ const BookResult = ({ bookData }) => {
 
   const imageShower = (
     <img
-      className="w-1/3 rounded-md bg-gray-200"
+      className="w-1/3 rounded-md bg-gray-300"
       src={`https://covers.openlibrary.org/w/olid/${bookData._source.ol_key}-M.jpg`}
     />
   );
@@ -30,7 +30,7 @@ const BookResult = ({ bookData }) => {
   }, []);
 
   return (
-    <div className="border rounded-md shadow-sm my-10 px-5 py-5 cursor-pointer hover:shadow-md transition hover:bg-gray-100 animate-show-up-slow">
+    <div className="border bg-gray-100 rounded-md shadow-sm my-10 px-5 py-5 cursor-pointer hover:shadow-md transition hover:bg-gray-200 animate-show-up-slow">
       <div className="flex justify-between">
         <div className="w-2/3 mr-5 flex flex-col">
           <div
