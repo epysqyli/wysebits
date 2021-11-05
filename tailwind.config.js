@@ -15,6 +15,7 @@ module.exports = {
       },
       animation: {
         "show-up": "appear 300ms ease-out 1",
+        "show-up-slow": "appear 600ms ease-out 1",
       },
       keyframes: {
         appear: {

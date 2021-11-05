@@ -30,7 +30,7 @@ const BookResult = ({ bookData }) => {
   }, []);
 
   return (
-    <div className="border rounded-md shadow-sm my-10 px-5 py-5 cursor-pointer hover:shadow-md transition hover:bg-gray-100">
+    <div className="border rounded-md shadow-sm my-10 px-5 py-5 cursor-pointer hover:shadow-md transition hover:bg-gray-100 animate-show-up-slow">
       <div className="flex justify-between">
         <div className="w-2/3 mr-5 flex flex-col">
           <div
