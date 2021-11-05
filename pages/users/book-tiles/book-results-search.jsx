@@ -1,6 +1,6 @@
 import Head from "next/head";
 import axios from "axios";
-import { Search } from "react-feather";
+import { Search, PlusCircle } from "react-feather";
 import { useState } from "react";
 import BookResult from "../../../components/BookResult";
 import Link from "next/link";
@@ -38,9 +38,10 @@ const BookResultsSearch = () => {
 
   const createBookBtn = (
     <Link href="/users/book-tiles/create-book">
-      <div className="cursor-pointer py-5 text-center transition bg-gray-100 hover:bg-gray-300 active:bg-gray-400 fixed bottom-0 left-0 w-screen animate-show-up">
-        <div className="text-sm font-medium uppercase">
-          Book not there? Create it!
+      <div className="cursor-pointer py-4 text-center transition border-t-4 border-gray-50 bg-gray-100 hover:bg-gray-300 active:bg-gray-400 fixed bottom-0 left-0 w-screen animate-show-up">
+        <div className="flex justify-center items-center gap-x-4">
+          <div className="text-sm font-medium">Book not there? Create it now!</div>
+          <PlusCircle />
         </div>
       </div>
     </Link>
