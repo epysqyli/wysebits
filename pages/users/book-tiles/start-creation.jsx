@@ -1,5 +1,6 @@
 import Head from "next/head";
 import axios from "axios";
+import { Search } from "react-feather";
 import { useState } from "react";
 import BookResult from "../../../components/BookResult";
 
@@ -62,7 +63,7 @@ const Create = () => {
             type="submit"
             className="w-2/6 text-center bg-white border-l rounded-tr-lg rounded-br-lg hover:bg-gray-200 group-hover:shadow-md transition active:bg-gray-400 active:text-white"
           >
-            Go!
+            <Search size={20} className="mx-auto"/>
           </button>
         </form>
 
