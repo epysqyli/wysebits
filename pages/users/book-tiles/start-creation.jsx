@@ -7,12 +7,16 @@ import BookResult from "../../../components/BookResult";
 const Create = () => {
   const [searchTerms, setSearchTerms] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
-  const [showBtn, setShowBtn] = useState(false);
+  const [btnVisible, setBtnVisible] = useState(false);
 
   const handleChange = (e) => {
     const newSearchTerms = e.target.value;
     setSearchTerms(newSearchTerms);
   };
+
+  const showBtn = () => {
+    setBtnVisible(true);
+  }
 
   const searchBooks = (e) => {
     e.preventDefault();
@@ -28,12 +32,14 @@ const Create = () => {
       })
       .catch((error) => console.log(error));
 
-    setShowBtn(true);
+    setTimeout(showBtn, 2000);
   };
 
   const createBookBtn = (
-    <div className="cursor-pointer py-5 text-center transition bg-gray-100 hover:bg-gray-300 active:bg-gray-400 fixed bottom-0 left-0 w-screen">
-      <div className="text-sm font-medium uppercase">Book not there? Create it!</div>
+    <div className="cursor-pointer py-5 text-center transition bg-gray-100 hover:bg-gray-300 active:bg-gray-400 fixed bottom-0 left-0 w-screen animate-show-up">
+      <div className="text-sm font-medium uppercase">
+        Book not there? Create it!
+      </div>
     </div>
   );
 
@@ -63,7 +69,7 @@ const Create = () => {
             type="submit"
             className="w-1/6 text-center bg-white border-l rounded-tr-lg rounded-br-lg hover:bg-gray-200 group-hover:shadow-md transition active:bg-gray-400 active:text-white"
           >
-            <Search size={20} className="mx-auto"/>
+            <Search size={20} className="mx-auto" />
           </button>
         </form>
 
@@ -73,7 +79,7 @@ const Create = () => {
             })
           : null}
 
-        {showBtn ? createBookBtn : null}
+        {btnVisible ? createBookBtn : null}
       </div>
     </div>
   );
