@@ -72,7 +72,6 @@ const CreateBook = ({ categories }) => {
             id="book-cover"
             className="border-none bg-white w-full mt-2 rounded-md focus:ring-0"
             placeholder="Enter the full name"
-            required
           />
         </div>
 
