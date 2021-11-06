@@ -48,6 +48,34 @@ const CreateBook = ({ categories }) => {
           </select>
         </div>
 
+        <div className="my-5">
+          <label htmlFor="author-full-name" className="pl-3">
+            Add the author
+          </label>
+          <input
+            type="text"
+            name="author_full_name"
+            id="author-full-name"
+            className="border-none bg-white w-full mt-2 rounded-md focus:ring-0"
+            placeholder="Enter the full name"
+            required
+          />
+        </div>
+
+        <div className="my-5">
+          <label htmlFor="book-cover" className="pl-3">
+            Optional - upload a book cover
+          </label>
+          <input
+            type="file"
+            name="book_cover"
+            id="book-cover"
+            className="border-none bg-white w-full mt-2 rounded-md focus:ring-0"
+            placeholder="Enter the full name"
+            required
+          />
+        </div>
+
         <button
           type="submit"
           className="w-3/5 mx-auto block border mt-10 mb-5 py-2 rounded-md shadow-sm hover:shadow-md hover:bg-gray-100 active:bg-gray-200 active:shadow-lg"
