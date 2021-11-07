@@ -5,7 +5,7 @@ import { useState } from "react";
 import BookResult from "../../../components/BookResult";
 import Link from "next/link";
 
-const BookResultsSearch = () => {
+const BookSearch = () => {
   const [searchTerms, setSearchTerms] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [btnVisible, setBtnVisible] = useState(false);
@@ -89,4 +89,4 @@ const BookResultsSearch = () => {
   );
 };
 
-export default BookResultsSearch;
+export default BookSearch;
