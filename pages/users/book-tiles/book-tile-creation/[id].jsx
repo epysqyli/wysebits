@@ -25,6 +25,8 @@ const CreateBookTile = ({ book }) => {
           </div>
         </div>
       </div>
+
+      <div className="text-xl text-center mt-10">What are the top 3 takeways for you?</div>
     </div>
   );
 };

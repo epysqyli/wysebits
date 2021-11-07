@@ -1,3 +1,5 @@
+import { Image as ImageIcon } from "react-feather";
+
 export const getStaticProps = async () => {
   const resp = await fetch("http://localhost:3001/api/categories");
   const categories = await resp.json();
@@ -48,7 +50,9 @@ const CreateBook = ({ categories }) => {
             required
           >
             {categories.map((category) => (
-              <option value={category.id} key={category.id}>{category.name}</option>
+              <option value={category.id} key={category.id}>
+                {category.name}
+              </option>
             ))}
           </select>
         </div>
@@ -75,8 +79,7 @@ const CreateBook = ({ categories }) => {
             type="file"
             name="book_cover"
             id="book-cover"
-            className="border-none bg-white w-full mt-2 rounded-md focus:ring-0"
-            placeholder="Enter the full name"
+            className="mt-2 w-full bg-white rounded-md py-2 pl-2"
           />
         </div>
 
