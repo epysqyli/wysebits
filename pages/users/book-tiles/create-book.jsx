@@ -1,5 +1,4 @@
 import { useState } from "react";
-import FileUploader from "../../../components/FileUploader";
 import axios from "axios";
 import { useRouter } from "next/dist/client/router";
 
@@ -122,7 +121,13 @@ const CreateBook = ({ categories }) => {
         </div>
 
         <div className="my-10">
-          <FileUploader onFileSelect={(file) => setFile(file)} />
+          <label htmlFor="book-cover" className="pl-3"></label>
+          <input
+            type="file"
+            name="book_cover"
+            id="book-cover"
+            onChange={(e) => setFile(e.target.files[0])}
+          />
         </div>
 
         <button
