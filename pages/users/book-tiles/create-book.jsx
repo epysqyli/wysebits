@@ -78,7 +78,7 @@ const CreateBook = ({ categories }) => {
             type="text"
             name="title"
             id="title"
-            className="border-none bg-white w-full mt-2 rounded-md focus:ring-0"
+            className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
             placeholder="Book title"
             onChange={handleChange}
             required
@@ -92,7 +92,7 @@ const CreateBook = ({ categories }) => {
           <select
             name="category_id"
             id="category"
-            className="border-none bg-white w-full mt-2 rounded-md focus:ring-0"
+            className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm"
             defaultValue={categories[24].id}
             onChange={handleChange}
             required
@@ -113,7 +113,7 @@ const CreateBook = ({ categories }) => {
             type="text"
             name="author_full_name"
             id="author-full-name"
-            className="border-none bg-white w-full mt-2 rounded-md focus:ring-0"
+            className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
             placeholder="Enter the full name"
             onChange={handleChange}
             required
@@ -127,6 +127,7 @@ const CreateBook = ({ categories }) => {
             name="book_cover"
             id="book-cover"
             onChange={(e) => setFile(e.target.files[0])}
+            className="bg-white py-2 w-full px-3 rounded-md shadow-sm"
           />
         </div>
 
