@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FileUploader from "../../../components/FileUploader";
 import axios from "axios";
+import { useRouter } from "next/dist/client/router";
 
 export const getStaticProps = async () => {
   const resp = await fetch("http://localhost:3001/api/categories");
@@ -22,6 +23,10 @@ const CreateBook = ({ categories }) => {
 
   const [file, setFile] = useState(null);
 
+  const makeSlug = (string) => string.split(" ").join("-").toLowerCase();
+
+  const router = useRouter();
+
   const handleChange = (e) => {
     const newFormData = { ...bookData, [e.target.name]: e.target.value };
     setBookData(newFormData);
@@ -40,7 +45,16 @@ const CreateBook = ({ categories }) => {
       .post("http://localhost:3001/api/books", formData, {
         withCredentials: true,
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        router.push(
+          {
+            pathname: "/users/book-tiles/book-tile-creation/[id]",
+            query: { id: res.data.id },
+          },
+          makeSlug(res.data.title)
+        );
+      })
       .catch((err) => console.log(err));
   };
 
