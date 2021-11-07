@@ -16,8 +16,13 @@ const CreateBook = ({ categories }) => {
         Fill in the required fields to create a book entry
       </div>
 
-      <form action="http://localhost:3001/api/books" method="post" className="py-5">
-        <div className="my-5">
+      <form
+        action="http://localhost:3001/api/books"
+        method="post"
+        encType="multipart/form-data"
+        className="py-5"
+      >
+        <div className="my-10">
           <label htmlFor="title" className="pl-3">
             Enter the book title
           </label>
@@ -31,12 +36,12 @@ const CreateBook = ({ categories }) => {
           />
         </div>
 
-        <div className="my-5">
+        <div className="my-10">
           <label htmlFor="title" className="pl-3">
             Choose a category
           </label>
           <select
-            name="category"
+            name="category_id"
             id="category"
             className="border-none bg-white w-full mt-2 rounded-md focus:ring-0"
             defaultValue={categories[24].id}
@@ -48,7 +53,7 @@ const CreateBook = ({ categories }) => {
           </select>
         </div>
 
-        <div className="my-5">
+        <div className="my-10">
           <label htmlFor="author-full-name" className="pl-3">
             Add the author
           </label>
@@ -62,7 +67,7 @@ const CreateBook = ({ categories }) => {
           />
         </div>
 
-        <div className="my-5">
+        <div className="my-10">
           <label htmlFor="book-cover" className="pl-3">
             Optional - upload a book cover
           </label>
