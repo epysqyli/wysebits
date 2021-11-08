@@ -12,13 +12,13 @@ export const getServerSideProps = async ({ params }) => {
 const CreateBookTile = ({ book }) => {
   const olImage = (
     <img
-      className="w-2/6 rounded-md bg-gray-200"
+      className="w-2/6 rounded-md bg-gray-200 object-cover"
       src={`https://covers.openlibrary.org/w/olid/${book.ol_key}-M.jpg`}
     />
   );
 
   const dbImage = (
-    <img className="w-2/6 rounded-md bg-gray-200" src={book.cover_url} />
+    <img className="w-2/6 rounded-md bg-gray-200 object-cover" src={book.cover_url} />
   );
 
   const bookCover = book.cover_url ? dbImage : olImage;
