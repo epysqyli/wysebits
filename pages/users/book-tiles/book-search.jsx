@@ -58,7 +58,7 @@ const BookSearch = () => {
           What book did you just read?
         </div>
 
-        <form onSubmit={searchBooks} className="flex my-10 group">
+        <form onSubmit={searchBooks} className="flex my-10 group rounded-lg shadow-sm">
           <input
             type="text"
             name="tmp"

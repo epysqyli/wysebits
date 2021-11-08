@@ -5,7 +5,7 @@ export const getServerSideProps = async ({ params }) => {
   return {
     props: {
       book: res.data,
-      image_url: res.image_url,
+      image_url: res.image_url || null,
     },
   };
 };
