@@ -12,17 +12,13 @@ const BookResult = ({ bookData }) => {
     </div>
   );
 
-  const olImage = (
-    <img
-      className="w-1/3 rounded-md bg-gray-300"
-      src={`https://covers.openlibrary.org/w/olid/${bookData._source.ol_key}-M.jpg`}
-    />
-  );
+  const olSrc = `https://covers.openlibrary.org/w/olid/${bookData._source.ol_key}-M.jpg`;
+  const dbSrc = bookData._source.cover_url;
 
-  const dbImage = (
+  const coverImage = (
     <img
-      className="w-1/3 rounded-md bg-gray-300"
-      src={bookData._source.cover_url}
+      className="w-1/3 rounded-md bg-gray-300 object-cover"
+      src={dbSrc || olSrc || ""}
     />
   );
 
@@ -68,11 +64,7 @@ const BookResult = ({ bookData }) => {
             </div>
           </div>
 
-          {!cover
-            ? imageLoader
-            : bookData._source.cover_url
-            ? dbImage
-            : olImage}
+          {!cover ? imageLoader : coverImage}
         </div>
       </div>
     </Link>
