@@ -12,10 +12,17 @@ const BookResult = ({ bookData }) => {
     </div>
   );
 
-  const imageShower = (
+  const olImage = (
     <img
       className="w-1/3 rounded-md bg-gray-300"
       src={`https://covers.openlibrary.org/w/olid/${bookData._source.ol_key}-M.jpg`}
+    />
+  );
+
+  const dbImage = (
+    <img
+      className="w-1/3 rounded-md bg-gray-300"
+      src={bookData._source.cover_url}
     />
   );
 
@@ -61,7 +68,11 @@ const BookResult = ({ bookData }) => {
             </div>
           </div>
 
-          {!cover ? imageLoader : imageShower}
+          {!cover
+            ? imageLoader
+            : bookData._source.cover_url
+            ? dbImage
+            : olImage}
         </div>
       </div>
     </Link>
