@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import useSWR from "swr";
 
 export const getServerSideProps = async ({ params }) => {
   const req = await fetch(`http://localhost:3001/api/books/${params.id}`);
@@ -13,10 +12,7 @@ export const getServerSideProps = async ({ params }) => {
   };
 };
 
-const CreateBookTile = ({ bookData, userState }) => {
-  const [bookId, setBookID] = useState(bookData.id);
-  const [bookTileId, setBookTileId] = useState(null);
-
+const TileCreation = ({ bookData, userState }) => {
   const [tileEntries, setTileEntries] = useState({
     first_entry: "",
     second_entry: "",
@@ -39,17 +35,25 @@ const CreateBookTile = ({ bookData, userState }) => {
   };
 
   const createBookTile = () => {
-    const url = `http://localhost:3001/api/users/${userState.user.id}`;
+    const url = `http://localhost:3001/api/users/${userState.user.id}/book_tiles`;
     axios
-      .post(url, { book_id: bookId }, { withCredentials: true })
-      .then((res) => setBookTileId(res.data.id))
+      .post(url, { book_id: bookData.id }, { withCredentials: true })
+      .then((res) => {
+        createTileEntries(res.data.id);
+      })
       .catch((err) => console.log(err));
   };
 
-  const createTileEntries = () => {
+  const createTileEntries = (bookTileId) => {
     const url = `http://localhost:3001/api/book_tiles/${bookTileId}/tile_entries`;
+    const { first_entry, second_entry, third_entry } = tileEntries;
+    
     axios
-      .post(url, tileEntries, { withCredentials: true })
+      .post(
+        url,
+        { first_entry, second_entry, third_entry },
+        { withCredentials: true }
+      )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
@@ -57,7 +61,6 @@ const CreateBookTile = ({ bookData, userState }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     createBookTile();
-    createTileEntries();
   };
 
   return (
@@ -146,4 +149,4 @@ const CreateBookTile = ({ bookData, userState }) => {
   );
 };
 
-export default CreateBookTile;
+export default TileCreation;
