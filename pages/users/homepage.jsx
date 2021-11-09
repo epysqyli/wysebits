@@ -18,11 +18,17 @@ const Homepage = ({ userState }) => {
           </div>
 
           <div className="mx-auto my-20">
-            <HomepageButton text="Create new book tile" href="/users/book-tiles/book-search" />
+            <HomepageButton
+              text="Create new book tile"
+              href="/users/book-tiles/book-search"
+            />
           </div>
 
           <div className="mx-auto my-20">
-            <HomepageButton text="Check all of your book tiles" href="#" />
+            <HomepageButton
+              text="Check all of your book tiles"
+              href="/users/book-tiles/"
+            />
           </div>
 
           <div className="mx-auto my-20">
