@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import BookCard from "../../../../components/BookCard";
+import { useRouter } from "next/dist/client/router";
 
 export const getServerSideProps = async ({ params }) => {
   const req = await fetch(`http://localhost:3001/api/books/${params.id}`);
@@ -29,6 +30,8 @@ const TileCreation = ({ bookData, userState }) => {
       src={dbSrc || olSrc || ""}
     />
   );
+
+  const router = useRouter();
 
   const handleChange = (e) => {
     const newTileEntries = { ...tileEntries, [e.target.name]: e.target.value };
@@ -62,6 +65,8 @@ const TileCreation = ({ bookData, userState }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     createBookTile();
+
+    router.push("http://localhost:3000/users/book-tiles/");
   };
 
   return (
