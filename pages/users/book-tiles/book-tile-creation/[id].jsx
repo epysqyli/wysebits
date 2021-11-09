@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import BookCard from "../../../../components/BookCard";
 
 export const getServerSideProps = async ({ params }) => {
   const req = await fetch(`http://localhost:3001/api/books/${params.id}`);
@@ -47,7 +48,7 @@ const TileCreation = ({ bookData, userState }) => {
   const createTileEntries = (bookTileId) => {
     const url = `http://localhost:3001/api/book_tiles/${bookTileId}/tile_entries`;
     const { first_entry, second_entry, third_entry } = tileEntries;
-    
+
     axios
       .post(
         url,
@@ -66,19 +67,7 @@ const TileCreation = ({ bookData, userState }) => {
   return (
     <div>
       <div className="w-4/5 mx-auto mt-20 mb-10">
-        <div className="flex justify-between p-2 border bg-gray-100 rounded-md shadow-md">
-          {coverImage}
-
-          <div className="w-3/6">
-            <div className="text-xl mb-5 font-medium">{bookData.title}</div>
-            <div className="text-sm">{bookData.category.name}</div>
-            <div className="text-sm italic">
-              {bookData.authors[0]
-                ? bookData.authors[0].full_name
-                : "No authors found"}
-            </div>
-          </div>
-        </div>
+        <BookCard bookData={bookData} />
       </div>
 
       <div className="text-2xl text-center mb-10 py-3 px-2 bg-gray-200">
@@ -90,7 +79,10 @@ const TileCreation = ({ bookData, userState }) => {
       <div className="w-5/6 mx-auto my-10">
         <form onSubmit={handleSubmit}>
           <div className="my-10 pt-2 px-2 bg-gray-200 rounded shadow">
-            <label htmlFor="first-entry" className="block text-center bg-gray-100 rounded shadow">
+            <label
+              htmlFor="first-entry"
+              className="block text-center bg-gray-100 rounded shadow"
+            >
               Enter your first takeaway
             </label>
             <textarea
@@ -106,7 +98,10 @@ const TileCreation = ({ bookData, userState }) => {
           </div>
 
           <div className="my-10 pt-2 px-2 bg-gray-200 rounded shadow">
-            <label htmlFor="first-entry" className="block text-center bg-gray-100 rounded shadow">
+            <label
+              htmlFor="first-entry"
+              className="block text-center bg-gray-100 rounded shadow"
+            >
               Enter your second takeaway
             </label>
             <textarea
@@ -122,7 +117,10 @@ const TileCreation = ({ bookData, userState }) => {
           </div>
 
           <div className="my-10 pt-2 px-2 bg-gray-200 rounded ">
-            <label htmlFor="first-entry" className="block text-center bg-gray-100 rounded shadow">
+            <label
+              htmlFor="first-entry"
+              className="block text-center bg-gray-100 rounded shadow"
+            >
               Enter your third takeaway
             </label>
             <textarea
@@ -141,7 +139,7 @@ const TileCreation = ({ bookData, userState }) => {
             type="submit"
             className="w-3/5 mx-auto block border mt-10 mb-5 py-2 rounded-md shadow-sm hover:shadow-md hover:bg-gray-100 active:bg-gray-200 active:shadow-lg"
           >
-            Create book tile
+            Publish your thoughts!
           </button>
         </form>
       </div>
