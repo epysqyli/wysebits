@@ -8,11 +8,9 @@ export const getServerSideProps = async (context) => {
     headers: { cookie: context.req.headers.cookie },
   });
 
-  const userId = resp.data.user.id;
-
   const bookTiles = await axios({
     method: "get",
-    url: `http://localhost:3001/api/users/${userId}/book_tiles`,
+    url: `http://localhost:3001/api/users/${resp.data.user.id}/book_tiles`,
   });
 
   return {
