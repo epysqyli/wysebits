@@ -64,8 +64,6 @@ const CreateBook = ({ categories }) => {
       </div>
 
       <form
-        action="http://localhost:3001/api/books"
-        method="post"
         encType="multipart/form-data"
         className="py-5"
         onSubmit={handleSubmit}
