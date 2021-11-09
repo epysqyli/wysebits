@@ -1,4 +1,5 @@
 import axios from "axios";
+import BookCard from "../../../components/BookCard";
 
 export const getServerSideProps = async (context) => {
   const resp = await axios({
@@ -9,20 +10,36 @@ export const getServerSideProps = async (context) => {
 
   const userId = resp.data.user.id;
 
-  const tiles = await axios({
+  const bookTiles = await axios({
     method: "get",
     url: `http://localhost:3001/api/users/${userId}/book_tiles`,
   });
 
   return {
     props: {
-      tiles: tiles.data,
+      bookTiles: bookTiles.data,
     },
   };
 };
 
-const UserBookTiles = ({ tiles }) => {
-  return <div></div>;
+const UserBookTiles = ({ bookTiles }) => {
+  return (
+    <div>
+      <div className="w-4/5 mx-auto my-20">
+        {bookTiles.map((bookTile) => {
+          return (
+            <div className="my-10">
+              <BookCard
+                bookData={bookTile.book}
+                tileEntries={bookTile.tile_entries}
+                key={bookTile.book.id}
+              />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 };
 
 export default UserBookTiles;

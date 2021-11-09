@@ -1,4 +1,4 @@
-const BookCard = ({ bookData }) => {
+const BookCard = ({ bookData, tileEntries }) => {
   const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
   const dbSrc = bookData.cover_url;
 
