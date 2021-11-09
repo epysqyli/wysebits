@@ -13,13 +13,15 @@ export const getServerSideProps = async ({ params }) => {
   };
 };
 
-const CreateBookTile = ({ bookData }) => {
-  const [book, setBook] = useState(null);
-  const [tileEntries, setTileEntry] = useState({
-    first_entry: '',
-    second_entry: '',
-    third_entry: '',
-  })
+const CreateBookTile = ({ bookData, userState }) => {
+  const [bookId, setBookID] = useState(bookData.id);
+  const [bookTileId, setBookTileId] = useState(null);
+
+  const [tileEntries, setTileEntries] = useState({
+    first_entry: "",
+    second_entry: "",
+    third_entry: "",
+  });
 
   const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
   const dbSrc = bookData.cover_url;
@@ -31,13 +33,32 @@ const CreateBookTile = ({ bookData }) => {
     />
   );
 
-  const handleChange = () => {
-    // handle state
-  }
+  const handleChange = (e) => {
+    const newTileEntries = { ...tileEntries, [e.target.name]: e.target.value };
+    setTileEntries(newTileEntries);
+  };
 
-  const handleSubmit = () => {
-    // post call
-  }
+  const createBookTile = () => {
+    const url = `http://localhost:3001/api/users/${userState.user.id}`;
+    axios
+      .post(url, { book_id: bookId }, { withCredentials: true })
+      .then((res) => setBookTileId(res.data.id))
+      .catch((err) => console.log(err));
+  };
+
+  const createTileEntries = () => {
+    const url = `http://localhost:3001/api/book_tiles/${bookTileId}/tile_entries`;
+    axios
+      .post(url, tileEntries, { withCredentials: true })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createBookTile();
+    createTileEntries();
+  };
 
   return (
     <div>
@@ -49,7 +70,9 @@ const CreateBookTile = ({ bookData }) => {
             <div className="text-xl mb-5 font-medium">{bookData.title}</div>
             <div className="text-sm">{bookData.category.name}</div>
             <div className="text-sm italic">
-              {bookData.authors[0] ? bookData.authors[0].full_name : "No authors found"}
+              {bookData.authors[0]
+                ? bookData.authors[0].full_name
+                : "No authors found"}
             </div>
           </div>
         </div>
@@ -74,6 +97,7 @@ const CreateBookTile = ({ bookData }) => {
               className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
               placeholder="Important stuff"
               rows="10"
+              onChange={handleChange}
               required
             ></textarea>
           </div>
@@ -89,6 +113,7 @@ const CreateBookTile = ({ bookData }) => {
               className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
               placeholder="Important stuff"
               rows="10"
+              onChange={handleChange}
               required
             ></textarea>
           </div>
@@ -104,6 +129,7 @@ const CreateBookTile = ({ bookData }) => {
               className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
               placeholder="Important stuff"
               rows="10"
+              onChange={handleChange}
               required
             ></textarea>
           </div>
