@@ -89,8 +89,8 @@ const TileCreation = ({ bookData, userState }) => {
 
       <div className="w-5/6 mx-auto my-10">
         <form onSubmit={handleSubmit}>
-          <div className="my-10 pt-2 px-3 bg-gray-200 rounded">
-            <label htmlFor="first-entry" className="block text-center bg-gray-100 rounded">
+          <div className="my-10 pt-2 px-2 bg-gray-200 rounded shadow">
+            <label htmlFor="first-entry" className="block text-center bg-gray-100 rounded shadow">
               Enter your first takeaway
             </label>
             <textarea
@@ -105,8 +105,8 @@ const TileCreation = ({ bookData, userState }) => {
             ></textarea>
           </div>
 
-          <div className="my-10 pt-2 px-3 bg-gray-200 rounded">
-            <label htmlFor="first-entry" className="block text-center bg-gray-100 rounded">
+          <div className="my-10 pt-2 px-2 bg-gray-200 rounded shadow">
+            <label htmlFor="first-entry" className="block text-center bg-gray-100 rounded shadow">
               Enter your second takeaway
             </label>
             <textarea
@@ -121,8 +121,8 @@ const TileCreation = ({ bookData, userState }) => {
             ></textarea>
           </div>
 
-          <div className="my-10 pt-2 px-3 bg-gray-200 rounded">
-            <label htmlFor="first-entry" className="block text-center bg-gray-100 rounded">
+          <div className="my-10 pt-2 px-2 bg-gray-200 rounded ">
+            <label htmlFor="first-entry" className="block text-center bg-gray-100 rounded shadow">
               Enter your third takeaway
             </label>
             <textarea
