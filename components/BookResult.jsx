@@ -38,7 +38,7 @@ const BookResult = ({ bookData }) => {
   return (
     <Link
       href={{
-        pathname: "/users/book-tiles/book-tile-creation/[id]",
+        pathname: "/users/book-tiles/create/[id]",
         query: { id: bookData._source.id },
       }}
       as={makeSlug(bookData._source.title)}

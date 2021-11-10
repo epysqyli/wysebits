@@ -2,7 +2,7 @@ import Link from "next/link";
 import Head from "next/head";
 import HomepageButton from "../../components/users/HomepageButton";
 
-const Homepage = ({ userState }) => {
+const Actions = ({ userState }) => {
   if (userState.isLogged) {
     return (
       <div>
@@ -20,7 +20,7 @@ const Homepage = ({ userState }) => {
           <div className="mx-auto my-12">
             <HomepageButton
               text="Create new book tile"
-              href="/users/book-tiles/book-search"
+              href="/users/book-search"
             />
           </div>
 
@@ -63,4 +63,4 @@ const Homepage = ({ userState }) => {
   }
 };
 
-export default Homepage;
+export default Actions;

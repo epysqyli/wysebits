@@ -27,7 +27,7 @@ const Header = ({ userState }) => {
 
   const loggedUser = (
     <div className="flex justify-around items-center">
-      <Link href="/users/homepage">
+      <Link href="/users/actions">
         <a className="flex mr-3 group cursor-pointer">
           <User
             size={20}

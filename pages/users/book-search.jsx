@@ -2,7 +2,7 @@ import Head from "next/head";
 import axios from "axios";
 import { Search, PlusCircle } from "react-feather";
 import { useState } from "react";
-import BookResult from "../../../components/BookResult";
+import BookResult from "../../components/BookResult";
 import Link from "next/link";
 
 const BookSearch = () => {
