@@ -24,7 +24,9 @@ const UserBookTiles = ({ bookTiles }) => {
   return (
     <div>
       <div className="w-4/5 mx-auto my-20">
-        <div className="text-2xl text-center border-b-2 pb-2 shadow-md">Here are your book tiles</div>
+        <div className="text-2xl text-center border-b-2 pb-2 shadow-md">
+          Here are your book tiles
+        </div>
         {bookTiles.map((bookTile) => {
           return (
             <div className="my-10">
