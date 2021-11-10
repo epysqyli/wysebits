@@ -15,9 +15,13 @@ const BookCard = ({ bookData, tileEntries }) => {
 
   const entries = (
     <div className="mt-10 text-justify animate-show-up-slow">
-      {tileEntries.map((entry) => (
-        <div className="my-5 mx-2 p-3 bg-white rounded">{entry.content}</div>
-      ))}
+      {!tileEntries
+        ? null
+        : tileEntries.map((entry) => (
+            <div className="my-5 mx-2 p-3 bg-white rounded">
+              {entry.content}
+            </div>
+          ))}
     </div>
   );
 
@@ -27,7 +31,7 @@ const BookCard = ({ bookData, tileEntries }) => {
 
   return (
     <div
-      onClick={() => toggleEntries(showEntries)}
+      onClick={() => (!tileEntries ? null : toggleEntries(showEntries))}
       className="border bg-gray-100 rounded-md shadow-md transition-all"
     >
       <div className="flex justify-between p-2">
