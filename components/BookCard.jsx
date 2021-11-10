@@ -6,12 +6,14 @@ const BookCard = ({ bookData, tileEntries }) => {
 
   const coverImage = (
     <img
-      className="w-2/6 rounded-md bg-gray-200 object-cover"
+      className="w-2/6 rounded-md bg-gray-300 object-cover"
       src={dbSrc || olSrc || ""}
     />
   );
 
   const [showEntries, setShowEntries] = useState(false);
+
+  const clickable = "cursor-pointer hover:bg-gray-200 hover:shadow-md";
 
   const entries = (
     <div className="mt-10 text-justify animate-show-up-slow">
@@ -32,7 +34,9 @@ const BookCard = ({ bookData, tileEntries }) => {
   return (
     <div
       onClick={() => (!tileEntries ? null : toggleEntries(showEntries))}
-      className="border bg-gray-100 rounded-md shadow-md transition-all"
+      className={`border bg-gray-100 rounded-md shadow-md transition-all ${
+        tileEntries ? clickable : null
+      }`}
     >
       <div className="flex justify-between p-2">
         {coverImage}
