@@ -21,16 +21,6 @@ const TileCreation = ({ bookData, userState }) => {
     third_entry: "",
   });
 
-  const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
-  const dbSrc = bookData.cover_url;
-
-  const coverImage = (
-    <img
-      className="w-2/6 rounded-md bg-gray-200 object-cover"
-      src={dbSrc || olSrc || ""}
-    />
-  );
-
   const router = useRouter();
 
   const handleChange = (e) => {
