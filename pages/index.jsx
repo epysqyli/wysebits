@@ -1,10 +1,7 @@
 import Head from "next/head";
 import Button from "../components/Button";
-import Slider from "../components/Slider";
 import CategoryButton from "../components/CategoryButton";
-import { ArrowLeftCircle, ArrowRightCircle } from "react-feather";
 import Link from "next/link";
-import useSWR from "swr";
 
 export const getStaticProps = async () => {
   const resp = await fetch("http://localhost:3001/api/categories");
@@ -43,7 +40,7 @@ const Home = ({ categories, loginStatus, userState }) => {
           type="text"
           name=""
           id=""
-          placeholder="Search for any book(tiles)"
+          placeholder="Search for any book-title (tiles)"
           className="block mx-auto w-4/6 transition-all duration-200 ease-out hover:w-5/6 focus:w-5/6 rounded-lg focus:ring-gray-700 focus:ring-2 outline-none focus:border-current focus:shadow-lg border-none shadow-md hover:shadow-lg text-center"
         />
       </form>
@@ -60,7 +57,7 @@ const Home = ({ categories, loginStatus, userState }) => {
 
       <div className="mb-20 w-4/5 mx-auto">
         <p className="text-3xl mx-auto text-center mb-10">
-          Explore books by categories
+          Explore categories
         </p>
         <div className="grid grid-cols-2 gap-x-4 gap-y-4">
           {categories.map((category) => {

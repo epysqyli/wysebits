@@ -1,5 +1,5 @@
 import axios from "axios";
-import BookCard from "../../../components/BookCard";
+import BookCardTiles from "../../../components/BookCardTiles";
 
 export const getServerSideProps = async (context) => {
   const resp = await axios({
@@ -30,7 +30,7 @@ const UserBookTiles = ({ bookTiles }) => {
         {bookTiles.map((bookTile) => {
           return (
             <div className="my-10">
-              <BookCard
+              <BookCardTiles
                 bookData={bookTile.book}
                 tileEntries={bookTile.tile_entries}
                 key={bookTile.book.id}
