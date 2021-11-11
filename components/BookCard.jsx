@@ -17,13 +17,7 @@ const BookCard = ({ bookData, tileEntries }) => {
 
   const entries = (
     <div className="mt-10 text-justify animate-show-up-slow">
-      {!tileEntries
-        ? null
-        : tileEntries.map((entry) => (
-            <div className="my-5 mx-2 p-3 bg-white rounded">
-              {entry.content}
-            </div>
-          ))}
+      {!tileEntries ? null : null}
     </div>
   );
 
