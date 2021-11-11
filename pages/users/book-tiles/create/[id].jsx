@@ -71,7 +71,7 @@ const TileCreation = ({ bookData, userState }) => {
 
   return (
     <div>
-      <div className="w-4/5 mx-auto mt-20 mb-10">
+      <div className="w-4/5 mx-auto mt-20 mb-10 border bg-gray-100 rounded-md shadow-md">
         <BookCard bookData={bookData} />
       </div>
 

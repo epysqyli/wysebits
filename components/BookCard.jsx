@@ -10,7 +10,7 @@ const BookCard = ({ bookData }) => {
   );
 
   return (
-    <div className="flex justify-between p-2 border bg-gray-100 rounded-md shadow-md">
+    <div className="flex justify-between p-2">
       {coverImage}
 
       <div className="w-3/6">
