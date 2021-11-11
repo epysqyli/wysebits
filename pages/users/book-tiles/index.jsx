@@ -20,7 +20,7 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-const UserBookTiles = ({ bookTiles }) => {
+const UserBookTiles = ({ bookTiles, userState }) => {
   return (
     <div>
       <div className="w-4/5 mx-auto my-20">
@@ -33,6 +33,7 @@ const UserBookTiles = ({ bookTiles }) => {
               <BookCardTiles
                 bookData={bookTile.book}
                 tileEntries={bookTile.tile_entries}
+                bookTileId={bookTile.id}
                 key={bookTile.book.id}
               />
             </div>

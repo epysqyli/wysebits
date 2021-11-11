@@ -4,10 +4,8 @@ import Button from "./Button";
 import BookCard from "./BookCard";
 import Link from "next/dist/client/link";
 
-const BookCardTiles = ({ bookData, tileEntries }) => {
+const BookCardTiles = ({ bookData, tileEntries, bookTileId }) => {
   const [showEntries, setShowEntries] = useState(false);
-
-  const clickable = "cursor-pointer hover:bg-gray-200 hover:shadow-md";
 
   const entries = (
     <div className="mt-10 text-justify animate-show-up-slow">
@@ -21,17 +19,22 @@ const BookCardTiles = ({ bookData, tileEntries }) => {
 
   return (
     <div
-      onClick={() => (!tileEntries ? null : toggleEntries(showEntries))}
-      className="border bg-gray-100 rounded-md shadow-md"
+      onClick={() => toggleEntries(showEntries)}
+      className="border bg-gray-100 rounded-md shadow-md cursor-pointer hover:bg-gray-200 hover:shadow-md"
     >
       <BookCard bookData={bookData} />
 
       {showEntries ? entries : null}
 
       <div className="w-3/5 mx-auto my-3">
-        <Link href="#">
+        <Link
+          href={{
+            pathname: "/users/book-tiles/edit/[id]",
+            query: { id: bookTileId },
+          }}
+        >
           <a>
-            <Button text="Edit book tiles" />
+            <Button text="Edit book tile" />
           </a>
         </Link>
       </div>
