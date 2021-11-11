@@ -1,12 +1,13 @@
 import { ArrowLeftCircle, ArrowRightCircle } from "react-feather";
 import { useState } from "react";
-import HomeTileEntry from "./HomeTileEntry";
+import TileEntry from "./HomeTileEntry";
 
 const Slider = ({ entries }) => {
   const [count, setCount] = useState(0);
   const upperLimit = entries.length - 1;
 
-  const increment = () => {
+  const increment = (e) => {
+    e.stopPropagation();
     if (count == upperLimit) {
       setCount(0);
     } else {
@@ -14,7 +15,8 @@ const Slider = ({ entries }) => {
     }
   };
 
-  const decrement = () => {
+  const decrement = (e) => {
+    e.stopPropagation();
     if (count == 0) {
       setCount(upperLimit);
     } else {
@@ -23,13 +25,13 @@ const Slider = ({ entries }) => {
   };
 
   return (
-    <div className="flex justify-around items-center border rounded-md shadow-md hover:shadow-lg w-5/6 mx-auto py-5 bg-gray-100">
+    <div className="flex justify-around items-center mx-auto py-5 bg-gray-100 cursor-default">
       <ArrowLeftCircle
         className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
         onClick={decrement}
         size={30}
       />
-      <HomeTileEntry entry={entries[count]} />
+      <TileEntry entry={entries[count]} />
       <ArrowRightCircle
         className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
         onClick={increment}

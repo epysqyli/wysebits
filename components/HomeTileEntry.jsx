@@ -1,6 +1,6 @@
 import { ThumbsUp, ThumbsDown } from "react-feather";
 
-const HomeTileEntry = ({ entry }) => {
+const TileEntry = ({ entry }) => {
   return (
     <div className="w-3/5">
       <p className="mt-5 text-justify">{entry.content}</p>
@@ -18,4 +18,4 @@ const HomeTileEntry = ({ entry }) => {
   );
 };
 
-export default HomeTileEntry;
+export default TileEntry;

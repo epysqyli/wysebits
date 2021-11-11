@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Slider from "../components/Slider";
 
 const BookCard = ({ bookData, tileEntries }) => {
   const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
@@ -17,7 +18,7 @@ const BookCard = ({ bookData, tileEntries }) => {
 
   const entries = (
     <div className="mt-10 text-justify animate-show-up-slow">
-      {!tileEntries ? null : null}
+      {!tileEntries ? null : <Slider entries={tileEntries} />}
     </div>
   );
 

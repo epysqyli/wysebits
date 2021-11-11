@@ -18,18 +18,6 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({ categories, loginStatus, userState }) => {
-  // client side rendering for top tiles in an otherwise statically served page
-  const fetcher = async (url) => {
-    const resp = await fetch(url);
-    const entries = await resp.json();
-    return entries;
-  };
-
-  const { data, error } = useSWR(
-    "http://localhost:3001/api/top_tiles",
-    fetcher
-  );
-
   return (
     <div>
       <Head>
@@ -59,32 +47,6 @@ const Home = ({ categories, loginStatus, userState }) => {
           className="block mx-auto w-4/6 transition-all duration-200 ease-out hover:w-5/6 focus:w-5/6 rounded-lg focus:ring-gray-700 focus:ring-2 outline-none focus:border-current focus:shadow-lg border-none shadow-md hover:shadow-lg text-center"
         />
       </form>
-
-      {!data ? (
-        <div className="mb-20">
-          <p className="text-3xl w-4/5 mx-auto text-center mb-5">
-            Check trending insights
-          </p>
-          <div className="flex justify-around items-center border rounded-md shadow-md hover:shadow-lg w-5/6 mx-auto py-5 bg-gray-100">
-            <ArrowLeftCircle
-              className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
-              size={30}
-            />
-            <div className="py-20 h-52">Loading ...</div>
-            <ArrowRightCircle
-              className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
-              size={30}
-            />
-          </div>
-        </div>
-      ) : (
-        <div className="mb-20">
-          <p className="text-3xl w-4/5 mx-auto text-center mb-5">
-            Check trending insights
-          </p>
-          <Slider entries={data.data} />
-        </div>
-      )}
 
       {userState.isLogged ? null : (
         <div className="mb-20 w-full bg-gray-200 py-10">
