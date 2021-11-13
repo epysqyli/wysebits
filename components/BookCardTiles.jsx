@@ -26,15 +26,15 @@ const BookCardTiles = ({ bookData, tileEntries, bookTileId }) => {
 
       {showEntries ? entries : null}
 
-      <div className="w-3/5 mx-auto my-3">
+      <div className="mx-auto">
         <Link
           href={{
             pathname: "/users/book-tiles/edit/[id]",
             query: { id: bookTileId },
           }}
         >
-          <a>
-            <Button text="Edit book tile" />
+          <a className="block text-center rounded-br-md rounded-bl-md bg-gray-200 hover:bg-gray-300 active:text-white py-2">
+            edit book tile
           </a>
         </Link>
       </div>
