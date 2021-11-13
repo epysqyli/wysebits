@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Slider from "./Slider";
-import Button from "./Button";
 import BookCard from "./BookCard";
 import Link from "next/dist/client/link";
 

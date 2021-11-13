@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import BookCard from "../../../../components/BookCard";
 import EditForm from "../../../../components/users/EditForm";
 
@@ -69,7 +69,9 @@ const EditBookTile = ({ bookData, entries, bookTileId }) => {
     axios
       .put(url, { content: entryContent }, { withCredentials: true })
       .then((res) => {
-        console.log(res);
+        if (res.status == 200) {
+          setBtnVisible({ [entryId]: false });
+        }
       })
       .catch((err) => console.log(err));
   };

@@ -25,7 +25,7 @@ const EditForm = ({
         htmlFor="first-entry"
         className="block text-center bg-gray-100 rounded shadow"
       >
-        Edit entry
+        Edit entry - created at - updated at
       </label>
       <textarea
         type="text"
