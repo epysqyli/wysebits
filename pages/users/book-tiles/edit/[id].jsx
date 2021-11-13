@@ -41,30 +41,31 @@ const EditBookTile = ({ bookData, entries, bookTileId, userState }) => {
   const handleChange = (e) => {
     const newTileEntries = { ...tileEntries, [e.target.name]: e.target.value };
     setTileEntries(newTileEntries);
-    setCurrentEntry({
-      content: e.target.value,
-    });
-    setCurrentId();
-  };
+    setCurrentEntry({ content: e.target.value });
 
-  const setCurrentId = () => {
-    let currentId = null;
-    if (currentEntry.content == tileEntries.first_entry) {
-      currentId = entries[0].id;
-    } else if (currentEntry.content == tileEntries.second_entry) {
-      currentId = entries[1].id;
-    } else {
-      currentId = entries[2].id;
+    // to be fixed as there are bugs on comparison
+    if (currentEntry.content === tileEntries.first_entry) {
+      setCurrentEntry({
+        content: e.target.value,
+        id: entries[0].id,
+      });
+    } else if (currentEntry.content === tileEntries.second_entry) {
+      setCurrentEntry({
+        content: e.target.value,
+        id: entries[1].id,
+      });
+    } else if (currentEntry.content === tileEntries.third_entry) {
+      setCurrentEntry({
+        content: e.target.value,
+        id: entries[2].id,
+      });
     }
-
-    const newCurrentEntry = { content: currentEntry.content, id: currentId };
-    setCurrentEntry(newCurrentEntry);
   };
 
-  const editEntry = (entryId, entry_content) => {
+  const editEntry = (entryId, entryContent) => {
     const url = `http://localhost:3001/api/book_tiles/${bookTileId}/tile_entries/${entryId}`;
     axios
-      .put(url, { content: entry_content }, { withCredentials: true })
+      .put(url, { content: entryContent }, { withCredentials: true })
       .then((res) => {
         console.log(res);
       })
@@ -73,6 +74,7 @@ const EditBookTile = ({ bookData, entries, bookTileId, userState }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    editEntry(currentEntry.id, currentEntry.content);
   };
 
   return (
@@ -95,7 +97,7 @@ const EditBookTile = ({ bookData, entries, bookTileId, userState }) => {
           htmlFor="first-entry"
           className="block text-center bg-gray-100 rounded shadow"
         >
-          Edit your first takeaway
+          Edit takeaway
         </label>
         <textarea
           type="text"
@@ -106,6 +108,64 @@ const EditBookTile = ({ bookData, entries, bookTileId, userState }) => {
           rows="10"
           onChange={handleChange}
           value={tileEntries.first_entry}
+          required
+        ></textarea>
+        <button
+          type="submit"
+          className="w-3/5 mx-auto block border mt-10 mb-5 py-2 bg-white"
+        >
+          Edit this entry
+        </button>
+      </form>
+
+      <form
+        className="w-5/6 mx-auto my-10 pt-2 pb-5 px-2 bg-gray-200 rounded shadow"
+        onSubmit={handleSubmit}
+      >
+        <label
+          htmlFor="first-entry"
+          className="block text-center bg-gray-100 rounded shadow"
+        >
+          Edit takeaway
+        </label>
+        <textarea
+          type="text"
+          name="first_entry"
+          id="first-entry"
+          className="border-none bg-white w-full mt-2 rounded focus:ring-0 shadow-sm focus:shadow-md"
+          placeholder="Important stuff"
+          rows="10"
+          onChange={handleChange}
+          value={tileEntries.second_entry}
+          required
+        ></textarea>
+        <button
+          type="submit"
+          className="w-3/5 mx-auto block border mt-10 mb-5 py-2 bg-white"
+        >
+          Edit this entry
+        </button>
+      </form>
+
+      <form
+        className="w-5/6 mx-auto my-10 pt-2 pb-5 px-2 bg-gray-200 rounded shadow"
+        onSubmit={handleSubmit}
+      >
+        <label
+          htmlFor="first-entry"
+          className="block text-center bg-gray-100 rounded shadow"
+        >
+          Edit takeaway
+        </label>
+        <textarea
+          type="text"
+          name="first_entry"
+          id="first-entry"
+          className="border-none bg-white w-full mt-2 rounded focus:ring-0 shadow-sm focus:shadow-md"
+          placeholder="Important stuff"
+          rows="10"
+          onChange={handleChange}
+          value={tileEntries.third_entry}
           required
         ></textarea>
         <button
