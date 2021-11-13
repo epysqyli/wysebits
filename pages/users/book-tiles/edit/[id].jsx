@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import BookCard from "../../../../components/BookCard";
+import EditForm from "../../../../components/users/EditForm";
 
 export const getServerSideProps = async (context) => {
   const { id } = context.params;
@@ -26,7 +27,7 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-const EditBookTile = ({ bookData, entries, bookTileId, userState }) => {
+const EditBookTile = ({ bookData, entries, bookTileId }) => {
   const [tileEntries, setTileEntries] = useState({
     first_entry: entries[0].content,
     second_entry: entries[1].content,
@@ -41,7 +42,11 @@ const EditBookTile = ({ bookData, entries, bookTileId, userState }) => {
   const handleChange = (e) => {
     const newTileEntries = { ...tileEntries, [e.target.name]: e.target.value };
     setTileEntries(newTileEntries);
-    setCurrentEntry({ content: e.target.value });
+    setCurrentEntry({ ...currentEntry, content: e.target.value });
+  };
+
+  const setCurrentId = (id) => {
+    setCurrentEntry({ ...currentEntry, id: id });
   };
 
   const editEntry = (entryId, entryContent) => {
@@ -71,95 +76,18 @@ const EditBookTile = ({ bookData, entries, bookTileId, userState }) => {
         </div>
       </div>
 
-      <form
-        className="w-5/6 mx-auto my-10 pt-2 pb-5 px-2 bg-gray-200 rounded shadow"
-        onSubmit={handleSubmit}
-      >
-        <label
-          htmlFor="first-entry"
-          className="block text-center bg-gray-100 rounded shadow"
-        >
-          Edit takeaway
-        </label>
-        <textarea
-          type="text"
-          name="first_entry"
-          id="first-entry"
-          className="border-none bg-white w-full mt-2 rounded focus:ring-0 shadow-sm focus:shadow-md"
-          placeholder="Important stuff"
-          rows="10"
-          onChange={handleChange}
-          onClick={() => setCurrentEntry({ ...currentEntry, id: entries[0].id })}
-          value={tileEntries.first_entry}
-          required
-        ></textarea>
-        <button
-          type="submit"
-          className="w-3/5 mx-auto block border mt-10 mb-5 py-2 bg-white"
-        >
-          Edit this entry
-        </button>
-      </form>
-
-      <form
-        className="w-5/6 mx-auto my-10 pt-2 pb-5 px-2 bg-gray-200 rounded shadow"
-        onSubmit={handleSubmit}
-      >
-        <label
-          htmlFor="first-entry"
-          className="block text-center bg-gray-100 rounded shadow"
-        >
-          Edit takeaway
-        </label>
-        <textarea
-          type="text"
-          name="first_entry"
-          id="first-entry"
-          className="border-none bg-white w-full mt-2 rounded focus:ring-0 shadow-sm focus:shadow-md"
-          placeholder="Important stuff"
-          rows="10"
-          onChange={handleChange}
-          onClick={() => setCurrentEntry({ ...currentEntry, id: entries[1].id })}
-          value={tileEntries.second_entry}
-          required
-        ></textarea>
-        <button
-          type="submit"
-          className="w-3/5 mx-auto block border mt-10 mb-5 py-2 bg-white"
-        >
-          Edit this entry
-        </button>
-      </form>
-
-      <form
-        className="w-5/6 mx-auto my-10 pt-2 pb-5 px-2 bg-gray-200 rounded shadow"
-        onSubmit={handleSubmit}
-      >
-        <label
-          htmlFor="first-entry"
-          className="block text-center bg-gray-100 rounded shadow"
-        >
-          Edit takeaway
-        </label>
-        <textarea
-          type="text"
-          name="first_entry"
-          id="first-entry"
-          className="border-none bg-white w-full mt-2 rounded focus:ring-0 shadow-sm focus:shadow-md"
-          placeholder="Important stuff"
-          rows="10"
-          onChange={handleChange}
-          onClick={() => setCurrentEntry({ ...currentEntry, id: entries[2].id })}
-          value={tileEntries.third_entry}
-          required
-        ></textarea>
-        <button
-          type="submit"
-          className="w-3/5 mx-auto block border mt-10 mb-5 py-2 bg-white"
-        >
-          Edit this entry
-        </button>
-      </form>
+      {entries.map((entry) => {
+        return (
+          <EditForm
+            content={entry.content}
+            entryId={entry.id}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            setCurrentId={setCurrentId}
+            key={entry.id}
+          />
+        );
+      })}
     </div>
   );
 };
