@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BookCard from "../../../../components/BookCard";
 import EditForm from "../../../../components/users/EditForm";
 
@@ -39,6 +39,21 @@ const EditBookTile = ({ bookData, entries, bookTileId }) => {
     content: "",
   });
 
+  const [btnVisible, setBtnVisible] = useState({
+    [entries[0].id]: false,
+    [entries[1].id]: false,
+    [entries[2].id]: false,
+  });
+
+  const showBtn = (entryId) => {
+    setBtnVisible({
+      [entries[0].id]: false,
+      [entries[1].id]: false,
+      [entries[2].id]: false,
+    });
+    setBtnVisible({ [entryId]: true });
+  };
+
   const handleChange = (e) => {
     const newTileEntries = { ...tileEntries, [e.target.name]: e.target.value };
     setTileEntries(newTileEntries);
@@ -72,7 +87,7 @@ const EditBookTile = ({ bookData, entries, bookTileId }) => {
 
       <div className="text-2xl text-center mb-10 py-3 px-2 bg-gray-200">
         <div className="bg-gray-100 py-2 px-2 rounded-md">
-          Edit some or all of your takeaways
+          Edit your entries for this book
         </div>
       </div>
 
@@ -84,6 +99,8 @@ const EditBookTile = ({ bookData, entries, bookTileId }) => {
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             setCurrentId={setCurrentId}
+            btnVisible={btnVisible[entry.id]}
+            showBtn={showBtn}
             key={entry.id}
           />
         );

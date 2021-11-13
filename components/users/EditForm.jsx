@@ -6,17 +6,13 @@ const EditForm = ({
   handleChange,
   setCurrentId,
   handleSubmit,
+  btnVisible,
+  showBtn,
 }) => {
-  const [btnVisible, setBtnVisible] = useState(false);
-
-  const showBtn = () => {
-    setBtnVisible(true);
-  };
-
   const submitBtn = (
     <button
       type="submit"
-      className="border p-1 bg-white absolute w-max bottom-4 right-4 rounded animate-show-up-slow"
+      className="text-sm border p-1 bg-white absolute w-max bottom-4 right-4 rounded animate-show-up-slow hover:bg-gray-100 active:bg-gray-200 shadow-md"
     >
       Save changes
     </button>
@@ -43,7 +39,7 @@ const EditForm = ({
         onChange={handleChange}
         onClick={() => {
           setCurrentId(entryId);
-          showBtn();
+          showBtn(entryId);
         }}
         required
       >
