@@ -1,14 +1,37 @@
-const EditForm = ({ entryId, content, handleChange, setCurrentId, handleSubmit }) => {
+import { useState } from "react";
+
+const EditForm = ({
+  entryId,
+  content,
+  handleChange,
+  setCurrentId,
+  handleSubmit,
+}) => {
+  const [btnVisible, setBtnVisible] = useState(false);
+
+  const showBtn = () => {
+    setBtnVisible(true);
+  };
+
+  const submitBtn = (
+    <button
+      type="submit"
+      className="border p-1 bg-white absolute w-max bottom-4 right-4 rounded animate-show-up-slow"
+    >
+      Save changes
+    </button>
+  );
+
   return (
     <form
-      className="w-5/6 mx-auto my-10 pt-2 pb-5 px-2 bg-gray-200 rounded shadow"
+      className="w-5/6 mx-auto my-10 pt-2 px-2 bg-gray-200 rounded shadow relative"
       onSubmit={handleSubmit}
     >
       <label
         htmlFor="first-entry"
         className="block text-center bg-gray-100 rounded shadow"
       >
-        Edit takeaway
+        Edit entry
       </label>
       <textarea
         type="text"
@@ -18,15 +41,15 @@ const EditForm = ({ entryId, content, handleChange, setCurrentId, handleSubmit }
         placeholder="Important stuff"
         rows="10"
         onChange={handleChange}
-        onClick={() => setCurrentId(entryId)}
+        onClick={() => {
+          setCurrentId(entryId);
+          showBtn();
+        }}
         required
-      >{content}</textarea>
-      <button
-        type="submit"
-        className="w-3/5 mx-auto block border mt-10 mb-5 py-2 bg-white"
       >
-        Edit this entry
-      </button>
+        {content}
+      </textarea>
+      {btnVisible ? submitBtn : null}
     </form>
   );
 };
