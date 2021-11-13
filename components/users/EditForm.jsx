@@ -36,10 +36,12 @@ const EditForm = ({
         className="border-none bg-white w-full mt-2 rounded focus:ring-0 shadow-sm focus:shadow-md"
         placeholder="Important stuff"
         rows="10"
-        onChange={handleChange}
+        onChange={(e) => {
+          handleChange(e);
+          showBtn(entryId);
+        }}
         onClick={() => {
           setCurrentId(entryId);
-          showBtn(entryId);
         }}
         required
       >
