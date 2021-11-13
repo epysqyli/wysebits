@@ -42,24 +42,6 @@ const EditBookTile = ({ bookData, entries, bookTileId, userState }) => {
     const newTileEntries = { ...tileEntries, [e.target.name]: e.target.value };
     setTileEntries(newTileEntries);
     setCurrentEntry({ content: e.target.value });
-
-    // to be fixed as there are bugs on comparison
-    if (currentEntry.content === tileEntries.first_entry) {
-      setCurrentEntry({
-        content: e.target.value,
-        id: entries[0].id,
-      });
-    } else if (currentEntry.content === tileEntries.second_entry) {
-      setCurrentEntry({
-        content: e.target.value,
-        id: entries[1].id,
-      });
-    } else if (currentEntry.content === tileEntries.third_entry) {
-      setCurrentEntry({
-        content: e.target.value,
-        id: entries[2].id,
-      });
-    }
   };
 
   const editEntry = (entryId, entryContent) => {
@@ -107,6 +89,7 @@ const EditBookTile = ({ bookData, entries, bookTileId, userState }) => {
           placeholder="Important stuff"
           rows="10"
           onChange={handleChange}
+          onClick={() => setCurrentEntry({ ...currentEntry, id: entries[0].id })}
           value={tileEntries.first_entry}
           required
         ></textarea>
@@ -136,6 +119,7 @@ const EditBookTile = ({ bookData, entries, bookTileId, userState }) => {
           placeholder="Important stuff"
           rows="10"
           onChange={handleChange}
+          onClick={() => setCurrentEntry({ ...currentEntry, id: entries[1].id })}
           value={tileEntries.second_entry}
           required
         ></textarea>
@@ -165,6 +149,7 @@ const EditBookTile = ({ bookData, entries, bookTileId, userState }) => {
           placeholder="Important stuff"
           rows="10"
           onChange={handleChange}
+          onClick={() => setCurrentEntry({ ...currentEntry, id: entries[2].id })}
           value={tileEntries.third_entry}
           required
         ></textarea>
