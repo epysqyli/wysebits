@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import BookCard from "../../../../components/BookCard";
+import EditBookDetails from "../../../../components/users/EditBookDetails";
 import { useRouter } from "next/dist/client/router";
 
 export const getServerSideProps = async ({ params }) => {
@@ -20,6 +21,8 @@ const TileCreation = ({ bookData, userState }) => {
     second_entry: "",
     third_entry: "",
   });
+
+  const [editVisible, setEditVisible] = useState(false);
 
   const router = useRouter();
 
@@ -61,8 +64,18 @@ const TileCreation = ({ bookData, userState }) => {
 
   return (
     <div>
+      {editVisible ? <EditBookDetails /> : null}
       <div className="w-4/5 mx-auto mt-20 mb-10 border bg-gray-100 rounded-md shadow-md">
-        <BookCard bookData={bookData} />
+        <div className="mb-2">
+          <BookCard bookData={bookData} />
+        </div>
+
+        <div
+          className="border text-center text-sm py-2 cursor-pointer hover:bg-gray-200 active:bg-gray-300 active:text-white rounded-br-md rounded-bl-md"
+          onClick={() => setEditVisible(true)}
+        >
+          Wrong author, title, or category?
+        </div>
       </div>
 
       <div className="text-2xl text-center mb-10 py-3 px-2 bg-gray-200">
