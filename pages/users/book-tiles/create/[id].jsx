@@ -86,17 +86,12 @@ const TileCreation = ({ bookData, userState, categories }) => {
         />
       ) : null}
 
-      <div
-        className="py-5 mt-12"
-        style={{
-          backgroundImage: `url(${bcgImage()})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPositionX: "center",
-          backgroundPositionY: "center",
-        }}
-      >
-        <div className="w-4/5 mx-auto border bg-gray-100 my-10 rounded-md">
+      <div className="relative mt-10 mb-6 py-4">
+        <div className="absolute h-full top-0 left-1/2 -translate-x-1/2 blur-sm">
+          <img src={bcgImage()} className="h-full z-0" />
+        </div>
+
+        <div className="w-4/5 mx-auto border bg-gray-100 my-10 rounded-md relative z-10">
           <div className="mb-2">
             <BookCard bookData={bookData} />
           </div>
