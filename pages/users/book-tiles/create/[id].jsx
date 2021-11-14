@@ -3,6 +3,7 @@ import axios from "axios";
 import BookCard from "../../../../components/BookCard";
 import EditBookDetails from "../../../../components/users/EditBookDetails";
 import { useRouter } from "next/dist/client/router";
+import { Loader } from "react-feather";
 
 export const getServerSideProps = async ({ params }) => {
   const req = await fetch(`http://localhost:3001/api/books/${params.id}`);
@@ -27,6 +28,10 @@ const TileCreation = ({ bookData, userState, categories }) => {
   });
 
   const [editVisible, setEditVisible] = useState(false);
+
+  const hideEditForm = () => {
+    setEditVisible(false);
+  };
 
   const router = useRouter();
 
@@ -69,7 +74,11 @@ const TileCreation = ({ bookData, userState, categories }) => {
   return (
     <div>
       {editVisible ? (
-        <EditBookDetails categories={categories} bookData={bookData} />
+        <EditBookDetails
+          categories={categories}
+          bookData={bookData}
+          hideEditForm={hideEditForm}
+        />
       ) : null}
 
       <div className="w-4/5 mx-auto border mt-20 mb-10 bg-gray-100 rounded-md">
