@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BookCard from "../../../../components/BookCard";
 import EditForm from "../../../../components/users/EditForm";
 
@@ -80,6 +80,10 @@ const EditBookTile = ({ bookData, entries, bookTileId }) => {
     e.preventDefault();
     editEntry(currentEntry.id, currentEntry.content);
   };
+
+  useEffect(() => {
+    entries.sort((a, b) => (a.updated_at > b.updated_at ? -1 : 1));
+  }, []);
 
   return (
     <div>

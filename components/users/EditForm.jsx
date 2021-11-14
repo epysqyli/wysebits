@@ -26,7 +26,7 @@ const EditForm = ({
     >
       <label
         htmlFor="first-entry"
-        className="flex justify-between px-3 text-center bg-gray-100 rounded shadow"
+        className="flex justify-between px-3 text-center bg-gray-100 rounded shadow text-gray-600"
       >
         <div>Last updated at:</div>
         <div>{dayjs(updateTime).format("MM-DD-YYYY HH:mm ")}</div>
