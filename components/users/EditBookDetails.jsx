@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 const EditBookDetails = ({ bookData, categories }) => {
   const [book, setBook] = useState({
@@ -9,12 +10,31 @@ const EditBookDetails = ({ bookData, categories }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("prevented");
+    editDetails();
+  };
+
+  const handleChange = (e) => {
+    setBook({ ...book, [e.target.name]: e.target.value });
+  };
+
+  const editDetails = () => {
+    axios
+      .put(
+        `http://localhost:3001/api/books/${bookData.id}`,
+        {
+          title: book.title,
+          category_id: book.categoryId,
+          author_full_name: book.author,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
     <div className="absolute top-1/8 left-1/2 bg-white p-3 -translate-x-1/2 w-11/12 rounded-md shadow-lg border-2 border-gray-400 animate-show-up">
-      <div className="text-center border-b-2 pb-2">
+      <div className="text-center text-lg border-b-2 pb-2 px-5">
         Edit book infos and make Wysebits a better place for all!
       </div>
       <form onSubmit={handleSubmit}>
@@ -26,8 +46,10 @@ const EditBookDetails = ({ bookData, categories }) => {
             type="text"
             name="title"
             id="title"
+            onChange={handleChange}
             className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
             placeholder="Book title"
+            defaultValue={bookData.title}
           />
         </div>
 
@@ -36,8 +58,9 @@ const EditBookDetails = ({ bookData, categories }) => {
             Choose a category
           </label>
           <select
-            name="category_id"
+            name="categoryId"
             id="category"
+            onChange={handleChange}
             className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm"
             defaultValue={bookData.category_id}
           >
@@ -55,8 +78,10 @@ const EditBookDetails = ({ bookData, categories }) => {
           </label>
           <input
             type="text"
-            name="author_full_name"
+            name="author"
             id="author-full-name"
+            onChange={handleChange}
+            defaultValue={bookData.authors[0] || null}
             className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
             placeholder="Enter the full name"
           />
