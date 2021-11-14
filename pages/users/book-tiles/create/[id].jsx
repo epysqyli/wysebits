@@ -81,11 +81,12 @@ const TileCreation = ({ bookData, userState, categories }) => {
       ) : null}
 
       <div
-        className="border py-5 mt-12"
+        className="py-5 mt-12"
         style={{
           backgroundImage: `url(${bookData.cover_url})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
+          backgroundPositionX: "center",
           backgroundPositionY: "center",
         }}
       >
