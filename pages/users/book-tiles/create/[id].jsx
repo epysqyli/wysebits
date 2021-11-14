@@ -28,7 +28,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
 
   const [editVisible, setEditVisible] = useState(false);
 
-  const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-L.jpg`;
+  const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
   const dbSrc = bookData.cover_url;
 
   const bcgImage = () => {
