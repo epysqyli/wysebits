@@ -89,7 +89,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
           className="border-t text-center text-sm py-2 cursor-pointer hover:bg-gray-200 active:bg-gray-300 active:text-white rounded-br-md rounded-bl-md"
           onClick={() => setEditVisible(true)}
         >
-          Wrong or missing author, title, or category?
+          Wrong or missing author, title, category, or cover?
         </div>
       </div>
 

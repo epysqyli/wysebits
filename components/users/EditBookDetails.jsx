@@ -10,6 +10,8 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
     author: bookData.authors[0].full_name || null,
   });
 
+  const [file, setFile] = useState(null);
+
   const [visibleLoader, setVisibleLoader] = useState(false);
 
   const handleSubmit = (e) => {
@@ -27,16 +29,16 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   const editDetails = () => {
     setVisibleLoader(true);
 
+    const formData = new FormData();
+    formData.append("title", book.title);
+    formData.append("category_id", book.categoryId);
+    formData.append("author_full_name", book.author);
+    if (file) formData.append("book_cover", file);
+
     axios
-      .put(
-        `http://localhost:3001/api/books/${bookData.id}`,
-        {
-          title: book.title,
-          category_id: book.categoryId,
-          author_full_name: book.author,
-        },
-        { withCredentials: true }
-      )
+      .put(`http://localhost:3001/api/books/${bookData.id}`, formData, {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log(res);
         setVisibleLoader(false);
@@ -102,6 +104,17 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
             defaultValue={bookData.authors[0].full_name || null}
             className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
             placeholder="Enter the full name"
+          />
+        </div>
+
+        <div className="my-10">
+          <label htmlFor="book-cover" className="pl-3"></label>
+          <input
+            type="file"
+            name="book_cover"
+            id="book-cover"
+            onChange={(e) => setFile(e.target.files[0])}
+            className="bg-white py-2 w-full px-3 rounded-md shadow-sm"
           />
         </div>
 
