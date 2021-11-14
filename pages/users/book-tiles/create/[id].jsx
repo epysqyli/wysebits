@@ -3,7 +3,6 @@ import axios from "axios";
 import BookCard from "../../../../components/BookCard";
 import EditBookDetails from "../../../../components/users/EditBookDetails";
 import { useRouter } from "next/dist/client/router";
-import { Loader } from "react-feather";
 
 export const getServerSideProps = async ({ params }) => {
   const req = await fetch(`http://localhost:3001/api/books/${params.id}`);

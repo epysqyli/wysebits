@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Loader } from "react-feather";
+import { useRouter } from "next/dist/client/router";
 
 const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   const [book, setBook] = useState({
@@ -20,7 +21,9 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
     setBook({ ...book, [e.target.name]: e.target.value });
   };
 
-  // add loader on submit
+  const router = useRouter();
+  const makeSlug = (string) => string.split(" ").join("-").toLowerCase();
+
   const editDetails = () => {
     setVisibleLoader(true);
 
@@ -38,6 +41,11 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
         console.log(res);
         setVisibleLoader(false);
         hideEditForm();
+        router.push({
+          pathname: "/users/book-tiles/create/[id]",
+          query: { id: bookData.id },
+          asPath: makeSlug(bookData.title),
+        });
       })
       .catch((err) => console.log(err));
   };
@@ -99,7 +107,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
 
         <div className="flex justify-between items-center px-2 gap-x-4">
           <div
-            className="w-2/5 mx-auto block text-center mt-10 mb-5 py-2 bg-gray-100 rounded-md hover:shadow-md hover:bg-gray-200 active:bg-gray-300 active:shadow-md"
+            className="w-2/5 mx-auto block text-center mt-10 mb-5 py-2 bg-gray-100 cursor-pointer rounded-md hover:shadow-md hover:bg-gray-200 active:bg-gray-300 active:shadow-md"
             onClick={() => hideEditForm()}
           >
             Cancel
