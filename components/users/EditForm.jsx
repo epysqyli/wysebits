@@ -1,6 +1,9 @@
+import dayjs from "dayjs";
+
 const EditForm = ({
   entryId,
   content,
+  updateTime,
   handleChange,
   setCurrentId,
   handleSubmit,
@@ -23,9 +26,10 @@ const EditForm = ({
     >
       <label
         htmlFor="first-entry"
-        className="block text-center bg-gray-100 rounded shadow"
+        className="flex justify-between px-3 text-center bg-gray-100 rounded shadow"
       >
-        Edit entry - created at - updated at
+        <div>Last updated at:</div>
+        <div>{dayjs(updateTime).format("MM-DD-YYYY HH:mm ")}</div>
       </label>
       <textarea
         type="text"

@@ -98,6 +98,7 @@ const EditBookTile = ({ bookData, entries, bookTileId }) => {
           <EditForm
             content={entry.content}
             entryId={entry.id}
+            updateTime={entry.updated_at}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             setCurrentId={setCurrentId}
