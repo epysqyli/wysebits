@@ -29,12 +29,11 @@ const UserBookTiles = ({ bookTiles }) => {
         </div>
         {bookTiles.map((bookTile) => {
           return (
-            <div className="my-10">
+            <div className="my-10" key={bookTile.book.id}>
               <BookCardTiles
                 bookData={bookTile.book}
                 tileEntries={bookTile.tile_entries}
                 bookTileId={bookTile.id}
-                key={bookTile.book.id}
               />
             </div>
           );
