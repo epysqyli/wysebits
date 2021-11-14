@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { Loader } from "react-feather";
 
 const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   const [book, setBook] = useState({
@@ -7,6 +8,8 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
     categoryId: bookData.category_id,
     author: bookData.authors[0].full_name || null,
   });
+
+  const [visibleLoader, setVisibleLoader] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +22,8 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
 
   // add loader on submit
   const editDetails = () => {
+    setVisibleLoader(true);
+
     axios
       .put(
         `http://localhost:3001/api/books/${bookData.id}`,
@@ -31,6 +36,8 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
       )
       .then((res) => {
         console.log(res);
+        setVisibleLoader(false);
+        hideEditForm();
       })
       .catch((err) => console.log(err));
   };
@@ -97,12 +104,20 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
           >
             Cancel
           </div>
-          <button
-            type="submit"
-            className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-100 rounded-md hover:shadow-md hover:bg-gray-200 active:bg-gray-300 active:shadow-md"
-          >
-            Edit book details
-          </button>
+          {visibleLoader ? (
+            <div className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-100">
+              <div className="animate-spin block w-min mx-auto">
+                <Loader />
+              </div>
+            </div>
+          ) : (
+            <button
+              type="submit"
+              className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-100 rounded-md hover:shadow-md hover:bg-gray-200 active:bg-gray-300 active:shadow-md"
+            >
+              Edit book details
+            </button>
+          )}
         </div>
       </form>
     </div>
