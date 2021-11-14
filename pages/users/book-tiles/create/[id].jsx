@@ -28,6 +28,13 @@ const TileCreation = ({ bookData, userState, categories }) => {
 
   const [editVisible, setEditVisible] = useState(false);
 
+  const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-L.jpg`;
+  const dbSrc = bookData.cover_url;
+
+  const bcgImage = () => {
+    return dbSrc === null ? olSrc : dbSrc;
+  };
+
   const hideEditForm = () => {
     setEditVisible(false);
   };
@@ -83,14 +90,14 @@ const TileCreation = ({ bookData, userState, categories }) => {
       <div
         className="py-5 mt-12"
         style={{
-          backgroundImage: `url(${bookData.cover_url})`,
+          backgroundImage: `url(${bcgImage()})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPositionX: "center",
           backgroundPositionY: "center",
         }}
       >
-        <div className="w-4/5 mx-auto border my-10 bg-gray-100 rounded-md blur-0">
+        <div className="w-4/5 mx-auto border bg-gray-100 my-10 rounded-md">
           <div className="mb-2">
             <BookCard bookData={bookData} />
           </div>
