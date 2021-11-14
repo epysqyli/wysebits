@@ -13,7 +13,7 @@ const EditForm = ({
   const submitBtn = (
     <button
       type="submit"
-      className="text-sm border p-1 bg-white absolute w-max bottom-4 right-4 rounded animate-show-up-slow hover:bg-gray-100 active:bg-gray-200 shadow-md"
+      className="text-sm border p-1 bg-white absolute w-max bottom-4 right-4 rounded animate-show-up-slow-opaque hover:bg-gray-100 active:bg-gray-200 shadow-md opacity-50 hover:opacity-100 transition-all"
     >
       Save changes
     </button>
