@@ -80,16 +80,26 @@ const TileCreation = ({ bookData, userState, categories }) => {
         />
       ) : null}
 
-      <div className="w-4/5 mx-auto border mt-20 mb-10 bg-gray-100 rounded-md">
-        <div className="mb-2">
-          <BookCard bookData={bookData} />
-        </div>
+      <div
+        className="border py-5 mt-12"
+        style={{
+          backgroundImage: `url(${bookData.cover_url})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPositionY: "center",
+        }}
+      >
+        <div className="w-4/5 mx-auto border my-10 bg-gray-100 rounded-md blur-0">
+          <div className="mb-2">
+            <BookCard bookData={bookData} />
+          </div>
 
-        <div
-          className="border-t text-center text-sm py-2 cursor-pointer hover:bg-gray-200 active:bg-gray-300 active:text-white rounded-br-md rounded-bl-md"
-          onClick={() => setEditVisible(true)}
-        >
-          Wrong or missing author, title, category, or cover?
+          <div
+            className="border-t text-center text-sm py-2 cursor-pointer hover:bg-gray-200 active:bg-gray-300 active:text-white rounded-br-md rounded-bl-md"
+            onClick={() => setEditVisible(true)}
+          >
+            Wrong or missing author, title, category, or cover?
+          </div>
         </div>
       </div>
 
