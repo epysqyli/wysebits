@@ -8,14 +8,18 @@ export const getServerSideProps = async ({ params }) => {
   const req = await fetch(`http://localhost:3001/api/books/${params.id}`);
   const res = await req.json();
 
+  const categoriesReq = await fetch("http://localhost:3001/api/categories");
+  const categoriesRes = await categoriesReq.json();
+
   return {
     props: {
       bookData: res.data,
+      categories: categoriesRes.data,
     },
   };
 };
 
-const TileCreation = ({ bookData, userState }) => {
+const TileCreation = ({ bookData, userState, categories }) => {
   const [tileEntries, setTileEntries] = useState({
     first_entry: "",
     second_entry: "",
@@ -64,14 +68,17 @@ const TileCreation = ({ bookData, userState }) => {
 
   return (
     <div>
-      {editVisible ? <EditBookDetails /> : null}
-      <div className="w-4/5 mx-auto mt-20 mb-10 border bg-gray-100 rounded-md shadow-md">
+      {editVisible ? (
+        <EditBookDetails categories={categories} bookData={bookData} />
+      ) : null}
+
+      <div className="w-4/5 mx-auto border mt-20 mb-10 bg-gray-100 rounded-md">
         <div className="mb-2">
           <BookCard bookData={bookData} />
         </div>
 
         <div
-          className="border text-center text-sm py-2 cursor-pointer hover:bg-gray-200 active:bg-gray-300 active:text-white rounded-br-md rounded-bl-md"
+          className="border-t text-center text-sm py-2 cursor-pointer hover:bg-gray-200 active:bg-gray-300 active:text-white rounded-br-md rounded-bl-md"
           onClick={() => setEditVisible(true)}
         >
           Wrong author, title, or category?
