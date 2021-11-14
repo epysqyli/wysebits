@@ -28,6 +28,8 @@ const TileCreation = ({ bookData, userState, categories }) => {
 
   const [editVisible, setEditVisible] = useState(false);
 
+  const router = useRouter();
+
   const bcgImage = () => {
     const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
     const dbSrc = bookData.cover_url;
@@ -37,8 +39,6 @@ const TileCreation = ({ bookData, userState, categories }) => {
   const hideEditForm = () => {
     setEditVisible(false);
   };
-
-  const router = useRouter();
 
   const handleChange = (e) => {
     const newTileEntries = { ...tileEntries, [e.target.name]: e.target.value };
