@@ -89,7 +89,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
       <div className="relative mt-10 py-4">
         <img
           src={bcgImage()}
-          className="absolute top-0 left-1/2 -translate-x-1/2 blur-sm backdrop-brightness-50 grayscale-50 max-h-full w-full object-cover"
+          className="absolute top-0 left-1/2 -translate-x-1/2 blur-sm backdrop-brightness-50 grayscale-50 contrast-50 max-h-full w-full object-cover"
         />
 
         <div className="w-4/5 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white my-10 rounded-md relative z-10">
@@ -98,7 +98,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
           </div>
 
           <div
-            className="border-t text-center text-sm py-2 cursor-pointer hover:bg-gray-200 active:bg-gray-300 active:text-white rounded-br-md rounded-bl-md"
+            className="border-t border-gray-500 text-center text-sm py-2 cursor-pointer hover:contrast-75 transition-all rounded-br-md rounded-bl-md"
             onClick={() => setEditVisible(true)}
           >
             Wrong or missing author, title, category, or cover?
