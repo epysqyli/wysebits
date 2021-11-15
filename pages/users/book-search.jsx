@@ -68,6 +68,7 @@ const BookSearch = () => {
             type="text"
             name="tmp"
             id="tmp"
+            minLength="3"
             className="border-none bg-white w-5/6 rounded-tl-lg rounded-bl-lg focus:ring-0 group-hover:shadow-md transition"
             onChange={handleChange}
             placeholder="search by title"

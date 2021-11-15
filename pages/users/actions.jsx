@@ -11,12 +11,11 @@ const Actions = ({ userState }) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
+        <div className="text-2xl mt-16 text-center border-b-2 pb-2 shadow-md">
+          <div>Welcome back, {userState.user.username}.</div>
+          <div className="mt-2">What are you up to today?</div>
+        </div>
         <div className="w-4/5 mx-auto mt-20">
-          <div className="text-2xl text-center border-b-2 pb-2 shadow-md">
-            Welcome back, {userState.user.username}. <br /> What are you up to
-            today?
-          </div>
-
           <div className="mx-auto my-12">
             <HomepageButton
               text="Create new book tile"
