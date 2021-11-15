@@ -55,11 +55,11 @@ const BookSearch = () => {
         <title>Create book tile</title>
       </Head>
 
-      <div className="w-4/5 mx-auto my-20 pb-10">
-        <div className="text-2xl font-medium text-center border-b-2 pb-2 shadow-md">
-          What book did you just read?
-        </div>
+      <div className="mt-20 text-2xl font-medium text-center border-b-2 pb-2 shadow-md">
+        What book did you just read?
+      </div>
 
+      <div className="w-4/5 mx-auto my-20 pb-10">
         <form
           onSubmit={searchBooks}
           className="flex my-10 group rounded-lg shadow-sm"

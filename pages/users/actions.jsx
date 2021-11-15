@@ -15,7 +15,7 @@ const Actions = ({ userState }) => {
           <div>Welcome back, {userState.user.username}.</div>
           <div className="mt-2">What are you up to today?</div>
         </div>
-        <div className="w-4/5 mx-auto mt-20">
+        <div className="w-4/5 mx-auto mt-16">
           <div className="mx-auto my-12">
             <HomepageButton
               text="Create new book tile"
