@@ -104,7 +104,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
 
       <div className="w-5/6 mx-auto my-10">
         <form onSubmit={handleSubmit}>
-          <div className="my-10 pt-2 px-2 pb-1 bg-gray-200 shadow-lg rounded">
+          <div className="my-10 pt-2 px-2 pb-2 bg-gray-200 shadow-lg rounded">
             <label
               htmlFor="first-entry"
               className="block text-center py-2 bg-white shadow-md"
@@ -115,7 +115,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
               type="text"
               name="first_entry"
               id="first-entry"
-              className="border-none bg-white w-full mt-4 focus:ring-0 shadow-sm focus:shadow-md"
+              className="border-none bg-white w-full mt-3 focus:ring-0 shadow-sm focus:shadow-md"
               placeholder="Important stuff"
               rows="10"
               onChange={handleChange}
@@ -123,7 +123,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
             ></textarea>
           </div>
 
-          <div className="my-10 pt-2 px-2 pb-1 bg-gray-200 shadow-lg rounded">
+          <div className="my-10 pt-2 px-2 pb-2 bg-gray-200 shadow-lg rounded">
             <label
               htmlFor="second-entry"
               className="block text-center py-2 bg-white shadow-md"
@@ -134,7 +134,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
               type="text"
               name="second_entry"
               id="second-entry"
-              className="border-none bg-white w-full mt-4 focus:ring-0 shadow-sm focus:shadow-md"
+              className="border-none bg-white w-full mt-3 focus:ring-0 shadow-sm focus:shadow-md"
               placeholder="Important stuff"
               rows="10"
               onChange={handleChange}
@@ -142,7 +142,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
             ></textarea>
           </div>
 
-          <div className="my-10 pt-2 px-2 pb-1 bg-gray-200 shadow-lg rounded">
+          <div className="my-10 pt-2 px-2 pb-2 bg-gray-200 shadow-lg rounded">
             <label
               htmlFor="third-entry"
               className="block text-center py-2 bg-white shadow-md"
@@ -153,7 +153,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
               type="text"
               name="third_entry"
               id="third-entry"
-              className="border-none bg-white w-full mt-4 focus:ring-0 shadow-sm focus:shadow-md"
+              className="border-none bg-white w-full mt-3 focus:ring-0 shadow-sm focus:shadow-md"
               placeholder="Important stuff"
               rows="10"
               onChange={handleChange}
