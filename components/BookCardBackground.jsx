@@ -2,7 +2,7 @@ import BookCard from "./BookCard";
 
 const BookCardBackground = ({ bookData, showEditForm, bcgImage }) => {
   return (
-    <div className="relative mt-10 py-4">
+    <div className="relative py-6">
       <img
         src={bcgImage()}
         className="absolute top-0 left-1/2 -translate-x-1/2 blur-sm backdrop-brightness-50 grayscale-50 contrast-50 max-h-full w-full object-cover"

@@ -90,7 +90,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
         />
       ) : null}
 
-      <div className="relative mt-10 py-4">
+      <div className="relative mt-10">
         <BookCardBackground
           bookData={bookData}
           bcgImage={bcgImage}
@@ -104,10 +104,10 @@ const TileCreation = ({ bookData, userState, categories }) => {
 
       <div className="w-5/6 mx-auto my-10">
         <form onSubmit={handleSubmit}>
-          <div className="my-10 pt-2 px-2 bg-gray-200 rounded-md shadow">
+          <div className="my-10 pt-2 px-2 pb-1 bg-gray-200 shadow-lg rounded">
             <label
               htmlFor="first-entry"
-              className="block text-center py-2 bg-gray-100 rounded shadow"
+              className="block text-center py-2 bg-white shadow-md"
             >
               Enter your first takeaway
             </label>
@@ -115,7 +115,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
               type="text"
               name="first_entry"
               id="first-entry"
-              className="border-none bg-white w-full mt-2 rounded focus:ring-0 shadow-sm focus:shadow-md"
+              className="border-none bg-white w-full mt-4 focus:ring-0 shadow-sm focus:shadow-md"
               placeholder="Important stuff"
               rows="10"
               onChange={handleChange}
@@ -123,10 +123,10 @@ const TileCreation = ({ bookData, userState, categories }) => {
             ></textarea>
           </div>
 
-          <div className="my-10 pt-2 px-2 bg-gray-200 rounded-md shadow">
+          <div className="my-10 pt-2 px-2 pb-1 bg-gray-200 shadow-lg rounded">
             <label
-              htmlFor="first-entry"
-              className="block text-center py-2 bg-gray-100 rounded shadow"
+              htmlFor="second-entry"
+              className="block text-center py-2 bg-white shadow-md"
             >
               Enter your second takeaway
             </label>
@@ -134,7 +134,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
               type="text"
               name="second_entry"
               id="second-entry"
-              className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
+              className="border-none bg-white w-full mt-4 focus:ring-0 shadow-sm focus:shadow-md"
               placeholder="Important stuff"
               rows="10"
               onChange={handleChange}
@@ -142,10 +142,10 @@ const TileCreation = ({ bookData, userState, categories }) => {
             ></textarea>
           </div>
 
-          <div className="my-10 pt-2 px-2 bg-gray-200 rounded-md">
+          <div className="my-10 pt-2 px-2 pb-1 bg-gray-200 shadow-lg rounded">
             <label
-              htmlFor="first-entry"
-              className="block text-center py-2 bg-gray-100 rounded shadow"
+              htmlFor="third-entry"
+              className="block text-center py-2 bg-white shadow-md"
             >
               Enter your third takeaway
             </label>
@@ -153,7 +153,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
               type="text"
               name="third_entry"
               id="third-entry"
-              className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
+              className="border-none bg-white w-full mt-4 focus:ring-0 shadow-sm focus:shadow-md"
               placeholder="Important stuff"
               rows="10"
               onChange={handleChange}
