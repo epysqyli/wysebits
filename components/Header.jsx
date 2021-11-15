@@ -1,19 +1,19 @@
 import { LogIn, User, LogOut } from "react-feather";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 const Header = ({ userState }) => {
   const router = useRouter();
 
-  const logoutCall = async () => {
-    let resp = await fetch("http://localhost:3001/api/logout", {
-      credentials: "include",
-    });
-    resp = await resp.json();
-
-    if (resp.status === "success") {
-      router.push("/");
-    }
+  const logoutCall = () => {
+    axios
+      .get("http://localhost:3001/api/logout", { withCredentials: true })
+      .then((res) => {
+        console.log(res);
+        if (res.data.status === "success") window.location = "/";
+      })
+      .catch((err) => console.log(err));
   };
 
   const login = (
