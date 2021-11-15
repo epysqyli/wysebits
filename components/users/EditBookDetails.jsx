@@ -7,7 +7,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   const [book, setBook] = useState({
     title: bookData.title,
     categoryId: bookData.category_id,
-    author: bookData.authors[0].full_name || null,
+    author: bookData.authors.length != 0 ? bookData.authors[0].full_name : null,
   });
 
   const [file, setFile] = useState(null);
@@ -101,7 +101,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
             name="author"
             id="author-full-name"
             onChange={handleChange}
-            defaultValue={bookData.authors[0].full_name || null}
+            defaultValue={bookData.authors.length != 0 ? bookData.authors[0].full_name : null}
             className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
             placeholder="Enter the full name"
           />
