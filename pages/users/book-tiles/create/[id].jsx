@@ -92,7 +92,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
           className="absolute top-0 left-1/2 -translate-x-1/2 blur-sm backdrop-brightness-50 grayscale-50 max-h-full w-full"
         />
 
-        <div className="w-4/5 mx-auto border bg-gray-100 my-10 rounded-md relative z-10">
+        <div className="w-4/5 mx-auto shadow-md backdrop-blur-md my-10 rounded-md relative z-10">
           <div className="mb-2">
             <BookCard bookData={bookData} />
           </div>

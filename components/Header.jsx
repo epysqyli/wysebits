@@ -48,7 +48,7 @@ const Header = ({ userState }) => {
   );
 
   return (
-    <header className="flex justify-between items-center bg-gray-300 py-2 px-5 text-center w-screen fixed z-10 shadow-sm">
+    <header className="flex justify-between items-center bg-gray-300 py-2 px-5 text-center w-screen fixed shadow-sm z-50">
       <Link href="/">
         <a>
           <div className="text-2xl font-bold cursor-pointer hover:scale-105 transition-all active:text-white">
