@@ -106,10 +106,8 @@ const TileCreation = ({ bookData, userState, categories }) => {
         </div>
       </div>
 
-      <div className="text-2xl text-center mb-10 py-3 px-2 bg-gray-200">
-        <div className="bg-gray-100 py-2 px-2 rounded-md">
-          Share your top 3 takeaways with the world!
-        </div>
+      <div className="text-xl text-center mb-10 py-3 px-10 bg-gray-200">
+        Share your top 3 takeaways with the world!
       </div>
 
       <div className="w-5/6 mx-auto my-10">
