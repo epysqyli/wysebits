@@ -11,6 +11,9 @@ module.exports = {
         "login-top": "url('/images/progress.jpg')",
         "create-book-tile": "url('/images/create-book-tile.jpg')",
       },
+      grayscale: {
+        50: "50%",
+      },
       animation: {
         "show-up": "appear 300ms ease-out 1",
         "show-up-slow": "appear 600ms ease-out 1",
@@ -23,7 +26,7 @@ module.exports = {
         },
         appearOpaque: {
           "0%": { opacity: 0.1 },
-          "100%": { opacity: .5 },
+          "100%": { opacity: 0.5 },
         },
       },
     },

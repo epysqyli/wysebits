@@ -89,7 +89,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
       <div className="relative mt-10 py-4">
         <img
           src={bcgImage()}
-          className="absolute top-0 left-1/2 -translate-x-1/2 blur-sm backdrop-brightness-50 max-h-full w-full"
+          className="absolute top-0 left-1/2 -translate-x-1/2 blur-sm backdrop-brightness-50 grayscale-50 max-h-full w-full"
         />
 
         <div className="w-4/5 mx-auto border bg-gray-100 my-10 rounded-md relative z-10">
