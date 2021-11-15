@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import BookCard from "../../../../components/BookCard";
 import EditForm from "../../../../components/users/EditForm";
+import EditBookDetails from "../../../../components/users/EditBookDetails";
+import BookCardBackground from "../../../../components/BookCardBackground";
 
 export const getServerSideProps = async (context) => {
   const { id } = context.params;
@@ -18,16 +19,20 @@ export const getServerSideProps = async (context) => {
     withCredentials: true,
   });
 
+  const categoriesReq = await fetch("http://localhost:3001/api/categories");
+  const categoriesRes = await categoriesReq.json();
+
   return {
     props: {
       bookData: resp.data.book,
       entries: resp.data.tile_entries,
       bookTileId: id,
+      categories: categoriesRes.data,
     },
   };
 };
 
-const EditBookTile = ({ bookData, entries, bookTileId }) => {
+const EditBookTile = ({ bookData, entries, bookTileId, categories }) => {
   const [tileEntries, setTileEntries] = useState({
     first_entry: entries[0].content,
     second_entry: entries[1].content,
@@ -45,6 +50,16 @@ const EditBookTile = ({ bookData, entries, bookTileId }) => {
     [entries[2].id]: false,
   });
 
+  const [editVisible, setEditVisible] = useState(false);
+
+  const hideEditForm = () => {
+    setEditVisible(false);
+  };
+
+  const showEditForm = () => {
+    setEditVisible(true);
+  };
+
   const showBtn = (entryId) => {
     setBtnVisible({
       [entries[0].id]: false,
@@ -52,6 +67,12 @@ const EditBookTile = ({ bookData, entries, bookTileId }) => {
       [entries[2].id]: false,
     });
     setBtnVisible({ [entryId]: true });
+  };
+
+  const bcgImage = () => {
+    const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
+    const dbSrc = bookData.cover_url;
+    return dbSrc === null ? olSrc : dbSrc;
   };
 
   const handleChange = (e) => {
@@ -87,8 +108,20 @@ const EditBookTile = ({ bookData, entries, bookTileId }) => {
 
   return (
     <div>
-      <div className="w-4/5 mx-auto mt-20 mb-10 border bg-gray-100 rounded-md shadow-md">
-        <BookCard bookData={bookData} />
+      {editVisible ? (
+        <EditBookDetails
+          categories={categories}
+          bookData={bookData}
+          hideEditForm={hideEditForm}
+        />
+      ) : null}
+
+      <div className="relative mt-10">
+        <BookCardBackground
+          bookData={bookData}
+          bcgImage={bcgImage}
+          showEditForm={showEditForm}
+        />
       </div>
 
       <div className="text-2xl text-center mb-10 py-3 px-2 bg-gray-200">
