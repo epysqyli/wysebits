@@ -36,13 +36,7 @@ const BookResult = ({ bookData }) => {
   }, []);
 
   return (
-    <Link
-      href={{
-        pathname: "/users/book-tiles/create/[id]",
-        query: { id: bookData._source.id },
-      }}
-      as={makeSlug(bookData._source.title)}
-    >
+    <Link href={`/users/book-tiles/create/${bookData._source.id}`}>
       <div className="border bg-gray-100 rounded-md shadow-sm my-10 px-5 py-5 cursor-pointer hover:shadow-md transition hover:bg-gray-200 animate-show-up-slow">
         <div className="flex justify-between">
           <div className="w-2/3 mr-5 flex flex-col">
