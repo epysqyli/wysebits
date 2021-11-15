@@ -53,7 +53,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   };
 
   return (
-    <div className="absolute top-1/8 left-1/2 bg-white p-3 -translate-x-1/2 w-11/12 rounded-md shadow-lg border-2 border-gray-400 animate-show-up">
+    <div className="absolute z-30 top-1/8 left-1/2 bg-white p-3 -translate-x-1/2 w-11/12 rounded-md shadow-lg border-2 border-gray-400 animate-show-up">
       <div className="text-center text-lg border-b-2 pb-2 px-5">
         Edit book infos and make Wysebits a better place for all!
       </div>
