@@ -106,16 +106,16 @@ const TileCreation = ({ bookData, userState, categories }) => {
         </div>
       </div>
 
-      <div className="text-xl text-center mb-10 py-3 px-10 bg-gray-200">
+      <div className="text-xl text-center mb-10 py-3 px-10 bg-gray-200 border-t-4 border-gray-300">
         Share your top 3 takeaways with the world!
       </div>
 
       <div className="w-5/6 mx-auto my-10">
         <form onSubmit={handleSubmit}>
-          <div className="my-10 pt-2 px-2 bg-gray-200 rounded shadow">
+          <div className="my-10 pt-2 px-2 bg-gray-200 rounded-md shadow">
             <label
               htmlFor="first-entry"
-              className="block text-center bg-gray-100 rounded shadow"
+              className="block text-center py-2 bg-gray-100 rounded shadow"
             >
               Enter your first takeaway
             </label>
@@ -131,10 +131,10 @@ const TileCreation = ({ bookData, userState, categories }) => {
             ></textarea>
           </div>
 
-          <div className="my-10 pt-2 px-2 bg-gray-200 rounded shadow">
+          <div className="my-10 pt-2 px-2 bg-gray-200 rounded-md shadow">
             <label
               htmlFor="first-entry"
-              className="block text-center bg-gray-100 rounded shadow"
+              className="block text-center py-2 bg-gray-100 rounded shadow"
             >
               Enter your second takeaway
             </label>
@@ -150,10 +150,10 @@ const TileCreation = ({ bookData, userState, categories }) => {
             ></textarea>
           </div>
 
-          <div className="my-10 pt-2 px-2 bg-gray-200 rounded ">
+          <div className="my-10 pt-2 px-2 bg-gray-200 rounded-md">
             <label
               htmlFor="first-entry"
-              className="block text-center bg-gray-100 rounded shadow"
+              className="block text-center py-2 bg-gray-100 rounded shadow"
             >
               Enter your third takeaway
             </label>
