@@ -18,7 +18,7 @@ const LogIn = ({ handleLogin }) => {
     });
   };
 
-  const logIn = async (e) => {
+  const logIn = (e) => {
     e.preventDefault();
     const { emailAddress, password } = userData;
 
@@ -31,7 +31,7 @@ const LogIn = ({ handleLogin }) => {
       .then((resp) => {
         console.log(resp);
         handleLogin(resp.data);
-        router.push("/users/homepage");
+        router.push("/users/actions");
       })
       .catch((error) => console.log(error));
   };

@@ -12,7 +12,7 @@ const Header = ({ userState }) => {
     resp = await resp.json();
 
     if (resp.status === "success") {
-      router.reload();
+      router.push("/");
     }
   };
 
