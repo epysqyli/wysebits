@@ -62,6 +62,16 @@ const BookSearch = () => {
             <Search size={20} className="mx-auto" onClick={searchBooks} />
           </button>
         </div>
+
+        <div className="mt-60 border-l-2 border-gray-400 pl-3">
+          <div className="text-lg my-3">
+            "Books are the treasured wealth of the world and the fit inheritance
+            of generations and nations."
+          </div>
+          <div className="text text-gray-600 italic text-right">
+            Henry David Thoreau, Walden
+          </div>
+        </div>
       </div>
     </div>
   );
