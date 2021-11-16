@@ -19,6 +19,7 @@ const Actions = ({ userState }) => {
           <div className="mx-auto my-12">
             <HomepageButton
               text="Create new book tile"
+              bcgImg="bg-create-tile"
               href="/users/book-search/"
             />
           </div>
@@ -31,7 +32,27 @@ const Actions = ({ userState }) => {
           </div>
 
           <div className="mx-auto my-12">
-            <HomepageButton text="Manage profile" href="#" />
+            <HomepageButton
+              text="Favorite books"
+              bcgImg="bg-liked-books"
+              href="#"
+            />
+          </div>
+
+          <div className="mx-auto my-12">
+            <HomepageButton
+              text="Saved book tiles"
+              bcgImg="bg-saved-tiles"
+              href="#"
+            />
+          </div>
+
+          <div className="mx-auto my-12">
+            <HomepageButton
+              text="Manage profile"
+              href="#"
+              bcgImg="bg-settings"
+            />
           </div>
         </div>
       </div>

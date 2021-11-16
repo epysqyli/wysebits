@@ -6,10 +6,14 @@ module.exports = {
     extend: {
       backgroundImage: {
         "bottom-home": "url('/images/ai-banner.jpg')",
-        library: "url('/images/library.jpg')",
+        "library": "url('/images/library.jpg')",
         "signup-top": "url('/images/signup-top.jpg')",
         "login-top": "url('/images/progress.jpg')",
         "create-book-tile": "url('/images/create-book-tile.jpg')",
+        "liked-books": "url('/images/liked-books.jpg')",
+        "saved-tiles": "url('/images/saved-tiles.jpg')",
+        "settings": "url('/images/settings.jpg')",
+        "create-tile": "url('/images/create-tile.jpg')",
       },
       grayscale: {
         50: "50%",
