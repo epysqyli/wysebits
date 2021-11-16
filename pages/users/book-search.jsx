@@ -62,7 +62,7 @@ const BookSearch = () => {
       <div className="w-4/5 mx-auto my-20 pb-10">
         <form
           onSubmit={searchBooks}
-          className="flex my-10 group rounded-lg shadow-sm"
+          className="flex my-10 group rounded-lg shadow-md"
         >
           <input
             type="text"
