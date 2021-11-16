@@ -19,7 +19,7 @@ const Actions = ({ userState }) => {
           <div className="mx-auto my-12">
             <HomepageButton
               text="Create new book tile"
-              href="/users/book-search"
+              href="/users/book-search/"
             />
           </div>
 

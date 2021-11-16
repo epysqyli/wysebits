@@ -1,14 +1,22 @@
 import Head from "next/head";
-import axios from "axios";
 import { Search, PlusCircle } from "react-feather";
 import { useState } from "react";
-import BookResult from "../../components/BookResult";
 import Link from "next/link";
+import { useRouter } from "next/dist/client/router";
 
 const BookSearch = () => {
   const [searchTerms, setSearchTerms] = useState(null);
-  const [searchResults, setSearchResults] = useState([]);
+
   const [btnVisible, setBtnVisible] = useState(false);
+
+  const router = useRouter();
+
+  const searchBooks = () => {
+    // console.log(getQuery());
+    router.push({
+      pathname: `/users/book-search/${getQuery()}`,
+    });
+  };
 
   const handleChange = (e) => {
     const newSearchTerms = e.target.value;
@@ -19,21 +27,8 @@ const BookSearch = () => {
     setBtnVisible(true);
   };
 
-  const searchBooks = (e) => {
-    e.preventDefault();
-
-    axios
-      .post(
-        "http://localhost:3001/api/search/books",
-        { keywords: JSON.stringify(searchTerms) },
-        { withCredentials: true }
-      )
-      .then((resp) => {
-        setSearchResults(resp.data);
-      })
-      .catch((error) => console.log(error));
-
-    setTimeout(showBtn, 2000);
+  const getQuery = () => {
+    return searchTerms.split(" ").join("-");
   };
 
   const createBookBtn = (
@@ -60,10 +55,7 @@ const BookSearch = () => {
       </div>
 
       <div className="w-4/5 mx-auto my-20 pb-10">
-        <form
-          onSubmit={searchBooks}
-          className="flex my-10 group rounded-lg shadow-md"
-        >
+        <div className="flex my-10 group rounded-lg shadow-md">
           <input
             type="text"
             name="tmp"
@@ -79,17 +71,9 @@ const BookSearch = () => {
             type="submit"
             className="w-1/6 text-center bg-white border-l rounded-tr-lg rounded-br-lg hover:bg-gray-200 group-hover:shadow-md transition active:bg-gray-400 active:text-white"
           >
-            <Search size={20} className="mx-auto" />
+            <Search size={20} className="mx-auto" onClick={searchBooks} />
           </button>
-        </form>
-
-        {searchResults.length != 0
-          ? searchResults.map((book) => {
-              return <BookResult bookData={book} key={book._id} />;
-            })
-          : null}
-
-        {btnVisible ? createBookBtn : null}
+        </div>
       </div>
     </div>
   );
