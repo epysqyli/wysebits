@@ -55,7 +55,7 @@ const BookSearch = () => {
         <title>Create book tile</title>
       </Head>
 
-      <div className="mt-20 text-2xl font-medium text-center border-b-2 pb-2 shadow-md">
+      <div className="mt-20 text-2xl font-medium text-center border-b-2 pb-3 shadow-md">
         What book did you just read?
       </div>
 

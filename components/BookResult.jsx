@@ -22,8 +22,6 @@ const BookResult = ({ bookData }) => {
     />
   );
 
-  const makeSlug = (string) => string.split(" ").join("-").toLowerCase();
-
   useEffect(() => {
     axios
       .get(
