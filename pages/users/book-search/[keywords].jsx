@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PlusCircle } from "react-feather";
+import { PlusCircle, Search } from "react-feather";
 import Link from "next/link";
 import BookResult from "../../../components/BookResult";
 import { useState, useEffect } from "react";
@@ -46,14 +46,21 @@ const BookSearchResults = ({ searchResults }) => {
   }, []);
 
   return (
-    <div className="w-4/5 mx-auto my-16">
-      {searchResults.length != 0
-        ? searchResults.map((book) => {
-            return <BookResult bookData={book} key={book._id} />;
-          })
-        : null}
+    <div>
+      <Link href="/users/book-search/">
+        <div className="mt-12 py-3 text-center text-sm font-medium bg-gray-100 cursor-pointer hover:shadow-md hover:bg-gray-100 active:bg-gray-200">
+          Back to search
+        </div>
+      </Link>
+      <div className="w-4/5 mx-auto my-16">
+        {searchResults.length != 0
+          ? searchResults.map((book) => {
+              return <BookResult bookData={book} key={book._id} />;
+            })
+          : null}
 
-      {btnVisible ? createBookBtn : null}
+        {btnVisible ? createBookBtn : null}
+      </div>
     </div>
   );
 };
