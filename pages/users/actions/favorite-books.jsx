@@ -24,7 +24,7 @@ const FavoriteBooks = ({ books }) => {
     <div className="mt-20">
       {books.map((book) => {
         return (
-          <div className="border rounded-md my-10 w-4/5 mx-auto bg-gray-100">
+          <div className="border rounded-md my-10 w-4/5 mx-auto bg-gray-100 animate-show-up">
             <BookCard bookData={book} key={book.id} />
           </div>
         );
