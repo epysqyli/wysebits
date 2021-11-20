@@ -55,6 +55,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
       .post(url, { book_id: bookData.id }, { withCredentials: true })
       .then((res) => {
         createTileEntries(res.data.id);
+        router.push("http://localhost:3000/users/book-tiles/");
       })
       .catch((err) => console.log(err));
   };
@@ -76,8 +77,6 @@ const TileCreation = ({ bookData, userState, categories }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     createBookTile();
-
-    router.push("http://localhost:3000/users/book-tiles/");
   };
 
   return (

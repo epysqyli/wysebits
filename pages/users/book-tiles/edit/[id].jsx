@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import EditForm from "../../../../components/users/EditForm";
 import EditBookDetails from "../../../../components/users/EditBookDetails";
 import BookCardBackground from "../../../../components/BookCardBackground";
+import DangerButton from "../../../../components/DangerButton";
+import { useRouter } from "next/dist/client/router";
 
 export const getServerSideProps = async (context) => {
   const { id } = context.params;
@@ -32,7 +34,13 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-const EditBookTile = ({ bookData, entries, bookTileId, categories }) => {
+const EditBookTile = ({
+  bookData,
+  entries,
+  bookTileId,
+  categories,
+  userState,
+}) => {
   const [tileEntries, setTileEntries] = useState({
     first_entry: entries[0].content,
     second_entry: entries[1].content,
@@ -51,6 +59,8 @@ const EditBookTile = ({ bookData, entries, bookTileId, categories }) => {
   });
 
   const [editVisible, setEditVisible] = useState(false);
+
+  const router = useRouter();
 
   const hideEditForm = () => {
     setEditVisible(false);
@@ -102,6 +112,19 @@ const EditBookTile = ({ bookData, entries, bookTileId, categories }) => {
     editEntry(currentEntry.id, currentEntry.content);
   };
 
+  const deleteBookTile = () => {
+    axios
+      .delete(
+        `http://localhost:3001/api/users/${userState.user.id}/book_tiles/${bookTileId}`,
+        { withCredentials: true }
+      )
+      .then((res) => {
+        console.log(res);
+        router.push("/users/book-tiles");
+      })
+      .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
     entries.sort((a, b) => (a.updated_at > b.updated_at ? -1 : 1));
   }, []);
@@ -145,6 +168,10 @@ const EditBookTile = ({ bookData, entries, bookTileId, categories }) => {
           />
         );
       })}
+
+      <div className="my-10 w-2/5 mx-auto" onClick={() => deleteBookTile()}>
+        <DangerButton text="Delete book tile" />
+      </div>
     </div>
   );
 };
