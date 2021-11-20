@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
-import HomepageButton from "../../components/users/HomepageButton";
+import HomepageButton from "../../../components/users/HomepageButton";
 
 const Actions = ({ userState }) => {
   if (userState.isLogged) {
@@ -27,6 +27,7 @@ const Actions = ({ userState }) => {
           <div className="mx-auto my-12">
             <HomepageButton
               text="Check all of your book tiles"
+              bcgImg="bg-check-book-tiles"
               href="/users/book-tiles/"
             />
           </div>
@@ -35,15 +36,15 @@ const Actions = ({ userState }) => {
             <HomepageButton
               text="Favorite books"
               bcgImg="bg-liked-books"
-              href="#"
+              href="/users/actions/favorite-books"
             />
           </div>
 
           <div className="mx-auto my-12">
             <HomepageButton
-              text="Saved book tiles"
+              text="Saved tile entries"
+              href="/users/actions/favorite-tile-entries"
               bcgImg="bg-saved-tiles"
-              href="#"
             />
           </div>
 

@@ -9,7 +9,7 @@ module.exports = {
         "library": "url('/images/library.jpg')",
         "signup-top": "url('/images/signup-top.jpg')",
         "login-top": "url('/images/progress.jpg')",
-        "create-book-tile": "url('/images/create-book-tile.jpg')",
+        "check-book-tiles": "url('/images/create-book-tile.jpg')",
         "liked-books": "url('/images/liked-books.jpg')",
         "saved-tiles": "url('/images/saved-tiles.jpg')",
         "settings": "url('/images/settings.jpg')",
