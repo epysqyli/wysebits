@@ -1,5 +1,6 @@
 import axios from "axios";
 import BookCardTiles from "../../../components/BookCardTiles";
+import { useEffect } from "react";
 
 export const getServerSideProps = async (context) => {
   const resp = await axios({
@@ -15,12 +16,17 @@ export const getServerSideProps = async (context) => {
 
   return {
     props: {
-      bookTiles: bookTiles.data,
+      bookTiles: bookTiles.data.tiles,
+      allData: bookTiles.data,
     },
   };
 };
 
-const UserBookTiles = ({ bookTiles }) => {
+const UserBookTiles = ({ bookTiles, allData }) => {
+  useEffect(() => {
+    console.log(allData);
+  }, [])
+
   return (
     <div>
       <div className="text-2xl mt-16 text-center border-b-2 pb-2 shadow-md">
