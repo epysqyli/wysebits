@@ -22,7 +22,7 @@ const Home = ({ categories, loginStatus, userState }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="h-60 mx-auto bg-library bg-cover bg-center mb-20 mt-10">
+      <div className="h-60 mx-auto bg-library bg-cover bg-center mb-20">
         <div className="bg-gray-900 h-full bg-opacity-80 relative">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <h1 className="text-white text-6xl font-bold text-center">
