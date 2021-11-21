@@ -40,7 +40,7 @@ const Home = ({ categories, loginStatus, userState }) => {
           type="text"
           name=""
           id=""
-          placeholder="Search for any book-title (tiles)"
+          placeholder="Search for any book"
           className="block mx-auto w-4/6 transition-all duration-200 ease-out hover:w-5/6 focus:w-5/6 rounded-lg focus:ring-gray-700 focus:ring-2 outline-none focus:border-current focus:shadow-lg border-none shadow-md hover:shadow-lg text-center"
         />
       </form>
@@ -91,7 +91,7 @@ const Home = ({ categories, loginStatus, userState }) => {
           <h4 className="text-xl font-bold mt-5 mb-3">What does it mean?</h4>
           <p className="text-justify">
             Wysebits is a collaborative effort at knowledge distillation. This
-            means that those 2-3 incredibly great ideas found in a particular
+            means that those incredibly great ideas found in a particular
             book now have a real chance to survive in the long term.
           </p>
 
