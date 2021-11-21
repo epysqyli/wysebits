@@ -1,6 +1,8 @@
+import slugify from "slugify";
 import axios from "axios";
 import WelcomeTop from "../../components/users/WelcomeTop";
 import BookCard from "../../components/BookCard";
+import Link from "next/link";
 
 export const getServerSideProps = async (context) => {
   const slug = context.query.category;
@@ -27,9 +29,16 @@ const Category = ({ books, categoryName, pagy }) => {
       <div className="w-4/5 mx-auto my-10">
         {books.map((book) => {
           return (
-            <div className="my-10 border rounded-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300">
-              <BookCard bookData={book} key={book.id} />
-            </div>
+            <Link
+              href={`/books/${slugify(`${book.title}-${book.id}`, {
+                strict: true,
+                lower: true,
+              })}`}
+            >
+              <div className="my-10 border rounded-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300">
+                <BookCard bookData={book} key={book.id} />
+              </div>
+            </Link>
           );
         })}
       </div>
