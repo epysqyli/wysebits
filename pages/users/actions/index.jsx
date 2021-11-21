@@ -28,7 +28,7 @@ const Actions = ({ userState }) => {
 
           <div className="mx-auto my-12">
             <HomepageButton
-              text="Manage your book insights"
+              text="Manage your contributions"
               bcgImg="bg-check-book-tiles"
               href="/users/book-tiles/"
             />
