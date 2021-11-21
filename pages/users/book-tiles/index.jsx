@@ -23,7 +23,7 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-const UserBookTiles = ({ bookTiles, allData }) => {
+const UserBookTiles = ({ bookTiles, allData }) => { 
   useEffect(() => {
     console.log(allData);
   }, [])

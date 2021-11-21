@@ -1,4 +1,6 @@
 import axios from "axios";
+import slugify from "slugify";
+import Link from "next/link";
 import BookCard from "../../../components/BookCard";
 import WelcomeTop from "../../../components/users/WelcomeTop";
 
@@ -21,15 +23,20 @@ export const getServerSideProps = async (context) => {
 };
 
 const FavoriteBooks = ({ books }) => {
+  const slug = (title, id) =>
+    slugify(`${title}-${id}`, { lower: true, strict: true });
+
   return (
     <div>
       <WelcomeTop firstLine="Your favorite books" />
       <div className="mt-10 w-4/5 mx-auto">
         {books.map((book) => {
           return (
-            <div className="border rounded-md my-10 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 animate-show-up cursor-pointer">
-              <BookCard bookData={book} key={book.id} />
-            </div>
+            <Link href={`/books/${slug(book.title, book.id)}`}>
+              <div className="border rounded-md my-10 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 animate-show-up cursor-pointer">
+                <BookCard bookData={book} key={book.id} />
+              </div>
+            </Link>
           );
         })}
       </div>

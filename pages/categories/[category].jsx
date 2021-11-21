@@ -22,6 +22,9 @@ const Category = ({ books, categoryName, pagy }) => {
     return `${str.slice(0, 1).toUpperCase()}${str.slice(1)}`;
   };
 
+  const slug = (title, id) =>
+    slugify(`${title}-${id}`, { lower: true, strict: true });
+
   return (
     <div>
       <WelcomeTop firstLine={capitalize(categoryName)} />
@@ -29,12 +32,7 @@ const Category = ({ books, categoryName, pagy }) => {
       <div className="w-4/5 mx-auto my-10">
         {books.map((book) => {
           return (
-            <Link
-              href={`/books/${slugify(`${book.title}-${book.id}`, {
-                strict: true,
-                lower: true,
-              })}`}
-            >
+            <Link href={`/books/${slug(book.title, book.id)}`}>
               <div className="my-10 border rounded-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300">
                 <BookCard bookData={book} key={book.id} />
               </div>
