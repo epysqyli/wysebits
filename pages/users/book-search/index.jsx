@@ -6,6 +6,7 @@ import { useRouter } from "next/dist/client/router";
 
 const BookSearch = () => {
   const [searchTerms, setSearchTerms] = useState(null);
+  const [loadingClass, setLoadingClass] = useState("");
 
   const router = useRouter();
 
@@ -23,6 +24,7 @@ const BookSearch = () => {
   const handleKeyPress = (e) => {
     if (e.key == "Enter") {
       searchBooks();
+      setLoadingClass("animate-pulse");
     }
   };
 
@@ -62,7 +64,9 @@ const BookSearch = () => {
           </button>
         </div>
 
-        <div className="mt-60 border-l-2 border-gray-400 pl-3">
+        <div
+          className={`mt-60 border-l-2 border-gray-400 pl-3 ${loadingClass}`}
+        >
           <div className="text-lg my-3">
             "Books are the treasured wealth of the world and the fit inheritance
             of generations and nations."
