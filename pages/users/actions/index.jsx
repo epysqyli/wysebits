@@ -51,7 +51,7 @@ const Actions = ({ userState }) => {
           <div className="mx-auto my-12">
             <HomepageButton
               text="Manage profile"
-              href="#"
+              href="/users/actions/manage-profile"
               bcgImg="bg-settings"
             />
           </div>
