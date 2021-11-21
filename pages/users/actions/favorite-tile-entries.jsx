@@ -1,3 +1,5 @@
+import WelcomeTop from "../../../components/users/WelcomeTop";
+
 export const getServerSideProps = () => {
   return {
     props: {},
@@ -5,7 +7,9 @@ export const getServerSideProps = () => {
 };
 
 const FavoriteTileEntries = () => {
-  return <div></div>;
+  return <div>
+    <WelcomeTop firstLine="Your favorite insights" />
+  </div>;
 };
 
 export default FavoriteTileEntries;

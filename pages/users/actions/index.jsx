@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Head from "next/head";
 import HomepageButton from "../../../components/users/HomepageButton";
+import WelcomeTop from "../../../components/users/WelcomeTop";
 
 const Actions = ({ userState }) => {
   if (userState.isLogged) {
@@ -11,14 +12,15 @@ const Actions = ({ userState }) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <div className="text-2xl mt-16 text-center border-b-2 pb-2 shadow-md">
-          <div>Welcome back, {userState.user.username}.</div>
-          <div className="mt-2">What are you up to today?</div>
-        </div>
+        <WelcomeTop
+          firstLine={`Welcome back, ${userState.user.username}.`}
+          secondLine="What are you up to today?"
+        />
+
         <div className="w-4/5 mx-auto mt-16">
           <div className="mx-auto my-12">
             <HomepageButton
-              text="Create new book tile"
+              text="Share your knowledge"
               bcgImg="bg-create-tile"
               href="/users/book-search/"
             />
@@ -26,7 +28,7 @@ const Actions = ({ userState }) => {
 
           <div className="mx-auto my-12">
             <HomepageButton
-              text="Check all of your book tiles"
+              text="Manage your book insights"
               bcgImg="bg-check-book-tiles"
               href="/users/book-tiles/"
             />
@@ -42,7 +44,7 @@ const Actions = ({ userState }) => {
 
           <div className="mx-auto my-12">
             <HomepageButton
-              text="Saved tile entries"
+              text="Saved book insights"
               href="/users/actions/favorite-tile-entries"
               bcgImg="bg-saved-tiles"
             />

@@ -1,3 +1,5 @@
+import WelcomeTop from "../../../components/users/WelcomeTop";
+
 export const getServerSideProps = async (context) => {
   return {
     props: {},
@@ -5,7 +7,9 @@ export const getServerSideProps = async (context) => {
 };
 
 const ManageProfile = () => {
-  return <div></div>
+  return <div>
+    <WelcomeTop firstLine="Manage your profile" />
+  </div>
 }
 
 export default ManageProfile;

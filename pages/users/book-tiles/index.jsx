@@ -1,5 +1,6 @@
 import axios from "axios";
 import BookCardTiles from "../../../components/BookCardTiles";
+import WelcomeTop from "../../../components/users/WelcomeTop";
 import { useEffect } from "react";
 
 export const getServerSideProps = async (context) => {
@@ -29,9 +30,7 @@ const UserBookTiles = ({ bookTiles, allData }) => {
 
   return (
     <div>
-      <div className="text-2xl mt-16 text-center border-b-2 pb-2 shadow-md">
-        Here are your book tiles
-      </div>
+      <WelcomeTop firstLine="Here are the books for which" secondLine="you have shared your insights" />
       <div className="w-4/5 mx-auto my-16">
         {bookTiles.map((bookTile) => {
           return (

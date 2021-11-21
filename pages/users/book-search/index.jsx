@@ -1,4 +1,5 @@
 import Head from "next/head";
+import WelcomeTop from "../../../components/users/WelcomeTop";
 import { Search } from "react-feather";
 import { useState } from "react";
 import { useRouter } from "next/dist/client/router";
@@ -35,9 +36,7 @@ const BookSearch = () => {
         <title>Create book tile</title>
       </Head>
 
-      <div className="mt-20 text-2xl font-medium text-center border-b-2 pb-3 shadow-md">
-        What book did you just read?
-      </div>
+      <WelcomeTop firstLine="What book have you just read?" />
 
       <div className="w-4/5 mx-auto my-20 pb-10">
         <div

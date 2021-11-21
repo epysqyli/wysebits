@@ -1,5 +1,6 @@
 import axios from "axios";
 import BookCard from "../../../components/BookCard";
+import WelcomeTop from "../../../components/users/WelcomeTop";
 
 export const getServerSideProps = async (context) => {
   const userResp = await axios({
@@ -21,14 +22,17 @@ export const getServerSideProps = async (context) => {
 
 const FavoriteBooks = ({ books }) => {
   return (
-    <div className="mt-20">
-      {books.map((book) => {
-        return (
-          <div className="border rounded-md my-10 w-4/5 mx-auto bg-gray-100 animate-show-up">
-            <BookCard bookData={book} key={book.id} />
-          </div>
-        );
-      })}
+    <div>
+      <WelcomeTop firstLine="Your favorite books" />
+      <div className="mt-10 w-4/5 mx-auto">
+        {books.map((book) => {
+          return (
+            <div className="border rounded-md my-10 bg-gray-100 animate-show-up">
+              <BookCard bookData={book} key={book.id} />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
