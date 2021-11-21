@@ -11,11 +11,11 @@ export const getServerSideProps = async (context) => {
   );
 
   return {
-    props: { books: books.data, categoryName },
+    props: { books: books.data.books, pagy: books.data.pagy, categoryName },
   };
 };
 
-const Category = ({ books, categoryName }) => {
+const Category = ({ books, categoryName, pagy }) => {
   const capitalize = (str) => {
     return `${str.slice(0, 1).toUpperCase()}${str.slice(1)}`;
   };
