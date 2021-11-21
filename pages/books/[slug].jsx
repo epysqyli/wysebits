@@ -1,14 +1,19 @@
 import axios from "axios";
 
 export const getServerSideProps = async (context) => {
-  const slug = context.query.slug;
+  const slug = context.query.slug.split("-");
+  const id = slug[slug.length - 1];
+
+  const entries = await axios(
+    `http://localhost:3001/api/books/${id}/tile_entries`
+  );
 
   return {
-    props: { slug },
+    props: { entries: entries.data },
   };
 };
 
-const Book = ({ slug }) => {
+const Book = ({ entries }) => {
   return <div></div>;
 };
 
