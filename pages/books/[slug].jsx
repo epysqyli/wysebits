@@ -1,4 +1,5 @@
 import axios from "axios";
+import TileEntry from "../../components/books/TileEntry";
 
 export const getServerSideProps = async (context) => {
   const slug = context.query.slug.split("-");
@@ -9,12 +10,22 @@ export const getServerSideProps = async (context) => {
   );
 
   return {
-    props: { entries: entries.data },
+    props: { entries: entries.data[0] },
   };
 };
 
 const Book = ({ entries }) => {
-  return <div></div>;
+  return (
+    <div className="w-4/5 mx-auto">
+      {entries.map((entry) => {
+        return (
+          <div className="my-10">
+            <TileEntry key={entry.id} data={entry} />
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default Book;
