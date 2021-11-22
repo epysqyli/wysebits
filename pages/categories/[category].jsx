@@ -32,9 +32,9 @@ const Category = ({ books, categoryName, pagy }) => {
       <div className="w-4/5 mx-auto my-10">
         {books.map((book) => {
           return (
-            <Link href={`/books/${slug(book.title, book.id)}`}>
+            <Link href={`/books/${slug(book.title, book.id)}`} key={book.id}>
               <div className="my-10 border rounded-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300">
-                <BookCard bookData={book} key={book.id} />
+                <BookCard bookData={book} />
               </div>
             </Link>
           );
