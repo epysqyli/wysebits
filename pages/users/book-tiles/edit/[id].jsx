@@ -139,7 +139,7 @@ const EditBookTile = ({
         />
       ) : null}
 
-      <div className="relative mt-10">
+      <div className="relative">
         <BookCardBackground
           bookData={bookData}
           bcgImage={bcgImage}

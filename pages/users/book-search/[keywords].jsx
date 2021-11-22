@@ -48,11 +48,11 @@ const BookSearchResults = ({ searchResults }) => {
   return (
     <div>
       <Link href="/users/book-search/">
-        <div className="mt-12 py-3 text-center text-sm font-medium bg-gray-100 cursor-pointer hover:shadow-md hover:bg-gray-100 active:bg-gray-200">
+        <div className="py-3 text-center text-sm font-medium bg-gray-100 cursor-pointer hover:shadow-md hover:bg-gray-100 active:bg-gray-200">
           Back to search
         </div>
       </Link>
-      <div className="w-4/5 mx-auto my-16">
+      <div className="w-4/5 mx-auto">
         {searchResults.length != 0
           ? searchResults.map((book) => {
               return <BookResult bookData={book} key={book._id} />;

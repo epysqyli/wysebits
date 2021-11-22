@@ -89,7 +89,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
         />
       ) : null}
 
-      <div className="relative mt-10">
+      <div className="relative">
         <BookCardBackground
           bookData={bookData}
           bcgImage={bcgImage}
