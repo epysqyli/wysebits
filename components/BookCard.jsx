@@ -1,4 +1,16 @@
+import { Image as ImageIcon } from "react-feather";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 const BookCard = ({ bookData }) => {
+  const [cover, setCover] = useState(false);
+
+  const imageLoader = (
+    <div>
+      <ImageIcon className="animate-bounce" />
+    </div>
+  );
+
   const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
   const dbSrc = bookData.cover_url;
 
@@ -9,12 +21,25 @@ const BookCard = ({ bookData }) => {
     />
   );
 
+  useEffect(() => {
+    axios
+      .get(
+        `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`
+      )
+      .then((resp) => {
+        setCover(true);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <div className="flex justify-center gap-x-5 px-1 py-5">
-      {coverImage}
+      {!cover ? imageLoader : coverImage}
 
       <div className="w-3/6">
-        <div className="text-xl text-center mb-5 font-medium">{bookData.title}</div>
+        <div className="text-xl text-center mb-5 font-medium">
+          {bookData.title}
+        </div>
         <div className="text-sm text-center">{bookData.category.name}</div>
         <div className="text-sm text-center italic">
           {bookData.authors[0]

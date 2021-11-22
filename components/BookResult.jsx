@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const BookResult = ({ bookData }) => {
-  const [cover, setCover] = useState(null);
+  const [cover, setCover] = useState(false);
 
   const imageLoader = (
     <div>
@@ -28,7 +28,7 @@ const BookResult = ({ bookData }) => {
         `https://covers.openlibrary.org/w/olid/${bookData._source.ol_key}-M.jpg`
       )
       .then((resp) => {
-        setCover(resp.data);
+        setCover(true);
       })
       .catch((error) => console.log(error));
   }, []);
