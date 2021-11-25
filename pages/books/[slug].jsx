@@ -1,6 +1,7 @@
 import axios from "axios";
-import { PlusSquare } from "react-feather";
+import { FilePlus } from "react-feather";
 import TileEntry from "../../components/books/TileEntry";
+import Link from "next/dist/client/link";
 
 export const getServerSideProps = async (context) => {
   const slug = context.query.slug.split("-");
@@ -19,12 +20,12 @@ export const getServerSideProps = async (context) => {
     };
   } else {
     return {
-      props: { entries: false, title: capTitle },
+      props: { entries: false, title: capTitle, bookId: id },
     };
   }
 };
 
-const Book = ({ entries, title }) => {
+const Book = ({ entries, title, bookId }) => {
   if (entries) {
     return (
       <div className="w-4/5 mx-auto animate-show-up">
@@ -45,15 +46,17 @@ const Book = ({ entries, title }) => {
         <div className="text-center my-20 w-4/5 mx-auto">
           It appears as though there are no insights for this book yet ...
         </div>
-        <div className="border px-5 py-3 rounded-md shadow-md group transition-all cursor-pointer hover:shadow-lg active:bg-gray-200">
-          Be the first and share your knowledge by adding your own insights for{" "}
-          <b>{title}</b> now!
-          <PlusSquare
-            className="mt-5 mx-auto group-hover:scale-110 transition-all group-active:text-white"
-            size={36}
-            strokeWidth={1}
-          />
-        </div>
+        <Link href={`/users/book-tiles/create/${bookId}`}>
+          <div className="border px-5 py-3 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
+            Be the first and share your knowledge by adding your own insights
+            for <b>{title}</b> now!
+            <FilePlus
+              className="mt-10 mb-2 mx-auto group-hover:scale-110 transition-all group-active:text-gray-400"
+              size={36}
+              strokeWidth={1}
+            />
+          </div>
+        </Link>
       </div>
     );
   }
