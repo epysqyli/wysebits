@@ -1,7 +1,7 @@
 import axios from "axios";
 import { PlusCircle, Search } from "react-feather";
 import Link from "next/link";
-import BookResult from "../../../components/BookResult";
+import BookSearchTile from "../../../components/BookSearchTile";
 import { useState, useEffect } from "react";
 
 export const getServerSideProps = async (context) => {
@@ -55,7 +55,7 @@ const BookSearchResults = ({ searchResults }) => {
       <div className="w-4/5 mx-auto">
         {searchResults.length != 0
           ? searchResults.map((book) => {
-              return <BookResult bookData={book} key={book._id} />;
+              return <BookSearchTile bookData={book} key={book._id} />;
             })
           : null}
 

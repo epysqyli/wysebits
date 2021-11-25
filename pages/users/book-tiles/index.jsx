@@ -1,5 +1,5 @@
 import axios from "axios";
-import BookCardTile from "../../../components/BookCardTile";
+import BookCardSlider from "../../../components/BookCardSlider";
 import WelcomeTop from "../../../components/users/WelcomeTop";
 import { useEffect } from "react";
 
@@ -38,7 +38,7 @@ const UserBookTiles = ({ bookTiles, allData }) => {
         {bookTiles.map((bookTile) => {
           return (
             <div className="my-10" key={bookTile.book.id}>
-              <BookCardTile
+              <BookCardSlider
                 bookData={bookTile.book}
                 tileEntries={bookTile.tile_entries}
                 bookTileId={bookTile.id}

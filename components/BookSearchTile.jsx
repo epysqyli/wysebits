@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const BookResult = ({ bookData }) => {
+const BookSearchTile = ({ bookData }) => {
   const [cover, setCover] = useState(false);
 
   const imageLoader = (
@@ -63,4 +63,4 @@ const BookResult = ({ bookData }) => {
   );
 };
 
-export default BookResult;
+export default BookSearchTile;
