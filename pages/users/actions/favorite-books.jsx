@@ -32,9 +32,9 @@ const FavoriteBooks = ({ books }) => {
       <div className="mt-10 w-4/5 mx-auto">
         {books.map((book) => {
           return (
-            <Link href={`/books/${slug(book.title, book.id)}`}>
+            <Link href={`/books/${slug(book.title, book.id)}`} key={book.id}>
               <div className="border rounded-md my-10 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 animate-show-up cursor-pointer">
-                <BookCard bookData={book} key={book.id} />
+                <BookCard bookData={book} />
               </div>
             </Link>
           );

@@ -19,12 +19,12 @@ export const getServerSideProps = async (context) => {
 
 const Book = ({ entries, title }) => {
   return (
-    <div className="w-4/5 mx-auto">
+    <div className="w-4/5 mx-auto animate-show-up">
       <div className="text-center mt-10 text-2xl font-bold">{title}</div>
       {entries.map((entry) => {
         return (
-          <div className="my-10">
-            <TileEntry key={entry.id} data={entry} />
+          <div className="my-10" key={entry.id}>
+            <TileEntry data={entry} />
           </div>
         );
       })}
