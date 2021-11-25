@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FilePlus } from "react-feather";
+import { FilePlus, Info } from "react-feather";
 import TileEntry from "../../components/books/TileEntry";
 import Link from "next/dist/client/link";
 
@@ -43,8 +43,11 @@ const Book = ({ entries, title, bookId }) => {
     return (
       <div className="w-4/5 mx-auto animate-show-up">
         <div className="text-center mt-10 text-2xl font-bold">{title}</div>
-        <div className="text-center my-20 w-4/5 mx-auto">
-          It appears as though there are no insights for this book yet ...
+        <div className="flex justify-between items-center my-20 px-3">
+          <Info size={36} strokeWidth={1.5} className="bg-gray-200 rounded-3xl"/>
+          <div className="w-4/5 mx-auto">
+            It appears as though there are no insights for this book yet ...
+          </div>
         </div>
         <Link href={`/users/book-tiles/create/${bookId}`}>
           <div className="border px-5 py-3 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
