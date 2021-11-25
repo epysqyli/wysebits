@@ -2,7 +2,7 @@ import Slider from "./Slider";
 import BookCard from "./BookCard";
 import Link from "next/dist/client/link";
 
-const BookCardTiles = ({ bookData, tileEntries, bookTileId }) => {
+const BookCardTile = ({ bookData, tileEntries, bookTileId }) => {
   return (
     <div className="border pt-2 bg-gray-100 rounded-md shadow-md cursor-pointer hover:shadow-md">
       <BookCard bookData={bookData} />
@@ -22,4 +22,4 @@ const BookCardTiles = ({ bookData, tileEntries, bookTileId }) => {
   );
 };
 
-export default BookCardTiles;
+export default BookCardTile;
