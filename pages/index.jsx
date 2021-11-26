@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Button from "../components/Button";
 import CategoryButton from "../components/CategoryButton";
+import SearchInput from "../components/navigation/SearchInput";
 import Link from "next/link";
 
 export const getStaticProps = async () => {
@@ -35,18 +36,21 @@ const Home = ({ categories, loginStatus, userState }) => {
         </div>
       </div>
 
-      <form action="" className="mb-20">
-        <input
-          type="text"
-          name=""
-          id=""
-          placeholder="Search for any book"
-          className="block mx-auto w-4/6 transition-all duration-200 ease-out hover:w-5/6 focus:w-5/6 rounded-lg focus:ring-gray-700 focus:ring-2 outline-none focus:border-current focus:shadow-lg border-none shadow-md hover:shadow-lg text-center"
-        />
-      </form>
+      <div className="mb-20 w-4/5 mx-auto">
+        <SearchInput pageDest="/books/search/" />
+      </div>
+
+      <div className="mb-20 w-4/5 mx-auto">
+        <p className="text-3xl mx-auto text-center mb-10">Explore categories</p>
+        <div className="grid grid-cols-2 gap-x-4 gap-y-4">
+          {categories.map((category) => {
+            return <CategoryButton category={category} key={category.id} />;
+          })}
+        </div>
+      </div>
 
       {userState.isLogged ? null : (
-        <div className="mb-20 w-full bg-gray-200 py-10">
+        <div className="w-full py-10">
           <Link href="/registrations/signup">
             <a className="block w-4/6 mx-auto">
               <Button text="Join to share your knowledge" />
@@ -54,17 +58,6 @@ const Home = ({ categories, loginStatus, userState }) => {
           </Link>
         </div>
       )}
-
-      <div className="mb-20 w-4/5 mx-auto">
-        <p className="text-3xl mx-auto text-center mb-10">
-          Explore categories
-        </p>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-4">
-          {categories.map((category) => {
-            return <CategoryButton category={category} key={category.id} />;
-          })}
-        </div>
-      </div>
 
       <div className="pt-10 pb-20 bg-gray-100 shadow">
         <div className="w-4/5 mx-auto">
@@ -91,8 +84,8 @@ const Home = ({ categories, loginStatus, userState }) => {
           <h4 className="text-xl font-bold mt-5 mb-3">What does it mean?</h4>
           <p className="text-justify">
             Wysebits is a collaborative effort at knowledge distillation. This
-            means that those incredibly great ideas found in a particular
-            book now have a real chance to survive in the long term.
+            means that those incredibly great ideas found in a particular book
+            now have a real chance to survive in the long term.
           </p>
 
           <h4 className="text-xl font-bold mt-5 mb-3">How does it work?</h4>

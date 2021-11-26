@@ -1,8 +1,9 @@
 import axios from "axios";
-import { PlusCircle, Search } from "react-feather";
+import { PlusCircle } from "react-feather";
 import Link from "next/link";
 import BookSearchTile from "../../../components/BookSearchTile";
 import { useState, useEffect } from "react";
+import slugify from "slugify";
 
 export const getServerSideProps = async (context) => {
   const keywords = context.query.keywords.split("-").join(" ");
@@ -11,7 +12,6 @@ export const getServerSideProps = async (context) => {
     method: "post",
     data: { keywords: JSON.stringify(keywords) },
     url: "http://localhost:3001/api/search/books",
-    headers: { cookie: context.req.headers.cookie },
   });
 
   return {
@@ -41,15 +41,18 @@ const BookSearchResults = ({ searchResults }) => {
     </Link>
   );
 
+  const slug = (title, id) =>
+    slugify(`${title}-${id}`, { lower: true, strict: true });
+
   useEffect(() => {
     setTimeout(showBtn, 2000);
   }, []);
 
   return (
     <div>
-      <Link href="/users/book-search/">
+      <Link href="/">
         <div className="py-3 text-center text-sm font-medium bg-gray-100 cursor-pointer hover:shadow-md hover:bg-gray-100 active:bg-gray-200">
-          Back to search
+          Back to homepage
         </div>
       </Link>
       <div className="w-4/5 mx-auto">
@@ -58,7 +61,10 @@ const BookSearchResults = ({ searchResults }) => {
               return (
                 <BookSearchTile
                   bookData={book}
-                  destPage={`/users/book-tiles/create/${book._source.id}`}
+                  destPage={`/books/${slug(
+                    book._source.title,
+                    book._source.id
+                  )}`}
                   key={book._id}
                 />
               );

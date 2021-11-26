@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const BookSearchTile = ({ bookData }) => {
+const BookSearchTile = ({ bookData, destPage }) => {
   const [cover, setCover] = useState(false);
 
   const imageLoader = (
@@ -34,7 +34,7 @@ const BookSearchTile = ({ bookData }) => {
   }, []);
 
   return (
-    <Link href={`/users/book-tiles/create/${bookData._source.id}`}>
+    <Link href={destPage}>
       <div className="border bg-gray-100 rounded-md shadow-sm my-10 px-5 py-5 cursor-pointer hover:shadow-md transition hover:bg-gray-200 animate-show-up-slow">
         <div className="flex justify-between">
           <div className="w-2/3 mr-5 flex flex-col">
