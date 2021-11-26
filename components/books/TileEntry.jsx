@@ -2,10 +2,10 @@ import { ThumbsUp, ThumbsDown } from "react-feather";
 
 const TileEntry = ({ data }) => {
   return (
-    <div className="w-4/5 mx-auto text-justify leading-7">
-      <div className="border-b-2 pb-2">{data.content}</div>
+    <div className="mx-auto text-justify leading-6 shadow rounded hover:shadow-md transition-shadow">
+      <div className="border-b-2 py-3 px-2">{data.content}</div>
 
-      <div className="flex justify-between items-center text-sm px-1">
+      <div className="flex justify-between items-center text-sm px-2 py-2">
         <div className="flex justify-center gap-x-6">
           <div className="flex items-center gap-x-1 py-2">
             <div>{data.upvotes}</div>
