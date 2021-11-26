@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import { Search } from "react-feather";
 
-const SearchInput = ({ pageDest }) => {
+const SearchInput = ({ pageDest, placeholder }) => {
   const [searchTerms, setSearchTerms] = useState(null);
 
   const router = useRouter();
@@ -42,7 +42,7 @@ const SearchInput = ({ pageDest }) => {
             minLength="3"
             className="border-none bg-white w-5/6 rounded-tl-lg rounded-bl-lg focus:ring-0 group-hover:shadow-md transition"
             onChange={handleChange}
-            placeholder="search by title"
+            placeholder={placeholder}
             required
           />
 

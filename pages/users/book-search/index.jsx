@@ -13,7 +13,7 @@ const BookSearch = () => {
 
       <div className="w-4/5 mx-auto">
         <div className="mt-20">
-          <SearchInput pageDest="/users/book-search/" />
+          <SearchInput pageDest="/users/book-search/" placeholder="Enter book title" />
         </div>
 
         <div className="mt-60 border-l-2 border-gray-400 pl-3">

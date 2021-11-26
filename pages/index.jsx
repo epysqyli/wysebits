@@ -37,7 +37,7 @@ const Home = ({ categories, loginStatus, userState }) => {
       </div>
 
       <div className="mb-20 w-4/5 mx-auto">
-        <SearchInput pageDest="/books/search/" />
+        <SearchInput pageDest="/books/search/" placeholder="Search for any book" />
       </div>
 
       <div className="mb-20 w-4/5 mx-auto">
