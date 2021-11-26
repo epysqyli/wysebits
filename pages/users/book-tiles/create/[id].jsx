@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import BookCardBackground from "../../../../components/BookCardBackground";
+import BookCardBackground from "../../../../components/books/BookCardBackground";
 import EditBookDetails from "../../../../components/users/EditBookDetails";
 import { useRouter } from "next/dist/client/router";
 

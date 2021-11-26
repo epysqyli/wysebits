@@ -1,7 +1,7 @@
 import axios from "axios";
 import slugify from "slugify";
 import Link from "next/link";
-import BookCard from "../../../components/BookCard";
+import BookCard from "../../../components/books/BookCard";
 import WelcomeTop from "../../../components/users/WelcomeTop";
 
 export const getServerSideProps = async (context) => {

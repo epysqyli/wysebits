@@ -2,8 +2,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import EditForm from "../../../../components/users/EditForm";
 import EditBookDetails from "../../../../components/users/EditBookDetails";
-import BookCardBackground from "../../../../components/BookCardBackground";
-import DangerButton from "../../../../components/DangerButton";
+import BookCardBackground from "../../../../components/books/BookCardBackground";
+import DangerButton from "../../../../components/navigation/DangerButton";
 import { useRouter } from "next/dist/client/router";
 
 export const getServerSideProps = async (context) => {

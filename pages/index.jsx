@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Button from "../components/Button";
-import CategoryButton from "../components/CategoryButton";
+import Button from "../components/navigation/Button";
+import CategoryButton from "../components/navigation/CategoryButton";
 import SearchInput from "../components/navigation/SearchInput";
 import Link from "next/link";
 

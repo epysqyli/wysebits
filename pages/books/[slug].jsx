@@ -1,7 +1,7 @@
 import axios from "axios";
 import { FilePlus, Info } from "react-feather";
 import TileEntry from "../../components/books/TileEntry";
-import BookTitleBackground from "../../components/BookTitleBackground";
+import BookTitleBackground from "../../components/books/BookTitleBackground";
 import Link from "next/dist/client/link";
 
 export const getServerSideProps = async (context) => {

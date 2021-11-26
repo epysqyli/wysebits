@@ -1,7 +1,7 @@
 import axios from "axios";
 import { PlusCircle } from "react-feather";
 import Link from "next/link";
-import BookSearchTile from "../../../components/BookSearchTile";
+import BookSearchTile from "../../../components/books/BookSearchTile";
 import { useState, useEffect } from "react";
 import slugify from "slugify";
 

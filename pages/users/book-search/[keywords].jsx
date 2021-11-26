@@ -1,7 +1,7 @@
 import axios from "axios";
-import { PlusCircle, Search } from "react-feather";
+import { PlusCircle } from "react-feather";
 import Link from "next/link";
-import BookSearchTile from "../../../components/BookSearchTile";
+import BookSearchTile from "../../../components/books/BookSearchTile";
 import { useState, useEffect } from "react";
 
 export const getServerSideProps = async (context) => {

@@ -1,5 +1,5 @@
 import axios from "axios";
-import BookCardSlider from "../../../components/BookCardSlider";
+import BookCardSlider from "../../../components/books/BookCardSlider";
 import WelcomeTop from "../../../components/users/WelcomeTop";
 import { useEffect } from "react";
 
