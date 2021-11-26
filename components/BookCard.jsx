@@ -1,4 +1,4 @@
-import { Image as ImageIcon } from "react-feather";
+import { Image as ImageIcon, Heart } from "react-feather";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -23,9 +23,7 @@ const BookCard = ({ bookData }) => {
 
   useEffect(() => {
     axios
-      .get(
-        `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`
-      )
+      .get(`https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`)
       .then((resp) => {
         setCover(true);
       })
@@ -41,11 +39,12 @@ const BookCard = ({ bookData }) => {
           {bookData.title}
         </div>
         <div className="text-sm text-center">{bookData.category.name}</div>
-        <div className="text-sm text-center italic">
+        <div className="text-sm text-center italic my-5">
           {bookData.authors[0]
             ? bookData.authors[0].full_name
             : "No authors found"}
         </div>
+        {/* <Heart size={20} strokeWidth={1.5} className="mt-5 mx-auto" /> */}
       </div>
     </div>
   );
