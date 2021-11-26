@@ -1,4 +1,4 @@
-import { ThumbsUp, ThumbsDown } from "react-feather";
+import { ThumbsUp, ThumbsDown, Heart } from "react-feather";
 
 const TileEntry = ({ data }) => {
   return (
@@ -18,6 +18,12 @@ const TileEntry = ({ data }) => {
             <div>{data.downvotes}</div>
             <div>
               <ThumbsDown size={16} />
+            </div>
+          </div>
+
+          <div className="flex items-center">
+            <div>
+              <Heart size={16} />
             </div>
           </div>
         </div>
