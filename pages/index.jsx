@@ -18,7 +18,7 @@ export const getStaticProps = async () => {
 
 const Home = ({ categories, userState }) => {
   return (
-    <div className="animate-show-up">
+    <div>
       <Head>
         <title>Wysebits</title>
         <link rel="icon" href="/favicon.ico" />
@@ -70,7 +70,7 @@ const Home = ({ categories, userState }) => {
             </Link>
           </div>
           <Link href="/about">
-            <div className="mb-10 underline text-center mx-auto w-4/5 cursor-pointer">
+            <div className="underline text-center mx-auto w-4/5 cursor-pointer">
               Wyse what? Click here to know more about it!
             </div>
           </Link>

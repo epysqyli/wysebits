@@ -5,7 +5,7 @@ const Layout = ({ children, userState }) => {
   return (
     <>
       <Header userState={userState} />
-      <main>{children}</main>
+      <main className="animate-show-up py-10">{children}</main>
       <Footer />
     </>
   );
