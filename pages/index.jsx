@@ -18,7 +18,7 @@ export const getStaticProps = async () => {
 
 const Home = ({ categories, userState }) => {
   return (
-    <div>
+    <div className="pb-10">
       <Head>
         <title>Wysebits</title>
         <link rel="icon" href="/favicon.ico" />
