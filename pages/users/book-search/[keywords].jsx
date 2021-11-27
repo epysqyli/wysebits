@@ -3,25 +3,32 @@ import { PlusCircle } from "react-feather";
 import Link from "next/link";
 import BookSearchTile from "../../../components/books/BookSearchTile";
 import { useState, useEffect } from "react";
+import NoAccess from "../../../components/users/NoAccess";
 
 export const getServerSideProps = async (context) => {
-  const keywords = context.query.keywords.split("-").join(" ");
+  try {
+    const keywords = context.query.keywords.split("-").join(" ");
 
-  const searchResults = await axios({
-    method: "post",
-    data: { keywords: JSON.stringify(keywords) },
-    url: "http://localhost:3001/api/search/books",
-    headers: { cookie: context.req.headers.cookie },
-  });
+    const searchResults = await axios({
+      method: "post",
+      data: { keywords: JSON.stringify(keywords) },
+      url: "http://localhost:3001/api/search/books",
+      headers: { cookie: context.req.headers.cookie },
+    });
 
-  return {
-    props: {
-      searchResults: searchResults.data,
-    },
-  };
+    return {
+      props: {
+        searchResults: searchResults.data,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {},
+    };
+  }
 };
 
-const BookSearchResults = ({ searchResults }) => {
+const BookSearchResults = ({ searchResults, userState }) => {
   const [btnVisible, setBtnVisible] = useState(false);
 
   const showBtn = () => {
@@ -45,30 +52,34 @@ const BookSearchResults = ({ searchResults }) => {
     setTimeout(showBtn, 2000);
   }, []);
 
-  return (
-    <div>
-      <Link href="/users/book-search/">
-        <div className="py-3 text-center text-sm font-medium bg-gray-100 cursor-pointer hover:shadow-md hover:bg-gray-100 active:bg-gray-200">
-          Back to search
-        </div>
-      </Link>
-      <div className="w-4/5 mx-auto">
-        {searchResults.length != 0
-          ? searchResults.map((book) => {
-              return (
-                <BookSearchTile
-                  bookData={book}
-                  destPage={`/users/book-tiles/create/${book._source.id}`}
-                  key={book._id}
-                />
-              );
-            })
-          : null}
+  if (userState.isLogged) {
+    return (
+      <div>
+        <Link href="/users/book-search/">
+          <div className="py-3 text-center text-sm font-medium bg-gray-100 cursor-pointer hover:shadow-md hover:bg-gray-100 active:bg-gray-200">
+            Back to search
+          </div>
+        </Link>
+        <div className="w-4/5 mx-auto">
+          {searchResults.length != 0
+            ? searchResults.map((book) => {
+                return (
+                  <BookSearchTile
+                    bookData={book}
+                    destPage={`/users/book-tiles/create/${book._source.id}`}
+                    key={book._id}
+                  />
+                );
+              })
+            : null}
 
-        {btnVisible ? createBookBtn : null}
+          {btnVisible ? createBookBtn : null}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <NoAccess />;
+  }
 };
 
 export default BookSearchResults;
