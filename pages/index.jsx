@@ -15,7 +15,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const Home = ({ categories, loginStatus, userState }) => {
+const Home = ({ categories, userState }) => {
   return (
     <div className="animate-show-up">
       <Head>
@@ -40,7 +40,7 @@ const Home = ({ categories, loginStatus, userState }) => {
         <SearchInput pageDest="/books/search/" placeholder="Search for any book" />
       </div>
 
-      <div className="mb-20 w-4/5 mx-auto">
+      <div className="mb-10 w-4/5 mx-auto">
         <p className="text-3xl mx-auto text-center mb-10">Explore categories</p>
         <div className="grid grid-cols-2 gap-x-4 gap-y-4">
           {categories.map((category) => {
@@ -50,7 +50,7 @@ const Home = ({ categories, loginStatus, userState }) => {
       </div>
 
       {userState.isLogged ? null : (
-        <div className="w-full py-10">
+        <div className="w-full py-10 mb-10">
           <Link href="/registrations/signup">
             <a className="block w-4/6 mx-auto">
               <Button text="Join to share your knowledge" />
@@ -64,7 +64,7 @@ const Home = ({ categories, loginStatus, userState }) => {
           <h3 className="text-3xl font-bold mb-5">What is Wysebits?</h3>
           <p className="text-justify">
             Wysebits's vision is that of organizing knowledge contained in
-            non-fiction books.
+            non-fiction books, so that for every book the most important idea can be identified.
           </p>
 
           <h4 className="text-xl font-bold mt-5 mb-3">Why should I care?</h4>
