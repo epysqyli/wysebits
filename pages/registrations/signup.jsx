@@ -39,7 +39,7 @@ const SignUp = () => {
     resp = await resp.json();
     
     if (resp.status === 'success') {
-      router.push('/users/homepage');
+      router.push('/users/actions');
     }
   };
 
