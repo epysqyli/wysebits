@@ -59,7 +59,8 @@ const About = () => {
           <p className="text-justify">
             This is not a place for quotes collections, book summaries, reviews,
             reading suggestions or the like. This is a place for the no-frills
-            organization of knowledge, straight from the community. Above all, it's not a place for mindless scrolling.
+            organization of knowledge, straight from the community. Above all,
+            it's not a place for mindless scrolling.
           </p>
 
           <Link href="/registrations/signup">
