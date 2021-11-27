@@ -1,4 +1,5 @@
 import WelcomeTop from "../../../components/users/WelcomeTop";
+import NoAccess from "../../../components/users/NoAccess";
 
 export const getServerSideProps = () => {
   return {
@@ -6,10 +7,16 @@ export const getServerSideProps = () => {
   };
 };
 
-const FavoriteTileEntries = () => {
-  return <div>
-    <WelcomeTop firstLine="Your favorite insights" />
-  </div>;
+const FavoriteTileEntries = ({ userState }) => {
+  if (userState.isLogged) {
+    return (
+      <div>
+        <WelcomeTop firstLine="Your favorite insights" />
+      </div>
+    );
+  } else {
+    return <NoAccess />;
+  }
 };
 
 export default FavoriteTileEntries;
