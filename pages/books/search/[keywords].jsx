@@ -30,7 +30,7 @@ const BookSearchResults = ({ searchResults }) => {
 
   const createBookBtn = (
     <Link href="/users/book-tiles/create/create-book">
-      <div className="cursor-pointer py-4 text-center transition border-t-4 border-gray-50 bg-gray-100 hover:bg-gray-300 active:bg-gray-400 fixed bottom-0 left-0 w-screen animate-show-up">
+      <div className="cursor-pointer py-4 text-center transition border-t-4 border-gray-50 bg-gray-100 hover:bg-gray-300 active:bg-gray-400 fixed bottom-0 left-0 w-screen animate-show-up z-10">
         <div className="flex justify-center items-center gap-x-4">
           <div className="text-sm font-medium">
             No results? Add your book now!
