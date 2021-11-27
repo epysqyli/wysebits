@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 const SignUp = () => {
   const [userData, setUserData] = useState({
@@ -8,7 +8,7 @@ const SignUp = () => {
     password: null,
     passwordConfirmation: null,
   });
-  
+
   const router = useRouter();
 
   const handleChange = (e) => {
@@ -37,9 +37,9 @@ const SignUp = () => {
     });
 
     resp = await resp.json();
-    
-    if (resp.status === 'success') {
-      router.push('/users/actions');
+
+    if (resp.status === "success") {
+      router.push("/users/actions");
     }
   };
 
@@ -47,8 +47,9 @@ const SignUp = () => {
     <div>
       <div className="h-60 bg-signup-top bg-cover bg-center relative">
         <div className="bg-gray-900 h-full bg-opacity-80">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 text-white w-screen text-center text-2xl">
-            Start learning. Start sharing.
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white w-screen text-center text-3xl leading-10">
+            Start learning.
+            <br /> Start sharing.
           </div>
         </div>
       </div>
