@@ -35,7 +35,7 @@ export const getServerSideProps = async (context) => {
 const Book = ({ entries, title, book }) => {
   if (entries) {
     return (
-      <div>
+      <div className="pb-20">
         <BookTitleBackground bookData={book} />
         <div className="w-5/6 mx-auto animate-show-up mt-10">
           {entries.map((entry) => {
@@ -50,7 +50,7 @@ const Book = ({ entries, title, book }) => {
     );
   } else {
     return (
-      <div>
+      <div className="pb-20">
         <BookTitleBackground bookData={book} />
         <div className="w-4/5 mx-auto animate-show-up">
           <div className="flex justify-between items-center my-20 px-3">
