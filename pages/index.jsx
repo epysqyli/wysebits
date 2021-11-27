@@ -52,23 +52,30 @@ const Home = ({ categories, userState }) => {
         </div>
       </div>
 
+      {userState.isLogged ? null : (
+        <div>
+          <div className="w-full py-10">
+            <Link href="/registrations/signup">
+              <a className="block w-4/6 mx-auto">
+                <Button text="Join to share your knowledge" />
+              </a>
+            </Link>
+          </div>
+          <Link href="/about">
+            <div className="mb-10 underline text-center mx-auto w-4/5 cursor-pointer">
+              Wyse what? Click here to know more about it!
+            </div>
+          </Link>
+        </div>
+      )}
+
       <div className="h-60 mx-auto bg-bottom-home bg-cover bg-center">
         <div className="bg-gray-800 h-full bg-opacity-80 relative">
-          {userState.isLogged ? (
-            <div className="w-4/6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="text-3xl font-bold text-gray-200 text-center">
-                Wbits.
-              </div>
+          <div className="w-4/6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="text-3xl font-bold text-gray-200 text-center">
+              Wbits.
             </div>
-          ) : (
-            <div className="w-4/6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <Link href="/registrations/signup">
-                <a>
-                  <Button text="Join the community!" />
-                </a>
-              </Link>
-            </div>
-          )}
+          </div>
         </div>
       </div>
     </div>
