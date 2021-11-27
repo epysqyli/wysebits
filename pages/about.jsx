@@ -3,7 +3,7 @@ import Link from "next/dist/client/link";
 
 const About = () => {
   return (
-    <div>
+    <div className="animate-show-up">
       <div className="h-60 mx-auto bg-discovery bg-center">
         <div className="bg-gray-800 h-full bg-opacity-80 relative">
           <div className="w-4/6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
