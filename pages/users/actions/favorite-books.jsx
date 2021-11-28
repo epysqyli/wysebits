@@ -4,6 +4,7 @@ import Link from "next/link";
 import BookCard from "../../../components/books/BookCard";
 import WelcomeTop from "../../../components/users/WelcomeTop";
 import NoAccess from "../../../components/users/NoAccess";
+import NoItem from "../../../components/users/NoItem";
 
 export const getServerSideProps = async (context) => {
   try {
@@ -35,6 +36,15 @@ const FavoriteBooks = ({ books, userState }) => {
     slugify(`${title}-${id}`, { lower: true, strict: true });
 
   if (userState.isLogged) {
+    if (books.length == 0) {
+      return (
+        <div>
+          <WelcomeTop firstLine="Your favorite books" />
+          <NoItem itemType="books" />
+        </div>
+      );
+    } else {
+    }
     return (
       <div>
         <WelcomeTop firstLine="Your favorite books" />
