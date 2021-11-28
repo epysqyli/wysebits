@@ -42,10 +42,12 @@ const Home = ({ categories, userState }) => {
           <Book size={36} strokeWidth={1.5} />
           <div className="text-4xl">Explore books</div>
         </div>
-        <SearchInput
-          pageDest="/books/search/"
-          placeholder="Search for any book"
-        />
+        <div className="mt-10 mb-5">
+          <SearchInput
+            pageDest="/books/search/"
+            placeholder="Search for any book"
+          />
+        </div>
       </div>
 
       <div className="mb-10 w-4/5 mx-auto border-b-2 pb-10">

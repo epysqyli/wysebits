@@ -8,7 +8,7 @@ export const getServerSideProps = () => {
   };
 };
 
-const FavoriteTileEntries = ({ userState }) => {
+const FavoriteInsights = ({ userState }) => {
   if (userState.isLogged) {
     return (
       <div>
@@ -21,4 +21,4 @@ const FavoriteTileEntries = ({ userState }) => {
   }
 };
 
-export default FavoriteTileEntries;
+export default FavoriteInsights;

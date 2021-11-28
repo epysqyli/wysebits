@@ -52,10 +52,12 @@ const UserBookTiles = ({ bookTiles, allData, userState }) => {
                 Start contributing now by choosing the first book for which you
                 want to add your own personal insights
               </div>
+              <div className="mt-10 mb-3">
               <SearchInput
                 pageDest="/users/book-search/"
                 placeholder="Any book in mind?"
               />
+              </div>
             </div>
           </div>
         </div>

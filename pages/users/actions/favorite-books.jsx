@@ -5,6 +5,7 @@ import BookCard from "../../../components/books/BookCard";
 import WelcomeTop from "../../../components/users/WelcomeTop";
 import NoAccess from "../../../components/users/NoAccess";
 import NoItem from "../../../components/users/NoItem";
+import SearchInput from "../../../components/navigation/SearchInput";
 
 export const getServerSideProps = async (context) => {
   try {
@@ -40,7 +41,22 @@ const FavoriteBooks = ({ books, userState }) => {
       return (
         <div>
           <WelcomeTop firstLine="Your favorite books" />
-          <NoItem itemType="favorite books" />
+          <div className="w-4/5 mx-auto">
+            <NoItem itemType="favorite books" />
+            <div className="border px-5 py-3 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
+              <div>
+                You can add books to your favorite ones simply by hitting the
+                heart on a book of choice.
+                <br /> Start exploring books now
+              </div>
+              <div className="mt-10 mb-3">
+                <SearchInput
+                  pageDest="/books/search/"
+                  placeholder="Any book in mind?"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       );
     } else {
