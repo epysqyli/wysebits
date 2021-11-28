@@ -8,7 +8,7 @@ const TileEntryWithTitle = ({ data }) => {
     slugify(`${title}-${id}`, { lower: true, strict: true });
 
   return (
-    <div className="bg-white text-justify leading-6 shadow rounded-md">
+    <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
       <Link
         href={`/books/${slug(
           data.book_tile.book.title,
