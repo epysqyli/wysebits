@@ -94,14 +94,18 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
 
         <div className="my-10">
           <label htmlFor="author-full-name" className="pl-3">
-            Add the author
+            Edit author
           </label>
           <input
             type="text"
             name="author"
             id="author-full-name"
             onChange={handleChange}
-            defaultValue={bookData.authors.length != 0 ? bookData.authors[0].full_name : null}
+            defaultValue={
+              bookData.authors.length != 0
+                ? bookData.authors[0].full_name
+                : null
+            }
             className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
             placeholder="Enter the full name"
           />
