@@ -37,7 +37,7 @@ const Book = ({ entries, title, book }) => {
     return (
       <div className="pb-20">
         <BookTitleBackground bookData={book} />
-        <div className="w-5/6 mx-auto animate-show-up mt-10">
+        <div className="w-5/6 mx-auto animate-show-up mt-20">
           {entries.map((entry) => {
             return (
               <div className="my-10" key={entry.id}>
