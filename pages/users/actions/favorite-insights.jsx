@@ -1,6 +1,7 @@
 import WelcomeTop from "../../../components/users/WelcomeTop";
 import NoAccess from "../../../components/users/NoAccess";
 import NoItem from "../../../components/users/NoItem";
+import TileEntryWithTitle from "../../../components/books/TileEntryWithTitle";
 import axios from "axios";
 
 export const getServerSideProps = async (context) => {
@@ -41,6 +42,13 @@ const FavoriteInsights = ({ userState, insights }) => {
       return (
         <div>
           <WelcomeTop firstLine="Your favorite insights" />
+          {insights.map((insight) => {
+            return (
+              <div key={insight.id} className="w-4/5 mx-auto my-10">
+                <TileEntryWithTitle data={insight} />
+              </div>
+            );
+          })}
         </div>
       );
     }
