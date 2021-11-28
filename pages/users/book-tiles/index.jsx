@@ -42,8 +42,8 @@ const UserBookTiles = ({ bookTiles, allData, userState }) => {
       return (
         <div>
           <WelcomeTop
-            firstLine="Here are the books for which"
-            secondLine="you have shared your insights"
+            text="Books for which you have shared insights"
+            bcgImg="bg-check-book-tiles"
           />
           <div className="w-4/5 mx-auto">
             <NoItem itemType="contributions" />
@@ -53,10 +53,10 @@ const UserBookTiles = ({ bookTiles, allData, userState }) => {
                 want to add your own personal insights
               </div>
               <div className="mt-10 mb-3">
-              <SearchInput
-                pageDest="/users/book-search/"
-                placeholder="Any book in mind?"
-              />
+                <SearchInput
+                  pageDest="/users/book-search/"
+                  placeholder="Any book in mind?"
+                />
               </div>
             </div>
           </div>
@@ -66,8 +66,8 @@ const UserBookTiles = ({ bookTiles, allData, userState }) => {
       return (
         <div>
           <WelcomeTop
-            firstLine="Here are the books for which"
-            secondLine="you have shared your insights"
+            text="Books for which you have shared insights"
+            bcgImg="bg-check-book-tiles"
           />
           <div className="w-4/5 mx-auto my-16">
             {bookTiles.map((bookTile) => {

@@ -40,7 +40,7 @@ const FavoriteBooks = ({ books, userState }) => {
     if (books.length == 0) {
       return (
         <div>
-          <WelcomeTop firstLine="Your favorite books" />
+          <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
           <div className="w-4/5 mx-auto">
             <NoItem itemType="favorite books" />
             <div className="border px-5 py-3 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
@@ -63,7 +63,7 @@ const FavoriteBooks = ({ books, userState }) => {
     }
     return (
       <div>
-        <WelcomeTop firstLine="Your favorite books" />
+        <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
         <div className="mt-10 w-4/5 mx-auto">
           {books.map((book) => {
             return (

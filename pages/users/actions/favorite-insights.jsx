@@ -34,14 +34,14 @@ const FavoriteInsights = ({ userState, insights }) => {
     if (insights.length == 0) {
       return (
         <div>
-          <WelcomeTop firstLine="Your favorite insights" />
+          <WelcomeTop text="Your favorite insights" bcgImg="bg-saved-tiles" />
           <NoItem itemType="favorite insights" />
         </div>
       );
     } else {
       return (
         <div>
-          <WelcomeTop firstLine="Your favorite insights" />
+          <WelcomeTop text="Your favorite insights" bcgImg="bg-saved-tiles" />
           {insights.map((insight) => {
             return (
               <div

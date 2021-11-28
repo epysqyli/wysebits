@@ -6,12 +6,12 @@ import NoAccess from "../../../components/users/NoAccess";
 const BookSearch = ({ userState }) => {
   if (userState.isLogged) {
     return (
-      <div>
+      <div className="pb-20">
         <Head>
           <title>Create book tile</title>
         </Head>
 
-        <WelcomeTop firstLine="What book have you just read?" />
+        <WelcomeTop bcgImg="bg-create-tile" text="What book have you just read?" />
 
         <div className="w-4/5 mx-auto">
           <div className="mt-20">

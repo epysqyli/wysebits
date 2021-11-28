@@ -11,7 +11,7 @@ const ManageProfile = ({ userState }) => {
   if (userState.isLogged) {
     return (
       <div>
-        <WelcomeTop firstLine="Manage your profile" />
+        <WelcomeTop text="Manage your profile" bcgImg="bg-settings" />
       </div>
     );
   } else {

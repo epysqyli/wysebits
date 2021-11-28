@@ -12,10 +12,10 @@ const Actions = ({ userState }) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <WelcomeTop
-          firstLine={`Welcome back, ${userState.user.username}.`}
-          secondLine="What are you up to today?"
-        />
+        <div className="text-2xl text-center bg-white py-5 shadow-md">
+          <div>Welcome back, {userState.user.username}.</div>
+          <div className="mt-2">What are you up to today?</div>
+        </div>
 
         <div className="w-4/5 mx-auto mt-16">
           <div className="mx-auto my-12">
