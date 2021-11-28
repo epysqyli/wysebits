@@ -26,7 +26,7 @@ const Header = ({ userState }) => {
   );
 
   const loggedUser = (
-    <div className="flex justify-around items-center border rounded px-2 py-1">
+    <div className="flex justify-around items-center border rounded px-2 py-1 shadow">
       <Link href="/users/actions">
         <a className="flex mr-3 group cursor-pointer border-r">
           <User

@@ -40,7 +40,7 @@ const FavoriteBooks = ({ books, userState }) => {
       return (
         <div>
           <WelcomeTop firstLine="Your favorite books" />
-          <NoItem itemType="books" />
+          <NoItem itemType="favorite books" />
         </div>
       );
     } else {
