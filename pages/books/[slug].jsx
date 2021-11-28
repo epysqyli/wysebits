@@ -37,7 +37,7 @@ const Book = ({ entries, title, book }) => {
     return (
       <div className="pb-20">
         <BookTitleBackground bookData={book} />
-        <div className="w-5/6 mx-auto animate-show-up mt-20">
+        <div className="w-5/6 mx-auto mt-20">
           {entries.map((entry) => {
             return (
               <div className="my-10" key={entry.id}>
@@ -52,7 +52,7 @@ const Book = ({ entries, title, book }) => {
     return (
       <div className="pb-20">
         <BookTitleBackground bookData={book} />
-        <div className="w-4/5 mx-auto animate-show-up">
+        <div className="w-4/5 mx-auto">
           <div className="flex justify-between items-center my-20 px-3">
             <Info
               size={36}

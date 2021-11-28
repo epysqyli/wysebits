@@ -44,7 +44,10 @@ const FavoriteInsights = ({ userState, insights }) => {
           <WelcomeTop firstLine="Your favorite insights" />
           {insights.map((insight) => {
             return (
-              <div key={insight.id} className="w-4/5 mx-auto my-10">
+              <div
+                key={insight.id}
+                className="w-4/5 mx-auto my-10"
+              >
                 <TileEntryWithTitle data={insight} />
               </div>
             );

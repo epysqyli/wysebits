@@ -2,7 +2,7 @@ import { ThumbsUp, ThumbsDown, Heart } from "react-feather";
 
 const TileEntry = ({ data }) => {
   return (
-    <div className="bg-white text-justify leading-6">
+    <div className="bg-white text-justify leading-6 shadow rounded-md">
       <div className="border-b-2 py-3 px-2">{data.content}</div>
 
       <div className="flex justify-between items-center text-sm px-2 py-2">
