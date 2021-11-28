@@ -1,4 +1,4 @@
-import Button from "../components/navigation/Button";
+import Button from "../../components/navigation/Button";
 import Link from "next/dist/client/link";
 
 const About = () => {
