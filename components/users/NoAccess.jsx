@@ -3,8 +3,8 @@ import { AlertCircle } from "react-feather";
 
 const NoAccess = () => {
   return (
-    <div>
-      <div className="w-4/5 mx-auto mt-20 flex justify-around items-center">
+    <div className="mt-10 mb-20">
+      <div className="w-4/5 mx-auto flex justify-around items-center">
         <AlertCircle className="w-1/6" size={36} strokeWidth={1.5} />
         <div className="w-4/6">
           You have no permission to access this page.
