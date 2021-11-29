@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "bottom-home": "url('/images/ai-banner.jpg')",
-        library: "url('/images/library.jpg')",
+        "library": "url('/images/library.jpg')",
         "signup-top": "url('/images/signup-top.jpg')",
         "login-top": "url('/images/progress.jpg')",
         "check-book-tiles": "url('/images/create-book-tile.jpg')",
@@ -14,7 +14,9 @@ module.exports = {
         "saved-tiles": "url('/images/saved-tiles.jpg')",
         "settings": "url('/images/settings.jpg')",
         "create-tile": "url('/images/create-tile.jpg')",
-        "discovery": "url('/images/discovery.jpg')"
+        "discovery": "url('/images/discovery.jpg')",
+        "following": "url('/images/following.jpg')",
+        "followers": "url('/images/followers.jpg')",
       },
       grayscale: {
         50: "50%",
