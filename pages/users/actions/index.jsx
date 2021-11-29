@@ -1,6 +1,5 @@
 import Head from "next/head";
 import HomepageButton from "../../../components/users/HomepageButton";
-import WelcomeTop from "../../../components/users/WelcomeTop";
 import NoAccess from "../../../components/users/NoAccess";
 
 const Actions = ({ userState }) => {
@@ -51,11 +50,19 @@ const Actions = ({ userState }) => {
           </div>
 
           <div className="mx-auto my-12">
-            <HomepageButton text="Users you are following" href="#" bcgImg="bg-following" />
+            <HomepageButton
+              text="Users you are following"
+              href="/users/actions/following"
+              bcgImg="bg-following"
+            />
           </div>
 
           <div className="mx-auto my-12">
-            <HomepageButton text="Your followers" href="#" bcgImg="bg-followers" />
+            <HomepageButton
+              text="Your followers"
+              href="/users/actions/followers"
+              bcgImg="bg-followers"
+            />
           </div>
 
           <div className="mx-auto my-12">
