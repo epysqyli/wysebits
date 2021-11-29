@@ -3,36 +3,42 @@ import slugify from "slugify";
 import Link from "next/dist/client/link";
 
 const TileEntry = ({ data, showTitle }) => {
-  if (!showTitle) {
-    return (
-      <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
-        <div className="border-b-2 py-3 px-2">{data.content}</div>
+  const entryBase = (
+    <div>
+      <div className="border-b-2 py-3 px-2">{data.content}</div>
 
-        <div className="flex justify-between items-center text-sm px-2 py-2">
-          <div className="flex justify-center gap-x-6">
-            <div className="flex items-center gap-x-1 py-2">
-              <div>{data.upvotes}</div>
-              <div className="pb-1">
-                <ThumbsUp size={16} />
-              </div>
-            </div>
-
-            <div className="flex items-center gap-x-1">
-              <div>{data.downvotes}</div>
-              <div>
-                <ThumbsDown size={16} />
-              </div>
-            </div>
-
-            <div className="flex items-center">
-              <div>
-                <Heart size={16} />
-              </div>
+      <div className="flex justify-between items-center text-sm px-2 py-2">
+        <div className="flex justify-center gap-x-6">
+          <div className="flex items-center gap-x-1 py-2">
+            <div>{data.upvotes}</div>
+            <div className="pb-1">
+              <ThumbsUp size={16} />
             </div>
           </div>
 
-          <div>{data.book_tile.user.username}</div>
+          <div className="flex items-center gap-x-1">
+            <div>{data.downvotes}</div>
+            <div>
+              <ThumbsDown size={16} />
+            </div>
+          </div>
+
+          <div className="flex items-center">
+            <div>
+              <Heart size={16} />
+            </div>
+          </div>
         </div>
+
+        <div>{data.book_tile.user.username}</div>
+      </div>
+    </div>
+  );
+
+  if (!showTitle) {
+    return (
+      <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
+        {entryBase}
       </div>
     );
   } else {
@@ -54,33 +60,7 @@ const TileEntry = ({ data, showTitle }) => {
             <ArrowUpRight size={18} className="text-gray-600" />
           </div>
         </Link>
-        <div className="border-b-2 py-3 px-2">{data.content}</div>
-
-        <div className="flex justify-between items-center text-sm px-2 py-2">
-          <div className="flex justify-center gap-x-6">
-            <div className="flex items-center gap-x-1 py-2">
-              <div>{data.upvotes}</div>
-              <div className="pb-1">
-                <ThumbsUp size={16} />
-              </div>
-            </div>
-
-            <div className="flex items-center gap-x-1">
-              <div>{data.downvotes}</div>
-              <div>
-                <ThumbsDown size={16} />
-              </div>
-            </div>
-
-            <div className="flex items-center">
-              <div>
-                <Heart size={16} />
-              </div>
-            </div>
-          </div>
-
-          <div>{data.book_tile.user.username}</div>
-        </div>
+        {entryBase}
       </div>
     );
   }
