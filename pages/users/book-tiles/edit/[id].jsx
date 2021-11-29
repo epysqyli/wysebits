@@ -20,7 +20,6 @@ export const getServerSideProps = async (context) => {
     const resp = await axios({
       method: "get",
       url: `http://localhost:3001/api/users/${userResp.data.user.id}/book_tiles/${id}`,
-      withCredentials: true,
     });
 
     const categoriesReq = await fetch("http://localhost:3001/api/categories");
