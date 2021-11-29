@@ -2,6 +2,7 @@ import WelcomeTop from "../../../components/users/WelcomeTop";
 import NoAccess from "../../../components/users/NoAccess";
 import NoItem from "../../../components/users/NoItem";
 import TileEntry from "../../../components/books/TileEntry";
+import SearchInput from "../../../components/navigation/SearchInput";
 import axios from "axios";
 
 export const getServerSideProps = async (context) => {
@@ -35,7 +36,22 @@ const FavoriteInsights = ({ userState, insights }) => {
       return (
         <div>
           <WelcomeTop text="Your favorite insights" bcgImg="bg-saved-tiles" />
-          <NoItem itemType="favorite insights" />
+          <div className="w-4/5 mx-auto">
+            <NoItem itemType="favorite insights" />
+            <div className="border px-5 py-3 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
+              <div>
+                You can add insights to your favorite ones simply by hitting the
+                heart on an insight of choice.
+                <br /> Start exploring books now
+              </div>
+              <div className="mt-10 mb-3">
+                <SearchInput
+                  pageDest="/books/search/"
+                  placeholder="Any book in mind?"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       );
     } else {
@@ -44,10 +60,7 @@ const FavoriteInsights = ({ userState, insights }) => {
           <WelcomeTop text="Your favorite insights" bcgImg="bg-saved-tiles" />
           {insights.map((insight) => {
             return (
-              <div
-                key={insight.id}
-                className="w-4/5 mx-auto my-10"
-              >
+              <div key={insight.id} className="w-4/5 mx-auto my-10">
                 <TileEntry data={insight} showTitle={true} />
               </div>
             );
