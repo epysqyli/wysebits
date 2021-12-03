@@ -17,6 +17,7 @@ module.exports = {
         "discovery": "url('/images/discovery.jpg')",
         "following": "url('/images/following.jpg')",
         "followers": "url('/images/followers.jpg')",
+        "categories": "url('/images/categories.jpg')",
       },
       grayscale: {
         50: "50%",

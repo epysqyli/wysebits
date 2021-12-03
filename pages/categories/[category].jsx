@@ -27,7 +27,11 @@ const Category = ({ books, categoryName, pagy }) => {
 
   return (
     <div>
-      <WelcomeTop text={capitalize(categoryName)} />
+      <div className="bg-categories bg-cover bg-center shadow">
+        <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16">
+          {capitalize(categoryName)}
+        </div>
+      </div>
 
       <div className="w-4/5 mx-auto my-10">
         {books.map((book) => {
