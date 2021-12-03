@@ -1,6 +1,5 @@
 import slugify from "slugify";
 import axios from "axios";
-import WelcomeTop from "../../components/users/WelcomeTop";
 import BookCard from "../../components/books/BookCard";
 import Link from "next/link";
 
