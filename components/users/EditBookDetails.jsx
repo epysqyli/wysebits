@@ -53,9 +53,9 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   };
 
   return (
-    <div className="absolute z-30 top-24 left-1/2 bg-white p-3 -translate-x-1/2 w-11/12 rounded-md shadow-lg border-2 border-gray-400 animate-show-up">
+    <div className="absolute z-30 bg-white pt-10 px-3 w-screen h-screen shadow-lg border-gray-400 animate-show-up">
       <div className="text-center text-lg border-b-2 pb-2 px-5">
-        Edit book infos and make Wysebits a better place for all!
+        Make WyseBits a better place for the community!
       </div>
       <form onSubmit={handleSubmit}>
         <div className="my-10">
@@ -67,7 +67,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
             name="title"
             id="title"
             onChange={handleChange}
-            className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
+            className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow focus:shadow-md"
             placeholder="Book title"
             defaultValue={bookData.title}
           />
@@ -81,7 +81,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
             name="categoryId"
             id="category"
             onChange={handleChange}
-            className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm"
+            className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow"
             defaultValue={bookData.category_id}
           >
             {categories.map((category) => (
@@ -106,7 +106,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
                 ? bookData.authors[0].full_name
                 : null
             }
-            className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
+            className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow focus:shadow-md"
             placeholder="Enter the full name"
           />
         </div>
@@ -118,7 +118,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
             name="book_cover"
             id="book-cover"
             onChange={(e) => setFile(e.target.files[0])}
-            className="bg-white py-2 w-full px-3 rounded-md shadow-sm"
+            className="bg-white py-2 w-full px-3 rounded-md shadow"
           />
         </div>
 
