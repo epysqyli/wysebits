@@ -27,7 +27,7 @@ const Category = ({ books, categoryName, pagy }) => {
 
   return (
     <div>
-      <WelcomeTop firstLine={capitalize(categoryName)} />
+      <WelcomeTop text={capitalize(categoryName)} />
 
       <div className="w-4/5 mx-auto my-10">
         {books.map((book) => {

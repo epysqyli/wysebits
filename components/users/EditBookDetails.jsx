@@ -111,14 +111,14 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
           />
         </div>
 
-        <div className="my-10">
-          <label htmlFor="book-cover" className="pl-3"></label>
+        <div className="my-10 rounded shadow">
+          <label htmlFor="book-cover" className="mx-2 px-1">Book cover</label>
           <input
             type="file"
             name="book_cover"
             id="book-cover"
             onChange={(e) => setFile(e.target.files[0])}
-            className="bg-white py-2 w-full px-3 rounded-md shadow"
+            className="bg-white py-2 w-min px-3"
           />
         </div>
 
