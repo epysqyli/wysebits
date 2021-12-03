@@ -36,7 +36,7 @@ const Category = ({ books, categoryName, pagy }) => {
         {books.map((book) => {
           return (
             <Link href={`/books/${slug(book.title, book.id)}`} key={book.id}>
-              <div className="my-10 border rounded-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300">
+              <div className="my-10 rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300">
                 <BookCard bookData={book} />
               </div>
             </Link>
