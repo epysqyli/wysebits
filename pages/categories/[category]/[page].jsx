@@ -3,6 +3,8 @@ import axios from "axios";
 import BookCard from "../../../components/books/BookCard";
 import Link from "next/link";
 import PageNavButton from "../../../components/navigation/PageNavButton";
+import NoItem from "../../../components/users/NoItem";
+import SearchInput from "../../../components/navigation/SearchInput";
 
 export const getServerSideProps = async (context) => {
   const slug = context.query.category;
@@ -31,44 +33,71 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
   const slug = (title, id) =>
     slugify(`${title}-${id}`, { lower: true, strict: true });
 
-  return (
-    <div>
-      <div className="bg-categories bg-cover bg-center shadow">
-        <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16">
-          {capitalize(categoryName)}
+  if (books.length != 0) {
+    return (
+      <div>
+        <div className="bg-categories bg-cover bg-center shadow">
+          <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16">
+            {capitalize(categoryName)}
+          </div>
         </div>
-      </div>
 
-      <div className="w-4/5 mx-auto my-10">
-        {books.map((book) => {
-          return (
-            <Link href={`/books/${slug(book.title, book.id)}`} key={book.id}>
-              <div className="my-10 rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300">
-                <BookCard bookData={book} />
-              </div>
-            </Link>
-          );
-        })}
-      </div>
+        <div className="w-4/5 mx-auto my-10">
+          {books.map((book) => {
+            return (
+              <Link href={`/books/${slug(book.title, book.id)}`} key={book.id}>
+                <div className="my-10 rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300">
+                  <BookCard bookData={book} />
+                </div>
+              </Link>
+            );
+          })}
+        </div>
 
-      <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
-        <div className="w-1/2">
-          <PageNavButton
-            btnText="Previous page"
-            url={pagy.prev_url}
-            categorySlug={categorySlug}
-          />
-        </div>
-        <div className="w-1/2">
-          <PageNavButton
-            btnText="Next page"
-            url={pagy.next_url}
-            categorySlug={categorySlug}
-          />
+        <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
+          <div className="w-1/2">
+            <PageNavButton
+              btnText="Previous page"
+              url={pagy.prev_url}
+              categorySlug={categorySlug}
+            />
+          </div>
+          <div className="w-1/2">
+            <PageNavButton
+              btnText="Next page"
+              url={pagy.next_url}
+              categorySlug={categorySlug}
+            />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <div className="bg-categories bg-cover bg-center shadow">
+          <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16">
+            {capitalize(categoryName)}
+          </div>
+        </div>
+        <div className="w-4/5 mx-auto my-20">
+          <NoItem message="This category is empty. Explore books and contribute insights to improve WyseBits for all" />
+          <div className="border px-5 py-3 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
+            <div className="px-3">
+              Start contributing now by choosing the first book for which you
+              want to add your own personal insights
+            </div>
+            <div className="mt-10 mb-3">
+              <SearchInput
+                pageDest="/users/book-search/"
+                placeholder="Any book in mind?"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default Category;

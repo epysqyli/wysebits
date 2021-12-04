@@ -7,9 +7,9 @@ const NoItem = ({ message }) => {
         <AlertCircle
           size={36}
           strokeWidth={1.5}
-          className="bg-gray-200 rounded-3xl"
+          className="rounded-3xl w-1/6"
         />
-        <div className="text-lg">{message}</div>
+        <div className="text-lg w-5/6">{message}</div>
       </div>
     </div>
   );
