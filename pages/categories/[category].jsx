@@ -2,21 +2,27 @@ import slugify from "slugify";
 import axios from "axios";
 import BookCard from "../../components/books/BookCard";
 import Link from "next/link";
+import PageNavButton from "../../components/navigation/PageNavButton";
 
 export const getServerSideProps = async (context) => {
   const slug = context.query.category;
   const categoryName = slug.split("-").join(" ");
 
   const books = await axios.get(
-    `http://localhost:3001/api/categories/${slug}/books`
+    `http://localhost:3001/api/categories/${slug}/books?page=`
   );
 
   return {
-    props: { books: books.data.books, pagy: books.data.pagy, categoryName },
+    props: {
+      books: books.data.books,
+      pagy: books.data.pagy,
+      categoryName,
+      categorySlug: slug,
+    },
   };
 };
 
-const Category = ({ books, categoryName, pagy }) => {
+const Category = ({ books, categoryName, categorySlug, pagy }) => {
   const capitalize = (str) => {
     return `${str.slice(0, 1).toUpperCase()}${str.slice(1)}`;
   };
@@ -42,6 +48,23 @@ const Category = ({ books, categoryName, pagy }) => {
             </Link>
           );
         })}
+      </div>
+
+      <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
+        <div className="w-1/2">
+          <PageNavButton
+            btnText="Previous page"
+            url={pagy.prev_url}
+            categorySlug={categorySlug}
+          />
+        </div>
+        <div className="w-1/2">
+          <PageNavButton
+            btnText="Next page"
+            url={pagy.next_url}
+            categorySlug={categorySlug}
+          />
+        </div>
       </div>
     </div>
   );
