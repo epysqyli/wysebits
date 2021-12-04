@@ -44,7 +44,7 @@ const Actions = ({ userState }) => {
           <div className="mx-auto my-12">
             <HomepageButton
               text="Saved book insights"
-              href="/users/actions/favorite-insights"
+              href="/users/actions/favorite-insights/1"
               bcgImg="bg-saved-tiles"
             />
           </div>

@@ -1,8 +1,9 @@
-import WelcomeTop from "../../../components/users/WelcomeTop";
-import NoAccess from "../../../components/users/NoAccess";
-import NoItem from "../../../components/users/NoItem";
-import TileEntry from "../../../components/books/TileEntry";
-import SearchInput from "../../../components/navigation/SearchInput";
+import WelcomeTop from "../../../../components/users/WelcomeTop";
+import NoAccess from "../../../../components/users/NoAccess";
+import NoItem from "../../../../components/users/NoItem";
+import TileEntry from "../../../../components/books/TileEntry";
+import SearchInput from "../../../../components/navigation/SearchInput";
+import PageNavButton from "../../../../components/navigation/PageNavButton";
 import axios from "axios";
 
 export const getServerSideProps = async (context) => {
@@ -13,13 +14,18 @@ export const getServerSideProps = async (context) => {
       headers: { cookie: context.req.headers.cookie },
     });
 
+    const pageNum = context.query.page;
+
     const favTileEntries = await axios({
       method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/fav_tile_entries`,
+      url: `http://localhost:3001/api/users/${userResp.data.user.id}/fav_tile_entries?page=${pageNum}`,
       headers: { cookie: context.req.headers.cookie },
     });
     return {
-      props: { insights: favTileEntries.data },
+      props: {
+        insights: favTileEntries.data.tile_entries,
+        pagy: favTileEntries.data.pagy,
+      },
     };
   } catch (error) {
     return {
@@ -30,7 +36,7 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-const FavoriteInsights = ({ userState, insights }) => {
+const FavoriteInsights = ({ userState, insights, pagy }) => {
   if (userState.isLogged) {
     if (insights.length == 0) {
       return (
@@ -65,6 +71,15 @@ const FavoriteInsights = ({ userState, insights }) => {
               </div>
             );
           })}
+
+          <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
+            <div className="w-1/2">
+              <PageNavButton btnText="Previous page" url={pagy.prev_url} />
+            </div>
+            <div className="w-1/2">
+              <PageNavButton btnText="Next page" url={pagy.next_url} />
+            </div>
+          </div>
         </div>
       );
     }
