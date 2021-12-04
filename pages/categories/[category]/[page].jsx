@@ -1,15 +1,16 @@
 import slugify from "slugify";
 import axios from "axios";
-import BookCard from "../../components/books/BookCard";
+import BookCard from "../../../components/books/BookCard";
 import Link from "next/link";
-import PageNavButton from "../../components/navigation/PageNavButton";
+import PageNavButton from "../../../components/navigation/PageNavButton";
 
 export const getServerSideProps = async (context) => {
   const slug = context.query.category;
+  const pageNum = context.query.page;
   const categoryName = slug.split("-").join(" ");
 
   const books = await axios.get(
-    `http://localhost:3001/api/categories/${slug}/books?page=`
+    `http://localhost:3001/api/categories/${slug}/books?page=${pageNum}`
   );
 
   return {
