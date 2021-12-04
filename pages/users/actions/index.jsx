@@ -29,7 +29,7 @@ const Actions = ({ userState }) => {
             <HomepageButton
               text="Manage your contributions"
               bcgImg="bg-check-book-tiles"
-              href="/users/book-tiles/"
+              href="/users/book-tiles/1"
             />
           </div>
 

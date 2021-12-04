@@ -4,7 +4,7 @@ import WelcomeTop from "../../../components/users/WelcomeTop";
 import NoAccess from "../../../components/users/NoAccess";
 import NoItem from "../../../components/users/NoItem";
 import SearchInput from "../../../components/navigation/SearchInput";
-import { useEffect } from "react";
+import PageNavButton from "../../../components/navigation/PageNavButton";
 
 export const getServerSideProps = async (context) => {
   try {
@@ -14,15 +14,17 @@ export const getServerSideProps = async (context) => {
       headers: { cookie: context.req.headers.cookie },
     });
 
+    const pageNum = context.query.page;
+
     const bookTiles = await axios({
       method: "get",
-      url: `http://localhost:3001/api/users/${resp.data.user.id}/book_tiles`,
+      url: `http://localhost:3001/api/users/${resp.data.user.id}/book_tiles?page=${pageNum}`,
     });
 
     return {
       props: {
         bookTiles: bookTiles.data.tiles,
-        allData: bookTiles.data,
+        pagy: bookTiles.data.pagy,
       },
     };
   } catch (error) {
@@ -32,11 +34,7 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-const UserBookTiles = ({ bookTiles, allData, userState }) => {
-  useEffect(() => {
-    console.log(allData);
-  }, []);
-
+const UserBookTiles = ({ bookTiles, pagy, userState }) => {
   if (userState.isLogged) {
     if (bookTiles.length == 0) {
       return (
@@ -81,6 +79,20 @@ const UserBookTiles = ({ bookTiles, allData, userState }) => {
                 </div>
               );
             })}
+          </div>
+          <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
+            <div className="w-1/2">
+              <PageNavButton
+                btnText="Previous page"
+                url={pagy.prev_url}
+              />
+            </div>
+            <div className="w-1/2">
+              <PageNavButton
+                btnText="Next page"
+                url={pagy.next_url}
+              />
+            </div>
           </div>
         </div>
       );
