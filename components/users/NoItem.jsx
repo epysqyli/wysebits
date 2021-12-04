@@ -1,6 +1,6 @@
 import { AlertCircle } from "react-feather";
 
-const NoItem = ({ itemType }) => {
+const NoItem = ({ message }) => {
   return (
     <div>
       <div className="flex justify-center items-center gap-x-5 my-20">
@@ -9,7 +9,7 @@ const NoItem = ({ itemType }) => {
           strokeWidth={1.5}
           className="bg-gray-200 rounded-3xl"
         />
-        <div className="text-lg">You have no {itemType} yet!</div>
+        <div className="text-lg">{message}</div>
       </div>
     </div>
   );

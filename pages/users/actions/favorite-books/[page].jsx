@@ -49,7 +49,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
         <div>
           <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
           <div className="w-4/5 mx-auto">
-            <NoItem itemType="favorite books" />
+            <NoItem message="You have no favorite books yet" />
             <div className="border px-5 py-3 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
               <div>
                 You can add books to your favorite ones simply by hitting the
@@ -67,32 +67,35 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
         </div>
       );
     } else {
-    }
-    return (
-      <div>
-        <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
-        <div className="mt-10 w-4/5 mx-auto">
-          {books.map((book) => {
-            return (
-              <Link href={`/books/${slug(book.title, book.id)}`} key={book.id}>
-                <div className="border rounded-md my-10 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 animate-show-up cursor-pointer">
-                  <BookCard bookData={book} />
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+      return (
+        <div>
+          <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
+          <div className="mt-10 w-4/5 mx-auto">
+            {books.map((book) => {
+              return (
+                <Link
+                  href={`/books/${slug(book.title, book.id)}`}
+                  key={book.id}
+                >
+                  <div className="border rounded-md my-10 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 animate-show-up cursor-pointer">
+                    <BookCard bookData={book} />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
 
-        <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
-          <div className="w-1/2">
-            <PageNavButton btnText="Previous page" url={pagy.prev_url} />
-          </div>
-          <div className="w-1/2">
-            <PageNavButton btnText="Next page" url={pagy.next_url} />
+          <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
+            <div className="w-1/2">
+              <PageNavButton btnText="Previous page" url={pagy.prev_url} />
+            </div>
+            <div className="w-1/2">
+              <PageNavButton btnText="Next page" url={pagy.next_url} />
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   } else {
     return <NoAccess />;
   }

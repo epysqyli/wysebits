@@ -43,7 +43,7 @@ const FavoriteInsights = ({ userState, insights, pagy }) => {
         <div>
           <WelcomeTop text="Your favorite insights" bcgImg="bg-saved-tiles" />
           <div className="w-4/5 mx-auto">
-            <NoItem itemType="favorite insights" />
+            <NoItem message="You have no favorite insights yet" />
             <div className="border px-5 py-3 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
               <div>
                 You can add insights to your favorite ones simply by hitting the

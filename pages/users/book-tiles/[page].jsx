@@ -44,7 +44,7 @@ const UserBookTiles = ({ bookTiles, pagy, userState }) => {
             bcgImg="bg-check-book-tiles"
           />
           <div className="w-4/5 mx-auto">
-            <NoItem itemType="contributions" />
+            <NoItem message="You have no contributions yet" />
             <div className="border px-5 py-3 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
               <div>
                 Start contributing now by choosing the first book for which you
@@ -82,16 +82,10 @@ const UserBookTiles = ({ bookTiles, pagy, userState }) => {
           </div>
           <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
             <div className="w-1/2">
-              <PageNavButton
-                btnText="Previous page"
-                url={pagy.prev_url}
-              />
+              <PageNavButton btnText="Previous page" url={pagy.prev_url} />
             </div>
             <div className="w-1/2">
-              <PageNavButton
-                btnText="Next page"
-                url={pagy.next_url}
-              />
+              <PageNavButton btnText="Next page" url={pagy.next_url} />
             </div>
           </div>
         </div>
