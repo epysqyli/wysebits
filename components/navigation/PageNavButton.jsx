@@ -5,7 +5,7 @@ const PageNavButton = ({ btnText, url, categorySlug }) => {
   const pageNum = url.split("?page=")[1] || "";
 
   return (
-    <Link href={`/categories/${categorySlug}`}>
+    <Link href={`/categories/${categorySlug}/${pageNum}`}>
       <div className="py-2 text-center rounded border shadow">{btnText}</div>
     </Link>
   );
