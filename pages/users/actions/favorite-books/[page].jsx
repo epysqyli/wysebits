@@ -1,11 +1,12 @@
 import axios from "axios";
 import slugify from "slugify";
 import Link from "next/link";
-import BookCard from "../../../components/books/BookCard";
-import WelcomeTop from "../../../components/users/WelcomeTop";
-import NoAccess from "../../../components/users/NoAccess";
-import NoItem from "../../../components/users/NoItem";
-import SearchInput from "../../../components/navigation/SearchInput";
+import BookCard from "../../../../components/books/BookCard";
+import WelcomeTop from "../../../../components/users/WelcomeTop";
+import NoAccess from "../../../../components/users/NoAccess";
+import NoItem from "../../../../components/users/NoItem";
+import SearchInput from "../../../../components/navigation/SearchInput";
+import PageNavButton from "../../../../components/navigation/PageNavButton";
 
 export const getServerSideProps = async (context) => {
   try {
@@ -24,9 +25,9 @@ export const getServerSideProps = async (context) => {
     });
 
     return {
-      props: { 
+      props: {
         books: booksResp.data.books,
-        pagy: booksResp.data.pagy
+        pagy: booksResp.data.pagy,
       },
     };
   } catch (error) {
@@ -80,6 +81,15 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
               </Link>
             );
           })}
+        </div>
+
+        <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
+          <div className="w-1/2">
+            <PageNavButton btnText="Previous page" url={pagy.prev_url} />
+          </div>
+          <div className="w-1/2">
+            <PageNavButton btnText="Next page" url={pagy.next_url} />
+          </div>
         </div>
       </div>
     );

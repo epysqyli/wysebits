@@ -37,7 +37,7 @@ const Actions = ({ userState }) => {
             <HomepageButton
               text="Favorite books"
               bcgImg="bg-liked-books"
-              href="/users/actions/favorite-books"
+              href="/users/actions/favorite-books/1"
             />
           </div>
 
