@@ -32,11 +32,11 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-const Book = ({ entries, title, book }) => {
+const Book = ({ entries, title, book, userState }) => {
   if (entries) {
     return (
       <div className="pb-20">
-        <CardBcg bookData={book} />
+        <CardBcg bookData={book} userId={userState.user.id} />
         <div className="w-5/6 mx-auto mt-20">
           {entries.map((entry) => {
             return (
@@ -51,7 +51,7 @@ const Book = ({ entries, title, book }) => {
   } else {
     return (
       <div className="pb-20">
-        <CardBcg bookData={book} />
+        <CardBcg bookData={book} userId={userState.user.id} />
         <div className="w-4/5 mx-auto">
           <div className="flex justify-between items-center my-20 px-3">
             <Info
