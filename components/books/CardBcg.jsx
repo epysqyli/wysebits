@@ -1,4 +1,4 @@
-import { Heart } from "react-feather";
+import { Star, Delete } from "react-feather";
 import BookCard from "./BookCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -44,26 +44,50 @@ const CardBcg = ({ bookData, userId, favBooks }) => {
 
   useEffect(() => updateIsFav(), [favs]);
 
-  return (
-    <div className="relative py-5">
-      <img
-        src={bcgImage()}
-        className="absolute top-0 left-1/2 -translate-x-1/2 blur-sm backdrop-brightness-50 grayscale-50 contrast-50 max-h-full w-full object-cover"
-      />
+  if (userId) {
+    return (
+      <div className="relative py-5">
+        <img
+          src={bcgImage()}
+          className="absolute top-0 left-1/2 -translate-x-1/2 blur-sm backdrop-brightness-50 grayscale-50 contrast-50 max-h-full w-full object-cover"
+        />
 
-      <div className="w-4/5 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10">
-        <BookCard bookData={bookData} />
-      </div>
+        <div className="w-4/5 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10">
+          <BookCard bookData={bookData} />
+        </div>
 
-      <div
-        className="w-4/5 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10 py-2 my-5 flex items-center justify-center gap-x-4 cursor-pointer  hover:backdrop-brightness-50 active:scale-105 transition-transform"
-        onClick={isFav ? removeFromFavBooks : addToFavBooks}
-      >
-        {isFav ? <div>Remove from favorites</div> : <div>Add to favorites</div>}
-        <Heart strokeWidth={1.5} size={20} />
+        <div
+          className="w-4/5 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10 py-2 my-5 flex items-center justify-center gap-x-4 cursor-pointer  hover:backdrop-brightness-50 active:scale-105 transition-transform"
+          onClick={isFav ? removeFromFavBooks : addToFavBooks}
+        >
+          {isFav ? (
+            <>
+              <div>Remove from favorites</div>
+              <Delete strokeWidth={1.5} size={20} />
+            </>
+          ) : (
+            <>
+              <div>Add to favorites</div>
+              <Star strokeWidth={1.5} size={20} />
+            </>
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className="relative py-5">
+        <img
+          src={bcgImage()}
+          className="absolute top-0 left-1/2 -translate-x-1/2 blur-sm backdrop-brightness-50 grayscale-50 contrast-50 max-h-full w-full object-cover"
+        />
+
+        <div className="w-4/5 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10">
+          <BookCard bookData={bookData} />
+        </div>
+      </div>
+    );
+  }
 };
 
 export default CardBcg;

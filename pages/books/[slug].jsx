@@ -14,39 +14,61 @@ export const getServerSideProps = async (context) => {
     `http://localhost:3001/api/books/${id}/tile_entries`
   );
 
-  const userResp = await axios({
-    method: "get",
-    url: "http://localhost:3001/api/logged_in",
-    headers: { cookie: context.req.headers.cookie },
-  });
-
-  const favBooks = await axios({
-    method: "get",
-    url: `http://localhost:3001/api/users/${userResp.data.user.id}/fav_books`,
-    headers: { cookie: context.req.headers.cookie },
-  });
-
   const title = slug.slice(0, slug.length - 1).join(" ");
   const capTitle = title.slice(0, 1).toUpperCase() + title.slice(1);
 
-  if (entries.data.length != 0) {
-    return {
-      props: {
-        entries: entries.data[0],
-        title: capTitle,
-        book: book.data.data,
-        favBooks: favBooks.data.books,
-      },
-    };
-  } else {
-    return {
-      props: {
-        entries: false,
-        title: capTitle,
-        book: book.data.data,
-        favBooks: favBooks.data.books,
-      },
-    };
+  try {
+    const userResp = await axios({
+      method: "get",
+      url: "http://localhost:3001/api/logged_in",
+      headers: { cookie: context.req.headers.cookie },
+    });
+
+    const favBooks = await axios({
+      method: "get",
+      url: `http://localhost:3001/api/users/${userResp.data.user.id}/fav_books`,
+      headers: { cookie: context.req.headers.cookie },
+    });
+
+    if (entries.data.length != 0) {
+      return {
+        props: {
+          entries: entries.data[0],
+          title: capTitle,
+          book: book.data.data,
+          favBooks: favBooks.data.books,
+        },
+      };
+    } else {
+      return {
+        props: {
+          entries: false,
+          title: capTitle,
+          book: book.data.data,
+          favBooks: favBooks.data.books,
+        },
+      };
+    }
+  } catch (error) {
+    if (entries.data.length != 0) {
+      return {
+        props: {
+          entries: entries.data[0],
+          title: capTitle,
+          book: book.data.data,
+          favBooks: [],
+        },
+      };
+    } else {
+      return {
+        props: {
+          entries: false,
+          title: capTitle,
+          book: book.data.data,
+          favBooks: [],
+        },
+      };
+    }
   }
 };
 
