@@ -64,7 +64,7 @@ const BookSearchResults = ({ searchResults }) => {
                   destPage={`/books/${slug(
                     book._source.title,
                     book._source.id
-                  )}`}
+                  )}/1`}
                   key={book._id}
                 />
               );

@@ -68,7 +68,7 @@ const CardBcg = ({ bookData, userId, favBooks }) => {
           ) : (
             <>
               <div className="text-sm">Add to favorites</div>
-              <Star strokeWidth={1.5} size={20} />
+              <Star strokeWidth={1.5} size={20} fill="white" />
             </>
           )}
         </div>

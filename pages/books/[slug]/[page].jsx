@@ -1,18 +1,20 @@
 import axios from "axios";
 import { FilePlus } from "react-feather";
-import TileEntry from "../../components/books/TileEntry";
-import CardBcg from "../../components/books/CardBcg";
+import TileEntry from "../../../components/books/TileEntry";
+import CardBcg from "../../../components/books/CardBcg";
+import NoItem from "../../../components/users/NoItem";
+import PageNavButton from "../../../components/navigation/PageNavButton";
 import Link from "next/dist/client/link";
-import NoItem from "../../components/users/NoItem";
 
 export const getServerSideProps = async (context) => {
   const slug = context.query.slug.split("-");
   const id = slug[slug.length - 1];
+  const pageNum = context.query.page;
 
   const book = await axios(`http://localhost:3001/api/books/${id}`);
 
   const entries = await axios(
-    `http://localhost:3001/api/books/${id}/tile_entries`
+    `http://localhost:3001/api/books/${id}/tile_entries?page=${pageNum}`
   );
 
   const title = slug.slice(0, slug.length - 1).join(" ");
@@ -31,13 +33,15 @@ export const getServerSideProps = async (context) => {
       headers: { cookie: context.req.headers.cookie },
     });
 
-    if (entries.data.length != 0) {
+    if (entries.data.entries[0].length != 0) {
       return {
         props: {
-          entries: entries.data[0],
+          entries: entries.data.entries[0],
           title: capTitle,
           book: book.data.data,
           favBooks: favBooks.data.books,
+          pagy: entries.data.pagy,
+          slug: slug,
         },
       };
     } else {
@@ -47,17 +51,19 @@ export const getServerSideProps = async (context) => {
           title: capTitle,
           book: book.data.data,
           favBooks: favBooks.data.books,
+          slug: slug,
         },
       };
     }
   } catch (error) {
-    if (entries.data.length != 0) {
+    if (entries.data.entries[0].length != 0) {
       return {
         props: {
-          entries: entries.data[0],
+          entries: entries.data.entries[0],
           title: capTitle,
           book: book.data.data,
           favBooks: [],
+          slug: slug,
         },
       };
     } else {
@@ -67,13 +73,16 @@ export const getServerSideProps = async (context) => {
           title: capTitle,
           book: book.data.data,
           favBooks: [],
+          slug: slug,
         },
       };
     }
   }
 };
 
-const Book = ({ entries, title, book, userState, favBooks }) => {
+const Book = ({ entries, title, book, userState, favBooks, slug, pagy }) => {
+  const clientUrl = slug;
+
   if (entries) {
     return (
       <div className="pb-20">
@@ -90,6 +99,22 @@ const Book = ({ entries, title, book, userState, favBooks }) => {
               </div>
             );
           })}
+        </div>
+        <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
+          <div className="w-1/2">
+            <PageNavButton
+              btnText="Previous page"
+              url={pagy.prev_url}
+              clientUrl={clientUrl}
+            />
+          </div>
+          <div className="w-1/2">
+            <PageNavButton
+              btnText="Next page"
+              url={pagy.next_url}
+              clientUrl={clientUrl}
+            />
+          </div>
         </div>
       </div>
     );
