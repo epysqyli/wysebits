@@ -1,6 +1,6 @@
 import Link from "next/dist/client/link";
 
-const PageNavButton = ({ btnText, url, categorySlug }) => {
+const PageNavButton = ({ btnText, url, clientUrl }) => {
   const pageNum = url.split("?page=")[1] || "";
 
   if (pageNum == "") {
@@ -11,7 +11,7 @@ const PageNavButton = ({ btnText, url, categorySlug }) => {
     );
   } else {
     return (
-      <Link href={`/categories/${categorySlug}/${pageNum}`}>
+      <Link href={`${clientUrl}/${pageNum}`}>
         <div className="py-2 text-center rounded border shadow cursor-pointer hover:bg-gray-200 active:bg-gray-300 active:text-white transition-colors">
           {btnText}
         </div>

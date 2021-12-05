@@ -26,6 +26,8 @@ export const getServerSideProps = async (context) => {
 };
 
 const Category = ({ books, categoryName, categorySlug, pagy }) => {
+  const clientUrl = `/categories/${categorySlug}`;
+
   const capitalize = (str) => {
     return `${str.slice(0, 1).toUpperCase()}${str.slice(1)}`;
   };
@@ -59,14 +61,14 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
             <PageNavButton
               btnText="Previous page"
               url={pagy.prev_url}
-              categorySlug={categorySlug}
+              clientUrl={clientUrl}
             />
           </div>
           <div className="w-1/2">
             <PageNavButton
               btnText="Next page"
               url={pagy.next_url}
-              categorySlug={categorySlug}
+              clientUrl={clientUrl}
             />
           </div>
         </div>
