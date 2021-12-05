@@ -57,17 +57,17 @@ const CardBcg = ({ bookData, userId, favBooks }) => {
         </div>
 
         <div
-          className="w-4/5 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10 py-2 my-5 flex items-center justify-center gap-x-4 cursor-pointer  hover:backdrop-brightness-50 active:scale-105 transition-transform"
+          className="w-3/5 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10 py-2 mt-5 flex items-center justify-center gap-x-4 cursor-pointer  hover:backdrop-brightness-50 active:scale-105 transition-transform"
           onClick={isFav ? removeFromFavBooks : addToFavBooks}
         >
           {isFav ? (
             <>
-              <div>Remove from favorites</div>
+              <div className="text-sm">Remove from favorites</div>
               <Delete strokeWidth={1.5} size={20} />
             </>
           ) : (
             <>
-              <div>Add to favorites</div>
+              <div className="text-sm">Add to favorites</div>
               <Star strokeWidth={1.5} size={20} />
             </>
           )}
