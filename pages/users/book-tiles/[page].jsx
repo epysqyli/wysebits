@@ -35,6 +35,8 @@ export const getServerSideProps = async (context) => {
 };
 
 const UserBookTiles = ({ bookTiles, pagy, userState }) => {
+  const clientUrl = "/users/book-tiles";
+
   if (userState.isLogged) {
     if (bookTiles.length == 0) {
       return (
@@ -82,10 +84,18 @@ const UserBookTiles = ({ bookTiles, pagy, userState }) => {
           </div>
           <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
             <div className="w-1/2">
-              <PageNavButton btnText="Previous page" url={pagy.prev_url} />
+              <PageNavButton
+                btnText="Previous page"
+                clientUrl={clientUrl}
+                url={pagy.prev_url}
+              />
             </div>
             <div className="w-1/2">
-              <PageNavButton btnText="Next page" url={pagy.next_url} />
+              <PageNavButton
+                btnText="Next page"
+                clientUrl={clientUrl}
+                url={pagy.next_url}
+              />
             </div>
           </div>
         </div>
