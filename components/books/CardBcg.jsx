@@ -21,7 +21,10 @@ const CardBcg = ({ bookData, userId, favBooks }) => {
         `http://localhost:3001/api/users/${userId}/fav_books/${bookData.id}`,
         { withCredentials: true }
       )
-      .then((resp) => updateFavs())
+      .then((resp) => {
+        console.log(resp);
+        updateFavs(resp.data.fav_books);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -32,17 +35,15 @@ const CardBcg = ({ bookData, userId, favBooks }) => {
         {},
         { withCredentials: true }
       )
-      .then((resp) => updateFavs())
+      .then((resp) => {
+        console.log(resp);
+        updateFavs(resp.data.fav_books);
+      })
       .catch((err) => console.log(err));
   };
 
-  const updateFavs = () => {
-    axios
-      .get(`http://localhost:3001/api/users/${userId}/fav_books`, {
-        withCredentials: true,
-      })
-      .then((resp) => setFavs(resp.data.books))
-      .catch((err) => console.log(err));
+  const updateFavs = (newFavBooks) => {
+    setFavs(newFavBooks);
   };
 
   const updateIsFav = () => {
