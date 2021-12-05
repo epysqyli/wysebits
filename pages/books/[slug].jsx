@@ -40,7 +40,12 @@ export const getServerSideProps = async (context) => {
     };
   } else {
     return {
-      props: { entries: false, title: capTitle, book: book.data.data },
+      props: {
+        entries: false,
+        title: capTitle,
+        book: book.data.data,
+        favBooks: favBooks.data.books,
+      },
     };
   }
 };
@@ -49,7 +54,11 @@ const Book = ({ entries, title, book, userState, favBooks }) => {
   if (entries) {
     return (
       <div className="pb-20">
-        <CardBcg bookData={book} userId={userState.user.id} favBooks={favBooks} />
+        <CardBcg
+          bookData={book}
+          userId={userState.user.id}
+          favBooks={favBooks}
+        />
         <div className="w-5/6 mx-auto mt-20">
           {entries.map((entry) => {
             return (
@@ -64,7 +73,11 @@ const Book = ({ entries, title, book, userState, favBooks }) => {
   } else {
     return (
       <div className="pb-20">
-        <CardBcg bookData={book} userId={userState.user.id} favBooks={favBooks} />
+        <CardBcg
+          bookData={book}
+          userId={userState.user.id}
+          favBooks={favBooks}
+        />
         <div className="w-4/5 mx-auto">
           <div className="flex justify-between items-center my-20 px-3">
             <Info

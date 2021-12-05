@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 const CardBcg = ({ bookData, userId, favBooks }) => {
   const [favs, setFavs] = useState(favBooks);
   const [isFav, setIsFav] = useState(
-    favs.some((book) => bookData.id == book.id)
+    favs != null ? favs.some((book) => bookData.id == book.id) : false
   );
 
   const bcgImage = () => {
@@ -21,10 +21,7 @@ const CardBcg = ({ bookData, userId, favBooks }) => {
         `http://localhost:3001/api/users/${userId}/fav_books/${bookData.id}`,
         { withCredentials: true }
       )
-      .then((resp) => {
-        console.log(resp);
-        updateFavs();
-      })
+      .then((resp) => updateFavs())
       .catch((err) => console.log(err));
   };
 
@@ -35,10 +32,7 @@ const CardBcg = ({ bookData, userId, favBooks }) => {
         {},
         { withCredentials: true }
       )
-      .then((resp) => {
-        console.log(resp);
-        updateFavs();
-      })
+      .then((resp) => updateFavs())
       .catch((err) => console.log(err));
   };
 
@@ -47,18 +41,15 @@ const CardBcg = ({ bookData, userId, favBooks }) => {
       .get(`http://localhost:3001/api/users/${userId}/fav_books`, {
         withCredentials: true,
       })
-      .then((resp) => {
-        setFavs(resp.data.books);
-      })
+      .then((resp) => setFavs(resp.data.books))
       .catch((err) => console.log(err));
   };
 
-  const updateIsFav = () =>
-    setIsFav(favs.some((book) => bookData.id == book.id));
+  const updateIsFav = () => {
+    if (favs != null) setIsFav(favs.some((book) => bookData.id == book.id));
+  };
 
-  useEffect(() => {
-    updateIsFav();
-  }, [favs]);
+  useEffect(() => updateIsFav(), [favs]);
 
   return (
     <div className="relative py-5">
