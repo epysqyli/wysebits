@@ -1,7 +1,7 @@
 import Button from "../../components/navigation/Button";
 import Link from "next/dist/client/link";
 
-const About = () => {
+const About = ({ userState }) => {
   return (
     <div className="animate-show-up">
       <div className="h-60 mx-auto bg-discovery bg-center">
@@ -63,11 +63,13 @@ const About = () => {
             it's not a place for mindless scrolling.
           </p>
 
-          <Link href="/registrations/signup">
-            <a className="block mt-10">
-              <Button text="Sign up now and start contributing your insights to the community!" />
-            </a>
-          </Link>
+          {userState.isLogged ? null : (
+            <Link href="/registrations/signup">
+              <a className="block mt-10">
+                <Button text="Sign up now and start contributing your insights to the community!" />
+              </a>
+            </Link>
+          )}
         </div>
       </div>
     </div>
