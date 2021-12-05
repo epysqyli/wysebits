@@ -56,7 +56,7 @@ export const getServerSideProps = async (context) => {
       };
     }
   } catch (error) {
-    if (entries.data.entries[0].length != 0) {
+    if (entries.data.entries[0] != null) {
       return {
         props: {
           entries: entries.data.entries[0],
@@ -85,7 +85,7 @@ const Book = ({ entries, title, book, userState, favBooks, slug, pagy }) => {
 
   if (entries) {
     return (
-      <div className="pb-20">
+      <div>
         <CardBcg
           bookData={book}
           userId={userState.user.id}

@@ -76,7 +76,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
             {books.map((book) => {
               return (
                 <Link
-                  href={`/books/${slug(book.title, book.id)}`}
+                  href={`/books/${slug(book.title, book.id)}/1`}
                   key={book.id}
                 >
                   <div className="border rounded-md my-10 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 animate-show-up cursor-pointer">
