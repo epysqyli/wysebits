@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import BookCardBackground from "../../../../components/books/BookCardBackground";
+import CardBcgActions from "../../../../components/books/CardBcgActions";
 import EditBookDetails from "../../../../components/users/EditBookDetails";
 import { useRouter } from "next/dist/client/router";
 import NoAccess from "../../../../components/users/NoAccess";
@@ -101,7 +101,7 @@ const TileCreation = ({ bookData, userState, categories }) => {
         ) : null}
 
         <div className="relative">
-          <BookCardBackground
+          <CardBcgActions
             bookData={bookData}
             bcgImage={bcgImage}
             showEditForm={showEditForm}

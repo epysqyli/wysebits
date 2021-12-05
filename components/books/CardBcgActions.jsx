@@ -1,6 +1,6 @@
 import BookCard from "./BookCard";
 
-const BookCardBackground = ({ bookData, showEditForm, bcgImage }) => {
+const CardBcgActions = ({ bookData, showEditForm, bcgImage }) => {
   return (
     <div className="relative py-6">
       <img
@@ -24,4 +24,4 @@ const BookCardBackground = ({ bookData, showEditForm, bcgImage }) => {
   );
 };
 
-export default BookCardBackground;
+export default CardBcgActions;

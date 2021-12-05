@@ -1,7 +1,7 @@
 import axios from "axios";
 import { FilePlus, Info } from "react-feather";
 import TileEntry from "../../components/books/TileEntry";
-import BookTitleBackground from "../../components/books/BookTitleBackground";
+import CardBcg from "../../components/books/CardBcg";
 import Link from "next/dist/client/link";
 
 export const getServerSideProps = async (context) => {
@@ -36,7 +36,7 @@ const Book = ({ entries, title, book }) => {
   if (entries) {
     return (
       <div className="pb-20">
-        <BookTitleBackground bookData={book} />
+        <CardBcg bookData={book} />
         <div className="w-5/6 mx-auto mt-20">
           {entries.map((entry) => {
             return (
@@ -51,7 +51,7 @@ const Book = ({ entries, title, book }) => {
   } else {
     return (
       <div className="pb-20">
-        <BookTitleBackground bookData={book} />
+        <CardBcg bookData={book} />
         <div className="w-4/5 mx-auto">
           <div className="flex justify-between items-center my-20 px-3">
             <Info

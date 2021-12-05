@@ -1,6 +1,6 @@
 import BookCard from "./BookCard";
 
-const BookTitleBackground = ({ bookData }) => {
+const CardBcg = ({ bookData }) => {
   const bcgImage = () => {
     const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
     const dbSrc = bookData.cover_url;
@@ -21,4 +21,4 @@ const BookTitleBackground = ({ bookData }) => {
   );
 };
 
-export default BookTitleBackground;
+export default CardBcg;
