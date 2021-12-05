@@ -63,7 +63,7 @@ const SignUp = () => {
             type="text"
             name="username"
             id="username"
-            className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow-sm focus:shadow-md"
+            className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow focus:shadow-md"
             onChange={handleChange}
             required
           />
@@ -77,7 +77,7 @@ const SignUp = () => {
             type="email"
             name="emailAddress"
             id="email"
-            className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow-sm focus:shadow-md"
+            className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow focus:shadow-md"
             onChange={handleChange}
             required
           />
@@ -91,7 +91,7 @@ const SignUp = () => {
             type="password"
             name="password"
             id="password"
-            className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow-sm focus:shadow-md"
+            className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow focus:shadow-md"
             onChange={handleChange}
             required
           />
@@ -105,7 +105,7 @@ const SignUp = () => {
             type="password"
             name="passwordConfirmation"
             id="password_confirmation"
-            className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow-sm focus:shadow-md"
+            className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow focus:shadow-md"
             onChange={handleChange}
             required
           />
@@ -113,7 +113,7 @@ const SignUp = () => {
 
         <button
           type="submit"
-          className="block mx-auto w-2/6 border rounded-lg px-5 py-2 bg-white my-10 hover:shadow-md focus:bg-gray-200 focus:shadow-md"
+          className="block mx-auto w-1/2 border rounded-lg px-5 py-2 bg-white my-10 hover:shadow-md focus:bg-gray-200 focus:shadow-md"
         >
           Let's go!
         </button>
