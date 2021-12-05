@@ -1,8 +1,9 @@
 import axios from "axios";
-import { FilePlus, Info } from "react-feather";
+import { FilePlus } from "react-feather";
 import TileEntry from "../../components/books/TileEntry";
 import CardBcg from "../../components/books/CardBcg";
 import Link from "next/dist/client/link";
+import NoItem from "../../components/users/NoItem";
 
 export const getServerSideProps = async (context) => {
   const slug = context.query.slug.split("-");
@@ -101,16 +102,7 @@ const Book = ({ entries, title, book, userState, favBooks }) => {
           favBooks={favBooks}
         />
         <div className="w-4/5 mx-auto">
-          <div className="flex justify-between items-center my-20 px-3">
-            <Info
-              size={36}
-              strokeWidth={1.5}
-              className="bg-gray-200 rounded-3xl"
-            />
-            <div className="w-4/5 mx-auto">
-              It appears as though there are no insights for this book yet ...
-            </div>
-          </div>
+          <NoItem message="It appears as though there are no insights for this book yet ..." />
           <Link href={`/users/book-tiles/create/${book.id}`}>
             <div className="border px-5 py-3 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
               Be the first and share your knowledge by adding your own insights
