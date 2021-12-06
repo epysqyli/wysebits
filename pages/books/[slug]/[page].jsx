@@ -33,10 +33,10 @@ export const getServerSideProps = async (context) => {
       headers: { cookie: context.req.headers.cookie },
     });
 
-    if (entries.data.entries[0].length != 0) {
+    if (entries.data.entrieslength != 0) {
       return {
         props: {
-          entries: entries.data.entries[0],
+          entries: entries.data.entries,
           title: capTitle,
           book: book.data.data,
           favBooks: favBooks.data.books,
@@ -57,10 +57,10 @@ export const getServerSideProps = async (context) => {
       };
     }
   } catch (error) {
-    if (entries.data.entries[0] != null) {
+    if (entries.data.entries != null) {
       return {
         props: {
-          entries: entries.data.entries[0],
+          entries: entries.data.entries,
           title: capTitle,
           book: book.data.data,
           favBooks: [],
