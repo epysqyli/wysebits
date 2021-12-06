@@ -23,5 +23,3 @@ const BookCardSlider = ({ bookData, tileEntries, bookTileId }) => {
 };
 
 export default BookCardSlider;
-
-{/* <div className="my-10 rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300"></div> */}
