@@ -13,7 +13,7 @@ const BookCardSlider = ({ bookData, tileEntries, bookTileId }) => {
 
       <div className="mx-auto">
         <Link href={`/users/book-tiles/edit/${bookTileId}`}>
-          <a className="block text-center text-sm border-t-2 border-gray-200 rounded-br-md rounded-bl-md bg-gray-100 hover:bg-gray-300 active:text-white py-2">
+          <a className="block text-center text-sm rounded-br-md rounded-bl-md bg-gray-100 hover:bg-gray-300 active:text-white py-2">
             Edit your contributions
           </a>
         </Link>
@@ -23,3 +23,5 @@ const BookCardSlider = ({ bookData, tileEntries, bookTileId }) => {
 };
 
 export default BookCardSlider;
+
+{/* <div className="my-10 rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300"></div> */}

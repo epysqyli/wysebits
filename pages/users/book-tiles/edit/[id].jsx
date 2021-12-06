@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import EditForm from "../../../../components/users/EditForm";
 import EditBookDetails from "../../../../components/users/EditBookDetails";
-import BookCardBackground from "../../../../components/books/BookCardBackground";
+import CardBcgActions from "../../../../components/books/CardBcgActions";
 import DangerButton from "../../../../components/navigation/DangerButton";
 import NoAccess from "../../../../components/users/NoAccess";
 import { useRouter } from "next/dist/client/router";
@@ -150,7 +150,7 @@ const EditBookTile = ({
         ) : null}
 
         <div className="relative">
-          <BookCardBackground
+          <CardBcgActions
             bookData={bookData}
             bcgImage={bcgImage}
             showEditForm={showEditForm}
