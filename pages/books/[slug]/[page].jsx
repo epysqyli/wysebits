@@ -34,7 +34,7 @@ export const getServerSideProps = async (context) => {
       headers: { cookie: context.req.headers.cookie },
     });
 
-    if (entries.data.entrieslength != 0) {
+    if (entries.data.entries.length != 0) {
       return {
         props: {
           entries: entries.data.entries,
