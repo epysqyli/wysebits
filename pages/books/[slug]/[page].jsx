@@ -51,6 +51,7 @@ export const getServerSideProps = async (context) => {
           title: capTitle,
           book: book.data.data,
           favBooks: favBooks.data.books,
+          pagy: entries.data.pagy,
           slug: slug,
         },
       };
@@ -63,6 +64,7 @@ export const getServerSideProps = async (context) => {
           title: capTitle,
           book: book.data.data,
           favBooks: [],
+          pagy: entries.data.pagy,
           slug: slug,
         },
       };
@@ -73,6 +75,7 @@ export const getServerSideProps = async (context) => {
           title: capTitle,
           book: book.data.data,
           favBooks: [],
+          pagy: entries.data.pagy,
           slug: slug,
         },
       };
