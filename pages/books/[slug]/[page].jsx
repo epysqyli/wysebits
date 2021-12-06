@@ -7,6 +7,7 @@ import PageNavButton from "../../../components/navigation/PageNavButton";
 import Link from "next/dist/client/link";
 
 export const getServerSideProps = async (context) => {
+  const originalSlug = context.query.slug;
   const slug = context.query.slug.split("-");
   const id = slug[slug.length - 1];
   const pageNum = context.query.page;
@@ -41,7 +42,7 @@ export const getServerSideProps = async (context) => {
           book: book.data.data,
           favBooks: favBooks.data.books,
           pagy: entries.data.pagy,
-          slug: slug,
+          originalSlug: originalSlug,
         },
       };
     } else {
@@ -52,7 +53,7 @@ export const getServerSideProps = async (context) => {
           book: book.data.data,
           favBooks: favBooks.data.books,
           pagy: entries.data.pagy,
-          slug: slug,
+          originalSlug: originalSlug,
         },
       };
     }
@@ -65,7 +66,7 @@ export const getServerSideProps = async (context) => {
           book: book.data.data,
           favBooks: [],
           pagy: entries.data.pagy,
-          slug: slug,
+          originalSlug: originalSlug,
         },
       };
     } else {
@@ -76,15 +77,15 @@ export const getServerSideProps = async (context) => {
           book: book.data.data,
           favBooks: [],
           pagy: entries.data.pagy,
-          slug: slug,
+          originalSlug: originalSlug,
         },
       };
     }
   }
 };
 
-const Book = ({ entries, title, book, userState, favBooks, slug, pagy }) => {
-  const clientUrl = slug;
+const Book = ({ entries, title, book, userState, favBooks, originalSlug, pagy }) => {
+  const clientUrl = `/books/${originalSlug}`;
 
   if (entries) {
     return (
