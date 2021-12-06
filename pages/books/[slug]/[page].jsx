@@ -7,9 +7,9 @@ import PageNavButton from "../../../components/navigation/PageNavButton";
 import Link from "next/dist/client/link";
 
 export const getServerSideProps = async (context) => {
-  const originalSlug = context.query.slug;
-  const slug = context.query.slug.split("-");
-  const id = slug[slug.length - 1];
+  const slug = context.query.slug;
+  const splitSlug = context.query.slug.split("-");
+  const id = splitSlug[splitSlug.length - 1];
   const pageNum = context.query.page;
 
   const book = await axios(`http://localhost:3001/api/books/${id}`);
@@ -18,7 +18,7 @@ export const getServerSideProps = async (context) => {
     `http://localhost:3001/api/books/${id}/tile_entries?page=${pageNum}`
   );
 
-  const title = slug.slice(0, slug.length - 1).join(" ");
+  const title = splitSlug.slice(0, splitSlug.length - 1).join(" ");
   const capTitle = title.slice(0, 1).toUpperCase() + title.slice(1);
 
   try {
@@ -42,7 +42,7 @@ export const getServerSideProps = async (context) => {
           book: book.data.data,
           favBooks: favBooks.data.books,
           pagy: entries.data.pagy,
-          originalSlug: originalSlug,
+          slug: slug,
         },
       };
     } else {
@@ -53,7 +53,7 @@ export const getServerSideProps = async (context) => {
           book: book.data.data,
           favBooks: favBooks.data.books,
           pagy: entries.data.pagy,
-          originalSlug: originalSlug,
+          slug: slug,
         },
       };
     }
@@ -66,7 +66,7 @@ export const getServerSideProps = async (context) => {
           book: book.data.data,
           favBooks: [],
           pagy: entries.data.pagy,
-          originalSlug: originalSlug,
+          slug: slug,
         },
       };
     } else {
@@ -77,15 +77,15 @@ export const getServerSideProps = async (context) => {
           book: book.data.data,
           favBooks: [],
           pagy: entries.data.pagy,
-          originalSlug: originalSlug,
+          slug: slug,
         },
       };
     }
   }
 };
 
-const Book = ({ entries, title, book, userState, favBooks, originalSlug, pagy }) => {
-  const clientUrl = `/books/${originalSlug}`;
+const Book = ({ entries, title, book, userState, favBooks, slug, pagy }) => {
+  const clientUrl = `/books/${slug}`;
 
   if (entries) {
     return (
