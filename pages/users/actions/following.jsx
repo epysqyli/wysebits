@@ -32,7 +32,7 @@ export const getServerSideProps = async (context) => {
 
 const Following = ({ following, userState }) => {
   if (userState.isLogged) {
-    if (following) {
+    if (following.length == 0) {
       return (
         <div>
           <WelcomeTop text="Users you are following" bcgImg="bg-following" />
