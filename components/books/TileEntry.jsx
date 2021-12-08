@@ -38,11 +38,16 @@ const TileEntry = ({
           <div className="flex items-center">
             {isFavInsight() ? (
               <div onClick={() => removeFromFavInsights()}>
-                <Heart size={16} fill="lightgray" />
+                <Heart
+                  size={16}
+                  fill="darkgray"
+                  color="darkgray"
+                  className="transition-all active:scale-125"
+                />
               </div>
             ) : (
               <div onClick={() => addToFavInsights()}>
-                <Heart size={16} />
+                <Heart size={16} color="darkgray" className="transition-all active:scale-125" />
               </div>
             )}
           </div>
