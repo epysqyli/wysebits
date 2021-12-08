@@ -3,7 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/dist/client/router";
 import NoAccess from "../../../../components/users/NoAccess";
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   try {
     const resp = await fetch("http://localhost:3001/api/categories");
     const categories = await resp.json();
@@ -99,7 +99,7 @@ const CreateBook = ({ categories, userState }) => {
               name="category_id"
               id="category"
               className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm"
-              defaultValue={categories[24].id}
+              defaultValue={categories.find((cat) => cat.id == 25).id}
               onChange={handleChange}
               required
             >
