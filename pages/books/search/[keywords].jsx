@@ -16,7 +16,8 @@ export const getServerSideProps = async (context) => {
 
   return {
     props: {
-      searchResults: searchResults.data,
+      searchResults: searchResults.data.results,
+      currentFrom: searchResults.data.current_from,
     },
   };
 };
