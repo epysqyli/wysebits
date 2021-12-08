@@ -3,7 +3,11 @@ import slugify from "slugify";
 import Link from "next/dist/client/link";
 import axios from "axios";
 
-const TileEntry = ({ data, showTitle, userId }) => {
+const TileEntry = ({ data, showTitle, userId, favInsights }) => {
+  const isFavInsight = () => {
+    return favInsights.some((insight) => insight.id === data.id);
+  };
+
   const entryBase = (
     <div className="shadow-md rounded-md">
       <div className="border-b-2 py-3 px-2">{data.content}</div>
@@ -25,9 +29,15 @@ const TileEntry = ({ data, showTitle, userId }) => {
           </div>
 
           <div className="flex items-center">
-            <div>
-              <Heart size={16} />
-            </div>
+            {isFavInsight() ? (
+              <div onClick={() => removeFromFavInsights()}>
+                <Heart size={16} fill="lightgray" />
+              </div>
+            ) : (
+              <div onClick={() => addToFavInsights()}>
+                <Heart size={16} />
+              </div>
+            )}
           </div>
         </div>
 

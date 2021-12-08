@@ -34,6 +34,12 @@ export const getServerSideProps = async (context) => {
       headers: { cookie: context.req.headers.cookie },
     });
 
+    const favInsights = await axios({
+      method: "get",
+      url: `http://localhost:3001/api/users/${userResp.data.user.id}/fav_tile_entries`,
+      headers: { cookie: context.req.headers.cookie },
+    });
+
     if (entries.data.entries.length != 0) {
       return {
         props: {
@@ -43,6 +49,7 @@ export const getServerSideProps = async (context) => {
           favBooks: favBooks.data.books,
           pagy: entries.data.pagy,
           slug: slug,
+          favInsights: favInsights.data.tile_entries,
         },
       };
     } else {
@@ -84,7 +91,16 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-const Book = ({ entries, title, book, userState, favBooks, slug, pagy }) => {
+const Book = ({
+  entries,
+  title,
+  book,
+  userState,
+  favBooks,
+  slug,
+  pagy,
+  favInsights,
+}) => {
   const clientUrl = `/books/${slug}`;
 
   if (entries) {
@@ -99,7 +115,11 @@ const Book = ({ entries, title, book, userState, favBooks, slug, pagy }) => {
           {entries.map((entry) => {
             return (
               <div className="my-10" key={entry.id}>
-                <TileEntry data={entry} />
+                <TileEntry
+                  data={entry}
+                  userId={userState.user.id}
+                  favInsights={favInsights}
+                />
               </div>
             );
           })}

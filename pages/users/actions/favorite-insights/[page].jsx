@@ -73,6 +73,7 @@ const FavoriteInsights = ({ userState, insights, pagy }) => {
                   data={insight}
                   showTitle={true}
                   userId={userState.user.id}
+                  favInsights={insights}
                 />
               </div>
             );
