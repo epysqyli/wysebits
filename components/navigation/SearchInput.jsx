@@ -25,7 +25,7 @@ const SearchInput = ({ pageDest, placeholder }) => {
   };
 
   const getQuery = () => {
-    return searchTerms.split(" ").join("-");
+    return searchTerms.split(" ").join("-") + "/1";
   };
 
   return (
