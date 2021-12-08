@@ -11,7 +11,7 @@ const Actions = ({ userState }) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <div className="bg-user-welcome bg-cover bg-center shadow">
+        <div className="bg-user-welcome bg-cover bg-center shadow-lg">
           <div className="bg-gray-800 bg-opacity-70 text-white text-2xl font-bold text-center py-12">
             <div>Welcome back, {userState.user.username}.</div>
             <div className="mt-2">What are you up to today?</div>
