@@ -18,6 +18,7 @@ module.exports = {
         "following": "url('/images/following.jpg')",
         "followers": "url('/images/followers.jpg')",
         "categories": "url('/images/categories.jpg')",
+        "user-welcome": "url('/images/user-welcome.jpg')",
       },
       grayscale: {
         50: "50%",
