@@ -69,7 +69,11 @@ const FavoriteInsights = ({ userState, insights, pagy }) => {
           {insights.map((insight) => {
             return (
               <div key={insight.id} className="w-4/5 mx-auto my-10">
-                <TileEntry data={insight} showTitle={true} />
+                <TileEntry
+                  data={insight}
+                  showTitle={true}
+                  userId={userState.user.id}
+                />
               </div>
             );
           })}

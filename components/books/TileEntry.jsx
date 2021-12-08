@@ -1,8 +1,9 @@
 import { ThumbsUp, ThumbsDown, Heart, ArrowUpRight } from "react-feather";
 import slugify from "slugify";
 import Link from "next/dist/client/link";
+import axios from "axios";
 
-const TileEntry = ({ data, showTitle }) => {
+const TileEntry = ({ data, showTitle, userId }) => {
   const entryBase = (
     <div className="shadow-md rounded-md">
       <div className="border-b-2 py-3 px-2">{data.content}</div>
@@ -34,6 +35,27 @@ const TileEntry = ({ data, showTitle }) => {
       </div>
     </div>
   );
+
+  const addToFavInsights = () => {
+    axios
+      .post(
+        `http://localhost:3001/api/users/${userId}/fav_tile_entries/${data.id}`,
+        {},
+        { withCredentials: true }
+      )
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
+  const removeFromFavInsights = () => {
+    axios
+      .delete(
+        `http://localhost:3001/api/users/${userId}/fav_tile_entries/${data.id}`,
+        { withCredentials: true }
+      )
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
   if (!showTitle) {
     return (
