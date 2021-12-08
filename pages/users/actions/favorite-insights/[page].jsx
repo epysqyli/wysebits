@@ -1,10 +1,11 @@
+import axios from "axios";
+import { useState } from "react";
 import WelcomeTop from "../../../../components/users/WelcomeTop";
 import NoAccess from "../../../../components/users/NoAccess";
 import NoItem from "../../../../components/users/NoItem";
 import TileEntry from "../../../../components/books/TileEntry";
 import SearchInput from "../../../../components/navigation/SearchInput";
 import PageNavButton from "../../../../components/navigation/PageNavButton";
-import axios from "axios";
 
 export const getServerSideProps = async (context) => {
   try {
@@ -23,20 +24,31 @@ export const getServerSideProps = async (context) => {
     });
     return {
       props: {
-        insights: favTileEntries.data.tile_entries,
+        favInsights: favTileEntries.data.tile_entries,
         pagy: favTileEntries.data.pagy,
       },
     };
   } catch (error) {
     return {
       props: {
-        insights: null,
+        favInsights: null,
       },
     };
   }
 };
 
-const FavoriteInsights = ({ userState, insights, pagy }) => {
+const FavoriteInsights = ({ userState, favInsights, pagy }) => {
+  const [insights, setInsights] = useState(favInsights);
+
+  const removeInsightFromState = (insight) => {
+    const newInsights = insights.filter((el) => el.id !== insight.id);
+    setInsights(newInsights);
+  };
+
+  const addInsightToState = (insight) => {
+    setInsights([...insights, insight]);
+  };
+
   const clientUrl = "/users/actions/favorite-insights";
 
   if (userState.isLogged) {
@@ -73,7 +85,9 @@ const FavoriteInsights = ({ userState, insights, pagy }) => {
                   data={insight}
                   showTitle={true}
                   userId={userState.user.id}
-                  favInsights={insights}
+                  insights={insights}
+                  addInsightToState={addInsightToState}
+                  removeInsightFromState={removeInsightFromState}
                 />
               </div>
             );
