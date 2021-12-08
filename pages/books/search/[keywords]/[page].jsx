@@ -1,17 +1,19 @@
 import axios from "axios";
+import { useState, useEffect } from "react";
 import { PlusCircle } from "react-feather";
+import slugify from "slugify";
 import Link from "next/link";
 import BookSearchTile from "../../../../components/books/BookSearchTile";
-import { useState, useEffect } from "react";
-import slugify from "slugify";
+import NavButtonElastic from "../../../../components/navigation/NavButtonElastic";
 
 export const getServerSideProps = async (context) => {
-  const keywords = context.query.keywords.split("-").join(" ");
+  const keywords = context.query.keywords;
+  const splitKeywords = context.query.keywords.split("-").join(" ");
   const pageNum = context.query.page;
 
   const searchResults = await axios({
     method: "post",
-    data: { keywords: JSON.stringify(keywords), page_num: pageNum },
+    data: { keywords: JSON.stringify(splitKeywords), page_num: pageNum },
     url: "http://localhost:3001/api/search/books",
   });
 
@@ -19,12 +21,15 @@ export const getServerSideProps = async (context) => {
     props: {
       searchResults: searchResults.data.results,
       pageNum: searchResults.data.page_num,
+      keywords: keywords,
     },
   };
 };
 
-const BookSearchResults = ({ searchResults }) => {
+const BookSearchResults = ({ searchResults, keywords, pageNum }) => {
   const [btnVisible, setBtnVisible] = useState(false);
+
+  const clientUrl = `/books/search/${keywords}`;
 
   const showBtn = () => {
     setBtnVisible(true);
@@ -74,6 +79,23 @@ const BookSearchResults = ({ searchResults }) => {
           : null}
 
         {btnVisible ? createBookBtn : null}
+      </div>
+
+      <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
+        <div className="w-1/2">
+          <NavButtonElastic
+            btnText="Previous page"
+            clientUrl={clientUrl}
+            pageNum={pageNum - 1}
+          />
+        </div>
+        <div className="w-1/2">
+          <NavButtonElastic
+            btnText="Next page"
+            clientUrl={clientUrl}
+            pageNum={pageNum + 1}
+          />
+        </div>
       </div>
     </div>
   );
