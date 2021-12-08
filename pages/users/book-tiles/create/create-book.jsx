@@ -99,7 +99,7 @@ const CreateBook = ({ categories, userState }) => {
               name="category_id"
               id="category"
               className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm"
-              defaultValue={categories.find((cat) => cat.id == 25).id}
+              defaultValue={categories.find((cat) => cat.id === 25).id}
               onChange={handleChange}
               required
             >
