@@ -3,9 +3,16 @@ import slugify from "slugify";
 import Link from "next/dist/client/link";
 import axios from "axios";
 
-const TileEntry = ({ data, showTitle, userId, favInsights }) => {
+const TileEntry = ({
+  data,
+  showTitle,
+  userId,
+  insights,
+  addInsightToState,
+  removeInsightFromState,
+}) => {
   const isFavInsight = () => {
-    return favInsights.some((insight) => insight.id === data.id);
+    return insights.some((insight) => insight.id === data.id);
   };
 
   const entryBase = (
@@ -53,7 +60,7 @@ const TileEntry = ({ data, showTitle, userId, favInsights }) => {
         {},
         { withCredentials: true }
       )
-      .then((res) => console.log(res))
+      .then((res) => addInsightToState(data))
       .catch((err) => console.log(err));
   };
 
@@ -63,7 +70,7 @@ const TileEntry = ({ data, showTitle, userId, favInsights }) => {
         `http://localhost:3001/api/users/${userId}/fav_tile_entries/${data.id}`,
         { withCredentials: true }
       )
-      .then((res) => console.log(res))
+      .then((res) => removeInsightFromState(data))
       .catch((err) => console.log(err));
   };
 

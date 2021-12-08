@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useState } from "react";
 import { FilePlus } from "react-feather";
 import TileEntry from "../../../components/books/TileEntry";
 import CardBcg from "../../../components/books/CardBcg";
@@ -101,6 +102,17 @@ const Book = ({
   pagy,
   favInsights,
 }) => {
+  const [insights, setInsights] = useState(favInsights);
+
+  const removeInsightFromState = (insight) => {
+    const newInsights = insights.filter((el) => el.id !== insight.id);
+    setInsights(newInsights);
+  };
+
+  const addInsightToState = (insight) => {
+    setInsights([...insights, insight]);
+  };
+
   const clientUrl = `/books/${slug}`;
 
   if (entries) {
@@ -118,7 +130,9 @@ const Book = ({
                 <TileEntry
                   data={entry}
                   userId={userState.user.id}
-                  favInsights={favInsights}
+                  insights={insights}
+                  addInsightToState={addInsightToState}
+                  removeInsightFromState={removeInsightFromState}
                 />
               </div>
             );
