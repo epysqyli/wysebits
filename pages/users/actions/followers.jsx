@@ -40,7 +40,7 @@ const Followers = ({ followers, userState }) => {
             <NoItem message="You have no followers yet!" />
             <div className="border px-5 py-3 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
               <div>
-                Keep sharing your knowledge for the books you've read in order to provide the community with your insihgts!
+                Keep sharing your knowledge for the books you've read in order to provide the community with your insights!
               </div>
               <div className="mt-10 mb-3">
                 <SearchInput
