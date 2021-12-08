@@ -51,7 +51,7 @@ const TileEntry = ({ data, showTitle }) => {
           href={`/books/${slug(
             data.book_tile.book.title,
             data.book_tile.book.id
-          )}`}
+          )}/1`}
         >
           <div className="px-2 py-2 flex justify-center items-center gap-x-5 hover:scale-105 active:text-black transition-transform cursor-pointer">
             <div className="text-sm text-gray-600">
