@@ -130,7 +130,7 @@ const EditBookTile = ({
         )
         .then((res) => {
           console.log(res);
-          router.push("/users/book-tiles");
+          router.push("/users/book-tiles/1");
         })
         .catch((err) => console.log(err));
     };
