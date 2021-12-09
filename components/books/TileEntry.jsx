@@ -12,41 +12,39 @@ const TileEntry = ({
   removeInsightFromState,
   isLogged,
 }) => {
+  if (isLogged && showTitle) {
+    return (
+      <EntryLoggedTitle
+        data={data}
+        insights={insights}
+        addInsightToState={addInsightToState}
+        removeInsightFromState={removeInsightFromState}
+        userId={userId}
+      />
+    );
+  }
+
   if (isLogged) {
-    if (showTitle) {
-      return (
-        <EntryLoggedTitle
+    return (
+      <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
+        <EntryLogged
           data={data}
           insights={insights}
           addInsightToState={addInsightToState}
           removeInsightFromState={removeInsightFromState}
           userId={userId}
         />
-      );
-    } else {
-      return (
-        <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
-          <EntryLogged
-            data={data}
-            insights={insights}
-            addInsightToState={addInsightToState}
-            removeInsightFromState={removeInsightFromState}
-            userId={userId}
-          />
-        </div>
-      );
-    }
-  } else {
-    if (showTitle) {
-      return <EntryGuestTitle data={data} />;
-    } else {
-      return (
-        <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
-          <EntryGuest data={data} />
-        </div>
-      );
-    }
+      </div>
+    );
   }
+
+  if (!isLogged && showTitle) return <EntryGuestTitle data={data} />;
+
+  return (
+    <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
+      <EntryGuest data={data} />
+    </div>
+  );
 };
 
 export default TileEntry;
