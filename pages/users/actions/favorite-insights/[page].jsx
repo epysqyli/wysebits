@@ -88,6 +88,7 @@ const FavoriteInsights = ({ userState, favInsights, pagy }) => {
                   insights={insights}
                   addInsightToState={addInsightToState}
                   removeInsightFromState={removeInsightFromState}
+                  isLogged={userState.isLogged}
                 />
               </div>
             );

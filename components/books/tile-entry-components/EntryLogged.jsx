@@ -1,16 +1,12 @@
-import {
-  ThumbsUp,
-  ThumbsDown,
-  Heart,
-  ArrowUpRight,
-  Users,
-} from "react-feather";
+import { ThumbsUp, ThumbsDown, Heart } from "react-feather";
+import axios from "axios";
 
 const EntryLogged = ({
   data,
   insights,
   addInsightToState,
   removeInsightFromState,
+  userId,
 }) => {
   const isFavInsight = () => {
     return insights.some((insight) => insight.id === data.id);
@@ -72,7 +68,7 @@ const EntryLogged = ({
                 <Heart
                   size={16}
                   color="darkgray"
-                  className="transition-all active:scale-125"
+                  className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
                 />
               </div>
             )}
