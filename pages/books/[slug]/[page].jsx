@@ -133,6 +133,7 @@ const Book = ({
                   insights={insights}
                   addInsightToState={addInsightToState}
                   removeInsightFromState={removeInsightFromState}
+                  isLogged={userState.isLogged}
                 />
               </div>
             );
