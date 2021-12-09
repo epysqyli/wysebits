@@ -1,6 +1,3 @@
-import { ThumbsUp, ThumbsDown, ArrowUpRight } from "react-feather";
-import slugify from "slugify";
-import Link from "next/dist/client/link";
 import EntryLogged from "./tile-entry-components/EntryLogged";
 import EntryGuest from "./tile-entry-components/EntryGuest";
 import EntryLoggedTitle from "./tile-entry-components/EntryLoggedTitle";
