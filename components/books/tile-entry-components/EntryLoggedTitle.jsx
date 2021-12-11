@@ -9,6 +9,12 @@ const EntryLoggedTitle = ({
   addInsightToState,
   removeInsightFromState,
   userId,
+  upvotedEntries,
+  downvotedEntries,
+  removeUpEntryFromState,
+  addUpEntryToState,
+  removeDownEntryFromState,
+  addDownEntryToState,
 }) => {
   const slug = (title, id) =>
     slugify(`${title}-${id}`, { lower: true, strict: true });
@@ -34,6 +40,12 @@ const EntryLoggedTitle = ({
         addInsightToState={addInsightToState}
         removeInsightFromState={removeInsightFromState}
         userId={userId}
+        upvotedEntries={upvotedEntries}
+        downvotedEntries={downvotedEntries}
+        removeUpEntryFromState={removeUpEntryFromState}
+        addUpEntryToState={addUpEntryToState}
+        removeDownEntryFromState={removeDownEntryFromState}
+        addDownEntryToState={addDownEntryToState}
       />
     </div>
   );

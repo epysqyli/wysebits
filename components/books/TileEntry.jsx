@@ -26,6 +26,12 @@ const TileEntry = ({
         addInsightToState={addInsightToState}
         removeInsightFromState={removeInsightFromState}
         userId={userId}
+        upvotedEntries={upvotedEntries}
+        downvotedEntries={downvotedEntries}
+        removeUpEntryFromState={removeUpEntryFromState}
+        addUpEntryToState={addUpEntryToState}
+        removeDownEntryFromState={removeDownEntryFromState}
+        addDownEntryToState={addDownEntryToState}
       />
     );
   }
