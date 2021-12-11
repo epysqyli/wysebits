@@ -41,6 +41,18 @@ export const getServerSideProps = async (context) => {
       headers: { cookie: context.req.headers.cookie },
     });
 
+    const upvotedEntries = await axios({
+      method: "get",
+      url: `http://localhost:3001/api/users/${userResp.data.user.id}/upvoted_entries`,
+      headers: { cookie: context.req.headers.cookie },
+    });
+
+    const downvotedEntries = await axios({
+      method: "get",
+      url: `http://localhost:3001/api/users/${userResp.data.user.id}/downvoted_entries`,
+      headers: { cookie: context.req.headers.cookie },
+    });
+
     if (entries.data.entries.length != 0) {
       return {
         props: {
@@ -51,6 +63,8 @@ export const getServerSideProps = async (context) => {
           pagy: entries.data.pagy,
           slug: slug,
           favInsights: favInsights.data.tile_entries,
+          entriesUp: upvotedEntries.data.upvoted_entries,
+          entriesDown: downvotedEntries.data.downvoted_entries,
         },
       };
     } else {
@@ -101,8 +115,12 @@ const Book = ({
   slug,
   pagy,
   favInsights,
+  entriesUp,
+  entriesDown,
 }) => {
   const [insights, setInsights] = useState(favInsights);
+  const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
+  const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
 
   const removeInsightFromState = (insight) => {
     const newInsights = insights.filter((el) => el.id !== insight.id);
@@ -134,6 +152,8 @@ const Book = ({
                   addInsightToState={addInsightToState}
                   removeInsightFromState={removeInsightFromState}
                   isLogged={userState.isLogged}
+                  upvotedEntries={upvotedEntries}
+                  downvotedEntries={downvotedEntries}
                 />
               </div>
             );

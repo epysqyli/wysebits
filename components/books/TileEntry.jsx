@@ -11,6 +11,8 @@ const TileEntry = ({
   addInsightToState,
   removeInsightFromState,
   isLogged,
+  upvotedEntries,
+  downvotedEntries,
 }) => {
   if (isLogged && showTitle) {
     return (
@@ -33,6 +35,8 @@ const TileEntry = ({
           addInsightToState={addInsightToState}
           removeInsightFromState={removeInsightFromState}
           userId={userId}
+          upvotedEntries={upvotedEntries}
+          downvotedEntries={downvotedEntries}
         />
       </div>
     );
