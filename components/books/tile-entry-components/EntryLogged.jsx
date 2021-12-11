@@ -56,7 +56,12 @@ const EntryLogged = ({
         {},
         { withCredentials: true }
       )
-      .then((res) => addUpEntryToState(data))
+      .then((res) => {
+        if (isDownvoted()) {
+          removeFromDownvoted();
+        }
+        addUpEntryToState(data);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -78,7 +83,12 @@ const EntryLogged = ({
         {},
         { withCredentials: true }
       )
-      .then((res) => addDownEntryToState(data))
+      .then((res) => {
+        if (isUpvoted()) {
+          removeFromUpvoted();
+        }
+        addDownEntryToState(data);
+      })
       .catch((err) => console.log(err));
   };
 
