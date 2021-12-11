@@ -44,7 +44,6 @@ const BookCard = ({ bookData }) => {
             ? bookData.authors[0].full_name
             : "No authors found"}
         </div>
-        {/* <Heart size={20} strokeWidth={1.5} className="mt-5 mx-auto" /> */}
       </div>
     </div>
   );
