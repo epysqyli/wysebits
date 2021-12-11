@@ -45,6 +45,10 @@ const EntryLogged = ({
     return upvotedEntries.some((entry) => entry.id == data.id);
   };
 
+  const isDownvoted = () => {
+    return downvotedEntries.some((entry) => entry.id == data.id);
+  };
+
   const addToUpvoted = () => {
     axios
       .post(
@@ -95,19 +99,37 @@ const EntryLogged = ({
 
       <div className="flex justify-between items-center text-sm px-2 py-2">
         <div className="flex justify-center gap-x-6">
-          <div className="flex items-center gap-x-1 py-2">
-            <div>{data.upvotes}</div>
-            <div className="pb-1">
-              <ThumbsUp size={16} />
+          {isUpvoted() ? (
+            <div className="flex items-center gap-x-1 py-2">
+              <div>{data.upvotes}</div>
+              <div className="pb-1" onClick={() => removeFromUpvoted()}>
+                <ThumbsUp size={16} />
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="flex items-center gap-x-1 py-2">
+              <div>{data.upvotes}</div>
+              <div className="pb-1" onClick={() => addToUpvoted()}>
+                <ThumbsUp size={16} />
+              </div>
+            </div>
+          )}
 
-          <div className="flex items-center gap-x-1">
-            <div>{data.downvotes}</div>
-            <div>
-              <ThumbsDown size={16} />
+          {isDownvoted ? (
+            <div className="flex items-center gap-x-1">
+              <div>{data.downvotes}</div>
+              <div onClick={() => removeFromDownvoted()}>
+                <ThumbsDown size={16} />
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="flex items-center gap-x-1">
+              <div>{data.downvotes}</div>
+              <div onClick={() => addToDownvoted()}>
+                <ThumbsDown size={16} />
+              </div>
+            </div>
+          )}
 
           <div className="flex items-center">
             {isFavInsight() ? (
