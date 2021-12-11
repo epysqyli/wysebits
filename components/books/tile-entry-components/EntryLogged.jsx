@@ -60,7 +60,7 @@ const EntryLogged = ({
                   size={16}
                   fill="darkgray"
                   color="darkgray"
-                  className="transition-all active:scale-125"
+                  className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
                 />
               </div>
             ) : (
