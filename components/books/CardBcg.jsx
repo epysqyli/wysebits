@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 const CardBcg = ({ bookData, userId, favBooks }) => {
   const [favs, setFavs] = useState(favBooks);
   const [isFav, setIsFav] = useState(
-    favs != null ? favs.some((book) => bookData.id == book.id) : false
+    favs.some((book) => book.book_id == bookData.id)
   );
 
   const bcgImage = () => {
@@ -39,7 +39,7 @@ const CardBcg = ({ bookData, userId, favBooks }) => {
   const updateFavs = (newFavBooks) => setFavs(newFavBooks);
 
   const updateIsFav = () => {
-    if (favs != null) setIsFav(favs.some((book) => bookData.id == book.id));
+    setIsFav(favs.some((book) => bookData.id == book.book_id));
   };
 
   useEffect(() => updateIsFav(), [favs]);
