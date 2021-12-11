@@ -103,30 +103,30 @@ const EntryLogged = ({
             <div className="flex items-center gap-x-1 py-2">
               <div>{data.upvotes}</div>
               <div className="pb-1" onClick={() => removeFromUpvoted()}>
-                <ThumbsUp size={16} />
+                <ThumbsUp size={16} fill="darkgray" color="darkgray" />
               </div>
             </div>
           ) : (
             <div className="flex items-center gap-x-1 py-2">
               <div>{data.upvotes}</div>
               <div className="pb-1" onClick={() => addToUpvoted()}>
-                <ThumbsUp size={16} />
+                <ThumbsUp size={16} color="darkgray" />
               </div>
             </div>
           )}
 
-          {isDownvoted ? (
+          {isDownvoted() ? (
             <div className="flex items-center gap-x-1">
               <div>{data.downvotes}</div>
               <div onClick={() => removeFromDownvoted()}>
-                <ThumbsDown size={16} />
+                <ThumbsDown size={16} fill="darkgray" color="darkgray" />
               </div>
             </div>
           ) : (
             <div className="flex items-center gap-x-1">
               <div>{data.downvotes}</div>
               <div onClick={() => addToDownvoted()}>
-                <ThumbsDown size={16} />
+                <ThumbsDown size={16} color="darkgray" />
               </div>
             </div>
           )}
