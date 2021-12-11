@@ -174,6 +174,10 @@ const Book = ({
                   isLogged={userState.isLogged}
                   upvotedEntries={upvotedEntries}
                   downvotedEntries={downvotedEntries}
+                  removeUpEntryFromState={removeUpEntryFromState}
+                  addUpEntryToState={addUpEntryToState}
+                  removeDownEntryFromState={removeDownEntryFromState}
+                  addDownEntryToState={addDownEntryToState}
                 />
               </div>
             );

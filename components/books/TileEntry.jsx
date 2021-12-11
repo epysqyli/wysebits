@@ -13,6 +13,10 @@ const TileEntry = ({
   isLogged,
   upvotedEntries,
   downvotedEntries,
+  removeUpEntryFromState,
+  addUpEntryToState,
+  removeDownEntryFromState,
+  addDownEntryToState,
 }) => {
   if (isLogged && showTitle) {
     return (
@@ -37,6 +41,10 @@ const TileEntry = ({
           userId={userId}
           upvotedEntries={upvotedEntries}
           downvotedEntries={downvotedEntries}
+          removeUpEntryFromState={removeUpEntryFromState}
+          addUpEntryToState={addUpEntryToState}
+          removeDownEntryFromState={removeDownEntryFromState}
+          addDownEntryToState={addDownEntryToState}
         />
       </div>
     );
