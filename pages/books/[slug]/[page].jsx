@@ -122,6 +122,7 @@ const Book = ({
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
 
+  // methods related to like/heart functionalities
   const removeInsightFromState = (insight) => {
     const newInsights = insights.filter((el) => el.id !== insight.id);
     setInsights(newInsights);
@@ -131,16 +132,20 @@ const Book = ({
     setInsights([...insights, insight]);
   };
 
+  // methods related to upvote and downvote functionalities
   const removeUpEntryFromState = (entry) => {
+    entry.upvotes -= 1;
     const newUpvotedEntries = upvotedEntries.filter((el) => el.id !== entry.id);
     setUpvotedEntries(newUpvotedEntries);
   };
 
   const addUpEntryToState = (entry) => {
+    entry.upvotes += 1;
     setUpvotedEntries([...upvotedEntries, entry]);
   };
 
   const removeDownEntryFromState = (entry) => {
+    entry.downvotes -= 1;
     const newDownvotedEntries = downvotedEntries.filter(
       (el) => el.id !== entry.id
     );
@@ -148,6 +153,7 @@ const Book = ({
   };
 
   const addDownEntryToState = (entry) => {
+    entry.downvotes += 1;
     setDownvotedEntries([...downvotedEntries, entry]);
   };
 
