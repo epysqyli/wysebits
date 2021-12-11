@@ -131,6 +131,26 @@ const Book = ({
     setInsights([...insights, insight]);
   };
 
+  const removeUpEntryFromState = (entry) => {
+    const newUpvotedEntries = upvotedEntries.filter((el) => el.id !== entry.id);
+    setUpvotedEntries(newUpvotedEntries);
+  };
+
+  const addUpEntryToState = (entry) => {
+    setUpvotedEntries([...upvotedEntries, entry]);
+  };
+
+  const removeDownEntryFromState = (entry) => {
+    const newDownvotedEntries = downvotedEntries.filter(
+      (el) => el.id !== entry.id
+    );
+    setDownvotedEntries(newDownvotedEntries);
+  };
+
+  const addDownEntryToState = (entry) => {
+    setDownvotedEntries([...downvotedEntries, entry]);
+  };
+
   const clientUrl = `/books/${slug}`;
 
   if (entries) {
