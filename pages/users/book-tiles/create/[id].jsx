@@ -6,11 +6,12 @@ import { useRouter } from "next/dist/client/router";
 import NoAccess from "../../../../components/users/NoAccess";
 
 export const getServerSideProps = async (context) => {
+  const bookData = await axios.get(
+    `http://localhost:3001/api/books/${context.params.id}`
+  );
+  const categories = await axios.get("http://localhost:3001/api/categories");
+  
   try {
-    const bookData = await axios.get(
-      `http://localhost:3001/api/books/${context.params.id}`
-    );
-    const categories = await axios.get("http://localhost:3001/api/categories");
     const userResp = await axios({
       method: "get",
       url: "http://localhost:3001/api/logged_in",
@@ -31,6 +32,8 @@ export const getServerSideProps = async (context) => {
   } catch (error) {
     return {
       props: {
+        bookData: bookData.data.data,
+        categories: categories.data.data,
         error: JSON.stringify(error.message),
       },
     };
