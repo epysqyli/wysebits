@@ -5,23 +5,34 @@ import EditBookDetails from "../../../../components/users/EditBookDetails";
 import { useRouter } from "next/dist/client/router";
 import NoAccess from "../../../../components/users/NoAccess";
 
-export const getServerSideProps = async ({ params }) => {
+export const getServerSideProps = async (context) => {
   try {
-    const req = await fetch(`http://localhost:3001/api/books/${params.id}`);
-    const res = await req.json();
+    const bookData = await axios.get(
+      `http://localhost:3001/api/books/${context.params.id}`
+    );
+    const categories = await axios.get("http://localhost:3001/api/categories");
+    const userResp = await axios({
+      method: "get",
+      url: "http://localhost:3001/api/logged_in",
+      headers: { cookie: context.req.headers.cookie },
+    });
 
-    const categoriesReq = await fetch("http://localhost:3001/api/categories");
-    const categoriesRes = await categoriesReq.json();
+    const bookTiles = await axios.get(
+      `http://localhost:3001/api/users/${userResp.data.user.id}/book_tiles_no_pagy`
+    );
 
     return {
       props: {
-        bookData: res.data,
-        categories: categoriesRes.data,
+        bookData: bookData.data.data,
+        categories: categories.data.data,
+        bookTiles: bookTiles.data.tiles,
       },
     };
   } catch (error) {
     return {
-      props: {},
+      props: {
+        error: JSON.stringify(error.message),
+      },
     };
   }
 };
