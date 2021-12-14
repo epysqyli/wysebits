@@ -16,7 +16,7 @@ const BookCard = ({ bookData }) => {
 
   const coverImage = (
     <img
-      className="w-2/6 rounded-md bg-gray-300 object-cover animate-show-up-slow"
+      className="w-2/6 rounded-md bg-gray-300 object-cover animate-show-up-slow shadow-lg"
       src={dbSrc || olSrc || ""}
     />
   );
