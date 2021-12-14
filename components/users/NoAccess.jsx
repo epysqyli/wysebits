@@ -5,7 +5,12 @@ const NoAccess = () => {
   return (
     <div className="mt-10 mb-20">
       <div className="w-4/5 mx-auto flex justify-around items-center">
-        <AlertCircle className="w-1/6" size={36} strokeWidth={1.5} />
+        <AlertCircle
+          className="w-1/6"
+          size={36}
+          strokeWidth={1.5}
+          fill="lightgray"
+        />
         <div className="w-4/6">
           You have no permission to access this page.
           <br /> Fear not! You have three options:
