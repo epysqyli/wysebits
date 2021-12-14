@@ -5,6 +5,7 @@ import EditBookDetails from "../../../../components/users/EditBookDetails";
 import { useRouter } from "next/dist/client/router";
 import NoAccess from "../../../../components/users/NoAccess";
 
+// fix this try catch logically
 export const getServerSideProps = async (context) => {
   const bookData = await axios.get(
     `http://localhost:3001/api/books/${context.params.id}`
