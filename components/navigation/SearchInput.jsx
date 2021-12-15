@@ -9,7 +9,7 @@ const SearchInput = ({ pageDest, placeholder }) => {
   const router = useRouter();
 
   const searchBooks = () => {
-    if (searchTerms.length > 2) {
+    if (searchTerms && searchTerms.length > 2) {
       router.push({
         pathname: `${pageDest}${getQuery()}`,
       });
