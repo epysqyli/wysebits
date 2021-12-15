@@ -1,8 +1,10 @@
-import { useState } from "react";
 import axios from "axios";
+import Link from "next/dist/client/link";
+import { useState } from "react";
+import { useRouter } from "next/dist/client/router";
+import { AlertCircle } from "react-feather";
 import CardBcgActions from "../../../../components/books/CardBcgActions";
 import EditBookDetails from "../../../../components/users/EditBookDetails";
-import { useRouter } from "next/dist/client/router";
 import NoAccess from "../../../../components/users/NoAccess";
 
 export const getServerSideProps = async (context) => {
@@ -26,11 +28,19 @@ export const getServerSideProps = async (context) => {
       (tile) => tile.book_id !== bookData.data.data.id
     );
 
+    let editTile = undefined;
+    if (!isAvailable) {
+      editTile = bookTiles.data.tiles.find(
+        (tile) => tile.book_id === bookData.data.data.id
+      );
+    }
+
     return {
       props: {
         bookData: bookData.data.data,
         categories: categories.data.data,
         isAvailable: isAvailable,
+        editTile: editTile,
       },
     };
   } catch (error) {
@@ -40,7 +50,7 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-const TileCreation = ({ bookData, userState, categories, isAvailable }) => {
+const TileCreation = ({ bookData, userState, categories, isAvailable, editTile }) => {
   if (userState.isLogged && isAvailable) {
     const [tileEntries, setTileEntries] = useState({
       first_entry: "",
@@ -196,7 +206,29 @@ const TileCreation = ({ bookData, userState, categories, isAvailable }) => {
       </div>
     );
   } else if (userState.isLogged && !isAvailable) {
-    return <div>You have already created a book tile for this book</div>;
+    return (
+      <div className="my-20 w-4/5 mx-auto">
+        <div className="flex justify-around items-center">
+          <AlertCircle
+            className="w-1/6"
+            size={36}
+            strokeWidth={1.5}
+            fill="lightgray"
+          />
+          <div className="w-4/6">
+            You have already shared your insights for this book!
+          </div>
+        </div>
+
+        <div className="mt-20 bg-gray-100 py-5 px-5 text-center text-lg rounded-md shadow hover:bg-gray-200 hover:shadow-md active:bg-gray-300 cursor-pointer transition">
+          <Link href={`/users/book-tiles/edit/${editTile.id}`}>
+            <div>
+              Click here to check and edit your insights for this book now
+            </div>
+          </Link>
+        </div>
+      </div>
+    );
   } else {
     return <NoAccess />;
   }
