@@ -4,6 +4,7 @@ import { Search } from "react-feather";
 
 const SearchInput = ({ pageDest, placeholder }) => {
   const [searchTerms, setSearchTerms] = useState(null);
+  const [searchError, SetSearchError] = useState(false);
 
   const router = useRouter();
 
@@ -12,6 +13,8 @@ const SearchInput = ({ pageDest, placeholder }) => {
       router.push({
         pathname: `${pageDest}${getQuery()}`,
       });
+    } else {
+      SetSearchError(true);
     }
   };
 
@@ -53,6 +56,13 @@ const SearchInput = ({ pageDest, placeholder }) => {
           >
             <Search size={20} className="mx-auto" onClick={searchBooks} />
           </button>
+        </div>
+        <div className="text-center text-sm mt-8 text-gray-400">
+          {searchError ? (
+            <div className="animate-show-up-slow">
+              At least 3 characters are needed
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
