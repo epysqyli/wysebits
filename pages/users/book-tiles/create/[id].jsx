@@ -32,24 +32,14 @@ export const getServerSideProps = async (context) => {
       (tile) => tile.book_id === bookData.data.data.id
     );
 
-    if (isAvailable) {
-      return {
-        props: {
-          bookData: bookData.data.data,
-          categories: categories.data.data,
-          isAvailable: isAvailable,
-        },
-      };
-    } else {
-      return {
-        props: {
-          bookData: bookData.data.data,
-          categories: categories.data.data,
-          isAvailable: isAvailable,
-          existingTile: existingTile,
-        },
-      };
-    }
+    return {
+      props: {
+        bookData: bookData.data.data,
+        categories: categories.data.data,
+        isAvailable: isAvailable,
+        existingTile: existingTile || null,
+      },
+    };
   } catch (error) {
     return {
       props: {},
