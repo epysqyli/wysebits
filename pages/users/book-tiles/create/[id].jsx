@@ -50,7 +50,29 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-const TileCreation = ({ bookData, userState, categories, isAvailable, editTile }) => {
+const TileCreation = ({
+  bookData,
+  userState,
+  categories,
+  isAvailable,
+  editTile,
+}) => {
+  const [editVisible, setEditVisible] = useState(false);
+
+  const bcgImage = () => {
+    const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
+    const dbSrc = bookData.cover_url;
+    return dbSrc === null ? olSrc : dbSrc;
+  };
+
+  const showEditForm = () => {
+    setEditVisible(true);
+  };
+
+  const hideEditForm = () => {
+    setEditVisible(false);
+  };
+
   if (userState.isLogged && isAvailable) {
     const [tileEntries, setTileEntries] = useState({
       first_entry: "",
@@ -58,23 +80,7 @@ const TileCreation = ({ bookData, userState, categories, isAvailable, editTile }
       third_entry: "",
     });
 
-    const [editVisible, setEditVisible] = useState(false);
-
     const router = useRouter();
-
-    const bcgImage = () => {
-      const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
-      const dbSrc = bookData.cover_url;
-      return dbSrc === null ? olSrc : dbSrc;
-    };
-
-    const hideEditForm = () => {
-      setEditVisible(false);
-    };
-
-    const showEditForm = () => {
-      setEditVisible(true);
-    };
 
     const handleChange = (e) => {
       const newTileEntries = {
@@ -207,25 +213,42 @@ const TileCreation = ({ bookData, userState, categories, isAvailable, editTile }
     );
   } else if (userState.isLogged && !isAvailable) {
     return (
-      <div className="my-20 w-4/5 mx-auto">
-        <div className="flex justify-around items-center">
-          <AlertCircle
-            className="w-1/6"
-            size={36}
-            strokeWidth={1.5}
-            fill="lightgray"
+      <div>
+        {editVisible ? (
+          <EditBookDetails
+            categories={categories}
+            bookData={bookData}
+            hideEditForm={hideEditForm}
           />
-          <div className="w-4/6">
-            You have already shared your insights for this book!
-          </div>
-        </div>
+        ) : null}
 
-        <div className="mt-20 bg-gray-100 py-5 px-5 text-center text-lg rounded-md shadow hover:bg-gray-200 hover:shadow-md active:bg-gray-300 cursor-pointer transition">
-          <Link href={`/users/book-tiles/edit/${editTile.id}`}>
-            <div>
-              Click here to check and edit your insights for this book now
+        <div className="relative">
+          <CardBcgActions
+            bookData={bookData}
+            bcgImage={bcgImage}
+            showEditForm={showEditForm}
+          />
+        </div>
+        <div className="my-20 w-4/5 mx-auto">
+          <div className="flex justify-around items-center">
+            <AlertCircle
+              className="w-1/6"
+              size={36}
+              strokeWidth={1.5}
+              fill="lightgray"
+            />
+            <div className="w-4/6">
+              You have already shared your insights for this book!
             </div>
-          </Link>
+          </div>
+
+          <div className="mt-20 bg-gray-100 py-5 px-5 text-center text-lg rounded-md shadow hover:bg-gray-200 hover:shadow-md active:bg-gray-300 cursor-pointer transition">
+            <Link href={`/users/book-tiles/edit/${editTile.id}`}>
+              <div>
+                Click here to check and edit your insights for this book now
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     );
