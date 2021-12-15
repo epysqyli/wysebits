@@ -157,10 +157,8 @@ const EditBookTile = ({
           />
         </div>
 
-        <div className="text-2xl text-center mb-10 py-3 px-2 bg-gray-200">
-          <div className="bg-gray-100 py-2 px-2 rounded-md">
-            Edit your entries for this book
-          </div>
+        <div className="text-2xl text-center mb-10 py-4 px-2 bg-gray-200">
+          Edit your entries for this book
         </div>
 
         {entries.map((entry) => {
