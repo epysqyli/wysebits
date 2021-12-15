@@ -5,13 +5,12 @@ import EditBookDetails from "../../../../components/users/EditBookDetails";
 import { useRouter } from "next/dist/client/router";
 import NoAccess from "../../../../components/users/NoAccess";
 
-// fix this try catch logically
 export const getServerSideProps = async (context) => {
   const bookData = await axios.get(
     `http://localhost:3001/api/books/${context.params.id}`
   );
   const categories = await axios.get("http://localhost:3001/api/categories");
-  
+
   try {
     const userResp = await axios({
       method: "get",
@@ -32,11 +31,7 @@ export const getServerSideProps = async (context) => {
     };
   } catch (error) {
     return {
-      props: {
-        bookData: bookData.data.data,
-        categories: categories.data.data,
-        error: JSON.stringify(error.message),
-      },
+      props: {},
     };
   }
 };
