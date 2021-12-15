@@ -8,9 +8,11 @@ const SearchInput = ({ pageDest, placeholder }) => {
   const router = useRouter();
 
   const searchBooks = () => {
-    router.push({
-      pathname: `${pageDest}${getQuery()}`,
-    });
+    if (searchTerms.length > 2) {
+      router.push({
+        pathname: `${pageDest}${getQuery()}`,
+      });
+    }
   };
 
   const handleChange = (e) => {
@@ -39,7 +41,6 @@ const SearchInput = ({ pageDest, placeholder }) => {
             type="text"
             name="tmp"
             id="tmp"
-            minLength="3"
             className="border-none bg-white w-5/6 rounded-tl-lg rounded-bl-lg focus:ring-0 group-hover:shadow-md transition"
             onChange={handleChange}
             placeholder={placeholder}
