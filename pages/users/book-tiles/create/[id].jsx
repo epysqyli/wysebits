@@ -28,21 +28,28 @@ export const getServerSideProps = async (context) => {
       (tile) => tile.book_id !== bookData.data.data.id
     );
 
-    let editTile = undefined;
-    if (!isAvailable) {
-      editTile = bookTiles.data.tiles.find(
-        (tile) => tile.book_id === bookData.data.data.id
-      );
-    }
+    const existingTile = bookTiles.data.tiles.find(
+      (tile) => tile.book_id === bookData.data.data.id
+    );
 
-    return {
-      props: {
-        bookData: bookData.data.data,
-        categories: categories.data.data,
-        isAvailable: isAvailable,
-        editTile: editTile,
-      },
-    };
+    if (isAvailable) {
+      return {
+        props: {
+          bookData: bookData.data.data,
+          categories: categories.data.data,
+          isAvailable: isAvailable,
+        },
+      };
+    } else {
+      return {
+        props: {
+          bookData: bookData.data.data,
+          categories: categories.data.data,
+          isAvailable: isAvailable,
+          existingTile: existingTile,
+        },
+      };
+    }
   } catch (error) {
     return {
       props: {},
@@ -55,7 +62,7 @@ const TileCreation = ({
   userState,
   categories,
   isAvailable,
-  editTile,
+  existingTile,
 }) => {
   const [editVisible, setEditVisible] = useState(false);
 
@@ -73,13 +80,13 @@ const TileCreation = ({
     setEditVisible(false);
   };
 
-  if (userState.isLogged && isAvailable) {
-    const [tileEntries, setTileEntries] = useState({
-      first_entry: "",
-      second_entry: "",
-      third_entry: "",
-    });
+  const [tileEntries, setTileEntries] = useState({
+    first_entry: "",
+    second_entry: "",
+    third_entry: "",
+  });
 
+  if (userState.isLogged && isAvailable) {
     const router = useRouter();
 
     const handleChange = (e) => {
@@ -243,7 +250,7 @@ const TileCreation = ({
           </div>
 
           <div className="mt-20 bg-gray-100 py-5 px-5 text-center text-lg rounded-md shadow hover:bg-gray-200 hover:shadow-md active:bg-gray-300 cursor-pointer transition">
-            <Link href={`/users/book-tiles/edit/${editTile.id}`}>
+            <Link href={`/users/book-tiles/edit/${existingTile.id}`}>
               <div>
                 Click here to check and edit your insights for this book now
               </div>
