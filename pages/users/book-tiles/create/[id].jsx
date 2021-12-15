@@ -41,7 +41,7 @@ export const getServerSideProps = async (context) => {
 };
 
 const TileCreation = ({ bookData, userState, categories, isAvailable }) => {
-  if (userState.isLogged) {
+  if (userState.isLogged && isAvailable) {
     const [tileEntries, setTileEntries] = useState({
       first_entry: "",
       second_entry: "",
@@ -195,6 +195,8 @@ const TileCreation = ({ bookData, userState, categories, isAvailable }) => {
         </div>
       </div>
     );
+  } else if (userState.isLogged && !isAvailable) {
+    return <div>You have already created a book tile for this book</div>;
   } else {
     return <NoAccess />;
   }
