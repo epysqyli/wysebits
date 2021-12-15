@@ -22,11 +22,15 @@ export const getServerSideProps = async (context) => {
       `http://localhost:3001/api/users/${userResp.data.user.id}/book_tiles_no_pagy`
     );
 
+    const isAvailable = bookTiles.data.tiles.every(
+      (tile) => tile.book_id !== bookData.data.data.id
+    );
+
     return {
       props: {
         bookData: bookData.data.data,
         categories: categories.data.data,
-        bookTiles: bookTiles.data.tiles,
+        isAvailable: isAvailable,
       },
     };
   } catch (error) {
@@ -36,7 +40,7 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-const TileCreation = ({ bookData, userState, categories }) => {
+const TileCreation = ({ bookData, userState, categories, isAvailable }) => {
   if (userState.isLogged) {
     const [tileEntries, setTileEntries] = useState({
       first_entry: "",
