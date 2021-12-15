@@ -239,7 +239,7 @@ const TileCreation = ({
             </div>
           </div>
 
-          <div className="mt-20 bg-gray-100 py-5 px-5 text-center text-lg rounded-md shadow hover:bg-gray-200 hover:shadow-md active:bg-gray-300 cursor-pointer transition">
+          <div className="mt-20 bg-gray-100 p-10 text-center text-lg rounded-md shadow hover:bg-gray-200 hover:shadow-md active:bg-gray-300 cursor-pointer transition">
             <Link href={`/users/book-tiles/edit/${existingTile.id}`}>
               <div>
                 Click here to check and edit your insights for this book now
