@@ -1,6 +1,12 @@
 import { User, BookOpen, AlignCenter } from "react-feather";
 
 const BasicInfo = ({ user }) => {
+  const countTotalInsights = (tiles) => {
+    let count = 0;
+    tiles.forEach((tile) => count += tile.tile_entries.length);
+    return count;
+  };
+
   return (
     <div>
       <div className="flex justify-around items-center py-5 px-10">
@@ -27,7 +33,7 @@ const BasicInfo = ({ user }) => {
         <div className="flex items-center gap-x-2">
           <AlignCenter />
           <div className="text-gray-700">
-            {user.book_tiles.length * 3} total insights
+            {countTotalInsights(user.book_tiles)} total insights
           </div>
         </div>
       </div>
