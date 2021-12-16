@@ -20,8 +20,8 @@ const LatestEntries = ({ entries, isLogged }) => {
         </div>
         {entries.map((entry) => {
           return (
-            <div className="m-10">
-              <EntryGuestTitle data={entry} key={entry.id} />
+            <div className="m-10" key={entry.id}>
+              <EntryGuestTitle data={entry} />
             </div>
           );
         })}
