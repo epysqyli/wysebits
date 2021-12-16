@@ -14,7 +14,7 @@ export const getServerSideProps = async ({ params }) => {
 const Username = ({ user }) => {
   return (
     <div>
-      <BasicInfo />
+      <BasicInfo user={user} />
     </div>
   );
 };
