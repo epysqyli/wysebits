@@ -112,14 +112,14 @@ const EntryLogged = ({
         <div className="flex justify-center gap-x-6">
           {isUpvoted() ? (
             <div className="flex items-center gap-x-1 py-2">
-              <div>{data.upvotes}</div>
+              <div className="text-gray-600">{data.upvotes}</div>
               <div className="pb-1" onClick={() => removeFromUpvoted()}>
                 <ThumbsUp size={16} fill="darkgray" color="darkgray" />
               </div>
             </div>
           ) : (
             <div className="flex items-center gap-x-1 py-2">
-              <div>{data.upvotes}</div>
+              <div className="text-gray-600">{data.upvotes}</div>
               <div className="pb-1" onClick={() => addToUpvoted()}>
                 <ThumbsUp size={16} color="darkgray" />
               </div>
@@ -128,14 +128,14 @@ const EntryLogged = ({
 
           {isDownvoted() ? (
             <div className="flex items-center gap-x-1">
-              <div>{data.downvotes}</div>
+              <div className="text-gray-600">{data.downvotes}</div>
               <div onClick={() => removeFromDownvoted()}>
                 <ThumbsDown size={16} fill="darkgray" color="darkgray" />
               </div>
             </div>
           ) : (
             <div className="flex items-center gap-x-1">
-              <div>{data.downvotes}</div>
+              <div className="text-gray-600">{data.downvotes}</div>
               <div onClick={() => addToDownvoted()}>
                 <ThumbsDown size={16} color="darkgray" />
               </div>
@@ -166,10 +166,13 @@ const EntryLogged = ({
 
         <Link href={`/creators/${data.book_tile.user.username}`}>
           <div className="group flex items-center gap-x-1 transition-all">
-            <div className="active:text-gray-200 cursor-pointer">
+            <div className="text-gray-600 active:text-gray-200 cursor-pointer">
               {data.book_tile.user.username}
             </div>
-            <ArrowUpRight size={18} className="text-gray-600 group-hover:scale-110" />
+            <ArrowUpRight
+              size={18}
+              className="text-gray-600 group-hover:scale-110"
+            />
           </div>
         </Link>
       </div>
