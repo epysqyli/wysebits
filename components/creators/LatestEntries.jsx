@@ -1,4 +1,3 @@
-import { useState } from "react";
 import EntryGuestTitle from "../books/tile-entry-components/EntryGuestTitle";
 import EntryLoggedTitle from "../books/tile-entry-components/EntryLoggedTitle";
 
