@@ -14,7 +14,7 @@ export const getServerSideProps = async ({ params }) => {
   };
 };
 
-const Username = ({ user }) => {
+const Username = ({ user, userState }) => {
   const [latestEntries, setLatestEntries] = useState(
     user.book_tiles.map((book_tile) => book_tile.tile_entries[0]).slice(0, 3)
   );
@@ -30,7 +30,7 @@ const Username = ({ user }) => {
       </div>
 
       <div className="mt-10">
-        <LatestEntries entries={latestEntries} />
+        <LatestEntries entries={latestEntries} isLogged={userState.isLogged} />
       </div>
     </div>
   );
