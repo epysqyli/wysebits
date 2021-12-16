@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useState } from "react";
 import BasicInfo from "../../components/creators/BasicInfo";
 import LatestBooks from "../../components/creators/LatestBooks";
 import LatestEntries from "../../components/creators/LatestEntries";
@@ -14,6 +15,10 @@ export const getServerSideProps = async ({ params }) => {
 };
 
 const Username = ({ user }) => {
+  const [latestEntries, setLatestEntries] = useState(
+    user.book_tiles.map((book_tile) => book_tile.tile_entries[0]).slice(0, 3)
+  );
+
   return (
     <div>
       <div>
@@ -25,7 +30,7 @@ const Username = ({ user }) => {
       </div>
 
       <div className="mt-10">
-        <LatestEntries />
+        <LatestEntries entries={latestEntries} />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const LatestEntries = ({ tiles }) => {
+const LatestEntries = ({ entries }) => {
   // const [latest, setLatest] = useState();
 
   return (
