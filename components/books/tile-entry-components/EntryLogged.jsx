@@ -1,4 +1,4 @@
-import { ThumbsUp, ThumbsDown, Heart } from "react-feather";
+import { ThumbsUp, ThumbsDown, Heart, ArrowUpRight } from "react-feather";
 import axios from "axios";
 import Link from "next/dist/client/link";
 
@@ -165,7 +165,12 @@ const EntryLogged = ({
         </div>
 
         <Link href={`/creators/${data.book_tile.user.username}`}>
-          <div>{data.book_tile.user.username}</div>
+          <div className="group flex items-center gap-x-1 transition-all">
+            <div className="active:text-gray-200 cursor-pointer">
+              {data.book_tile.user.username}
+            </div>
+            <ArrowUpRight size={18} className="text-gray-600 group-hover:scale-110" />
+          </div>
         </Link>
       </div>
     </div>
