@@ -21,7 +21,7 @@ const LatestEntries = ({
           Latest insights
         </div>
         {entries.map((entry) => (
-          <div className="m-10">
+          <div className="m-10" key={entry.id}>
             <EntryLoggedTitle
               data={entry}
               insights={insights}

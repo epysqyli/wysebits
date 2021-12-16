@@ -1,4 +1,4 @@
-import { User, BookOpen, AlignCenter } from "react-feather";
+import { User, BookOpen, AlignCenter, Users } from "react-feather";
 
 const BasicInfo = ({ user }) => {
   const countTotalInsights = (tiles) => {
@@ -34,6 +34,12 @@ const BasicInfo = ({ user }) => {
           <AlignCenter />
           <div className="text-gray-700">
             {countTotalInsights(user.book_tiles)} total insights
+          </div>
+        </div>
+        <div className="flex items-center gap-x-2">
+          <Users />
+          <div className="text-gray-700">
+            {user.followers.length} followers
           </div>
         </div>
       </div>
