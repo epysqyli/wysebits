@@ -18,7 +18,13 @@ const LatestEntries = ({ entries, isLogged }) => {
         <div className="text-center text-gray-800 text-3xl">
           Latest insights
         </div>
-        <div></div>
+        {entries.map((entry) => {
+          return (
+            <div className="m-10">
+              <EntryGuestTitle data={entry} key={entry.id} />
+            </div>
+          );
+        })}
       </div>
     );
   }

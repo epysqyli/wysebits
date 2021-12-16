@@ -1,6 +1,7 @@
 import EntryGuest from "./EntryGuest";
 import slugify from "slugify";
 import Link from "next/dist/client/link";
+import { ArrowUpRight } from "react-feather";
 
 const EntryGuestTitle = ({ data }) => {
   const slug = (title, id) =>
