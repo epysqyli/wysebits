@@ -135,7 +135,7 @@ const TileCreation = ({
           />
         </div>
 
-        <div className="text-xl text-center mb-10 py-3 px-10 bg-gray-200 border-t-4 border-gray-300">
+        <div className="text-3xl text-center mt-10 px-5">
           Share your top takeaways for this book
         </div>
 
