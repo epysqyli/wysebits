@@ -1,7 +1,7 @@
 import axios from "axios";
 import BasicInfo from "../../components/creators/BasicInfo";
 import LatestBooks from "../../components/creators/LatestBooks";
-import LatestTiles from "../../components/creators/LatestTiles";
+import LatestEntries from "../../components/creators/LatestEntries";
 
 export const getServerSideProps = async ({ params }) => {
   const username = params.username;
@@ -22,6 +22,10 @@ const Username = ({ user }) => {
 
       <div className="mt-10">
         <LatestBooks books={user.book_tiles.map((tile) => tile.book)} />
+      </div>
+
+      <div className="mt-10">
+        <LatestEntries />
       </div>
     </div>
   );
