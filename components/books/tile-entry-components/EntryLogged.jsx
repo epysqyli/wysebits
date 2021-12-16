@@ -1,5 +1,6 @@
 import { ThumbsUp, ThumbsDown, Heart } from "react-feather";
 import axios from "axios";
+import Link from "next/dist/client/link";
 
 const EntryLogged = ({
   data,
@@ -163,7 +164,9 @@ const EntryLogged = ({
           </div>
         </div>
 
-        <div>{data.book_tile.user.username}</div>
+        <Link href={`/creators/${data.book_tile.user.username}`}>
+          <div>{data.book_tile.user.username}</div>
+        </Link>
       </div>
     </div>
   );

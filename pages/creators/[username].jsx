@@ -1,3 +1,5 @@
+import BasicInfo from "../../components/creators/BasicInfo";
+
 export const getServerSideProps = ({ params }) => {
   const username = params.username;
 
@@ -7,7 +9,11 @@ export const getServerSideProps = ({ params }) => {
 };
 
 const Username = () => {
-  return <div></div>;
+  return (
+    <div>
+      <BasicInfo />
+    </div>
+  );
 };
 
 export default Username;
