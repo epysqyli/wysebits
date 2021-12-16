@@ -1,14 +1,17 @@
+import axios from "axios";
 import BasicInfo from "../../components/creators/BasicInfo";
 
-export const getServerSideProps = ({ params }) => {
+export const getServerSideProps = async ({ params }) => {
   const username = params.username;
 
+  const user = await axios.get(`http://localhost:3001/api/users/${username}`);
+
   return {
-    props: {},
+    props: { user: user.data },
   };
 };
 
-const Username = () => {
+const Username = ({ user }) => {
   return (
     <div>
       <BasicInfo />
