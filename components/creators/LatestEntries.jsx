@@ -5,14 +5,11 @@ const LatestEntries = ({
   entries,
   userState,
   insights,
-  addInsightToState,
-  removeInsightFromState,
+  setInsights,
   upvotedEntries,
+  setUpvotedEntries,
   downvotedEntries,
-  removeUpEntryFromState,
-  addUpEntryToState,
-  removeDownEntryFromState,
-  addDownEntryToState,
+  setDownvotedEntries
 }) => {
   if (userState.isLogged) {
     return (
@@ -24,16 +21,15 @@ const LatestEntries = ({
           <div className="m-10" key={entry.id}>
             <EntryLoggedTitle
               data={entry}
-              insights={insights}
-              addInsightToState={addInsightToState}
-              removeInsightFromState={removeInsightFromState}
               userId={userState.user.id}
+              insights={insights}
               upvotedEntries={upvotedEntries}
               downvotedEntries={downvotedEntries}
-              removeUpEntryFromState={removeUpEntryFromState}
-              addUpEntryToState={addUpEntryToState}
-              removeDownEntryFromState={removeDownEntryFromState}
-              addDownEntryToState={addDownEntryToState}
+              setInsights={setInsights}
+              upvotedEntries={upvotedEntries}
+              setUpvotedEntries={setUpvotedEntries}
+              downvotedEntries={downvotedEntries}
+              setDownvotedEntries={setDownvotedEntries}
             />
           </div>
         ))}

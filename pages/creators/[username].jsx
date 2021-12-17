@@ -72,41 +72,6 @@ const Username = ({
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
 
-  // methods related to like/heart functionalities
-  const removeInsightFromState = (insight) => {
-    const newInsights = insights.filter((el) => el.id !== insight.id);
-    setInsights(newInsights);
-  };
-
-  const addInsightToState = (insight) => {
-    setInsights([...insights, insight]);
-  };
-
-  // methods related to upvote and downvote functionalities
-  const removeUpEntryFromState = (entry) => {
-    entry.upvotes -= 1;
-    const newUpvotedEntries = upvotedEntries.filter((el) => el.id !== entry.id);
-    setUpvotedEntries(newUpvotedEntries);
-  };
-
-  const addUpEntryToState = (entry) => {
-    entry.upvotes += 1;
-    setUpvotedEntries([...upvotedEntries, entry]);
-  };
-
-  const removeDownEntryFromState = (entry) => {
-    entry.downvotes -= 1;
-    const newDownvotedEntries = downvotedEntries.filter(
-      (el) => el.id !== entry.id
-    );
-    setDownvotedEntries(newDownvotedEntries);
-  };
-
-  const addDownEntryToState = (entry) => {
-    entry.downvotes += 1;
-    setDownvotedEntries([...downvotedEntries, entry]);
-  };
-
   return (
     <div>
       <div>
@@ -121,16 +86,13 @@ const Username = ({
         <LatestEntries
           entries={latestEntries}
           userState={userState}
-          insights={insights}
           favBooks={favBooks}
-          addInsightToState={addInsightToState}
-          removeInsightFromState={removeInsightFromState}
+          insights={insights}
+          setInsights={setInsights}
           upvotedEntries={upvotedEntries}
+          setUpvotedEntries={setUpvotedEntries}
           downvotedEntries={downvotedEntries}
-          removeDownEntryFromState={removeDownEntryFromState}
-          addUpEntryToState={addUpEntryToState}
-          removeUpEntryFromState={removeUpEntryFromState}
-          addDownEntryToState={addDownEntryToState}
+          setDownvotedEntries={setDownvotedEntries}
         />
       </div>
     </div>
