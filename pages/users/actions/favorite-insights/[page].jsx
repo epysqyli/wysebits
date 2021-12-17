@@ -99,7 +99,6 @@ const FavoriteInsights = ({
                   data={insight}
                   showTitle={true}
                   userId={userState.user.id}
-                  insights={insights}
                   isLogged={userState.isLogged}
                   insights={insights}
                   setInsights={setInsights}
