@@ -7,31 +7,25 @@ const TileEntry = ({
   data,
   showTitle,
   userId,
-  insights,
-  addInsightToState,
-  removeInsightFromState,
   isLogged,
+  insights,
+  setInsights,
   upvotedEntries,
+  setUpvotedEntries,
   downvotedEntries,
-  removeUpEntryFromState,
-  addUpEntryToState,
-  removeDownEntryFromState,
-  addDownEntryToState,
+  setDownvotedEntries,
 }) => {
   if (isLogged && showTitle) {
     return (
       <EntryLoggedTitle
         data={data}
-        insights={insights}
-        addInsightToState={addInsightToState}
-        removeInsightFromState={removeInsightFromState}
         userId={userId}
+        insights={insights}
+        setInsights={setInsights}
         upvotedEntries={upvotedEntries}
+        setUpvotedEntries={setUpvotedEntries}
         downvotedEntries={downvotedEntries}
-        removeUpEntryFromState={removeUpEntryFromState}
-        addUpEntryToState={addUpEntryToState}
-        removeDownEntryFromState={removeDownEntryFromState}
-        addDownEntryToState={addDownEntryToState}
+        setDownvotedEntries={setDownvotedEntries}
       />
     );
   }
@@ -41,16 +35,13 @@ const TileEntry = ({
       <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
         <EntryLogged
           data={data}
-          insights={insights}
-          addInsightToState={addInsightToState}
-          removeInsightFromState={removeInsightFromState}
           userId={userId}
+          insights={insights}
+          setInsights={setInsights}
           upvotedEntries={upvotedEntries}
+          setUpvotedEntries={setUpvotedEntries}
           downvotedEntries={downvotedEntries}
-          removeUpEntryFromState={removeUpEntryFromState}
-          addUpEntryToState={addUpEntryToState}
-          removeDownEntryFromState={removeDownEntryFromState}
-          addDownEntryToState={addDownEntryToState}
+          setDownvotedEntries={setDownvotedEntries}
         />
       </div>
     );

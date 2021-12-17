@@ -122,41 +122,6 @@ const Book = ({
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
 
-  // methods related to like/heart functionalities
-  const removeInsightFromState = (insight) => {
-    const newInsights = insights.filter((el) => el.id !== insight.id);
-    setInsights(newInsights);
-  };
-
-  const addInsightToState = (insight) => {
-    setInsights([...insights, insight]);
-  };
-
-  // methods related to upvote and downvote functionalities
-  const removeUpEntryFromState = (entry) => {
-    entry.upvotes -= 1;
-    const newUpvotedEntries = upvotedEntries.filter((el) => el.id !== entry.id);
-    setUpvotedEntries(newUpvotedEntries);
-  };
-
-  const addUpEntryToState = (entry) => {
-    entry.upvotes += 1;
-    setUpvotedEntries([...upvotedEntries, entry]);
-  };
-
-  const removeDownEntryFromState = (entry) => {
-    entry.downvotes -= 1;
-    const newDownvotedEntries = downvotedEntries.filter(
-      (el) => el.id !== entry.id
-    );
-    setDownvotedEntries(newDownvotedEntries);
-  };
-
-  const addDownEntryToState = (entry) => {
-    entry.downvotes += 1;
-    setDownvotedEntries([...downvotedEntries, entry]);
-  };
-
   const clientUrl = `/books/${slug}`;
 
   if (entries) {
@@ -174,16 +139,13 @@ const Book = ({
                 <TileEntry
                   data={entry}
                   userId={userState.user.id}
-                  insights={insights}
-                  addInsightToState={addInsightToState}
-                  removeInsightFromState={removeInsightFromState}
                   isLogged={userState.isLogged}
+                  insights={insights}
+                  setInsights={setInsights}
                   upvotedEntries={upvotedEntries}
+                  setUpvotedEntries={setUpvotedEntries}
                   downvotedEntries={downvotedEntries}
-                  removeUpEntryFromState={removeUpEntryFromState}
-                  addUpEntryToState={addUpEntryToState}
-                  removeDownEntryFromState={removeDownEntryFromState}
-                  addDownEntryToState={addDownEntryToState}
+                  setDownvotedEntries={setDownvotedEntries}
                 />
               </div>
             );

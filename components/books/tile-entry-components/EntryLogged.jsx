@@ -1,19 +1,22 @@
 import { ThumbsUp, ThumbsDown, Heart, ArrowUpRight } from "react-feather";
 import axios from "axios";
 import Link from "next/dist/client/link";
+import { removeInsightFromState } from "../../../lib/tileEntryMethods";
+import { addInsightToState } from "../../../lib/tileEntryMethods";
+import { removeUpEntryFromState } from "../../../lib/tileEntryMethods";
+import { addUpEntryToState } from "../../../lib/tileEntryMethods";
+import { removeDownEntryFromState } from "../../../lib/tileEntryMethods";
+import { addDownEntryToState } from "../../../lib/tileEntryMethods";
 
 const EntryLogged = ({
   data,
-  insights,
-  addInsightToState,
-  removeInsightFromState,
   userId,
+  insights,
+  setInsights,
   upvotedEntries,
+  setUpvotedEntries,
   downvotedEntries,
-  removeUpEntryFromState,
-  addUpEntryToState,
-  removeDownEntryFromState,
-  addDownEntryToState,
+  setDownvotedEntries,
 }) => {
   // methods related to like/heart functionalities
   const isFavInsight = () => {
@@ -27,7 +30,7 @@ const EntryLogged = ({
         {},
         { withCredentials: true }
       )
-      .then((res) => addInsightToState(data))
+      .then((res) => addInsightToState(data, insights, setInsights))
       .catch((err) => console.log(err));
   };
 
@@ -37,7 +40,7 @@ const EntryLogged = ({
         `http://localhost:3001/api/users/${userId}/fav_tile_entries/${data.id}`,
         { withCredentials: true }
       )
-      .then((res) => removeInsightFromState(data))
+      .then((res) => removeInsightFromState(data, insights, setInsights))
       .catch((err) => console.log(err));
   };
 
@@ -61,7 +64,7 @@ const EntryLogged = ({
         if (isDownvoted()) {
           removeFromDownvoted();
         }
-        addUpEntryToState(data);
+        addUpEntryToState(data, upvotedEntries, setUpvotedEntries);
       })
       .catch((err) => console.log(err));
   };
@@ -73,7 +76,9 @@ const EntryLogged = ({
         {},
         { withCredentials: true }
       )
-      .then((res) => removeUpEntryFromState(data))
+      .then((res) =>
+        removeUpEntryFromState(data, upvotedEntries, setUpvotedEntries)
+      )
       .catch((err) => console.log(err));
   };
 
@@ -88,7 +93,7 @@ const EntryLogged = ({
         if (isUpvoted()) {
           removeFromUpvoted();
         }
-        addDownEntryToState(data);
+        addDownEntryToState(data, downvotedEntries, setDownvotedEntries);
       })
       .catch((err) => console.log(err));
   };
@@ -100,7 +105,9 @@ const EntryLogged = ({
         {},
         { withCredentials: true }
       )
-      .then((res) => removeDownEntryFromState(data))
+      .then((res) =>
+        removeDownEntryFromState(data, downvotedEntries, setDownvotedEntries)
+      )
       .catch((err) => console.log(err));
   };
 

@@ -5,16 +5,13 @@ import { ArrowUpRight } from "react-feather";
 
 const EntryLoggedTitle = ({
   data,
-  insights,
-  addInsightToState,
-  removeInsightFromState,
   userId,
+  insights,
+  setInsights,
   upvotedEntries,
+  setUpvotedEntries,
   downvotedEntries,
-  removeUpEntryFromState,
-  addUpEntryToState,
-  removeDownEntryFromState,
-  addDownEntryToState,
+  setDownvotedEntries,
 }) => {
   const slug = (title, id) =>
     slugify(`${title}-${id}`, { lower: true, strict: true });
@@ -36,16 +33,13 @@ const EntryLoggedTitle = ({
       </Link>
       <EntryLogged
         data={data}
-        insights={insights}
-        addInsightToState={addInsightToState}
-        removeInsightFromState={removeInsightFromState}
         userId={userId}
+        insights={insights}
+        setInsights={setInsights}
         upvotedEntries={upvotedEntries}
+        setUpvotedEntries={setUpvotedEntries}
         downvotedEntries={downvotedEntries}
-        removeUpEntryFromState={removeUpEntryFromState}
-        addUpEntryToState={addUpEntryToState}
-        removeDownEntryFromState={removeDownEntryFromState}
-        addDownEntryToState={addDownEntryToState}
+        setDownvotedEntries={setDownvotedEntries}
       />
     </div>
   );
