@@ -1,4 +1,4 @@
-import { LogIn, User, LogOut } from "react-feather";
+import { LogIn, User, LogOut, Plus } from "react-feather";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -37,6 +37,14 @@ const Header = ({ userState }) => {
           <div className="mx-3 group-active:text-white transition-all">
             {userState.user.username}
           </div>
+        </a>
+      </Link>
+      <Link href="/users/book-search/">
+        <a className="flex group cursor-pointer pr-3">
+          <Plus
+            size={20}
+            className="text-gray-500 hover:scale-110 hover:text-gray-700 cursor-pointer"
+          />
         </a>
       </Link>
       <LogOut
