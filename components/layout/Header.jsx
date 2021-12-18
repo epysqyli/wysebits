@@ -40,7 +40,7 @@ const Header = ({ userState }) => {
         </a>
       </Link>
       <Link href="/users/book-search/">
-        <a className="flex group cursor-pointer pr-3">
+        <a className="group cursor-pointer mr-3">
           <Plus
             size={20}
             className="text-gray-500 hover:scale-110 hover:text-gray-700 cursor-pointer"
