@@ -3,7 +3,7 @@ import WelcomeTop from "../../../../components/users/WelcomeTop";
 import NoAccess from "../../../../components/users/NoAccess";
 import SearchInput from "../../../../components/navigation/SearchInput";
 import NoItem from "../../../../components/users/NoItem";
-import FollowedUser from "../../../../components/users/FollowedUser";
+import RelatedUser from "../../../../components/users/RelatedUser";
 import PageNavButton from "../../../../components/navigation/PageNavButton";
 
 export const getServerSideProps = async (context) => {
@@ -74,7 +74,7 @@ const Following = ({ following, userState, pagy }) => {
                   key={user.id}
                   className="my-10 shadow-md rounded-md py-5 bg-gray-100 hover:bg-gray-200 hover:shadow-lg active:bg-gray-300 cursor-pointer"
                 >
-                  <FollowedUser followedUser={user.followed} />
+                  <RelatedUser relatedUser={user.followed} />
                 </div>
               );
             })}
