@@ -40,7 +40,7 @@ const Home = ({ categories, userState }) => {
       <div className="mb-10 w-4/5 mx-auto px-2 py-3 border-b-2">
         <div className="flex justify-center items-center gap-x-5">
           <Book size={36} strokeWidth={1.5} />
-          <div className="text-4xl text-gray-800">Explore books</div>
+          <div className="text-4xl text-gray-700">Explore books</div>
         </div>
         <div className="mt-10 mb-5">
           <SearchInput
@@ -53,7 +53,7 @@ const Home = ({ categories, userState }) => {
       <div className="mb-10 w-4/5 mx-auto border-b-2 pb-10">
         <div className="flex justify-center items-center gap-x-5 mb-10">
           <Box size={36} strokeWidth={1.5} />
-          <div className="text-3xl text-gray-800">Explore categories</div>
+          <div className="text-3xl text-gray-700">Explore categories</div>
         </div>
         <div className="grid grid-cols-2 gap-x-4 gap-y-4">
           {categories.map((category) => {

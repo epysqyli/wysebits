@@ -56,9 +56,9 @@ const CardBcg = ({ bookData, userState, favBooks }) => {
         <div className="w-4/5 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10">
           <BookCard bookData={bookData} />
         </div>
-        <div className="flex mt-5">
+        <div className="flex mt-5 justify-center gap-x-5">
           <div
-            className="mx-auto w-2/5 shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10 py-2 flex items-center justify-center gap-x-2 cursor-pointer hover:backdrop-brightness-50 active:scale-105 transition-transform"
+            className="shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10 py-2 px-3 flex items-center justify-center gap-x-2 cursor-pointer hover:backdrop-brightness-50 active:scale-105 transition-transform"
             onClick={isFav ? removeFromFavBooks : addToFavBooks}
           >
             {isFav ? (
@@ -74,7 +74,7 @@ const CardBcg = ({ bookData, userState, favBooks }) => {
             )}
           </div>
           <Link href={`/users/book-tiles/create/${bookData.id}`}>
-            <div className="mx-auto w-2/5 shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10 py-2 flex items-center justify-center gap-x-4 cursor-pointer  hover:backdrop-brightness-50 active:scale-105 transition-transform">
+            <div className="shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10 py-2 px-3 flex items-center justify-center gap-x-4 cursor-pointer  hover:backdrop-brightness-50 active:scale-105 transition-transform">
               <div className="text-sm">Share your insights</div>
               <FilePlus strokeWidth={1.5} size={20} />
             </div>
