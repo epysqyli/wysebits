@@ -62,7 +62,7 @@ const Actions = ({ userState }) => {
           <div className="mx-auto my-12">
             <HomepageButton
               text="Your followers"
-              href="/users/actions/followers"
+              href="/users/actions/followers/1"
               bcgImg="bg-followers"
             />
           </div>
