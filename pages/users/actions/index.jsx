@@ -54,7 +54,7 @@ const Actions = ({ userState }) => {
           <div className="mx-auto my-12">
             <HomepageButton
               text="Users you are following"
-              href="/users/actions/following"
+              href="/users/actions/following/1"
               bcgImg="bg-following"
             />
           </div>

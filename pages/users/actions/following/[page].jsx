@@ -1,9 +1,10 @@
 import axios from "axios";
-import WelcomeTop from "../../../components/users/WelcomeTop";
-import NoAccess from "../../../components/users/NoAccess";
-import SearchInput from "../../../components/navigation/SearchInput";
-import NoItem from "../../../components/users/NoItem";
-import FollowedUser from "../../../components/users/FollowedUser";
+import WelcomeTop from "../../../../components/users/WelcomeTop";
+import NoAccess from "../../../../components/users/NoAccess";
+import SearchInput from "../../../../components/navigation/SearchInput";
+import NoItem from "../../../../components/users/NoItem";
+import FollowedUser from "../../../../components/users/FollowedUser";
+import PageNavButton from "../../../../components/navigation/PageNavButton";
 
 export const getServerSideProps = async (context) => {
   try {
@@ -13,9 +14,11 @@ export const getServerSideProps = async (context) => {
       headers: { cookie: context.req.headers.cookie },
     });
 
+    const pageNum = context.query.page;
+
     const resp = await axios({
       method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/following?page=1`,
+      url: `http://localhost:3001/api/users/${userResp.data.user.id}/following?page=${pageNum}`,
       headers: { cookie: context.req.headers.cookie },
     });
 
@@ -34,7 +37,9 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-const Following = ({ following, userState }) => {
+const Following = ({ following, userState, pagy }) => {
+  const clientUrl = "/users/actions/following";
+
   if (userState.isLogged) {
     if (following.length == 0) {
       return (
@@ -73,6 +78,23 @@ const Following = ({ following, userState }) => {
                 </div>
               );
             })}
+          </div>
+
+          <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
+            <div className="w-1/2">
+              <PageNavButton
+                btnText="Previous page"
+                clientUrl={clientUrl}
+                url={pagy.prev_url}
+              />
+            </div>
+            <div className="w-1/2">
+              <PageNavButton
+                btnText="Next page"
+                clientUrl={clientUrl}
+                url={pagy.next_url}
+              />
+            </div>
           </div>
         </div>
       );
