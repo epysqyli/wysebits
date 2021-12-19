@@ -3,7 +3,7 @@ import BookCard from "./BookCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const CardBcg = ({ bookData, userId, favBooks }) => {
+const CardBcg = ({ bookData, userState, favBooks }) => {
   const [favs, setFavs] = useState(favBooks);
   const [isFav, setIsFav] = useState(
     favs.some((book) => book.book_id == bookData.id)
@@ -18,7 +18,7 @@ const CardBcg = ({ bookData, userId, favBooks }) => {
   const removeFromFavBooks = () => {
     axios
       .delete(
-        `http://localhost:3001/api/users/${userId}/fav_books/${bookData.id}`,
+        `http://localhost:3001/api/users/${userState.user.id}/fav_books/${bookData.id}`,
         { withCredentials: true }
       )
       .then((resp) => updateFavs(resp.data.fav_books))
@@ -28,7 +28,7 @@ const CardBcg = ({ bookData, userId, favBooks }) => {
   const addToFavBooks = () => {
     axios
       .post(
-        `http://localhost:3001/api/users/${userId}/fav_books/${bookData.id}`,
+        `http://localhost:3001/api/users/${userState.user.id}/fav_books/${bookData.id}`,
         {},
         { withCredentials: true }
       )
@@ -44,7 +44,7 @@ const CardBcg = ({ bookData, userId, favBooks }) => {
 
   useEffect(() => updateIsFav(), [favs]);
 
-  if (userId) {
+  if (userState.isLogged) {
     return (
       <div className="relative py-5">
         <img

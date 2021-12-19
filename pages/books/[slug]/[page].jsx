@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { FilePlus } from "react-feather";
+import { FilePlus, Users } from "react-feather";
 import TileEntry from "../../../components/books/TileEntry";
 import CardBcg from "../../../components/books/CardBcg";
 import NoItem from "../../../components/users/NoItem";
@@ -129,7 +129,7 @@ const Book = ({
       <div>
         <CardBcg
           bookData={book}
-          userId={userState.user.id}
+          userState={userState}
           favBooks={favBooks}
         />
         <div className="w-5/6 mx-auto mt-20">
