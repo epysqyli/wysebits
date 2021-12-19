@@ -174,7 +174,7 @@ const Book = ({
       <div className="pb-20">
         <CardBcg
           bookData={book}
-          userId={userState.user.id}
+          userState={userState}
           favBooks={favBooks}
         />
         <div className="w-4/5 mx-auto">
