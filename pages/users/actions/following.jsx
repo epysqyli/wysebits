@@ -1,8 +1,9 @@
+import axios from "axios";
 import WelcomeTop from "../../../components/users/WelcomeTop";
 import NoAccess from "../../../components/users/NoAccess";
 import SearchInput from "../../../components/navigation/SearchInput";
 import NoItem from "../../../components/users/NoItem";
-import axios from "axios";
+import FollowedUser from "../../../components/users/FollowedUser";
 
 export const getServerSideProps = async (context) => {
   try {
@@ -58,10 +59,14 @@ const Following = ({ following, userState }) => {
       return (
         <div>
           <WelcomeTop text="Users you are following" bcgImg="bg-following" />
-          <div className="mx-auto w-4/5 mt-20">
-            <div className="text-center text-gray-500">
-              List followed users in a decent way
-            </div>
+          <div className="mx-auto w-4/5 mt-10">
+            {following.map((user) => {
+              return (
+                <div key={user.id} className="my-10 shadow-md rounded-md py-5 bg-gray-100 hover:bg-gray-200 hover:shadow-lg active:bg-gray-300 cursor-pointer">
+                  <FollowedUser followedUser={user} />
+                </div>
+              );
+            })}
           </div>
         </div>
       );
