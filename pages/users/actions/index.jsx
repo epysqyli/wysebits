@@ -18,8 +18,8 @@ const Actions = ({ userState }) => {
           </div>
         </div>
 
-        <div className="w-4/5 mx-auto mt-16">
-          <div className="mx-auto my-12">
+        <div className="w-4/5 mx-auto my-16 grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-6 ">
+          <div>
             <HomepageButton
               text="Share your knowledge"
               bcgImg="bg-create-tile"
@@ -27,7 +27,7 @@ const Actions = ({ userState }) => {
             />
           </div>
 
-          <div className="mx-auto my-12">
+          <div>
             <HomepageButton
               text="Manage your contributions"
               bcgImg="bg-check-book-tiles"
@@ -35,7 +35,7 @@ const Actions = ({ userState }) => {
             />
           </div>
 
-          <div className="mx-auto my-12">
+          <div>
             <HomepageButton
               text="Favorite books"
               bcgImg="bg-liked-books"
@@ -43,7 +43,7 @@ const Actions = ({ userState }) => {
             />
           </div>
 
-          <div className="mx-auto my-12">
+          <div>
             <HomepageButton
               text="Saved book insights"
               href="/users/actions/favorite-insights/1"
@@ -51,7 +51,7 @@ const Actions = ({ userState }) => {
             />
           </div>
 
-          <div className="mx-auto my-12">
+          <div>
             <HomepageButton
               text="Users you are following"
               href="/users/actions/following/1"
@@ -59,7 +59,7 @@ const Actions = ({ userState }) => {
             />
           </div>
 
-          <div className="mx-auto my-12">
+          <div>
             <HomepageButton
               text="Your followers"
               href="/users/actions/followers/1"
@@ -67,7 +67,7 @@ const Actions = ({ userState }) => {
             />
           </div>
 
-          <div className="mx-auto my-12">
+          <div>
             <HomepageButton
               text="Manage profile"
               href="/users/actions/manage-profile"
