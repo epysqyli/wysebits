@@ -1,10 +1,11 @@
 import { User, BookOpen, AlignCenter } from "react-feather";
 import Link from "next/dist/client/link";
+import { countTotalInsights } from "../../lib/creatorMethods";
 
 const FollowedUser = ({ followedUser }) => {
   return (
     <Link href={`/creators/${followedUser.username}`}>
-      <div className="flex justify-center items-center gap-x-20">
+      <div className="flex justify-center items-center gap-x-10">
         <div>
           <User
             size={60}
@@ -19,12 +20,16 @@ const FollowedUser = ({ followedUser }) => {
           </div>
           <div className="flex text-gray-700 gap-x-10">
             <div className="flex gap-x-3 items-center">
-              <BookOpen />
-              <div className="text-sm">x books</div>
+              <BookOpen color="gray" />
+              <div className="text-sm">
+                {followedUser.book_tiles.length} books
+              </div>
             </div>
             <div className="flex gap-x-3 items-center">
-              <AlignCenter />
-              <div className="text-sm">x insights</div>
+              <AlignCenter color="gray" />
+              <div className="text-sm">
+                {countTotalInsights(followedUser.book_tiles)} insights
+              </div>
             </div>
           </div>
         </div>

@@ -1,12 +1,7 @@
 import { User, BookOpen, AlignCenter, Users } from "react-feather";
+import { countTotalInsights } from "../../lib/creatorMethods";
 
 const BasicInfo = ({ user }) => {
-  const countTotalInsights = (tiles) => {
-    let count = 0;
-    tiles.forEach((tile) => count += tile.tile_entries.length);
-    return count;
-  };
-
   return (
     <div>
       <div className="flex justify-around items-center py-5 px-10">
