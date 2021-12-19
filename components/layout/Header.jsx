@@ -1,4 +1,4 @@
-import { LogIn, User, LogOut, Plus } from "react-feather";
+import { LogIn, User, LogOut, Plus, UserPlus } from "react-feather";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -16,13 +16,33 @@ const Header = ({ userState }) => {
       .catch((err) => console.log(err));
   };
 
-  const login = (
-    <Link href="/registrations/login">
-      <a className="flex items-center group cursor-pointer">
-        <LogIn size={20} className="group-hover:scale-110 transition-all" />
-        <div className="mx-3 group-active:text-white transition-all">Login</div>
-      </a>
-    </Link>
+  const guest = (
+    <div className="flex gap-x-2 text-sm">
+      <Link href="/registrations/login">
+        <a className="flex items-center group cursor-pointer">
+          <LogIn
+            size={18}
+            strokeWidth={1.75}
+            className="group-hover:scale-110 transition-all"
+          />
+          <div className="mx-3 group-active:text-white transition-all">
+            Login
+          </div>
+        </a>
+      </Link>
+      <Link href="/registrations/signup">
+        <a className="flex items-center group cursor-pointer">
+          <UserPlus
+            size={18}
+            strokeWidth={1.75}
+            className="group-hover:scale-110 transition-all"
+          />
+          <div className="mx-3 group-active:text-white transition-all">
+            Sign Up
+          </div>
+        </a>
+      </Link>
+    </div>
   );
 
   const loggedUser = (
@@ -58,13 +78,11 @@ const Header = ({ userState }) => {
   return (
     <header className="flex justify-between items-center bg-gray-300 py-2 px-5 text-center w-screen fixed shadow-sm z-50">
       <Link href="/">
-        <a>
-          <div className="text-2xl font-bold cursor-pointer hover:scale-105 transition-all active:text-white">
-            Wbits.
-          </div>
-        </a>
+        <div className="text-2xl font-bold cursor-pointer hover:scale-105 transition-all active:text-white">
+          Wbits.
+        </div>
       </Link>
-      {userState.isLogged ? loggedUser : login}
+      {userState.isLogged ? loggedUser : guest}
     </header>
   );
 };
