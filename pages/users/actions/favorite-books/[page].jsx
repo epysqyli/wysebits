@@ -40,7 +40,7 @@ export const getServerSideProps = async (context) => {
 };
 
 const FavoriteBooks = ({ books, pagy, userState }) => {
-  const clientUrl = "/users/actions/favorite-books"
+  const clientUrl = "/users/actions/favorite-books";
 
   const slug = (title, id) =>
     slugify(`${title}-${id}`, { lower: true, strict: true });
@@ -89,10 +89,18 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
 
           <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
             <div className="w-1/2">
-              <PageNavButton btnText="Previous page" clientUrl={clientUrl} url={pagy.prev_url} />
+              <PageNavButton
+                btnText="Previous page"
+                clientUrl={clientUrl}
+                url={pagy.prev_url}
+              />
             </div>
             <div className="w-1/2">
-              <PageNavButton btnText="Next page" clientUrl={clientUrl} url={pagy.next_url} />
+              <PageNavButton
+                btnText="Next page"
+                clientUrl={clientUrl}
+                url={pagy.next_url}
+              />
             </div>
           </div>
         </div>
