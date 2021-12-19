@@ -1,7 +1,8 @@
-import { Star, Delete } from "react-feather";
+import { Star, Delete, FilePlus } from "react-feather";
 import BookCard from "./BookCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Link from "next/dist/client/link";
 
 const CardBcg = ({ bookData, userState, favBooks }) => {
   const [favs, setFavs] = useState(favBooks);
@@ -55,22 +56,32 @@ const CardBcg = ({ bookData, userState, favBooks }) => {
         <div className="w-4/5 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10">
           <BookCard bookData={bookData} />
         </div>
-
-        <div
-          className="w-3/5 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10 py-2 mt-5 flex items-center justify-center gap-x-4 cursor-pointer  hover:backdrop-brightness-50 active:scale-105 transition-transform"
-          onClick={isFav ? removeFromFavBooks : addToFavBooks}
-        >
-          {isFav ? (
-            <>
-              <div className="text-sm">Remove from favorites</div>
-              <Delete strokeWidth={1.5} size={20} />
-            </>
-          ) : (
-            <>
-              <div className="text-sm">Add to favorites</div>
-              <Star strokeWidth={1.5} size={18} />
-            </>
-          )}
+        <div className="flex">
+          <div
+            className="w-2/5 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10 py-2 mt-5 flex items-center justify-center gap-x-4 cursor-pointer  hover:backdrop-brightness-50 active:scale-105 transition-transform"
+            onClick={isFav ? removeFromFavBooks : addToFavBooks}
+          >
+            {isFav ? (
+              <>
+                <div className="text-sm">Remove from favorites</div>
+                <Delete strokeWidth={1.5} size={20} />
+              </>
+            ) : (
+              <>
+                <div className="text-sm">Add to favorites</div>
+                <Star strokeWidth={1.5} size={18} />
+              </>
+            )}
+          </div>
+          <Link href={`/users/book-tiles/create/${bookData.id}`}>
+            <div
+              className="w-2/5 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10 py-2 mt-5 flex items-center justify-center gap-x-4 cursor-pointer  hover:backdrop-brightness-50 active:scale-105 transition-transform"
+              onClick={isFav ? removeFromFavBooks : addToFavBooks}
+            >
+              <div className="text-sm">Share your insights</div>
+              <FilePlus strokeWidth={1.5} size={20} />
+            </div>
+          </Link>
         </div>
       </div>
     );
