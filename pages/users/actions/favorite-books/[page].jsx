@@ -79,7 +79,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
                   href={`/books/${slug(item.book.title, item.book.id)}/1`}
                   key={item.book.id}
                 >
-                  <div className="rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300">
+                  <div className="rounded-md shadow-md border bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300">
                     <BookCard bookData={item.book} />
                   </div>
                 </Link>
