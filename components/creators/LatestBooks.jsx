@@ -15,9 +15,7 @@ const LatestBooks = ({ books }) => {
       <div className="mx-5 my-10">
         {latest.map((book) => (
           <Link href={`/books/${slug(book.title, book.id)}/1`} key={book.id}>
-            <div
-              className="cursor-pointer shadow-md rounded my-5 bg-gray-100  mx-10"
-            >
+            <div className="cursor-pointer shadow-md rounded my-5 bg-gray-100 mx-10 hover:bg-gray-200 active:bg-gray-300 transition-colors">
               <BookCard bookData={book} />
             </div>
           </Link>
