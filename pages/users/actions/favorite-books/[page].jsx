@@ -72,14 +72,14 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
       return (
         <div>
           <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
-          <div className="mt-10 w-4/5 mx-auto">
+          <div className="mx-auto mt-10 w-5/6 grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-6">
             {books.map((item) => {
               return (
                 <Link
                   href={`/books/${slug(item.book.title, item.book.id)}/1`}
                   key={item.book.id}
                 >
-                  <div className="my-10 rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300">
+                  <div className="rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300">
                     <BookCard bookData={item.book} />
                   </div>
                 </Link>
