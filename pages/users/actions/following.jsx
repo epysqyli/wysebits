@@ -15,18 +15,21 @@ export const getServerSideProps = async (context) => {
 
     const resp = await axios({
       method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/following`,
+      url: `http://localhost:3001/api/users/${userResp.data.user.id}/following?page=1`,
       headers: { cookie: context.req.headers.cookie },
     });
 
     return {
       props: {
-        following: resp.data,
+        following: resp.data.following,
+        pagy: resp.data.pagy,
       },
     };
   } catch (error) {
     return {
-      props: {},
+      props: {
+        error: error.message,
+      },
     };
   }
 };
@@ -62,8 +65,11 @@ const Following = ({ following, userState }) => {
           <div className="mx-auto w-4/5 mt-10">
             {following.map((user) => {
               return (
-                <div key={user.id} className="my-10 shadow-md rounded-md py-5 bg-gray-100 hover:bg-gray-200 hover:shadow-lg active:bg-gray-300 cursor-pointer">
-                  <FollowedUser followedUser={user} />
+                <div
+                  key={user.id}
+                  className="my-10 shadow-md rounded-md py-5 bg-gray-100 hover:bg-gray-200 hover:shadow-lg active:bg-gray-300 cursor-pointer"
+                >
+                  <FollowedUser followedUser={user.followed} />
                 </div>
               );
             })}
