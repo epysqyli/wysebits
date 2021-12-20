@@ -29,6 +29,12 @@ export const getServerSideProps = async (context) => {
       headers: { cookie: context.req.headers.cookie },
     });
 
+    const following = await axios({
+      method: "get",
+      url: `http://localhost:3001/api/users/${userResp.data.user.id}/unpaged_following`,
+      headers: { cookie: context.req.headers.cookie },
+    });
+
     const favBooks = await axios({
       method: "get",
       url: `http://localhost:3001/api/users/${userResp.data.user.id}/fav_books`,
@@ -62,6 +68,7 @@ export const getServerSideProps = async (context) => {
           favBooks: favBooks.data.books,
           pagy: entries.data.pagy,
           slug: slug,
+          following: following.data,
           favInsights: favInsights.data.tile_entries,
           entriesUp: upvotedEntries.data.upvoted_entries,
           entriesDown: downvotedEntries.data.downvoted_entries,
@@ -76,6 +83,7 @@ export const getServerSideProps = async (context) => {
           favBooks: favBooks.data.books,
           pagy: entries.data.pagy,
           slug: slug,
+          following: following.data,
         },
       };
     }
@@ -114,10 +122,12 @@ const Book = ({
   favBooks,
   slug,
   pagy,
+  following,
   favInsights,
   entriesUp,
   entriesDown,
 }) => {
+  const [followedUsers, setFollowedUsers] = useState(following);
   const [insights, setInsights] = useState(favInsights);
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
@@ -127,11 +137,7 @@ const Book = ({
   if (entries) {
     return (
       <div>
-        <CardBcg
-          bookData={book}
-          userState={userState}
-          favBooks={favBooks}
-        />
+        <CardBcg bookData={book} userState={userState} favBooks={favBooks} />
         <div className="w-5/6 mx-auto mt-20">
           {entries.map((entry) => {
             return (
@@ -146,6 +152,8 @@ const Book = ({
                   setUpvotedEntries={setUpvotedEntries}
                   downvotedEntries={downvotedEntries}
                   setDownvotedEntries={setDownvotedEntries}
+                  followedUsers={followedUsers}
+                  setFollowedUsers={setFollowedUsers}
                 />
               </div>
             );
@@ -172,11 +180,7 @@ const Book = ({
   } else {
     return (
       <div className="pb-20">
-        <CardBcg
-          bookData={book}
-          userState={userState}
-          favBooks={favBooks}
-        />
+        <CardBcg bookData={book} userState={userState} favBooks={favBooks} />
         <div className="w-4/5 mx-auto">
           <NoItem message="It appears as though there are no insights for this book yet ..." />
           <Link href={`/users/book-tiles/create/${book.id}`}>

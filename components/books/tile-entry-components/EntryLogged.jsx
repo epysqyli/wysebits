@@ -217,7 +217,7 @@ const EntryLogged = ({
 
         <div className="group flex items-center gap-x-2 transition-all">
           <Link href={`/creators/${data.book_tile.user.username}`}>
-            <div className="flex items-center gap-x-2">
+            <div className="flex items-center gap-x-1">
               <div className="text-gray-600 active:text-gray-200 cursor-pointer">
                 {data.book_tile.user.username}
               </div>

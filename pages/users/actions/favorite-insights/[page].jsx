@@ -15,6 +15,12 @@ export const getServerSideProps = async (context) => {
       headers: { cookie: context.req.headers.cookie },
     });
 
+    const following = await axios({
+      method: "get",
+      url: `http://localhost:3001/api/users/${userResp.data.user.id}/unpaged_following`,
+      headers: { cookie: context.req.headers.cookie },
+    });
+
     const pageNum = context.query.page;
 
     const favTileEntries = await axios({
@@ -39,6 +45,7 @@ export const getServerSideProps = async (context) => {
       props: {
         favInsights: favTileEntries.data.tile_entries,
         pagy: favTileEntries.data.pagy,
+        following: following.data,
         entriesUp: upvotedEntries.data.upvoted_entries,
         entriesDown: downvotedEntries.data.downvoted_entries,
       },
@@ -56,9 +63,11 @@ const FavoriteInsights = ({
   userState,
   favInsights,
   pagy,
+  following,
   entriesUp,
   entriesDown,
 }) => {
+  const [followedUsers, setFollowedUsers] = useState(following);
   const [insights, setInsights] = useState(favInsights);
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
@@ -106,6 +115,8 @@ const FavoriteInsights = ({
                   setUpvotedEntries={setUpvotedEntries}
                   downvotedEntries={downvotedEntries}
                   setDownvotedEntries={setDownvotedEntries}
+                  followedUsers={followedUsers}
+                  setFollowedUsers={setFollowedUsers}
                 />
               </div>
             );

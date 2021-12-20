@@ -14,6 +14,8 @@ const TileEntry = ({
   setUpvotedEntries,
   downvotedEntries,
   setDownvotedEntries,
+  followedUsers,
+  setFollowedUsers,
 }) => {
   if (isLogged && showTitle) {
     return (
@@ -26,6 +28,8 @@ const TileEntry = ({
         setUpvotedEntries={setUpvotedEntries}
         downvotedEntries={downvotedEntries}
         setDownvotedEntries={setDownvotedEntries}
+        followedUsers={followedUsers}
+        setFollowedUsers={setFollowedUsers}
       />
     );
   }
@@ -42,6 +46,8 @@ const TileEntry = ({
           setUpvotedEntries={setUpvotedEntries}
           downvotedEntries={downvotedEntries}
           setDownvotedEntries={setDownvotedEntries}
+          followedUsers={followedUsers}
+          setFollowedUsers={setFollowedUsers}
         />
       </div>
     );
