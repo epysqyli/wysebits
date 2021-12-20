@@ -12,6 +12,8 @@ const EntryLoggedTitle = ({
   setUpvotedEntries,
   downvotedEntries,
   setDownvotedEntries,
+  followedUsers,
+  setFollowedUsers,
 }) => {
   const slug = (title, id) =>
     slugify(`${title}-${id}`, { lower: true, strict: true });
@@ -40,6 +42,8 @@ const EntryLoggedTitle = ({
         setUpvotedEntries={setUpvotedEntries}
         downvotedEntries={downvotedEntries}
         setDownvotedEntries={setDownvotedEntries}
+        followedUsers={followedUsers}
+        setFollowedUsers={setFollowedUsers}
       />
     </div>
   );

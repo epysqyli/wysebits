@@ -1,4 +1,11 @@
-import { ThumbsUp, ThumbsDown, Heart, ArrowUpRight } from "react-feather";
+import {
+  ThumbsUp,
+  ThumbsDown,
+  Heart,
+  ArrowUpRight,
+  UserMinus,
+  UserPlus,
+} from "react-feather";
 import axios from "axios";
 import Link from "next/dist/client/link";
 import { removeInsightFromState } from "../../../lib/tileEntryMethods";
@@ -7,6 +14,8 @@ import { removeUpEntryFromState } from "../../../lib/tileEntryMethods";
 import { addUpEntryToState } from "../../../lib/tileEntryMethods";
 import { removeDownEntryFromState } from "../../../lib/tileEntryMethods";
 import { addDownEntryToState } from "../../../lib/tileEntryMethods";
+import { addFollowedUserToState } from "../../../lib/tileEntryMethods";
+import { removeFollowedUserFromState } from "../../../lib/tileEntryMethods";
 
 const EntryLogged = ({
   data,
@@ -17,7 +26,11 @@ const EntryLogged = ({
   setUpvotedEntries,
   downvotedEntries,
   setDownvotedEntries,
+  followedUsers,
+  setFollowedUsers,
 }) => {
+  const entryUser = data.book_tile.user;
+
   // methods related to like/heart functionalities
   const isFavInsight = () => {
     return insights.some((insight) => insight.id === data.id);
@@ -111,6 +124,37 @@ const EntryLogged = ({
       .catch((err) => console.log(err));
   };
 
+  // methods related to followed users
+  const isFollowed = () => {
+    return followedUsers.some((user) => user.id === entryUser.id);
+  };
+
+  const follow = () => {
+    axios
+      .post(
+        `http://localhost:3001/api/users/${userId}/follow/${entryUser.id}`,
+        {},
+        { withCredentials: true }
+      )
+      .then((res) =>
+        addFollowedUserToState(entryUser, followedUsers, setFollowedUsers)
+      )
+      .catch((err) => console.log(err));
+  };
+
+  const unfollow = () => {
+    axios
+      .post(
+        `http://localhost:3001/api/users/${userId}/unfollow/${entryUser.id}`,
+        {},
+        { withCredentials: true }
+      )
+      .then((res) =>
+        removeFollowedUserFromState(entryUser, followedUsers, setFollowedUsers)
+      )
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="shadow-md rounded-md">
       <div className="border-b-2 py-3 px-2">{data.content}</div>
@@ -171,17 +215,28 @@ const EntryLogged = ({
           </div>
         </div>
 
-        <Link href={`/creators/${data.book_tile.user.username}`}>
-          <div className="group flex items-center gap-x-1 transition-all">
-            <div className="text-gray-600 active:text-gray-200 cursor-pointer">
-              {data.book_tile.user.username}
+        <div className="group flex items-center gap-x-2 transition-all">
+          <Link href={`/creators/${data.book_tile.user.username}`}>
+            <div className="flex items-center gap-x-2">
+              <div className="text-gray-600 active:text-gray-200 cursor-pointer">
+                {data.book_tile.user.username}
+              </div>
+              <ArrowUpRight
+                size={18}
+                className="text-gray-600 group-hover:scale-110"
+              />
             </div>
-            <ArrowUpRight
-              size={18}
-              className="text-gray-600 group-hover:scale-110"
-            />
-          </div>
-        </Link>
+          </Link>
+          {isFollowed() ? (
+            <div onClick={() => unfollow()}>
+              <UserMinus size={16} color="gray" />
+            </div>
+          ) : (
+            <div onClick={() => follow()}>
+              <UserPlus size={16} color="gray" />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

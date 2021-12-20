@@ -9,7 +9,9 @@ const LatestEntries = ({
   upvotedEntries,
   setUpvotedEntries,
   downvotedEntries,
-  setDownvotedEntries
+  setDownvotedEntries,
+  followedUsers,
+  setFollowedUsers,
 }) => {
   if (userState.isLogged) {
     return (
@@ -30,6 +32,8 @@ const LatestEntries = ({
               setUpvotedEntries={setUpvotedEntries}
               downvotedEntries={downvotedEntries}
               setDownvotedEntries={setDownvotedEntries}
+              followedUsers={followedUsers}
+              setFollowedUsers={setFollowedUsers}
             />
           </div>
         ))}
