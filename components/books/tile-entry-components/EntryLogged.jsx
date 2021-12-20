@@ -160,7 +160,7 @@ const EntryLogged = ({
       <div className="border-b-2 py-3 px-2">{data.content}</div>
 
       <div className="flex justify-between items-center text-sm px-2 py-2">
-        <div className="flex justify-center gap-x-6">
+        <div className="flex justify-center gap-x-3">
           {isUpvoted() ? (
             <div className="flex items-center gap-x-1 py-2">
               <div className="text-gray-600">{data.upvotes}</div>
@@ -228,12 +228,18 @@ const EntryLogged = ({
             </div>
           </Link>
           {isFollowed() ? (
-            <div onClick={() => unfollow()}>
-              <UserMinus size={16} color="gray" />
+            <div
+              className="cursor-pointer hover:scale-110 text-gray-600"
+              onClick={() => unfollow()}
+            >
+              <UserMinus size={16} />
             </div>
           ) : (
-            <div onClick={() => follow()}>
-              <UserPlus size={16} color="gray" />
+            <div
+              className="cursor-pointer hover:scale-110 text-gray-600"
+              onClick={() => follow()}
+            >
+              <UserPlus size={16} />
             </div>
           )}
         </div>
