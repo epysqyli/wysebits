@@ -12,13 +12,13 @@ const Actions = ({ userState }) => {
         </Head>
 
         <div className="bg-user-welcome bg-cover bg-center shadow-lg">
-          <div className="bg-gray-800 bg-opacity-70 text-white text-2xl font-bold text-center py-12">
+          <div className="bg-gray-800 bg-opacity-70 text-white text-2xl font-bold text-center py-12 xl:py-6">
             <div>Welcome back, {userState.user.username}.</div>
             <div className="mt-2">What are you up to today?</div>
           </div>
         </div>
 
-        <div className="w-4/5 mx-auto my-16 grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-6">
+        <div className="w-4/5 my-16 grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 mx-auto xl:px-40">
           <div>
             <HomepageButton
               text="Share your knowledge"
