@@ -54,7 +54,12 @@ const SearchInput = ({ pageDest, placeholder }) => {
             type="submit"
             className="w-1/6 text-center bg-white border-l rounded-tr-lg rounded-br-lg hover:bg-gray-200 group-hover:shadow-md transition active:bg-gray-400 active:text-white"
           >
-            <Search size={20} className="mx-auto" onClick={searchBooks} />
+            <Search
+              size={20}
+              className="mx-auto"
+              onClick={searchBooks}
+              color="gray"
+            />
           </button>
         </div>
         <div className="text-center text-sm mt-8 text-gray-400">
