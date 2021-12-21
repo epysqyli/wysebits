@@ -19,24 +19,26 @@ const LatestEntries = ({
         <div className="text-center text-gray-800 text-3xl">
           Latest insights
         </div>
-        {entries.map((entry) => (
-          <div className="m-10" key={entry.id}>
-            <EntryLoggedTitle
-              data={entry}
-              userId={userState.user.id}
-              insights={insights}
-              upvotedEntries={upvotedEntries}
-              downvotedEntries={downvotedEntries}
-              setInsights={setInsights}
-              upvotedEntries={upvotedEntries}
-              setUpvotedEntries={setUpvotedEntries}
-              downvotedEntries={downvotedEntries}
-              setDownvotedEntries={setDownvotedEntries}
-              followedUsers={followedUsers}
-              setFollowedUsers={setFollowedUsers}
-            />
-          </div>
-        ))}
+        <div className="w-5/6 md:w-4/6 mx-auto mt-10">
+          {entries.map((entry) => (
+            <div className="my-10" key={entry.id}>
+              <EntryLoggedTitle
+                data={entry}
+                userId={userState.user.id}
+                insights={insights}
+                upvotedEntries={upvotedEntries}
+                downvotedEntries={downvotedEntries}
+                setInsights={setInsights}
+                upvotedEntries={upvotedEntries}
+                setUpvotedEntries={setUpvotedEntries}
+                downvotedEntries={downvotedEntries}
+                setDownvotedEntries={setDownvotedEntries}
+                followedUsers={followedUsers}
+                setFollowedUsers={setFollowedUsers}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     );
   } else {

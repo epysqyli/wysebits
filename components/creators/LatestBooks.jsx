@@ -12,10 +12,10 @@ const LatestBooks = ({ books }) => {
   return (
     <div>
       <div className="text-center text-gray-800 text-3xl">Latest books</div>
-      <div className="mx-5 my-10">
+      <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 mx-auto">
         {latest.map((book) => (
           <Link href={`/books/${slug(book.title, book.id)}/1`} key={book.id}>
-            <div className="cursor-pointer shadow-md rounded my-5 bg-gray-100 mx-10 hover:bg-gray-200 active:bg-gray-300 transition-colors">
+            <div className="cursor-pointer shadow-md rounded bg-gray-100 hover:bg-gray-200 active:bg-gray-300 transition-colors">
               <BookCard bookData={book} />
             </div>
           </Link>
