@@ -1,3 +1,4 @@
+import { useState } from "react";
 import axios from "axios";
 import WelcomeTop from "../../../../components/users/WelcomeTop";
 import NoAccess from "../../../../components/users/NoAccess";
@@ -22,9 +23,16 @@ export const getServerSideProps = async (context) => {
       headers: { cookie: context.req.headers.cookie },
     });
 
+    const unpagedFollowing = await axios({
+      method: "get",
+      url: `http://localhost:3001/api/users/${userResp.data.user.id}/unpaged_following`,
+      headers: { cookie: context.req.headers.cookie },
+    });
+
     return {
       props: {
         following: resp.data.following,
+        unpagedFollowing: unpagedFollowing.data,
         pagy: resp.data.pagy,
       },
     };
@@ -37,7 +45,8 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-const Following = ({ following, userState, pagy }) => {
+const Following = ({ following, userState, pagy, unpagedFollowing }) => {
+  const [followedUsers, setFollowedUsers] = useState(unpagedFollowing);
   const clientUrl = "/users/actions/following";
 
   if (userState.isLogged) {
@@ -74,7 +83,12 @@ const Following = ({ following, userState, pagy }) => {
                   key={user.id}
                   className="my-10 shadow-md rounded-md py-5 bg-gray-100 hover:bg-gray-200 hover:shadow-lg active:bg-gray-300 cursor-pointer"
                 >
-                  <RelatedUser relatedUser={user.followed} />
+                  <RelatedUser
+                    relatedUser={user.followed}
+                    userId={userState.user.id}
+                    followedUsers={followedUsers}
+                    setFollowedUsers={setFollowedUsers}
+                  />
                 </div>
               );
             })}

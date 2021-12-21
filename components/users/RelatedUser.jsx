@@ -1,8 +1,33 @@
-import { User, BookOpen, AlignCenter } from "react-feather";
+import {
+  User,
+  BookOpen,
+  AlignCenter,
+  UserPlus,
+  UserMinus,
+} from "react-feather";
+import axios from "axios";
 import Link from "next/dist/client/link";
 import { countTotalInsights } from "../../lib/creatorMethods";
+import { removeFollowedUserFromState } from "../../lib/tileEntryMethods";
 
-const RelatedUser = ({ relatedUser }) => {
+const RelatedUser = ({ relatedUser, followedUsers, setFollowedUsers, userId }) => {
+  const unfollow = () => {
+    axios
+      .post(
+        `http://localhost:3001/api/users/${userId}/unfollow/${relatedUser.id}`,
+        {},
+        { withCredentials: true }
+      )
+      .then((res) =>
+        removeFollowedUserFromState(
+          relatedUser,
+          followedUsers,
+          setFollowedUsers
+        )
+      )
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Link href={`/creators/${relatedUser.username}`}>
       <div className="flex justify-center items-center gap-x-10">
@@ -15,8 +40,16 @@ const RelatedUser = ({ relatedUser }) => {
           />
         </div>
         <div>
-          <div className="mb-5 text-2xl font-bold text-gray-700">
-            {relatedUser.username}
+          <div className="flex items-center justify-between mb-5">
+            <div className="text-2xl font-bold text-gray-700">
+              {relatedUser.username}
+            </div>
+            <div
+              onClick={() => unfollow()}
+              className="text-gray-700 hover:scale-110 transition-transform active:scale-125 cursor-pointer"
+            >
+              <UserMinus size={18} strokeWidth={1.75} />
+            </div>
           </div>
           <div className="flex text-gray-700 gap-x-10">
             <div className="flex gap-x-3 items-center">
