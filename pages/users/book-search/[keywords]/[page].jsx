@@ -5,6 +5,7 @@ import { PlusCircle } from "react-feather";
 import BookSearchTile from "../../../../components/books/BookSearchTile";
 import NoAccess from "../../../../components/users/NoAccess";
 import NavButtonElastic from "../../../../components/navigation/NavButtonElastic";
+import SearchInput from "../../../../components/navigation/SearchInput";
 
 export const getServerSideProps = async (context) => {
   try {
@@ -62,11 +63,12 @@ const BookSearchResults = ({ searchResults, userState, keywords, pageNum }) => {
   if (userState.isLogged) {
     return (
       <div>
-        <Link href="/users/book-search/">
-          <div className="mb-5 py-3 text-center text-sm font-medium bg-gray-100 cursor-pointer hover:shadow-md hover:bg-gray-100 active:bg-gray-200">
-            Back to search
-          </div>
-        </Link>
+        <div className="my-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
+          <SearchInput
+            pageDest="/users/book-search/"
+            placeholder="Search for any book"
+          />
+        </div>
         <div className="w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 mx-auto">
           {searchResults.length != 0
             ? searchResults.map((book) => {
