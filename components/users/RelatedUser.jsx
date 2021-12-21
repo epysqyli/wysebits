@@ -2,16 +2,43 @@ import {
   User,
   BookOpen,
   AlignCenter,
-  UserPlus,
   UserMinus,
+  UserPlus,
 } from "react-feather";
 import axios from "axios";
 import Link from "next/dist/client/link";
 import { countTotalInsights } from "../../lib/creatorMethods";
+import { addFollowedUserToState } from "../../lib/tileEntryMethods";
 import { removeFollowedUserFromState } from "../../lib/tileEntryMethods";
 
-const RelatedUser = ({ relatedUser, followedUsers, setFollowedUsers, userId }) => {
-  const unfollow = () => {
+const RelatedUser = ({
+  relatedUser,
+  followedUsers,
+  setFollowedUsers,
+  userId,
+}) => {
+  const isFollowed = () => {
+    return followedUsers.some((user) => user.id === relatedUser.id);
+  };
+
+  const follow = (e) => {
+    e.stopPropagation();
+
+    axios
+      .post(
+        `http://localhost:3001/api/users/${userId}/follow/${relatedUser.id}`,
+        {},
+        { withCredentials: true }
+      )
+      .then((res) =>
+        addFollowedUserToState(relatedUser, followedUsers, setFollowedUsers)
+      )
+      .catch((err) => console.log(err));
+  };
+
+  const unfollow = (e) => {
+    e.stopPropagation();
+
     axios
       .post(
         `http://localhost:3001/api/users/${userId}/unfollow/${relatedUser.id}`,
@@ -44,12 +71,21 @@ const RelatedUser = ({ relatedUser, followedUsers, setFollowedUsers, userId }) =
             <div className="text-2xl font-bold text-gray-700">
               {relatedUser.username}
             </div>
-            <div
-              onClick={() => unfollow()}
-              className="text-gray-700 hover:scale-110 transition-transform active:scale-125 cursor-pointer"
-            >
-              <UserMinus size={18} strokeWidth={1.75} />
-            </div>
+            {isFollowed() ? (
+              <div
+                onClick={unfollow}
+                className="text-gray-700 hover:scale-110 transition-transform active:scale-125 cursor-pointer"
+              >
+                <UserMinus size={18} strokeWidth={1.75} />
+              </div>
+            ) : (
+              <div
+                onClick={follow}
+                className="text-gray-700 hover:scale-110 transition-transform active:scale-125 cursor-pointer"
+              >
+                <UserPlus size={18} strokeWidth={1.75} />
+              </div>
+            )}
           </div>
           <div className="flex text-gray-700 gap-x-10">
             <div className="flex gap-x-3 items-center">
