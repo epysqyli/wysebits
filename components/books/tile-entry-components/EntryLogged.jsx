@@ -8,14 +8,17 @@ import {
 } from "react-feather";
 import axios from "axios";
 import Link from "next/dist/client/link";
-import { removeInsightFromState } from "../../../lib/tileEntryMethods";
-import { addInsightToState } from "../../../lib/tileEntryMethods";
-import { removeUpEntryFromState } from "../../../lib/tileEntryMethods";
-import { addUpEntryToState } from "../../../lib/tileEntryMethods";
-import { removeDownEntryFromState } from "../../../lib/tileEntryMethods";
-import { addDownEntryToState } from "../../../lib/tileEntryMethods";
-import { addFollowedUserToState } from "../../../lib/tileEntryMethods";
-import { removeFollowedUserFromState } from "../../../lib/tileEntryMethods";
+import {
+  removeInsightFromState,
+  addInsightToState,
+  removeUpEntryFromState,
+  addUpEntryToState,
+  addDownEntryToState,
+  removeDownEntryFromState,
+  addFollowedUserToState,
+  removeFollowedUserFromState,
+} from "../../../lib/tileEntryMethods";
+import { isFollowed } from "../../../lib/followMethods";
 
 const EntryLogged = ({
   data,
@@ -124,11 +127,6 @@ const EntryLogged = ({
       .catch((err) => console.log(err));
   };
 
-  // methods related to followed users
-  const isFollowed = () => {
-    return followedUsers.some((user) => user.id === entryUser.id);
-  };
-
   const follow = () => {
     axios
       .post(
@@ -227,7 +225,7 @@ const EntryLogged = ({
               />
             </div>
           </Link>
-          {isFollowed() ? (
+          {isFollowed(followedUsers, entryUser) ? (
             <div
               className="cursor-pointer hover:scale-110 text-gray-600"
               onClick={() => unfollow()}
