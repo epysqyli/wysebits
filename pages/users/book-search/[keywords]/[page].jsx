@@ -49,7 +49,7 @@ const BookSearchResults = ({ searchResults, userState, keywords, pageNum }) => {
           <div className="text-sm font-medium">
             No results? Add your book now!
           </div>
-          <PlusCircle strokeWidth={1.5} />
+          <PlusCircle strokeWidth={1.5} color="gray" />
         </div>
       </div>
     </Link>
@@ -63,11 +63,11 @@ const BookSearchResults = ({ searchResults, userState, keywords, pageNum }) => {
     return (
       <div>
         <Link href="/users/book-search/">
-          <div className="py-3 text-center text-sm font-medium bg-gray-100 cursor-pointer hover:shadow-md hover:bg-gray-100 active:bg-gray-200">
+          <div className="mb-5 py-3 text-center text-sm font-medium bg-gray-100 cursor-pointer hover:shadow-md hover:bg-gray-100 active:bg-gray-200">
             Back to search
           </div>
         </Link>
-        <div className="w-4/5 mx-auto">
+        <div className="w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 mx-auto">
           {searchResults.length != 0
             ? searchResults.map((book) => {
                 return (
