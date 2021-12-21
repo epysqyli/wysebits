@@ -44,14 +44,14 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
           </div>
         </div>
 
-        <div className="w-4/5 mx-auto my-10">
+        <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 mx-auto">
           {books.map((book) => {
             return (
               <Link
                 href={`/books/${slug(book.title, book.id)}/1`}
                 key={book.id}
               >
-                <div className="my-10 rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300">
+                <div className="rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300">
                   <BookCard bookData={book} />
                 </div>
               </Link>
