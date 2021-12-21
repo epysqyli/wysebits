@@ -5,6 +5,7 @@ import slugify from "slugify";
 import Link from "next/link";
 import BookSearchTile from "../../../../components/books/BookSearchTile";
 import NavButtonElastic from "../../../../components/navigation/NavButtonElastic";
+import SearchInput from "../../../../components/navigation/SearchInput";
 
 export const getServerSideProps = async (context) => {
   const keywords = context.query.keywords;
@@ -57,12 +58,13 @@ const BookSearchResults = ({ searchResults, keywords, pageNum }) => {
 
   return (
     <div>
-      <Link href="/">
-        <div className="py-3 text-center text-sm font-medium bg-gray-100 cursor-pointer hover:shadow-md hover:bg-gray-100 active:bg-gray-200">
-          Back to homepage
-        </div>
-      </Link>
-      <div className="w-4/5 mx-auto">
+      <div className="my-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
+        <SearchInput
+          pageDest="/books/search/"
+          placeholder="Search for any book"
+        />
+      </div>
+      <div className="w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 mx-auto">
         {searchResults.length != 0
           ? searchResults.map((book) => {
               return (
