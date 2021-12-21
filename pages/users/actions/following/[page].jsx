@@ -45,7 +45,7 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-const Following = ({ following, userState, pagy, unpagedFollowing }) => {
+export default ({ following, userState, pagy, unpagedFollowing }) => {
   const [followedUsers, setFollowedUsers] = useState(unpagedFollowing);
   const clientUrl = "/users/actions/following";
 
@@ -86,8 +86,8 @@ const Following = ({ following, userState, pagy, unpagedFollowing }) => {
                   <RelatedUser
                     relatedUser={user.followed}
                     userId={userState.user.id}
-                    followedUsers={followedUsers}
-                    setFollowedUsers={setFollowedUsers}
+                    relatedUsers={followedUsers}
+                    setRelatedUsers={setFollowedUsers}
                   />
                 </div>
               );
@@ -117,5 +117,3 @@ const Following = ({ following, userState, pagy, unpagedFollowing }) => {
     return <NoAccess />;
   }
 };
-
-export default Following;

@@ -10,12 +10,12 @@ import Link from "next/dist/client/link";
 import { countTotalInsights } from "../../lib/creatorMethods";
 import { addFollowedUserToState } from "../../lib/tileEntryMethods";
 import { removeFollowedUserFromState } from "../../lib/tileEntryMethods";
-import { isFollowed, follow, unfollow } from "../../lib/followMethods";
+import { isFollowed } from "../../lib/followMethods";
 
 const RelatedUser = ({
   relatedUser,
-  followedUsers,
-  setFollowedUsers,
+  relatedUsers,
+  setRelatedUsers,
   userId,
 }) => {
   const follow = (e) => {
@@ -28,7 +28,7 @@ const RelatedUser = ({
         { withCredentials: true }
       )
       .then((res) =>
-        addFollowedUserToState(relatedUser, followedUsers, setFollowedUsers)
+        addFollowedUserToState(relatedUser, relatedUsers, setRelatedUsers)
       )
       .catch((err) => console.log(err));
   };
@@ -43,11 +43,7 @@ const RelatedUser = ({
         { withCredentials: true }
       )
       .then((res) =>
-        removeFollowedUserFromState(
-          relatedUser,
-          followedUsers,
-          setFollowedUsers
-        )
+        removeFollowedUserFromState(relatedUser, relatedUsers, setRelatedUsers)
       )
       .catch((err) => console.log(err));
   };
@@ -68,9 +64,9 @@ const RelatedUser = ({
             <div className="text-2xl font-bold text-gray-700">
               {relatedUser.username}
             </div>
-            {isFollowed(followedUsers, relatedUser) ? (
+            {isFollowed(relatedUsers, relatedUser) ? (
               <div
-                onClick={(e) => unfollow(e)}
+                onClick={unfollow}
                 className="text-gray-700 hover:scale-110 transition-transform active:scale-125 cursor-pointer"
               >
                 <UserMinus size={18} strokeWidth={1.75} />
