@@ -69,10 +69,10 @@ const UserBookTiles = ({ bookTiles, pagy, userState }) => {
             text="Books for which you have shared insights"
             bcgImg="bg-check-book-tiles"
           />
-          <div className="w-4/5 mx-auto my-16">
+          <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 mx-auto">
             {bookTiles.map((bookTile) => {
               return (
-                <div className="my-10" key={bookTile.book.id}>
+                <div key={bookTile.book.id}>
                   <BookCardSlider
                     bookData={bookTile.book}
                     tileEntries={bookTile.tile_entries}
