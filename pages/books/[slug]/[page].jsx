@@ -138,7 +138,7 @@ const Book = ({
     return (
       <div>
         <CardBcg bookData={book} userState={userState} favBooks={favBooks} />
-        <div className="w-5/6 mx-auto mt-20">
+        <div className="w-5/6 md:w-4/6 mx-auto mt-10">
           {entries.map((entry) => {
             return (
               <div className="my-10" key={entry.id}>
@@ -159,7 +159,7 @@ const Book = ({
             );
           })}
         </div>
-        <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
+        <div className="flex items-center my-16 w-4/5 md:w-4/6 mx-auto gap-x-4">
           <div className="w-1/2">
             <PageNavButton
               btnText="Previous page"

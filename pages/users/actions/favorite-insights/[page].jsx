@@ -101,10 +101,10 @@ const FavoriteInsights = ({
       return (
         <div>
           <WelcomeTop text="Your favorite insights" bcgImg="bg-saved-tiles" />
-          <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 mx-auto">
+          <div className="w-5/6 md:w-4/6 mx-auto mt-10">
             {insights.map((insight) => {
               return (
-                <div key={insight.id}>
+                <div className="my-10" key={insight.id}>
                   <TileEntry
                     data={insight}
                     showTitle={true}
@@ -124,7 +124,7 @@ const FavoriteInsights = ({
             })}
           </div>
 
-          <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
+          <div className="flex items-center my-16 w-4/5 md:w-4/6 mx-auto gap-x-4">
             <div className="w-1/2">
               <PageNavButton
                 btnText="Previous page"
