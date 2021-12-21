@@ -101,26 +101,28 @@ const FavoriteInsights = ({
       return (
         <div>
           <WelcomeTop text="Your favorite insights" bcgImg="bg-saved-tiles" />
-          {insights.map((insight) => {
-            return (
-              <div key={insight.id} className="w-4/5 mx-auto my-10">
-                <TileEntry
-                  data={insight}
-                  showTitle={true}
-                  userId={userState.user.id}
-                  isLogged={userState.isLogged}
-                  insights={insights}
-                  setInsights={setInsights}
-                  upvotedEntries={upvotedEntries}
-                  setUpvotedEntries={setUpvotedEntries}
-                  downvotedEntries={downvotedEntries}
-                  setDownvotedEntries={setDownvotedEntries}
-                  followedUsers={followedUsers}
-                  setFollowedUsers={setFollowedUsers}
-                />
-              </div>
-            );
-          })}
+          <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 mx-auto">
+            {insights.map((insight) => {
+              return (
+                <div key={insight.id}>
+                  <TileEntry
+                    data={insight}
+                    showTitle={true}
+                    userId={userState.user.id}
+                    isLogged={userState.isLogged}
+                    insights={insights}
+                    setInsights={setInsights}
+                    upvotedEntries={upvotedEntries}
+                    setUpvotedEntries={setUpvotedEntries}
+                    downvotedEntries={downvotedEntries}
+                    setDownvotedEntries={setDownvotedEntries}
+                    followedUsers={followedUsers}
+                    setFollowedUsers={setFollowedUsers}
+                  />
+                </div>
+              );
+            })}
+          </div>
 
           <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
             <div className="w-1/2">
