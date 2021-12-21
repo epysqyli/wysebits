@@ -11,9 +11,12 @@ const BookSearch = ({ userState }) => {
           <title>Create book tile</title>
         </Head>
 
-        <WelcomeTop bcgImg="bg-create-tile" text="What book have you just read?" />
+        <WelcomeTop
+          bcgImg="bg-create-tile"
+          text="What book have you just read?"
+        />
 
-        <div className="w-4/5 mx-auto">
+        <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
           <div className="mt-20">
             <SearchInput
               pageDest="/users/book-search/"
