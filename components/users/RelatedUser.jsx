@@ -10,6 +10,7 @@ import Link from "next/dist/client/link";
 import { countTotalInsights } from "../../lib/creatorMethods";
 import { addFollowedUserToState } from "../../lib/tileEntryMethods";
 import { removeFollowedUserFromState } from "../../lib/tileEntryMethods";
+import { isFollowed, follow, unfollow } from "../../lib/followMethods";
 
 const RelatedUser = ({
   relatedUser,
@@ -17,10 +18,6 @@ const RelatedUser = ({
   setFollowedUsers,
   userId,
 }) => {
-  const isFollowed = () => {
-    return followedUsers.some((user) => user.id === relatedUser.id);
-  };
-
   const follow = (e) => {
     e.stopPropagation();
 
@@ -71,9 +68,9 @@ const RelatedUser = ({
             <div className="text-2xl font-bold text-gray-700">
               {relatedUser.username}
             </div>
-            {isFollowed() ? (
+            {isFollowed(followedUsers, relatedUser) ? (
               <div
-                onClick={unfollow}
+                onClick={(e) => unfollow(e)}
                 className="text-gray-700 hover:scale-110 transition-transform active:scale-125 cursor-pointer"
               >
                 <UserMinus size={18} strokeWidth={1.75} />
