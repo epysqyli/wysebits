@@ -16,7 +16,7 @@ export const getStaticProps = async () => {
   };
 };
 
-export default ({ categories, userState }) => {
+const Home =  ({ categories, userState }) => {
   return (
     <div className="pb-10 animate-show-up">
       <Head>
@@ -81,3 +81,5 @@ export default ({ categories, userState }) => {
     </div>
   );
 };
+
+export default Home;

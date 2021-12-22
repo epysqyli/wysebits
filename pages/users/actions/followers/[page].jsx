@@ -45,7 +45,7 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-export default ({ followers, userState, pagy, unpagedFollowers }) => {
+const Followers = ({ followers, userState, pagy, unpagedFollowers }) => {
   const [followerUsers, setFollowerUsers] = useState(unpagedFollowers);
   const clientUrl = "/users/actions/following";
 
@@ -116,3 +116,5 @@ export default ({ followers, userState, pagy, unpagedFollowers }) => {
     return <NoAccess />;
   }
 };
+
+export default Followers;
