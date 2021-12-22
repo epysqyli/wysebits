@@ -139,7 +139,7 @@ const TileCreation = ({
           Share your top takeaways for this book
         </div>
 
-        <div className="w-5/6 mx-auto my-10">
+        <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 my-10">
           <form onSubmit={handleSubmit}>
             <div className="my-10 pt-2 px-2 bg-gray-200 shadow-lg rounded">
               <label
@@ -226,7 +226,7 @@ const TileCreation = ({
             showEditForm={showEditForm}
           />
         </div>
-        <div className="my-20 w-4/5 mx-auto">
+        <div className="my-20 mx-auto w-4/5 md:w-4/6 lg:w-3/6">
           <div className="flex justify-around items-center">
             <AlertCircle
               className="w-1/6"
