@@ -75,12 +75,12 @@ export default ({ followers, userState, pagy, unpagedFollowers }) => {
       return (
         <div>
           <WelcomeTop text="Your followers" bcgImg="bg-followers" />
-          <div className="mx-auto w-4/5 mt-10">
+          <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 mx-auto">
             {followers.map((user) => {
               return (
                 <div
                   key={user.id}
-                  className="my-10 shadow-md rounded-md py-5 bg-gray-100 hover:bg-gray-200 hover:shadow-lg active:bg-gray-300 cursor-pointer"
+                  className="shadow-md rounded-md py-5 bg-gray-100 hover:bg-gray-200 hover:shadow-lg active:bg-gray-300 cursor-pointer"
                 >
                   <RelatedUser
                     relatedUser={user.follower}
