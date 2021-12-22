@@ -157,8 +157,8 @@ const EditBookTile = ({
           />
         </div>
 
-        <div className="text-2xl text-center mb-10 py-4 px-2 bg-gray-200">
-          Edit your entries for this book
+        <div className="text-3xl text-gray-800 text-center mt-10 px-5">
+          Share your top takeaways for this book
         </div>
 
         {entries.map((entry) => {
