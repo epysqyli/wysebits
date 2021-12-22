@@ -21,7 +21,7 @@ const EditForm = ({
 
   return (
     <form
-      className="w-5/6 mx-auto my-10 pt-2 px-2 bg-gray-200 rounded-md shadow relative"
+      className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 my-10 pt-2 px-2 bg-gray-200 rounded-md shadow relative"
       onSubmit={handleSubmit}
     >
       <label
