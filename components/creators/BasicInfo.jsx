@@ -3,8 +3,8 @@ import { countTotalInsights } from "../../lib/creatorMethods";
 
 const BasicInfo = ({ user }) => {
   return (
-    <div>
-      <div className="flex justify-around items-center py-5 px-10">
+    <div className="md:flex justify-evenly items-center mt-2">
+      <div className="flex justify-around items-center gap-x-5">
         <User
           size={60}
           strokeWidth={1.5}
@@ -18,7 +18,7 @@ const BasicInfo = ({ user }) => {
         </div>
       </div>
 
-      <div className="flex items-center justify-around mt-5">
+      <div className="flex items-center justify-around mt-5 md:block">
         <div className="flex items-center gap-x-2">
           <BookOpen />
           <div className="text-gray-700">
@@ -33,9 +33,7 @@ const BasicInfo = ({ user }) => {
         </div>
         <div className="flex items-center gap-x-2">
           <Users />
-          <div className="text-gray-700">
-            {user.followers.length} followers
-          </div>
+          <div className="text-gray-700">{user.followers.length} followers</div>
         </div>
       </div>
     </div>
