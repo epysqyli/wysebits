@@ -15,7 +15,7 @@ const About = ({ userState }) => {
       </div>
 
       <div className="pt-10 pb-20 bg-gray-100 shadow">
-        <div className="w-4/5 mx-auto">
+        <div className="w-4/5 md:w-4/6 mx-auto">
           <h3 className="text-3xl font-bold mb-5">What is Wysebits?</h3>
           <p className="text-justify">
             Wysebits's vision is that of organizing knowledge contained in
