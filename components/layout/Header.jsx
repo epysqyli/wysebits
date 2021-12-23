@@ -63,7 +63,7 @@ const Header = ({ userState }) => {
         <a className="group cursor-pointer mr-3">
           <Plus
             size={20}
-            className="text-gray-500 hover:scale-110 hover:text-gray-700 cursor-pointer"
+            className="text-gray-500 hover:scale-110 hover:text-gray-700 active:text-white cursor-pointer"
           />
         </a>
       </Link>
