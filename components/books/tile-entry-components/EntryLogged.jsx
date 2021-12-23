@@ -155,7 +155,9 @@ const EntryLogged = ({
 
   return (
     <div className="shadow-md rounded-md">
-      <div className="border-b-2 py-3 px-2">{data.content}</div>
+      <div className="border-b-2 py-3 px-2 whitespace-pre-line">
+        {data.content}
+      </div>
 
       <div className="flex justify-between items-center text-sm px-2 py-2">
         <div className="flex justify-center gap-x-3">
