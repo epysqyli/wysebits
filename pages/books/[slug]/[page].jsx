@@ -134,7 +134,7 @@ const Book = ({
 
   const clientUrl = `/books/${slug}`;
 
-  if (entries) {
+  if (entries.length != 0) {
     return (
       <div>
         <CardBcg bookData={book} userState={userState} favBooks={favBooks} />
