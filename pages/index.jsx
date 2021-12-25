@@ -46,6 +46,7 @@ const Home =  ({ categories, userState }) => {
           <SearchInput
             pageDest="/books/search/"
             placeholder="Search for any book"
+            showSuggest={true}
           />
         </div>
       </div>
