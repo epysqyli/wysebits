@@ -13,15 +13,30 @@ const SuggestBox = ({ suggestions, suggestLink }) => {
       return `${suggestLink}${result._source.id}`;
   };
 
-  if (suggestions != null) {
+  if (suggestions) {
     return (
       <div>
         {suggestions.map((s) => {
           return (
             <Link key={s._source.id} href={buildLink(s)}>
-              <div className="flex items-center justify-between px-2 bg-white my-1 shadow rounded-md text-gray-700">
-                <div className="my-2">{s._source.title}</div>
-                <ArrowUpRight size={18} color="gray" />
+              <div className="flex items-center justify-between px-2 md:px-10 bg-white my-1 shadow rounded-md text-gray-800 cursor-pointer group hover:scale-105 transition-transform active:bg-gray-100">
+                <div className="my-3 w-4/5">
+                  <div>{s._source.title}</div>
+                  <div className="flex gap-x-2 text-sm text-gray-600">
+                    <div>
+                      {s._source.authors[0]
+                        ? s._source.authors[0].full_name
+                        : "No authors"}
+                    </div>
+                    <div>|</div>
+                    <div>{s._source.category.name}</div>
+                  </div>
+                </div>
+                <ArrowUpRight
+                  size={18}
+                  color="gray"
+                  className="group-hover:scale-125 transition-transform"
+                />
               </div>
             </Link>
           );
