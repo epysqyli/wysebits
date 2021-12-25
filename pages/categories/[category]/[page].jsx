@@ -85,7 +85,7 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
             {capitalize(categoryName)}
           </div>
         </div>
-        <div className="w-4/5 mx-auto my-20">
+        <div className="w-4/5 md:w-4/6 lg:w-3/6 mx-auto my-20">
           <NoItem message="This category is empty, meaning no books have been assigned to it. Explore books and contribute insights to improve WyseBits for all." />
           <div className="border px-5 py-3 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
             <div className="px-3">

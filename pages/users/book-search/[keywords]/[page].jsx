@@ -92,7 +92,11 @@ const BookSearchResults = ({ searchResults, userState, keywords, pageNum }) => {
       </div>
     );
   } else {
-    return <NoAccess />;
+    return (
+      <div className="mx-auto mt-10 w-4/5 md:w-4/6 lg:w-3/6">
+        <NoAccess />
+      </div>
+    );
   }
 };
 
