@@ -30,6 +30,7 @@ const SearchInput = ({ pageDest, placeholder }) => {
     });
 
     const newSuggestions = resp.data.results.slice(0, 10);
+    SetSearchError(false);
     setSuggestions(newSuggestions);
   };
 
