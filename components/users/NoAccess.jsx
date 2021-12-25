@@ -3,8 +3,8 @@ import { AlertCircle } from "react-feather";
 
 const NoAccess = () => {
   return (
-    <div className="mt-10 mb-20">
-      <div className="w-4/5 mx-auto flex justify-around items-center">
+    <div>
+      <div className="flex justify-around items-center">
         <AlertCircle
           className="w-1/6"
           size={36}
@@ -17,7 +17,7 @@ const NoAccess = () => {
         </div>
       </div>
 
-      <div className="w-4/5 mx-auto mt-20">
+      <div className="mt-20">
         <Link href="/registrations/signup">
           <a className="block text-xl text-center border rounded-lg mx-auto py-5 px-10 my-10 cursor-pointer shadow-md bg-white hover:shadow-lg active:bg-gray-100">
             Sign up to start contributing to Wysebits today!
