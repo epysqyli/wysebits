@@ -30,9 +30,12 @@ const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
 
     // avoid UI conflict with search error message
     SetSearchError(false);
-
-    const newSuggestions = resp.data.results.slice(0, 10);
-    setSuggestions(newSuggestions);
+    try {
+      const newSuggestions = resp.data.results.slice(0, 10);
+      setSuggestions(newSuggestions);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleChange = (e) => {
@@ -53,7 +56,7 @@ const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
   };
 
   useEffect(() => {
-    if (searchTerms && searchTerms.length < 3) {
+    if ((searchTerms && searchTerms.length < 3) || searchTerms == "") {
       const newSuggestions = null;
       setSuggestions(newSuggestions);
     }
