@@ -29,8 +29,7 @@ const SearchInput = ({ pageDest, placeholder }) => {
       url: "http://localhost:3001/api/search/books",
     });
 
-    console.log(resp);
-    const newSuggestions = resp.data;
+    const newSuggestions = resp.data.results.slice(0, 10);
     setSuggestions(newSuggestions);
   };
 

@@ -9,7 +9,7 @@ const SuggestBox = ({ suggestions }) => {
   if (suggestions != null) {
     return (
       <div>
-        {suggestions.results.map((s) => {
+        {suggestions.map((s) => {
           return (
             <Link
               key={s._source.id}
