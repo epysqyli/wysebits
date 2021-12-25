@@ -90,7 +90,7 @@ const CardBcg = ({ bookData, userState, favBooks }) => {
           className="absolute top-0 left-1/2 -translate-x-1/2 blur-sm backdrop-brightness-50 grayscale-50 contrast-50 max-h-full w-full object-cover"
         />
 
-        <div className="w-4/5 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10">
+        <div className="w-4/5 mx-auto md:w-4/6 shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10">
           <BookCard bookData={bookData} />
         </div>
       </div>
