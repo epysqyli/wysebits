@@ -54,7 +54,7 @@ const SearchInput = ({ pageDest, placeholder }) => {
     <div>
       <div>
         <div
-          className="flex group rounded-lg shadow-md"
+          className="flex group rounded-md shadow-md"
           onKeyPress={handleKeyPress}
         >
           <input

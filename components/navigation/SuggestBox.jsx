@@ -15,7 +15,7 @@ const SuggestBox = ({ suggestions }) => {
               key={s._source.id}
               href={`/books/${slug(s._source.title, s._source.id)}/1`}
             >
-              <div className="flex items-center justify-between border px-2">
+              <div className="flex items-center justify-between px-2 bg-white my-1 shadow rounded-md text-gray-700">
                 <div className="my-2">{s._source.title}</div>
                 <ArrowUpRight size={18} color="gray" />
               </div>
