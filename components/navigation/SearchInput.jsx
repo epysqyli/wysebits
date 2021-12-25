@@ -8,7 +8,7 @@ const SearchInput = ({ pageDest, placeholder }) => {
   const [searchTerms, setSearchTerms] = useState(null);
   const [searchError, SetSearchError] = useState(false);
   const [suggestions, setSuggestions] = useState(null);
-  const [showSuggestBox, setShowSuggestBox] = useState(false);
+  // const [showSuggestBox, setShowSuggestBox] = useState(true);
 
   const router = useRouter();
 
