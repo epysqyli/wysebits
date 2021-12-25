@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/dist/client/router";
 import { Search } from "react-feather";
 import SuggestBox from "./SuggestBox";
@@ -51,6 +51,13 @@ const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
   const getQuery = () => {
     return searchTerms.split(" ").join("-");
   };
+
+  useEffect(() => {
+    if (searchTerms && searchTerms.length < 3) {
+      const newSuggestions = null;
+      setSuggestions(newSuggestions);
+    }
+  }, [searchTerms]);
 
   return (
     <div>
