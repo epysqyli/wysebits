@@ -4,7 +4,7 @@ import { useRouter } from "next/dist/client/router";
 import { Search } from "react-feather";
 import SuggestBox from "./SuggestBox";
 
-const SearchInput = ({ pageDest, placeholder, showSuggest }) => {
+const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
   const [searchTerms, setSearchTerms] = useState(null);
   const [searchError, SetSearchError] = useState(false);
   const [suggestions, setSuggestions] = useState(null);
@@ -92,7 +92,7 @@ const SearchInput = ({ pageDest, placeholder, showSuggest }) => {
 
       {showSuggest ? (
         <div>
-          <SuggestBox suggestions={suggestions} />
+          <SuggestBox suggestions={suggestions} suggestLink={suggestLink} />
         </div>
       ) : null}
     </div>
