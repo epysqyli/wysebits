@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import { Search } from "react-feather";
@@ -5,22 +6,37 @@ import { Search } from "react-feather";
 const SearchInput = ({ pageDest, placeholder }) => {
   const [searchTerms, setSearchTerms] = useState(null);
   const [searchError, SetSearchError] = useState(false);
+  const [suggestions, setSuggestions] = useState(null);
 
   const router = useRouter();
 
   const searchBooks = () => {
     if (searchTerms && searchTerms.length > 2) {
       router.push({
-        pathname: `${pageDest}${getQuery()}`,
+        pathname: `${pageDest}${getQuery()}/1`,
       });
     } else {
       SetSearchError(true);
     }
   };
 
+  const getSuggestions = async (query) => {
+    const resp = await axios({
+      method: "post",
+      data: { keywords: JSON.stringify(query), page_num: "1" },
+      url: "http://localhost:3001/api/search/books",
+    });
+
+    console.log(resp);
+    const newSuggestions = resp.data;
+    setSuggestions(newSuggestions);
+  };
+
   const handleChange = (e) => {
     const newSearchTerms = e.target.value;
     setSearchTerms(newSearchTerms);
+
+    if (newSearchTerms.length > 2) getSuggestions(newSearchTerms);
   };
 
   const handleKeyPress = (e) => {
@@ -30,7 +46,7 @@ const SearchInput = ({ pageDest, placeholder }) => {
   };
 
   const getQuery = () => {
-    return searchTerms.split(" ").join("-") + "/1";
+    return searchTerms.split(" ").join("-");
   };
 
   return (
