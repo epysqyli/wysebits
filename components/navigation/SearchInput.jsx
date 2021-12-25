@@ -29,8 +29,10 @@ const SearchInput = ({ pageDest, placeholder }) => {
       url: "http://localhost:3001/api/search/books",
     });
 
-    const newSuggestions = resp.data.results.slice(0, 10);
+    // avoid UI conflict with search error message
     SetSearchError(false);
+
+    const newSuggestions = resp.data.results.slice(0, 10);
     setSuggestions(newSuggestions);
   };
 
