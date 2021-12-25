@@ -2,11 +2,13 @@ import axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import { Search } from "react-feather";
+import SuggestBox from "./SuggestBox";
 
 const SearchInput = ({ pageDest, placeholder }) => {
   const [searchTerms, setSearchTerms] = useState(null);
   const [searchError, SetSearchError] = useState(false);
   const [suggestions, setSuggestions] = useState(null);
+  const [showSuggestBox, setShowSuggestBox] = useState(false);
 
   const router = useRouter();
 
@@ -85,6 +87,10 @@ const SearchInput = ({ pageDest, placeholder }) => {
             </div>
           ) : null}
         </div>
+      </div>
+
+      <div>
+        <SuggestBox suggestions={suggestions} />
       </div>
     </div>
   );
