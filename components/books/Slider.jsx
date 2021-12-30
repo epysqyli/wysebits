@@ -30,12 +30,14 @@ const Slider = ({ entries }) => {
         className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
         onClick={decrement}
         size={30}
+        strokeWidth={1.75}
       />
       <TileEntry entry={entries[count]} />
       <ArrowRightCircle
         className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
         onClick={increment}
         size={30}
+        strokeWidth={1.75}
       />
     </div>
   );
