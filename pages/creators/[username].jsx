@@ -72,9 +72,19 @@ const Username = ({
   entriesUp,
   entriesDown,
 }) => {
-  const [latestEntries, setLatestEntries] = useState(
-    user.book_tiles.map((book_tile) => book_tile.tile_entries[0]).slice(0, 3)
-  );
+  const selectLatestEntries = () => {
+    const definedBookTiles = user.book_tiles
+      .filter((book_tile) => book_tile.tile_entries.length != 0)
+      .slice(0, 3);
+
+    const recentEntries = definedBookTiles.map(
+      (book_tile) => book_tile.tile_entries[0]
+    );
+
+    return recentEntries;
+  };
+
+  const [latestEntries, setLatestEntries] = useState(selectLatestEntries());
 
   const [followedUsers, setFollowedUsers] = useState(following);
   const [insights, setInsights] = useState(favInsights);
