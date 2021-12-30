@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/dist/client/image";
 
 const BookCard = ({ bookData }) => {
   const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;

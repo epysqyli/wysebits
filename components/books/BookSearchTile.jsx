@@ -1,37 +1,9 @@
-import { Image as ImageIcon } from "react-feather";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import Image from "next/dist/client/image";
 import Link from "next/link";
 
 const BookSearchTile = ({ bookData, destPage }) => {
-  const [cover, setCover] = useState(false);
-
-  const imageLoader = (
-    <div>
-      <ImageIcon className="animate-bounce" />
-    </div>
-  );
-
   const olSrc = `https://covers.openlibrary.org/w/olid/${bookData._source.ol_key}-M.jpg`;
   const dbSrc = bookData._source.cover_url;
-
-  const coverImage = (
-    <img
-      className="w-1/3 rounded-md bg-gray-300 object-cover"
-      src={dbSrc || olSrc || ""}
-    />
-  );
-
-  useEffect(() => {
-    axios
-      .get(
-        `https://covers.openlibrary.org/w/olid/${bookData._source.ol_key}-M.jpg`
-      )
-      .then((resp) => {
-        setCover(true);
-      })
-      .catch((error) => console.log(error));
-  }, []);
 
   return (
     <Link href={destPage}>
@@ -56,7 +28,13 @@ const BookSearchTile = ({ bookData, destPage }) => {
             </div>
           </div>
 
-          {!cover ? imageLoader : coverImage}
+          <Image
+            className="w-2/6 rounded-md bg-gray-300 object-cover animate-show-up-slow shadow-lg"
+            src={dbSrc || olSrc || ""}
+            width="130"
+            height="200"
+            layout="intrinsic"
+          />
         </div>
       </div>
     </Link>
