@@ -20,24 +20,18 @@ export const getServerSideProps = async (context) => {
       headers: { cookie: context.req.headers.cookie },
     });
 
-    const bookTiles = await axios.get(
-      `http://localhost:3001/api/users/${userResp.data.user.id}/book_tiles_no_pagy`
-    );
-
-    const isAvailable = bookTiles.data.tiles.every(
-      (tile) => tile.book_id !== bookData.data.data.id
-    );
-
-    const existingTile = bookTiles.data.tiles.find(
-      (tile) => tile.book_id === bookData.data.data.id
-    );
+    const isAvailable = await axios({
+      method: "get",
+      url: `http://localhost:3001/api/users/${userResp.data.user.id}/book_tiles/${context.params.id}/is_available`,
+      headers: { cookie: context.req.headers.cookie },
+    });
 
     return {
       props: {
         bookData: bookData.data.data,
         categories: categories.data.data,
-        isAvailable: isAvailable,
-        existingTile: existingTile || null,
+        isAvailable: isAvailable.data.res,
+        existingTile: isAvailable.data.existing_book_tile || null,
       },
     };
   } catch (error) {
