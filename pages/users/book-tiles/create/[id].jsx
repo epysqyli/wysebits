@@ -77,8 +77,8 @@ const TileCreation = ({
   });
 
   const isEntryValid = (entry) => {
-    if (entry.trim().length === 0 || entry.length < 25) return false;
-    return true;
+    if (entry.trim().length > 50) return true;
+    return false;
   };
 
   const allEntriesValid = () => {
