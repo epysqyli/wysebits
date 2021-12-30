@@ -9,7 +9,7 @@ const EntryGuest = ({ data }) => {
       </div>
 
       <div className="flex justify-between text-sm px-2 py-2">
-        <div className="flex gap-x-3">
+        <div className="flex justify-center items-center gap-x-3">
           <ThumbsUp size={16} color="gray" strokeWidth={1.75} />
           <div className="text-gray-600">{data.net_votes}</div>
           <ThumbsDown size={16} color="gray" strokeWidth={1.75} />
