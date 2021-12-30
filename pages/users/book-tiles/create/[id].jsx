@@ -103,11 +103,13 @@ const TileCreation = ({
       setTileEntries(newTileEntries);
     };
 
-    const saveForLater = (bookTileId) => {
+    const saveForLater = async (entryContent) => {
+      const bookTile = await findOrCreateBookTile();
+
       axios
         .post(
-          `http://localhost:3001/api/book_tiles/${bookTileId}/temporary_entries`,
-          { content: entry },
+          `http://localhost:3001/api/book_tiles/${bookTile.id}/temporary_entries`,
+          { content: entryContent },
           { withCredentials: true }
         )
         .then((resp) => console.log(resp))
@@ -116,10 +118,13 @@ const TileCreation = ({
 
     const findOrCreateBookTile = async () => {
       const url = `http://localhost:3001/api/users/${userState.user.id}/book_tiles`;
-      const resp = await axios.post(url, { book_id: bookData.id}, {withCredentials: true});
-      console.log(resp.data);
+      const resp = await axios.post(
+        url,
+        { book_id: bookData.id },
+        { withCredentials: true }
+      );
       return resp.data;
-    }
+    };
 
     const createTileEntries = async () => {
       const bookTile = await findOrCreateBookTile();
@@ -173,7 +178,10 @@ const TileCreation = ({
               >
                 <div>Enter your first takeaway</div>
                 {isEntryValid(tileEntries.first_entry) ? (
-                  <Save className="cursor-pointer hover:scale-110 active:scale-100" />
+                  <Save
+                    className="cursor-pointer hover:scale-110 active:scale-100"
+                    onClick={() => saveForLater(tileEntries.first_entry)}
+                  />
                 ) : (
                   <Save className="text-gray-200" />
                 )}
@@ -197,7 +205,10 @@ const TileCreation = ({
               >
                 <div>Enter your second takeaway</div>
                 {isEntryValid(tileEntries.second_entry) ? (
-                  <Save className="cursor-pointer hover:scale-110 active:scale-100" />
+                  <Save
+                    className="cursor-pointer hover:scale-110 active:scale-100"
+                    onClick={() => saveForLater(tileEntries.second_entry)}
+                  />
                 ) : (
                   <Save className="text-gray-200" />
                 )}
@@ -221,7 +232,10 @@ const TileCreation = ({
               >
                 <div>Enter your third takeaway</div>
                 {isEntryValid(tileEntries.third_entry) ? (
-                  <Save className="cursor-pointer hover:scale-110 active:scale-100" />
+                  <Save
+                    className="cursor-pointer hover:scale-110 active:scale-100"
+                    onClick={() => saveForLater(tileEntries.third_entry)}
+                  />
                 ) : (
                   <Save className="text-gray-200" />
                 )}
