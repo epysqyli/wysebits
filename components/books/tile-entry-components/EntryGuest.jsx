@@ -8,21 +8,11 @@ const EntryGuest = ({ data }) => {
         {data.content}
       </div>
 
-      <div className="flex justify-between items-center text-sm px-2 py-2">
-        <div className="flex justify-center gap-x-6">
-          <div className="flex items-center gap-x-1 py-2">
-            <div className="text-gray-600">{data.upvotes}</div>
-            <div className="pb-1">
-              <ThumbsUp size={16} />
-            </div>
-          </div>
-
-          <div className="flex items-center gap-x-1">
-            <div className="text-gray-600">{data.downvotes}</div>
-            <div>
-              <ThumbsDown size={16} />
-            </div>
-          </div>
+      <div className="flex justify-between text-sm px-2 py-2">
+        <div className="flex gap-x-3">
+          <ThumbsUp size={16} color="gray" strokeWidth={1.75} />
+          <div className="text-gray-600">{data.net_votes}</div>
+          <ThumbsDown size={16} color="gray" strokeWidth={1.75} />
         </div>
 
         <Link href={`/creators/${data.book_tile.user.username}`}>
