@@ -2,7 +2,7 @@ import axios from "axios";
 import Link from "next/dist/client/link";
 import { useState } from "react";
 import { useRouter } from "next/dist/client/router";
-import { AlertCircle } from "react-feather";
+import { AlertCircle, Save } from "react-feather";
 import CardBcgActions from "../../../../components/books/CardBcgActions";
 import EditBookDetails from "../../../../components/users/EditBookDetails";
 import NoAccess from "../../../../components/users/NoAccess";
@@ -77,7 +77,7 @@ const TileCreation = ({
   });
 
   const isEntryValid = (entry) => {
-    if (entry.trim().length === 0) return false;
+    if (entry.trim().length === 0 || entry.length < 25) return false;
     return true;
   };
 
@@ -101,6 +101,10 @@ const TileCreation = ({
         [e.target.name]: e.target.value,
       };
       setTileEntries(newTileEntries);
+    };
+
+    const saveForLater = () => {
+      // allows user to save entry for later publishing
     };
 
     const createBookTile = () => {
@@ -160,9 +164,14 @@ const TileCreation = ({
             <div className="my-10 pt-2 px-2 bg-gray-200 shadow-lg rounded">
               <label
                 htmlFor="first-entry"
-                className="block text-center py-2 bg-white shadow-sm rounded"
+                className="flex justify-around text-center py-2 bg-white shadow-sm rounded"
               >
-                Enter your first takeaway
+                <div>Enter your first takeaway</div>
+                {isEntryValid(tileEntries.first_entry) ? (
+                  <Save className="cursor-pointer hover:scale-110 active:scale-100" />
+                ) : (
+                  <Save className="text-gray-200" />
+                )}
               </label>
               <textarea
                 type="text"
@@ -179,9 +188,14 @@ const TileCreation = ({
             <div className="my-10 pt-2 px-2 bg-gray-200 shadow-lg rounded">
               <label
                 htmlFor="second-entry"
-                className="block text-center py-2 bg-white shadow-sm rounded"
+                className="flex justify-around text-center py-2 bg-white shadow-sm rounded"
               >
-                Enter your second takeaway
+                <div>Enter your second takeaway</div>
+                {isEntryValid(tileEntries.second_entry) ? (
+                  <Save className="cursor-pointer hover:scale-110 active:scale-100" />
+                ) : (
+                  <Save className="text-gray-200" />
+                )}
               </label>
               <textarea
                 type="text"
@@ -198,9 +212,14 @@ const TileCreation = ({
             <div className="my-10 pt-2 px-2 bg-gray-200 shadow-lg rounded">
               <label
                 htmlFor="third-entry"
-                className="block text-center py-2 bg-white shadow-sm rounded"
+                className="flex justify-around text-center py-2 bg-white shadow-sm rounded"
               >
-                Enter your third takeaway
+                <div>Enter your third takeaway</div>
+                {isEntryValid(tileEntries.third_entry) ? (
+                  <Save className="cursor-pointer hover:scale-110 active:scale-100" />
+                ) : (
+                  <Save className="text-gray-200" />
+                )}
               </label>
               <textarea
                 type="text"
