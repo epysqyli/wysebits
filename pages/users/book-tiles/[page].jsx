@@ -23,7 +23,7 @@ export const getServerSideProps = async (context) => {
 
     return {
       props: {
-        bookTiles: bookTiles.data.tiles,
+        bookTiles: bookTiles.data.tiles.filter((book_tile) => book_tile.tile_entries.length != 0),
         pagy: bookTiles.data.pagy,
       },
     };
