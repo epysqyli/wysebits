@@ -160,7 +160,7 @@ const EntryLogged = ({
       </div>
 
       <div className="flex justify-between items-center text-sm px-2 py-2">
-        <div className="flex justify-center gap-x-3">
+        <div className="flex justify-center items-center gap-x-3">
           {isUpvoted() ? (
             <div onClick={() => removeFromUpvoted()}>
               <ThumbsUp size={16} fill="darkgray" color="darkgray" />
@@ -183,7 +183,7 @@ const EntryLogged = ({
             </div>
           )}
 
-          <div className="flex items-center">
+          <div className="ml-3 flex items-center">
             {isFavInsight() ? (
               <div onClick={() => removeFromFavInsights()}>
                 <Heart
