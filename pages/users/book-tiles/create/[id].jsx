@@ -97,6 +97,16 @@ const TileCreation = ({
       setTileEntries(newTileEntries);
     };
 
+    const findOrCreateBookTile = async () => {
+      const url = `http://localhost:3001/api/users/${userState.user.id}/book_tiles`;
+      const resp = await axios.post(
+        url,
+        { book_id: bookData.id },
+        { withCredentials: true }
+      );
+      return resp.data;
+    };
+
     const saveForLater = async (entryContent) => {
       const bookTile = await findOrCreateBookTile();
 
@@ -108,16 +118,6 @@ const TileCreation = ({
         )
         .then((resp) => console.log(resp))
         .catch((err) => console.log(err));
-    };
-
-    const findOrCreateBookTile = async () => {
-      const url = `http://localhost:3001/api/users/${userState.user.id}/book_tiles`;
-      const resp = await axios.post(
-        url,
-        { book_id: bookData.id },
-        { withCredentials: true }
-      );
-      return resp.data;
     };
 
     const createTileEntries = async () => {
