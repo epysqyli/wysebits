@@ -103,23 +103,28 @@ const TileCreation = ({
       setTileEntries(newTileEntries);
     };
 
-    const saveForLater = () => {
-      // allows user to save entry for later publishing
-    };
-
-    const createBookTile = () => {
-      const url = `http://localhost:3001/api/users/${userState.user.id}/book_tiles`;
+    const saveForLater = (bookTileId) => {
       axios
-        .post(url, { book_id: bookData.id }, { withCredentials: true })
-        .then((res) => {
-          createTileEntries(res.data.id);
-          router.push("http://localhost:3000/users/book-tiles/1");
-        })
+        .post(
+          `http://localhost:3001/api/book_tiles/${bookTileId}/temporary_entries`,
+          { content: entry },
+          { withCredentials: true }
+        )
+        .then((resp) => console.log(resp))
         .catch((err) => console.log(err));
     };
 
-    const createTileEntries = (bookTileId) => {
-      const url = `http://localhost:3001/api/book_tiles/${bookTileId}/tile_entries`;
+    const findOrCreateBookTile = async () => {
+      const url = `http://localhost:3001/api/users/${userState.user.id}/book_tiles`;
+      const resp = await axios.post(url, { book_id: bookData.id}, {withCredentials: true});
+      console.log(resp.data);
+      return resp.data;
+    }
+
+    const createTileEntries = async () => {
+      const bookTile = await findOrCreateBookTile();
+
+      const url = `http://localhost:3001/api/book_tiles/${bookTile.id}/tile_entries`;
       const { first_entry, second_entry, third_entry } = tileEntries;
 
       axios
@@ -134,7 +139,7 @@ const TileCreation = ({
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      createBookTile();
+      createTileEntries();
     };
 
     return (
@@ -155,7 +160,7 @@ const TileCreation = ({
           />
         </div>
 
-        <div className="text-3xl text-gray-800 text-center mt-10 px-5">
+        <div className="w-4/5 mx-auto text-3xl text-gray-800 text-center mt-10">
           Share your top takeaways for this book
         </div>
 
