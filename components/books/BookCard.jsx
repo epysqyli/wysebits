@@ -1,38 +1,18 @@
-import { Image as ImageIcon, Heart } from "react-feather";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import Image from "next/image";
 
 const BookCard = ({ bookData }) => {
-  const [cover, setCover] = useState(false);
-
-  const imageLoader = (
-    <div>
-      <ImageIcon className="animate-bounce" />
-    </div>
-  );
-
   const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
   const dbSrc = bookData.cover_url;
 
-  const coverImage = (
-    <img
-      className="w-2/6 rounded-md bg-gray-300 object-cover animate-show-up-slow shadow-lg"
-      src={dbSrc || olSrc || ""}
-    />
-  );
-
-  useEffect(() => {
-    axios
-      .get(`https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`)
-      .then((resp) => {
-        setCover(true);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
   return (
     <div className="flex justify-center gap-x-5 px-1 py-5">
-      {!cover ? imageLoader : coverImage}
+      <Image
+        className="w-2/6 rounded-md bg-gray-300 object-cover animate-show-up-slow shadow-lg"
+        src={dbSrc || olSrc || ""}
+        width="130"
+        height="200"
+        layout="intrinsic"
+      />
 
       <div className="w-3/6">
         <div className="text-xl text-center mb-5 font-medium">
