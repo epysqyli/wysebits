@@ -76,6 +76,22 @@ const TileCreation = ({
     third_entry: "",
   });
 
+  const isEntryValid = (entry) => {
+    if (entry.trim().length === 0) return false;
+    return true;
+  };
+
+  const allEntriesValid = () => {
+    const { first_entry, second_entry, third_entry } = tileEntries;
+    if (
+      isEntryValid(first_entry) &&
+      isEntryValid(second_entry) &&
+      isEntryValid(third_entry)
+    )
+      return true;
+    else return false;
+  };
+
   if (userState.isLogged && isAvailable) {
     const router = useRouter();
 
@@ -198,12 +214,22 @@ const TileCreation = ({
               ></textarea>
             </div>
 
-            <button
-              type="submit"
-              className="w-3/5 mx-auto block border mt-10 mb-5 py-2 rounded-md shadow-md hover:shadow-lg hover:bg-gray-100 active:bg-gray-200 active:shadow-lg"
-            >
-              Publish your thoughts!
-            </button>
+            {allEntriesValid() ? (
+              <button
+                type="submit"
+                className="w-3/5 mx-auto block border mt-10 mb-5 py-2 rounded-md shadow-md hover:shadow-lg hover:bg-gray-100 active:bg-gray-200 active:shadow-lg"
+              >
+                Publish your thoughts!
+              </button>
+            ) : (
+              <button
+                type="submit"
+                disabled
+                className="w-3/5 mx-auto block border mt-10 mb-5 py-2 rounded-md text-gray-200"
+              >
+                Publish your thoughts!
+              </button>
+            )}
           </form>
         </div>
       </div>
