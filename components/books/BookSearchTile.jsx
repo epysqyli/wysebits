@@ -34,6 +34,8 @@ const BookSearchTile = ({ bookData, destPage }) => {
             width="130"
             height="200"
             layout="intrinsic"
+            placeholder="blur"
+            blurDataURL="/images/book-placeholder.jpg"
           />
         </div>
       </div>
