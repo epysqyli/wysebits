@@ -54,13 +54,7 @@ const CreateBook = ({ categories, userState }) => {
         })
         .then((res) => {
           console.log(res);
-          router.push(
-            {
-              pathname: "/users/book-tiles/create/[id]",
-              query: { id: res.data.id },
-            },
-            makeSlug(res.data.title)
-          );
+          router.push(`/users/book-tiles/create/${res.data.id}`);
         })
         .catch((err) => console.log(err));
     };
