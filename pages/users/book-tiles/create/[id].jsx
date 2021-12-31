@@ -48,6 +48,7 @@ const TileCreation = ({
   categories,
   isAvailable,
   existingTile,
+  tempEntries
 }) => {
   const [editVisible, setEditVisible] = useState(false);
 
@@ -105,6 +106,7 @@ const TileCreation = ({
         { book_id: bookData.id },
         { withCredentials: true }
       );
+
       return resp.data;
     };
 
@@ -189,6 +191,7 @@ const TileCreation = ({
                 placeholder="Important stuff"
                 rows="10"
                 onChange={handleChange}
+                value={tempEntries[0].content || null}
                 required
               ></textarea>
             </div>
@@ -216,6 +219,7 @@ const TileCreation = ({
                 placeholder="Important stuff"
                 rows="10"
                 onChange={handleChange}
+                value={tempEntries[1] ? tempEntries[1].content : null}
                 required
               ></textarea>
             </div>
@@ -243,6 +247,7 @@ const TileCreation = ({
                 placeholder="Important stuff"
                 rows="10"
                 onChange={handleChange}
+                value={tempEntries[2] ? tempEntries[2].content : null}
                 required
               ></textarea>
             </div>
