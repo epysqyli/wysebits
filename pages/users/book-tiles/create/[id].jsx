@@ -66,11 +66,19 @@ const TileCreation = ({
     setEditVisible(false);
   };
 
-  const [tileEntries, setTileEntries] = useState({
-    first_entry: tempEntries[0] ? tempEntries[0].content : "",
-    second_entry: tempEntries[1] ? tempEntries[1].content : "",
-    third_entry: tempEntries[2] ? tempEntries[2].content : "",
-  });
+  if (tempEntries) {
+    const [tileEntries, setTileEntries] = useState({
+      first_entry: tempEntries[0] ? tempEntries[0].content : "",
+      second_entry: tempEntries[1] ? tempEntries[1].content : "",
+      third_entry: tempEntries[2] ? tempEntries[2].content : "",
+    });
+  } else {
+    const [tileEntries, setTileEntries] = useState({
+      first_entry: "",
+      second_entry: "",
+      third_entry: "",
+    });
+  }
 
   const isEntryValid = (entry) => {
     if (entry.trim().length > 50) return true;
