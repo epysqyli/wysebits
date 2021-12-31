@@ -61,7 +61,7 @@ const WorkInProgress = ({ books, pagy, userState }) => {
               </div>
               <div className="mt-5">
                 <SearchInput
-                  pageDest="/books/search/"
+                  pageDest="/users/book-search/"
                   placeholder="Any book in mind?"
                 />
               </div>
