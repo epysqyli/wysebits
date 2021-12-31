@@ -38,6 +38,7 @@ export const getServerSideProps = async (context) => {
     };
   }
 };
+
 const WorkInProgress = ({ books, pagy, userState }) => {
   const clientUrl = "/users/actions/favorite-books";
 
@@ -53,12 +54,12 @@ const WorkInProgress = ({ books, pagy, userState }) => {
             <NoItem message="You have no contributions you are working on at the moment" />
             <div className="border px-5 pt-3 mb-10 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
               <div>
-                You can add save individual contributions for book you have read
+                You can save individual contributions for a book
                 without having to publish it immediately on the create page.
                 <br />
-                <br /> Start exploring books now
+                <br /> <div className="text-center mt-5">Start exploring books now!</div>
               </div>
-              <div className="mt-10">
+              <div className="mt-5">
                 <SearchInput
                   pageDest="/books/search/"
                   placeholder="Any book in mind?"
