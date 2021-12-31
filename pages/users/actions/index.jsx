@@ -29,9 +29,17 @@ const Actions = ({ userState }) => {
 
           <div>
             <HomepageButton
-              text="Manage your contributions"
+              text="Published contributions"
               bcgImg="bg-check-book-tiles"
               href="/users/book-tiles/1"
+            />
+          </div>
+
+          <div>
+            <HomepageButton
+              text="Work in progress contributions"
+              bcgImg="bg-wip-contributions"
+              href="/users/book-tiles/wip/1"
             />
           </div>
 
