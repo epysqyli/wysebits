@@ -45,16 +45,20 @@ const WorkInProgress = ({ books, pagy, userState }) => {
     if (books.length == 0) {
       return (
         <div>
-          <WelcomeTop text="Contributions you are working on" bcgImg="bg-wip-contributions" />
+          <WelcomeTop
+            text="Contributions you are working on"
+            bcgImg="bg-wip-contributions"
+          />
           <div className="w-4/5 mx-auto">
-            <NoItem message="You have no favorite books yet" />
-            <div className="border px-5 py-3 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
+            <NoItem message="You have no contributions you are working on at the moment" />
+            <div className="border px-5 pt-3 mb-10 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
               <div>
-                You can add books to your favorite ones simply by hitting the
-                heart on a book of choice.
+                You can add save individual contributions for book you have read
+                without having to publish it immediately on the create page.
+                <br />
                 <br /> Start exploring books now
               </div>
-              <div className="mt-10 mb-3">
+              <div className="mt-10">
                 <SearchInput
                   pageDest="/books/search/"
                   placeholder="Any book in mind?"
@@ -67,7 +71,10 @@ const WorkInProgress = ({ books, pagy, userState }) => {
     } else {
       return (
         <div>
-          <WelcomeTop text="Contributions you are working on" bcgImg="bg-wip-contributions" />
+          <WelcomeTop
+            text="Contributions you are working on"
+            bcgImg="bg-wip-contributions"
+          />
           <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 mx-auto">
             {books.map((item) => {
               return (
