@@ -67,9 +67,21 @@ const TileCreation = ({
   };
 
   const [tileEntries, setTileEntries] = useState({
-    first_entry: tempEntries? tempEntries[0] ? tempEntries[0].content : "" : "",
-    second_entry: tempEntries? tempEntries[1] ? tempEntries[1].content : "" : "",
-    third_entry: tempEntries? tempEntries[2] ? tempEntries[2].content : "" : "",
+    first_entry: tempEntries
+      ? tempEntries[0]
+        ? tempEntries[0].content
+        : ""
+      : "",
+    second_entry: tempEntries
+      ? tempEntries[1]
+        ? tempEntries[1].content
+        : ""
+      : "",
+    third_entry: tempEntries
+      ? tempEntries[2]
+        ? tempEntries[2].content
+        : ""
+      : "",
   });
 
   const isEntryValid = (entry) => {
@@ -119,7 +131,6 @@ const TileCreation = ({
           { content: entryContent },
           { withCredentials: true }
         )
-        .then((resp) => console.log(resp))
         .catch((err) => console.log(err));
     };
 
@@ -135,7 +146,7 @@ const TileCreation = ({
           { first_entry, second_entry, third_entry },
           { withCredentials: true }
         )
-        .then((res) => console.log(res))
+        .then(() => router.push("/users/book-tiles/1"))
         .catch((err) => console.log(err));
     };
 
