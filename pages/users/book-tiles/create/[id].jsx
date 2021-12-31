@@ -31,6 +31,7 @@ export const getServerSideProps = async (context) => {
         bookData: bookData.data.data,
         categories: categories.data.data,
         isAvailable: isAvailable.data.res,
+        tempEntries: isAvailable.data.temporary_entries,
         existingTile: isAvailable.data.existing_book_tile || null,
       },
     };
