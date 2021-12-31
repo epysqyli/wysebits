@@ -52,10 +52,7 @@ const CreateBook = ({ categories, userState }) => {
         .post("http://localhost:3001/api/books", formData, {
           withCredentials: true,
         })
-        .then((res) => {
-          console.log(res);
-          router.push(`/users/book-tiles/create/${res.data.id}`);
-        })
+        .then((res) => router.push(`/users/book-tiles/create/${res.data.id}`))
         .catch((err) => console.log(err));
     };
 
