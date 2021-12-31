@@ -48,7 +48,7 @@ const TileCreation = ({
   categories,
   isAvailable,
   existingTile,
-  tempEntries
+  tempEntries,
 }) => {
   const [editVisible, setEditVisible] = useState(false);
 
@@ -67,9 +67,9 @@ const TileCreation = ({
   };
 
   const [tileEntries, setTileEntries] = useState({
-    first_entry: "",
-    second_entry: "",
-    third_entry: "",
+    first_entry: tempEntries[0] ? tempEntries[0].content : "",
+    second_entry: tempEntries[1] ? tempEntries[1].content : "",
+    third_entry: tempEntries[2] ? tempEntries[2].content : "",
   });
 
   const isEntryValid = (entry) => {
@@ -191,7 +191,7 @@ const TileCreation = ({
                 placeholder="Important stuff"
                 rows="10"
                 onChange={handleChange}
-                value={tempEntries[0].content || null}
+                value={tileEntries.first_entry || null}
                 required
               ></textarea>
             </div>
@@ -219,7 +219,7 @@ const TileCreation = ({
                 placeholder="Important stuff"
                 rows="10"
                 onChange={handleChange}
-                value={tempEntries[1] ? tempEntries[1].content : null}
+                value={tileEntries.second_entry || null}
                 required
               ></textarea>
             </div>
@@ -247,7 +247,7 @@ const TileCreation = ({
                 placeholder="Important stuff"
                 rows="10"
                 onChange={handleChange}
-                value={tempEntries[2] ? tempEntries[2].content : null}
+                value={tileEntries.third_entry || null}
                 required
               ></textarea>
             </div>
