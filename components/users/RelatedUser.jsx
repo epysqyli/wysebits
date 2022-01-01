@@ -50,7 +50,7 @@ const RelatedUser = ({
 
   return (
     <Link href={`/creators/${relatedUser.username}`}>
-      <div className="flex justify-center items-center gap-x-10">
+      <div className="flex justify-around items-center gap-x-10">
         <div>
           <User
             size={60}
