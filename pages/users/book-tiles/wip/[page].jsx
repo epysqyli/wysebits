@@ -50,9 +50,9 @@ const WorkInProgress = ({ books, pagy, userState }) => {
             text="Contributions you are working on"
             bcgImg="bg-wip-contributions"
           />
-          <div className="w-4/5 mx-auto">
+          <div className="w-4/5 md:w-3/5 xl:w-1/2 mx-auto">
             <NoItem message="You have no contributions you are working on at the moment" />
-            <div className="border px-5 pt-3 mb-10 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
+            <div className="border px-5 pt-3 mb-10 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md text-center">
               <div>
                 You can save individual contributions for a book without having
                 to publish it immediately on the create page.
