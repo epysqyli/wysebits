@@ -76,9 +76,9 @@ const Header = ({ userState }) => {
   );
 
   return (
-    <header className="flex justify-between items-center bg-gray-300 py-2 px-5 text-center w-screen fixed shadow-sm z-50">
+    <header className="flex justify-between items-center backdrop-blur backdrop-brightness-100 py-2 px-5 text-center w-screen fixed shadow-sm z-50">
       <Link href="/">
-        <div className="text-2xl font-bold cursor-pointer hover:scale-105 transition-all active:text-white">
+        <div className="text-2xl text-gray-400 font-bold cursor-pointer hover:scale-105 transition-all active:text-white">
           Wbits.
         </div>
       </Link>
