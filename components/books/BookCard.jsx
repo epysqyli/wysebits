@@ -13,7 +13,7 @@ const BookCard = ({ bookData }) => {
         height="200"
         layout="intrinsic"
         placeholder="blur"
-        blurDataURL="/images/book-placeholder.jpg"
+        blurDataURL="/images/book-placeholder.png"
       />
 
       <div className="w-3/6">

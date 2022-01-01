@@ -32,7 +32,7 @@ const CreateEntryForm = ({
         placeholder="Important stuff"
         rows="20"
         onChange={handleChange}
-        value={entry.content || null}
+        value={entry.content || ""}
         required
       ></textarea>
     </div>
