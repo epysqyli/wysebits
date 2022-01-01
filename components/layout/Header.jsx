@@ -46,7 +46,7 @@ const Header = ({ userState }) => {
   );
 
   const loggedUser = (
-    <div className="flex justify-around items-center rounded px-2 py-1 shadow bg-gray-200">
+    <div className="flex justify-around items-center rounded px-2 py-1 shadow bg-gray-100">
       <Link href="/users/actions">
         <a className="flex items-center mr-3 group cursor-pointer">
           <User
@@ -76,9 +76,9 @@ const Header = ({ userState }) => {
   );
 
   return (
-    <header className="flex justify-between items-center backdrop-blur backdrop-brightness-100 py-2 px-5 text-center w-screen fixed shadow-sm z-50">
+    <header className="flex justify-between items-center backdrop-blur backdrop-brightness-90 py-2 px-5 text-center w-screen fixed shadow-sm z-50">
       <Link href="/">
-        <div className="text-2xl text-white bg-gray-500 rounded px-2 font-bold cursor-pointer hover:scale-105 transition-all active:text-white">
+        <div className="text-2xl bg-gray-100 rounded px-2 font-bold cursor-pointer hover:scale-105 transition-all active:text-white">
           Wbits.
         </div>
       </Link>
