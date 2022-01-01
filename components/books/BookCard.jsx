@@ -23,8 +23,8 @@ const BookCard = ({ bookData }) => {
 
       <div className="w-3/6 flex flex-col justify-around text-right">
         <div className="text-xl mb-5 font-medium">{bookData.title}</div>
-        <div className="text-sm">{bookData.category.name}</div>
-        <div className="text-sm italic my-5">
+        <div className="text">{bookData.category.name}</div>
+        <div className="text italic my-5">
           {bookData.authors[0]
             ? bookData.authors[0].full_name
             : "No authors found"}
