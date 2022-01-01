@@ -6,6 +6,7 @@ import { AlertCircle, Save } from "react-feather";
 import CardBcgActions from "../../../../components/books/CardBcgActions";
 import EditBookDetails from "../../../../components/users/EditBookDetails";
 import NoAccess from "../../../../components/users/NoAccess";
+import CreateEntryForm from "../../../../components/users/CreateEntryForm";
 
 export const getServerSideProps = async (context) => {
   const bookData = await axios.get(
@@ -86,14 +87,17 @@ const TileCreation = ({
     first_entry: {
       content: getEntryContent(0),
       id: getEntryId(0),
+      name: "first_entry",
     },
     second_entry: {
       content: getEntryContent(1),
       id: getEntryId(1),
+      name: "second_entry",
     },
     third_entry: {
       content: getEntryContent(2),
       id: getEntryId(2),
+      name: "third_entry",
     },
   });
 
@@ -122,6 +126,7 @@ const TileCreation = ({
         [e.target.name]: {
           content: e.target.value,
           id: tileEntries[e.target.name].id,
+          name: tileEntries[e.target.name].name,
         },
       };
       setTileEntries(newTileEntries);
@@ -215,89 +220,16 @@ const TileCreation = ({
 
         <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 my-10">
           <form onSubmit={handleSubmit}>
-            <div className="my-10 pt-2 px-2 bg-gray-200 shadow-lg rounded">
-              <label
-                htmlFor="first-entry"
-                className="flex justify-around text-center py-2 bg-white shadow-sm rounded"
-              >
-                <div>Enter your first takeaway</div>
-                {isEntryValid(tileEntries.first_entry) ? (
-                  <Save
-                    className="cursor-pointer hover:scale-110 active:scale-100"
-                    onClick={() => saveForLater(tileEntries.first_entry)}
-                  />
-                ) : (
-                  <Save className="text-gray-200" />
-                )}
-              </label>
-              <textarea
-                type="text"
-                name="first_entry"
-                id="first-entry"
-                className="border-none bg-white w-full mt-2 focus:ring-0 shadow-sm focus:shadow-md rounded"
-                placeholder="Important stuff"
-                rows="10"
-                onChange={handleChange}
-                value={tileEntries.first_entry.content || null}
-                required
-              ></textarea>
-            </div>
-
-            <div className="my-10 pt-2 px-2 bg-gray-200 shadow-lg rounded">
-              <label
-                htmlFor="second-entry"
-                className="flex justify-around text-center py-2 bg-white shadow-sm rounded"
-              >
-                <div>Enter your second takeaway</div>
-                {isEntryValid(tileEntries.second_entry) ? (
-                  <Save
-                    className="cursor-pointer hover:scale-110 active:scale-100"
-                    onClick={() => saveForLater(tileEntries.second_entry)}
-                  />
-                ) : (
-                  <Save className="text-gray-200" />
-                )}
-              </label>
-              <textarea
-                type="text"
-                name="second_entry"
-                id="second-entry"
-                className="border-none bg-white w-full mt-2 focus:ring-0 shadow-sm focus:shadow-md rounded"
-                placeholder="Important stuff"
-                rows="10"
-                onChange={handleChange}
-                value={tileEntries.second_entry.content || null}
-                required
-              ></textarea>
-            </div>
-
-            <div className="my-10 pt-2 px-2 bg-gray-200 shadow-lg rounded">
-              <label
-                htmlFor="third-entry"
-                className="flex justify-around text-center py-2 bg-white shadow-sm rounded"
-              >
-                <div>Enter your third takeaway</div>
-                {isEntryValid(tileEntries.third_entry) ? (
-                  <Save
-                    className="cursor-pointer hover:scale-110 active:scale-100"
-                    onClick={() => saveForLater(tileEntries.third_entry)}
-                  />
-                ) : (
-                  <Save className="text-gray-200" />
-                )}
-              </label>
-              <textarea
-                type="text"
-                name="third_entry"
-                id="third-entry"
-                className="border-none bg-white w-full mt-2 focus:ring-0 shadow-sm focus:shadow-md rounded"
-                placeholder="Important stuff"
-                rows="10"
-                onChange={handleChange}
-                value={tileEntries.third_entry.content || null}
-                required
-              ></textarea>
-            </div>
+            {Object.entries(tileEntries).map((entry) => {
+              return (
+                <CreateEntryForm
+                  entry={entry[1]}
+                  isEntryValid={isEntryValid}
+                  handleChange={handleChange}
+                  saveForLater={saveForLater}
+                />
+              );
+            })}
 
             {allEntriesValid() ? (
               <button
