@@ -163,11 +163,20 @@ const EntryLogged = ({
         <div className="flex justify-center items-center gap-x-3">
           {isUpvoted() ? (
             <div onClick={() => removeFromUpvoted()}>
-              <ThumbsUp size={16} fill="darkgray" color="darkgray" />
+              <ThumbsUp
+                size={16}
+                fill="darkgray"
+                color="darkgray"
+                className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
+              />
             </div>
           ) : (
             <div onClick={() => addToUpvoted()}>
-              <ThumbsUp size={16} color="darkgray" />
+              <ThumbsUp
+                size={16}
+                color="darkgray"
+                className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
+              />
             </div>
           )}
 
@@ -175,11 +184,20 @@ const EntryLogged = ({
 
           {isDownvoted() ? (
             <div onClick={() => removeFromDownvoted()}>
-              <ThumbsDown size={16} fill="darkgray" color="darkgray" />
+              <ThumbsDown
+                size={16}
+                fill="darkgray"
+                color="darkgray"
+                className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
+              />
             </div>
           ) : (
             <div onClick={() => addToDownvoted()}>
-              <ThumbsDown size={16} color="darkgray" />
+              <ThumbsDown
+                size={16}
+                color="darkgray"
+                className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
+              />
             </div>
           )}
 
