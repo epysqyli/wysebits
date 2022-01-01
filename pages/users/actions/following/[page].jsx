@@ -81,7 +81,7 @@ const Following = ({ following, userState, pagy, unpagedFollowing }) => {
               return (
                 <div
                   key={user.id}
-                  className="shadow-md rounded-md py-5 bg-gray-100 hover:bg-gray-200 hover:shadow-lg active:bg-gray-300 cursor-pointer"
+                  className="shadow-md rounded-md py-5 bg-gray-100 hover:bg-gray-200 hover:shadow-lg active:shadow-inner cursor-pointer"
                 >
                   <RelatedUser
                     relatedUser={user.followed}

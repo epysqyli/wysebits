@@ -83,7 +83,7 @@ const WorkInProgress = ({ books, pagy, userState }) => {
                   href={`/users/book-tiles/create/${item.book.id}`}
                   key={item.book.id}
                 >
-                  <div className="rounded-md shadow-md border bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300">
+                  <div className="rounded-md shadow-md border bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:shadow-inner">
                     <BookCard bookData={item.book} />
                   </div>
                 </Link>

@@ -51,7 +51,7 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
                 href={`/books/${slug(book.title, book.id)}/1`}
                 key={book.id}
               >
-                <div className="rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:bg-gray-300">
+                <div className="rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:shadow-inner">
                   <BookCard bookData={book} />
                 </div>
               </Link>
