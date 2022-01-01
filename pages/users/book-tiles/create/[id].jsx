@@ -222,12 +222,17 @@ const TileCreation = ({
           <form onSubmit={handleSubmit}>
             {Object.values(tileEntries).map((entry) => {
               return (
-                <CreateEntryForm
-                  entry={entry}
-                  isEntryValid={isEntryValid}
-                  handleChange={handleChange}
-                  saveForLater={saveForLater}
-                />
+                <div
+                  key={entry.id}
+                  className="my-10 bg-gray-200 shadow-md rounded-md"
+                >
+                  <CreateEntryForm
+                    entry={entry}
+                    isEntryValid={isEntryValid}
+                    handleChange={handleChange}
+                    saveForLater={saveForLater}
+                  />
+                </div>
               );
             })}
 
