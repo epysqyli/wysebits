@@ -81,7 +81,7 @@ const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
 
           <button
             type="submit"
-            className="w-1/6 text-center bg-white border-l rounded-tr-lg rounded-br-lg hover:bg-gray-200 group-hover:shadow-md transition active:bg-gray-400 active:text-white"
+            className="w-1/6 text-center bg-white border-l rounded-tr-lg rounded-br-lg hover:bg-gray-200 group-hover:shadow-md transition active:text-white"
           >
             <Search
               size={20}
