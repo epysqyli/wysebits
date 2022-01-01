@@ -115,7 +115,10 @@ const TileCreation = ({
     const handleChange = (e) => {
       const newTileEntries = {
         ...tileEntries,
-        [e.target.name]: e.target.value,
+        [e.target.name]: {
+          content: e.target.value,
+          id: tileEntries[e.target.name].id,
+        },
       };
       setTileEntries(newTileEntries);
     };
