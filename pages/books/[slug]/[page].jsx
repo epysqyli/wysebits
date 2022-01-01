@@ -138,10 +138,10 @@ const Book = ({
     return (
       <div>
         <CardBcg bookData={book} userState={userState} favBooks={favBooks} />
-        <div className="w-5/6 md:w-4/6 mx-auto mt-10">
+        <div className="my-10 w-4/5 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
           {entries.map((entry) => {
             return (
-              <div className="my-10" key={entry.id}>
+              <div key={entry.id}>
                 <TileEntry
                   data={entry}
                   userId={userState.user.id}
