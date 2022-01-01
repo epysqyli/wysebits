@@ -16,7 +16,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const Home =  ({ categories, userState }) => {
+const Home = ({ categories, userState }) => {
   return (
     <div className="pb-10 animate-show-up">
       <Head>
@@ -37,49 +37,51 @@ const Home =  ({ categories, userState }) => {
         </div>
       </div>
 
-      <div className="mb-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6 px-2 py-3 border-b-2">
-        <div className="flex justify-center items-center gap-x-5">
-          <Book size={36} strokeWidth={1.5} />
-          <div className="text-4xl text-gray-700">Explore books</div>
+      <div className="xl:flex">
+        <div className="mb-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6 px-2 py-3 border-b-2">
+          <div className="flex justify-center items-center gap-x-5">
+            <Book size={36} strokeWidth={1.5} />
+            <div className="text-4xl text-gray-700">Explore books</div>
+          </div>
+          <div className="mt-10 mb-5">
+            <SearchInput
+              pageDest="/books/search/"
+              placeholder="Search for any book"
+              showSuggest={true}
+              suggestLink="/books/"
+            />
+          </div>
         </div>
-        <div className="mt-10 mb-5">
-          <SearchInput
-            pageDest="/books/search/"
-            placeholder="Search for any book"
-            showSuggest={true}
-            suggestLink="/books/"
-          />
-        </div>
-      </div>
 
-      <div className="mb-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 border-b-2 pb-10">
-        <div className="flex justify-center items-center gap-x-5 mb-10">
-          <Box size={36} strokeWidth={1.5} />
-          <div className="text-3xl text-gray-700">Explore categories</div>
+        <div className="mb-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 border-b-2 pb-10">
+          <div className="flex justify-center items-center gap-x-5 mb-10">
+            <Box size={36} strokeWidth={1.5} />
+            <div className="text-3xl text-gray-700">Explore categories</div>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4">
+            {categories.map((category) => {
+              return <CategoryButton category={category} key={category.id} />;
+            })}
+          </div>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4">
-          {categories.map((category) => {
-            return <CategoryButton category={category} key={category.id} />;
-          })}
-        </div>
-      </div>
 
-      {userState.isLogged ? null : (
-        <div>
-          <div className="w-full py-10 mb-10">
-            <Link href="/registrations/signup">
-              <a className="block w-4/6 mx-auto">
-                <Button text="Join to share your knowledge" />
-              </a>
+        {userState.isLogged ? null : (
+          <div>
+            <div className="w-full py-10 mb-10">
+              <Link href="/registrations/signup">
+                <a className="block w-4/6 mx-auto">
+                  <Button text="Join to share your knowledge" />
+                </a>
+              </Link>
+            </div>
+            <Link href="/about">
+              <div className="underline text-center mx-auto w-4/5 cursor-pointer">
+                Wyse what? Click here to know more about it!
+              </div>
             </Link>
           </div>
-          <Link href="/about">
-            <div className="underline text-center mx-auto w-4/5 cursor-pointer">
-              Wyse what? Click here to know more about it!
-            </div>
-          </Link>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
