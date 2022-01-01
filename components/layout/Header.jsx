@@ -46,11 +46,11 @@ const Header = ({ userState }) => {
   );
 
   const loggedUser = (
-    <div className="flex justify-around items-center border rounded px-2 py-1 shadow">
+    <div className="flex justify-around items-center rounded px-2 py-1 shadow bg-gray-200">
       <Link href="/users/actions">
-        <a className="flex mr-3 group cursor-pointer border-r">
+        <a className="flex items-center mr-3 group cursor-pointer">
           <User
-            size={20}
+            size={18}
             strokeWidth={1.75}
             className="group-hover:scale-110"
           />
@@ -60,16 +60,16 @@ const Header = ({ userState }) => {
         </a>
       </Link>
       <Link href="/users/book-search/">
-        <a className="group cursor-pointer mr-3">
+        <a className="group cursor-pointer mr-5">
           <Plus
             size={20}
-            className="text-gray-500 hover:scale-110 hover:text-gray-700 active:text-white cursor-pointer"
+            className="text-gray-600 hover:scale-110 hover:text-gray-700 active:text-white cursor-pointer"
           />
         </a>
       </Link>
       <LogOut
         size={20}
-        className="text-gray-500 hover:scale-110 hover:text-gray-700 cursor-pointer"
+        className="text-gray-600 hover:scale-110 hover:text-gray-700 cursor-pointer"
         onClick={logoutCall}
       />
     </div>
