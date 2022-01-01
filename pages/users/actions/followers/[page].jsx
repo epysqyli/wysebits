@@ -75,7 +75,7 @@ const Followers = ({ followers, userState, pagy, unpagedFollowers }) => {
       return (
         <div>
           <WelcomeTop text="Your followers" bcgImg="bg-followers" />
-          <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 mx-auto">
+          <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
             {followers.map((user) => {
               return (
                 <div

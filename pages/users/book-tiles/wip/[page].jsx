@@ -54,10 +54,13 @@ const WorkInProgress = ({ books, pagy, userState }) => {
             <NoItem message="You have no contributions you are working on at the moment" />
             <div className="border px-5 pt-3 mb-10 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
               <div>
-                You can save individual contributions for a book
-                without having to publish it immediately on the create page.
+                You can save individual contributions for a book without having
+                to publish it immediately on the create page.
                 <br />
-                <br /> <div className="text-center mt-5">Start exploring books now!</div>
+                <br />{" "}
+                <div className="text-center mt-5">
+                  Start exploring books now!
+                </div>
               </div>
               <div className="mt-5">
                 <SearchInput
@@ -76,7 +79,7 @@ const WorkInProgress = ({ books, pagy, userState }) => {
             text="Contributions you are working on"
             bcgImg="bg-wip-contributions"
           />
-          <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 mx-auto">
+          <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
             {books.map((item) => {
               return (
                 <Link
