@@ -67,25 +67,34 @@ const TileCreation = ({
   };
 
   const [tileEntries, setTileEntries] = useState({
-    first_entry: tempEntries
-      ? tempEntries[0]
-        ? tempEntries[0].content
-        : ""
-      : "",
-    second_entry: tempEntries
-      ? tempEntries[1]
-        ? tempEntries[1].content
-        : ""
-      : "",
-    third_entry: tempEntries
-      ? tempEntries[2]
-        ? tempEntries[2].content
-        : ""
-      : "",
+    first_entry: {
+      content: tempEntries
+        ? tempEntries[0]
+          ? tempEntries[0].content
+          : ""
+        : "",
+      id: tempEntries ? (tempEntries[0] ? tempEntries[0].id : null) : null,
+    },
+    second_entry: {
+      content: tempEntries
+        ? tempEntries[1]
+          ? tempEntries[1].content
+          : ""
+        : "",
+      id: tempEntries ? (tempEntries[1] ? tempEntries[1].id : null) : null,
+    },
+    third_entry: {
+      content: tempEntries
+        ? tempEntries[2]
+          ? tempEntries[2].content
+          : ""
+        : "",
+      id: tempEntries ? (tempEntries[2] ? tempEntries[2].id : null) : null,
+    },
   });
 
   const isEntryValid = (entry) => {
-    if (entry.trim().length > 50) return true;
+    if (entry.content.trim().length > 50) return true;
     return false;
   };
 
@@ -128,6 +137,18 @@ const TileCreation = ({
       axios
         .post(
           `http://localhost:3001/api/book_tiles/${bookTile.id}/temporary_entries`,
+          { content: entryContent },
+          { withCredentials: true }
+        )
+        .catch((err) => console.log(err));
+    };
+
+    const updateForLater = async (entryContent) => {
+      const bookTile = await findOrCreateBookTile();
+
+      axios
+        .put(
+          `http://localhost:3001/api/book_tiles/${bookTile.id}/temporary_entries/`,
           { content: entryContent },
           { withCredentials: true }
         )
@@ -202,7 +223,7 @@ const TileCreation = ({
                 placeholder="Important stuff"
                 rows="10"
                 onChange={handleChange}
-                value={tileEntries.first_entry || null}
+                value={tileEntries.first_entry.content || null}
                 required
               ></textarea>
             </div>
@@ -230,7 +251,7 @@ const TileCreation = ({
                 placeholder="Important stuff"
                 rows="10"
                 onChange={handleChange}
-                value={tileEntries.second_entry || null}
+                value={tileEntries.second_entry.content || null}
                 required
               ></textarea>
             </div>
@@ -258,7 +279,7 @@ const TileCreation = ({
                 placeholder="Important stuff"
                 rows="10"
                 onChange={handleChange}
-                value={tileEntries.third_entry || null}
+                value={tileEntries.third_entry.content || null}
                 required
               ></textarea>
             </div>
