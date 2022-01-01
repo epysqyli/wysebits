@@ -12,10 +12,12 @@ const CreateEntryForm = ({
         htmlFor={entry.name}
         className="flex justify-around text-center py-2 bg-white rounded"
       >
-        <div>Enter your {entry.name.split("_")[0]} takeaway</div>
+        <div className="italic text-gray-700">
+          Enter your {entry.name.split("_")[0]} takeaway
+        </div>
         {isEntryValid(entry) ? (
           <Save
-            className="cursor-pointer hover:scale-110 active:scale-100"
+            className="cursor-pointer hover:scale-110 active:scale-100 text-gray-600"
             onClick={() => saveForLater(entry)}
           />
         ) : (

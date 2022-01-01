@@ -220,10 +220,10 @@ const TileCreation = ({
 
         <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 my-10">
           <form onSubmit={handleSubmit}>
-            {Object.values(tileEntries).map((entry) => {
+            {Object.values(tileEntries).map((entry, index) => {
               return (
                 <div
-                  key={entry.id}
+                  key={entry.id || index}
                   className="my-10 bg-gray-200 shadow-md rounded-md"
                 >
                   <CreateEntryForm
