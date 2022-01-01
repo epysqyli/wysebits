@@ -84,15 +84,15 @@ const UserBookTiles = ({ bookTiles, pagy, userState }) => {
               );
             })}
           </div>
-          <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
-            <div className="w-1/2">
+          <div className="flex justify-around my-16 md:w-4/5 mx-auto">
+            <div className="w-1/3">
               <PageNavButton
                 btnText="Previous page"
                 clientUrl={clientUrl}
                 url={pagy.prev_url}
               />
             </div>
-            <div className="w-1/2">
+            <div className="w-1/3">
               <PageNavButton
                 btnText="Next page"
                 clientUrl={clientUrl}
