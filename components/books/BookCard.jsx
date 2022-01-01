@@ -5,7 +5,7 @@ const BookCard = ({ bookData }) => {
   const dbSrc = bookData.cover_url;
 
   return (
-    <div className="flex justify-center gap-x-5 px-1 py-2">
+    <div className="flex justify-center gap-x-8 px-1 py-4">
       <div className="w-2/6">
         <div className="shadow-md rounded-md">
           <Image
