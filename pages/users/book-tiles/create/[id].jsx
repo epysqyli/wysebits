@@ -66,30 +66,34 @@ const TileCreation = ({
     setEditVisible(false);
   };
 
+  const getEntryContent = (entryIndex) => {
+    return tempEntries
+      ? tempEntries[entryIndex]
+        ? tempEntries[entryIndex].content
+        : ""
+      : "";
+  };
+
+  const getEntryId = (entryIndex) => {
+    return tempEntries
+      ? tempEntries[entryIndex]
+        ? tempEntries[entryIndex].id
+        : null
+      : null;
+  };
+
   const [tileEntries, setTileEntries] = useState({
     first_entry: {
-      content: tempEntries
-        ? tempEntries[0]
-          ? tempEntries[0].content
-          : ""
-        : "",
-      id: tempEntries ? (tempEntries[0] ? tempEntries[0].id : null) : null,
+      content: getEntryContent(0),
+      id: getEntryId(0),
     },
     second_entry: {
-      content: tempEntries
-        ? tempEntries[1]
-          ? tempEntries[1].content
-          : ""
-        : "",
-      id: tempEntries ? (tempEntries[1] ? tempEntries[1].id : null) : null,
+      content: getEntryContent(1),
+      id: getEntryId(1),
     },
     third_entry: {
-      content: tempEntries
-        ? tempEntries[2]
-          ? tempEntries[2].content
-          : ""
-        : "",
-      id: tempEntries ? (tempEntries[2] ? tempEntries[2].id : null) : null,
+      content: getEntryContent(2),
+      id: getEntryId(2),
     },
   });
 
