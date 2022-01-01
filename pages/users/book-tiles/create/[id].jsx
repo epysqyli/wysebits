@@ -220,10 +220,10 @@ const TileCreation = ({
 
         <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 my-10">
           <form onSubmit={handleSubmit}>
-            {Object.entries(tileEntries).map((entry) => {
+            {Object.values(tileEntries).map((entry) => {
               return (
                 <CreateEntryForm
-                  entry={entry[1]}
+                  entry={entry}
                   isEntryValid={isEntryValid}
                   handleChange={handleChange}
                   saveForLater={saveForLater}
