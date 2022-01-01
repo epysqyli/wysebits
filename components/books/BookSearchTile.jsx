@@ -15,7 +15,7 @@ const BookSearchTile = ({ bookData, destPage }) => {
               dangerouslySetInnerHTML={{ __html: bookData.highlight.title }}
             ></div>
 
-            <div className="text">
+            <div>
               {bookData._source.category.name == "CATCHALL"
                 ? "No category"
                 : bookData._source.category.name}
