@@ -134,28 +134,36 @@ const TileCreation = ({
       return resp.data;
     };
 
-    const saveForLater = async (entryContent) => {
+    const createForLater = async (entry) => {
       const bookTile = await findOrCreateBookTile();
 
       axios
         .post(
           `http://localhost:3001/api/book_tiles/${bookTile.id}/temporary_entries`,
-          { content: entryContent },
+          { content: entry.content },
           { withCredentials: true }
         )
         .catch((err) => console.log(err));
     };
 
-    const updateForLater = async (entryContent) => {
+    const updateForLater = async (entry) => {
       const bookTile = await findOrCreateBookTile();
 
       axios
         .put(
-          `http://localhost:3001/api/book_tiles/${bookTile.id}/temporary_entries/`,
-          { content: entryContent },
+          `http://localhost:3001/api/book_tiles/${bookTile.id}/temporary_entries/${entry.id}`,
+          { content: entry.content },
           { withCredentials: true }
         )
         .catch((err) => console.log(err));
+    };
+
+    const saveForLater = (entry) => {
+      if (entry.id == null) {
+        createForLater(entry);
+      } else {
+        updateForLater(entry);
+      }
     };
 
     const createTileEntries = async () => {
