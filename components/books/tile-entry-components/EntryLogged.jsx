@@ -155,11 +155,11 @@ const EntryLogged = ({
 
   return (
     <div className="shadow-md rounded-md">
-      <div className="border-b-2 py-3 px-2 whitespace-pre-line">
+      <div className="border-b-2 py-5 px-10 md:px-16 whitespace-pre-line">
         {data.content}
       </div>
 
-      <div className="flex justify-between items-center text-sm px-2 py-2">
+      <div className="flex justify-between items-center text-sm px-10 md:px-16 py-4">
         <div className="flex justify-center items-center gap-x-3">
           {isUpvoted() ? (
             <div onClick={() => removeFromUpvoted()}>
