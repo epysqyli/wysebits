@@ -30,16 +30,12 @@ const SearchInput = ({
     if (query === undefined) {
       if (searchTerms && searchTerms.length > 2) {
         addToHistory(searchTerms);
-        router.push({
-          pathname: `${pageDest}${getQuery()}/1`,
-        });
+        router.push(`${pageDest}${getQuery(query)}/1`);
       } else {
         SetSearchError(true);
       }
     } else {
-      router.push({
-        pathname: `${pageDest}${getQuery(query)}/1`,
-      });
+      router.push(`${pageDest}${getQuery(query)}/1`);
     }
   };
 
@@ -73,12 +69,8 @@ const SearchInput = ({
     }
   };
 
-  const getQuery = (query) => {
-    if (query === undefined) {
-      return searchTerms.split(" ").join("-");
-    } else {
-      return query.split(" ").join("-");
-    }
+  const getQuery = (query = searchTerms) => {
+    return query.split(" ").join("-");
   };
 
   // history state methods
