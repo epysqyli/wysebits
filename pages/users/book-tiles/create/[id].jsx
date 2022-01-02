@@ -24,8 +24,8 @@ export const getServerSideProps = async (context) => {
 
     return {
       props: {
-        bookData: bookData.data.data,
-        categories: categories.data.data,
+        bookData: bookData.data,
+        categories: categories.data,
         isAvailable: isAvailable.data.res,
         tempEntries: isAvailable.data.temporary_entries || null,
         existingTile: isAvailable.data.existing_book_tile || null,
