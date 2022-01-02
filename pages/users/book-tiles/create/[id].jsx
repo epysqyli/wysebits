@@ -7,25 +7,20 @@ import CardBcgActions from "../../../../components/books/CardBcgActions";
 import EditBookDetails from "../../../../components/users/EditBookDetails";
 import NoAccess from "../../../../components/users/NoAccess";
 import CreateEntryForm from "../../../../components/users/CreateEntryForm";
+import {
+  getBook,
+  getCategories,
+  getLoggedUser,
+  isBookTileAvailable,
+} from "../../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
-  const bookData = await axios.get(
-    `http://localhost:3001/api/books/${context.params.id}`
-  );
-  const categories = await axios.get("http://localhost:3001/api/categories");
+  const categories = await getCategories();
+  const bookData = await getBook(context);
 
   try {
-    const userResp = await axios({
-      method: "get",
-      url: "http://localhost:3001/api/logged_in",
-      headers: { cookie: context.req.headers.cookie },
-    });
-
-    const isAvailable = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/book_tiles/${context.params.id}/is_available`,
-      headers: { cookie: context.req.headers.cookie },
-    });
+    const loggedUser = await getLoggedUser(context);
+    const isAvailable = await isBookTileAvailable(loggedUser, context);
 
     return {
       props: {

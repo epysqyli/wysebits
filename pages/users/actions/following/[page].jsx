@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import WelcomeTop from "../../../../components/users/WelcomeTop";
 import NoAccess from "../../../../components/users/NoAccess";
 import SearchInput from "../../../../components/navigation/SearchInput";
