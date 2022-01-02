@@ -16,6 +16,7 @@ const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
   const [suggestions, setSuggestions] = useState(null);
   const [history, setHistory] = useState(null);
   const [didLoad, setDidLoad] = useState(false);
+  const [activeSearch, setActiveSearch] = useState(false);
 
   const router = useRouter();
 
@@ -64,6 +65,14 @@ const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
     return searchTerms.split(" ").join("-");
   };
 
+  const recentHistory = didLoad ? (
+    <div className="animate-show-up-slow mt-4">
+      {history.map((query, index) => {
+        return <HistoryBox query={query} key={index} />;
+      })}
+    </div>
+  ) : null;
+
   useEffect(() => {
     setDidLoad(true);
     setHistory(findOrCreateHistory());
@@ -89,6 +98,8 @@ const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
             id="tmp"
             className="border-none bg-white w-5/6 rounded-tl-lg rounded-bl-lg focus:ring-0 group-hover:shadow-md transition"
             onChange={handleChange}
+            onFocus={() => setActiveSearch(true)}
+            onBlur={() => setActiveSearch(false)}
             placeholder={placeholder}
             required
           />
@@ -106,13 +117,7 @@ const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
           </button>
         </div>
 
-        {didLoad ? (
-          <div className="animate-show-up-slow mt-4">
-            {history.map((query, index) => {
-              return <HistoryBox query={query} key={index} />;
-            })}
-          </div>
-        ) : null}
+        {activeSearch ? recentHistory : null}
 
         <div className="text-center text-sm mt-8 text-gray-400">
           {searchError ? (
