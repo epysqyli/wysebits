@@ -6,22 +6,14 @@ import NoAccess from "../../../../components/users/NoAccess";
 import NoItem from "../../../../components/users/NoItem";
 import SearchInput from "../../../../components/navigation/SearchInput";
 import PageNavButton from "../../../../components/navigation/PageNavButton";
+import { getLoggedUser, getWipTiles } from "../../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
   try {
-    const userResp = await axios({
-      method: "get",
-      url: "http://localhost:3001/api/logged_in",
-      headers: { cookie: context.req.headers.cookie },
-    });
-
     const pageNum = context.query.page;
 
-    const tempTiles = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/temp_book_tiles?page=${pageNum}`,
-      headers: { cookie: context.req.headers.cookie },
-    });
+    const loggedUser = await getLoggedUser(context);
+    const tempTiles = await getWipTiles(loggedUser, context, pageNum);
 
     return {
       props: {
