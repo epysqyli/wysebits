@@ -1,9 +1,12 @@
 import { Clock, XOctagon } from "react-feather";
 
-const HistoryBox = ({ query, removeFromStateHistory }) => {
+const HistoryBox = ({ query, removeFromStateHistory, search }) => {
   return (
     <div className="mx-auto flex justify-between items-center py-2 px-5 shadow rounded bg-white my-2">
-      <div className="flex items-center gap-x-5">
+      <div
+        className="flex items-center gap-x-5 cursor-pointer"
+        onClick={() => search(query)}
+      >
         <Clock size={18} color="gray" />
         <div className="text-gray-500 text-sm">{query}</div>
       </div>

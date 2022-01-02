@@ -26,14 +26,20 @@ const SearchInput = ({
 
   const router = useRouter();
 
-  const searchBooks = () => {
-    if (searchTerms && searchTerms.length > 2) {
-      addToHistory(searchTerms);
-      router.push({
-        pathname: `${pageDest}${getQuery()}/1`,
-      });
+  const searchBooks = (query) => {
+    if (query === undefined) {
+      if (searchTerms && searchTerms.length > 2) {
+        addToHistory(searchTerms);
+        router.push({
+          pathname: `${pageDest}${getQuery()}/1`,
+        });
+      } else {
+        SetSearchError(true);
+      }
     } else {
-      SetSearchError(true);
+      router.push({
+        pathname: `${pageDest}${getQuery(query)}/1`,
+      });
     }
   };
 
@@ -67,15 +73,22 @@ const SearchInput = ({
     }
   };
 
-  const getQuery = () => {
-    return searchTerms.split(" ").join("-");
+  const getQuery = (query) => {
+    if (query === undefined) {
+      return searchTerms.split(" ").join("-");
+    } else {
+      return query.split(" ").join("-");
+    }
   };
 
+  // history state methods
   const removeFromStateHistory = (query) => {
     const newHistory = history.filter((item) => item !== query);
     setHistory(newHistory);
     removeFromHistory(query);
   };
+
+  const searchViaHistory = (query) => searchBooks(query);
 
   const recentHistory =
     didLoad && suggestions === null && showHistory ? (
@@ -85,6 +98,7 @@ const SearchInput = ({
             <HistoryBox
               query={query}
               removeFromStateHistory={removeFromStateHistory}
+              search={searchViaHistory}
               key={index}
             />
           );
