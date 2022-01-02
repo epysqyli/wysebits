@@ -8,13 +8,14 @@ import {
   removeFromHistory,
 } from "../../lib/searchHistoryMethods";
 import SuggestBox from "./SuggestBox";
-import HistoryBox from "../HistoryBox";
+import HistoryBox from "./HistoryBox";
 
 const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
   const [searchTerms, setSearchTerms] = useState(null);
   const [searchError, SetSearchError] = useState(false);
   const [suggestions, setSuggestions] = useState(null);
   const [history, setHistory] = useState(null);
+  const [didLoad, setDidLoad] = useState(false);
 
   const router = useRouter();
 
@@ -64,15 +65,16 @@ const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
   };
 
   useEffect(() => {
+    setDidLoad(true);
+    setHistory(findOrCreateHistory());
+  }, []);
+
+  useEffect(() => {
     if ((searchTerms && searchTerms.length < 3) || searchTerms == "") {
       const newSuggestions = null;
       setSuggestions(newSuggestions);
     }
   }, [searchTerms]);
-
-  useEffect(() => {
-    setHistory(findOrCreateHistory());
-  }, []);
 
   return (
     <div>
@@ -103,6 +105,15 @@ const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
             />
           </button>
         </div>
+
+        {didLoad ? (
+          <div className="animate-show-up-slow mt-4">
+            {history.map((query, index) => {
+              return <HistoryBox query={query} key={index} />;
+            })}
+          </div>
+        ) : null}
+
         <div className="text-center text-sm mt-8 text-gray-400">
           {searchError ? (
             <div className="animate-show-up-slow">
