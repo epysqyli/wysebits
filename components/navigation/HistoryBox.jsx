@@ -9,7 +9,7 @@ const HistoryBox = ({ query, removeFromStateHistory }) => {
       </div>
       <XOctagon
         size={18}
-        color="gray"
+        className="cursor-pointer text-gray-500 hover:scale-110 active:scale-100 active:text-black"
         onClick={() => removeFromStateHistory(query)}
       />
     </div>
