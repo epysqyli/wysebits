@@ -6,34 +6,21 @@ import SearchInput from "../../../../components/navigation/SearchInput";
 import NoItem from "../../../../components/users/NoItem";
 import RelatedUser from "../../../../components/users/RelatedUser";
 import PageNavButton from "../../../../components/navigation/PageNavButton";
+import { getLoggedUser, getFollowing, getAllFollowing } from "../../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
   try {
-    const userResp = await axios({
-      method: "get",
-      url: "http://localhost:3001/api/logged_in",
-      headers: { cookie: context.req.headers.cookie },
-    });
-
     const pageNum = context.query.page;
 
-    const resp = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/following?page=${pageNum}`,
-      headers: { cookie: context.req.headers.cookie },
-    });
-
-    const unpagedFollowing = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/unpaged_following`,
-      headers: { cookie: context.req.headers.cookie },
-    });
+    const loggedUser = await getLoggedUser(context);
+    const following = await getFollowing(loggedUser, context, pageNum);
+    const unpagedFollowing = await getAllFollowing(loggedUser, context);
 
     return {
       props: {
-        following: resp.data.following,
+        following: following.data.following,
         unpagedFollowing: unpagedFollowing.data,
-        pagy: resp.data.pagy,
+        pagy: following.data.pagy,
       },
     };
   } catch (error) {
