@@ -65,13 +65,14 @@ const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
     return searchTerms.split(" ").join("-");
   };
 
-  const recentHistory = didLoad ? (
-    <div className="animate-show-up-slow mt-4">
-      {history.map((query, index) => {
-        return <HistoryBox query={query} key={index} />;
-      })}
-    </div>
-  ) : null;
+  const recentHistory =
+    didLoad && suggestions === null ? (
+      <div className="animate-show-up-slow mt-4">
+        {history.map((query, index) => {
+          return <HistoryBox query={query} key={index} />;
+        })}
+      </div>
+    ) : null;
 
   useEffect(() => {
     setDidLoad(true);
