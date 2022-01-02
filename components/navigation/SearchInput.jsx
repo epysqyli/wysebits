@@ -2,17 +2,25 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/dist/client/router";
 import { Search } from "react-feather";
+import {
+  findOrCreateHistory,
+  addToHistory,
+  removeFromHistory,
+} from "../../lib/searchHistoryMethods";
 import SuggestBox from "./SuggestBox";
+import HistoryBox from "../HistoryBox";
 
 const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
   const [searchTerms, setSearchTerms] = useState(null);
   const [searchError, SetSearchError] = useState(false);
   const [suggestions, setSuggestions] = useState(null);
+  const [history, setHistory] = useState(null);
 
   const router = useRouter();
 
   const searchBooks = () => {
     if (searchTerms && searchTerms.length > 2) {
+      addToHistory(searchTerms);
       router.push({
         pathname: `${pageDest}${getQuery()}/1`,
       });
@@ -61,6 +69,10 @@ const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
       setSuggestions(newSuggestions);
     }
   }, [searchTerms]);
+
+  useEffect(() => {
+    setHistory(findOrCreateHistory());
+  }, []);
 
   return (
     <div>
