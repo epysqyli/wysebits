@@ -6,36 +6,31 @@ import CardBcgActions from "../../../../components/books/CardBcgActions";
 import DangerButton from "../../../../components/navigation/DangerButton";
 import NoAccess from "../../../../components/users/NoAccess";
 import { useRouter } from "next/dist/client/router";
+import {
+  getLoggedUser,
+  getBookTile,
+  getCategories,
+} from "../../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
   try {
     const { id } = context.params;
 
-    const userResp = await axios({
-      method: "get",
-      url: "http://localhost:3001/api/logged_in",
-      headers: { cookie: context.req.headers.cookie },
-    });
-
-    const resp = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/book_tiles/${id}`,
-    });
-
-    const categoriesReq = await fetch("http://localhost:3001/api/categories");
-    const categoriesRes = await categoriesReq.json();
+    const loggedUser = await getLoggedUser(context);
+    const bookData = await getBookTile(loggedUser, id);
+    const categories = await getCategories();
 
     return {
       props: {
-        bookData: resp.data.book,
-        entries: resp.data.tile_entries,
+        bookData: bookData.data.book,
+        entries: bookData.data.tile_entries,
         bookTileId: id,
-        categories: categoriesRes.data,
+        categories: categories.data,
       },
     };
   } catch (error) {
     return {
-      props: {},
+      props: { error: error.message },
     };
   }
 };

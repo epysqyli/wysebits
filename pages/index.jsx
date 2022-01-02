@@ -4,15 +4,13 @@ import Button from "../components/navigation/Button";
 import CategoryButton from "../components/navigation/CategoryButton";
 import SearchInput from "../components/navigation/SearchInput";
 import Link from "next/link";
+import { getCategories } from "../lib/serverSideMethods";
 
 export const getStaticProps = async () => {
-  const resp = await fetch("http://localhost:3001/api/categories");
-  const categories = await resp.json();
+  const categories = await getCategories();
 
   return {
-    props: {
-      categories: categories.data,
-    },
+    props: { categories: categories.data },
   };
 };
 
@@ -56,7 +54,9 @@ const Home = ({ categories, userState }) => {
         <div className="mb-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 border-b-2 pb-10">
           <div className="flex justify-center items-center gap-x-5 mb-10">
             <Box size={36} strokeWidth={1.5} />
-            <div className="text-3xl xl:text-4xl text-gray-700">Explore categories</div>
+            <div className="text-3xl xl:text-4xl text-gray-700">
+              Explore categories
+            </div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4">
             {categories.map((category) => {
