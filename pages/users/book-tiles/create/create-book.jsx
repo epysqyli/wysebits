@@ -2,22 +2,13 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/dist/client/router";
 import NoAccess from "../../../../components/users/NoAccess";
+import { getCategories } from "../../../../lib/serverSideMethods";
 
 export const getServerSideProps = async () => {
-  try {
-    const resp = await fetch("http://localhost:3001/api/categories");
-    const categories = await resp.json();
-
-    return {
-      props: {
-        categories: categories.data,
-      },
-    };
-  } catch (error) {
-    return {
-      props: {},
-    };
-  }
+  const categories = await getCategories();
+  return {
+    props: { categories: categories.data },
+  };
 };
 
 const CreateBook = ({ categories, userState }) => {
