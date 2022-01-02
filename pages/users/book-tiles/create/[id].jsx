@@ -54,13 +54,8 @@ const TileCreation = ({
     return dbSrc === null ? olSrc : dbSrc;
   };
 
-  const showEditForm = () => {
-    setEditVisible(true);
-  };
-
-  const hideEditForm = () => {
-    setEditVisible(false);
-  };
+  const showEditForm = () => setEditVisible(true);
+  const hideEditForm = () => setEditVisible(false);
 
   const getEntryContent = (entryIndex) => {
     return tempEntries
