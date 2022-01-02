@@ -64,24 +64,24 @@ const Home = ({ categories, userState }) => {
             })}
           </div>
         </div>
+      </div>
 
-        {userState.isLogged ? null : (
-          <div>
-            <div className="w-full py-10 mb-10">
-              <Link href="/registrations/signup">
-                <a className="block w-4/6 mx-auto">
-                  <Button text="Join to share your knowledge" />
-                </a>
-              </Link>
-            </div>
-            <Link href="/about">
-              <div className="underline text-center mx-auto w-4/5 cursor-pointer">
-                Wyse what? Click here to know more about it!
-              </div>
+      {userState.isLogged ? null : (
+        <div className="mx-auto md:w-4/5 lg:w-3/5">
+          <div className="w-full py-10 mb-10">
+            <Link href="/registrations/signup">
+              <a className="block w-4/6 mx-auto">
+                <Button text="Join to share your knowledge" />
+              </a>
             </Link>
           </div>
-        )}
-      </div>
+          <Link href="/about">
+            <div className="underline text-center mx-auto w-4/5 cursor-pointer">
+              Wyse what? Click here to know more about it!
+            </div>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
