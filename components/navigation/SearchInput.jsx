@@ -10,7 +10,13 @@ import {
 import SuggestBox from "./SuggestBox";
 import HistoryBox from "./HistoryBox";
 
-const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
+const SearchInput = ({
+  pageDest,
+  placeholder,
+  showSuggest,
+  suggestLink,
+  showHistory,
+}) => {
   const [searchTerms, setSearchTerms] = useState(null);
   const [searchError, SetSearchError] = useState(false);
   const [suggestions, setSuggestions] = useState(null);
@@ -72,7 +78,7 @@ const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
   };
 
   const recentHistory =
-    didLoad && suggestions === null ? (
+    didLoad && suggestions === null && showHistory ? (
       <div className="animate-show-up-slow mt-10">
         {history.map((query, index) => {
           return (
@@ -88,7 +94,7 @@ const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
 
   useEffect(() => {
     setDidLoad(true);
-    setHistory(findOrCreateHistory());
+    setHistory(findOrCreateHistory().reverse());
   }, []);
 
   useEffect(() => {

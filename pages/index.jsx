@@ -47,6 +47,7 @@ const Home = ({ categories, userState }) => {
               placeholder="Search for any book"
               showSuggest={true}
               suggestLink="/books/"
+              showHistory={true}
             />
           </div>
         </div>
