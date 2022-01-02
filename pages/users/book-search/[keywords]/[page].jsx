@@ -1,12 +1,10 @@
-import axios from "axios";
-import Link from "next/link";
 import { useState, useEffect } from "react";
-import { PlusCircle } from "react-feather";
 import BookSearchTile from "../../../../components/books/BookSearchTile";
 import NoAccess from "../../../../components/users/NoAccess";
 import NavButtonElastic from "../../../../components/navigation/NavButtonElastic";
 import SearchInput from "../../../../components/navigation/SearchInput";
 import CreateBookBtn from "../../../../components/users/CreateBookBtn";
+import { searchBooks } from "../../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
   try {
@@ -14,12 +12,7 @@ export const getServerSideProps = async (context) => {
     const splitKeywords = context.query.keywords.split("-").join(" ");
     const pageNum = context.query.page;
 
-    const searchResults = await axios({
-      method: "post",
-      data: { keywords: JSON.stringify(splitKeywords), page_num: pageNum },
-      url: "http://localhost:3001/api/search/books",
-      headers: { cookie: context.req.headers.cookie },
-    });
+    const searchResults = await searchBooks(splitKeywords, context, pageNum);
 
     return {
       props: {
