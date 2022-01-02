@@ -187,7 +187,7 @@ const TileCreation = ({
     };
 
     return (
-      <div>
+      <div className="pb-10">
         {editVisible ? (
           <EditBookDetails
             categories={categories}
@@ -208,7 +208,7 @@ const TileCreation = ({
           Share your top takeaways for this book
         </div>
 
-        <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 my-10">
+        <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 mt-10">
           <form onSubmit={handleSubmit}>
             {Object.values(tileEntries).map((entry, index) => {
               return (
@@ -229,7 +229,7 @@ const TileCreation = ({
             {allEntriesValid() ? (
               <button
                 type="submit"
-                className="w-3/5 mx-auto block border mt-10 mb-5 py-2 rounded-md shadow-md hover:shadow-lg hover:bg-gray-100 active:bg-gray-200 active:shadow-lg"
+                className="w-3/5 mx-auto block border mt-10 py-2 rounded-md shadow-md hover:shadow-lg hover:bg-gray-100 active:bg-gray-200 active:shadow-lg"
               >
                 Publish your thoughts!
               </button>
@@ -237,7 +237,7 @@ const TileCreation = ({
               <button
                 type="submit"
                 disabled
-                className="w-3/5 mx-auto block border mt-10 mb-5 py-2 rounded-md text-gray-200"
+                className="w-3/5 mx-auto block border mt-10 py-2 rounded-md text-gray-200"
               >
                 Publish your thoughts!
               </button>
