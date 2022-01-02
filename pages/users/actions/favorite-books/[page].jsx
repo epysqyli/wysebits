@@ -1,4 +1,3 @@
-import axios from "axios";
 import slugify from "slugify";
 import Link from "next/link";
 import BookCard from "../../../../components/books/BookCard";
@@ -7,22 +6,15 @@ import NoAccess from "../../../../components/users/NoAccess";
 import NoItem from "../../../../components/users/NoItem";
 import SearchInput from "../../../../components/navigation/SearchInput";
 import PageNavButton from "../../../../components/navigation/PageNavButton";
+import { getLoggedUser, getFavBooks } from "../../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
   try {
-    const userResp = await axios({
-      method: "get",
-      url: "http://localhost:3001/api/logged_in",
-      headers: { cookie: context.req.headers.cookie },
-    });
-
     const pageNum = context.query.page;
 
-    const booksResp = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/fav_books?page=${pageNum}`,
-      headers: { cookie: context.req.headers.cookie },
-    });
+    const loggedUser = await getLoggedUser(context);
+
+    const booksResp = await getFavBooks(loggedUser, context, pageNum);
 
     return {
       props: {
