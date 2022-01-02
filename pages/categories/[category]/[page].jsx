@@ -5,21 +5,20 @@ import Link from "next/link";
 import PageNavButton from "../../../components/navigation/PageNavButton";
 import NoItem from "../../../components/users/NoItem";
 import SearchInput from "../../../components/navigation/SearchInput";
+import { getCategoryBooks } from "../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
   const slug = context.query.category;
   const pageNum = context.query.page;
   const categoryName = slug.split("-").join(" ");
 
-  const books = await axios.get(
-    `http://localhost:3001/api/categories/${slug}/books?page=${pageNum}`
-  );
+  const books = await getCategoryBooks(slug, pageNum);
 
   return {
     props: {
       books: books.data.books,
       pagy: books.data.pagy,
-      categoryName,
+      categoryName: categoryName,
       categorySlug: slug,
     },
   };
