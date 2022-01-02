@@ -147,7 +147,7 @@ const SearchInput = ({
           ) : null}
         </div>
 
-        {activeSearch ? recentHistory : null}
+        {activeSearch && history.length != 0 ? recentHistory : null}
       </div>
 
       {showSuggest ? (
