@@ -1,31 +1,25 @@
-import axios from "axios";
 import BookCardSlider from "../../../components/books/BookCardSlider";
 import WelcomeTop from "../../../components/users/WelcomeTop";
 import NoAccess from "../../../components/users/NoAccess";
 import NoItem from "../../../components/users/NoItem";
 import SearchInput from "../../../components/navigation/SearchInput";
 import PageNavButton from "../../../components/navigation/PageNavButton";
+import { getLoggedUser, getBookTiles } from "../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
   try {
-    const resp = await axios({
-      method: "get",
-      url: "http://localhost:3001/api/logged_in",
-      headers: { cookie: context.req.headers.cookie },
-    });
-
     const pageNum = context.query.page;
 
-    const bookTiles = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${resp.data.user.id}/book_tiles?page=${pageNum}`,
-    });
+    const loggedUser = await getLoggedUser(context);
+    const bookTiles = await getBookTiles(loggedUser, pageNum);
+
+    const nonEmptyBookTiles = bookTiles.data.tiles.filter(
+      (book_tile) => book_tile.tile_entries.length != 0
+    );
 
     return {
       props: {
-        bookTiles: bookTiles.data.tiles.filter(
-          (book_tile) => book_tile.tile_entries.length != 0
-        ),
+        bookTiles: nonEmptyBookTiles,
         pagy: bookTiles.data.pagy,
       },
     };

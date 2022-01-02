@@ -12,8 +12,8 @@ const BookCard = ({ bookData }) => {
             src={dbSrc || olSrc || ""}
             className="animate-show-up-slow rounded-md"
             layout="responsive"
-            width="10"
-            height="15"
+            width="40"
+            height="60"
             objectFit="cover"
             placeholder="blur"
             blurDataURL="/images/book-placeholder.png"
