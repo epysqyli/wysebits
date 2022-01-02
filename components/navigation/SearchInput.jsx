@@ -65,11 +65,23 @@ const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
     return searchTerms.split(" ").join("-");
   };
 
+  const removeFromStateHistory = (query) => {
+    const newHistory = history.filter((item) => item !== query);
+    setHistory(newHistory);
+    removeFromHistory(query);
+  };
+
   const recentHistory =
     didLoad && suggestions === null ? (
-      <div className="animate-show-up-slow mt-4">
+      <div className="animate-show-up-slow mt-10">
         {history.map((query, index) => {
-          return <HistoryBox query={query} key={index} />;
+          return (
+            <HistoryBox
+              query={query}
+              removeFromStateHistory={removeFromStateHistory}
+              key={index}
+            />
+          );
         })}
       </div>
     ) : null;
@@ -100,7 +112,7 @@ const SearchInput = ({ pageDest, placeholder, showSuggest, suggestLink }) => {
             className="border-none bg-white w-5/6 rounded-tl-lg rounded-bl-lg focus:ring-0 group-hover:shadow-md transition"
             onChange={handleChange}
             onFocus={() => setActiveSearch(true)}
-            onBlur={() => setActiveSearch(false)}
+            // onBlur={() => setActiveSearch(false)}
             placeholder={placeholder}
             required
           />
