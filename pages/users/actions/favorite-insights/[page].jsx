@@ -6,40 +6,23 @@ import NoItem from "../../../../components/users/NoItem";
 import TileEntry from "../../../../components/books/TileEntry";
 import SearchInput from "../../../../components/navigation/SearchInput";
 import PageNavButton from "../../../../components/navigation/PageNavButton";
+import {
+  getLoggedUser,
+  getAllFollowing,
+  getFavEntries,
+  getUpvotedEntries,
+  getDownvotedEntries,
+} from "../../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
   try {
-    const userResp = await axios({
-      method: "get",
-      url: "http://localhost:3001/api/logged_in",
-      headers: { cookie: context.req.headers.cookie },
-    });
-
-    const following = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/unpaged_following`,
-      headers: { cookie: context.req.headers.cookie },
-    });
-
     const pageNum = context.query.page;
 
-    const favTileEntries = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/fav_tile_entries?page=${pageNum}`,
-      headers: { cookie: context.req.headers.cookie },
-    });
-
-    const upvotedEntries = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/upvoted_entries`,
-      headers: { cookie: context.req.headers.cookie },
-    });
-
-    const downvotedEntries = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/downvoted_entries`,
-      headers: { cookie: context.req.headers.cookie },
-    });
+    const loggedUser = await getLoggedUser(context);
+    const following = await getAllFollowing(loggedUser, context);
+    const favTileEntries = await getFavEntries(loggedUser, context, pageNum);
+    const upvotedEntries = await getUpvotedEntries(loggedUser, context);
+    const downvotedEntries = await getDownvotedEntries(loggedUser, context);
 
     return {
       props: {
