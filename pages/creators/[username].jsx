@@ -3,48 +3,27 @@ import { useState } from "react";
 import BasicInfo from "../../components/creators/BasicInfo";
 import LatestBooks from "../../components/creators/LatestBooks";
 import LatestEntries from "../../components/creators/LatestEntries";
+import {
+  getUser,
+  getLoggedUser,
+  getAllFollowing,
+  getFavBooks,
+  getFavEntries,
+  getUpvotedEntries,
+  getDownvotedEntries,
+} from "../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
   const username = context.query.username;
-
-  const user = await axios.get(`http://localhost:3001/api/users/${username}`);
+  const user = await getUser(username);
 
   try {
-    const userResp = await axios({
-      method: "get",
-      url: "http://localhost:3001/api/logged_in",
-      headers: { cookie: context.req.headers.cookie },
-    });
-
-    const following = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/unpaged_following`,
-      headers: { cookie: context.req.headers.cookie },
-    });
-
-    const favBooks = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/fav_books`,
-      headers: { cookie: context.req.headers.cookie },
-    });
-
-    const favInsights = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/fav_tile_entries`,
-      headers: { cookie: context.req.headers.cookie },
-    });
-
-    const upvotedEntries = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/upvoted_entries`,
-      headers: { cookie: context.req.headers.cookie },
-    });
-
-    const downvotedEntries = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/downvoted_entries`,
-      headers: { cookie: context.req.headers.cookie },
-    });
+    const loggedUser = await getLoggedUser(context);
+    const following = await getAllFollowing(loggedUser, context);
+    const favBooks = await getFavBooks(loggedUser, context);
+    const favInsights = await getFavEntries(loggedUser, context);
+    const upvotedEntries = await getUpvotedEntries(loggedUser, context);
+    const downvotedEntries = await getDownvotedEntries(loggedUser, context);
 
     return {
       props: {
