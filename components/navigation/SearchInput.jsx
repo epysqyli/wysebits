@@ -25,17 +25,18 @@ const SearchInput = ({
   const [activeSearch, setActiveSearch] = useState(false);
 
   const router = useRouter();
+  const goToResults = (query) => router.push(`${pageDest}${getQuery(query)}/1`);
 
   const searchBooks = (query) => {
     if (query === undefined) {
       if (searchTerms && searchTerms.length > 2) {
         addToHistory(searchTerms);
-        router.push(`${pageDest}${getQuery(query)}/1`);
+        goToResults(query);
       } else {
         SetSearchError(true);
       }
     } else {
-      router.push(`${pageDest}${getQuery(query)}/1`);
+      goToResults(query);
     }
   };
 
