@@ -64,7 +64,6 @@ const Username = ({
   };
 
   const [latestEntries, setLatestEntries] = useState(selectLatestEntries());
-
   const [followedUsers, setFollowedUsers] = useState(following);
   const [insights, setInsights] = useState(favInsights);
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
