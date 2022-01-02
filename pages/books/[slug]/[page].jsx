@@ -6,65 +6,41 @@ import CardBcg from "../../../components/books/CardBcg";
 import NoItem from "../../../components/users/NoItem";
 import PageNavButton from "../../../components/navigation/PageNavButton";
 import Link from "next/dist/client/link";
+import {
+  getBookEntries,
+  getAllFollowing,
+  getLoggedUser,
+  getFavBooks,
+  getFavEntries,
+  getUpvotedEntries,
+  getDownvotedEntries,
+} from "../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
   const slug = context.query.slug;
   const splitSlug = context.query.slug.split("-");
   const id = splitSlug[splitSlug.length - 1];
   const pageNum = context.query.page;
-
-  const book = await axios(`http://localhost:3001/api/books/${id}`);
-
-  const entries = await axios(
-    `http://localhost:3001/api/books/${id}/tile_entries?page=${pageNum}`
-  );
-
   const title = splitSlug.slice(0, splitSlug.length - 1).join(" ");
   const capTitle = title.slice(0, 1).toUpperCase() + title.slice(1);
 
+  const book = await axios(`http://localhost:3001/api/books/${id}`);
+  const entries = await getBookEntries(id, pageNum);
+
   try {
-    const userResp = await axios({
-      method: "get",
-      url: "http://localhost:3001/api/logged_in",
-      headers: { cookie: context.req.headers.cookie },
-    });
-
-    const following = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/unpaged_following`,
-      headers: { cookie: context.req.headers.cookie },
-    });
-
-    const favBooks = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/fav_books`,
-      headers: { cookie: context.req.headers.cookie },
-    });
-
-    const favInsights = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/fav_tile_entries`,
-      headers: { cookie: context.req.headers.cookie },
-    });
-
-    const upvotedEntries = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/upvoted_entries`,
-      headers: { cookie: context.req.headers.cookie },
-    });
-
-    const downvotedEntries = await axios({
-      method: "get",
-      url: `http://localhost:3001/api/users/${userResp.data.user.id}/downvoted_entries`,
-      headers: { cookie: context.req.headers.cookie },
-    });
+    const loggedUser = await getLoggedUser(context);
+    const following = await getAllFollowing(loggedUser, context);
+    const favBooks = await getFavBooks(loggedUser, context);
+    const favInsights = await getFavEntries(loggedUser, context);
+    const upvotedEntries = await getUpvotedEntries(loggedUser, context);
+    const downvotedEntries = await getDownvotedEntries(loggedUser, context);
 
     if (entries.data.entries.length != 0) {
       return {
         props: {
           entries: entries.data.entries,
           title: capTitle,
-          book: book.data.data,
+          book: book.data,
           favBooks: favBooks.data.books,
           pagy: entries.data.pagy,
           slug: slug,
@@ -79,7 +55,7 @@ export const getServerSideProps = async (context) => {
         props: {
           entries: false,
           title: capTitle,
-          book: book.data.data,
+          book: book.data,
           favBooks: favBooks.data.books,
           pagy: entries.data.pagy,
           slug: slug,
@@ -93,7 +69,7 @@ export const getServerSideProps = async (context) => {
         props: {
           entries: entries.data.entries,
           title: capTitle,
-          book: book.data.data,
+          book: book.data,
           favBooks: [],
           pagy: entries.data.pagy,
           slug: slug,
@@ -104,7 +80,7 @@ export const getServerSideProps = async (context) => {
         props: {
           entries: false,
           title: capTitle,
-          book: book.data.data,
+          book: book.data,
           favBooks: [],
           pagy: entries.data.pagy,
           slug: slug,
