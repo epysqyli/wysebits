@@ -19,9 +19,9 @@ const LatestEntries = ({
         <div className="text-center text-gray-800 text-3xl">
           Latest insights
         </div>
-        <div className="w-5/6 md:w-3/4 mx-auto mt-10">
+        <div className="my-10 w-4/5 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
           {entries.map((entry) => (
-            <div className="my-10" key={entry.id}>
+            <div key={entry.id}>
               <EntryLoggedTitle
                 data={entry}
                 userId={userState.user.id}
@@ -47,10 +47,10 @@ const LatestEntries = ({
         <div className="text-center text-gray-800 text-3xl">
           Latest insights
         </div>
-        <div className="w-5/6 md:w-3/4 mx-auto mt-10">
+        <div className="my-10 w-4/5 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
           {entries.map((entry) => {
             return (
-              <div className="m-10" key={entry.id}>
+              <div key={entry.id}>
                 <EntryGuestTitle data={entry} />
               </div>
             );
