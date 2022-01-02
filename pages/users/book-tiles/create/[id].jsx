@@ -16,7 +16,7 @@ import {
 
 export const getServerSideProps = async (context) => {
   const categories = await getCategories();
-  const bookData = await getBook(context);
+  const bookData = await getBook(context.params.id);
 
   try {
     const loggedUser = await getLoggedUser(context);

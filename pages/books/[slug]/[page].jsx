@@ -1,6 +1,5 @@
-import axios from "axios";
 import { useState } from "react";
-import { FilePlus, Users } from "react-feather";
+import { FilePlus } from "react-feather";
 import TileEntry from "../../../components/books/TileEntry";
 import CardBcg from "../../../components/books/CardBcg";
 import NoItem from "../../../components/users/NoItem";
@@ -14,6 +13,7 @@ import {
   getFavEntries,
   getUpvotedEntries,
   getDownvotedEntries,
+  getBook,
 } from "../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
@@ -24,7 +24,7 @@ export const getServerSideProps = async (context) => {
   const title = splitSlug.slice(0, splitSlug.length - 1).join(" ");
   const capTitle = title.slice(0, 1).toUpperCase() + title.slice(1);
 
-  const book = await axios(`http://localhost:3001/api/books/${id}`);
+  const book = await getBook(id);
   const entries = await getBookEntries(id, pageNum);
 
   try {
