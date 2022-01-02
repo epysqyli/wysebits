@@ -69,9 +69,7 @@ const SearchInput = ({
     }
   };
 
-  const getQuery = (query = searchTerms) => {
-    return query.split(" ").join("-");
-  };
+  const getQuery = (query = searchTerms) => query.split(" ").join("-");
 
   // history state methods
   const removeFromStateHistory = (query) => {
@@ -79,8 +77,6 @@ const SearchInput = ({
     setHistory(newHistory);
     removeFromHistory(query);
   };
-
-  const searchViaHistory = (query) => searchBooks(query);
 
   const recentHistory =
     didLoad && suggestions === null && showHistory ? (
@@ -90,7 +86,7 @@ const SearchInput = ({
             <HistoryBox
               query={query}
               removeFromStateHistory={removeFromStateHistory}
-              search={searchViaHistory}
+              searchBooks={searchBooks}
               key={index}
             />
           );
