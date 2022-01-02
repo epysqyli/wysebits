@@ -17,7 +17,7 @@ const SearchInput = ({
   suggestLink,
   showHistory,
 }) => {
-  const [searchTerms, setSearchTerms] = useState(null);
+  const [searchTerms, setSearchTerms] = useState("");
   const [searchError, SetSearchError] = useState(false);
   const [suggestions, setSuggestions] = useState(null);
   const [history, setHistory] = useState(null);
@@ -29,7 +29,7 @@ const SearchInput = ({
 
   const searchBooks = (query) => {
     if (query === undefined) {
-      if (searchTerms && searchTerms.length > 2) {
+      if (searchTerms.length > 2) {
         addToHistory(searchTerms);
         goToResults(query);
       } else {
