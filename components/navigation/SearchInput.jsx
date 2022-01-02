@@ -29,7 +29,7 @@ const SearchInput = ({
 
   const searchBooks = (query) => {
     if (query === undefined) {
-      if (searchTerms.length > 2) {
+      if (searchTerms.trim().length > 2) {
         addToHistory(searchTerms);
         goToResults(query);
       } else {
