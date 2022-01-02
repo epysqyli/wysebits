@@ -150,8 +150,6 @@ const SearchInput = ({
           </button>
         </div>
 
-        {activeSearch ? recentHistory : null}
-
         <div className="text-center text-sm mt-8 text-gray-400">
           {searchError ? (
             <div className="animate-show-up-slow">
@@ -159,6 +157,8 @@ const SearchInput = ({
             </div>
           ) : null}
         </div>
+
+        {activeSearch ? recentHistory : null}
       </div>
 
       {showSuggest ? (

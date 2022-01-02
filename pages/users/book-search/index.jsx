@@ -23,6 +23,7 @@ const BookSearch = ({ userState }) => {
               placeholder="Enter book title"
               showSuggest={true}
               suggestLink="/users/book-tiles/create/"
+              showHistory={true}
             />
           </div>
 
