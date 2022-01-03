@@ -77,7 +77,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
       {isFollowed(following, user) ? (
         <div
           onClick={() => unfollow()}
-          className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-3/5 mt-10 py-2 rounded-md shadow bg-white group active:shadow-inner"
+          className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-2/5 mt-10 py-1 rounded-md shadow bg-white group active:shadow-inner"
         >
           <UserMinus
             size={20}
@@ -90,7 +90,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
       ) : (
         <div
           onClick={() => follow()}
-          className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-3/5 mt-10 py-2 rounded-md shadow bg-white group active:shadow-inner"
+          className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-2/5 mt-10 py-1 rounded-md shadow bg-white group active:shadow-inner"
         >
           <UserPlus
             size={20}
