@@ -3,7 +3,7 @@ import { AlertCircle } from "react-feather";
 
 const NoAccess = () => {
   return (
-    <div>
+    <div className="w-4/5 md:w-3/5 lg:w-3/6 mx-auto mt-10">
       <div className="flex justify-around items-center">
         <AlertCircle
           className="w-1/6"
@@ -19,19 +19,19 @@ const NoAccess = () => {
 
       <div className="mt-20">
         <Link href="/registrations/signup">
-          <a className="block text-xl text-center border rounded-lg mx-auto py-5 px-10 my-10 cursor-pointer shadow-md bg-white hover:shadow-lg active:bg-gray-100">
+          <a className="block text-lg text-gray-800 text-center rounded-lg mx-auto py-5 px-10 my-10 cursor-pointer shadow-md bg-white hover:shadow-lg active:shadow-inner">
             Sign up to start contributing to Wysebits today!
           </a>
         </Link>
 
         <Link href="/registrations/login">
-          <a className="block text-xl text-center border rounded-lg mx-auto py-10 px-2 my-10 cursor-pointer shadow-md bg-white hover:shadow-lg active:bg-gray-100">
+          <a className="block text-lg text-gray-800 text-center rounded-lg mx-auto py-10 px-2 my-10 cursor-pointer shadow-md bg-white hover:shadow-lg active:shadow-inner">
             Login if already registered
           </a>
         </Link>
 
         <Link href="/">
-          <a className="block text-xl text-center border rounded-lg mx-auto py-10 px-2 my-10 cursor-pointer shadow-md bg-white hover:shadow-lg active:bg-gray-100">
+          <a className="block text-lg text-gray-800 text-center rounded-lg mx-auto py-10 px-2 my-10 cursor-pointer shadow-md bg-white hover:shadow-lg active:shadow-inner">
             Keep exploring as a guest
           </a>
         </Link>
