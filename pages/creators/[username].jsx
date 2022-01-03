@@ -72,7 +72,12 @@ const Username = ({
   return (
     <div>
       <div>
-        <BasicInfo user={user} />
+        <BasicInfo
+          user={user}
+          following={followedUsers}
+          setFollowedUsers={setFollowedUsers}
+          userState={userState}
+        />
       </div>
 
       <div className="mt-10">
