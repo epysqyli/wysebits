@@ -40,44 +40,48 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
   };
 
   return (
-    <div className="md:flex items-center justify-around mt-4">
-      <div className="flex justify-around items-center gap-x-5">
-        <User
-          size={60}
-          strokeWidth={1.5}
-          color="gray"
-          className="bg-gray-300 rounded-full p-2"
-        />
-        <div>
-          <div className="text-5xl font-bold text-gray-700">
-            {user.username}
+    <div>
+      <div className="md:flex items-center justify-around mt-4">
+        <div className="flex justify-around items-center gap-x-5">
+          <User
+            size={60}
+            strokeWidth={1.5}
+            color="gray"
+            className="bg-gray-300 rounded-full p-2"
+          />
+          <div>
+            <div className="text-5xl font-bold text-gray-700">
+              {user.username}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="flex items-center justify-around mt-5 md:block">
-        <div className="flex items-center gap-x-2">
-          <BookOpen />
-          <div className="text-gray-700">
-            {user.book_tiles.length} books read
+        <div className="flex items-center justify-around mt-5 md:block">
+          <div className="flex items-center gap-x-2">
+            <BookOpen />
+            <div className="text-gray-700">
+              {user.book_tiles.length} books read
+            </div>
           </div>
-        </div>
-        <div className="flex items-center gap-x-2">
-          <AlignCenter />
-          <div className="text-gray-700">
-            {countTotalInsights(user.book_tiles)} total insights
+          <div className="flex items-center gap-x-2">
+            <AlignCenter />
+            <div className="text-gray-700">
+              {countTotalInsights(user.book_tiles)} total insights
+            </div>
           </div>
-        </div>
-        <div className="flex items-center gap-x-2">
-          <Users />
-          <div className="text-gray-700">{user.followers.length} followers</div>
+          <div className="flex items-center gap-x-2">
+            <Users />
+            <div className="text-gray-700">
+              {user.followers.length} followers
+            </div>
+          </div>
         </div>
       </div>
 
       {isFollowed(following, user) ? (
         <div
           onClick={() => unfollow()}
-          className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-2/5 mt-10 py-1 rounded-md shadow bg-white group active:shadow-inner"
+          className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-2/5 md:w-1/5 mt-10 py-1 rounded-md shadow bg-white group active:shadow-inner"
         >
           <UserMinus
             size={20}
