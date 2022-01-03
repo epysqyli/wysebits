@@ -46,7 +46,7 @@ const CreateBook = ({ categories, userState }) => {
     };
 
     return (
-      <div className="w-4/5 mx-auto md:w-4/6 my-20 pb-10">
+      <div className="w-4/5 mx-auto lg:w-3/6 my-20 pb-10">
         <div className="text-2xl font-medium text-center">
           Fill in the required fields to create a book entry
         </div>
