@@ -5,6 +5,7 @@ import CardBcg from "../../../components/books/CardBcg";
 import NoItem from "../../../components/users/NoItem";
 import PageNavButton from "../../../components/navigation/PageNavButton";
 import Link from "next/dist/client/link";
+import Head from "next/head";
 import {
   getBookEntries,
   getAllFollowing,
@@ -113,6 +114,9 @@ const Book = ({
   if (entries && entries.length != 0) {
     return (
       <div>
+        <Head>
+          <title>WyseBits - {book.title}</title>
+        </Head>
         <CardBcg bookData={book} userState={userState} favBooks={favBooks} />
         <div className="my-10 w-4/5 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
           {entries.map((entry) => {
@@ -156,6 +160,9 @@ const Book = ({
   } else {
     return (
       <div className="pb-20">
+        <Head>
+          <title>WyseBits - {book.title}</title>
+        </Head>
         <CardBcg bookData={book} userState={userState} favBooks={favBooks} />
         <div className="w-4/5 md:w-4/6 lg:w-3/6 mx-auto">
           <NoItem message="It appears as though there are no insights for this book yet ..." />
