@@ -246,7 +246,9 @@ const TileCreation = ({
         </div>
       </div>
     );
-  } else if (userState.isLogged && !isAvailable) {
+  }
+
+  if (userState.isLogged && !isAvailable) {
     return (
       <div>
         {editVisible ? (
@@ -287,13 +289,13 @@ const TileCreation = ({
         </div>
       </div>
     );
-  } else {
-    return (
-      <div className="mx-auto mt-10 w-4/5 md:w-4/6 lg:w-3/6">
-        <NoAccess />
-      </div>
-    );
   }
+
+  return (
+    <div className="mx-auto mt-10 w-4/5 md:w-4/6 lg:w-3/6">
+      <NoAccess />
+    </div>
+  );
 };
 
 export default TileCreation;

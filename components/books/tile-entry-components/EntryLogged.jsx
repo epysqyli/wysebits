@@ -214,6 +214,7 @@ const EntryLogged = ({
               />
             </div>
           </Link>
+
           {user.id !== entryUser.id ? (
             isFollowed(followedUsers, entryUser) ? (
               <div
