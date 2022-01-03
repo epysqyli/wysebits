@@ -91,7 +91,7 @@ const FavoriteInsights = ({
                   <TileEntry
                     data={insight}
                     showTitle={true}
-                    userId={userState.user.id}
+                    user={userState.user}
                     isLogged={userState.isLogged}
                     insights={insights}
                     setInsights={setInsights}

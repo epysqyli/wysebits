@@ -6,7 +6,7 @@ import EntryGuestTitle from "./tile-entry-components/EntryGuestTitle";
 const TileEntry = ({
   data,
   showTitle,
-  userId,
+  user,
   isLogged,
   insights,
   setInsights,
@@ -21,7 +21,7 @@ const TileEntry = ({
     return (
       <EntryLoggedTitle
         data={data}
-        userId={userId}
+        user={user}
         insights={insights}
         setInsights={setInsights}
         upvotedEntries={upvotedEntries}
@@ -39,7 +39,7 @@ const TileEntry = ({
       <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
         <EntryLogged
           data={data}
-          userId={userId}
+          user={user}
           insights={insights}
           setInsights={setInsights}
           upvotedEntries={upvotedEntries}

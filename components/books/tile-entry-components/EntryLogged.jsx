@@ -6,8 +6,10 @@ import {
   UserMinus,
   UserPlus,
 } from "react-feather";
+
 import axios from "axios";
 import Link from "next/dist/client/link";
+
 import {
   removeInsightFromState,
   addInsightToState,
@@ -16,15 +18,16 @@ import {
   addDownEntryToState,
   removeDownEntryFromState,
 } from "../../../lib/tileEntryMethods";
+
 import {
   isFollowed,
-  addFollowedUserToState,
-  removeFollowedUserFromState,
+  followAndUpdateState,
+  unfollowAndUpdateState,
 } from "../../../lib/followMethods";
 
 const EntryLogged = ({
   data,
-  userId,
+  user,
   insights,
   setInsights,
   upvotedEntries,
@@ -129,32 +132,6 @@ const EntryLogged = ({
       .catch((err) => console.log(err));
   };
 
-  const follow = () => {
-    axios
-      .post(
-        `http://localhost:3001/api/users/${userId}/follow/${entryUser.id}`,
-        {},
-        { withCredentials: true }
-      )
-      .then((res) =>
-        addFollowedUserToState(entryUser, followedUsers, setFollowedUsers)
-      )
-      .catch((err) => console.log(err));
-  };
-
-  const unfollow = () => {
-    axios
-      .post(
-        `http://localhost:3001/api/users/${userId}/unfollow/${entryUser.id}`,
-        {},
-        { withCredentials: true }
-      )
-      .then((res) =>
-        removeFollowedUserFromState(entryUser, followedUsers, setFollowedUsers)
-      )
-      .catch((err) => console.log(err));
-  };
-
   return (
     <div className="shadow-md rounded-md">
       <div className="border-b-2 py-5 px-10 md:px-16 font-light whitespace-pre-line">
@@ -240,14 +217,28 @@ const EntryLogged = ({
           {isFollowed(followedUsers, entryUser) ? (
             <div
               className="cursor-pointer hover:scale-110 text-gray-600"
-              onClick={() => unfollow()}
+              onClick={() =>
+                unfollowAndUpdateState(
+                  user,
+                  entryUser,
+                  followedUsers,
+                  setFollowedUsers
+                )
+              }
             >
               <UserMinus size={16} />
             </div>
           ) : (
             <div
               className="cursor-pointer hover:scale-110 text-gray-600"
-              onClick={() => follow()}
+              onClick={() =>
+                followAndUpdateState(
+                  user,
+                  entryUser,
+                  followedUsers,
+                  setFollowedUsers
+                )
+              }
             >
               <UserPlus size={16} />
             </div>

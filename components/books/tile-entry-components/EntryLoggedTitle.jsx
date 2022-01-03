@@ -5,7 +5,7 @@ import { ArrowUpRight } from "react-feather";
 
 const EntryLoggedTitle = ({
   data,
-  userId,
+  user,
   insights,
   setInsights,
   upvotedEntries,
@@ -35,7 +35,7 @@ const EntryLoggedTitle = ({
       </Link>
       <EntryLogged
         data={data}
-        userId={userId}
+        user={user}
         insights={insights}
         setInsights={setInsights}
         upvotedEntries={upvotedEntries}

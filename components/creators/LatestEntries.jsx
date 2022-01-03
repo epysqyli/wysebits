@@ -24,7 +24,7 @@ const LatestEntries = ({
             <div key={entry.id}>
               <EntryLoggedTitle
                 data={entry}
-                userId={userState.user.id}
+                user={userState.user}
                 insights={insights}
                 upvotedEntries={upvotedEntries}
                 downvotedEntries={downvotedEntries}
