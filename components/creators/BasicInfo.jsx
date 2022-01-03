@@ -12,7 +12,7 @@ import { isFollowed } from "../../lib/followMethods";
 import {
   removeFollowedUserFromState,
   addFollowedUserToState,
-} from "../../lib/tileEntryMethods";
+} from "../../lib/followMethods";
 
 const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
   const follow = () => {
