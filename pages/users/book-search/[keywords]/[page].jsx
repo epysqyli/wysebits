@@ -5,6 +5,7 @@ import NavButtonElastic from "../../../../components/navigation/NavButtonElastic
 import SearchInput from "../../../../components/navigation/SearchInput";
 import CreateBookBtn from "../../../../components/users/CreateBookBtn";
 import { searchBooks } from "../../../../lib/serverSideMethods";
+import NoSearchResults from "../../../../components/navigation/NoSearchResults";
 
 export const getServerSideProps = async (context) => {
   try {
@@ -16,8 +17,8 @@ export const getServerSideProps = async (context) => {
 
     return {
       props: {
-        searchResults: searchResults.data.results,
-        pageNum: searchResults.data.page_num,
+        searchResults: searchResults.data.results || null,
+        pageNum: searchResults.data.page_num || null,
         keywords: keywords,
       },
     };
@@ -33,15 +34,11 @@ const BookSearchResults = ({ searchResults, userState, keywords, pageNum }) => {
 
   const clientUrl = `/users/book-search/${keywords}`;
 
-  const showBtn = () => {
-    setBtnVisible(true);
-  };
+  const showBtn = () => setBtnVisible(true);
 
-  useEffect(() => {
-    setTimeout(showBtn, 2000);
-  }, []);
+  useEffect(() => setTimeout(showBtn, 2000), []);
 
-  if (userState.isLogged) {
+  if (userState.isLogged && searchResults !== null) {
     return (
       <div>
         <div className="my-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
@@ -84,7 +81,13 @@ const BookSearchResults = ({ searchResults, userState, keywords, pageNum }) => {
         </div>
       </div>
     );
-  } else {
+  }
+
+  if (userState.isLogged && searchResults === null) {
+    return <NoSearchResults />;
+  }
+
+  if (userState.isLogged === false) {
     return (
       <div className="mx-auto mt-10 w-4/5 md:w-4/6 lg:w-3/6">
         <NoAccess />

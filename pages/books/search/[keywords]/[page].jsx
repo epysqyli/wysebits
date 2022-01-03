@@ -5,6 +5,7 @@ import BookSearchTile from "../../../../components/books/BookSearchTile";
 import NavButtonElastic from "../../../../components/navigation/NavButtonElastic";
 import SearchInput from "../../../../components/navigation/SearchInput";
 import CreateBookBtn from "../../../../components/users/CreateBookBtn";
+import NoSearchResults from "../../../../components/navigation/NoSearchResults";
 
 export const getServerSideProps = async (context) => {
   const keywords = context.query.keywords;
@@ -31,16 +32,12 @@ const BookSearchResults = ({ searchResults, keywords, pageNum }) => {
 
   const clientUrl = `/books/search/${keywords}`;
 
-  const showBtn = () => {
-    setBtnVisible(true);
-  };
+  const showBtn = () => setBtnVisible(true);
 
   const slug = (title, id) =>
     slugify(`${title}-${id}`, { lower: true, strict: true });
 
-  useEffect(() => {
-    setTimeout(showBtn, 2000);
-  }, []);
+  useEffect(() => setTimeout(showBtn, 2000), []);
 
   if (searchResults !== null) {
     return (
@@ -91,7 +88,7 @@ const BookSearchResults = ({ searchResults, keywords, pageNum }) => {
   }
 
   if (searchResults === null) {
-    return <div>Nothing to see here</div>;
+    return <NoSearchResults />;
   }
 };
 
