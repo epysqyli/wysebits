@@ -4,7 +4,7 @@ import Link from "next/dist/client/link";
 import slugify from "slugify";
 
 const LatestBooks = ({ books }) => {
-  const [latest, setLatest] = useState(books.slice(0, 3));
+  const [latest] = useState(books.slice(0, 4));
 
   const slug = (title, id) =>
     slugify(`${title}-${id}`, { lower: true, strict: true });

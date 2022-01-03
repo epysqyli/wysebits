@@ -2,7 +2,7 @@ import axios from "axios";
 import Link from "next/dist/client/link";
 import { useState } from "react";
 import { useRouter } from "next/dist/client/router";
-import { AlertCircle, Save } from "react-feather";
+import { AlertCircle } from "react-feather";
 import CardBcgActions from "../../../../components/books/CardBcgActions";
 import EditBookDetails from "../../../../components/users/EditBookDetails";
 import NoAccess from "../../../../components/users/NoAccess";
