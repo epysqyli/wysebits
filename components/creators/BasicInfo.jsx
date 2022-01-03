@@ -55,47 +55,49 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
         </div>
       </div>
 
-      {isFollowed(following, user) ? (
-        <div
-          onClick={() =>
-            unfollowAndUpdateState(
-              userState.user,
-              user,
-              following,
-              setFollowedUsers
-            )
-          }
-          className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-2/5 md:w-1/5 mt-10 py-1 rounded-md shadow bg-white group active:shadow-inner"
-        >
-          <UserMinus
-            size={20}
-            className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
-          />
-          <div className="text-gray-700 group-hover:text-black">
-            Unfollow user
+      {userState.user.id !== user.id ? (
+        isFollowed(following, user) ? (
+          <div
+            onClick={() =>
+              unfollowAndUpdateState(
+                userState.user,
+                user,
+                following,
+                setFollowedUsers
+              )
+            }
+            className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-2/5 md:w-1/5 mt-10 py-1 rounded-md shadow bg-white group active:shadow-inner"
+          >
+            <UserMinus
+              size={20}
+              className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
+            />
+            <div className="text-gray-700 group-hover:text-black">
+              Unfollow user
+            </div>
           </div>
-        </div>
-      ) : (
-        <div
-          onClick={() =>
-            followAndUpdateState(
-              userState.user,
-              user,
-              following,
-              setFollowedUsers
-            )
-          }
-          className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-2/5 mt-10 py-1 rounded-md shadow bg-white group active:shadow-inner"
-        >
-          <UserPlus
-            size={20}
-            className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
-          />
-          <div className="text-gray-700 group-hover:text-black">
-            Follow user
+        ) : (
+          <div
+            onClick={() =>
+              followAndUpdateState(
+                userState.user,
+                user,
+                following,
+                setFollowedUsers
+              )
+            }
+            className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-2/5 mt-10 py-1 rounded-md shadow bg-white group active:shadow-inner"
+          >
+            <UserPlus
+              size={20}
+              className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
+            />
+            <div className="text-gray-700 group-hover:text-black">
+              Follow user
+            </div>
           </div>
-        </div>
-      )}
+        )
+      ) : null}
     </div>
   );
 };

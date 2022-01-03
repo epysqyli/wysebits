@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import BasicInfo from "../../components/creators/BasicInfo";
 import LatestBooks from "../../components/creators/LatestBooks";
