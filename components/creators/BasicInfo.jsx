@@ -40,31 +40,14 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
   };
 
   return (
-    <div className="md:flex items-center mt-4">
+    <div className="md:flex items-center justify-around mt-4">
       <div className="flex justify-around items-center gap-x-5">
-        <div className="flex items-center gap-x-5">
-          <User
-            size={60}
-            strokeWidth={1.5}
-            color="gray"
-            className="bg-gray-300 rounded-full p-2"
-          />
-          {isFollowed(following, user) ? (
-            <div
-              className="cursor-pointer hover:scale-110 text-gray-600"
-              onClick={() => unfollow()}
-            >
-              <UserMinus size={24} />
-            </div>
-          ) : (
-            <div
-              className="cursor-pointer hover:scale-110 text-gray-600"
-              onClick={() => follow()}
-            >
-              <UserPlus size={24} />
-            </div>
-          )}
-        </div>
+        <User
+          size={60}
+          strokeWidth={1.5}
+          color="gray"
+          className="bg-gray-300 rounded-full p-2"
+        />
         <div>
           <div className="text-5xl font-bold text-gray-700">
             {user.username}
@@ -90,6 +73,34 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
           <div className="text-gray-700">{user.followers.length} followers</div>
         </div>
       </div>
+
+      {isFollowed(following, user) ? (
+        <div
+          onClick={() => unfollow()}
+          className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-3/5 mt-10 py-2 rounded-md shadow bg-white group active:shadow-inner"
+        >
+          <UserMinus
+            size={20}
+            className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
+          />
+          <div className="text-gray-700 group-hover:text-black">
+            Unfollow user
+          </div>
+        </div>
+      ) : (
+        <div
+          onClick={() => follow()}
+          className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-3/5 mt-10 py-2 rounded-md shadow bg-white group active:shadow-inner"
+        >
+          <UserPlus
+            size={20}
+            className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
+          />
+          <div className="text-gray-700 group-hover:text-black">
+            Follow user
+          </div>
+        </div>
+      )}
     </div>
   );
 };
