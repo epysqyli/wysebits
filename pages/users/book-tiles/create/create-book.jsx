@@ -21,8 +21,6 @@ const CreateBook = ({ categories, userState }) => {
 
     const [file, setFile] = useState(null);
 
-    const makeSlug = (string) => string.split(" ").join("-").toLowerCase();
-
     const router = useRouter();
 
     const handleChange = (e) => {
@@ -128,9 +126,9 @@ const CreateBook = ({ categories, userState }) => {
         </form>
       </div>
     );
-  } else {
-    return <NoAccess />;
   }
+
+  if (userState.isLogged === false) return <NoAccess />;
 };
 
 export default CreateBook;

@@ -26,7 +26,7 @@ const NoSearchResults = () => {
 
       <Link href="/users/book-tiles/create/create-book">
         <div className="mt-24 flex justify-around items-center bg-white shadow py-5 rounded-md cursor-pointer hover:shadow-md active:shadow-inner">
-          <div className="w-3/6 text-gray-800 text-justify">
+          <div className="w-4/6 text-gray-800">
             Create a book entry from scratch if you are sure that your book is
             not in our database
           </div>
