@@ -1,17 +1,10 @@
 import { ThumbsUp, ThumbsDown } from "react-feather";
+import { shortenText } from "../../lib/utils";
 
 const TileEntry = ({ entry }) => {
-  const shortenText = (txt) => {
-    if (txt.split(" ").length > 20) {
-      return txt.split(" ").slice(0, 20).join(" ") + " ...";
-    } else {
-      return txt;
-    }
-  };
-
   return (
     <div className="w-3/5">
-      <p className="mt-5 text-justify">{shortenText(entry.content)}</p>
+      <p className="mt-5 text-justify text-sm">{shortenText(entry.content)}</p>
       <div className="mt-5 pt-5 border-t flex justify-around">
         <div className="flex justify-center items-center">
           <ThumbsUp size={14} />
