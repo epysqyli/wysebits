@@ -1,4 +1,5 @@
 import Image from "next/dist/client/image";
+import { shortenText } from "../../lib/utils";
 
 const BookCard = ({ bookData }) => {
   const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;

@@ -1,6 +1,6 @@
 import { ArrowLeftCircle, ArrowRightCircle } from "react-feather";
 import { useState } from "react";
-import TileEntry from "./HomeTileEntry";
+import HomeTileEntry from "./HomeTileEntry";
 
 const Slider = ({ entries }) => {
   const [count, setCount] = useState(0);
@@ -32,7 +32,7 @@ const Slider = ({ entries }) => {
         size={30}
         strokeWidth={1.75}
       />
-      <TileEntry entry={entries[count]} />
+      <HomeTileEntry entry={entries[count]} />
       <ArrowRightCircle
         className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
         onClick={increment}
