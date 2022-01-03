@@ -6,39 +6,16 @@ import {
   UserPlus,
   UserMinus,
 } from "react-feather";
-import axios from "axios";
+
 import { countTotalInsights } from "../../lib/creatorMethods";
-import { isFollowed } from "../../lib/followMethods";
+
 import {
-  removeFollowedUserFromState,
-  addFollowedUserToState,
+  isFollowed,
+  followAndUpdateState,
+  unfollowAndUpdateState,
 } from "../../lib/followMethods";
 
 const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
-  const follow = () => {
-    axios
-      .post(
-        `http://localhost:3001/api/users/${userState.user.id}/follow/${user.id}`,
-        {},
-        { withCredentials: true }
-      )
-      .then((res) => addFollowedUserToState(user, following, setFollowedUsers))
-      .catch((err) => console.log(err));
-  };
-
-  const unfollow = () => {
-    axios
-      .post(
-        `http://localhost:3001/api/users/${userState.user.id}/unfollow/${user.id}`,
-        {},
-        { withCredentials: true }
-      )
-      .then((res) =>
-        removeFollowedUserFromState(user, following, setFollowedUsers)
-      )
-      .catch((err) => console.log(err));
-  };
-
   return (
     <div>
       <div className="md:flex items-center justify-around mt-4">
@@ -80,7 +57,14 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
 
       {isFollowed(following, user) ? (
         <div
-          onClick={() => unfollow()}
+          onClick={() =>
+            unfollowAndUpdateState(
+              userState.user,
+              user,
+              following,
+              setFollowedUsers
+            )
+          }
           className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-2/5 md:w-1/5 mt-10 py-1 rounded-md shadow bg-white group active:shadow-inner"
         >
           <UserMinus
@@ -93,7 +77,14 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
         </div>
       ) : (
         <div
-          onClick={() => follow()}
+          onClick={() =>
+            followAndUpdateState(
+              userState.user,
+              user,
+              following,
+              setFollowedUsers
+            )
+          }
           className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-2/5 mt-10 py-1 rounded-md shadow bg-white group active:shadow-inner"
         >
           <UserPlus

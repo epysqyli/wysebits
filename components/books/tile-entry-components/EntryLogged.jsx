@@ -15,10 +15,12 @@ import {
   addUpEntryToState,
   addDownEntryToState,
   removeDownEntryFromState,
+} from "../../../lib/tileEntryMethods";
+import {
+  isFollowed,
   addFollowedUserToState,
   removeFollowedUserFromState,
-} from "../../../lib/tileEntryMethods";
-import { isFollowed } from "../../../lib/followMethods";
+} from "../../../lib/followMethods";
 
 const EntryLogged = ({
   data,
