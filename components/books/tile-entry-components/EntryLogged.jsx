@@ -214,35 +214,37 @@ const EntryLogged = ({
               />
             </div>
           </Link>
-          {isFollowed(followedUsers, entryUser) ? (
-            <div
-              className="cursor-pointer hover:scale-110 text-gray-600"
-              onClick={() =>
-                unfollowAndUpdateState(
-                  user,
-                  entryUser,
-                  followedUsers,
-                  setFollowedUsers
-                )
-              }
-            >
-              <UserMinus size={16} />
-            </div>
-          ) : (
-            <div
-              className="cursor-pointer hover:scale-110 text-gray-600"
-              onClick={() =>
-                followAndUpdateState(
-                  user,
-                  entryUser,
-                  followedUsers,
-                  setFollowedUsers
-                )
-              }
-            >
-              <UserPlus size={16} />
-            </div>
-          )}
+          {user.id !== entryUser.id ? (
+            isFollowed(followedUsers, entryUser) ? (
+              <div
+                className="cursor-pointer hover:scale-110 text-gray-600"
+                onClick={() =>
+                  unfollowAndUpdateState(
+                    user,
+                    entryUser,
+                    followedUsers,
+                    setFollowedUsers
+                  )
+                }
+              >
+                <UserMinus size={16} />
+              </div>
+            ) : (
+              <div
+                className="cursor-pointer hover:scale-110 text-gray-600"
+                onClick={() =>
+                  followAndUpdateState(
+                    user,
+                    entryUser,
+                    followedUsers,
+                    setFollowedUsers
+                  )
+                }
+              >
+                <UserPlus size={16} />
+              </div>
+            )
+          ) : null}
         </div>
       </div>
     </div>
