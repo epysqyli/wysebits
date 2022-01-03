@@ -23,7 +23,9 @@ const BookCard = ({ bookData }) => {
       </div>
 
       <div className="w-3/6 flex flex-col justify-around text-right">
-        <div className="text-xl font-medium">{bookData.title}</div>
+        <div className="text-xl font-medium">
+          {shortenText(bookData.title, 8)}
+        </div>
         <div className="text">{bookData.category.name}</div>
         <div className="text italic">
           {bookData.authors[0]
