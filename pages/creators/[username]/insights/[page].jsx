@@ -90,50 +90,49 @@ const UserInsights = ({
 
   const clientUrl = `/creators/${username}/insights`;
 
-  return <div></div>;
-
-  // if (entries.length !== 0)
-  //   return (
-  //     <div>
-  //       <div className="my-10 w-4/5 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
-  //         {entries.map((entry) => {
-  //           return (
-  //             <div key={entry.id}>
-  //               <TileEntry
-  //                 data={entry}
-  //                 user={userState.user}
-  //                 isLogged={userState.isLogged}
-  //                 insights={insights}
-  //                 setInsights={setInsights}
-  //                 upvotedEntries={upvotedEntries}
-  //                 setUpvotedEntries={setUpvotedEntries}
-  //                 downvotedEntries={downvotedEntries}
-  //                 setDownvotedEntries={setDownvotedEntries}
-  //                 followedUsers={followedUsers}
-  //                 setFollowedUsers={setFollowedUsers}
-  //               />
-  //             </div>
-  //           );
-  //         })}
-  //       </div>
-  //       <div className="flex items-center my-16 w-4/5 md:w-4/6 mx-auto gap-x-4">
-  //         <div className="w-1/2">
-  //           <PageNavButton
-  //             btnText="Previous page"
-  //             url={pagy.prev_url}
-  //             clientUrl={clientUrl}
-  //           />
-  //         </div>
-  //         <div className="w-1/2">
-  //           <PageNavButton
-  //             btnText="Next page"
-  //             url={pagy.next_url}
-  //             clientUrl={clientUrl}
-  //           />
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
+  if (entries.length !== 0)
+    return (
+      <div>
+        <div className="my-10 w-4/5 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
+          {entries.map((entry) => {
+            return (
+              <div key={entry.id}>
+                <TileEntry
+                  data={entry}
+                  user={userState.user}
+                  isLogged={userState.isLogged}
+                  insights={insights}
+                  setInsights={setInsights}
+                  upvotedEntries={upvotedEntries}
+                  setUpvotedEntries={setUpvotedEntries}
+                  downvotedEntries={downvotedEntries}
+                  setDownvotedEntries={setDownvotedEntries}
+                  followedUsers={followedUsers}
+                  setFollowedUsers={setFollowedUsers}
+                  showTitle={true}
+                />
+              </div>
+            );
+          })}
+        </div>
+        <div className="flex items-center my-16 w-4/5 md:w-4/6 mx-auto gap-x-4">
+          <div className="w-1/2">
+            <PageNavButton
+              btnText="Previous page"
+              url={pagy.prev_url}
+              clientUrl={clientUrl}
+            />
+          </div>
+          <div className="w-1/2">
+            <PageNavButton
+              btnText="Next page"
+              url={pagy.next_url}
+              clientUrl={clientUrl}
+            />
+          </div>
+        </div>
+      </div>
+    );
 };
 
 export default UserInsights;
