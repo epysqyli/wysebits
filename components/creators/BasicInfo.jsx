@@ -37,7 +37,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
 
         <div className="flex items-center justify-around mt-5 md:block">
           <Link href={`/creators/${user.user.username}/books/1`}>
-            <div className="flex items-center gap-x-2 group cursor-pointer">
+            <div className="flex items-center gap-x-2 group p-1 cursor-pointer hover:shadow-md hover:rounded-md active:shadow-inner">
               <BookOpen size={20} />
               <div className="text-gray-700">
                 {user.book_tiles.length} books read
@@ -49,7 +49,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
             </div>
           </Link>
           <Link href={`/creators/${user.user.username}/insights/1`}>
-            <div className="flex items-center gap-x-2 group cursor-pointer">
+            <div className="flex items-center gap-x-2 group p-1 cursor-pointer hover:shadow-md hover:rounded-md active:shadow-inner">
               <AlignCenter size={20} />
               <div className="text-gray-700">
                 {countTotalInsights(user.book_tiles)} total insights
