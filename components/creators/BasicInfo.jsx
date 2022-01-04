@@ -5,6 +5,7 @@ import {
   Users,
   UserPlus,
   UserMinus,
+  ArrowUpRight,
 } from "react-feather";
 
 import { countTotalInsights } from "../../lib/creatorMethods";
@@ -34,17 +35,21 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
         </div>
 
         <div className="flex items-center justify-around mt-5 md:block">
-          <div className="flex items-center gap-x-2">
+          <div className="flex items-center gap-x-2 group cursor-pointer">
             <BookOpen />
-            <div className="text-gray-700">
-              {user.book_tiles.length} books read
-            </div>
+            <div>{user.book_tiles.length} books read</div>
+            <ArrowUpRight
+              size={18}
+              className="text-gray-600 group-hover:scale-125 group-active:scale-100 transition-transform"
+            />
           </div>
-          <div className="flex items-center gap-x-2">
+          <div className="flex items-center gap-x-2 group cursor-pointer">
             <AlignCenter />
-            <div className="text-gray-700">
-              {countTotalInsights(user.book_tiles)} total insights
-            </div>
+            <div>{countTotalInsights(user.book_tiles)} total insights</div>
+            <ArrowUpRight
+              size={18}
+              className="text-gray-600 group-hover:scale-125 group-active:scale-100 transition-transform"
+            />
           </div>
           <div className="flex items-center gap-x-2">
             <Users />
