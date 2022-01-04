@@ -54,25 +54,13 @@ export const getServerSideProps = async (context) => {
       };
     }
   } catch (error) {
-    if (entries.data.entries.length != 0) {
-      return {
-        props: {
-          entries: entries.data.entries,
-          favBooks: [],
-          pagy: pagy,
-          username: username,
-        },
-      };
-    } else {
-      return {
-        props: {
-          entries: [],
-          favBooks: [],
-          pagy: pagy,
-          username: username,
-        },
-      };
-    }
+    return {
+      props: {
+        entries: entries.data.entries,
+        pagy: pagy,
+        username: username,
+      },
+    };
   }
 };
 
