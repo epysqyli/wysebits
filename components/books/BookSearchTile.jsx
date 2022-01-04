@@ -1,7 +1,10 @@
 import Image from "next/dist/client/image";
 import Link from "next/link";
+import { Image as ImageLoader } from "react-feather";
+import { useState } from "react";
 
 const BookSearchTile = ({ bookData, destPage }) => {
+  const [imageIsLoaded, setImageIsLoaded] = useState(false);
   const olSrc = `https://covers.openlibrary.org/w/olid/${bookData._source.ol_key}-M.jpg`;
   const dbSrc = bookData._source.cover_url;
 
@@ -28,17 +31,24 @@ const BookSearchTile = ({ bookData, destPage }) => {
             </div>
           </div>
 
-          <div className="w-2/6">
-            <div className="shadow-md rounded-md">
+          <div className="w-2/6 relative">
+            {imageIsLoaded == false ? (
+              <ImageLoader
+                size={30}
+                strokeWidth={1.5}
+                color="gray"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse"
+              />
+            ) : null}
+            <div className="shadow-md rounded-md bg-gray-200">
               <Image
                 src={dbSrc || olSrc || ""}
                 className="animate-show-up-slow rounded-md"
                 layout="responsive"
-                width="10"
-                height="15"
+                width="40"
+                height="60"
                 objectFit="cover"
-                placeholder="blur"
-                blurDataURL="/images/book-placeholder.png"
+                onLoad={() => setImageIsLoaded(true)}
               />
             </div>
           </div>

@@ -19,7 +19,7 @@ const BookCard = ({ bookData }) => {
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse"
           />
         ) : null}
-        <div className="shadow-md rounded-md">
+        <div className="shadow-md rounded-md bg-gray-200">
           <Image
             src={dbSrc || olSrc || ""}
             className="animate-show-up-slow rounded-md"
