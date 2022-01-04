@@ -1,3 +1,4 @@
+import { Meh } from "react-feather";
 import { useState } from "react";
 import { getUser, getUserEntries } from "../../../../lib/serverSideMethods";
 import PageNavButton from "../../../../components/navigation/PageNavButton";
@@ -93,6 +94,12 @@ const UserInsights = ({
   if (entries.length !== 0)
     return (
       <div>
+        <div className="bg-saved-tiles bg-cover bg-center shadow">
+          <div className="bg-gray-800 bg-opacity-70 text-white text-2xl md:text-3xl font-bold text-center py-12">
+            <div className="mx-auto w-4/5">All insights from {username}</div>
+          </div>
+        </div>
+
         <div className="my-10 w-4/5 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
           {entries.map((entry) => {
             return (
@@ -129,6 +136,32 @@ const UserInsights = ({
               url={pagy.next_url}
               clientUrl={clientUrl}
             />
+          </div>
+        </div>
+      </div>
+    );
+
+  if (entries.length === 0)
+    return (
+      <div>
+        <div className="bg-saved-tiles bg-cover bg-center shadow">
+          <div className="bg-gray-800 bg-opacity-70 text-white text-2xl md:text-3xl font-bold text-center py-12">
+            <div className="mx-auto w-4/5">All insights from {username}</div>
+          </div>
+        </div>
+
+        <div className="mx-auto w-4/5 text-center mt-20 text-xl md:flex md:justify-around md:items-center">
+          <div className="mx-auto w-min mb-20 md:mb-0 animate-bounce">
+            <Meh
+              size={48}
+              color="gray"
+              strokeWidth={1.75}
+              className="animate-spin"
+            />
+          </div>
+          <div className="md:w-3/5">
+            {username} is yet to publish contributions to the books he or she
+            has read
           </div>
         </div>
       </div>
