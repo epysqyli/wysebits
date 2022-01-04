@@ -45,7 +45,7 @@ export const getServerSideProps = async (context) => {
     } else {
       return {
         props: {
-          entries: entries,
+          entries: entries.data.entries,
           username: username,
           favBooks: favBooks.data.books,
           pagy: entries.data.pagy,
@@ -57,17 +57,19 @@ export const getServerSideProps = async (context) => {
     if (entries.length != 0) {
       return {
         props: {
-          entries: entries,
+          entries: entries.data.entries,
           favBooks: [],
           pagy: pagy,
+          username: username,
         },
       };
     } else {
       return {
         props: {
-          entries: entries,
+          entries: entries.data.entries,
           favBooks: [],
           pagy: pagy,
+          username: username,
         },
       };
     }
