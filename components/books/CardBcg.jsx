@@ -47,7 +47,7 @@ const CardBcg = ({ bookData, userState, favBooks }) => {
 
   if (userState.isLogged) {
     return (
-      <div className="relative py-5">
+      <div className="relative py-5 bg-gray-300">
         <img
           src={bcgImage()}
           className="absolute top-0 left-1/2 -translate-x-1/2 blur-sm backdrop-brightness-50 grayscale-50 contrast-50 max-h-full w-full object-cover"
