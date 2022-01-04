@@ -23,7 +23,7 @@ const LatestEntries = ({
           {entries.map((entry) => (
             <div key={entry.id}>
               <EntryLoggedTitle
-                data={entry}
+                entryProp={entry}
                 user={userState.user}
                 insights={insights}
                 upvotedEntries={upvotedEntries}
@@ -51,7 +51,7 @@ const LatestEntries = ({
           {entries.map((entry) => {
             return (
               <div key={entry.id}>
-                <EntryGuestTitle data={entry} />
+                <EntryGuestTitle entryProp={entry} />
               </div>
             );
           })}

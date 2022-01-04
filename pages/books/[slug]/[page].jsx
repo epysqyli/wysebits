@@ -124,7 +124,7 @@ const Book = ({
             return (
               <div key={entry.id}>
                 <TileEntry
-                  data={entry}
+                  entryProp={entry}
                   user={userState.user}
                   isLogged={userState.isLogged}
                   insights={insights}

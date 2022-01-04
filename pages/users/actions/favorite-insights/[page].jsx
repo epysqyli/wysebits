@@ -89,7 +89,7 @@ const FavoriteInsights = ({
               return (
                 <div key={insight.id}>
                   <TileEntry
-                    data={insight}
+                    entryProp={insight}
                     showTitle={true}
                     user={userState.user}
                     isLogged={userState.isLogged}

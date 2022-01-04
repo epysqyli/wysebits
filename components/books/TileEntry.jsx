@@ -4,7 +4,7 @@ import EntryLoggedTitle from "./tile-entry-components/EntryLoggedTitle";
 import EntryGuestTitle from "./tile-entry-components/EntryGuestTitle";
 
 const TileEntry = ({
-  data,
+  entryProp,
   showTitle,
   user,
   isLogged,
@@ -20,7 +20,7 @@ const TileEntry = ({
   if (isLogged && showTitle) {
     return (
       <EntryLoggedTitle
-        data={data}
+        entryProp={entryProp}
         user={user}
         insights={insights}
         setInsights={setInsights}
@@ -38,7 +38,7 @@ const TileEntry = ({
     return (
       <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
         <EntryLogged
-          data={data}
+          entryProp={entryProp}
           user={user}
           insights={insights}
           setInsights={setInsights}
@@ -53,11 +53,11 @@ const TileEntry = ({
     );
   }
 
-  if (!isLogged && showTitle) return <EntryGuestTitle data={data} />;
+  if (!isLogged && showTitle) return <EntryGuestTitle entryProp={entryProp} />;
 
   return (
     <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
-      <EntryGuest data={data} />
+      <EntryGuest entryProp={entryProp} />
     </div>
   );
 };

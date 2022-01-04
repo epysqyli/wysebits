@@ -26,7 +26,7 @@ import {
 } from "../../../lib/followMethods";
 
 const EntryLogged = ({
-  data,
+  entryProp,
   user,
   insights,
   setInsights,
@@ -37,47 +37,47 @@ const EntryLogged = ({
   followedUsers,
   setFollowedUsers,
 }) => {
-  const entryUser = data.book_tile.user;
+  const entryUser = entryProp.book_tile.user;
 
   // methods related to like/heart functionalities
   const isFavInsight = () => {
-    return insights.some((insight) => insight.id === data.id);
+    return insights.some((insight) => insight.id === entryProp.id);
   };
 
   const addToFavInsights = () => {
     axios
       .post(
-        `http://localhost:3001/api/users/${userId}/fav_tile_entries/${data.id}`,
+        `http://localhost:3001/api/users/${userId}/fav_tile_entries/${entryProp.id}`,
         {},
         { withCredentials: true }
       )
-      .then((res) => addInsightToState(data, insights, setInsights))
+      .then((res) => addInsightToState(entryProp, insights, setInsights))
       .catch((err) => console.log(err));
   };
 
   const removeFromFavInsights = () => {
     axios
       .delete(
-        `http://localhost:3001/api/users/${userId}/fav_tile_entries/${data.id}`,
+        `http://localhost:3001/api/users/${userId}/fav_tile_entries/${entryProp.id}`,
         { withCredentials: true }
       )
-      .then((res) => removeInsightFromState(data, insights, setInsights))
+      .then((res) => removeInsightFromState(entryProp, insights, setInsights))
       .catch((err) => console.log(err));
   };
 
   // methods related to upvote and downvote functionalities
   const isUpvoted = () => {
-    return upvotedEntries.some((entry) => entry.id == data.id);
+    return upvotedEntries.some((entry) => entry.id == entryProp.id);
   };
 
   const isDownvoted = () => {
-    return downvotedEntries.some((entry) => entry.id == data.id);
+    return downvotedEntries.some((entry) => entry.id == entryProp.id);
   };
 
   const addToUpvoted = () => {
     axios
       .post(
-        `http://localhost:3001/api/users/${userId}/tile_entries/${data.id}/upvote`,
+        `http://localhost:3001/api/users/${userId}/tile_entries/${entryProp.id}/upvote`,
         {},
         { withCredentials: true }
       )
@@ -85,7 +85,7 @@ const EntryLogged = ({
         if (isDownvoted()) {
           removeFromDownvoted();
         }
-        addUpEntryToState(data, upvotedEntries, setUpvotedEntries);
+        addUpEntryToState(entryProp, upvotedEntries, setUpvotedEntries);
       })
       .catch((err) => console.log(err));
   };
@@ -93,12 +93,12 @@ const EntryLogged = ({
   const removeFromUpvoted = () => {
     axios
       .post(
-        `http://localhost:3001/api/users/${userId}/tile_entries/${data.id}/remove_upvote`,
+        `http://localhost:3001/api/users/${userId}/tile_entries/${entryProp.id}/remove_upvote`,
         {},
         { withCredentials: true }
       )
       .then((res) =>
-        removeUpEntryFromState(data, upvotedEntries, setUpvotedEntries)
+        removeUpEntryFromState(entryProp, upvotedEntries, setUpvotedEntries)
       )
       .catch((err) => console.log(err));
   };
@@ -106,7 +106,7 @@ const EntryLogged = ({
   const addToDownvoted = () => {
     axios
       .post(
-        `http://localhost:3001/api/users/${userId}/tile_entries/${data.id}/downvote`,
+        `http://localhost:3001/api/users/${userId}/tile_entries/${entryProp.id}/downvote`,
         {},
         { withCredentials: true }
       )
@@ -114,7 +114,7 @@ const EntryLogged = ({
         if (isUpvoted()) {
           removeFromUpvoted();
         }
-        addDownEntryToState(data, downvotedEntries, setDownvotedEntries);
+        addDownEntryToState(entryProp, downvotedEntries, setDownvotedEntries);
       })
       .catch((err) => console.log(err));
   };
@@ -122,12 +122,12 @@ const EntryLogged = ({
   const removeFromDownvoted = () => {
     axios
       .post(
-        `http://localhost:3001/api/users/${userId}/tile_entries/${data.id}/remove_downvote`,
+        `http://localhost:3001/api/users/${userId}/tile_entries/${entryProp.id}/remove_downvote`,
         {},
         { withCredentials: true }
       )
       .then((res) =>
-        removeDownEntryFromState(data, downvotedEntries, setDownvotedEntries)
+        removeDownEntryFromState(entryProp, downvotedEntries, setDownvotedEntries)
       )
       .catch((err) => console.log(err));
   };
@@ -135,7 +135,7 @@ const EntryLogged = ({
   return (
     <div className="shadow-md rounded-md">
       <div className="border-b-2 py-5 px-10 md:px-16 font-light whitespace-pre-line">
-        {data.content}
+        {entryProp.content}
       </div>
 
       <div className="flex justify-between items-center text-sm px-10 md:px-16 py-4">
@@ -159,7 +159,7 @@ const EntryLogged = ({
             </div>
           )}
 
-          <div className="text-gray-600">{data.upvotes - data.downvotes}</div>
+          <div className="text-gray-600">{entryProp.upvotes - entryProp.downvotes}</div>
 
           {isDownvoted() ? (
             <div onClick={() => removeFromDownvoted()}>
@@ -203,10 +203,10 @@ const EntryLogged = ({
         </div>
 
         <div className="group flex items-center gap-x-2 transition-all">
-          <Link href={`/creators/${data.book_tile.user.username}`}>
+          <Link href={`/creators/${entryProp.book_tile.user.username}`}>
             <div className="flex items-center gap-x-1">
               <div className="text-gray-600 active:text-gray-200 cursor-pointer">
-                {data.book_tile.user.username}
+                {entryProp.book_tile.user.username}
               </div>
               <ArrowUpRight
                 size={18}
