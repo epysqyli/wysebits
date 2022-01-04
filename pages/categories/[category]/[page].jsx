@@ -1,11 +1,10 @@
-import slugify from "slugify";
-import axios from "axios";
 import BookCard from "../../../components/books/BookCard";
 import Link from "next/link";
 import PageNavButton from "../../../components/navigation/PageNavButton";
 import NoItem from "../../../components/users/NoItem";
 import SearchInput from "../../../components/navigation/SearchInput";
 import { getCategoryBooks } from "../../../lib/serverSideMethods";
+import { slug, capitalize } from "../../../lib/utils";
 
 export const getServerSideProps = async (context) => {
   const slug = context.query.category;
@@ -26,13 +25,6 @@ export const getServerSideProps = async (context) => {
 
 const Category = ({ books, categoryName, categorySlug, pagy }) => {
   const clientUrl = `/categories/${categorySlug}`;
-
-  const capitalize = (str) => {
-    return `${str.slice(0, 1).toUpperCase()}${str.slice(1)}`;
-  };
-
-  const slug = (title, id) =>
-    slugify(`${title}-${id}`, { lower: true, strict: true });
 
   if (books.length != 0) {
     return (
