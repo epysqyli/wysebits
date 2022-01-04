@@ -1,7 +1,7 @@
 import { useState } from "react";
-import BasicInfo from "../../components/creators/BasicInfo";
-import LatestBooks from "../../components/creators/LatestBooks";
-import LatestEntries from "../../components/creators/LatestEntries";
+import BasicInfo from "../../../components/creators/BasicInfo";
+import LatestBooks from "../../../components/creators/LatestBooks";
+import LatestEntries from "../../../components/creators/LatestEntries";
 import {
   getUser,
   getLoggedUser,
@@ -10,7 +10,7 @@ import {
   getFavEntries,
   getUpvotedEntries,
   getDownvotedEntries,
-} from "../../lib/serverSideMethods";
+} from "../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
   const username = context.query.username;
