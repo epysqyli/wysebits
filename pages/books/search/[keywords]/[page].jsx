@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import slugify from "slugify";
+import { slug } from "../../../../lib/utils";
 import BookSearchTile from "../../../../components/books/BookSearchTile";
 import NavButtonElastic from "../../../../components/navigation/NavButtonElastic";
 import SearchInput from "../../../../components/navigation/SearchInput";
@@ -33,9 +33,6 @@ const BookSearchResults = ({ searchResults, keywords, pageNum }) => {
   const clientUrl = `/books/search/${keywords}`;
 
   const showBtn = () => setBtnVisible(true);
-
-  const slug = (title, id) =>
-    slugify(`${title}-${id}`, { lower: true, strict: true });
 
   useEffect(() => setTimeout(showBtn, 2000), []);
 

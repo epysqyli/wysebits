@@ -1,7 +1,7 @@
 import EntryLogged from "./EntryLogged";
-import slugify from "slugify";
 import Link from "next/dist/client/link";
 import { ArrowUpRight } from "react-feather";
+import { slug } from "../../../lib/utils";
 
 const EntryLoggedTitle = ({
   data,
@@ -15,9 +15,6 @@ const EntryLoggedTitle = ({
   followedUsers,
   setFollowedUsers,
 }) => {
-  const slug = (title, id) =>
-    slugify(`${title}-${id}`, { lower: true, strict: true });
-
   return (
     <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
       <Link

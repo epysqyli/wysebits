@@ -6,6 +6,7 @@ import NoItem from "../../../components/users/NoItem";
 import PageNavButton from "../../../components/navigation/PageNavButton";
 import Link from "next/dist/client/link";
 import Head from "next/head";
+
 import {
   getBookEntries,
   getAllFollowing,
