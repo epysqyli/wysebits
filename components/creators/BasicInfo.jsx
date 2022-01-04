@@ -71,7 +71,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
         </div>
       </div>
 
-      {userState.user.id !== user.user.id ? (
+      {userState.isLogged && userState.user.id !== user.user.id ? (
         isFollowed(following, user.user) ? (
           <div
             onClick={() =>
