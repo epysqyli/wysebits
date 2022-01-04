@@ -30,13 +30,13 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
           />
           <div>
             <div className="text-5xl font-bold text-gray-700">
-              {user.username}
+              {user.user.username}
             </div>
           </div>
         </div>
 
         <div className="flex items-center justify-around mt-5 md:block">
-          <Link href={`/creators/${user.username}/books/1`}>
+          <Link href={`/creators/${user.user.username}/books/1`}>
             <div className="flex items-center gap-x-2 group cursor-pointer">
               <BookOpen size={20} />
               <div className="text-gray-700">
@@ -71,8 +71,8 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
         </div>
       </div>
 
-      {userState.user.id !== user.id ? (
-        isFollowed(following, user) ? (
+      {userState.user.id !== user.user.id ? (
+        isFollowed(following, user.user) ? (
           <div
             onClick={() =>
               unfollowAndUpdateState(
