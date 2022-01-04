@@ -23,32 +23,42 @@ const UserBooks = ({ books, pagy, username }) => {
 
   return (
     <div>
-      <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
-        {books.map((book) => {
-          return (
-            <Link href={`/books/${slug(book.title, book.id)}/1`} key={book.id}>
-              <div className="rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:shadow-inner">
-                <BookCard bookData={book} />
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-
-      <div className="flex justify-around my-16 md:w-4/5 mx-auto">
-        <div className="w-1/3">
-          <PageNavButton
-            btnText="Previous page"
-            url={pagy.prev_url}
-            clientUrl={clientUrl}
-          />
+      <div className="bg-check-book-tiles bg-cover bg-center shadow">
+        <div className="bg-gray-800 bg-opacity-70 text-white text-2xl md:text-3xl font-bold text-center py-12">
+          All books contributed to by {username}
         </div>
-        <div className="w-1/3">
-          <PageNavButton
-            btnText="Next page"
-            url={pagy.next_url}
-            clientUrl={clientUrl}
-          />
+      </div>
+      <div>
+        <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+          {books.map((book) => {
+            return (
+              <Link
+                href={`/books/${slug(book.title, book.id)}/1`}
+                key={book.id}
+              >
+                <div className="rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:shadow-inner">
+                  <BookCard bookData={book} />
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+
+        <div className="flex justify-around my-16 md:w-4/5 mx-auto">
+          <div className="w-1/3">
+            <PageNavButton
+              btnText="Previous page"
+              url={pagy.prev_url}
+              clientUrl={clientUrl}
+            />
+          </div>
+          <div className="w-1/3">
+            <PageNavButton
+              btnText="Next page"
+              url={pagy.next_url}
+              clientUrl={clientUrl}
+            />
+          </div>
         </div>
       </div>
     </div>
