@@ -31,7 +31,7 @@ const SearchInput = ({
     if (query === undefined) {
       if (searchTerms.trim().length > 2) {
         addToHistory(searchTerms);
-        goToResults(query);
+        goToResults();
       } else {
         SetSearchError(true);
       }
@@ -133,7 +133,7 @@ const SearchInput = ({
             <Search
               size={20}
               className="mx-auto"
-              onClick={searchBooks}
+              onClick={() => searchBooks(searchTerms)}
               color="gray"
             />
           </button>
