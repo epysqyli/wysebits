@@ -8,6 +8,7 @@ import {
   ArrowUpRight,
 } from "react-feather";
 
+import Link from "next/dist/client/link";
 import { countTotalInsights } from "../../lib/creatorMethods";
 
 import {
@@ -35,32 +36,38 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
         </div>
 
         <div className="flex items-center justify-around mt-5 md:block">
-          <div className="flex items-center gap-x-2 group cursor-pointer">
-            <BookOpen size={20} />
-            <div className="text-gray-700">
-              {user.book_tiles.length} books read
+          <Link href={`/creators/${user.username}/books/1`}>
+            <div className="flex items-center gap-x-2 group cursor-pointer">
+              <BookOpen size={20} />
+              <div className="text-gray-700">
+                {user.book_tiles.length} books read
+              </div>
+              <ArrowUpRight
+                size={18}
+                className="text-gray-600 group-hover:scale-125 group-active:scale-100 transition-transform"
+              />
             </div>
-            <ArrowUpRight
-              size={18}
-              className="text-gray-600 group-hover:scale-125 group-active:scale-100 transition-transform"
-            />
-          </div>
-          <div className="flex items-center gap-x-2 group cursor-pointer">
-            <AlignCenter size={20} />
-            <div className="text-gray-700">
-              {countTotalInsights(user.book_tiles)} total insights
+          </Link>
+          <Link href={`#`}>
+            <div className="flex items-center gap-x-2 group cursor-pointer">
+              <AlignCenter size={20} />
+              <div className="text-gray-700">
+                {countTotalInsights(user.book_tiles)} total insights
+              </div>
+              <ArrowUpRight
+                size={18}
+                className="text-gray-600 group-hover:scale-125 group-active:scale-100 transition-transform"
+              />
             </div>
-            <ArrowUpRight
-              size={18}
-              className="text-gray-600 group-hover:scale-125 group-active:scale-100 transition-transform"
-            />
-          </div>
-          <div className="flex items-center gap-x-2">
-            <Users size={20} />
-            <div className="text-gray-700">
-              {user.followers.length} followers
+          </Link>
+          <Link href={`#`}>
+            <div className="flex items-center gap-x-2">
+              <Users size={20} />
+              <div className="text-gray-700">
+                {user.followers.length} followers
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
 
