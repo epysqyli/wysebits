@@ -11,12 +11,12 @@ import axios from "axios";
 import Link from "next/dist/client/link";
 
 import {
-  removeUpEntryFromState,
-  addUpEntryToState,
-  addDownEntryToState,
-  removeDownEntryFromState,
-  addToFavInsightAndUpdateState,
-  removeFromFavInsightsAndUpdateState,
+  isUpvoted,
+  isDownvoted,
+  upvoteAndUpdateState,
+  downvoteAndUpdateState,
+  removeUpvoteAndUpdateState,
+  removeDownvoteAndUpdateState,
 } from "../../../lib/tileEntryMethods";
 
 import {
@@ -39,80 +39,8 @@ const EntryLogged = ({
 }) => {
   const entryUser = entryProp.book_tile.user;
 
-  // methods related to like/heart functionalities
   const isFavInsight = () => {
     return insights.some((insight) => insight.id === entryProp.id);
-  };
-
-  // methods related to upvote and downvote functionalities
-  const isUpvoted = () => {
-    return upvotedEntries.some((entry) => entry.id == entryProp.id);
-  };
-
-  const isDownvoted = () => {
-    return downvotedEntries.some((entry) => entry.id == entryProp.id);
-  };
-
-  const addToUpvoted = () => {
-    axios
-      .post(
-        `http://localhost:3001/api/users/${userId}/tile_entries/${entryProp.id}/upvote`,
-        {},
-        { withCredentials: true }
-      )
-      .then((res) => {
-        if (isDownvoted()) {
-          removeFromDownvoted();
-        }
-        addUpEntryToState(entryProp, upvotedEntries, setUpvotedEntries);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const removeFromUpvoted = () => {
-    axios
-      .post(
-        `http://localhost:3001/api/users/${userId}/tile_entries/${entryProp.id}/remove_upvote`,
-        {},
-        { withCredentials: true }
-      )
-      .then((res) =>
-        removeUpEntryFromState(entryProp, upvotedEntries, setUpvotedEntries)
-      )
-      .catch((err) => console.log(err));
-  };
-
-  const addToDownvoted = () => {
-    axios
-      .post(
-        `http://localhost:3001/api/users/${userId}/tile_entries/${entryProp.id}/downvote`,
-        {},
-        { withCredentials: true }
-      )
-      .then((res) => {
-        if (isUpvoted()) {
-          removeFromUpvoted();
-        }
-        addDownEntryToState(entryProp, downvotedEntries, setDownvotedEntries);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const removeFromDownvoted = () => {
-    axios
-      .post(
-        `http://localhost:3001/api/users/${userId}/tile_entries/${entryProp.id}/remove_downvote`,
-        {},
-        { withCredentials: true }
-      )
-      .then((res) =>
-        removeDownEntryFromState(
-          entryProp,
-          downvotedEntries,
-          setDownvotedEntries
-        )
-      )
-      .catch((err) => console.log(err));
   };
 
   return (
@@ -123,8 +51,17 @@ const EntryLogged = ({
 
       <div className="flex justify-between items-center text-sm px-10 md:px-16 py-4">
         <div className="flex justify-center items-center gap-x-3">
-          {isUpvoted() ? (
-            <div onClick={() => removeFromUpvoted()}>
+          {isUpvoted(upvotedEntries, entryProp) ? (
+            <div
+              onClick={() =>
+                removeUpvoteAndUpdateState(
+                  user,
+                  entryProp,
+                  upvotedEntries,
+                  setUpvotedEntries
+                )
+              }
+            >
               <ThumbsUp
                 size={16}
                 fill="darkgray"
@@ -133,7 +70,18 @@ const EntryLogged = ({
               />
             </div>
           ) : (
-            <div onClick={() => addToUpvoted()}>
+            <div
+              onClick={() =>
+                upvoteAndUpdateState(
+                  user,
+                  entryProp,
+                  upvotedEntries,
+                  downvotedEntries,
+                  setUpvotedEntries,
+                  setDownvotedEntries
+                )
+              }
+            >
               <ThumbsUp
                 size={16}
                 color="darkgray"
@@ -146,8 +94,17 @@ const EntryLogged = ({
             {entryProp.upvotes - entryProp.downvotes}
           </div>
 
-          {isDownvoted() ? (
-            <div onClick={() => removeFromDownvoted()}>
+          {isDownvoted(downvotedEntries, entryProp) ? (
+            <div
+              onClick={() =>
+                removeDownvoteAndUpdateState(
+                  user,
+                  entryProp,
+                  downvotedEntries,
+                  setDownvotedEntries
+                )
+              }
+            >
               <ThumbsDown
                 size={16}
                 fill="darkgray"
@@ -156,7 +113,18 @@ const EntryLogged = ({
               />
             </div>
           ) : (
-            <div onClick={() => addToDownvoted()}>
+            <div
+              onClick={() =>
+                downvoteAndUpdateState(
+                  user,
+                  entryProp,
+                  upvotedEntries,
+                  downvotedEntries,
+                  setUpvotedEntries,
+                  setDownvotedEntries
+                )
+              }
+            >
               <ThumbsDown
                 size={16}
                 color="darkgray"
