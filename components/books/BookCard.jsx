@@ -1,13 +1,24 @@
+import { useState } from "react";
 import Image from "next/dist/client/image";
 import { shortenText } from "../../lib/utils";
+import { Image as ImageLoader } from "react-feather";
 
 const BookCard = ({ bookData }) => {
+  const [imageIsLoaded, setImageIsLoaded] = useState(false);
   const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
   const dbSrc = bookData.cover_url;
 
   return (
     <div className="flex justify-center gap-x-8 px-1 py-4">
-      <div className="w-2/6">
+      <div className="w-2/6 relative">
+        {imageIsLoaded == false ? (
+          <ImageLoader
+            size={40}
+            strokeWidth={1.5}
+            color="gray"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse"
+          />
+        ) : null}
         <div className="shadow-md rounded-md">
           <Image
             src={dbSrc || olSrc || ""}
@@ -16,8 +27,7 @@ const BookCard = ({ bookData }) => {
             width="40"
             height="60"
             objectFit="cover"
-            placeholder="blur"
-            blurDataURL="/images/book-placeholder.png"
+            onLoad={() => setImageIsLoaded(true)}
           />
         </div>
       </div>
