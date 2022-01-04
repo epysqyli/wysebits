@@ -48,7 +48,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
               />
             </div>
           </Link>
-          <Link href={`#`}>
+          <Link href={`/creators/${user.user.username}/insights/1`}>
             <div className="flex items-center gap-x-2 group cursor-pointer">
               <AlignCenter size={20} />
               <div className="text-gray-700">
