@@ -29,7 +29,7 @@ export const getServerSideProps = async (context) => {
     const upvotedEntries = await getUpvotedEntries(loggedUser, context);
     const downvotedEntries = await getDownvotedEntries(loggedUser, context);
 
-    if (entries.length != 0) {
+    if (entries.data.entries.length != 0) {
       return {
         props: {
           username: username,
@@ -54,7 +54,7 @@ export const getServerSideProps = async (context) => {
       };
     }
   } catch (error) {
-    if (entries.length != 0) {
+    if (entries.data.entries.length != 0) {
       return {
         props: {
           entries: entries.data.entries,
@@ -66,7 +66,7 @@ export const getServerSideProps = async (context) => {
     } else {
       return {
         props: {
-          entries: entries.data.entries,
+          entries: [],
           favBooks: [],
           pagy: pagy,
           username: username,
@@ -152,8 +152,8 @@ const UserInsights = ({
           </div>
         </div>
 
-        <div className="mx-auto w-4/5 text-center mt-20 text-xl md:flex md:justify-around md:items-center">
-          <div className="mx-auto w-min mb-20 md:mb-0 animate-bounce">
+        <div className="mx-auto w-4/5 text-center mt-20 text-xl">
+          <div className="mx-auto w-min mb-20 animate-bounce">
             <Meh
               size={48}
               color="gray"
@@ -161,7 +161,7 @@ const UserInsights = ({
               className="animate-spin"
             />
           </div>
-          <div className="md:w-3/5">
+          <div className="md:w-3/5 mx-auto lg:w-2/5">
             {username} is yet to publish contributions to the books he or she
             has read
           </div>
