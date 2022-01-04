@@ -11,12 +11,12 @@ import axios from "axios";
 import Link from "next/dist/client/link";
 
 import {
-  removeInsightFromState,
-  addInsightToState,
   removeUpEntryFromState,
   addUpEntryToState,
   addDownEntryToState,
   removeDownEntryFromState,
+  addToFavInsightAndUpdateState,
+  removeFromFavInsightsAndUpdateState,
 } from "../../../lib/tileEntryMethods";
 
 import {
@@ -42,27 +42,6 @@ const EntryLogged = ({
   // methods related to like/heart functionalities
   const isFavInsight = () => {
     return insights.some((insight) => insight.id === entryProp.id);
-  };
-
-  const addToFavInsights = () => {
-    axios
-      .post(
-        `http://localhost:3001/api/users/${userId}/fav_tile_entries/${entryProp.id}`,
-        {},
-        { withCredentials: true }
-      )
-      .then((res) => addInsightToState(entryProp, insights, setInsights))
-      .catch((err) => console.log(err));
-  };
-
-  const removeFromFavInsights = () => {
-    axios
-      .delete(
-        `http://localhost:3001/api/users/${userId}/fav_tile_entries/${entryProp.id}`,
-        { withCredentials: true }
-      )
-      .then((res) => removeInsightFromState(entryProp, insights, setInsights))
-      .catch((err) => console.log(err));
   };
 
   // methods related to upvote and downvote functionalities
@@ -127,7 +106,11 @@ const EntryLogged = ({
         { withCredentials: true }
       )
       .then((res) =>
-        removeDownEntryFromState(entryProp, downvotedEntries, setDownvotedEntries)
+        removeDownEntryFromState(
+          entryProp,
+          downvotedEntries,
+          setDownvotedEntries
+        )
       )
       .catch((err) => console.log(err));
   };
@@ -159,7 +142,9 @@ const EntryLogged = ({
             </div>
           )}
 
-          <div className="text-gray-600">{entryProp.upvotes - entryProp.downvotes}</div>
+          <div className="text-gray-600">
+            {entryProp.upvotes - entryProp.downvotes}
+          </div>
 
           {isDownvoted() ? (
             <div onClick={() => removeFromDownvoted()}>
@@ -182,7 +167,16 @@ const EntryLogged = ({
 
           <div className="ml-3 flex items-center">
             {isFavInsight() ? (
-              <div onClick={() => removeFromFavInsights()}>
+              <div
+                onClick={() =>
+                  removeFromFavInsightsAndUpdateState(
+                    user,
+                    entryProp,
+                    insights,
+                    setInsights
+                  )
+                }
+              >
                 <Heart
                   size={16}
                   fill="darkgray"
@@ -191,7 +185,16 @@ const EntryLogged = ({
                 />
               </div>
             ) : (
-              <div onClick={() => addToFavInsights()}>
+              <div
+                onClick={() =>
+                  addToFavInsightAndUpdateState(
+                    user,
+                    entryProp,
+                    insights,
+                    setInsights
+                  )
+                }
+              >
                 <Heart
                   size={16}
                   color="darkgray"
