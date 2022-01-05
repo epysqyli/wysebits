@@ -1,4 +1,4 @@
-import { ArrowLeftCircle, ArrowRightCircle } from "react-feather";
+import { ChevronLeft, ChevronRight } from "react-feather";
 import { useState } from "react";
 import HomeTileEntry from "./HomeTileEntry";
 
@@ -26,14 +26,14 @@ const Slider = ({ entries }) => {
 
   return (
     <div className="flex justify-around items-center mx-auto py-5 bg-gray-100 cursor-default">
-      <ArrowLeftCircle
+      <ChevronLeft
         className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
         onClick={decrement}
         size={30}
         strokeWidth={1.75}
       />
       <HomeTileEntry entry={entries[count]} />
-      <ArrowRightCircle
+      <ChevronRight
         className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
         onClick={increment}
         size={30}
