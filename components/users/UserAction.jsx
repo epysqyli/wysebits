@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const HomepageButton = ({ href, text, bcgImg }) => {
+const UserAction = ({ href, text, bcgImg }) => {
   return (
     <Link href={href}>
       <div
@@ -18,4 +18,4 @@ const HomepageButton = ({ href, text, bcgImg }) => {
   );
 };
 
-export default HomepageButton;
+export default UserAction;

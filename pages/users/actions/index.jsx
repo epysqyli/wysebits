@@ -1,5 +1,5 @@
 import Head from "next/head";
-import HomepageButton from "../../../components/users/HomepageButton";
+import UserAction from "../../../components/users/UserAction";
 import NoAccess from "../../../components/users/NoAccess";
 
 const Actions = ({ userState }) => {
@@ -20,7 +20,7 @@ const Actions = ({ userState }) => {
 
         <div className="w-4/5 my-16 grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 mx-auto">
           <div>
-            <HomepageButton
+            <UserAction
               text="Share your knowledge"
               bcgImg="bg-create-tile"
               href="/users/book-search/"
@@ -28,7 +28,7 @@ const Actions = ({ userState }) => {
           </div>
 
           <div>
-            <HomepageButton
+            <UserAction
               text="Published contributions"
               bcgImg="bg-check-book-tiles"
               href="/users/book-tiles/1"
@@ -36,7 +36,7 @@ const Actions = ({ userState }) => {
           </div>
 
           <div>
-            <HomepageButton
+            <UserAction
               text="Work in progress contributions"
               bcgImg="bg-wip-contributions"
               href="/users/book-tiles/wip/1"
@@ -44,7 +44,7 @@ const Actions = ({ userState }) => {
           </div>
 
           <div>
-            <HomepageButton
+            <UserAction
               text="Favorite books"
               bcgImg="bg-liked-books"
               href="/users/actions/favorite-books/1"
@@ -52,7 +52,7 @@ const Actions = ({ userState }) => {
           </div>
 
           <div>
-            <HomepageButton
+            <UserAction
               text="Saved book insights"
               href="/users/actions/favorite-insights/1"
               bcgImg="bg-saved-tiles"
@@ -60,7 +60,7 @@ const Actions = ({ userState }) => {
           </div>
 
           <div>
-            <HomepageButton
+            <UserAction
               text="Users you are following"
               href="/users/actions/following/1"
               bcgImg="bg-following"
@@ -68,7 +68,7 @@ const Actions = ({ userState }) => {
           </div>
 
           <div>
-            <HomepageButton
+            <UserAction
               text="Your followers"
               href="/users/actions/followers/1"
               bcgImg="bg-followers"
@@ -76,7 +76,7 @@ const Actions = ({ userState }) => {
           </div>
 
           <div>
-            <HomepageButton
+            <UserAction
               text="Manage profile"
               href="/users/actions/manage-profile"
               bcgImg="bg-settings"
