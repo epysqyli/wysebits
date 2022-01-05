@@ -10,7 +10,7 @@ const EditForm = ({ entry, handleChange, handleSubmit }) => {
   return (
     <form
       onSubmit={(e) => handleSubmit(e, entry)}
-      className="p-2 bg-gray-200 shadow-lg"
+      className="pt-2 px-2"
     >
       <label
         htmlFor="entry"

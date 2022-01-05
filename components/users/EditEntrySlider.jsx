@@ -45,7 +45,7 @@ const EditEntrySlider = ({ entries, handleChange, handleSubmit }) => {
         </div>
       </div>
 
-      <div className="flex-grow rounded-md shadow-md">
+      <div className="flex-grow bg-gray-200 rounded-md shadow-md">
         <EditForm
           entry={entries[current]}
           handleChange={handleChange}
