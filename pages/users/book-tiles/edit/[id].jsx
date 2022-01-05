@@ -64,13 +64,8 @@ const EditBookTile = ({
 
     const router = useRouter();
 
-    const hideEditForm = () => {
-      setEditVisible(false);
-    };
-
-    const showEditForm = () => {
-      setEditVisible(true);
-    };
+    const hideEditForm = () => setEditVisible(false);
+    const showEditForm = () => setEditVisible(true);
 
     const showBtn = (entryId) => {
       setBtnVisible({
@@ -96,9 +91,7 @@ const EditBookTile = ({
       setCurrentEntry({ ...currentEntry, content: e.target.value });
     };
 
-    const setCurrentId = (id) => {
-      setCurrentEntry({ ...currentEntry, id: id });
-    };
+    const setCurrentId = (id) => setCurrentEntry({ ...currentEntry, id: id });
 
     const editEntry = (entryId, entryContent) => {
       const url = `http://localhost:3001/api/book_tiles/${bookTileId}/tile_entries/${entryId}`;
@@ -112,11 +105,6 @@ const EditBookTile = ({
         .catch((err) => console.log(err));
     };
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      editEntry(currentEntry.id, currentEntry.content);
-    };
-
     const deleteBookTile = () => {
       axios
         .delete(
@@ -128,6 +116,11 @@ const EditBookTile = ({
           router.push("/users/book-tiles/1");
         })
         .catch((err) => console.log(err));
+    };
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      editEntry(currentEntry.id, currentEntry.content);
     };
 
     useEffect(() => {
