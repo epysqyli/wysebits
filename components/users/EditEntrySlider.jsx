@@ -6,9 +6,6 @@ const EditEntrySlider = ({
   entries,
   handleChange,
   handleSubmit,
-  setCurrentId,
-  btnVisible,
-  showBtn,
 }) => {
   const [current, setCurrent] = useState(0);
   const increment = () => setCurrent(handleIncrement(current));
@@ -36,18 +33,8 @@ const EditEntrySlider = ({
           className="group-active:scale-90"
         />
       </div>
-      <div className="flex-grow bg-gray-200 rounded-md shadow-md">
-        <EditForm
-          content={entries[current].content}
-          entryId={entries[current].id}
-          updateTime={entries[current].updated_at}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          setCurrentId={setCurrentId}
-          btnVisible={btnVisible[entries[current].id]}
-          showBtn={showBtn}
-          key={entries[current].id}
-        />
+      <div className="flex-grow rounded-md shadow-md">
+        <EditForm entry={entries[current]} handleChange={handleChange} handleSubmit={handleSubmit} />
       </div>
       <div
         onClick={increment}

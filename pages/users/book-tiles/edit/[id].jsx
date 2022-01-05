@@ -45,37 +45,31 @@ const EditBookTile = ({
 }) => {
   if (userState.isLogged) {
     const [tileEntries, setTileEntries] = useState({
-      first_entry: entries[0].content,
-      second_entry: entries[1].content,
-      third_entry: entries[2].content,
+      first_entry: {
+        content: entries[0].content,
+        id: entries[0].id,
+        name: "first_entry",
+        updateTime: entries[0].updated_at,
+      },
+      second_entry: {
+        content: entries[1].content,
+        id: entries[1].id,
+        name: "second_entry",
+        updateTime: entries[1].updated_at,
+      },
+      third_entry: {
+        content: entries[2].content,
+        id: entries[2].id,
+        name: "third_entry",
+        updateTime: entries[2].updated_at,
+      },
     });
-
-    const [currentEntry, setCurrentEntry] = useState({
-      id: null,
-      content: "",
-    });
-
-    const [btnVisible, setBtnVisible] = useState({
-      [entries[0].id]: false,
-      [entries[1].id]: false,
-      [entries[2].id]: false,
-    });
-
     const [editVisible, setEditVisible] = useState(false);
 
     const router = useRouter();
 
     const hideEditForm = () => setEditVisible(false);
     const showEditForm = () => setEditVisible(true);
-
-    const showBtn = (entryId) => {
-      setBtnVisible({
-        [entries[0].id]: false,
-        [entries[1].id]: false,
-        [entries[2].id]: false,
-      });
-      setBtnVisible({ [entryId]: true });
-    };
 
     const bcgImage = () => {
       const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
@@ -91,8 +85,6 @@ const EditBookTile = ({
       setTileEntries(newTileEntries);
       setCurrentEntry({ ...currentEntry, content: e.target.value });
     };
-
-    const setCurrentId = (id) => setCurrentEntry({ ...currentEntry, id: id });
 
     const editEntry = (entryId, entryContent) => {
       const url = `http://localhost:3001/api/book_tiles/${bookTileId}/tile_entries/${entryId}`;
@@ -151,12 +143,9 @@ const EditBookTile = ({
         </div>
 
         <EditEntrySlider
-          entries={entries}
+          entries={Object.values(tileEntries)}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          setCurrentId={setCurrentId}
-          btnVisible={btnVisible}
-          showBtn={showBtn}
         />
 
         <div className="my-10 w-2/5 mx-auto" onClick={() => deleteBookTile()}>
