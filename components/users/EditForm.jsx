@@ -8,7 +8,10 @@ const EditForm = ({ entry, handleChange, handleSubmit }) => {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e, entry)}>
+    <form
+      onSubmit={(e) => handleSubmit(e, entry)}
+      className="p-2 bg-gray-200 shadow-lg"
+    >
       <label
         htmlFor="entry"
         className="flex justify-between px-3 py-2 text-center bg-gray-100 rounded shadow text-gray-600 text-sm mb-2"
