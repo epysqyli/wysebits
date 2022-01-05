@@ -1,7 +1,7 @@
 import EntryLogged from "./EntryLogged";
 import Link from "next/dist/client/link";
 import { ArrowUpRight } from "react-feather";
-import { slug } from "../../../lib/utils";
+import { slug, shortenText } from "../../../lib/utils";
 
 const EntryLoggedTitle = ({
   entryProp,
@@ -25,7 +25,7 @@ const EntryLoggedTitle = ({
       >
         <div className="px-2 pt-4 flex justify-center items-center gap-x-5 hover:scale-105 active:text-black transition-transform cursor-pointer">
           <div className="text-sm text-gray-600">
-            {entryProp.book_tile.book.title}
+            {shortenText(entryProp.book_tile.book.title, 5)}
           </div>
           <ArrowUpRight size={18} className="text-gray-600" />
         </div>
