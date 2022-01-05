@@ -19,7 +19,7 @@ const EditEntrySlider = ({ entries, handleChange, handleSubmit }) => {
 
   return (
     <div>
-      <div className="flex justify-around gap-x-5 mb-5">
+      <div className="flex justify-around items-center gap-x-5 mb-5">
         <div
           onClick={decrement}
           className="bg-white text-gray-500 shadow hover:shadow-md hover:text-black cursor-pointer rounded active:shadow-inner group flex-grow"
@@ -30,6 +30,9 @@ const EditEntrySlider = ({ entries, handleChange, handleSubmit }) => {
             className="group-active:scale-90 mx-auto"
           />
         </div>
+        <div className="p-2 text-sm rounded-full text-gray-700 bg-white shadow-md">{`${
+          current + 1
+        } / ${entries.length}`}</div>
         <div
           onClick={increment}
           className="bg-white text-gray-500 shadow hover:shadow-md hover:text-black cursor-pointer rounded active:shadow-inner group flex-grow"
