@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from "react-feather";
 import { useState } from "react";
-import HomeTileEntry from "./HomeTileEntry";
+import EntryPreview from "./EntryPreview";
 
 const Slider = ({ entries }) => {
   const [count, setCount] = useState(0);
@@ -32,7 +32,7 @@ const Slider = ({ entries }) => {
         size={30}
         strokeWidth={1.75}
       />
-      <HomeTileEntry entry={entries[count]} />
+      <EntryPreview entry={entries[count]} />
       <ChevronRight
         className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
         onClick={increment}

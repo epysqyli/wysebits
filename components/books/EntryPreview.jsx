@@ -1,7 +1,7 @@
 import { ThumbsUp, ThumbsDown } from "react-feather";
 import { shortenText } from "../../lib/utils";
 
-const TileEntry = ({ entry }) => {
+const EntryPreview = ({ entry }) => {
   return (
     <div className="w-3/5">
       <p className="mt-5 text-justify text-sm">
@@ -21,4 +21,4 @@ const TileEntry = ({ entry }) => {
   );
 };
 
-export default TileEntry;
+export default EntryPreview;
