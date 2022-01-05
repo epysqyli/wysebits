@@ -53,7 +53,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   };
 
   return (
-    <div className="absolute z-30 bg-white pt-10 px-3 w-screen h-screen shadow-lg border-gray-400 animate-show-up">
+    <div className="absolute z-30 bg-white pt-10 px-3 w-full h-screen shadow-lg border-gray-400 animate-show-up">
       <div className="mx-auto md:w-4/6">
         <div className="text-center text-lg border-b-2 pb-2 px-5">
           Make WyseBits a better place for the community!
