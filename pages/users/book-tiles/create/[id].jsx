@@ -7,6 +7,8 @@ import CardBcgActions from "../../../../components/books/CardBcgActions";
 import EditBookDetails from "../../../../components/users/EditBookDetails";
 import NoAccess from "../../../../components/users/NoAccess";
 import CreateEntryForm from "../../../../components/users/CreateEntryForm";
+import CreateEntrySlider from "../../../../components/users/CreateEntrySlider";
+
 import {
   getBook,
   getCategories,
@@ -210,21 +212,12 @@ const TileCreation = ({
 
         <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 mt-10">
           <form onSubmit={handleSubmit}>
-            {Object.values(tileEntries).map((entry, index) => {
-              return (
-                <div
-                  key={entry.id || index}
-                  className="my-10 bg-gray-200 shadow-md rounded-md"
-                >
-                  <CreateEntryForm
-                    entry={entry}
-                    isEntryValid={isEntryValid}
-                    handleChange={handleChange}
-                    saveForLater={saveForLater}
-                  />
-                </div>
-              );
-            })}
+            <CreateEntrySlider
+              entries={Object.values(tileEntries)}
+              isEntryValid={isEntryValid}
+              handleChange={handleChange}
+              saveForLater={saveForLater}
+            />
 
             {allEntriesValid() ? (
               <button
