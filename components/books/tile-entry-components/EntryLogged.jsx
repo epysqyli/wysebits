@@ -17,6 +17,8 @@ import {
   downvoteAndUpdateState,
   removeUpvoteAndUpdateState,
   removeDownvoteAndUpdateState,
+  addToFavInsightAndUpdateState,
+  removeFromFavInsightsAndUpdateState,
 } from "../../../lib/tileEntryMethods";
 
 import {
