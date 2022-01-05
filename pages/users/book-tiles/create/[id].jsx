@@ -1,6 +1,6 @@
 import axios from "axios";
 import Link from "next/dist/client/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/dist/client/router";
 import { AlertCircle } from "react-feather";
 import CardBcgActions from "../../../../components/books/CardBcgActions";
@@ -175,7 +175,11 @@ const TileCreation = ({
       axios
         .post(
           url,
-          { first_entry, second_entry, third_entry },
+          {
+            first_entry: first_entry.content,
+            second_entry: second_entry.content,
+            third_entry: third_entry.content,
+          },
           { withCredentials: true }
         )
         .then(() => router.push("/users/book-tiles/1"))
