@@ -213,7 +213,7 @@ const TileCreation = ({
           Share your top takeaways for this book
         </div>
 
-        <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 mt-10">
+        <div className="mx-auto md:w-4/6 xl:w-3/6 mt-10">
           <form onSubmit={handleSubmit}>
             <CreateEntrySlider
               entries={Object.values(tileEntries)}

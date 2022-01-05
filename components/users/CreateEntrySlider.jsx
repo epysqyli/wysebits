@@ -23,14 +23,14 @@ const CreateEntrySlider = ({
   };
 
   return (
-    <div className="flex justify-between items-center gap-x-2 md:gap-x-3">
+    <div className="flex justify-around items-center gap-x-2 md:gap-x-5">
       <div
         onClick={decrement}
-        className="py-40 shadow hover:shadow-md cursor-pointer rounded-md active:shadow-inner"
+        className="py-24 ml-2 bg-white text-gray-500 shadow hover:shadow-md hover:text-black cursor-pointer rounded-md active:shadow-inner group"
       >
-        <ChevronLeft size={36} strokeWidth={1.5} />
+        <ChevronLeft size={36} strokeWidth={1.5} className="group-active:scale-90" />
       </div>
-      <div className="flex-grow">
+      <div className="flex-grow bg-gray-200 rounded-md shadow-md">
         <CreateEntryForm
           entry={entries[current]}
           isEntryValid={isEntryValid}
@@ -40,9 +40,9 @@ const CreateEntrySlider = ({
       </div>
       <div
         onClick={increment}
-        className="py-40 shadow hover:shadow-md cursor-pointer rounded-md active:shadow-inner"
+        className="py-24 mr-2 bg-white text-gray-500 shadow hover:shadow-md hover:text-black cursor-pointer rounded-md active:shadow-inner group"
       >
-        <ChevronRight size={36} strokeWidth={1.5} />
+        <ChevronRight size={36} strokeWidth={1.5} className="group-active:scale-90" />
       </div>
     </div>
   );
