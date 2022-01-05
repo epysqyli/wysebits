@@ -22,10 +22,10 @@ const EditEntrySlider = ({ entries, handleChange, handleSubmit }) => {
       <div className="flex justify-around items-center gap-x-5 mb-5">
         <div
           onClick={decrement}
-          className="bg-white text-gray-500 shadow hover:shadow-md hover:text-black cursor-pointer rounded active:shadow-inner group flex-grow"
+          className="bg-white text-gray-500 shadow hover:shadow-md hover:text-black cursor-pointer rounded active:shadow-inner group flex-grow py-1"
         >
           <ChevronLeft
-            size={36}
+            size={30}
             strokeWidth={1.5}
             className="group-active:scale-90 mx-auto"
           />
@@ -35,10 +35,10 @@ const EditEntrySlider = ({ entries, handleChange, handleSubmit }) => {
         } / ${entries.length}`}</div>
         <div
           onClick={increment}
-          className="bg-white text-gray-500 shadow hover:shadow-md hover:text-black cursor-pointer rounded active:shadow-inner group flex-grow"
+          className="bg-white text-gray-500 shadow hover:shadow-md hover:text-black cursor-pointer rounded active:shadow-inner group flex-grow py-1"
         >
           <ChevronRight
-            size={36}
+            size={30}
             strokeWidth={1.5}
             className="group-active:scale-90 mx-auto"
           />
