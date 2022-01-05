@@ -80,10 +80,14 @@ const EditBookTile = ({
     const handleChange = (e) => {
       const newTileEntries = {
         ...tileEntries,
-        [e.target.name]: e.target.value,
+        [e.target.name]: {
+          content: e.target.value,
+          id: tileEntries[e.target.name].id,
+          name: tileEntries[e.target.name].name,
+          updateTime: tileEntries[e.target.name].updated_at,
+        },
       };
       setTileEntries(newTileEntries);
-      setCurrentEntry({ ...currentEntry, content: e.target.value });
     };
 
     const editEntry = (entryId, entryContent) => {

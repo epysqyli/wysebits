@@ -18,7 +18,7 @@ const EditForm = ({ entry, handleChange, handleSubmit }) => {
       </label>
       <textarea
         type="text"
-        name="first_entry"
+        name={entry.name}
         id="entry"
         className="border-none bg-white w-full rounded focus:ring-0 shadow-sm focus:shadow-md"
         placeholder="Important stuff"
