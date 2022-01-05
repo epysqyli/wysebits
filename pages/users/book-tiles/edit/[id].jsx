@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import EditForm from "../../../../components/users/EditForm";
+import EditEntrySlider from "../../../../components/users/EditEntrySlider";
 import EditBookDetails from "../../../../components/users/EditBookDetails";
 import CardBcgActions from "../../../../components/books/CardBcgActions";
 import DangerButton from "../../../../components/navigation/DangerButton";
 import NoAccess from "../../../../components/users/NoAccess";
 import { useRouter } from "next/dist/client/router";
+
 import {
   getLoggedUser,
   getBookTile,
@@ -149,21 +150,14 @@ const EditBookTile = ({
           Edit your takeaways for this book
         </div>
 
-        {entries.map((entry) => {
-          return (
-            <EditForm
-              content={entry.content}
-              entryId={entry.id}
-              updateTime={entry.updated_at}
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
-              setCurrentId={setCurrentId}
-              btnVisible={btnVisible[entry.id]}
-              showBtn={showBtn}
-              key={entry.id}
-            />
-          );
-        })}
+        <EditEntrySlider
+          entries={entries}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          setCurrentId={setCurrentId}
+          btnVisible={btnVisible}
+          showBtn={showBtn}
+        />
 
         <div className="my-10 w-2/5 mx-auto" onClick={() => deleteBookTile()}>
           <DangerButton text="Delete book tile" />
