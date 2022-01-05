@@ -6,7 +6,6 @@ import { AlertCircle } from "react-feather";
 import CardBcgActions from "../../../../components/books/CardBcgActions";
 import EditBookDetails from "../../../../components/users/EditBookDetails";
 import NoAccess from "../../../../components/users/NoAccess";
-import CreateEntryForm from "../../../../components/users/CreateEntryForm";
 import CreateEntrySlider from "../../../../components/users/CreateEntrySlider";
 
 import {

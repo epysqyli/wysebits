@@ -19,13 +19,16 @@ const CreateEntrySlider = ({
 
   const handleDecrement = (value) => {
     if (value === 0) return entries.length - 1;
-    return value;
+    return value - 1;
   };
 
   return (
-    <div className="flex justify-between items-center gap-x-3">
-      <div onClick={decrement}>
-        <ChevronLeft />
+    <div className="flex justify-between items-center gap-x-2 md:gap-x-3">
+      <div
+        onClick={decrement}
+        className="py-40 shadow hover:shadow-md cursor-pointer rounded-md active:shadow-inner"
+      >
+        <ChevronLeft size={36} strokeWidth={1.5} />
       </div>
       <div className="flex-grow">
         <CreateEntryForm
@@ -35,8 +38,11 @@ const CreateEntrySlider = ({
           saveForLater={saveForLater}
         />
       </div>
-      <div onClick={increment}>
-        <ChevronRight />
+      <div
+        onClick={increment}
+        className="py-40 shadow hover:shadow-md cursor-pointer rounded-md active:shadow-inner"
+      >
+        <ChevronRight size={36} strokeWidth={1.5} />
       </div>
     </div>
   );
