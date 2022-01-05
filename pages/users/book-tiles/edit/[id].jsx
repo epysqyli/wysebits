@@ -78,6 +78,7 @@ const EditBookTile = ({
     };
 
     const handleChange = (e) => {
+      console.log(e.target.name);
       const newTileEntries = {
         ...tileEntries,
         [e.target.name]: {
@@ -90,15 +91,10 @@ const EditBookTile = ({
       setTileEntries(newTileEntries);
     };
 
-    const editEntry = (entryId, entryContent) => {
-      const url = `http://localhost:3001/api/book_tiles/${bookTileId}/tile_entries/${entryId}`;
+    const editEntry = (entry) => {
+      const url = `http://localhost:3001/api/book_tiles/${bookTileId}/tile_entries/${entry.id}`;
       axios
-        .put(url, { content: entryContent }, { withCredentials: true })
-        .then((res) => {
-          if (res.status == 200) {
-            setBtnVisible({ [entryId]: false });
-          }
-        })
+        .put(url, { content: entry.content }, { withCredentials: true })
         .catch((err) => console.log(err));
     };
 
@@ -115,9 +111,9 @@ const EditBookTile = ({
         .catch((err) => console.log(err));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e, entry) => {
       e.preventDefault();
-      editEntry(currentEntry.id, currentEntry.content);
+      editEntry(entry);
     };
 
     useEffect(() => {
@@ -157,9 +153,9 @@ const EditBookTile = ({
         </div>
       </div>
     );
-  } else {
-    return <NoAccess />;
   }
+
+  if (userState.isLogged === false) return <NoAccess />;
 };
 
 export default EditBookTile;
