@@ -141,12 +141,14 @@ const EditBookTile = ({
         <div className="text-3xl text-gray-800 text-center mt-10 px-5">
           Edit your takeaways for this book
         </div>
-
-        <EditEntrySlider
-          entries={Object.values(tileEntries)}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-        />
+        
+        <div className="mx-auto md:w-4/5 xl:w-4/6 mt-10">
+          <EditEntrySlider
+            entries={Object.values(tileEntries)}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+        </div>
 
         <div className="my-10 w-2/5 mx-auto" onClick={() => deleteBookTile()}>
           <DangerButton text="Delete book tile" />

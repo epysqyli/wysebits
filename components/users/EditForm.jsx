@@ -32,7 +32,7 @@ const EditForm = ({ entry, handleChange, handleSubmit }) => {
         id="entry"
         className="border-none bg-white w-full rounded focus:ring-0 shadow-sm focus:shadow-md"
         placeholder="Important stuff"
-        rows="10"
+        rows="20"
         value={entry.content || ""}
         onChange={handleChange}
         required
