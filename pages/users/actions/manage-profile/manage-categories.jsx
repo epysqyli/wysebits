@@ -57,9 +57,9 @@ const ManageCategories = ({ cats, favCats, userState }) => {
   };
 
   const baseClass =
-    "rounded py-1 text-center text-gray-500 hover:text-gray-900 bg-gray-100 shadow cursor-pointer transition-all";
+    "rounded py-2 text-center text-gray-500 hover:text-gray-900 bg-gray-100 shadow cursor-pointer transition-all";
   const favClass =
-    "rounded py-1 text-center bg-white shadow-inner cursor-pointer transition-all";
+    "rounded py-2 text-center bg-white shadow-inner cursor-pointer transition-all";
   const noSelection = baseClass + " cursor-default";
 
   return (
@@ -73,7 +73,7 @@ const ManageCategories = ({ cats, favCats, userState }) => {
         </div>
       </div>
 
-      <div className="mx-auto w-11/12 md:w-4/5 py-10">
+      <div className="mx-auto w-11/12 md:w-4/6 py-10">
         <div className="text-center text-2xl text-gray-700 mb-10 border-b pb-2">
           Choose up to three categories
         </div>
