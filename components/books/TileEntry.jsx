@@ -36,21 +36,18 @@ const TileEntry = ({
 
   if (isLogged) {
     return (
-      // <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
-      <div>
-        <EntryLogged
-          entryProp={entryProp}
-          user={user}
-          insights={insights}
-          setInsights={setInsights}
-          upvotedEntries={upvotedEntries}
-          setUpvotedEntries={setUpvotedEntries}
-          downvotedEntries={downvotedEntries}
-          setDownvotedEntries={setDownvotedEntries}
-          followedUsers={followedUsers}
-          setFollowedUsers={setFollowedUsers}
-        />
-      </div>
+      <EntryLogged
+        entryProp={entryProp}
+        user={user}
+        insights={insights}
+        setInsights={setInsights}
+        upvotedEntries={upvotedEntries}
+        setUpvotedEntries={setUpvotedEntries}
+        downvotedEntries={downvotedEntries}
+        setDownvotedEntries={setDownvotedEntries}
+        followedUsers={followedUsers}
+        setFollowedUsers={setFollowedUsers}
+      />
     );
   }
 
