@@ -4,9 +4,15 @@ import FeedEntry from "../../components/feed/FeedEntry";
 export const getServerSideProps = async () => {
   const entries = await getEntries();
 
-  return {
-    props: { entries: entries.data.entries, pagy: entries.data.pagy },
-  };
+  try {
+    return {
+      props: { entries: entries.data.entries, pagy: entries.data.pagy },
+    };
+  } catch (error) {
+    return {
+      props: { entries: entries.data.entries, pagy: entries.data.pagy },
+    };
+  }
 };
 
 const Feed = ({ entries, pagy, userState }) => {

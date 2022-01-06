@@ -47,14 +47,17 @@ const SignUp = () => {
     <div>
       <div className="h-60 bg-signup-top bg-cover bg-center relative">
         <div className="bg-gray-900 h-full bg-opacity-80">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white w-screen text-center text-3xl leading-10">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white  text-center text-3xl leading-10">
             Start learning.
             <br /> Start sharing.
           </div>
         </div>
       </div>
 
-      <form className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 xl:w-2/6 py-10" onSubmit={makePostCall}>
+      <form
+        className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 xl:w-2/6 py-10"
+        onSubmit={makePostCall}
+      >
         <div className="w-4/6 mx-auto my-4">
           <label htmlFor="username" className="pl-1">
             Username
