@@ -67,11 +67,10 @@ const Home = ({ categories, userState }) => {
         </div>
 
         <Link href="/feed/1">
-          <div className="mb-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6 px-2 py-3 xl:py-0 border-b-2 pb-10 hover:bg-gray-100 active:shadow-inner active:bg-white transition-colors cursor-pointer rounded">
-            <div className="flex justify-center items-center gap-x-16">
+          <div className="mb-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6 px-2 py-3 xl:py-0 border-b-2 pb-10 hover:bg-gray-100 active:shadow-inner active:bg-white transition-colors cursor-pointer rounded group">
+            <div className="flex justify-center items-center gap-x-10">
               <Layers size={36} strokeWidth={1.5} color="gray" />
               <div className="text-4xl text-gray-700">Go to Feed ...</div>
-              <ArrowUpRight size={36} strokeWidth={1.5} color="gray" />
             </div>
             <div className="text-sm text-gray-500 mt-10 w-4/5 mx-auto text-justify">
               ... at your own peril of potentially wasting a lot of time
@@ -79,6 +78,14 @@ const Home = ({ categories, userState }) => {
               learning valuable things while you are instead most probably
               mindlessly procrastinating from your next useful real life task.{" "}
               <span className="font-medium">It's great!</span>
+            </div>
+            <div className="mx-auto w-min mt-10">
+              <ArrowUpRight
+                size={36}
+                strokeWidth={1.5}
+                color="gray"
+                className="group-hover:scale-125 transition-transform group-hover:animate-ping"
+              />
             </div>
           </div>
         </Link>
