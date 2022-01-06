@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getEntries } from "../../lib/serverSideMethods";
 import FeedEntry from "../../components/feed/FeedEntry";
 
@@ -25,7 +25,7 @@ export const getServerSideProps = async (context) => {
 
     return {
       props: {
-        entries: entries.data.entries,
+        entriesProps: entries.data.entries,
         pagy: entries.data.pagy,
         following: following.data,
         favBooks: favBooks.data.books,
@@ -42,7 +42,7 @@ export const getServerSideProps = async (context) => {
 };
 
 const Feed = ({
-  entries,
+  entriesProps,
   pagy,
   userState,
   following,
@@ -50,11 +50,17 @@ const Feed = ({
   entriesUp,
   entriesDown,
 }) => {
-  // const [entries, setEntries] = useState(entriesProp);
+  const [entries, setEntries] = useState([]);
+  const [loaded, setLoaded] = useState(false);
   const [followedUsers, setFollowedUsers] = useState(following);
   const [insights, setInsights] = useState(favInsights);
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
+
+  useEffect(() => {
+    setEntries(...entries, entriesProps);
+    setLoaded(true);
+  }, []);
 
   return (
     <div>
@@ -64,20 +70,26 @@ const Feed = ({
         </div>
       </div>
 
-      <div>
-        <FeedEntry
-          userState={userState}
-          entry={entries[0]}
-          insights={insights}
-          setInsights={setInsights}
-          followedUsers={followedUsers}
-          setFollowedUsers={setFollowedUsers}
-          upvotedEntries={upvotedEntries}
-          setUpvotedEntries={setUpvotedEntries}
-          downvotedEntries={downvotedEntries}
-          setDownvotedEntries={setDownvotedEntries}
-        />
-      </div>
+      {loaded == true
+        ? entries.map((entry) => {
+            return (
+              <div>
+                <FeedEntry
+                  userState={userState}
+                  entry={entry}
+                  insights={insights}
+                  setInsights={setInsights}
+                  followedUsers={followedUsers}
+                  setFollowedUsers={setFollowedUsers}
+                  upvotedEntries={upvotedEntries}
+                  setUpvotedEntries={setUpvotedEntries}
+                  downvotedEntries={downvotedEntries}
+                  setDownvotedEntries={setDownvotedEntries}
+                />
+              </div>
+            );
+          })
+        : null}
     </div>
   );
 };
