@@ -4,6 +4,8 @@ import {
   getCategories,
 } from "../../../../lib/serverSideMethods";
 
+import { useState } from "react";
+
 export const getServerSideProps = async (context) => {
   const user = await getLoggedUser(context);
   const favCategories = await getFavCategories(user, context);
@@ -12,16 +14,19 @@ export const getServerSideProps = async (context) => {
 
   return {
     props: {
-      categories: categories.data,
-      favCategories: favCategories.data,
+      cats: categories.data,
+      favCats: favCategories.data,
     },
   };
 };
 
-const ManageCategories = ({ categories, favCategories }) => {
+const ManageCategories = ({ cats, favCats }) => {
+  const [categories, setCategories] = useState(cats);
+  const [favCategories, setFavCategories] = useState(favCats);
+
   const isFav = (cat) => favCategories.some((userCat) => userCat.id === cat.id);
 
-  const baseClass = "border rounded py-1 text-center";
+  const baseClass = "border rounded py-1 text-center bg-gray-200";
   const favClass = "border rounded py-1 text-center bg-white";
   
   return (
