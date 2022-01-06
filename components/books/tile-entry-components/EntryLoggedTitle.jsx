@@ -16,7 +16,7 @@ const EntryLoggedTitle = ({
   setFollowedUsers,
 }) => {
   return (
-    <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
+    <div>
       <Link
         href={`/books/${slug(
           entryProp.book_tile.book.title,
