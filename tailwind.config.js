@@ -20,6 +20,7 @@ module.exports = {
         "categories": "url('/images/categories.jpg')",
         "user-welcome": "url('/images/user-welcome.jpg')",
         "wip-contributions": "url('/images/wip-contributions.jpg')",
+        "feed": "url('/images/feed.jpg')",
       },
       grayscale: {
         50: "50%",
