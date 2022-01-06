@@ -40,9 +40,7 @@ const EntryLogged = ({
 }) => {
   const entryUser = entryProp.book_tile.user;
 
-  const isFavInsight = () => {
-    return insights.some((insight) => insight.id === entryProp.id);
-  };
+  const isFavInsight = () => insights.some((insight) => insight.id === entryProp.id);
 
   return (
     <div>

@@ -51,7 +51,7 @@ const Feed = ({
   entriesDown,
 }) => {
   const [entries, setEntries] = useState([]);
-  const [loaded, setLoaded] = useState(false);
+  const [initialLoad, setInitialLoad] = useState(false);
   const [followedUsers, setFollowedUsers] = useState(following);
   const [insights, setInsights] = useState(favInsights);
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
@@ -59,7 +59,7 @@ const Feed = ({
 
   useEffect(() => {
     setEntries(...entries, entriesProps);
-    setLoaded(true);
+    setInitialLoad(true);
   }, []);
 
   return (
@@ -71,10 +71,10 @@ const Feed = ({
       </div>
 
       <div>
-        {loaded == true
+        {initialLoad == true
           ? entries.map((entry) => {
               return (
-                <div>
+                <div key={entry.id}>
                   <FeedEntry
                     userState={userState}
                     entry={entry}
