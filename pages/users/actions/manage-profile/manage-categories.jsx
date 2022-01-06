@@ -74,7 +74,7 @@ const ManageCategories = ({ cats, favCats, userState }) => {
       </div>
 
       <div className="mx-auto w-11/12 md:w-4/5 py-10">
-        <div className="text-center text-lg mb-10">
+        <div className="text-center text-2xl text-gray-700 mb-10 border-b pb-2">
           Choose up to three categories
         </div>
         <div className="grid grid-cols-2 gap-y-2 gap-x-2 lg:grid-cols-3 lg:gap-y-3 lg:gap-x-3 xl:grid-cols-4">
