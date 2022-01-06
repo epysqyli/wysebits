@@ -14,8 +14,8 @@ const ManageProfile = ({ userState }) => {
       <div>
         <WelcomeTop text="Manage your profile" bcgImg="bg-settings" />
 
-        <div className="mx-auto w-4/5 mt-10">
-          <div className="w-3/5 mx-auto">
+        <div className="mx-auto w-4/5 md:w-4/6 lg:w-2/5 mt-10">
+          <div className="mx-auto">
             <ManageBox
               text="Manage your favorite categories"
               href="/users/actions/manage-profile/manage-categories"

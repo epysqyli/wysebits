@@ -73,7 +73,7 @@ const ManageCategories = ({ cats, favCats, userState }) => {
         </div>
       </div>
 
-      <div className="mx-auto w-11/12 md:w-4/6 py-10">
+      <div className="mx-auto w-11/12 md:w-4/6 py-10 animate-show-up-slow">
         <div className="text-center text-2xl text-gray-700 mb-10 border-b pb-2">
           Choose up to three categories
         </div>
