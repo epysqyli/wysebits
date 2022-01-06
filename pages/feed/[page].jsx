@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getEntries } from "../../lib/serverSideMethods";
 import FeedEntry from "../../components/feed/FeedEntry";
+import Button from "../../components/navigation/Button";
 
 import {
   getLoggedUser,
@@ -91,6 +92,10 @@ const Feed = ({
               );
             })
           : null}
+      </div>
+
+      <div className="text-center my-5">
+        <Button text="Load more entries" />
       </div>
     </div>
   );
