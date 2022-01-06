@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/dist/client/image";
 import { shortenText } from "../../lib/utils";
-import { Image as ImageLoader } from "react-feather";
+import { Image as ImageLoader, ArrowUpRight } from "react-feather";
 import Link from "next/dist/client/link";
 
 const BookCard = ({ bookData, showLink }) => {
@@ -39,10 +39,11 @@ const BookCard = ({ bookData, showLink }) => {
         </div>
 
         {showLink ? (
-          <div className="cursor-pointer hover:text-gray-200 active:text-gray-300">
+          <div className="cursor-pointer hover:text-gray-200 active:text-gray-300 flex justify-end items-center gap-x-2 group">
             <Link href={`/categories/${bookData.category.slug}/1`}>
               {bookData.category.name}
             </Link>
+            <ArrowUpRight size={18} className="group-hover:scale-125 transition-transform" />
           </div>
         ) : (
           <div>{bookData.category.name}</div>
