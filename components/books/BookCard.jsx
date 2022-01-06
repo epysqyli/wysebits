@@ -39,15 +39,15 @@ const BookCard = ({ bookData, showLink }) => {
         </div>
 
         {showLink ? (
-          <div className="flex justify-end items-center gap-x-2 cursor-pointer hover:text-gray-200 active:text-gray-300 w-min mr-0 mx-auto group">
-            <Link href={`/categories/${bookData.category.slug}/1`}>
-              {bookData.category.name}
-            </Link>
-            <ArrowUpRight
-              size={18}
-              className="group-hover:scale-125 transition-transform"
-            />
-          </div>
+          <Link href={`/categories/${bookData.category.slug}/1`}>
+            <div className="flex justify-end items-center gap-x-2 cursor-pointer hover:text-gray-200 active:text-gray-300 mr-0 mx-auto group">
+              <div>{bookData.category.name}</div>
+              <ArrowUpRight
+                size={18}
+                className="group-hover:scale-125 transition-transform"
+              />
+            </div>
+          </Link>
         ) : (
           <div>{bookData.category.name}</div>
         )}
