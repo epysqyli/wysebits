@@ -17,14 +17,14 @@ const About = ({ userState }) => {
       <div className="pt-10 pb-20 bg-gray-100 shadow">
         <div className="w-4/5 md:w-4/6 mx-auto">
           <h3 className="text-3xl font-bold mb-5">What is Wysebits?</h3>
-          <p className="text-justify">
+          <p className="text-justify text-gray-800">
             Wysebits's vision is that of organizing knowledge contained in
             non-fiction books, so that for every book the most important idea
             can be identified.
           </p>
 
-          <h4 className="text-xl font-bold mt-5 mb-3">Why should I care?</h4>
-          <p className="text-justify">
+          <h4 className="text-xl text-gray-800 tracking-tight font-bold mt-5 mb-3">Why should I care?</h4>
+          <p className="text-justify text-gray-800">
             Every reader, in the curiosity-driven quest of knowledge building,
             has time and again encountered the annoying feeling of putting a
             book down without being able to easily recollect what the best
@@ -37,15 +37,15 @@ const About = ({ userState }) => {
             </span>
           </p>
 
-          <h4 className="text-xl font-bold mt-5 mb-3">What does it mean?</h4>
-          <p className="text-justify">
+          <h4 className="text-xl text-gray-800 tracking-tight font-bold mt-5 mb-3">What does it mean?</h4>
+          <p className="text-justify text-gray-800">
             Wysebits is a collaborative effort at knowledge distillation. This
             means that those incredibly great ideas found in a particular book
             now have a real chance to survive in the long term.
           </p>
 
-          <h4 className="text-xl font-bold mt-5 mb-3">How does it work?</h4>
-          <p className="text-justify">
+          <h4 className="text-xl text-gray-800 tracking-tight font-bold mt-5 mb-3">How does it work?</h4>
+          <p className="text-justify text-gray-800">
             Read a non-fiction book. Post three ideas from the book that you
             consider important. Users can upvote and downvote each other's
             ideas, in order to allow for bottom-up knowledge discovery. This
@@ -53,10 +53,10 @@ const About = ({ userState }) => {
             given book.
           </p>
 
-          <h4 className="text-xl font-bold mt-5 mb-3">
+          <h4 className="text-xl text-gray-800 tracking-tight font-bold mt-5 mb-3">
             How is it different from other websites?
           </h4>
-          <p className="text-justify">
+          <p className="text-justify text-gray-800">
             This is not a place for quotes collections, book summaries, reviews,
             reading suggestions or the like. This is a place for the no-frills
             organization of knowledge, straight from the community. Above all,
