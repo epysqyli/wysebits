@@ -112,7 +112,7 @@ const Book = ({
 
   const clientUrl = `/books/${slug}`;
 
-  if (entries && entries.length != 0) {
+  if (entries && entries.length != 0)
     return (
       <div>
         <Head>
@@ -158,7 +158,8 @@ const Book = ({
         </div>
       </div>
     );
-  } else {
+
+  if (entries == null) {
     return (
       <div className="pb-20">
         <Head>

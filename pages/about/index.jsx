@@ -54,7 +54,7 @@ const About = ({ userState }) => {
           </p>
 
           <h4 className="text-xl text-gray-800 tracking-tight font-bold mt-5 mb-3">
-            How is it different from other websites?
+            How is it different from other platforms?
           </h4>
           <p className="text-justify text-gray-800">
             This is not a place for quotes collections, book summaries, reviews,

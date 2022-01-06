@@ -17,6 +17,10 @@ const Feed = ({ entries, pagy, userState }) => {
           Latest insights from all creators
         </div>
       </div>
+
+      <div>
+        <FeedEntry entry={entries[0]} />
+      </div>
     </div>
   );
 };
