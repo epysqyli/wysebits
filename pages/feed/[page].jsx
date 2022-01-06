@@ -65,7 +65,18 @@ const Feed = ({
       </div>
 
       <div>
-        <FeedEntry entry={entries[0]} />
+        <FeedEntry
+          userState={userState}
+          entry={entries[0]}
+          insights={insights}
+          setInsights={setInsights}
+          followedUsers={followedUsers}
+          setFollowedUsers={setFollowedUsers}
+          upvotedEntries={upvotedEntries}
+          setUpvotedEntries={setUpvotedEntries}
+          downvotedEntries={downvotedEntries}
+          setDownvotedEntries={setDownvotedEntries}
+        />
       </div>
     </div>
   );

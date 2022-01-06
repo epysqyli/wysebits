@@ -46,7 +46,8 @@ const EntryLogged = ({
   };
 
   return (
-    <div className="shadow-md rounded-md">
+    // <div className="shadow-md rounded-md">
+    <div>
       <div className="border-b-2 py-5 px-10 md:px-16 font-light whitespace-pre-line">
         {entryProp.content}
       </div>

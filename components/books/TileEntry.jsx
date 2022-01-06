@@ -36,7 +36,8 @@ const TileEntry = ({
 
   if (isLogged) {
     return (
-      <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
+      // <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
+      <div>
         <EntryLogged
           entryProp={entryProp}
           user={user}
