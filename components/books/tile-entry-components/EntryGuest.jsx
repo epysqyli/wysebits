@@ -3,7 +3,7 @@ import Link from "next/dist/client/link";
 
 const EntryGuest = ({ entryProp }) => {
   return (
-    <div className="shadow-md rounded-md">
+    <div>
       <div className="border-b-2 py-5 px-10 md:px-16 whitespace-pre-line font-light">
         {entryProp.content}
       </div>

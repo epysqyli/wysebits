@@ -53,11 +53,7 @@ const TileEntry = ({
 
   if (!isLogged && showTitle) return <EntryGuestTitle entryProp={entryProp} />;
 
-  return (
-    <div className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all">
-      <EntryGuest entryProp={entryProp} />
-    </div>
-  );
+  return <EntryGuest entryProp={entryProp} />;
 };
 
 export default TileEntry;
