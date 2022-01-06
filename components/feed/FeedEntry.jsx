@@ -13,7 +13,7 @@ const FeedEntry = ({
   setFollowedUsers,
 }) => {
   return (
-    <div>
+    <div className="border my-2 bg-white">
       <TileEntry
         user={userState.user}
         isLogged={userState.isLogged}

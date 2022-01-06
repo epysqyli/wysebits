@@ -36,7 +36,7 @@ export const getServerSideProps = async (context) => {
     };
   } catch (error) {
     return {
-      props: { entries: entries.data.entries, pagy: entries.data.pagy },
+      props: { entriesProps: entries.data.entries, pagy: entries.data.pagy },
     };
   }
 };
@@ -70,26 +70,28 @@ const Feed = ({
         </div>
       </div>
 
-      {loaded == true
-        ? entries.map((entry) => {
-            return (
-              <div>
-                <FeedEntry
-                  userState={userState}
-                  entry={entry}
-                  insights={insights}
-                  setInsights={setInsights}
-                  followedUsers={followedUsers}
-                  setFollowedUsers={setFollowedUsers}
-                  upvotedEntries={upvotedEntries}
-                  setUpvotedEntries={setUpvotedEntries}
-                  downvotedEntries={downvotedEntries}
-                  setDownvotedEntries={setDownvotedEntries}
-                />
-              </div>
-            );
-          })
-        : null}
+      <div>
+        {loaded == true
+          ? entries.map((entry) => {
+              return (
+                <div>
+                  <FeedEntry
+                    userState={userState}
+                    entry={entry}
+                    insights={insights}
+                    setInsights={setInsights}
+                    followedUsers={followedUsers}
+                    setFollowedUsers={setFollowedUsers}
+                    upvotedEntries={upvotedEntries}
+                    setUpvotedEntries={setUpvotedEntries}
+                    downvotedEntries={downvotedEntries}
+                    setDownvotedEntries={setDownvotedEntries}
+                  />
+                </div>
+              );
+            })
+          : null}
+      </div>
     </div>
   );
 };
