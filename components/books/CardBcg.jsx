@@ -54,7 +54,7 @@ const CardBcg = ({ bookData, userState, favBooks }) => {
         />
 
         <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 2xl:w-2/6 shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10">
-          <BookCard bookData={bookData} />
+          <BookCard bookData={bookData} showLink={true} />
         </div>
         <div className="flex mt-5 justify-center gap-x-5">
           <div

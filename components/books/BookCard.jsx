@@ -2,8 +2,9 @@ import { useState } from "react";
 import Image from "next/dist/client/image";
 import { shortenText } from "../../lib/utils";
 import { Image as ImageLoader } from "react-feather";
+import Link from "next/dist/client/link";
 
-const BookCard = ({ bookData }) => {
+const BookCard = ({ bookData, showLink }) => {
   const [imageIsLoaded, setImageIsLoaded] = useState(false);
   const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
   const dbSrc = bookData.cover_url;
@@ -36,8 +37,18 @@ const BookCard = ({ bookData }) => {
         <div className="text-xl font-medium break-words">
           {shortenText(bookData.title, 8)}
         </div>
-        <div className="text">{bookData.category.name}</div>
-        <div className="text italic">
+
+        {showLink ? (
+          <div className="cursor-pointer hover:text-gray-200 active:text-gray-300">
+            <Link href={`/categories/${bookData.category.slug}/1`}>
+              {bookData.category.name}
+            </Link>
+          </div>
+        ) : (
+          <div>{bookData.category.name}</div>
+        )}
+
+        <div className="italic">
           {bookData.authors[0]
             ? bookData.authors[0].full_name
             : "No authors found"}
