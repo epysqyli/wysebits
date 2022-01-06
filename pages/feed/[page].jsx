@@ -1,4 +1,5 @@
 import { getEntries } from "../../lib/serverSideMethods";
+import FeedEntry from "../../components/feed/FeedEntry";
 
 export const getServerSideProps = async () => {
   const entries = await getEntries();
