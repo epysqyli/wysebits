@@ -37,7 +37,10 @@ export const getServerSideProps = async (context) => {
     };
   } catch (error) {
     return {
-      props: { entriesProps: entries.data.entries, pagy: entries.data.pagy },
+      props: {
+        entriesProps: entries.data.entries,
+        pagy: entries.data.pagy,
+      },
     };
   }
 };
@@ -57,6 +60,11 @@ const Feed = ({
   const [insights, setInsights] = useState(favInsights);
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
+
+  const getMoreEntries = async () => {
+    const newEntries = await getEntries(pagy.next);
+    setEntries([...entries, ...newEntries.data.entries]);
+  };
 
   useEffect(() => {
     setEntries(...entries, entriesProps);
@@ -94,7 +102,10 @@ const Feed = ({
           : null}
       </div>
 
-      <div className="text-center my-5">
+      <div
+        className="text-center my-5"
+        onClick={async () => await getMoreEntries()}
+      >
         <Button text="Load more entries" />
       </div>
     </div>
