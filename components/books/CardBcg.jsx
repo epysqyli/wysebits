@@ -45,7 +45,7 @@ const CardBcg = ({ bookData, userState, favBooks }) => {
 
   useEffect(() => updateIsFav(), [favs]);
 
-  if (userState.isLogged) {
+  if (userState.isLogged)
     return (
       <div className="relative py-5 bg-gray-300">
         <img
@@ -82,7 +82,8 @@ const CardBcg = ({ bookData, userState, favBooks }) => {
         </div>
       </div>
     );
-  } else {
+
+  if (userState.isLogged == false)
     return (
       <div className="relative py-5">
         <img
@@ -91,11 +92,10 @@ const CardBcg = ({ bookData, userState, favBooks }) => {
         />
 
         <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10">
-          <BookCard bookData={bookData} />
+          <BookCard bookData={bookData} showLink={true} />
         </div>
       </div>
     );
-  }
 };
 
 export default CardBcg;
