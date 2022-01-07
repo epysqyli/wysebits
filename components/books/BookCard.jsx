@@ -3,8 +3,9 @@ import Image from "next/dist/client/image";
 import { shortenText } from "../../lib/utils";
 import { Image as ImageLoader, ArrowUpRight } from "react-feather";
 import Link from "next/dist/client/link";
+import { slug } from "../../lib/utils";
 
-const BookCard = ({ bookData, showLink }) => {
+const BookCard = ({ bookData, showCategoryLink, showBookLink }) => {
   const [imageIsLoaded, setImageIsLoaded] = useState(false);
   const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
   const dbSrc = bookData.cover_url;
@@ -34,13 +35,21 @@ const BookCard = ({ bookData, showLink }) => {
       </div>
 
       <div className="w-3/6 flex flex-col justify-around text-right">
-        <div className="text-xl font-medium break-words">
-          {shortenText(bookData.title, 8)}
-        </div>
+        {showBookLink ? (
+          <Link href={`/books/${slug(bookData.title, bookData.id)}/1`}>
+            <div className="text-xl font-medium break-words cursor-pointer hover:text-gray-300 active:text-gray-400">
+              {shortenText(bookData.title, 8)}
+            </div>
+          </Link>
+        ) : (
+          <div className="text-xl font-medium break-words">
+            {shortenText(bookData.title, 8)}
+          </div>
+        )}
 
-        {showLink ? (
+        {showCategoryLink ? (
           <Link href={`/categories/${bookData.category.slug}/1`}>
-            <div className="flex justify-end items-center gap-x-2 cursor-pointer hover:text-gray-200 active:text-gray-300 mr-0 mx-auto group">
+            <div className="flex justify-end items-center gap-x-2 cursor-pointer hover:text-gray-300 active:text-gray-400 mr-0 mx-auto group">
               <div>{bookData.category.name}</div>
               <ArrowUpRight
                 size={18}
