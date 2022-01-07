@@ -105,7 +105,7 @@ const Feed = ({
 
       {nextPage !== null ? (
         <div
-          className="text-center my-5"
+          className="my-10 w-3/5 lg:w-2/5 mx-auto"
           onClick={async () => await getMoreEntries()}
         >
           <Button text="Load more entries" />
