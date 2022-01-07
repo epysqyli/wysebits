@@ -37,7 +37,7 @@ const EntryLogged = ({
   setDownvotedEntries,
   followedUsers,
   setFollowedUsers,
-  feed
+  feed,
 }) => {
   const entryUser = entryProp.book_tile.user;
 
@@ -47,7 +47,7 @@ const EntryLogged = ({
   if (feed === true)
     return (
       <div className="flex flex-col justify-around h-full">
-        <div className="border-b-2 lg:border-l-2 py-5 px-10 md:px-16 font-light whitespace-pre-line flex-grow">
+        <div className="border-b-2 lg:border-l-2 rounded-bl py-5 px-10 md:px-16 font-light whitespace-pre-line flex-grow">
           {entryProp.content}
         </div>
 
