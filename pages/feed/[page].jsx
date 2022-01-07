@@ -60,10 +60,12 @@ const Feed = ({
   const [insights, setInsights] = useState(favInsights);
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
+  const [nextPage, setNextPage] = useState(pagy.next);
 
   const getMoreEntries = async () => {
-    const newEntries = await getEntries(pagy.next);
+    const newEntries = await getEntries(nextPage);
     setEntries([...entries, ...newEntries.data.entries]);
+    setNextPage(newEntries.data.pagy.next);
   };
 
   useEffect(() => {
@@ -102,12 +104,14 @@ const Feed = ({
           : null}
       </div>
 
-      <div
-        className="text-center my-5"
-        onClick={async () => await getMoreEntries()}
-      >
-        <Button text="Load more entries" />
-      </div>
+      {nextPage !== null ? (
+        <div
+          className="text-center my-5"
+          onClick={async () => await getMoreEntries()}
+        >
+          <Button text="Load more entries" />
+        </div>
+      ) : null}
     </div>
   );
 };
