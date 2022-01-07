@@ -16,6 +16,7 @@ const TileEntry = ({
   setDownvotedEntries,
   followedUsers,
   setFollowedUsers,
+  feed,
 }) => {
   if (isLogged && showTitle) {
     return (
@@ -47,6 +48,7 @@ const TileEntry = ({
         setDownvotedEntries={setDownvotedEntries}
         followedUsers={followedUsers}
         setFollowedUsers={setFollowedUsers}
+        feed={true}
       />
     );
   }
@@ -54,7 +56,7 @@ const TileEntry = ({
   if (isLogged == false && showTitle)
     return <EntryGuestTitle entryProp={entryProp} />;
 
-  return <EntryGuest entryProp={entryProp} />;
+  return <EntryGuest entryProp={entryProp} feed={true} />;
 };
 
 export default TileEntry;
