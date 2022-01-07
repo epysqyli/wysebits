@@ -13,8 +13,7 @@ import {
 } from "../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
-  const pageNum = context.params.page;
-  const entries = await getEntries(pageNum);
+  const entries = await getEntries(1);
 
   try {
     const loggedUser = await getLoggedUser(context);
