@@ -51,7 +51,7 @@ const EntryLogged = ({
           {entryProp.content}
         </div>
 
-        <div className="flex justify-between items-center text-sm px-10 md:px-16 py-4">
+        <div className="flex justify-between items-center text-sm px-10 md:px-16 py-4 bg-gray-100">
           <div className="flex justify-center items-center gap-x-3">
             {isUpvoted(upvotedEntries, entryProp) ? (
               <div
