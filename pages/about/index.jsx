@@ -49,7 +49,7 @@ const About = ({ userState }) => {
             Read a non-fiction book. Post three ideas from the book that you
             consider important. Users can upvote and downvote each other's
             ideas, in order to allow for bottom-up knowledge discovery. This
-            will allow, in due time, the emergence of the "best" idea from any
+            will allow, in due time, for the emergence of the "best" idea from any
             given book.
           </p>
 
