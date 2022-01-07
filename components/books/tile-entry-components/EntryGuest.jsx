@@ -9,7 +9,7 @@ const EntryGuest = ({ entryProp, feed }) => {
           {entryProp.content}
         </div>
 
-        <div className="flex justify-between items-center text-sm px-10 md:px-16 py-4 bg-gray-100">
+        <div className="flex justify-between items-center text-sm px-10 md:px-16 py-4 lg:bg-gray-100">
           <div className="flex justify-center items-center gap-x-3">
             <ThumbsUp size={16} color="gray" strokeWidth={1.75} />
             <div className="text-gray-600">{entryProp.net_votes}</div>
