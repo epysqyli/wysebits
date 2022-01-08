@@ -188,15 +188,15 @@ const Book = ({
     );
 
   return (
-    <div className="pb-20">
+    <div>
       <Head>
         <title>WyseBits - {book.title}</title>
       </Head>
       <CardBcg bookData={book} userState={userState} favBooks={favBooks} />
-      <div className="w-4/5 md:w-4/6 lg:w-3/6 mx-auto">
+      <div className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 2xl:w-1/3 py-20 lg:py-40 2xl:py-48">
         <NoItem message="It appears as though there are no insights for this book yet ..." />
         <Link href={`/users/book-tiles/create/${book.id}`}>
-          <div className="border px-5 py-3 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
+          <div className="border px-5 py-3 mt-20 lg:mt-32 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
             Be the first and share your knowledge by adding your own insights
             for <b>{title}</b> now!
             <FilePlus

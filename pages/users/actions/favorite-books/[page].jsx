@@ -64,7 +64,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
       return (
         <div>
           <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
-          <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+          <div className="mt-10 lg:mt-20 mx-auto w-11/12 lg:w-4/5 xl:w-4/5 2xl:w-4/6 grid md:grid-cols-2 xl:grid-cols-3 gap-y-12 md:gap-x-6 xl:gap-x-10">
             {books.map((item) => {
               return (
                 <Link
@@ -79,7 +79,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
             })}
           </div>
 
-          <div className="flex justify-around my-16 md:w-4/5 mx-auto">
+          <div className="flex justify-around my-16 lg:my-32 md:w-4/5 lg:w-1/2 mx-auto">
             <div className="w-1/3">
               <PageNavButton
                 btnText="Previous page"
