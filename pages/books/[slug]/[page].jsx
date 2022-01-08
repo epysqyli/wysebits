@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { FilePlus } from "react-feather";
+import { Bookmark, FilePlus } from "react-feather";
 import TileEntry from "../../../components/books/TileEntry";
 import CardBcg from "../../../components/books/CardBcg";
 import NoItem from "../../../components/users/NoItem";
 import PageNavButton from "../../../components/navigation/PageNavButton";
+import Recommendations from "../../../components/books/Recommendations";
 import Link from "next/dist/client/link";
 import Head from "next/head";
 
@@ -16,6 +17,7 @@ import {
   getUpvotedEntries,
   getDownvotedEntries,
   getBook,
+  getCategoryRecommendations,
 } from "../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
@@ -28,6 +30,7 @@ export const getServerSideProps = async (context) => {
 
   const book = await getBook(id);
   const entries = await getBookEntries(id, pageNum);
+  const recommendations = await getCategoryRecommendations(book.data.category);
 
   try {
     const loggedUser = await getLoggedUser(context);
@@ -50,6 +53,7 @@ export const getServerSideProps = async (context) => {
           favInsights: favInsights.data.tile_entries,
           entriesUp: upvotedEntries.data.upvoted_entries,
           entriesDown: downvotedEntries.data.downvoted_entries,
+          recommendations: recommendations.data,
         },
       };
     } else {
@@ -62,6 +66,7 @@ export const getServerSideProps = async (context) => {
           pagy: entries.data.pagy,
           slug: slug,
           following: following.data,
+          recommendations: recommendations.data,
         },
       };
     }
@@ -75,6 +80,7 @@ export const getServerSideProps = async (context) => {
           favBooks: [],
           pagy: entries.data.pagy,
           slug: slug,
+          recommendations: recommendations.data,
         },
       };
     } else {
@@ -86,6 +92,7 @@ export const getServerSideProps = async (context) => {
           favBooks: [],
           pagy: entries.data.pagy,
           slug: slug,
+          recommendations: recommendations.data,
         },
       };
     }
@@ -104,6 +111,7 @@ const Book = ({
   favInsights,
   entriesUp,
   entriesDown,
+  recommendations,
 }) => {
   const [followedUsers, setFollowedUsers] = useState(following);
   const [insights, setInsights] = useState(favInsights);
@@ -157,6 +165,23 @@ const Book = ({
               url={pagy.next_url}
               clientUrl={clientUrl}
             />
+          </div>
+        </div>
+
+        <div>
+          <div className="w-4/5 mx-auto flex items-center justify-around border-t pt-5 lg:pt-10">
+            <Bookmark
+              className="w-1/5"
+              size={48}
+              strokeWidth={1.5}
+              color="gray"
+            />
+            <div className="w-3/5 text-2xl text-gray-800">
+              Recommeded books from the {book.category.name} category
+            </div>
+          </div>
+          <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-2 lg:gap-x-1 gap-y-2 mt-10 lg:mt-20 mb-20">
+            <Recommendations recommendations={recommendations} />
           </div>
         </div>
       </div>
