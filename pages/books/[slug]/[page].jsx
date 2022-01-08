@@ -127,7 +127,7 @@ const Book = ({
           <title>WyseBits - {book.title}</title>
         </Head>
         <CardBcg bookData={book} userState={userState} favBooks={favBooks} />
-        <div className="my-10 w-4/5 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
+        <div className="my-10 w-4/5 md:w-3/5 2xl:w-2/3 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
           {entries.map((entry) => {
             return (
               <div
@@ -180,7 +180,7 @@ const Book = ({
               Recommeded books from the {book.category.name} category
             </div>
           </div>
-          <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-2 lg:gap-x-1 gap-y-2 mt-10 lg:mt-20 mb-20">
+          <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:w-4/5 xl:grid-cols-4 gap-x-2 lg:gap-x-2 gap-y-2 mt-10 lg:mt-20 mb-20">
             <Recommendations recommendations={recommendations} />
           </div>
         </div>

@@ -26,7 +26,7 @@ export const getServerSideProps = async (context) => {
 const Category = ({ books, categoryName, categorySlug, pagy }) => {
   const clientUrl = `/categories/${categorySlug}`;
 
-  if (books.length != 0) {
+  if (books.length !== 0)
     return (
       <div>
         <div className="bg-categories bg-cover bg-center shadow">
@@ -35,7 +35,7 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
           </div>
         </div>
 
-        <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+        <div className="mt-10 lg:mt-20 mx-auto w-11/12 lg:w-4/5 xl:w-4/6 grid md:grid-cols-2 xl:grid-cols-3 gap-y-12 md:gap-x-6 xl:gap-x-10">
           {books.map((book) => {
             return (
               <Link
@@ -50,7 +50,7 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
           })}
         </div>
 
-        <div className="flex justify-around my-16 md:w-4/5 mx-auto">
+        <div className="flex justify-around mt-16 lg:mt-32 md:w-4/5 mx-auto">
           <div className="w-1/3">
             <PageNavButton
               btnText="Previous page"
@@ -68,7 +68,8 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
         </div>
       </div>
     );
-  } else {
+
+  if (books.length === 0)
     return (
       <div>
         <div className="bg-categories bg-cover bg-center shadow">
@@ -93,7 +94,6 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
         </div>
       </div>
     );
-  }
 };
 
 export default Category;
