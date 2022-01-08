@@ -47,7 +47,7 @@ const EntryLogged = ({
   if (feed === true)
     return (
       <div className="flex flex-col justify-around h-full">
-        <div className="border-b-2 lg:border-l-2 rounded-bl py-5 px-10 md:px-16 font-light whitespace-pre-line flex-grow mt-10 w-4/5 mx-auto text-justify md:text-left lg:mt-0 lg:w-full">
+        <div className="border-b-2 lg:border-l-2 rounded-bl py-5 px-10 md:px-16 font-light whitespace-pre-line flex-grow mt-10 w-5/6 mx-auto text-justify md:text-left lg:mt-0 lg:w-full">
           {entryProp.content}
         </div>
 
