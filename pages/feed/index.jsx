@@ -65,10 +65,8 @@ const Feed = ({
 }) => {
   const [selectedEntries, setSelectedEntries] = useState([]);
   const [globalEntries, setGlobalEntries] = useState(entriesProps);
-  const [customEntries, setCustomEntries] = useState(customEntriesProps);
   const [currentSelection, setCurrentSelection] = useState("global");
   const [nextPage, setNextPage] = useState(pagy.next);
-  const [customNextPage, setCustomNextPage] = useState(customPagy.next);
 
   const [initialLoad, setInitialLoad] = useState(false);
   const [followedUsers, setFollowedUsers] = useState(following);
@@ -79,11 +77,6 @@ const Feed = ({
   const selectGlobalEntries = () => {
     setCurrentSelection("global");
     setSelectedEntries(globalEntries);
-  };
-
-  const selectCustomEntries = () => {
-    setCurrentSelection("custom");
-    setSelectedEntries(customEntries);
   };
 
   const getMoreEntries = async () => {
@@ -107,36 +100,88 @@ const Feed = ({
     setInitialLoad(true);
   }, []);
 
+  if (userState.isLogged === true) {
+    const [customEntries, setCustomEntries] = useState(customEntriesProps);
+    const [customNextPage, setCustomNextPage] = useState(customPagy.next);
+
+    const selectCustomEntries = () => {
+      setCurrentSelection("custom");
+      setSelectedEntries(customEntries);
+    };
+
+    return (
+      <div>
+        <div className="bg-feed bg-cover bg-center shadow">
+          <div className="bg-gray-800 bg-opacity-70 text-white text-2xl md:text-3xl font-medium text-center py-12">
+            Latest insights from all creators
+          </div>
+        </div>
+
+        <div className="flex items-center md:mt-5 md:w-4/5 xl:w-4/6 2xl:w-1/2 mx-auto">
+          <div
+            className={`text-gray-600 w-1/2 py-4 text-center transition-all ${
+              currentSelection === "custom"
+                ? "bg-gray-200 inner-shadow text-black rounded-br-md md:rounded-md"
+                : "cursor-pointer opacity-30"
+            }`}
+            onClick={selectCustomEntries}
+          >
+            <Grid size={32} strokeWidth={1.5} className="mx-auto" />
+            <div className="mt-3">Favorite categories</div>
+          </div>
+          <div
+            className={`text-gray-600 w-1/2 py-4 text-center transition-all ${
+              currentSelection === "global"
+                ? "bg-gray-200 inner-shadow text-black rounded-bl-md md:rounded-md"
+                : "cursor-pointer opacity-30"
+            }`}
+            onClick={selectGlobalEntries}
+          >
+            <Globe size={32} strokeWidth={1.5} className="mx-auto" />
+            <div className="mt-3">Global feed</div>
+          </div>
+        </div>
+
+        <div>
+          {initialLoad == true
+            ? selectedEntries.map((entry) => {
+                return (
+                  <div key={entry.id}>
+                    <FeedEntry
+                      userState={userState}
+                      entry={entry}
+                      insights={insights}
+                      setInsights={setInsights}
+                      followedUsers={followedUsers}
+                      setFollowedUsers={setFollowedUsers}
+                      upvotedEntries={upvotedEntries}
+                      setUpvotedEntries={setUpvotedEntries}
+                      downvotedEntries={downvotedEntries}
+                      setDownvotedEntries={setDownvotedEntries}
+                    />
+                  </div>
+                );
+              })
+            : null}
+        </div>
+
+        <div className="mx-auto my-10 w-3/5 md:w-2/5 lg:w-2/6 xl:w-1/4">
+          <FeedLoader
+            nextPage={nextPage}
+            customNextPage={customNextPage}
+            currentSelection={currentSelection}
+            getMoreEntries={getMoreEntries}
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="bg-feed bg-cover bg-center shadow">
         <div className="bg-gray-800 bg-opacity-70 text-white text-2xl md:text-3xl font-medium text-center py-12">
           Latest insights from all creators
-        </div>
-      </div>
-
-      <div className="flex items-center md:mt-5 md:w-4/5 xl:w-4/6 2xl:w-1/2 mx-auto">
-        <div
-          className={`text-gray-600 w-1/2 py-4 text-center transition-all ${
-            currentSelection === "custom"
-              ? "bg-gray-200 inner-shadow text-black rounded-br-md md:rounded-md"
-              : "cursor-pointer opacity-30"
-          }`}
-          onClick={selectCustomEntries}
-        >
-          <Grid size={32} strokeWidth={1.5} className="mx-auto" />
-          <div className="mt-3">Favorite categories</div>
-        </div>
-        <div
-          className={`text-gray-600 w-1/2 py-4 text-center transition-all ${
-            currentSelection === "global"
-              ? "bg-gray-200 inner-shadow text-black rounded-bl-md md:rounded-md"
-              : "cursor-pointer opacity-30"
-          }`}
-          onClick={selectGlobalEntries}
-        >
-          <Globe size={32} strokeWidth={1.5} className="mx-auto" />
-          <div className="mt-3">Global feed</div>
         </div>
       </div>
 
@@ -166,7 +211,6 @@ const Feed = ({
       <div className="mx-auto my-10 w-3/5 md:w-2/5 lg:w-2/6 xl:w-1/4">
         <FeedLoader
           nextPage={nextPage}
-          customNextPage={customNextPage}
           currentSelection={currentSelection}
           getMoreEntries={getMoreEntries}
         />
