@@ -62,7 +62,7 @@ const Feed = ({
   const [nextPage, setNextPage] = useState(pagy.next);
 
   const getMoreEntries = async () => {
-    const newEntries = await getEntries(nextPage);
+    const newEntries = await getFeed(nextPage);
     setEntries([...entries, ...newEntries.data.entries]);
     setNextPage(newEntries.data.pagy.next);
   };
