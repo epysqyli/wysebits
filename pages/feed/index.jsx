@@ -9,19 +9,19 @@ import {
   getFavEntries,
   getUpvotedEntries,
   getDownvotedEntries,
-  getFeed,
+  getGuestFeed,
+  getUserFeed,
   getCustomFeed,
 } from "../../lib/serverSideMethods";
 
-import { updateCustomFeed } from "../../lib/feedMethods";
+import { updateUserFeed, updateCustomFeed } from "../../lib/feedMethods";
 
 import { Grid, Globe } from "react-feather";
 
 export const getServerSideProps = async (context) => {
-  const entries = await getFeed(1);
-
   try {
     const loggedUser = await getLoggedUser(context);
+    const entries = await getUserFeed(loggedUser, context, 1);
     const following = await getAllFollowing(loggedUser, context);
     const favBooks = await getFavBooks(loggedUser, context);
     const favInsights = await getFavEntries(loggedUser, context);
@@ -43,7 +43,9 @@ export const getServerSideProps = async (context) => {
       },
     };
   } catch (error) {
-    return {
+  const entries = await getGuestFeed(1);
+
+  return {
       props: {
         entriesProps: entries.data.entries,
         pagy: entries.data.pagy,
@@ -80,19 +82,26 @@ const Feed = ({
   };
 
   const getMoreEntries = async () => {
-    if (currentSelection === "global") {
-      const newEntries = await getFeed(nextPage);
+    if (currentSelection === "global" && userState.isLogged === false) {
+      const newEntries = await getGuestFeed(nextPage);
       setGlobalEntries([...globalEntries, ...newEntries.data.entries]);
       setSelectedEntries([...globalEntries, ...newEntries.data.entries]);
       setNextPage(newEntries.data.pagy.next);
     }
 
-    if (currentSelection === "custom") {
+    if (currentSelection === "global" && userState.isLogged === true) {
+      const newEntries = await updateUserFeed(userState.user, nextPage);
+      setGlobalEntries([...globalEntries, ...newEntries.data.entries]);
+      setSelectedEntries([...globalEntries, ...newEntries.data.entries]);
+      setNextPage(newEntries.data.pagy.next);
+    }
+
+    if (currentSelection === "custom" && userState.isLogged === true) {
       const newEntries = await updateCustomFeed(userState.user, customNextPage);
       setCustomEntries([...customEntries, ...newEntries.data.entries]);
       setSelectedEntries([...customEntries, ...newEntries.data.entries]);
       setCustomNextPage(newEntries.data.pagy.next);
-    }
+    }    
   };
 
   useEffect(() => {
@@ -101,7 +110,7 @@ const Feed = ({
   }, []);
 
   const [customEntries, setCustomEntries] = useState(customEntriesProps);
-  const [customNextPage, setCustomNextPage] = useState(customPagy.next);
+  const [customNextPage, setCustomNextPage] = useState(customPagy ? customPagy.next : null);
 
   if (userState.isLogged === true) {
     const selectCustomEntries = () => {
