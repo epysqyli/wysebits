@@ -100,10 +100,10 @@ const Feed = ({
     setInitialLoad(true);
   }, []);
 
-  if (userState.isLogged === true) {
-    const [customEntries, setCustomEntries] = useState(customEntriesProps);
-    const [customNextPage, setCustomNextPage] = useState(customPagy.next);
+  const [customEntries, setCustomEntries] = useState(customEntriesProps);
+  const [customNextPage, setCustomNextPage] = useState(customPagy.next);
 
+  if (userState.isLogged === true) {
     const selectCustomEntries = () => {
       setCurrentSelection("custom");
       setSelectedEntries(customEntries);
