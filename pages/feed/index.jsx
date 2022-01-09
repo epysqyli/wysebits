@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import FeedEntry from "../../components/feed/FeedEntry";
-import Button from "../../components/navigation/Button";
+import FeedLoader from "../../components/feed/FeedLoader";
 
 import {
   getLoggedUser,
@@ -163,14 +163,14 @@ const Feed = ({
           : null}
       </div>
 
-      {nextPage !== null ? (
-        <div
-          className="my-10 w-3/5 lg:w-2/5 mx-auto"
-          onClick={() => getMoreEntries()}
-        >
-          <Button text="Load more entries" />
-        </div>
-      ) : null}
+      <div className="mx-auto my-10 w-3/5">
+        <FeedLoader
+          nextPage={nextPage}
+          customNextPage={customNextPage}
+          currentSelection={currentSelection}
+          getMoreEntries={getMoreEntries}
+        />
+      </div>
     </div>
   );
 };
