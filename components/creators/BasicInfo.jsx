@@ -44,7 +44,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
               </div>
               <ArrowUpRight
                 size={18}
-                className="text-gray-600 group-hover:scale-125 group-active:scale-100 transition-transform"
+                className="text-gray-600 group-hover:scale-125 group-active:scale-100 transition-transform hidden md:block"
               />
             </div>
           </Link>
@@ -56,7 +56,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
               </div>
               <ArrowUpRight
                 size={18}
-                className="text-gray-600 group-hover:scale-125 group-active:scale-100 transition-transform"
+                className="text-gray-600 group-hover:scale-125 group-active:scale-100 transition-transform hidden md:block"
               />
             </div>
           </Link>
