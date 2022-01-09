@@ -13,6 +13,8 @@ import {
   getCustomFeed,
 } from "../../lib/serverSideMethods";
 
+import { updateCustomFeed } from "../../lib/feedMethods";
+
 import { Grid, Globe } from "react-feather";
 
 export const getServerSideProps = async (context) => {
@@ -62,8 +64,9 @@ const Feed = ({
   customPagy,
 }) => {
   const [selectedEntries, setSelectedEntries] = useState([]);
-  const [entries, setEntries] = useState(entriesProps);
+  const [globalEntries, setGlobalEntries] = useState(entriesProps);
   const [customEntries, setCustomEntries] = useState(customEntriesProps);
+  const [currentSelection, setCurrentSelection] = useState("global");
   const [nextPage, setNextPage] = useState(pagy.next);
   const [customNextPage, setCustomNextPage] = useState(customPagy.next);
 
@@ -73,13 +76,30 @@ const Feed = ({
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
 
-  const selectGlobalEntries = () => {};
-  const selectCustomEntries = () => {};
+  const selectGlobalEntries = () => {
+    setCurrentSelection("global");
+    setSelectedEntries(globalEntries);
+  };
+
+  const selectCustomEntries = () => {
+    setCurrentSelection("custom");
+    setSelectedEntries(customEntries);
+  };
 
   const getMoreEntries = async () => {
-    const newEntries = await getFeed(nextPage);
-    setEntries([...entries, ...newEntries.data.entries]);
-    setNextPage(newEntries.data.pagy.next);
+    if (currentSelection === "global") {
+      const newEntries = await getFeed(nextPage);
+      setGlobalEntries([...globalEntries, ...newEntries.data.entries]);
+      setSelectedEntries([...globalEntries, ...newEntries.data.entries]);
+      setNextPage(newEntries.data.pagy.next);
+    }
+
+    if (currentSelection === "custom") {
+      const newEntries = await updateCustomFeed(userState.user, customNextPage);
+      setCustomEntries([...customEntries, ...newEntries.data.entries]);
+      setSelectedEntries([...customEntries, ...newEntries.data.entries]);
+      setCustomNextPage(newEntries.data.pagy.next);
+    }
   };
 
   useEffect(() => {
@@ -95,20 +115,28 @@ const Feed = ({
         </div>
       </div>
 
-      <div className="flex items-center justify-around">
+      <div className="flex items-center">
         <div
-          className="text-gray-600 w-1/2 py-3 text-center"
+          className={`text-gray-600 w-1/2 py-4 text-center ${
+            currentSelection === "custom"
+              ? "bg-gray-200 inner-shadow text-black"
+              : "cursor-pointer opacity-30"
+          }`}
           onClick={selectCustomEntries}
         >
-          <Grid size={36} strokeWidth={1.5} className="mx-auto" />
-          <div className="mt-5">Favorite categories</div>
+          <Grid size={32} strokeWidth={1.5} className="mx-auto" />
+          <div className="mt-3">Favorite categories</div>
         </div>
         <div
-          className="text-gray-600 w-1/2 py-3 text-center"
+          className={`text-gray-600 w-1/2 py-4 text-center ${
+            currentSelection === "global"
+              ? "bg-gray-200 inner-shadow text-black"
+              : "cursor-pointer opacity-30"
+          }`}
           onClick={selectGlobalEntries}
         >
-          <Globe size={36} strokeWidth={1.5} className="mx-auto" />
-          <div className="mt-5">Global feed</div>
+          <Globe size={32} strokeWidth={1.5} className="mx-auto" />
+          <div className="mt-3">Global feed</div>
         </div>
       </div>
 
@@ -138,7 +166,7 @@ const Feed = ({
       {nextPage !== null ? (
         <div
           className="my-10 w-3/5 lg:w-2/5 mx-auto"
-          onClick={async () => await getMoreEntries()}
+          onClick={() => getMoreEntries()}
         >
           <Button text="Load more entries" />
         </div>
