@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { getFeed } from "../../lib/serverSideMethods";
 import FeedEntry from "../../components/feed/FeedEntry";
 import Button from "../../components/navigation/Button";
 
@@ -10,7 +9,11 @@ import {
   getFavEntries,
   getUpvotedEntries,
   getDownvotedEntries,
+  getFeed,
+  getCustomFeed,
 } from "../../lib/serverSideMethods";
+
+import { Grid, Globe } from "react-feather";
 
 export const getServerSideProps = async (context) => {
   const entries = await getFeed(1);
@@ -22,6 +25,7 @@ export const getServerSideProps = async (context) => {
     const favInsights = await getFavEntries(loggedUser, context);
     const upvotedEntries = await getUpvotedEntries(loggedUser, context);
     const downvotedEntries = await getDownvotedEntries(loggedUser, context);
+    const customEntries = await getCustomFeed(loggedUser, context, 1);
 
     return {
       props: {
@@ -32,6 +36,8 @@ export const getServerSideProps = async (context) => {
         favInsights: favInsights.data.tile_entries,
         entriesUp: upvotedEntries.data.upvoted_entries,
         entriesDown: downvotedEntries.data.downvoted_entries,
+        customEntriesProps: customEntries.data.entries,
+        customPagy: customEntries.data.pagy,
       },
     };
   } catch (error) {
@@ -52,14 +58,23 @@ const Feed = ({
   favInsights,
   entriesUp,
   entriesDown,
+  customEntriesProps,
+  customPagy,
 }) => {
-  const [entries, setEntries] = useState([]);
+  const [selectedEntries, setSelectedEntries] = useState([]);
+  const [entries, setEntries] = useState(entriesProps);
+  const [customEntries, setCustomEntries] = useState(customEntriesProps);
+  const [nextPage, setNextPage] = useState(pagy.next);
+  const [customNextPage, setCustomNextPage] = useState(customPagy.next);
+
   const [initialLoad, setInitialLoad] = useState(false);
   const [followedUsers, setFollowedUsers] = useState(following);
   const [insights, setInsights] = useState(favInsights);
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
-  const [nextPage, setNextPage] = useState(pagy.next);
+
+  const selectGlobalEntries = () => {};
+  const selectCustomEntries = () => {};
 
   const getMoreEntries = async () => {
     const newEntries = await getFeed(nextPage);
@@ -68,7 +83,7 @@ const Feed = ({
   };
 
   useEffect(() => {
-    setEntries(...entries, entriesProps);
+    setSelectedEntries(entriesProps);
     setInitialLoad(true);
   }, []);
 
@@ -80,9 +95,26 @@ const Feed = ({
         </div>
       </div>
 
+      <div className="flex items-center justify-around">
+        <div
+          className="text-gray-600 w-1/2 py-3 text-center"
+          onClick={selectCustomEntries}
+        >
+          <Grid size={36} strokeWidth={1.5} className="mx-auto" />
+          <div className="mt-5">Favorite categories</div>
+        </div>
+        <div
+          className="text-gray-600 w-1/2 py-3 text-center"
+          onClick={selectGlobalEntries}
+        >
+          <Globe size={36} strokeWidth={1.5} className="mx-auto" />
+          <div className="mt-5">Global feed</div>
+        </div>
+      </div>
+
       <div>
         {initialLoad == true
-          ? entries.map((entry) => {
+          ? selectedEntries.map((entry) => {
               return (
                 <div key={entry.id}>
                   <FeedEntry
