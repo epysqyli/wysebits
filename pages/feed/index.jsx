@@ -115,11 +115,11 @@ const Feed = ({
         </div>
       </div>
 
-      <div className="flex items-center">
+      <div className="flex items-center md:mt-5 md:w-4/5 xl:w-4/6 2xl:w-1/2 mx-auto">
         <div
-          className={`text-gray-600 w-1/2 py-4 text-center ${
+          className={`text-gray-600 w-1/2 py-4 text-center transition-all ${
             currentSelection === "custom"
-              ? "bg-gray-200 inner-shadow text-black"
+              ? "bg-gray-200 inner-shadow text-black rounded-br-md md:rounded-md"
               : "cursor-pointer opacity-30"
           }`}
           onClick={selectCustomEntries}
@@ -128,9 +128,9 @@ const Feed = ({
           <div className="mt-3">Favorite categories</div>
         </div>
         <div
-          className={`text-gray-600 w-1/2 py-4 text-center ${
+          className={`text-gray-600 w-1/2 py-4 text-center transition-all ${
             currentSelection === "global"
-              ? "bg-gray-200 inner-shadow text-black"
+              ? "bg-gray-200 inner-shadow text-black rounded-bl-md md:rounded-md"
               : "cursor-pointer opacity-30"
           }`}
           onClick={selectGlobalEntries}
@@ -163,7 +163,7 @@ const Feed = ({
           : null}
       </div>
 
-      <div className="mx-auto my-10 w-3/5">
+      <div className="mx-auto my-10 w-3/5 md:w-2/5 lg:w-2/6 xl:w-1/4">
         <FeedLoader
           nextPage={nextPage}
           customNextPage={customNextPage}
