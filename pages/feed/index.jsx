@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getEntries } from "../../lib/serverSideMethods";
+import { getFeed } from "../../lib/serverSideMethods";
 import FeedEntry from "../../components/feed/FeedEntry";
 import Button from "../../components/navigation/Button";
 
@@ -13,7 +13,7 @@ import {
 } from "../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
-  const entries = await getEntries(1);
+  const entries = await getFeed(1);
 
   try {
     const loggedUser = await getLoggedUser(context);
