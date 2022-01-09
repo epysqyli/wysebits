@@ -43,9 +43,9 @@ export const getServerSideProps = async (context) => {
       },
     };
   } catch (error) {
-  const entries = await getGuestFeed(1);
+    const entries = await getGuestFeed(1);
 
-  return {
+    return {
       props: {
         entriesProps: entries.data.entries,
         pagy: entries.data.pagy,
@@ -81,27 +81,36 @@ const Feed = ({
     setSelectedEntries(globalEntries);
   };
 
+  const updateFeedGuestGlobal = async () => {
+    const newEntries = await getGuestFeed(nextPage);
+    setGlobalEntries([...globalEntries, ...newEntries.data.entries]);
+    setSelectedEntries([...globalEntries, ...newEntries.data.entries]);
+    setNextPage(newEntries.data.pagy.next);
+  };
+
+  const updateFeedUserGlobal = async () => {
+    const newEntries = await updateUserFeed(userState.user, nextPage);
+    setGlobalEntries([...globalEntries, ...newEntries.data.entries]);
+    setSelectedEntries([...globalEntries, ...newEntries.data.entries]);
+    setNextPage(newEntries.data.pagy.next);
+  };
+
+  const updateFeedUserCustom = async () => {
+    const newEntries = await updateCustomFeed(userState.user, customNextPage);
+    setCustomEntries([...customEntries, ...newEntries.data.entries]);
+    setSelectedEntries([...customEntries, ...newEntries.data.entries]);
+    setCustomNextPage(newEntries.data.pagy.next);
+  };
+
   const getMoreEntries = async () => {
-    if (currentSelection === "global" && userState.isLogged === false) {
-      const newEntries = await getGuestFeed(nextPage);
-      setGlobalEntries([...globalEntries, ...newEntries.data.entries]);
-      setSelectedEntries([...globalEntries, ...newEntries.data.entries]);
-      setNextPage(newEntries.data.pagy.next);
-    }
+    if (currentSelection === "global" && userState.isLogged === false)
+      await updateFeedGuestGlobal();
 
-    if (currentSelection === "global" && userState.isLogged === true) {
-      const newEntries = await updateUserFeed(userState.user, nextPage);
-      setGlobalEntries([...globalEntries, ...newEntries.data.entries]);
-      setSelectedEntries([...globalEntries, ...newEntries.data.entries]);
-      setNextPage(newEntries.data.pagy.next);
-    }
+    if (currentSelection === "global" && userState.isLogged === true)
+      await updateFeedUserGlobal();
 
-    if (currentSelection === "custom" && userState.isLogged === true) {
-      const newEntries = await updateCustomFeed(userState.user, customNextPage);
-      setCustomEntries([...customEntries, ...newEntries.data.entries]);
-      setSelectedEntries([...customEntries, ...newEntries.data.entries]);
-      setCustomNextPage(newEntries.data.pagy.next);
-    }    
+    if (currentSelection === "custom" && userState.isLogged === true)
+      await updateFeedUserCustom();
   };
 
   useEffect(() => {
@@ -110,7 +119,9 @@ const Feed = ({
   }, []);
 
   const [customEntries, setCustomEntries] = useState(customEntriesProps);
-  const [customNextPage, setCustomNextPage] = useState(customPagy ? customPagy.next : null);
+  const [customNextPage, setCustomNextPage] = useState(
+    customPagy ? customPagy.next : null
+  );
 
   if (userState.isLogged === true) {
     const selectCustomEntries = () => {
