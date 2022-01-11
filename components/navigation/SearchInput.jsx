@@ -2,11 +2,13 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/dist/client/router";
 import { Search } from "react-feather";
+
 import {
   findOrCreateHistory,
   addToHistory,
   removeFromHistory,
 } from "../../lib/searchHistoryMethods";
+
 import SuggestBox from "./SuggestBox";
 import HistoryBox from "./HistoryBox";
 
