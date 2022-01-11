@@ -52,6 +52,16 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
       .catch((err) => console.log(err));
   };
 
+  const searchAuthors = async () => {
+    const resp = await axios({
+      method: "post",
+      data: { keywords: JSON.stringify(book.author), page_num: "1" },
+      url: "http://localhost:3001/api/search/authors",
+    });
+    console.log(resp.data.results);
+    return resp.data.results;
+  };
+
   return (
     <div className="fixed z-30 bg-white pt-10 px-3 w-full h-screen shadow-lg border-gray-400 animate-show-up">
       <div className="mx-auto md:w-4/6">
@@ -101,7 +111,10 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
               type="text"
               name="author"
               id="author-full-name"
-              onChange={handleChange}
+              onChange={(e) => {
+                handleChange(e);
+                searchAuthors();
+              }}
               defaultValue={
                 bookData.authors.length != 0
                   ? bookData.authors[0].full_name
