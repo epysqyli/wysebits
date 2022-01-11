@@ -7,11 +7,11 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   const [book, setBook] = useState({
     title: bookData.title,
     categoryId: bookData.category_id,
-    author: bookData.authors.length != 0 ? bookData.authors[0].full_name : null,
+    author: bookData.authors.length != 0 ? bookData.authors[0].id : null,
   });
 
+  const [authorSuggestions, setAuthorsSuggestions] = useState(null);
   const [file, setFile] = useState(null);
-
   const [visibleLoader, setVisibleLoader] = useState(false);
 
   const handleSubmit = (e) => {
@@ -53,17 +53,20 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   };
 
   const searchAuthors = async () => {
-    const resp = await axios({
+    return await axios({
       method: "post",
       data: { keywords: JSON.stringify(book.author), page_num: "1" },
       url: "http://localhost:3001/api/search/authors",
     });
-    console.log(resp.data.results);
-    return resp.data.results;
+  };
+
+  const updateAuthorsSuggestions = async () => {
+    const newAuthorsSuggestions = await searchAuthors();
+    setAuthorsSuggestions(newAuthorsSuggestions.data.results);
   };
 
   return (
-    <div className="fixed z-30 bg-white pt-10 px-3 w-full h-screen shadow-lg border-gray-400 animate-show-up">
+    <div className="absolute z-30 bg-white pt-10 px-3 w-full min-h-screen shadow-lg border-gray-400 animate-show-up">
       <div className="mx-auto md:w-4/6">
         <div className="text-center text-lg border-b-2 pb-2 px-5">
           Make WyseBits a better place for the community!
@@ -103,7 +106,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
             </select>
           </div>
 
-          <div className="my-10">
+          <div className="mt-10">
             <label htmlFor="author-full-name" className="pl-3">
               Edit author
             </label>
@@ -113,7 +116,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
               id="author-full-name"
               onChange={(e) => {
                 handleChange(e);
-                searchAuthors();
+                updateAuthorsSuggestions();
               }}
               defaultValue={
                 bookData.authors.length != 0
@@ -121,8 +124,20 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
                   : null
               }
               className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow focus:shadow-md"
-              placeholder="Enter the full name"
+              placeholder="Enter the full name and select it below if present"
             />
+          </div>
+
+          <div className="mt-5 grid grid-cols-2 gap-x-1 gap-y-1">
+            {authorSuggestions
+              ? authorSuggestions.map((author) => {
+                  return (
+                    <div className="border rounded p-1 text-sm bg-gray-50">
+                      {author._source.full_name}
+                    </div>
+                  );
+                })
+              : null}
           </div>
 
           <div className="my-10 rounded shadow">
