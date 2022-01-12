@@ -9,8 +9,13 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
     categoryId: bookData.category_id,
     author: {
       full_name:
-        bookData.authors.length != 0 ? bookData.authors[0].full_name : "",
-      id: bookData.authors.length != 0 ? bookData.authors[0].id : null,
+        bookData.authors.length != 0
+          ? bookData.authors[bookData.authors.length - 1].full_name
+          : "",
+      id:
+        bookData.authors.length != 0
+          ? bookData.authors[bookData.authors.length - 1].id
+          : null,
     },
   });
 

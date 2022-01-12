@@ -59,8 +59,8 @@ const BookCard = ({ bookData, showCategoryLink, showBookLink, feed }) => {
           )}
 
           <div className="italic">
-            {bookData.authors[0]
-              ? bookData.authors[0].full_name
+            {bookData.authors.length !== 0
+              ? bookData.authors[bookData.authors.length - 1].full_name
               : "No authors found"}
           </div>
         </div>
@@ -119,8 +119,8 @@ const BookCard = ({ bookData, showCategoryLink, showBookLink, feed }) => {
         )}
 
         <div className="italic">
-          {bookData.authors[0]
-            ? bookData.authors[0].full_name
+          {bookData.authors.length !== 0
+            ? bookData.authors[bookData.authors.length - 1].full_name
             : "No authors found"}
         </div>
       </div>
