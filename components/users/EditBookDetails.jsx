@@ -7,7 +7,11 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   const [book, setBook] = useState({
     title: bookData.title,
     categoryId: bookData.category_id,
-    author: bookData.authors.length != 0 ? bookData.authors[0].id : null,
+    author: {
+      full_name:
+        bookData.authors.length != 0 ? bookData.authors[0].full_name : null,
+      id: bookData.authors.length != 0 ? bookData.authors[0].id : null,
+    },
   });
 
   const [authorSuggestions, setAuthorsSuggestions] = useState(null);
@@ -19,7 +23,26 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
     editDetails();
   };
 
-  const handleChange = (e) => setBook({ ...book, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setBook({ ...book, [e.target.name]: e.target.value });
+
+  const handleAuthorChange = (e) => {
+    const newAuthor = {
+      [e.target.name]: e.target.value,
+      id: null,
+    };
+
+    setBook({ ...book, author: newAuthor });
+  };
+
+  const assignExistingAuthor = (author) => {
+    const newAuthor = {
+      full_name: author._source.full_name,
+      id: author._source.id,
+    };
+
+    setBook({ ...book, author: newAuthor });
+  };
 
   const router = useRouter();
   const makeSlug = (string) => string.split(" ").join("-").toLowerCase();
@@ -53,7 +76,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   const searchAuthors = async () => {
     return await axios({
       method: "post",
-      data: { keywords: JSON.stringify(book.author), page_num: "1" },
+      data: { keywords: JSON.stringify(book.author.full_name), page_num: "1" },
       url: "http://localhost:3001/api/search/authors",
     });
   };
@@ -110,10 +133,10 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
             </label>
             <input
               type="text"
-              name="author"
+              name="full_name"
               id="author-full-name"
               onChange={(e) => {
-                handleChange(e);
+                handleAuthorChange(e);
                 updateAuthorsSuggestions();
               }}
               defaultValue={
@@ -130,7 +153,11 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
             {authorSuggestions
               ? authorSuggestions.map((author) => {
                   return (
-                    <div className="border rounded p-1 text-sm bg-gray-50">
+                    <div
+                      className="border rounded p-1 text-sm bg-gray-50"
+                      key={author._id}
+                      onClick={() => assignExistingAuthor(author)}
+                    >
                       {author._source.full_name}
                     </div>
                   );
