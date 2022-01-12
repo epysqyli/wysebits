@@ -10,11 +10,11 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
     author: {
       full_name:
         bookData.authors.length != 0
-          ? bookData.authors[bookData.authors.length - 1].full_name
+          ? bookData.authors[0].full_name
           : "",
       id:
         bookData.authors.length != 0
-          ? bookData.authors[bookData.authors.length - 1].id
+          ? bookData.authors[0].id
           : null,
     },
   });
