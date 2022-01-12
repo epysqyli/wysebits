@@ -18,62 +18,8 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   const [file, setFile] = useState(null);
   const [visibleLoader, setVisibleLoader] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    editDetails();
-  };
-
   const handleChange = (e) =>
     setBook({ ...book, [e.target.name]: e.target.value });
-
-  const handleAuthorChange = (e) => {
-    const newAuthor = {
-      [e.target.name]: e.target.value,
-      id: null,
-    };
-
-    setBook({ ...book, author: newAuthor });
-  };
-
-  const cleanAuthorSearchState = () => setAuthorsSuggestions(null);
-
-  const assignExistingAuthor = (author) => {
-    const newAuthor = {
-      full_name: author._source.full_name,
-      id: author._source.id,
-    };
-
-    setBook({ ...book, author: newAuthor });
-    cleanAuthorSearchState();
-  };
-
-  const router = useRouter();
-  const makeSlug = (string) => string.split(" ").join("-").toLowerCase();
-
-  const editDetails = () => {
-    setVisibleLoader(true);
-
-    const formData = new FormData();
-    formData.append("title", book.title);
-    formData.append("category_id", book.categoryId);
-    formData.append("author_id", book.author.id);
-    if (file) formData.append("book_cover", file);
-
-    axios
-      .put(`http://localhost:3001/api/books/${bookData.id}`, formData, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        setVisibleLoader(false);
-        hideEditForm();
-        router.push({
-          pathname: "/users/book-tiles/create/[id]",
-          query: { id: bookData.id },
-          asPath: makeSlug(bookData.title),
-        });
-      })
-      .catch((err) => console.log(err));
-  };
 
   const searchAuthors = async () => {
     return await axios({
@@ -86,6 +32,81 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   const updateAuthorsSuggestions = async () => {
     const newAuthorsSuggestions = await searchAuthors();
     setAuthorsSuggestions(newAuthorsSuggestions.data.results);
+  };
+
+  const router = useRouter();
+  const makeSlug = (string) => string.split(" ").join("-").toLowerCase();
+
+  const createAuthor = async () => {
+    return await axios({
+      method: "post",
+      url: "http://localhost:3001/api/authors/",
+      data: { full_name: book.author.full_name },
+      withCredentials: true,
+    });
+  };
+
+  const handleAuthorChange = (e) => {
+    const newAuthor = {
+      [e.target.name]: e.target.value,
+      id: null,
+    };
+
+    setBook({ ...book, author: newAuthor });
+  };
+
+  const assignExistingAuthor = (author) => {
+    const newAuthor = {
+      full_name: author._source.full_name,
+      id: author._source.id,
+    };
+
+    setBook({ ...book, author: newAuthor });
+    cleanAuthorSearchState();
+  };
+
+  const cleanAuthorSearchState = () => setAuthorsSuggestions(null);
+
+  const createFormData = (author) => {
+    const formData = new FormData();
+    formData.append("title", book.title);
+    formData.append("category_id", book.categoryId);
+    formData.append("author_id", author.id);
+    if (file) formData.append("book_cover", file);
+
+    return formData;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (book.author.id === null) {
+      const author = await createAuthor();
+      const formData = createFormData(author.data);
+      submit(formData);
+    }
+
+    const formData = createFormData(book.author);
+    submit(formData);
+  };
+
+  const submit = (formData) => {
+    setVisibleLoader(true);
+
+    axios
+      .put(`http://localhost:3001/api/books/${bookData.id}`, formData, {
+        withCredentials: true,
+      })
+      .then(() => {
+        setVisibleLoader(false);
+        hideEditForm();
+        router.push({
+          pathname: "/users/book-tiles/create/[id]",
+          query: { id: bookData.id },
+          asPath: makeSlug(bookData.title),
+        });
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
