@@ -19,9 +19,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
     editDetails();
   };
 
-  const handleChange = (e) => {
-    setBook({ ...book, [e.target.name]: e.target.value });
-  };
+  const handleChange = (e) => setBook({ ...book, [e.target.name]: e.target.value });
 
   const router = useRouter();
   const makeSlug = (string) => string.split(" ").join("-").toLowerCase();
@@ -128,7 +126,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
             />
           </div>
 
-          <div className="mt-5 grid grid-cols-2 gap-x-1 gap-y-1">
+          <div className="mt-5 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-1 gap-y-1">
             {authorSuggestions
               ? authorSuggestions.map((author) => {
                   return (
