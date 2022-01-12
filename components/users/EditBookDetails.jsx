@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Loader } from "react-feather";
 import { useRouter } from "next/dist/client/router";
+import { createAuthor, searchAuthors } from "../../lib/editMethods";
 
 const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   const [book, setBook] = useState({
@@ -21,35 +22,18 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
 
   const [authorSuggestions, setAuthorsSuggestions] = useState(null);
   const [file, setFile] = useState(null);
-  const [visibleLoader, setVisibleLoader] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const handleChange = (e) =>
     setBook({ ...book, [e.target.name]: e.target.value });
 
-  const searchAuthors = async () => {
-    return await axios({
-      method: "post",
-      data: { keywords: JSON.stringify(book.author.full_name), page_num: "1" },
-      url: "http://localhost:3001/api/search/authors",
-    });
-  };
-
   const updateAuthorsSuggestions = async () => {
-    const newAuthorsSuggestions = await searchAuthors();
+    const newAuthorsSuggestions = await searchAuthors(book.author.full_name);
     setAuthorsSuggestions(newAuthorsSuggestions.data.results);
   };
 
   const router = useRouter();
   const makeSlug = (string) => string.split(" ").join("-").toLowerCase();
-
-  const createAuthor = async () => {
-    return await axios({
-      method: "post",
-      url: "http://localhost:3001/api/authors/",
-      data: { full_name: book.author.full_name },
-      withCredentials: true,
-    });
-  };
 
   const handleAuthorChange = (e) => {
     const newAuthor = {
@@ -86,7 +70,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
     e.preventDefault();
 
     if (book.author.id === null) {
-      const author = await createAuthor();
+      const author = await createAuthor(book.author.full_name);
       const formData = createFormData(author.data);
       submit(formData);
     }
@@ -96,14 +80,14 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   };
 
   const submit = (formData) => {
-    setVisibleLoader(true);
+    setLoader(true);
 
     axios
       .put(`http://localhost:3001/api/books/${bookData.id}`, formData, {
         withCredentials: true,
       })
       .then(() => {
-        setVisibleLoader(false);
+        setLoader(false);
         hideEditForm();
         router.push({
           pathname: "/users/book-tiles/create/[id]",
@@ -178,7 +162,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
               ? authorSuggestions.map((author) => {
                   return (
                     <div
-                      className="rounded border p-1 text-sm text-gray-700 bg-gray-50 cursor-pointer hover:text-black hover:shadow hover:bg-gray-200 active:scale-95"
+                      className="rounded border p-1 text-sm text-gray-700 bg-white cursor-pointer hover:text-black hover:shadow hover:bg-gray-200 active:scale-95"
                       key={author._id}
                       onClick={() => assignExistingAuthor(author)}
                     >
@@ -209,7 +193,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
             >
               Cancel
             </div>
-            {visibleLoader ? (
+            {loader ? (
               <div className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-100">
                 <div className="animate-spin block w-min mx-auto">
                   <Loader />

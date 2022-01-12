@@ -1,8 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import { Loader } from "react-feather";
 import { useRouter } from "next/dist/client/router";
 import NoAccess from "../../../../components/users/NoAccess";
 import { getCategories } from "../../../../lib/serverSideMethods";
+import { createAuthor, searchAuthors } from "../../../../lib/editMethods";
 
 export const getServerSideProps = async () => {
   const categories = await getCategories();
@@ -13,36 +15,88 @@ export const getServerSideProps = async () => {
 
 const CreateBook = ({ categories, userState }) => {
   if (userState.isLogged) {
-    const [bookData, setBookData] = useState({
+    const [book, setBook] = useState({
       title: "",
-      author_full_name: "",
       category_id: "25",
+      author: {
+        full_name: "",
+        id: null,
+      },
     });
 
     const [file, setFile] = useState(null);
+    const [authorSuggestions, setAuthorsSuggestions] = useState(null);
+    const [loader, setLoader] = useState(false);
 
     const router = useRouter();
 
     const handleChange = (e) => {
-      const newFormData = { ...bookData, [e.target.name]: e.target.value };
-      setBookData(newFormData);
+      const newFormData = { ...book, [e.target.name]: e.target.value };
+      setBook(newFormData);
     };
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
+    const handleAuthorChange = (e) => {
+      const newAuthor = {
+        [e.target.name]: e.target.value,
+        id: null,
+      };
 
+      setBook({ ...book, author: newAuthor });
+    };
+
+    const updateAuthorsSuggestions = async () => {
+      const newAuthorsSuggestions = await searchAuthors(book.author.full_name);
+      setAuthorsSuggestions(newAuthorsSuggestions.data.results);
+    };
+
+    const assignExistingAuthor = (author) => {
+      const newAuthor = {
+        full_name: author._source.full_name,
+        id: author._source.id,
+      };
+
+      setBook({ ...book, author: newAuthor });
+      cleanAuthorSearchState();
+    };
+
+    const cleanAuthorSearchState = () => setAuthorsSuggestions(null);
+
+    const createFormData = (author) => {
       const formData = new FormData();
-      formData.append("title", bookData.title);
-      formData.append("author_full_name", bookData.author_full_name);
-      formData.append("category_id", bookData.category_id);
-      formData.append("book_cover", file);
+
+      formData.append("title", book.title);
+      formData.append("category_id", book.category_id);
+      formData.append("author_id", author.id);
+      if (file) formData.append("book_cover", file);
+
+      return formData;
+    };
+
+    const submit = (formData) => {
+      setLoader(true);
 
       axios
         .post("http://localhost:3001/api/books", formData, {
           withCredentials: true,
         })
-        .then((res) => router.push(`/users/book-tiles/create/${res.data.id}`))
+        .then((res) => {
+          setLoader(false);
+          router.push(`/users/book-tiles/create/${res.data.id}`);
+        })
         .catch((err) => console.log(err));
+    };
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      if (book.author.id === null) {
+        const author = await createAuthor(book.author.full_name);
+        const formData = createFormData(author.data);
+        submit(formData);
+      }
+
+      const formData = createFormData(book.author);
+      submit(formData);
     };
 
     return (
@@ -97,13 +151,33 @@ const CreateBook = ({ categories, userState }) => {
             </label>
             <input
               type="text"
-              name="author_full_name"
+              name="full_name"
               id="author-full-name"
               className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
               placeholder="Enter the full name"
-              onChange={handleChange}
+              value={book.author.full_name || ""}
+              onChange={(e) => {
+                handleAuthorChange(e);
+                updateAuthorsSuggestions();
+              }}
               required
             />
+          </div>
+
+          <div className="mt-5 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-1 gap-y-1">
+            {authorSuggestions
+              ? authorSuggestions.map((author) => {
+                  return (
+                    <div
+                      className="rounded border p-1 text-sm text-gray-700 bg-white cursor-pointer hover:text-black hover:shadow hover:bg-gray-200 active:scale-95"
+                      key={author._id}
+                      onClick={() => assignExistingAuthor(author)}
+                    >
+                      {author._source.full_name}
+                    </div>
+                  );
+                })
+              : null}
           </div>
 
           <div className="my-10">
@@ -117,18 +191,26 @@ const CreateBook = ({ categories, userState }) => {
             />
           </div>
 
-          <button
-            type="submit"
-            className="w-3/5 mx-auto block border mt-10 mb-5 py-2 rounded-md shadow-sm hover:shadow-md hover:bg-gray-100 active:bg-gray-200 active:shadow-lg"
-          >
-            Create the book
-          </button>
+          {loader ? (
+            <div className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-100">
+              <div className="animate-spin block w-min mx-auto">
+                <Loader />
+              </div>
+            </div>
+          ) : (
+            <button
+              type="submit"
+              className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-100 rounded-md hover:shadow-md hover:bg-gray-200 active:bg-gray-300 active:shadow-md"
+            >
+              Create book
+            </button>
+          )}
         </form>
       </div>
     );
   }
 
-  if (userState.isLogged === false) return <NoAccess />;
+  return <NoAccess />;
 };
 
 export default CreateBook;
