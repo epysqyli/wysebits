@@ -9,7 +9,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
     categoryId: bookData.category_id,
     author: {
       full_name:
-        bookData.authors.length != 0 ? bookData.authors[0].full_name : null,
+        bookData.authors.length != 0 ? bookData.authors[0].full_name : "",
       id: bookData.authors.length != 0 ? bookData.authors[0].id : null,
     },
   });
@@ -35,6 +35,8 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
     setBook({ ...book, author: newAuthor });
   };
 
+  const cleanAuthorSearchState = () => setAuthorsSuggestions(null);
+
   const assignExistingAuthor = (author) => {
     const newAuthor = {
       full_name: author._source.full_name,
@@ -42,6 +44,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
     };
 
     setBook({ ...book, author: newAuthor });
+    cleanAuthorSearchState();
   };
 
   const router = useRouter();
@@ -53,7 +56,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
     const formData = new FormData();
     formData.append("title", book.title);
     formData.append("category_id", book.categoryId);
-    formData.append("author_full_name", book.author);
+    formData.append("author_id", book.author.id);
     if (file) formData.append("book_cover", file);
 
     axios
@@ -61,7 +64,6 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res);
         setVisibleLoader(false);
         hideEditForm();
         router.push({
@@ -139,11 +141,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
                 handleAuthorChange(e);
                 updateAuthorsSuggestions();
               }}
-              defaultValue={
-                bookData.authors.length != 0
-                  ? bookData.authors[0].full_name
-                  : null
-              }
+              value={book.author.full_name}
               className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow focus:shadow-md"
               placeholder="Enter the full name and select it below if present"
             />
@@ -154,7 +152,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
               ? authorSuggestions.map((author) => {
                   return (
                     <div
-                      className="border rounded p-1 text-sm bg-gray-50"
+                      className="rounded border p-1 text-sm text-gray-700 bg-gray-50 cursor-pointer hover:text-black hover:shadow hover:bg-gray-200 active:scale-95"
                       key={author._id}
                       onClick={() => assignExistingAuthor(author)}
                     >
