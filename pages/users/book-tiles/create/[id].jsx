@@ -93,7 +93,8 @@ const TileCreation = ({
   });
 
   const isEntryValid = (entry) => {
-    if (entry.content.trim().length > 50) return true;
+    if (entry.content.trim().length > 50 && entry.content.trim().length < 2250)
+      return true;
     return false;
   };
 

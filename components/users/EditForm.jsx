@@ -3,15 +3,13 @@ import { Save } from "react-feather";
 
 const EditForm = ({ entry, handleChange, handleSubmit }) => {
   const isEntryValid = (entry) => {
-    if (entry.content.trim().length > 50) return true;
+    if (entry.content.trim().length > 50 && entry.content.trim().length < 2250)
+      return true;
     return false;
   };
 
   return (
-    <form
-      onSubmit={(e) => handleSubmit(e, entry)}
-      className="pt-2 px-2"
-    >
+    <form onSubmit={(e) => handleSubmit(e, entry)} className="pt-2 px-2">
       <label
         htmlFor="entry"
         className="flex justify-between px-3 py-2 text-center bg-gray-100 rounded shadow text-gray-600 text-sm mb-2"
