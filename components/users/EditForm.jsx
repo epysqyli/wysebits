@@ -1,12 +1,8 @@
 import dayjs from "dayjs";
 import { Save } from "react-feather";
+import { isEntryValid } from "../../lib/utils";
 
 const EditForm = ({ entry, handleChange, handleSubmit }) => {
-  const isEntryValid = (entry) => {
-    if (entry.content.trim().length > 50 && entry.content.trim().length < 2250)
-      return true;
-    return false;
-  };
 
   return (
     <form onSubmit={(e) => handleSubmit(e, entry)} className="pt-2 px-2">
@@ -18,7 +14,7 @@ const EditForm = ({ entry, handleChange, handleSubmit }) => {
           <div>Last updated at:</div>
           <div>{dayjs(entry.updateTime).format("MM-DD-YYYY HH:mm ")}</div>
         </div>
-        {isEntryValid(entry) ? (
+        {isEntryValid(entry.content) ? (
           <button type="submit" className="hover:scale-110 active:scale-100">
             <Save />
           </button>

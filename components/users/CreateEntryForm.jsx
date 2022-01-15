@@ -15,7 +15,7 @@ const CreateEntryForm = ({
         <div className="italic text-gray-700">
           Enter your {entry.name.split("_")[0]} takeaway
         </div>
-        {isEntryValid(entry) ? (
+        {isEntryValid(entry.content) ? (
           <Save
             className="cursor-pointer hover:scale-110 active:scale-100 text-gray-600"
             onClick={() => saveForLater(entry)}

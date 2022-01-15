@@ -7,6 +7,7 @@ import CardBcgActions from "../../../../components/books/CardBcgActions";
 import EditBookDetails from "../../../../components/users/EditBookDetails";
 import NoAccess from "../../../../components/users/NoAccess";
 import CreateEntrySlider from "../../../../components/users/CreateEntrySlider";
+import { isEntryValid } from "../../../../lib/utils";
 
 import {
   getBook,
@@ -92,18 +93,12 @@ const TileCreation = ({
     },
   });
 
-  const isEntryValid = (entry) => {
-    if (entry.content.trim().length > 50 && entry.content.trim().length < 2250)
-      return true;
-    return false;
-  };
-
   const allEntriesValid = () => {
     const { first_entry, second_entry, third_entry } = tileEntries;
     if (
-      isEntryValid(first_entry) &&
-      isEntryValid(second_entry) &&
-      isEntryValid(third_entry)
+      isEntryValid(first_entry.content) &&
+      isEntryValid(second_entry.content) &&
+      isEntryValid(third_entry.content)
     )
       return true;
     else return false;
