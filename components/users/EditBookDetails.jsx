@@ -10,13 +10,8 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
     categoryId: bookData.category_id,
     author: {
       full_name:
-        bookData.authors.length != 0
-          ? bookData.authors[0].full_name
-          : "",
-      id:
-        bookData.authors.length != 0
-          ? bookData.authors[0].id
-          : null,
+        bookData.authors.length != 0 ? bookData.authors[0].full_name : "",
+      id: bookData.authors.length != 0 ? bookData.authors[0].id : null,
     },
   });
 
@@ -141,7 +136,10 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
 
           <div className="mt-10">
             <label htmlFor="author-full-name" className="pl-3">
-              Edit author
+              <div>Edit author</div>
+              <div className="mt-1 mb-2 text-sm text-gray-500">
+                It will be created if not present on the search results
+              </div>
             </label>
             <input
               type="text"

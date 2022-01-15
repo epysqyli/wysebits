@@ -100,9 +100,9 @@ const CreateBook = ({ categories, userState }) => {
     };
 
     return (
-      <div className="w-4/5 mx-auto lg:w-3/6 my-20 pb-10">
+      <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 my-20 pb-10">
         <div className="text-2xl font-medium text-center">
-          Fill in the required fields to create a book entry
+          Fill in the required fields to add a book
         </div>
 
         <form
@@ -147,7 +147,10 @@ const CreateBook = ({ categories, userState }) => {
 
           <div className="my-10">
             <label htmlFor="author-full-name" className="pl-3">
-              Add the author
+              <div>Add the author</div>
+              <div className="mt-1 mb-2 text-sm text-gray-500">
+                It will be created if not present on the search results
+              </div>
             </label>
             <input
               type="text"
