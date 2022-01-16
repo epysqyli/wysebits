@@ -23,7 +23,8 @@ const SearchInput = ({
   const [searchTerms, setSearchTerms] = useState("");
   const [searchError, SetSearchError] = useState(false);
   const [suggestions, setSuggestions] = useState(null);
-  const [history, setHistory] = useState(null);
+  const [booksHistory, setBooksHistory] = useState(null);
+  const [authorsHistory, setAuthorsHistory] = useState(null);
   const [didLoad, setDidLoad] = useState(false);
   const [activeSearch, setActiveSearch] = useState(false);
 
@@ -39,12 +40,11 @@ const SearchInput = ({
       } else {
         SetSearchError(true);
       }
-    } else {
-      goToResults(query);
     }
+
+    goToResults(query);
   };
 
-  // suggestions should toggle between books and authors
   const getSuggestions = async (query) => {
     const resp = await axios({
       method: "post",
@@ -80,10 +80,34 @@ const SearchInput = ({
     removeFromHistory(query);
   };
 
-  const recentHistory =
-    didLoad && suggestions === null && showHistory ? (
+  const recentBooksHistory =
+    activeSearch &&
+    didLoad &&
+    suggestions === null &&
+    showHistory &&
+    booksHistory !== null ? (
       <div className="animate-show-up-slow mt-10">
-        {history.map((query, index) => {
+        {booksHistory.map((query, index) => {
+          return (
+            <HistoryBox
+              query={query}
+              removeFromStateHistory={removeFromStateHistory}
+              search={search}
+              key={index}
+            />
+          );
+        })}
+      </div>
+    ) : null;
+
+  const recentAuthorsHistory =
+    activeSearch &&
+    didLoad &&
+    suggestions === null &&
+    showHistory &&
+    authorsHistory !== null ? (
+      <div className="animate-show-up-slow mt-10">
+        {authorsHistory.map((query, index) => {
           return (
             <HistoryBox
               query={query}
@@ -98,7 +122,7 @@ const SearchInput = ({
 
   useEffect(() => {
     setDidLoad(true);
-    setHistory(findOrCreateHistory().reverse());
+    setBooksHistory(findOrCreateHistory().reverse());
   }, []);
 
   useEffect(() => {
@@ -148,7 +172,7 @@ const SearchInput = ({
           ) : null}
         </div>
 
-        {activeSearch && history.length != 0 ? recentHistory : null}
+        {searchMode === "books" ? recentBooksHistory : recentAuthorsHistory}
       </div>
 
       {showSuggest ? (
