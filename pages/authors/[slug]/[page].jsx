@@ -1,4 +1,4 @@
-export const serverSiderProps = () => {
+export const serverSiderProps = async (context) => {
   return {
     props: {},
   };
