@@ -97,13 +97,11 @@ const SearchInput = ({
   };
 
   const displayHistory = () => {
-    if (searchMode === "books" && booksHistory.length !== 0) {
+    if (searchMode === "books" && booksHistory.length !== 0)
       setActiveSearch(true);
-    }
 
-    if (searchMode === "authors" && authorsHistory.length !== 0) {
+    if (searchMode === "authors" && authorsHistory.length !== 0)
       setActiveSearch(true);
-    }
   };
 
   // manage history on load
@@ -113,6 +111,7 @@ const SearchInput = ({
     setAuthorsHistory(findOrCreateHistory("authorsHistory").reverse());
   }, []);
 
+  // ensures safe toggling between search modes
   useEffect(() => setSuggestions(null), [searchMode]);
 
   useEffect(() => {
