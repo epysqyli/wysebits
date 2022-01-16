@@ -29,25 +29,25 @@ const SearchInput = ({
   const [activeSearch, setActiveSearch] = useState(false);
 
   const router = useRouter();
-  const getQuery = (query = searchTerms) => query.split(" ").join("-");
-  const goToResults = (query) => router.push(`${pageDest}${getQuery(query)}/1`);
+  const getQuery = (query) => query.split(" ").join("-");
+  const goToResults = (query = searchTerms) => {
+    router.push(`${pageDest}${getQuery(query)}/1`);
+  };
 
-  const updateHistory = () => {
-    if (searchMode === "books") addToHistory(searchTerms, "booksHistory");
-    if (searchMode === "authors") addToHistory(searchTerms, "authorsHistory");
+  const updateHistory = (terms) => {
+    if (searchMode === "books") addToHistory(terms, "booksHistory");
+    if (searchMode === "authors") addToHistory(terms, "authorsHistory");
   };
 
   const search = (query) => {
-    if (query === undefined && searchTerms.trim().length > 2) {
-      updateHistory();
-      goToResults();
-    } else {
-      SetSearchError(true);
+    if (query !== undefined) {
+      goToResults(query);
+      return;
     }
 
-    if (searchTerms.trim().length > 2) {
-      updateHistory();
-      goToResults(query);
+    if (query === undefined && searchTerms.trim().length > 2) {
+      updateHistory(searchTerms);
+      goToResults();
     } else {
       SetSearchError(true);
     }
@@ -186,7 +186,7 @@ const SearchInput = ({
             <Search
               size={20}
               className="mx-auto"
-              onClick={() => search(searchTerms)}
+              onClick={() => search()}
               color="gray"
             />
           </button>
