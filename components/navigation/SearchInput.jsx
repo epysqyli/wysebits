@@ -40,11 +40,13 @@ const SearchInput = ({
   };
 
   const search = (query) => {
+    // query coming from history
     if (query !== undefined) {
       goToResults(query);
       return;
     }
 
+    // query coming from state
     if (query === undefined && searchTerms.trim().length > 2) {
       updateHistory(searchTerms);
       goToResults();
@@ -81,7 +83,6 @@ const SearchInput = ({
     if (e.key == "Enter") search();
   };
 
-  // history state methods
   const removeFromStateHistory = (query) => {
     if (searchMode === "books") {
       const newHistory = booksHistory.filter((item) => item !== query);
