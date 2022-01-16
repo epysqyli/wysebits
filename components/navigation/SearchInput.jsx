@@ -29,6 +29,7 @@ const SearchInput = ({
   const router = useRouter();
   const goToResults = (query) => router.push(`${pageDest}${getQuery(query)}/1`);
 
+  // searchBooks should be called by a generic Search() that allows also authors search
   const searchBooks = (query) => {
     if (query === undefined) {
       if (searchTerms.trim().length > 2) {
@@ -42,6 +43,7 @@ const SearchInput = ({
     }
   };
 
+  // suggestions should toggle between books and authors
   const getSuggestions = async (query) => {
     const resp = await axios({
       method: "post",
@@ -67,9 +69,7 @@ const SearchInput = ({
   };
 
   const handleKeyPress = (e) => {
-    if (e.key == "Enter") {
-      searchBooks();
-    }
+    if (e.key == "Enter") searchBooks();
   };
 
   const getQuery = (query = searchTerms) => query.split(" ").join("-");

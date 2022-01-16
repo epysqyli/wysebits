@@ -1,5 +1,13 @@
 import Head from "next/head";
-import { Book, Box, Layers, ArrowUpRight, RefreshCw } from "react-feather";
+import { useState } from "react";
+import {
+  Book,
+  Box,
+  Layers,
+  ArrowUpRight,
+  RefreshCw,
+  Columns,
+} from "react-feather";
 import Button from "../components/navigation/Button";
 import CategoryButton from "../components/navigation/CategoryButton";
 import SearchInput from "../components/navigation/SearchInput";
@@ -15,6 +23,34 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({ categories, userState }) => {
+  const booksSearchConfig = {
+    pageDest: "/books/search",
+    placeholder: "Search for any book",
+    suggestLink: "/books/",
+  };
+
+  const authorsSearchConfig = {
+    pageDest: "/authors/search",
+    placeholder: "Search for any author",
+    suggestLink: "/authors/",
+  };
+
+  const [searchMode, setSearchMode] = useState("books");
+
+  const [searchConfig, setSearchConfig] = useState(booksSearchConfig);
+
+  const toggleSearchMode = () => {
+    if (searchMode === "books") {
+      setSearchConfig(authorsSearchConfig);
+      setSearchMode("authors");
+    }
+
+    if (searchMode === "authors") {
+      setSearchConfig(booksSearchConfig);
+      setSearchMode("books");
+    }
+  };
+
   return (
     <div className="pb-10 animate-show-up">
       <Head>
@@ -38,19 +74,24 @@ const Home = ({ categories, userState }) => {
       <div className="xl:flex xl:w-11/12 xl:mx-auto">
         <div className="mb-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6 px-2 py-3 xl:py-0 border-b-2">
           <div className="flex justify-center items-center gap-x-5 md:gap-x-10">
-            <Book size={36} strokeWidth={1.5} />
-            <div className="text-4xl text-gray-700">Explore books</div>
+            {searchMode === "books" ? (
+              <Book size={36} strokeWidth={1.5} />
+            ) : (
+              <Columns size={36} strokeWidth={1.5} />
+            )}
+            <div className="text-4xl text-gray-700">Explore {searchMode}</div>
             <RefreshCw
               size={26}
               className="cursor-pointer text-gray-600 hover:scale-110 hover:text-gray-800 active:scale-100"
+              onClick={toggleSearchMode}
             />
           </div>
           <div className="mt-10 mb-5">
             <SearchInput
-              pageDest="/books/search/"
-              placeholder="Search for any book"
+              pageDest={searchConfig.pageDest}
+              placeholder={searchConfig.placeholder}
+              suggestLink={searchConfig.suggestLink}
               showSuggest={true}
-              suggestLink="/books/"
               showHistory={true}
             />
           </div>
