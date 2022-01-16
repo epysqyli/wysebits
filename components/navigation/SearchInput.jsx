@@ -31,7 +31,7 @@ const SearchInput = ({
   const getQuery = (query = searchTerms) => query.split(" ").join("-");
   const goToResults = (query) => router.push(`${pageDest}${getQuery(query)}/1`);
 
-  const searchBooks = (query) => {
+  const search = (query) => {
     if (query === undefined) {
       if (searchTerms.trim().length > 2) {
         addToHistory(searchTerms);
@@ -70,7 +70,7 @@ const SearchInput = ({
   };
 
   const handleKeyPress = (e) => {
-    if (e.key == "Enter") searchBooks();
+    if (e.key == "Enter") search();
   };
 
   // history state methods
@@ -88,7 +88,7 @@ const SearchInput = ({
             <HistoryBox
               query={query}
               removeFromStateHistory={removeFromStateHistory}
-              searchBooks={searchBooks}
+              search={search}
               key={index}
             />
           );
@@ -134,7 +134,7 @@ const SearchInput = ({
             <Search
               size={20}
               className="mx-auto"
-              onClick={() => searchBooks(searchTerms)}
+              onClick={() => search(searchTerms)}
               color="gray"
             />
           </button>

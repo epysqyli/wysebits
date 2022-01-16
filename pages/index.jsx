@@ -73,18 +73,20 @@ const Home = ({ categories, userState }) => {
 
       <div className="xl:flex xl:w-11/12 xl:mx-auto">
         <div className="mb-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6 px-2 py-3 xl:py-0 border-b-2">
-          <div className="flex justify-center items-center gap-x-5 md:gap-x-10">
+          <div className="flex justify-between items-center px-10">
             {searchMode === "books" ? (
               <Book size={36} strokeWidth={1.5} />
             ) : (
               <Columns size={36} strokeWidth={1.5} />
             )}
             <div className="text-4xl text-gray-700">Explore {searchMode}</div>
-            <RefreshCw
-              size={26}
-              className="cursor-pointer text-gray-600 hover:scale-110 hover:text-gray-800 active:scale-100 transition-transform"
-              onClick={toggleSearchMode}
-            />
+            <div className="p-2 shadow rounded bg-white active:shadow-inner">
+              <RefreshCw
+                size={26}
+                className="cursor-pointer text-gray-600 hover:scale-110 hover:text-gray-800 active:scale-100 transition-transform"
+                onClick={toggleSearchMode}
+              />
+            </div>
           </div>
           <div className="mt-10 mb-5">
             <SearchInput
