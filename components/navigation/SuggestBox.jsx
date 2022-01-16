@@ -35,13 +35,11 @@ const SuggestBox = ({ suggestions, suggestLink, searchMode }) => {
                         ? s._source.authors[0]
                           ? s._source.authors[0].full_name
                           : "No authors"
-                        : "No Authors"}
+                        : null}
                     </div>
                     <div>|</div>
                     <div>
-                      {s._source.category
-                        ? s._source.category.name
-                        : "No Category"}
+                      {s._source.category ? s._source.category.name : null}
                     </div>
                   </div>
                 </div>
