@@ -35,7 +35,10 @@ const SearchInput = ({
   const search = (query) => {
     if (query === undefined) {
       if (searchTerms.trim().length > 2) {
-        addToHistory(searchTerms);
+        if (searchMode === "books") addToHistory(searchTerms, "booksHistory");
+        if (searchMode === "authors")
+          addToHistory(searchTerms, "authorsHistory");
+
         goToResults();
       } else {
         SetSearchError(true);
@@ -122,7 +125,8 @@ const SearchInput = ({
 
   useEffect(() => {
     setDidLoad(true);
-    setBooksHistory(findOrCreateHistory().reverse());
+    setBooksHistory(findOrCreateHistory("booksHistory").reverse());
+    setAuthorsHistory(findOrCreateHistory("authorsHistory").reverse());
   }, []);
 
   useEffect(() => {
