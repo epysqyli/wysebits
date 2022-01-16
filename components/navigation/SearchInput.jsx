@@ -32,22 +32,25 @@ const SearchInput = ({
   const getQuery = (query = searchTerms) => query.split(" ").join("-");
   const goToResults = (query) => router.push(`${pageDest}${getQuery(query)}/1`);
 
-  const search = (query) => {
-    if (query === undefined) {
-      if (searchTerms.trim().length > 2) {
-        if (searchMode === "books") addToHistory(searchTerms, "booksHistory");
-        if (searchMode === "authors")
-          addToHistory(searchTerms, "authorsHistory");
-
-        goToResults();
-      } else {
-        SetSearchError(true);
-      }
-    }
-
+  const updateHistory = () => {
     if (searchMode === "books") addToHistory(searchTerms, "booksHistory");
     if (searchMode === "authors") addToHistory(searchTerms, "authorsHistory");
-    goToResults(query);
+  };
+
+  const search = (query) => {
+    if (query === undefined && searchTerms.trim().length > 2) {
+      updateHistory();
+      goToResults();
+    } else {
+      SetSearchError(true);
+    }
+
+    if (searchTerms.trim().length > 2) {
+      updateHistory();
+      goToResults(query);
+    } else {
+      SetSearchError(true);
+    }
   };
 
   const getSuggestions = async (query) => {
