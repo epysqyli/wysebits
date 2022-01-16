@@ -24,19 +24,18 @@ export const getStaticProps = async () => {
 
 const Home = ({ categories, userState }) => {
   const booksSearchConfig = {
-    pageDest: "/books/search",
+    pageDest: "/books/search/",
     placeholder: "Search for any book",
     suggestLink: "/books/",
   };
 
   const authorsSearchConfig = {
-    pageDest: "/authors/search",
+    pageDest: "/authors/search/",
     placeholder: "Search for any author",
     suggestLink: "/authors/",
   };
 
   const [searchMode, setSearchMode] = useState("books");
-
   const [searchConfig, setSearchConfig] = useState(booksSearchConfig);
 
   const toggleSearchMode = () => {
@@ -82,7 +81,7 @@ const Home = ({ categories, userState }) => {
             <div className="text-4xl text-gray-700">Explore {searchMode}</div>
             <RefreshCw
               size={26}
-              className="cursor-pointer text-gray-600 hover:scale-110 hover:text-gray-800 active:scale-100"
+              className="cursor-pointer text-gray-600 hover:scale-110 hover:text-gray-800 active:scale-100 transition-transform"
               onClick={toggleSearchMode}
             />
           </div>
