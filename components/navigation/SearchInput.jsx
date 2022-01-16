@@ -75,13 +75,9 @@ const SearchInput = ({
   const search = (query) => {
     if (query === undefined) {
       if (searchTerms.trim().length > 2) {
-        if (searchMode === "books") {
-          addToHistory(searchTerms, "booksHistory");
-        }
-
-        if (searchMode === "authors") {
+        if (searchMode === "books") addToHistory(searchTerms, "booksHistory");
+        if (searchMode === "authors")
           addToHistory(searchTerms, "authorsHistory");
-        }
 
         goToResults();
       } else {
@@ -89,6 +85,8 @@ const SearchInput = ({
       }
     }
 
+    if (searchMode === "books") addToHistory(searchTerms, "booksHistory");
+    if (searchMode === "authors") addToHistory(searchTerms, "authorsHistory");
     goToResults(query);
   };
 
