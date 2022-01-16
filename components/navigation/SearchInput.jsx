@@ -15,6 +15,7 @@ import HistoryBox from "./HistoryBox";
 const SearchInput = ({
   pageDest,
   placeholder,
+  searchMode,
   showSuggest,
   suggestLink,
   showHistory,
@@ -27,9 +28,9 @@ const SearchInput = ({
   const [activeSearch, setActiveSearch] = useState(false);
 
   const router = useRouter();
+  const getQuery = (query = searchTerms) => query.split(" ").join("-");
   const goToResults = (query) => router.push(`${pageDest}${getQuery(query)}/1`);
 
-  // searchBooks should be called by a generic Search() that allows also authors search
   const searchBooks = (query) => {
     if (query === undefined) {
       if (searchTerms.trim().length > 2) {
@@ -48,7 +49,7 @@ const SearchInput = ({
     const resp = await axios({
       method: "post",
       data: { keywords: JSON.stringify(query), page_num: "1" },
-      url: "http://localhost:3001/api/search/books",
+      url: `http://localhost:3001/api/search/${searchMode}`,
     });
 
     // avoid UI conflict with search error message
@@ -71,8 +72,6 @@ const SearchInput = ({
   const handleKeyPress = (e) => {
     if (e.key == "Enter") searchBooks();
   };
-
-  const getQuery = (query = searchTerms) => query.split(" ").join("-");
 
   // history state methods
   const removeFromStateHistory = (query) => {
@@ -152,11 +151,11 @@ const SearchInput = ({
         {activeSearch && history.length != 0 ? recentHistory : null}
       </div>
 
-      {showSuggest ? (
+      {/* {showSuggest ? (
         <div>
           <SuggestBox suggestions={suggestions} suggestLink={suggestLink} />
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   );
 };

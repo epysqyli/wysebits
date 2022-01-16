@@ -91,6 +91,7 @@ const Home = ({ categories, userState }) => {
               pageDest={searchConfig.pageDest}
               placeholder={searchConfig.placeholder}
               suggestLink={searchConfig.suggestLink}
+              searchMode={searchMode}
               showSuggest={true}
               showHistory={true}
             />
