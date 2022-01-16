@@ -79,9 +79,11 @@ const Home = ({ categories, userState }) => {
             ) : (
               <Columns size={36} strokeWidth={1.5} />
             )}
-            <div className="text-4xl text-gray-700 text-center">Explore {searchMode}</div>
+            <div className="text-3xl md:text-4xl text-gray-700 text-center">
+              Explore {searchMode}
+            </div>
             <div
-              className="group p-3 shadow rounded bg-white cursor-pointer active:shadow-inner"
+              className="group p-2 md:p-3 shadow rounded-lg bg-white cursor-pointer active:shadow-inner"
               onClick={toggleSearchMode}
             >
               <RefreshCw
