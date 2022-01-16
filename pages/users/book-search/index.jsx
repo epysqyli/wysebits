@@ -21,8 +21,9 @@ const BookSearch = ({ userState }) => {
             <SearchInput
               pageDest="/users/book-search/"
               placeholder="Enter book title"
-              showSuggest={true}
+              searchMode="books"
               suggestLink="/users/book-tiles/create/"
+              showSuggest={true}
               showHistory={true}
             />
           </div>
