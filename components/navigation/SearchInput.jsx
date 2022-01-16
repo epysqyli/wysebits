@@ -28,6 +28,46 @@ const SearchInput = ({
   const [didLoad, setDidLoad] = useState(false);
   const [activeSearch, setActiveSearch] = useState(false);
 
+  const recentBooksHistory =
+    activeSearch &&
+    didLoad &&
+    suggestions === null &&
+    showHistory &&
+    booksHistory !== null ? (
+      <div className="animate-show-up-slow mt-10">
+        {booksHistory.map((query, index) => {
+          return (
+            <HistoryBox
+              query={query}
+              removeFromStateHistory={removeFromStateHistory}
+              search={search}
+              key={index}
+            />
+          );
+        })}
+      </div>
+    ) : null;
+
+  const recentAuthorsHistory =
+    activeSearch &&
+    didLoad &&
+    suggestions === null &&
+    showHistory &&
+    authorsHistory !== null ? (
+      <div className="animate-show-up-slow mt-10">
+        {authorsHistory.map((query, index) => {
+          return (
+            <HistoryBox
+              query={query}
+              removeFromStateHistory={removeFromStateHistory}
+              search={search}
+              key={index}
+            />
+          );
+        })}
+      </div>
+    ) : null;
+
   const router = useRouter();
   const getQuery = (query = searchTerms) => query.split(" ").join("-");
   const goToResults = (query) => router.push(`${pageDest}${getQuery(query)}/1`);
@@ -95,7 +135,7 @@ const SearchInput = ({
     }
   };
 
-  const displaySuggestions = () => {
+  const displayHistory = () => {
     if (searchMode === "books" && booksHistory.length !== 0) {
       setActiveSearch(true);
     }
@@ -105,51 +145,14 @@ const SearchInput = ({
     }
   };
 
-  const recentBooksHistory =
-    activeSearch &&
-    didLoad &&
-    suggestions === null &&
-    showHistory &&
-    booksHistory !== null ? (
-      <div className="animate-show-up-slow mt-10">
-        {booksHistory.map((query, index) => {
-          return (
-            <HistoryBox
-              query={query}
-              removeFromStateHistory={removeFromStateHistory}
-              search={search}
-              key={index}
-            />
-          );
-        })}
-      </div>
-    ) : null;
-
-  const recentAuthorsHistory =
-    activeSearch &&
-    didLoad &&
-    suggestions === null &&
-    showHistory &&
-    authorsHistory !== null ? (
-      <div className="animate-show-up-slow mt-10">
-        {authorsHistory.map((query, index) => {
-          return (
-            <HistoryBox
-              query={query}
-              removeFromStateHistory={removeFromStateHistory}
-              search={search}
-              key={index}
-            />
-          );
-        })}
-      </div>
-    ) : null;
-
+  // manage history on load
   useEffect(() => {
     setDidLoad(true);
     setBooksHistory(findOrCreateHistory("booksHistory").reverse());
     setAuthorsHistory(findOrCreateHistory("authorsHistory").reverse());
   }, []);
+
+  useEffect(() => setSuggestions(null), [searchMode]);
 
   useEffect(() => {
     if ((searchTerms && searchTerms.length < 3) || searchTerms == "") {
@@ -171,8 +174,7 @@ const SearchInput = ({
             id="tmp"
             className="border-none bg-white w-5/6 rounded-tl-lg rounded-bl-lg focus:ring-0 group-hover:shadow-md transition"
             onChange={handleChange}
-            onFocus={() => displaySuggestions()}
-            // onBlur={() => setActiveSearch(false)}
+            onFocus={() => displayHistory()}
             placeholder={placeholder}
             required
           />
