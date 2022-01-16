@@ -73,13 +73,13 @@ const Home = ({ categories, userState }) => {
 
       <div className="xl:flex xl:w-11/12 xl:mx-auto">
         <div className="mb-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6 px-2 py-3 xl:py-0 border-b-2">
-          <div className="flex justify-between items-center px-10">
+          <div className="flex justify-between items-center md:px-10">
             {searchMode === "books" ? (
               <Book size={36} strokeWidth={1.5} />
             ) : (
               <Columns size={36} strokeWidth={1.5} />
             )}
-            <div className="text-4xl text-gray-700">Explore {searchMode}</div>
+            <div className="text-4xl text-gray-700 text-center">Explore {searchMode}</div>
             <div
               className="group p-3 shadow rounded bg-white cursor-pointer active:shadow-inner"
               onClick={toggleSearchMode}
