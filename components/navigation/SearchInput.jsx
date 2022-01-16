@@ -151,11 +151,15 @@ const SearchInput = ({
         {activeSearch && history.length != 0 ? recentHistory : null}
       </div>
 
-      {/* {showSuggest ? (
+      {showSuggest ? (
         <div>
-          <SuggestBox suggestions={suggestions} suggestLink={suggestLink} />
+          <SuggestBox
+            suggestions={suggestions}
+            suggestLink={suggestLink}
+            searchMode={searchMode}
+          />
         </div>
-      ) : null} */}
+      ) : null}
     </div>
   );
 };

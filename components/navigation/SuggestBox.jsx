@@ -2,18 +2,19 @@ import { ArrowUpRight } from "react-feather";
 import Link from "next/link";
 import slugify from "slugify";
 
-const SuggestBox = ({ suggestions, suggestLink }) => {
+const SuggestBox = ({ suggestions, suggestLink, searchMode }) => {
   const slug = (title, id) =>
     slugify(`${title}-${id}`, { lower: true, strict: true });
 
   const buildLink = (result) => {
     if (suggestLink == "/books/")
       return `${suggestLink}${slug(result._source.title, result._source.id)}/1`;
-    else if (suggestLink == "/users/book-tiles/create/")
+
+    if (suggestLink == "/users/book-tiles/create/")
       return `${suggestLink}${result._source.id}`;
   };
 
-  if (suggestions) {
+  if (searchMode === "books" && suggestions) {
     return (
       <div>
         {suggestions.map((s) => {
@@ -43,9 +44,13 @@ const SuggestBox = ({ suggestions, suggestLink }) => {
         })}
       </div>
     );
-  } else {
+  }
+
+  if (searchMode === "author" && suggestions) {
     return null;
   }
+
+  return null;
 };
 
 export default SuggestBox;
