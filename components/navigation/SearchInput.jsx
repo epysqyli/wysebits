@@ -38,7 +38,7 @@ const SearchInput = ({
         if (searchMode === "books") {
           addToHistory(searchTerms, "booksHistory");
         }
-        
+
         if (searchMode === "authors") {
           addToHistory(searchTerms, "authorsHistory");
         }
@@ -92,6 +92,16 @@ const SearchInput = ({
       const newHistory = authorsHistory.filter((item) => item !== query);
       setAuthorsHistory(newHistory);
       removeFromHistory(query, "authorsHistory");
+    }
+  };
+
+  const displaySuggestions = () => {
+    if (searchMode === "books" && booksHistory.length !== 0) {
+      setActiveSearch(true);
+    }
+
+    if (searchMode === "authors" && authorsHistory.length !== 0) {
+      setActiveSearch(true);
     }
   };
 
@@ -161,7 +171,7 @@ const SearchInput = ({
             id="tmp"
             className="border-none bg-white w-5/6 rounded-tl-lg rounded-bl-lg focus:ring-0 group-hover:shadow-md transition"
             onChange={handleChange}
-            onFocus={() => setActiveSearch(true)}
+            onFocus={() => displaySuggestions()}
             // onBlur={() => setActiveSearch(false)}
             placeholder={placeholder}
             required
