@@ -40,9 +40,9 @@ const BookSearch = ({ userState }) => {
         </div>
       </div>
     );
-  } else {
-    return <NoAccess />;
   }
+  
+  return <NoAccess />;
 };
 
 export default BookSearch;

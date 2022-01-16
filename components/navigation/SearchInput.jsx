@@ -78,9 +78,17 @@ const SearchInput = ({
 
   // history state methods
   const removeFromStateHistory = (query) => {
-    const newHistory = history.filter((item) => item !== query);
-    setHistory(newHistory);
-    removeFromHistory(query);
+    if (searchMode === "books") {
+      const newHistory = booksHistory.filter((item) => item !== query);
+      setBooksHistory(newHistory);
+      removeFromHistory(query, "booksHistory");
+    }
+
+    if (searchMode === "authors") {
+      const newHistory = authorsHistory.filter((item) => item !== query);
+      setAuthorsHistory(newHistory);
+      removeFromHistory(query, "authorsHistory");
+    }
   };
 
   const recentBooksHistory =
