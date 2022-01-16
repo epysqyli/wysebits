@@ -28,46 +28,6 @@ const SearchInput = ({
   const [didLoad, setDidLoad] = useState(false);
   const [activeSearch, setActiveSearch] = useState(false);
 
-  const recentBooksHistory =
-    activeSearch &&
-    didLoad &&
-    suggestions === null &&
-    showHistory &&
-    booksHistory !== null ? (
-      <div className="animate-show-up-slow mt-10">
-        {booksHistory.map((query, index) => {
-          return (
-            <HistoryBox
-              query={query}
-              removeFromStateHistory={removeFromStateHistory}
-              search={search}
-              key={index}
-            />
-          );
-        })}
-      </div>
-    ) : null;
-
-  const recentAuthorsHistory =
-    activeSearch &&
-    didLoad &&
-    suggestions === null &&
-    showHistory &&
-    authorsHistory !== null ? (
-      <div className="animate-show-up-slow mt-10">
-        {authorsHistory.map((query, index) => {
-          return (
-            <HistoryBox
-              query={query}
-              removeFromStateHistory={removeFromStateHistory}
-              search={search}
-              key={index}
-            />
-          );
-        })}
-      </div>
-    ) : null;
-
   const router = useRouter();
   const getQuery = (query = searchTerms) => query.split(" ").join("-");
   const goToResults = (query) => router.push(`${pageDest}${getQuery(query)}/1`);
@@ -158,6 +118,46 @@ const SearchInput = ({
       setSuggestions(newSuggestions);
     }
   }, [searchTerms]);
+
+  const recentBooksHistory =
+    activeSearch &&
+    didLoad &&
+    suggestions === null &&
+    showHistory &&
+    booksHistory !== null ? (
+      <div className="animate-show-up-slow mt-10">
+        {booksHistory.map((query, index) => {
+          return (
+            <HistoryBox
+              query={query}
+              removeFromStateHistory={removeFromStateHistory}
+              search={search}
+              key={index}
+            />
+          );
+        })}
+      </div>
+    ) : null;
+
+  const recentAuthorsHistory =
+    activeSearch &&
+    didLoad &&
+    suggestions === null &&
+    showHistory &&
+    authorsHistory !== null ? (
+      <div className="animate-show-up-slow mt-10">
+        {authorsHistory.map((query, index) => {
+          return (
+            <HistoryBox
+              query={query}
+              removeFromStateHistory={removeFromStateHistory}
+              search={search}
+              key={index}
+            />
+          );
+        })}
+      </div>
+    ) : null;
 
   return (
     <div>
