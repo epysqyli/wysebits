@@ -8,6 +8,7 @@ import {
   RefreshCw,
   Columns,
 } from "react-feather";
+
 import Button from "../components/navigation/Button";
 import CategoryButton from "../components/navigation/CategoryButton";
 import SearchInput from "../components/navigation/SearchInput";
