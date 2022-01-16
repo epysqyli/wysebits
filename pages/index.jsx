@@ -80,11 +80,13 @@ const Home = ({ categories, userState }) => {
               <Columns size={36} strokeWidth={1.5} />
             )}
             <div className="text-4xl text-gray-700">Explore {searchMode}</div>
-            <div className="p-2 shadow rounded bg-white active:shadow-inner">
+            <div
+              className="group p-3 shadow rounded bg-white cursor-pointer active:shadow-inner"
+              onClick={toggleSearchMode}
+            >
               <RefreshCw
-                size={26}
-                className="cursor-pointer text-gray-600 hover:scale-110 hover:text-gray-800 active:scale-100 transition-transform"
-                onClick={toggleSearchMode}
+                size={22}
+                className="text-gray-600 group-hover:scale-110 group-hover:text-gray-800 group-active:scale-100 transition-transform"
               />
             </div>
           </div>
