@@ -184,13 +184,13 @@ const CreateBook = ({ categories, userState }) => {
           </div>
 
           <div className="my-10">
-            <label htmlFor="book-cover" className="pl-3"></label>
+            <label htmlFor="book-cover">Upload a book cover</label>
             <input
               type="file"
               name="book_cover"
               id="book-cover"
               onChange={(e) => setFile(e.target.files[0])}
-              className="bg-white py-2 w-full px-3 rounded-md shadow-sm"
+              className="bg-white py-2 w-full px-3 mt-5 rounded-md shadow-sm"
             />
           </div>
 
