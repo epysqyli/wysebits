@@ -88,6 +88,7 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
               <SearchInput
                 pageDest="/users/book-search/"
                 placeholder="Any book in mind?"
+                searchMode="books"
               />
             </div>
           </div>
