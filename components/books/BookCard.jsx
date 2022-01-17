@@ -5,10 +5,19 @@ import { Image as ImageLoader, ArrowUpRight } from "react-feather";
 import Link from "next/dist/client/link";
 import { slug } from "../../lib/utils";
 
-const BookCard = ({ bookData, showCategoryLink, showBookLink, feed }) => {
+const BookCard = ({
+  bookData,
+  showCategoryLink,
+  showBookLink,
+  showAuthorLink,
+  feed,
+}) => {
   const [imageIsLoaded, setImageIsLoaded] = useState(false);
   const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
   const dbSrc = bookData.cover_url;
+
+  const authorName = bookData.authors[0] ? bookData.authors[0].full_name : null;
+  const authorId = bookData.authors[0] ? bookData.authors[0].id : null;
 
   if (feed === true)
     return (
@@ -118,11 +127,21 @@ const BookCard = ({ bookData, showCategoryLink, showBookLink, feed }) => {
           <div>{bookData.category.name}</div>
         )}
 
-        <div className="italic">
-          {bookData.authors[0]
-            ? bookData.authors[0].full_name
-            : "No authors found"}
-        </div>
+        {showAuthorLink && authorName && authorId ? (
+          <Link href={`/authors/${slug(authorName, authorId)}/1`}>
+            <div className="flex justify-end items-center gap-x-2 cursor-pointer hover:text-gray-300 active:text-gray-400 mr-0 mx-auto group">
+              <div className="italic">{authorName}</div>
+              <ArrowUpRight
+                size={18}
+                className="group-hover:scale-125 transition-transform"
+              />
+            </div>
+          </Link>
+        ) : (
+          <div className="italic">
+            {authorName ? authorName : "No authors assigned"}
+          </div>
+        )}
       </div>
     </div>
   );
