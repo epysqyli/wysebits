@@ -9,8 +9,8 @@ const AuthorResult = ({ author }) => {
     `https://covers.openlibrary.org/a/olid/${key}-M.jpg`;
 
   return (
-    <div>
-      <div className="w-2/5 mx-auto mt-5 relative">
+    <div className="bg-gray-100 flex justify-between items-center px-2 py-2 rounded-md shadow">
+      <div className="w-1/4 relative">
         {imageIsLoaded == false ? (
           <ImageLoader
             size={40}
@@ -31,7 +31,7 @@ const AuthorResult = ({ author }) => {
           />
         </div>
       </div>
-      <div className="text-center my-5">{author.full_name}</div>
+      <div className="w-2/4 text-xl">{author.full_name}</div>
     </div>
   );
 };
