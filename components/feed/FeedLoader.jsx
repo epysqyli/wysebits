@@ -1,6 +1,7 @@
 const FeedLoader = ({
   nextPage,
-  customNextPage,
+  favCatsNextPage,
+  followingNextPage,
   currentSelection,
   getMoreEntries,
 }) => {
@@ -15,7 +16,10 @@ const FeedLoader = ({
 
   if (nextPage !== null && currentSelection === "global") return btn;
 
-  if (customNextPage !== null && currentSelection === "custom") return btn;
+  if (favCatsNextPage !== null && currentSelection === "favCats") return btn;
+
+  if (followingNextPage !== null && currentSelection === "following")
+    return btn;
 
   return null;
 };
