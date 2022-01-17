@@ -21,6 +21,7 @@ module.exports = {
         "user-welcome": "url('/images/user-welcome.jpg')",
         "wip-contributions": "url('/images/wip-contributions.jpg')",
         "feed": "url('/images/feed.jpg')",
+        "author": "url('/images/author.jpg')",
       },
       grayscale: {
         50: "50%",
