@@ -77,7 +77,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
             onClick={() =>
               unfollowAndUpdateState(
                 userState.user,
-                user,
+                user.user,
                 following,
                 setFollowedUsers
               )
@@ -97,7 +97,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
             onClick={() =>
               followAndUpdateState(
                 userState.user,
-                user,
+                user.user,
                 following,
                 setFollowedUsers
               )
