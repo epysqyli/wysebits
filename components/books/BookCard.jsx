@@ -68,9 +68,7 @@ const BookCard = ({
           )}
 
           <div className="italic">
-            {bookData.authors[0]
-              ? bookData.authors[0].full_name
-              : "No authors found"}
+            {authorName ? authorName : "No authors assigned"}
           </div>
         </div>
       </div>
