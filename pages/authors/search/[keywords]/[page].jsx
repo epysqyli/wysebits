@@ -18,7 +18,7 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-const Author = ({ searchResults, pageNum, keywords }) => {
+const AuthorSearch = ({ searchResults, pageNum, keywords }) => {
   const clientUrl = `/authors/search/${keywords}`;
 
   return (
@@ -28,6 +28,7 @@ const Author = ({ searchResults, pageNum, keywords }) => {
           return <AuthorResult author={author._source} key={author._id} />;
         })}
       </div>
+
       <div className="flex justify-around my-16 lg:my-32 md:w-4/5 lg:w-1/2 mx-auto">
         <div className="w-1/3">
           <NavButtonElastic
@@ -48,4 +49,4 @@ const Author = ({ searchResults, pageNum, keywords }) => {
   );
 };
 
-export default Author;
+export default AuthorSearch;
