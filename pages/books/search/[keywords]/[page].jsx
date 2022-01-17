@@ -85,7 +85,7 @@ const BookSearchResults = ({ searchResults, keywords, pageNum }) => {
   }
 
   if (searchResults === null) {
-    return <NoSearchResults />;
+    return <NoSearchResults searchMode="books" />;
   }
 };
 
