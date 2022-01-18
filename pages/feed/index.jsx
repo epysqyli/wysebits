@@ -15,11 +15,7 @@ import {
   getFollowingFeed,
 } from "../../lib/serverSideMethods";
 
-import {
-  updateUserFeed,
-  updateFavCategoriesFeed,
-  updateFollowingFeed,
-} from "../../lib/feedMethods";
+import { updateFeed } from "../../lib/feedMethods";
 
 import { Grid, Globe, Users } from "react-feather";
 
@@ -43,6 +39,7 @@ export const getServerSideProps = async (context) => {
         favCatsPagy: favCatsEntries.data.pagy,
         followingEntriesProps: followingEntries.data.entries,
         followingPagy: followingEntries.data.pagy,
+        feedType: "user_feed",
 
         following: following.data,
         favBooks: favBooks.data.books,
@@ -58,6 +55,7 @@ export const getServerSideProps = async (context) => {
       props: {
         entriesProps: entries.data.entries,
         pagy: entries.data.pagy,
+        feedType: "guest_feed",
       },
     };
   }
@@ -75,11 +73,12 @@ const Feed = ({
   favInsights,
   entriesUp,
   entriesDown,
+  feedType,
 }) => {
   const [selectedEntries, setSelectedEntries] = useState([]);
 
   const [globalEntries, setGlobalEntries] = useState(entriesProps);
-  const [currentSelection, setCurrentSelection] = useState("user_feed");
+  const [currentSelection, setCurrentSelection] = useState(feedType);
   const [nextPage, setNextPage] = useState(pagy.next);
 
   const [favCatsEntries, setFavCatsEntries] = useState(favCatsEntriesProps);
@@ -108,15 +107,20 @@ const Feed = ({
   };
 
   const updateFeedUserGlobal = async () => {
-    const newEntries = await updateUserFeed(userState.user, nextPage);
+    const newEntries = await updateFeed(
+      userState.user,
+      currentSelection,
+      nextPage
+    );
     setGlobalEntries([...globalEntries, ...newEntries.data.entries]);
     setSelectedEntries([...globalEntries, ...newEntries.data.entries]);
     setNextPage(newEntries.data.pagy.next);
   };
 
   const updateFeedUserCategories = async () => {
-    const newEntries = await updateFavCategoriesFeed(
+    const newEntries = await updateFeed(
       userState.user,
+      currentSelection,
       favCatsNextPage
     );
     setFavCatsEntries([...favCatsEntries, ...newEntries.data.entries]);
@@ -125,9 +129,10 @@ const Feed = ({
   };
 
   const updateFeedUserFollowing = async () => {
-    const newEntries = await updateFollowingFeed(
+    const newEntries = await updateFeed(
       userState.user,
-      favCatsNextPage
+      currentSelection,
+      followingNextPage
     );
     setFollowingEntries([...followingEntries, ...newEntries.data.entries]);
     setSelectedEntries([...followingEntries, ...newEntries.data.entries]);
@@ -135,7 +140,7 @@ const Feed = ({
   };
 
   const getMoreEntries = async () => {
-    if (currentSelection === "user_feed" && userState.isLogged === false)
+    if (currentSelection === "guest_feed" && userState.isLogged === false)
       await updateFeedGuestGlobal();
 
     if (currentSelection === "user_feed" && userState.isLogged === true)
