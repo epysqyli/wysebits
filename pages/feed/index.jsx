@@ -106,37 +106,19 @@ const Feed = ({
     setNextPage(newEntries.data.pagy.next);
   };
 
-  const updateFeedUserGlobal = async () => {
+  const updateFeedState = async (
+    currentEntries,
+    setEntriesState,
+    pageNext,
+    setPageState
+  ) => {
     const newEntries = await updateFeed(
       userState.user,
       currentSelection,
-      nextPage
+      pageNext
     );
-    setGlobalEntries([...globalEntries, ...newEntries.data.entries]);
-    setSelectedEntries([...globalEntries, ...newEntries.data.entries]);
-    setNextPage(newEntries.data.pagy.next);
-  };
-
-  const updateFeedUserCategories = async () => {
-    const newEntries = await updateFeed(
-      userState.user,
-      currentSelection,
-      favCatsNextPage
-    );
-    setFavCatsEntries([...favCatsEntries, ...newEntries.data.entries]);
-    setSelectedEntries([...favCatsEntries, ...newEntries.data.entries]);
-    setFavCatsNextPage(newEntries.data.pagy.next);
-  };
-
-  const updateFeedUserFollowing = async () => {
-    const newEntries = await updateFeed(
-      userState.user,
-      currentSelection,
-      followingNextPage
-    );
-    setFollowingEntries([...followingEntries, ...newEntries.data.entries]);
-    setSelectedEntries([...followingEntries, ...newEntries.data.entries]);
-    setFollowingNextPage(newEntries.data.pagy.next);
+    setEntriesState([...currentEntries, ...newEntries.data.entries]);
+    setPageState(newEntries.data.pagy.next);
   };
 
   const getMoreEntries = async () => {
@@ -144,13 +126,28 @@ const Feed = ({
       await updateFeedGuestGlobal();
 
     if (currentSelection === "user_feed" && userState.isLogged === true)
-      await updateFeedUserGlobal();
+      await updateFeedState(
+        globalEntries,
+        setGlobalEntries,
+        nextPage,
+        setNextPage
+      );
 
     if (currentSelection === "categories_feed" && userState.isLogged === true)
-      await updateFeedUserCategories();
+      await updateFeedState(
+        favCatsEntries,
+        setFavCatsEntries,
+        favCatsNextPage,
+        setFavCatsNextPage
+      );
 
     if (currentSelection === "following_feed" && userState.isLogged === true)
-      await updateFeedUserFollowing();
+      await updateFeedState(
+        followingEntries,
+        setFollowingEntries,
+        followingNextPage,
+        setFollowingNextPage
+      );
   };
 
   useEffect(() => {
