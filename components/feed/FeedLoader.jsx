@@ -14,11 +14,11 @@ const FeedLoader = ({
     </div>
   );
 
-  if (nextPage !== null && currentSelection === "global") return btn;
+  if (nextPage !== null && currentSelection === "user_feed") return btn;
 
-  if (favCatsNextPage !== null && currentSelection === "favCats") return btn;
+  if (favCatsNextPage !== null && currentSelection === "categories_feed") return btn;
 
-  if (followingNextPage !== null && currentSelection === "following")
+  if (followingNextPage !== null && currentSelection === "following_feed")
     return btn;
 
   return null;

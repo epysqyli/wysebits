@@ -79,7 +79,7 @@ const Feed = ({
   const [selectedEntries, setSelectedEntries] = useState([]);
 
   const [globalEntries, setGlobalEntries] = useState(entriesProps);
-  const [currentSelection, setCurrentSelection] = useState("global");
+  const [currentSelection, setCurrentSelection] = useState("user_feed");
   const [nextPage, setNextPage] = useState(pagy.next);
 
   const [favCatsEntries, setFavCatsEntries] = useState(favCatsEntriesProps);
@@ -99,11 +99,6 @@ const Feed = ({
   const [insights, setInsights] = useState(favInsights);
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
-
-  const selectGlobalEntries = () => {
-    setCurrentSelection("global");
-    setSelectedEntries(globalEntries);
-  };
 
   const updateFeedGuestGlobal = async () => {
     const newEntries = await getGuestFeed(nextPage);
@@ -140,16 +135,16 @@ const Feed = ({
   };
 
   const getMoreEntries = async () => {
-    if (currentSelection === "global" && userState.isLogged === false)
+    if (currentSelection === "user_feed" && userState.isLogged === false)
       await updateFeedGuestGlobal();
 
-    if (currentSelection === "global" && userState.isLogged === true)
+    if (currentSelection === "user_feed" && userState.isLogged === true)
       await updateFeedUserGlobal();
 
-    if (currentSelection === "favCats" && userState.isLogged === true)
+    if (currentSelection === "categories_feed" && userState.isLogged === true)
       await updateFeedUserCategories();
 
-    if (currentSelection === "following" && userState.isLogged === true)
+    if (currentSelection === "following_feed" && userState.isLogged === true)
       await updateFeedUserFollowing();
   };
 
@@ -159,13 +154,18 @@ const Feed = ({
   }, []);
 
   if (userState.isLogged === true) {
+    const selectGlobalEntries = () => {
+      setCurrentSelection("user_feed");
+      setSelectedEntries(globalEntries);
+    };
+    
     const selectFavCatsEntries = () => {
-      setCurrentSelection("favCats");
+      setCurrentSelection("categories_feed");
       setSelectedEntries(favCatsEntries);
     };
 
     const selectFollowingEntries = () => {
-      setCurrentSelection("following");
+      setCurrentSelection("following_feed");
       setSelectedEntries(followingEntries);
     };
 
@@ -180,7 +180,7 @@ const Feed = ({
         <div className="flex items-center md:mt-5 md:w-4/5 xl:w-4/6 2xl:w-1/2 mx-auto">
           <div
             className={`text-gray-600 w-1/2 py-4 text-center transition-all ${
-              currentSelection === "following"
+              currentSelection === "following_feed"
                 ? "bg-gray-200 inner-shadow text-black rounded-br-md md:rounded-md"
                 : "cursor-pointer opacity-30"
             }`}
@@ -192,7 +192,7 @@ const Feed = ({
 
           <div
             className={`text-gray-600 w-1/2 py-4 text-center transition-all ${
-              currentSelection === "favCats"
+              currentSelection === "categories_feed"
                 ? "bg-gray-200 inner-shadow text-black rounded-br-md md:rounded-md"
                 : "cursor-pointer opacity-30"
             }`}
@@ -204,7 +204,7 @@ const Feed = ({
 
           <div
             className={`text-gray-600 w-1/2 py-4 text-center transition-all ${
-              currentSelection === "global"
+              currentSelection === "user_feed"
                 ? "bg-gray-200 inner-shadow text-black rounded-bl-md md:rounded-md"
                 : "cursor-pointer opacity-30"
             }`}
