@@ -93,7 +93,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
                 setFollowedUsers
               )
             }
-            className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-2/5 md:w-1/5 mt-10 py-1 rounded-md shadow bg-white group active:shadow-inner"
+            className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-2/5 md:w-1/3 lg:w-1/4 xl:w-1/5 mt-10 py-1 rounded-md shadow bg-white group active:shadow-inner"
           >
             <UserMinus
               size={20}
@@ -113,7 +113,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
                 setFollowedUsers
               )
             }
-            className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-2/5 mt-10 py-1 rounded-md shadow bg-white group active:shadow-inner"
+            className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-2/5 md:w-1/3 lg:w-1/4 xl:w-1/5 mt-10 py-1 rounded-md shadow bg-white group active:shadow-inner"
           >
             <UserPlus
               size={20}
