@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 const SignUp = () => {
   const [userData, setUserData] = useState({
@@ -8,6 +9,8 @@ const SignUp = () => {
     password: null,
     passwordConfirmation: null,
   });
+
+  const [file, setFile] = useState(null);
 
   const router = useRouter();
 
@@ -18,29 +21,32 @@ const SignUp = () => {
     });
   };
 
-  const makePostCall = async (e) => {
-    e.preventDefault();
+  const createFormData = () => {
+    const formData = new FormData();
 
-    let resp = await fetch("http://localhost:3001/api/signup", {
+    formData.append("user[username]", userData.username);
+    formData.append("user[email_address]", userData.emailAddress);
+    formData.append("user[password]", userData.password);
+    formData.append(
+      "user[password_confirmation]",
+      userData.passwordConfirmation
+    );
+    if (file) formData.append("user[avatar]", file);
+
+    return formData;
+  };
+
+  const signUp = async (e) => {
+    e.preventDefault();
+    const formData = createFormData();
+
+    const resp = await axios({
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user: {
-          username: userData.username,
-          email_address: userData.emailAddress,
-          password: userData.password,
-          password_confirmation: userData.passwordConfirmation,
-        },
-      }),
+      url: "http://localhost:3001/api/signup",
+      data: formData,
     });
 
-    resp = await resp.json();
-
-    if (resp.status === "success") {
-      router.push("/users/actions");
-    }
+    if (resp.status === "success") router.push("/users/actions");
   };
 
   return (
@@ -54,10 +60,7 @@ const SignUp = () => {
         </div>
       </div>
 
-      <form
-        className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 py-10"
-        onSubmit={makePostCall}
-      >
+      <form className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 py-10" onSubmit={signUp}>
         <div className="w-4/6 mx-auto my-4">
           <label htmlFor="username" className="pl-1">
             Username
@@ -111,6 +114,17 @@ const SignUp = () => {
             className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow focus:shadow-md"
             onChange={handleChange}
             required
+          />
+        </div>
+
+        <div className="w-4/6 mx-auto my-4">
+          <label htmlFor="user-avatar">Upload an avatar picture</label>
+          <input
+            type="file"
+            name="user-avatar"
+            id="user-avatar"
+            onChange={(e) => setFile(e.target.files[0])}
+            className="bg-white py-2 w-full px-3 mt-5 rounded-md shadow-sm"
           />
         </div>
 
