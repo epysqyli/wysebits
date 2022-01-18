@@ -99,7 +99,7 @@ const Feed = ({
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
 
-  const updateFeedGuestGlobal = async () => {
+  const updateFeedGuest = async () => {
     const newEntries = await getGuestFeed(nextPage);
     setGlobalEntries([...globalEntries, ...newEntries.data.entries]);
     setSelectedEntries([...globalEntries, ...newEntries.data.entries]);
@@ -123,7 +123,7 @@ const Feed = ({
 
   const getMoreEntries = async () => {
     if (currentSelection === "guest_feed" && userState.isLogged === false)
-      await updateFeedGuestGlobal();
+      await updateFeedGuest();
 
     if (currentSelection === "user_feed" && userState.isLogged === true)
       await updateFeedState(
@@ -195,7 +195,7 @@ const Feed = ({
           <div
             className={`text-gray-600 w-1/2 py-4 text-center transition-all hover:text-black ${
               currentSelection === "categories_feed"
-                ? "bg-gray-200 inner-shadow text-black rounded-br-md md:rounded-md"
+                ? "bg-gray-200 inner-shadow text-black rounded-bl-md rounded-br-md md:rounded-md"
                 : "cursor-pointer opacity-30"
             }`}
             onClick={selectFavCatsEntries}
