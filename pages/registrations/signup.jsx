@@ -46,7 +46,8 @@ const SignUp = () => {
       data: formData,
     });
 
-    if (resp.status === "success") router.push("/users/actions");
+    console.log(resp);
+    if (resp.status === 200) router.push("/users/actions");
   };
 
   return (

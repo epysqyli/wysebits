@@ -9,6 +9,7 @@ import {
 } from "react-feather";
 
 import Link from "next/dist/client/link";
+import Image from "next/dist/client/image";
 import { countTotalInsights } from "../../lib/creatorMethods";
 
 import {
@@ -22,12 +23,22 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
     <div>
       <div className="md:flex items-center justify-around mt-4">
         <div className="flex justify-around items-center gap-x-5">
-          <User
-            size={60}
-            strokeWidth={1.5}
-            color="gray"
-            className="bg-gray-300 rounded-full p-2"
-          />
+          {user.user.avatar_url !== null ? (
+            <Image
+              src={user.user.avatar_url}
+              className="animate-show-up-slow rounded-full"
+              layout="fixed"
+              width="60"
+              height="60"
+            />
+          ) : (
+            <User
+              size={60}
+              strokeWidth={1.5}
+              color="gray"
+              className="bg-gray-300 rounded-full p-2"
+            />
+          )}
           <div>
             <div className="text-5xl font-bold text-gray-700">
               {user.user.username}
