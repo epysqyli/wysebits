@@ -58,7 +58,7 @@ const Home = ({ categories, userState }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="h-60 lg:h-48 xl:h-42 mx-auto bg-library bg-cover bg-center mb-10">
+      <div className="h-60 lg:h-54 xl:h-42 mx-auto bg-library bg-cover bg-center mb-10">
         <div className="bg-gray-900 h-full bg-opacity-80 relative">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <h1 className="text-white text-6xl font-bold text-center">
@@ -83,12 +83,13 @@ const Home = ({ categories, userState }) => {
               Explore {searchMode}
             </div>
             <div
-              className="group p-2 md:p-3 shadow rounded-lg bg-white cursor-pointer active:shadow-inner"
+              className="group p-3 shadow rounded-md cursor-pointer active:shadow-inner"
               onClick={toggleSearchMode}
             >
               <RefreshCw
-                size={22}
-                className="text-gray-600 group-hover:scale-110 group-hover:text-gray-800 group-active:scale-100 transition-transform"
+                size={18}
+                strokeWidth={1.5}
+                className="text-gray-600 group-hover:scale-105 group-hover:text-gray-800 group-active:scale-100 transition-transform"
               />
             </div>
           </div>

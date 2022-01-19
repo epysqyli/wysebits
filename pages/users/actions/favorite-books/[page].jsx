@@ -47,7 +47,9 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
             <div>
               You can add books to your favorite ones simply by hitting the
               heart on a book of choice.
-              <br /> Start exploring books now
+              <br />
+              <br />{" "}
+              <div className="text-center mt-5">Start exploring books now!</div>
             </div>
             <div className="mt-10 mb-3">
               <SearchInput

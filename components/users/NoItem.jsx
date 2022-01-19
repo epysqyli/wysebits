@@ -2,7 +2,7 @@ import { AlertCircle } from "react-feather";
 
 const NoItem = ({ message }) => {
   return (
-    <div>
+    <div className="text-center">
       <div className="flex justify-center items-center gap-x-5">
         <AlertCircle
           size={36}
