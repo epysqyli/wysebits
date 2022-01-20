@@ -68,7 +68,8 @@ const ManageCategories = ({ cats, favCats, userState }) => {
         <div className="bg-gray-800 bg-opacity-70 text-white text-2xl font-medium text-center py-12">
           <div>Update your favorite categories</div>
           <div className="text-sm mt-5 font-normal">
-            This will influence the suggestions that you get on the feed
+            This will influence the suggestions that you get on the category
+            section of the feed
           </div>
         </div>
       </div>

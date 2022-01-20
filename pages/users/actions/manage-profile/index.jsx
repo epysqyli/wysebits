@@ -28,6 +28,13 @@ const ManageProfile = ({ userState }) => {
               href="/users/actions/manage-profile/manage-categories"
             />
           </div>
+
+          <div className="mx-auto my-5">
+            <ManageBox
+              text="Remove or change profile picture"
+              href="/users/actions/manage-profile/manage-picture"
+            />
+          </div>
         </div>
       </div>
     );
