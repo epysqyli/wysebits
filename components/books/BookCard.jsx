@@ -67,9 +67,17 @@ const BookCard = ({
             <div>{bookData.category.name}</div>
           )}
 
-          <div className="italic">
-            {authorName ? authorName : "No authors assigned"}
-          </div>
+          {showAuthorLink && authorName && authorId ? (
+            <Link href={`/authors/${slug(authorName, authorId)}/1`}>
+              <div className="italic cursor-pointer hover:text-gray-300 active:text-gray-400">
+                {authorName}
+              </div>
+            </Link>
+          ) : (
+            <div className="italic">
+              {authorName ? authorName : "No authors assigned"}
+            </div>
+          )}
         </div>
       </div>
     );

@@ -20,6 +20,7 @@ const FeedEntry = ({
           bookData={entry.book_tile.book}
           showCategoryLink={true}
           showBookLink={true}
+          showAuthorLink={true}
           feed={true}
         />
       </div>
