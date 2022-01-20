@@ -30,7 +30,7 @@ export const getServerSideProps = async (context) => {
 
   const book = await getBook(id);
   const entries = await getBookEntries(id, pageNum);
-  const recommendations = await getCategoryRecommendations(book.data.category);
+  const recommendations = await getCategoryRecommendations(book.data.id);
 
   try {
     const loggedUser = await getLoggedUser(context);
