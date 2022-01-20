@@ -14,8 +14,15 @@ const ManageProfile = ({ userState }) => {
       <div>
         <WelcomeTop text="Manage your profile" bcgImg="bg-settings" />
 
-        <div className="mx-auto w-4/5 md:w-4/6 lg:w-2/5 mt-10">
-          <div className="mx-auto">
+        <div className="mx-auto w-4/6 md:w-1/2 lg:w-2/5 mt-10">
+          <div className="mx-auto my-5">
+            <ManageBox
+              text="Check your public page"
+              href={`/creators/${userState.user.username}`}
+            />
+          </div>
+
+          <div className="mx-auto my-5">
             <ManageBox
               text="Manage your favorite categories"
               href="/users/actions/manage-profile/manage-categories"
