@@ -43,9 +43,9 @@ const ManagePicture = ({ userState, userLoading }) => {
 
   return (
     <div>
-      <div className="bg-gray-700 flex items-center justify-between px-10 text-white py-14">
+      <div className="bg-gray-700 flex items-center justify-center gap-x-5 md:gap-x-10 text-white py-14">
         <Sliders size={36} strokeWidth={1.5} />
-        <div className="text-2xl">Manage your profile picture</div>
+        <div className="text-2xl">Your avatar</div>
       </div>
 
       <div className="w-4/5 mx-auto my-10">

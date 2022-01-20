@@ -83,11 +83,11 @@ const Home = ({ categories, userState }) => {
               Explore {searchMode}
             </div>
             <div
-              className="group p-3 shadow rounded-md cursor-pointer active:shadow-inner"
+              className="group p-2 rounded-md border-2 cursor-pointer active:shadow-inner bg-white active:bg-gray-100"
               onClick={toggleSearchMode}
             >
               <RefreshCw
-                size={18}
+                size={20}
                 strokeWidth={1.5}
                 className="text-gray-600 group-hover:scale-105 group-hover:text-gray-800 group-active:scale-100 transition-transform"
               />
