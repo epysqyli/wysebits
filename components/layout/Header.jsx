@@ -1,9 +1,11 @@
 import { LogIn, User, LogOut, Plus, UserPlus } from "react-feather";
 import Link from "next/link";
+import Image from "next/dist/client/image";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { useState, useEffect } from "react";
 
-const Header = ({ userState }) => {
+const Header = ({ userState, userLoading }) => {
   const router = useRouter();
 
   const logoutCall = () => {
@@ -49,11 +51,21 @@ const Header = ({ userState }) => {
     <div className="flex justify-around items-center rounded px-2 py-1 shadow bg-gray-100">
       <Link href="/users/actions">
         <a className="flex items-center mr-3 group cursor-pointer">
-          <User
-            size={18}
-            strokeWidth={1.75}
-            className="group-hover:scale-110"
-          />
+          {userLoading === false && userState.user.avatar !== null ? (
+            <Image
+              className="rounded-full"
+              src={userState.user.avatar}
+              width="20"
+              height="20"
+            />
+          ) : (
+            <User
+              size={18}
+              strokeWidth={1.75}
+              className="group-hover:scale-110"
+            />
+          )}
+
           <div className="mx-3 group-active:text-white transition-all">
             {userState.user.username}
           </div>

@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 const MyApp = ({ Component, pageProps }) => {
+  const [userLoading, setUserLoading] = useState(true);
+
   const [userState, setUserState] = useState({
     isLogged: false,
     user: {},
@@ -31,6 +33,7 @@ const MyApp = ({ Component, pageProps }) => {
       .then((resp) => {
         if (resp.data.logged_in) {
           handleLogin(resp.data);
+          setUserLoading(false);
         } else {
           handleLogout();
         }
@@ -52,12 +55,10 @@ const MyApp = ({ Component, pageProps }) => {
   }, [router.events]);
 
   // necessary on page refresh without route change
-  useEffect(() => {
-    loginStatus();
-  }, []);
+  useEffect(() => loginStatus(), []);
 
   return (
-    <Layout userState={userState}>
+    <Layout userState={userState} userLoading={userLoading}>
       <Component
         {...pageProps}
         userState={userState}
