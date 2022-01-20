@@ -62,6 +62,7 @@ const MyApp = ({ Component, pageProps }) => {
       <Component
         {...pageProps}
         userState={userState}
+        userLoading={userLoading}
         loginStatus={loginStatus}
         handleLogin={handleLogin}
         handleLogout={handleLogout}
