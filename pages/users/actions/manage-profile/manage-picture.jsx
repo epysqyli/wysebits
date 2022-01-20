@@ -7,6 +7,11 @@ const ManagePicture = ({ userState, userLoading }) => {
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [file, setFile] = useState(null);
 
+  const isBtnActive = () => {
+    if (avatarUrl !== userState.user.avatar) return true;
+    return false;
+  };
+
   const updateImage = async (userId, formData) => {
     return await axios({
       method: "POST",
@@ -14,11 +19,6 @@ const ManagePicture = ({ userState, userLoading }) => {
       data: formData,
       withCredentials: true,
     });
-  };
-
-  const isBtnActive = () => {
-    if (avatarUrl !== userState.user.avatar) return true;
-    return false;
   };
 
   const handleSubmit = async (e) => {
@@ -77,7 +77,7 @@ const ManagePicture = ({ userState, userLoading }) => {
           </label>
           <input
             type="file"
-            name=""
+            name="avatar"
             id="new-image"
             className="hidden"
             onChange={(e) => setFile(e.target.files[0])}
@@ -85,14 +85,14 @@ const ManagePicture = ({ userState, userLoading }) => {
 
           {isBtnActive() ? (
             <button
-              className="mt-20 mx-auto px-4 py-2 rounded-md bg-gray-500 text-white hover:shadow-md active:bg-gray-700"
+              className="block mt-20 mx-auto px-4 py-2 rounded-md bg-gray-500 text-white hover:shadow-md active:bg-gray-700"
               type="submit"
             >
               Change picture!
             </button>
           ) : (
             <button
-              className="mt-20 mx-auto px-4 py-2 rounded-md text-gray-300 border cursor-default"
+              className="block mt-20 mx-auto px-4 py-2 rounded-md text-gray-300 border cursor-default"
               type="submit"
               disabled
             >
