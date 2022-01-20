@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Sliders } from "react-feather";
+import { Sliders, Image as ImageLoader } from "react-feather";
 import Image from "next/dist/client/image";
 
 const ManagePicture = ({ userState, userLoading }) => {
@@ -14,7 +14,7 @@ const ManagePicture = ({ userState, userLoading }) => {
     });
   };
 
-  useEffect(() => setAvatarUrl(userState.user.avatar));
+  useEffect(() => setAvatarUrl(userState.user.avatar || null));
 
   return (
     <div>
@@ -23,10 +23,16 @@ const ManagePicture = ({ userState, userLoading }) => {
         <div className="text-2xl">Manage your profile picture</div>
       </div>
 
-      <div className="w-4/5 mx-auto my-20">
+      <div className="w-4/5 mx-auto my-10">
+        <div className="text-center mb-20 text-2xl border-b pb-2">
+          Current profile picture
+        </div>
+
         <div className="flex items-center justify-around">
           <div>
-            {userLoading === true ? null : (
+            {userState.user.avatar === null || userLoading === true ? (
+              <ImageLoader size={60} strokeWidth={1.5} color="gray" />
+            ) : (
               <Image
                 src={userState.user.avatar}
                 width={125}
