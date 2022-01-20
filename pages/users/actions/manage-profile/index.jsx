@@ -14,7 +14,7 @@ const ManageProfile = ({ userState }) => {
       <div>
         <WelcomeTop text="Manage your profile" bcgImg="bg-settings" />
 
-        <div className="mx-auto w-4/6 md:w-1/2 lg:w-2/5 mt-10">
+        <div className="mx-auto w-4/5 md:w-1/2 lg:w-2/5 mt-10">
           <div className="mx-auto my-5">
             <ManageBox
               text="Check your public page"
@@ -34,6 +34,10 @@ const ManageProfile = ({ userState }) => {
               text="Remove or change profile picture"
               href="/users/actions/manage-profile/manage-picture"
             />
+          </div>
+
+          <div className="mx-auto my-5">
+            <ManageBox text="Change current password" href="#" />
           </div>
         </div>
       </div>
