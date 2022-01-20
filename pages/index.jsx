@@ -6,7 +6,7 @@ import {
   Layers,
   ArrowUpRight,
   RefreshCw,
-  Columns,
+  Users,
 } from "react-feather";
 
 import Button from "../components/navigation/Button";
@@ -77,7 +77,7 @@ const Home = ({ categories, userState }) => {
             {searchMode === "books" ? (
               <Book size={36} strokeWidth={1.5} />
             ) : (
-              <Columns size={36} strokeWidth={1.5} />
+              <Users size={36} strokeWidth={1.5} />
             )}
             <div className="text-3xl md:text-4xl text-gray-700 text-center">
               Explore {searchMode}
