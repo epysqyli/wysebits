@@ -14,7 +14,7 @@ const ManagePicture = ({ userState, userLoading }) => {
 
   const updateImage = async (userId, formData) => {
     return await axios({
-      method: "POST",
+      method: "PUT",
       url: `http://localhost:3001/api/users/${userId}/update_avatar`,
       data: formData,
       withCredentials: true,
@@ -27,7 +27,7 @@ const ManagePicture = ({ userState, userLoading }) => {
     const formData = new FormData();
     if (file) formData.append("user[avatar]", file);
 
-    await updateImage(userState.user.id, formData);
+    const resp = await updateImage(userState.user.id, formData);
   };
 
   useEffect(() => setAvatarUrl(userState.user.avatar || null), []);
