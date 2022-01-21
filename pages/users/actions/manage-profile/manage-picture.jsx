@@ -34,12 +34,14 @@ const ManagePicture = ({ userState, userLoading }) => {
   };
 
   const deleteAvatar = async (userId) => {
-    return await axios({
+    const resp = await axios({
       method: "put",
       url: `http://localhost:3001/api/users/${userId}/delete_avatar`,
       data: {},
       withCredentials: true,
     });
+
+    setAvatarUrl(resp.data.avatar_url);
   };
 
   const handleSubmit = async (e) => {
@@ -116,7 +118,10 @@ const ManagePicture = ({ userState, userLoading }) => {
 
         <form className="my-20" onSubmit={handleSubmit}>
           <div className="flex items-center justify-around w-4/5 mx-auto">
-            <div className="cursor-pointer border px-5 py-2 rounded-md shadow hover:shadow-md transition-shadow text-gray-800">
+            <div
+              className="cursor-pointer border px-5 py-2 rounded-md shadow hover:shadow-md transition-shadow text-gray-800"
+              onClick={() => deleteAvatar(userState.user.id)}
+            >
               <XCircle className="w-min mx-auto mb-3" />
               <div>Delete current</div>
             </div>
