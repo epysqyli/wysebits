@@ -1,15 +1,21 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Sliders, Image as ImageLoader } from "react-feather";
+import { CheckCircle, Sliders, Image as ImageLoader } from "react-feather";
 import Image from "next/dist/client/image";
 
 const ManagePicture = ({ userState, userLoading }) => {
   const [avatarUrl, setAvatarUrl] = useState(null);
+  const [isUploaded, setIsUploaded] = useState(false);
   const [file, setFile] = useState(null);
 
   const isBtnActive = () => {
     if (avatarUrl !== userState.user.avatar) return true;
     return false;
+  };
+
+  const handleFileUpload = (e) => {
+    setFile(e.target.files[0]);
+    setIsUploaded(true);
   };
 
   const updateImage = async (userId, formData) => {
@@ -30,7 +36,7 @@ const ManagePicture = ({ userState, userLoading }) => {
     const resp = await updateImage(userState.user.id, formData);
   };
 
-  useEffect(() => setAvatarUrl(userState.user.avatar || null), []);
+  useEffect(() => setAvatarUrl(userState.user.avatar || null), [userLoading]);
 
   useEffect(() => {
     if (file === null) return;
@@ -80,7 +86,7 @@ const ManagePicture = ({ userState, userLoading }) => {
             name="avatar"
             id="new-image"
             className="hidden"
-            onChange={(e) => setFile(e.target.files[0])}
+            onChange={handleFileUpload}
           />
 
           {isBtnActive() ? (
