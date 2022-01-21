@@ -1,6 +1,12 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { CheckCircle, Sliders, Image as ImageLoader } from "react-feather";
+import {
+  CheckCircle,
+  Sliders,
+  Image as ImageLoader,
+  XCircle,
+  Upload,
+} from "react-feather";
 import Image from "next/dist/client/image";
 
 const ManagePicture = ({ userState, userLoading }) => {
@@ -23,6 +29,15 @@ const ManagePicture = ({ userState, userLoading }) => {
       method: "PUT",
       url: `http://localhost:3001/api/users/${userId}/update_avatar`,
       data: formData,
+      withCredentials: true,
+    });
+  };
+
+  const deleteAvatar = async (userId) => {
+    return await axios({
+      method: "put",
+      url: `http://localhost:3001/api/users/${userId}/delete_avatar`,
+      data: {},
       withCredentials: true,
     });
   };
@@ -84,7 +99,7 @@ const ManagePicture = ({ userState, userLoading }) => {
           Current profile picture
         </div>
 
-        <div className="flex items-center justify-around">
+        <div className="flex items-center justify-around relative">
           <div>
             {avatarUrl === null || userLoading === true ? (
               <ImageLoader size={60} strokeWidth={1.5} color="gray" />
@@ -99,20 +114,27 @@ const ManagePicture = ({ userState, userLoading }) => {
           </div>
         </div>
 
-        <form className="text-center my-20" onSubmit={handleSubmit}>
-          <label
-            htmlFor="new-image"
-            className="cursor-pointer border p-4 rounded-md shadow hover:shadow-md transition-shadow text-gray-800"
-          >
-            Upload a new avatar for your profile
-          </label>
-          <input
-            type="file"
-            name="avatar"
-            id="new-image"
-            className="hidden"
-            onChange={handleFileUpload}
-          />
+        <form className="my-20" onSubmit={handleSubmit}>
+          <div className="flex items-center justify-around w-4/5 mx-auto">
+            <div className="cursor-pointer border px-5 py-2 rounded-md shadow hover:shadow-md transition-shadow text-gray-800">
+              <XCircle className="w-min mx-auto mb-3" />
+              <div>Delete current</div>
+            </div>
+            <label
+              htmlFor="new-image"
+              className="cursor-pointer border px-5 py-2 rounded-md shadow hover:shadow-md transition-shadow text-gray-800"
+            >
+              <Upload className="w-min mx-auto mb-3" />
+              <div>Upload avatar</div>
+            </label>
+            <input
+              type="file"
+              name="avatar"
+              id="new-image"
+              className="hidden"
+              onChange={handleFileUpload}
+            />
+          </div>
 
           {isUploaded === true ? submittedConfirmation : submitButton}
         </form>
