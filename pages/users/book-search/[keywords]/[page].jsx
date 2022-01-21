@@ -45,6 +45,7 @@ const BookSearchResults = ({ searchResults, userState, keywords, pageNum }) => {
           <SearchInput
             pageDest="/users/book-search/"
             placeholder="Search for any book"
+            searchMode="books"
           />
         </div>
         <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
