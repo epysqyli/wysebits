@@ -15,7 +15,7 @@ const ManagePicture = ({ userState, userLoading }) => {
 
   const handleFileUpload = (e) => {
     setFile(e.target.files[0]);
-    setIsUploaded(true);
+    setIsUploaded(false);
   };
 
   const updateImage = async (userId, formData) => {
@@ -34,7 +34,32 @@ const ManagePicture = ({ userState, userLoading }) => {
     if (file) formData.append("user[avatar]", file);
 
     const resp = await updateImage(userState.user.id, formData);
+    setIsUploaded(true);
   };
+
+  const submitButton =
+    isBtnActive() === true ? (
+      <button
+        className="block mt-20 mx-auto px-4 py-2 rounded-md bg-gray-500 text-white hover:shadow-md active:bg-gray-700"
+        type="submit"
+      >
+        Change picture!
+      </button>
+    ) : (
+      <button
+        className="block mt-20 mx-auto px-4 py-2 rounded-md text-gray-300 border cursor-default"
+        type="submit"
+        disabled
+      >
+        Change picture!
+      </button>
+    );
+
+  const submittedConfirmation = (
+    <div className="mt-20 w-min mx-auto border rounded-md px-20 py-2">
+      <CheckCircle size={36} strokeWidth={1.5} />
+    </div>
+  );
 
   useEffect(() => setAvatarUrl(userState.user.avatar || null), [userLoading]);
 
@@ -89,22 +114,7 @@ const ManagePicture = ({ userState, userLoading }) => {
             onChange={handleFileUpload}
           />
 
-          {isBtnActive() ? (
-            <button
-              className="block mt-20 mx-auto px-4 py-2 rounded-md bg-gray-500 text-white hover:shadow-md active:bg-gray-700"
-              type="submit"
-            >
-              Change picture!
-            </button>
-          ) : (
-            <button
-              className="block mt-20 mx-auto px-4 py-2 rounded-md text-gray-300 border cursor-default"
-              type="submit"
-              disabled
-            >
-              Change picture!
-            </button>
-          )}
+          {isUploaded === true ? submittedConfirmation : submitButton}
         </form>
       </div>
     </div>
