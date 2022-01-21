@@ -56,7 +56,7 @@ const ManagePicture = ({ userState, userLoading }) => {
     );
 
   const submittedConfirmation = (
-    <div className="mt-20 w-min mx-auto border rounded-md px-20 py-2">
+    <div className="mt-20 w-min mx-auto border rounded-md px-20 py-2 animate-show-up-slow">
       <CheckCircle size={36} strokeWidth={1.5} />
     </div>
   );
