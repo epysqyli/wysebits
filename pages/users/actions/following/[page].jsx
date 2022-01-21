@@ -45,7 +45,7 @@ const Following = ({ following, userState, pagy, unpagedFollowing }) => {
         <WelcomeTop text="Users you are following" bcgImg="bg-following" />
         <div className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 xl:w-2/6 2xl:w-1/3 py-20 lg:py-40 2xl:py-48">
           <NoItem message="You are not following anybody yet!" />
-          <div className="border px-5 pt-5 mt-20 lg:mt-32 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
+          <div className="border px-5 pt-3 md:px-8 md:pt-5 mt-20 lg:mt-32 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md text-center">
             <div>
               Start exploring books so that you can follow the insight
               contributors that you like the most!
@@ -55,6 +55,7 @@ const Following = ({ following, userState, pagy, unpagedFollowing }) => {
               <SearchInput
                 pageDest="/books/search/"
                 placeholder="Any book in mind?"
+                searchMode="books"
               />
             </div>
           </div>

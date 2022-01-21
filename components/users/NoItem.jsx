@@ -10,7 +10,7 @@ const NoItem = ({ message }) => {
           className="rounded-3xl w-1/6"
           fill="lightgray"
         />
-        <div className="text w-4/6">{message}</div>
+        <div className="text w-4/6 md:text-lg">{message}</div>
       </div>
     </div>
   );
