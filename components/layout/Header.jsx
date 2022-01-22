@@ -18,7 +18,7 @@ const Header = ({ userState, userLoading }) => {
   };
 
   const guest = (
-    <div className="flex gap-x-2 text-sm bg-gray-200 py-1 px-2 rounded shadow">
+    <div className="flex gap-x-2 text-sm bg-gray-100 py-1 px-2 rounded shadow">
       <Link href="/registrations/login">
         <a className="flex items-center group cursor-pointer">
           <LogIn
