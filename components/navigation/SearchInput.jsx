@@ -30,9 +30,7 @@ const SearchInput = ({
 
   const router = useRouter();
   const getQuery = (query) => query.split(" ").join("-");
-  const goToResults = (query = searchTerms) => {
-    router.push(`${pageDest}${getQuery(query)}/1`);
-  };
+  const goToResults = (query = searchTerms) => router.push(`${pageDest}${getQuery(query)}/1`);
 
   const updateHistory = (terms) => {
     if (searchMode === "books") addToHistory(terms, "booksHistory");
@@ -58,7 +56,7 @@ const SearchInput = ({
   const getSuggestions = async (query) => {
     const resp = await axios({
       method: "post",
-      data: { keywords: JSON.stringify(query), page_num: "1" },
+      data: { keywords: JSON.stringify(query) },
       url: `http://localhost:3001/api/search/${searchMode}`,
     });
 
