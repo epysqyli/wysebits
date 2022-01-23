@@ -37,7 +37,7 @@ const AuthorSearch = ({ searchResults, keywords, pagy }) => {
 
         <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {searchResults.map((author) => {
-            return <AuthorResult author={author} key={author._id} />;
+            return <AuthorResult author={author} key={author.id} />;
           })}
         </div>
 

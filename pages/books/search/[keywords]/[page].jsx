@@ -54,7 +54,7 @@ const BookSearchResults = ({ searchResults, keywords, pagy }) => {
                   <BookSearchTile
                     bookData={book}
                     destPage={`/books/${slug(book.title, book.id)}/1`}
-                    key={book._id}
+                    key={book.id}
                   />
                 );
               })
