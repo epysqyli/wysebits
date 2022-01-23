@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { slug } from "../../../../lib/utils";
 import BookSearchTile from "../../../../components/books/BookSearchTile";
-import NavButtonElastic from "../../../../components/navigation/NavButtonElastic";
+import PageNavButton from "../../../../components/navigation/PageNavButton";
 import SearchInput from "../../../../components/navigation/SearchInput";
 import CreateBookBtn from "../../../../components/users/CreateBookBtn";
 import NoSearchResults from "../../../../components/navigation/NoSearchResults";
@@ -14,8 +14,8 @@ export const getServerSideProps = async (context) => {
 
   const searchResults = await axios({
     method: "post",
-    data: { keywords: JSON.stringify(splitKeywords), page_num: pageNum },
-    url: "http://localhost:3001/api/search/books",
+    data: { keywords: JSON.stringify(splitKeywords) },
+    url: `http://localhost:3001/api/search/books?page=${pageNum}`,
   });
 
   return {
@@ -23,11 +23,12 @@ export const getServerSideProps = async (context) => {
       searchResults: searchResults.data.results || null,
       pageNum: searchResults.data.page_num || null,
       keywords: keywords,
+      pagy: searchResults.data.pagy,
     },
   };
 };
 
-const BookSearchResults = ({ searchResults, keywords, pageNum }) => {
+const BookSearchResults = ({ searchResults, keywords, pagy }) => {
   const [btnVisible, setBtnVisible] = useState(false);
 
   const clientUrl = `/books/search/${keywords}`;
@@ -52,10 +53,7 @@ const BookSearchResults = ({ searchResults, keywords, pageNum }) => {
                 return (
                   <BookSearchTile
                     bookData={book}
-                    destPage={`/books/${slug(
-                      book._source.title,
-                      book._source.id
-                    )}/1`}
+                    destPage={`/books/${slug(book.title, book.id)}/1`}
                     key={book._id}
                   />
                 );
@@ -67,17 +65,17 @@ const BookSearchResults = ({ searchResults, keywords, pageNum }) => {
 
         <div className="flex justify-around my-16 lg:my-32 md:w-4/5 lg:w-1/2 mx-auto">
           <div className="w-1/3">
-            <NavButtonElastic
+            <PageNavButton
               btnText="Previous page"
               clientUrl={clientUrl}
-              pageNum={pageNum - 1}
+              url={pagy.prev_url}
             />
           </div>
           <div className="w-1/3">
-            <NavButtonElastic
+            <PageNavButton
               btnText="Next page"
               clientUrl={clientUrl}
-              pageNum={pageNum + 1}
+              url={pagy.next_url}
             />
           </div>
         </div>
