@@ -11,10 +11,7 @@ const SuggestBox = ({ suggestions, suggestLink, searchMode }) => {
       return `${suggestLink}${slug(result.title, result.id)}/1`;
 
     if (suggestLink === "/authors/")
-      return `${suggestLink}${slug(
-        result.full_name,
-        result.id
-      )}/1`;
+      return `${suggestLink}${slug(result.full_name, result.id)}/1`;
 
     if (suggestLink == "/users/book-tiles/create/")
       return `${suggestLink}${result.id}`;
@@ -26,7 +23,7 @@ const SuggestBox = ({ suggestions, suggestLink, searchMode }) => {
         {suggestions.map((s) => {
           return (
             <Link key={s.id} href={buildLink(s)}>
-              <div className="flex items-center justify-between px-2 md:px-10 bg-white my-1 shadow rounded-md text-gray-800 cursor-pointer group hover:scale-105 transition-transform active:bg-gray-100">
+              <div className="flex items-center justify-between px-2 md:px-10 bg-white my-1 shadow rounded-md text-gray-800 cursor-pointer group hover:my-2 transition-all active:bg-gray-100">
                 <div className="my-3 w-4/5">
                   <div>{s.title}</div>
                   <div className="flex gap-x-2 text-sm text-gray-600">
@@ -38,15 +35,12 @@ const SuggestBox = ({ suggestions, suggestLink, searchMode }) => {
                         : null}
                     </div>
                     <div>|</div>
-                    <div>
-                      {s.category ? s.category.name : null}
-                    </div>
+                    <div>{s.category ? s.category.name : null}</div>
                   </div>
                 </div>
                 <ArrowUpRight
                   size={18}
-                  color="gray"
-                  className="group-hover:scale-125 transition-transform"
+                  className="group-hover:scale-125 text-gray-600 group-hover:text-black transition-transform"
                 />
               </div>
             </Link>
