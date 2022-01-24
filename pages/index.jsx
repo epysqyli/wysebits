@@ -17,9 +17,10 @@ import { getCategories } from "../lib/serverSideMethods";
 
 export const getStaticProps = async () => {
   const categories = await getCategories();
+  const realCategories = categories.data.filter((cat) => cat.id !== 25);
 
   return {
-    props: { categories: categories.data },
+    props: { categories: realCategories },
   };
 };
 
