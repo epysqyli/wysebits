@@ -123,10 +123,9 @@ const Feed = ({
   };
 
   const getMoreEntries = async () => {
-    if (currentSelection === "guest_feed" && userState.isLogged === false)
-      await updateFeedGuest();
+    if (currentSelection === "guest_feed") await updateFeedGuest();
 
-    if (currentSelection === "user_feed" && userState.isLogged === true)
+    if (currentSelection === "user_feed")
       await updateFeedState(
         globalEntries,
         setGlobalEntries,
@@ -134,7 +133,7 @@ const Feed = ({
         setNextPage
       );
 
-    if (currentSelection === "categories_feed" && userState.isLogged === true)
+    if (currentSelection === "categories_feed")
       await updateFeedState(
         favCatsEntries,
         setFavCatsEntries,
@@ -142,7 +141,7 @@ const Feed = ({
         setFavCatsNextPage
       );
 
-    if (currentSelection === "following_feed" && userState.isLogged === true)
+    if (currentSelection === "following_feed")
       await updateFeedState(
         followingEntries,
         setFollowingEntries,
@@ -151,7 +150,7 @@ const Feed = ({
       );
   };
 
-  // avoids UI error due to state still loading
+  // avoid initial loading UI error
   useEffect(() => {
     setSelectedEntries(entriesProps);
     setInitialLoad(true);
@@ -242,13 +241,15 @@ const Feed = ({
             : null}
         </div>
 
-        <div className="mx-auto my-10 w-3/5 md:w-2/5 lg:w-2/6 xl:w-1/4">
+        <div
+          className="mx-auto my-10 w-3/5 md:w-2/5 lg:w-2/6 xl:w-1/4"
+          onClick={getMoreEntries}
+        >
           <FeedLoader
             nextPage={nextPage}
             favCatsNextPage={favCatsNextPage}
             currentSelection={currentSelection}
             followingNextPage={followingNextPage}
-            getMoreEntries={getMoreEntries}
           />
         </div>
       </div>
