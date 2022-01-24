@@ -98,7 +98,7 @@ const EditBookTile = ({
         .catch((err) => console.log(err));
     };
 
-    const deleteBookTile = () => {
+    const confirmDelete = () => {
       axios
         .delete(
           `http://localhost:3001/api/users/${userState.user.id}/book_tiles/${bookTileId}`,
@@ -109,6 +109,11 @@ const EditBookTile = ({
           router.push("/users/book-tiles/1");
         })
         .catch((err) => console.log(err));
+    };
+
+    const deleteBookTile = () => {
+      const resp = confirm("Are you sure you want to delete these contributions?");
+      if (resp === true) confirmDelete();
     };
 
     const handleSubmit = (e, entry) => {
@@ -141,7 +146,7 @@ const EditBookTile = ({
         <div className="text-3xl text-gray-800 text-center mt-10 px-5">
           Edit your takeaways for this book
         </div>
-        
+
         <div className="mx-auto w-11/12 md:w-4/5 xl:w-4/6 2xl:w-1/2 mt-10">
           <EditEntrySlider
             entries={Object.values(tileEntries)}
