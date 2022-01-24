@@ -14,17 +14,17 @@ const BookSearchTile = ({ bookData, destPage }) => {
         <div className="flex justify-between">
           <div className="w-2/3 mr-5 flex flex-col justify-around">
             <div
-              className="text-xl mb-2 tracking-tight"
+              className="text-lg mb-2 tracking-tight"
               dangerouslySetInnerHTML={{ __html: bookData.pg_search_highlight }}
             ></div>
 
-            <div>
+            <div className="text-gray-600">
               {bookData.category.name == "CATCHALL"
                 ? "No category"
                 : bookData.category.name}
             </div>
 
-            <div className="text italic">
+            <div className="text italic text-gray-600">
               {bookData.authors.length
                 ? bookData.authors[0].full_name
                 : "No authors found"}
