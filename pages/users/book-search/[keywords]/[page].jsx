@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import BookSearchTile from "../../../../components/books/BookSearchTile";
 import NoAccess from "../../../../components/users/NoAccess";
-import NavButtonElastic from "../../../../components/navigation/NavButtonElastic";
 import SearchInput from "../../../../components/navigation/SearchInput";
 import CreateBookBtn from "../../../../components/users/CreateBookBtn";
 import { searchBooks } from "../../../../lib/serverSideMethods";
 import NoSearchResults from "../../../../components/navigation/NoSearchResults";
+import PageNavButton from "../../../../components/navigation/PageNavButton";
 
 export const getServerSideProps = async (context) => {
   try {
@@ -18,7 +18,7 @@ export const getServerSideProps = async (context) => {
     return {
       props: {
         searchResults: searchResults.data.results || null,
-        pageNum: searchResults.data.page_num || null,
+        pagy: searchResults.data.pagy,
         keywords: keywords,
       },
     };
@@ -29,7 +29,7 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-const BookSearchResults = ({ searchResults, userState, keywords, pageNum }) => {
+const BookSearchResults = ({ searchResults, userState, keywords, pagy }) => {
   const [btnVisible, setBtnVisible] = useState(false);
 
   const clientUrl = `/users/book-search/${keywords}`;
@@ -54,8 +54,8 @@ const BookSearchResults = ({ searchResults, userState, keywords, pageNum }) => {
                 return (
                   <BookSearchTile
                     bookData={book}
-                    destPage={`/users/book-tiles/create/${book._source.id}`}
-                    key={book._id}
+                    destPage={`/users/book-tiles/create/${book.id}`}
+                    key={book.id}
                   />
                 );
               })
@@ -64,19 +64,19 @@ const BookSearchResults = ({ searchResults, userState, keywords, pageNum }) => {
           {btnVisible ? <CreateBookBtn /> : null}
         </div>
 
-        <div className="flex items-center my-16 w-4/5 mx-auto gap-x-4">
-          <div className="w-1/2">
-            <NavButtonElastic
+        <div className="flex justify-around my-16 lg:my-32 md:w-4/5 lg:w-1/2 mx-auto">
+          <div className="w-1/3">
+            <PageNavButton
               btnText="Previous page"
               clientUrl={clientUrl}
-              pageNum={pageNum - 1}
+              url={pagy.prev_url}
             />
           </div>
-          <div className="w-1/2">
-            <NavButtonElastic
+          <div className="w-1/3">
+            <PageNavButton
               btnText="Next page"
               clientUrl={clientUrl}
-              pageNum={pageNum + 1}
+              url={pagy.next_url}
             />
           </div>
         </div>
