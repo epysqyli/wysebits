@@ -287,12 +287,11 @@ const Feed = ({
           : null}
       </div>
 
-      <div className="mx-auto my-10 w-3/5 md:w-2/5 lg:w-2/6 xl:w-1/4">
-        <FeedLoader
-          nextPage={nextPage}
-          currentSelection={currentSelection}
-          getMoreEntries={getMoreEntries}
-        />
+      <div
+        className="mx-auto my-10 w-3/5 md:w-2/5 lg:w-2/6 xl:w-1/4"
+        onClick={getMoreEntries}
+      >
+        <FeedLoader nextPage={nextPage} currentSelection={currentSelection} />
       </div>
     </div>
   );
