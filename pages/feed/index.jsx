@@ -118,6 +118,7 @@ const Feed = ({
       pageNext
     );
     setEntriesState([...currentEntries, ...newEntries.data.entries]);
+    setSelectedEntries([...currentEntries, ...newEntries.data.entries]);
     setPageState(newEntries.data.pagy.next);
   };
 
@@ -150,6 +151,7 @@ const Feed = ({
       );
   };
 
+  // avoids UI error due to state still loading
   useEffect(() => {
     setSelectedEntries(entriesProps);
     setInitialLoad(true);
