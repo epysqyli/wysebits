@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import WelcomeTop from "../../../../components/users/WelcomeTop";
 import NoAccess from "../../../../components/users/NoAccess";
@@ -85,7 +84,7 @@ const FavoriteInsights = ({
     return (
       <div>
         <WelcomeTop text="Your favorite insights" bcgImg="bg-saved-tiles" />
-        <div className="my-10 w-4/5 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
+        <div className="my-10 w-5/6 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
           {insights.map((insight) => {
             return (
               <div
