@@ -117,7 +117,7 @@ const ManagePicture = ({ userState, userLoading }) => {
         </div>
 
         <form className="my-20" onSubmit={handleSubmit}>
-          <div className="flex items-center justify-around w-4/5 mx-auto">
+          <div className="flex items-center justify-around w-4/5 md:w-3/5 lg:w-2/5 mx-auto">
             <div
               className="cursor-pointer border px-5 py-2 rounded-md shadow hover:shadow-md transition-shadow text-gray-800"
               onClick={() => deleteAvatar(userState.user.id)}
