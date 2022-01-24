@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import FeedEntry from "../../components/feed/FeedEntry";
 import FeedLoader from "../../components/feed/FeedLoader";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import {
   getLoggedUser,
@@ -285,13 +286,13 @@ const Feed = ({
               );
             })
           : null}
-      </div>
 
-      <div
-        className="mx-auto my-10 w-3/5 md:w-2/5 lg:w-2/6 xl:w-1/4"
-        onClick={getMoreEntries}
-      >
-        <FeedLoader nextPage={nextPage} currentSelection={currentSelection} />
+        <InfiniteScroll
+          dataLength={selectedEntries.length}
+          next={getMoreEntries}
+          hasMore={nextPage !== null ? true : false}
+        />
+        ;
       </div>
     </div>
   );
