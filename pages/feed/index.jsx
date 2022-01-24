@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import FeedEntry from "../../components/feed/FeedEntry";
-import FeedLoader from "../../components/feed/FeedLoader";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import {
@@ -18,7 +17,7 @@ import {
 
 import { updateFeed } from "../../lib/feedMethods";
 
-import { Grid, Globe, Users } from "react-feather";
+import { Grid, Globe, Users, Info } from "react-feather";
 
 export const getServerSideProps = async (context) => {
   try {
@@ -151,6 +150,13 @@ const Feed = ({
       );
   };
 
+  const feedEnd = (
+    <div className="flex justify-around items-center mx-auto w-3/5 py-4 my-5 border rounded-md bg-white">
+      <Info size={32} strokeWidth={1.5} />
+      <div>No more entries available</div>
+    </div>
+  );
+
   // avoid initial loading UI error
   useEffect(() => {
     setSelectedEntries(entriesProps);
@@ -242,17 +248,24 @@ const Feed = ({
             : null}
         </div>
 
-        <div
-          className="mx-auto my-10 w-3/5 md:w-2/5 lg:w-2/6 xl:w-1/4"
-          onClick={getMoreEntries}
-        >
-          <FeedLoader
-            nextPage={nextPage}
-            favCatsNextPage={favCatsNextPage}
-            currentSelection={currentSelection}
-            followingNextPage={followingNextPage}
-          />
-        </div>
+        <InfiniteScroll
+          dataLength={selectedEntries.length}
+          next={getMoreEntries}
+          hasMore={
+            currentSelection == "user_feed" && nextPage !== null
+              ? true
+              : false ||
+                (currentSelection == "categories_feed" &&
+                  favCatsNextPage !== null)
+              ? true
+              : false ||
+                (currentSelection == "following_feed" &&
+                  followingNextPage !== null)
+              ? true
+              : false
+          }
+          endMessage={feedEnd}
+        />
       </div>
     );
   }
@@ -286,13 +299,12 @@ const Feed = ({
               );
             })
           : null}
-
         <InfiniteScroll
           dataLength={selectedEntries.length}
           next={getMoreEntries}
           hasMore={nextPage !== null ? true : false}
+          endMessage={feedEnd}
         />
-        ;
       </div>
     </div>
   );
