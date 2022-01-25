@@ -9,6 +9,7 @@ import {
   Users,
 } from "react-feather";
 
+import { capitalize } from "../lib/utils";
 import Button from "../components/navigation/Button";
 import CategoryButton from "../components/navigation/CategoryButton";
 import SearchInput from "../components/navigation/SearchInput";
@@ -75,14 +76,12 @@ const Home = ({ categories, userState }) => {
       <div className="xl:flex xl:w-11/12 xl:mx-auto">
         <div className="mb-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6 px-2 py-3 xl:py-0 border-b-2">
           <div className="flex justify-between items-center text-gray-700 px-2 md:px-10">
+            <div className="text-4xl xl:text-5xl w-3/5">{capitalize(searchMode)}</div>
             {searchMode === "books" ? (
               <Book size={32} strokeWidth={1.5} />
             ) : (
               <Users size={32} strokeWidth={1.5} />
             )}
-            <div className="text-3xl md:text-4xl text-center">
-              Explore {searchMode}
-            </div>
             <div
               className="group p-2 rounded-xl border-2 cursor-pointer active:shadow-inner bg-white active:bg-gray-100"
               onClick={toggleSearchMode}
@@ -94,7 +93,7 @@ const Home = ({ categories, userState }) => {
               />
             </div>
           </div>
-          <div className="mt-10 mb-5">
+          <div className="mt-12 md:mt-20 mb-5">
             <SearchInput
               pageDest={searchConfig.pageDest}
               placeholder={searchConfig.placeholder}
@@ -108,8 +107,8 @@ const Home = ({ categories, userState }) => {
 
         <div className="mb-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 border-b-2 pb-10">
           <div className="flex justify-center items-center text-gray-700 gap-x-5 mb-10">
-            <Box size={36} strokeWidth={1.5} />
-            <div className="text-3xl xl:text-4xl">Explore categories</div>
+            <div className="text-4xl xl:text-5xl">Categories</div>
+            <Box size={40} strokeWidth={1.5} />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4">
             {categories.map((category) => {
