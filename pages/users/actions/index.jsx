@@ -5,7 +5,7 @@ import NoAccess from "../../../components/users/NoAccess";
 const Actions = ({ userState }) => {
   if (userState.isLogged) {
     return (
-      <div className="bg-gradient-to-br from-white to-gray-300">
+      <div className="bg-gradient-to-r md:bg-gradient-to-br from-yellow-50 via-blue-100 to-gray-300">
         <Head>
           <title>User Homepage</title>
           <link rel="icon" href="/favicon.ico" />

@@ -47,7 +47,7 @@ const Home = ({ categories, userState }) => {
   };
 
   return (
-    <div className="pb-10 animate-show-up">
+    <div className="pb-10 bg-gradient-to-br from-gray-50 via-blue-50 to-gray-200">
       <Head>
         <title>Wysebits</title>
         <link rel="icon" href="/favicon.ico" />
@@ -68,7 +68,7 @@ const Home = ({ categories, userState }) => {
 
       <div className="xl:flex xl:w-11/12 xl:mx-auto">
         <div className="mx-auto mb-20 xl:mb-10 w-5/6 md:w-4/6 lg:w-3/6 xl:w-2/5 px-4 xl:py-0 xl:border-b-2">
-          <div className="text-gray-700 gap-x-5 mb-10 md:mb-8 xl:py-8 xl:border-blue-400 xl:border-t-4 xl:border-l-4 xl:rounded xl:bg-gray-100">
+          <div className="text-gray-700 gap-x-5 mb-10 md:mb-8 xl:py-8 xl:border-blue-400 xl:border-t-4 xl:border-l-4 xl:rounded xl:bg-white">
             <div className="text-5xl mb-5 text-center">
               Search {capitalize(searchMode)}
             </div>
@@ -100,7 +100,7 @@ const Home = ({ categories, userState }) => {
         </div>
 
         <div className="mb-10 w-4/5 mx-auto md:w-5/6 lg:w-4/6 xl:w-1/2 border-b-2 pb-10">
-          <div className="flex justify-around items-center text-gray-700 gap-x-5 mb-10 md:mb-16 border-blue-400 border-r-4 border-b-4 shadow-md rounded bg-gray-100 py-8 xl:py-16">
+          <div className="flex justify-around items-center text-gray-700 gap-x-5 mb-10 md:mb-16 border-blue-400 border-r-4 border-b-4 shadow-md rounded bg-white py-8 xl:py-16">
             <div className="text-4xl xl:text-5xl">Categories</div>
             <Box size={40} strokeWidth={1.5} />
           </div>
