@@ -23,7 +23,7 @@ const SuggestBox = ({ suggestions, suggestLink, searchMode }) => {
         {suggestions.map((s) => {
           return (
             <Link key={s.id} href={buildLink(s)}>
-              <div className="flex items-center justify-between px-2 md:px-10 bg-white my-1 shadow rounded-md text-gray-800 cursor-pointer group hover:my-2 transition-all active:bg-gray-100">
+              <div className="flex items-center justify-between px-2 md:px-10 bg-white my-1 shadow rounded-md text-gray-800 cursor-pointer group hover:my-2 transition-all active:bg-gray-100 border-transparent border-2 hover:border-blue-200">
                 <div className="my-3 w-4/5">
                   <div>{s.title}</div>
                   <div className="flex gap-x-2 text-sm text-gray-600">
@@ -40,7 +40,7 @@ const SuggestBox = ({ suggestions, suggestLink, searchMode }) => {
                 </div>
                 <ArrowUpRight
                   size={18}
-                  className="group-hover:scale-125 text-gray-600 group-hover:text-black transition-transform"
+                  className="group-hover:scale-125 text-gray-600 group-hover:text-blue-500 transition-transform"
                 />
               </div>
             </Link>
@@ -56,14 +56,14 @@ const SuggestBox = ({ suggestions, suggestLink, searchMode }) => {
         {suggestions.map((s) => {
           return (
             <Link key={s.id} href={buildLink(s)}>
-              <div className="flex items-center justify-between px-2 md:px-10 bg-white my-1 shadow rounded-md text-gray-800 cursor-pointer group hover:scale-105 transition-transform active:bg-gray-100">
+              <div className="flex items-center justify-between px-2 md:px-10 bg-white my-1 shadow rounded-md text-gray-800 cursor-pointer group hover:my-2 transition-all active:bg-gray-100 border-transparent border-2 hover:border-blue-200">
                 <div className="my-3 w-4/5">
                   <div>{s.full_name}</div>
                 </div>
                 <ArrowUpRight
                   size={18}
                   color="gray"
-                  className="group-hover:scale-125 transition-transform"
+                  className="group-hover:scale-125 text-gray-600 group-hover:text-blue-500 transition-transform"
                 />
               </div>
             </Link>
