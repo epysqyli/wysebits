@@ -47,7 +47,7 @@ const Home = ({ categories, userState }) => {
   };
 
   return (
-    <div className="pb-10 bg-gradient-to-br from-gray-50 via-blue-50 to-gray-200">
+    <div className="pb-10 bg-gradient-to-br from-gray-50 via-gray-100 to-blue-100">
       <Head>
         <title>Wysebits</title>
         <link rel="icon" href="/favicon.ico" />
@@ -102,7 +102,7 @@ const Home = ({ categories, userState }) => {
         <div className="mb-10 w-4/5 mx-auto md:w-5/6 lg:w-4/6 xl:w-1/2 border-b-2 pb-10">
           <div className="flex justify-around items-center text-gray-700 gap-x-5 mb-10 md:mb-16 border-blue-400 border-r-4 border-b-4 shadow-md rounded bg-white py-8 xl:py-16">
             <div className="text-4xl xl:text-5xl">Categories</div>
-            <Box size={40} strokeWidth={1.5} />
+            <Box size={52} strokeWidth={1.5} />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4">
             {categories.map((category) => {
