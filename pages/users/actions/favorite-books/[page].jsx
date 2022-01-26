@@ -85,14 +85,14 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
         <div className="flex justify-around py-16 lg:my-32 md:w-4/5 lg:w-1/2 mx-auto">
           <div className="w-1/3">
             <PageNavButton
-              btnText="Previous page"
+              direction="left"
               clientUrl={clientUrl}
               url={pagy.prev_url}
             />
           </div>
           <div className="w-1/3">
             <PageNavButton
-              btnText="Next page"
+              direction="right"
               clientUrl={clientUrl}
               url={pagy.next_url}
             />
