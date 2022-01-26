@@ -1,13 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
-import {
-  Book,
-  Box,
-  Layers,
-  ArrowUpRight,
-  RefreshCw,
-  Users,
-} from "react-feather";
+import { Box, Layers, ArrowUpRight, RefreshCw } from "react-feather";
 
 import { capitalize } from "../lib/utils";
 import Button from "../components/navigation/Button";
