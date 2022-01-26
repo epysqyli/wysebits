@@ -74,32 +74,27 @@ const Home = ({ categories, userState }) => {
       </div>
 
       <div className="xl:flex xl:w-11/12 xl:mx-auto">
-        <div className="mb-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6 px-2 py-3 xl:py-0 border-b-2">
-          <div className="flex justify-around items-center text-gray-700 gap-x-5 mb-10 md:mb-16 border-blue-400 border-r-4 border-b-4 shadow-md rounded bg-gray-100 py-8">
-            <div className="flex justify-between gap-x-4 items-center">
-              <div>
-                {searchMode === "books" ? (
-                  <Book size={40} strokeWidth={1.5} />
-                ) : (
-                  <Users size={40} strokeWidth={1.5} />
-                )}
-              </div>
-              <div className="text-4xl xl:text-5xl">
-                {capitalize(searchMode)}
-              </div>
+        <div className="mx-auto mb-20 xl:mb-10 w-11/12 md:w-4/6 lg:w-3/6 xl:w-2/5 px-4 xl:py-0 xl:border-b-2">
+          <div className="text-gray-700 gap-x-5 mb-10 md:mb-8 xl:py-8">
+            <div className="text-5xl mb-5 text-center">
+              Search {capitalize(searchMode)}
             </div>
             <div
-              className="group p-2 rounded-xl border-2 cursor-pointer active:shadow-inner bg-white active:bg-gray-100"
+              className="flex justify-between w-3/5 mx-auto px-2 items-center text-gray-500 cursor-pointer hover:shadow active:shadow-inner active:bg-gray-100 transition-shadow rounded-md py-2"
               onClick={toggleSearchMode}
             >
-              <RefreshCw
-                size={20}
-                strokeWidth={1.5}
-                className="text-gray-600 group-hover:scale-105 group-hover:text-gray-800 group-active:scale-100 transition-transform"
-              />
+              <div>
+                <RefreshCw size={20} strokeWidth={1.6} />
+              </div>
+              <div>
+                {searchMode === "books"
+                  ? "or switch to authors"
+                  : "switch to books"}
+              </div>
             </div>
           </div>
-          <div className="mt-12 md:mt-16 mb-5">
+
+          <div className="mb-5">
             <SearchInput
               pageDest={searchConfig.pageDest}
               placeholder={searchConfig.placeholder}
@@ -125,7 +120,7 @@ const Home = ({ categories, userState }) => {
       </div>
 
       <Link href="/feed">
-        <div className="mb-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 px-2 py-3 border-b-2 pb-10 hover:bg-gray-100 active:shadow-inner active:bg-white transition-colors cursor-pointer hover:rounded-md group">
+        <div className="mb-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/5 px-2 py-3 border-b-2 pb-10 hover:bg-gray-100 active:shadow-inner active:bg-white transition-colors cursor-pointer hover:rounded-md group">
           <div className="flex justify-center items-center gap-x-10">
             <Layers size={36} strokeWidth={1.5} />
             <div className="text-4xl text-gray-700">Go to Feed ...</div>
