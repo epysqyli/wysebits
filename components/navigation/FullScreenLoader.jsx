@@ -5,8 +5,9 @@ const FullScreenLoader = () => {
     <div className="fixed w-full h-screen z-10 bg-gray-200 bg-opacity-50">
       <div className="w-min animate-spin mx-auto mt-40">
         <Loader
-          size={48}
-          className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          size={52}
+          color="black"
+          className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 border rounded-full p-2 shadow bg-white"
         />
       </div>
     </div>
