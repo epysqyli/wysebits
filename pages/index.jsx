@@ -100,7 +100,7 @@ const Home = ({ categories, userState }) => {
         </div>
 
         <div className="mb-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 border-b-2 pb-10">
-          <div className="flex justify-around items-center text-gray-700 gap-x-5 mb-10 md:mb-16 border-blue-400 border-r-4 border-b-4 shadow-md rounded bg-gray-100 py-8">
+          <div className="flex justify-around items-center text-gray-700 gap-x-5 mb-10 md:mb-16 border-blue-400 border-r-4 border-b-4 shadow-md rounded bg-gray-100 py-8 xl:py-16">
             <div className="text-4xl xl:text-5xl">Categories</div>
             <Box size={40} strokeWidth={1.5} />
           </div>
