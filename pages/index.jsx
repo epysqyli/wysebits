@@ -73,7 +73,7 @@ const Home = ({ categories, userState }) => {
               Search {capitalize(searchMode)}
             </div>
             <div
-              className="flex justify-between w-3/4 md:w-3/5 border-2 border-white mx-auto px-3 items-center text-gray-400 cursor-pointer bg-gray-50 hover:shadow hover:px-5 active:shadow-inner active:bg-gray-200 transition-all rounded-md py-2"
+              className="flex justify-between w-3/4 md:w-3/5 border-2 border-white xl:border-gray-200 mx-auto px-3 items-center text-gray-400 cursor-pointer bg-gray-50 hover:shadow xl:hover:shadow-none hover:px-5 active:shadow-inner active:bg-gray-200 transition-all rounded-md py-2"
               onClick={toggleSearchMode}
             >
               <div>
