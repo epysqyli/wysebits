@@ -151,7 +151,7 @@ const Book = ({
             );
           })}
         </div>
-        
+
         <div className="flex items-center py-16 w-4/5 md:w-2/6 mx-auto gap-x-4 md:gap-x-20">
           <div className="w-1/2">
             <PageNavButton
@@ -181,7 +181,7 @@ const Book = ({
               Recommeded books from the {book.category.name} category
             </div>
           </div>
-          <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:w-4/5 xl:grid-cols-4 gap-x-2 lg:gap-x-2 gap-y-2 mt-10 lg:mt-20 mb-20">
+          <div className="mx-auto py-10 w-4/6 lg:w-4/5 grid grid-cols-1 md:grid-cols-2 gap-x-2 lg:gap-x-10 gap-y-10 mt-10">
             <Recommendations recommendations={recommendations} />
           </div>
         </div>

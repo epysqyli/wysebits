@@ -7,7 +7,7 @@ const Recommendations = ({ recommendations }) => {
     <>
       {recommendations.map((book) => (
         <Link href={`/books/${slug(book.title, book.id)}/1`} key={book.id}>
-          <div className="shadow-md rounded cursor-pointer hover:bg-gray-200 active:bg-gray-300 active:shadow-inner">
+          <div className="shadow-md rounded-md cursor-pointer bg-gray-100 hover:bg-gray-200 active:bg-gray-300 active:shadow-inner">
             <BookCard bookData={book} />
           </div>
         </Link>
