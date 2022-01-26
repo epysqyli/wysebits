@@ -64,19 +64,19 @@ const BookSearchResults = ({ searchResults, userState, keywords, pagy }) => {
           {btnVisible ? <CreateBookBtn /> : null}
         </div>
 
-        <div className="flex justify-around my-16 lg:my-32 md:w-4/5 lg:w-1/2 mx-auto">
-          <div className="w-1/3">
+        <div className="flex items-center py-16 lg:py-32 w-4/5 md:w-2/6 mx-auto gap-x-4 md:gap-x-20">
+          <div className="w-1/2">
             <PageNavButton
-              btnText="Previous page"
-              clientUrl={clientUrl}
+              direction="left"
               url={pagy.prev_url}
+              clientUrl={clientUrl}
             />
           </div>
-          <div className="w-1/3">
+          <div className="w-1/2">
             <PageNavButton
-              btnText="Next page"
-              clientUrl={clientUrl}
+              direction="right"
               url={pagy.next_url}
+              clientUrl={clientUrl}
             />
           </div>
         </div>

@@ -151,17 +151,17 @@ const Book = ({
             );
           })}
         </div>
-        <div className="flex items-center my-16 w-4/5 md:w-4/6 mx-auto gap-x-4">
+        <div className="flex items-center py-16 w-4/5 md:w-2/6 mx-auto gap-x-4 md:gap-x-20">
           <div className="w-1/2">
             <PageNavButton
-              btnText="Previous page"
+              direction="left"
               url={pagy.prev_url}
               clientUrl={clientUrl}
             />
           </div>
           <div className="w-1/2">
             <PageNavButton
-              btnText="Next page"
+              direction="right"
               url={pagy.next_url}
               clientUrl={clientUrl}
             />
