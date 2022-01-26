@@ -74,13 +74,13 @@ const Home = ({ categories, userState }) => {
       </div>
 
       <div className="xl:flex xl:w-11/12 xl:mx-auto">
-        <div className="mx-auto mb-20 xl:mb-10 w-11/12 md:w-4/6 lg:w-3/6 xl:w-2/5 px-4 xl:py-0 xl:border-b-2">
-          <div className="text-gray-700 gap-x-5 mb-10 md:mb-8 xl:py-8">
+        <div className="mx-auto mb-20 xl:mb-10 w-5/6 md:w-4/6 lg:w-3/6 xl:w-2/5 px-4 xl:py-0 xl:border-b-2">
+          <div className="text-gray-700 gap-x-5 mb-10 md:mb-8 xl:py-8 xl:border-blue-400 xl:border-t-4 xl:border-l-4 xl:rounded xl:bg-gray-100">
             <div className="text-5xl mb-5 text-center">
               Search {capitalize(searchMode)}
             </div>
             <div
-              className="flex justify-between w-3/5 mx-auto px-2 items-center text-gray-500 cursor-pointer hover:shadow active:shadow-inner active:bg-gray-100 transition-shadow rounded-md py-2"
+              className="flex justify-between w-3/5 border mx-auto px-3 items-center text-gray-400 cursor-pointer hover:shadow hover:px-5 active:shadow-inner active:bg-gray-100 transition-all rounded-md py-2"
               onClick={toggleSearchMode}
             >
               <div>
