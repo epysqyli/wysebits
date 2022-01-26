@@ -15,7 +15,10 @@ const PageNavButton = ({ direction, url, clientUrl }) => {
     return (
       <Link href={`${clientUrl}/${pageNum}`}>
         <div className="py-2 text-center rounded border shadow cursor-pointer hover:bg-gray-200 active:shadow-inner transition-colors group">
-          <ArrowLeft className="w-min mx-auto group-hover:pr-2 transition-all" />
+          <ArrowLeft
+            color="gray"
+            className="w-min mx-auto group-hover:pr-2 transition-all"
+          />
         </div>
       </Link>
     );
@@ -31,7 +34,10 @@ const PageNavButton = ({ direction, url, clientUrl }) => {
     return (
       <Link href={`${clientUrl}/${pageNum}`}>
         <div className="py-2 rounded border shadow cursor-pointer hover:bg-gray-200 active:shadow-inner transition-colors group">
-          <ArrowRight className="w-min mx-auto group-hover:pl-2 transition-all" />
+          <ArrowRight
+            color="gray"
+            className="w-min mx-auto group-hover:pl-2 transition-all"
+          />
         </div>
       </Link>
     );
