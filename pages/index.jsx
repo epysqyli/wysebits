@@ -122,7 +122,7 @@ const Home = ({ categories, userState }) => {
             ... at your own peril of potentially wasting a lot of time scrolling
             through users' insights convincing yourself that you are learning
             valuable things while you are instead most probably mindlessly
-            procrastinating from your next useful real life task.{" "}
+            procrastinating away from your next useful real life task.{" "}
             <span className="font-medium">It's great!</span>
           </div>
           <div className="mx-auto w-min mt-10">
