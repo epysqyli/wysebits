@@ -30,7 +30,8 @@ const SearchInput = ({
 
   const router = useRouter();
   const getQuery = (query) => query.split(" ").join("-");
-  const goToResults = (query = searchTerms) => router.push(`${pageDest}${getQuery(query)}/1`);
+  const goToResults = (query = searchTerms) =>
+    router.push(`${pageDest}${getQuery(query)}/1`);
 
   const updateHistory = (terms) => {
     if (searchMode === "books") addToHistory(terms, "booksHistory");
@@ -164,14 +165,14 @@ const SearchInput = ({
     <div>
       <div>
         <div
-          className="flex group rounded-md shadow-md"
+          className="flex gap-x-1 group rounded-md shadow-md bg-white"
           onKeyPress={handleKeyPress}
         >
           <input
             type="text"
             name="tmp"
             id="tmp"
-            className="border-none py-3 bg-white w-5/6 rounded-tl-lg rounded-bl-lg focus:ring-0 group-hover:shadow-md transition"
+            className="border-none py-3 bg-white w-5/6 rounded-tl-lg rounded-bl-lg focus:ring-blue-400 focus:ring-2 group-hover:shadow-md transition"
             onChange={handleChange}
             onFocus={() => displayHistory()}
             placeholder={placeholder}
@@ -180,7 +181,7 @@ const SearchInput = ({
 
           <button
             type="submit"
-            className="w-1/6 text-center bg-white border-l rounded-tr-lg rounded-br-lg hover:bg-gray-200 group-hover:shadow-md transition active:text-white"
+            className="w-1/6 text-center bg-white border-l rounded-tr-lg rounded-br-lg hover:bg-gray-100 group-hover:shadow-md transition active:text-white"
           >
             <Search
               size={20}
