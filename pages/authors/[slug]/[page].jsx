@@ -56,17 +56,17 @@ const Author = ({ books, pagy, authorName, urlSlug }) => {
           })}
         </div>
 
-        <div className="flex justify-around my-16 lg:my-32 md:w-4/5 lg:w-1/2 mx-auto">
-          <div className="w-1/3">
+        <div className="flex items-center py-16 w-4/5 md:w-2/6 mx-auto gap-x-4 md:gap-x-20">
+          <div className="w-1/2">
             <PageNavButton
-              btnText="Previous page"
+              direction="left"
               url={pagy.prev_url}
               clientUrl={clientUrl}
             />
           </div>
-          <div className="w-1/3">
+          <div className="w-1/2">
             <PageNavButton
-              btnText="Next page"
+              direction="right"
               url={pagy.next_url}
               clientUrl={clientUrl}
             />
@@ -88,7 +88,7 @@ const Author = ({ books, pagy, authorName, urlSlug }) => {
         <div className="border px-5 mt-20 lg:mt-32 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
           <div className="px-3 pt-5">
             It might be that the author's books need to be assigned to him. You
-            can do this while posting your insights for a specific book. 
+            can do this while posting your insights for a specific book.
           </div>
           <div className="mt-10">
             <SearchInput

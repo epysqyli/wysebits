@@ -151,6 +151,7 @@ const Book = ({
             );
           })}
         </div>
+        
         <div className="flex items-center py-16 w-4/5 md:w-2/6 mx-auto gap-x-4 md:gap-x-20">
           <div className="w-1/2">
             <PageNavButton
