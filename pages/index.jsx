@@ -77,9 +77,9 @@ const Home = ({ categories, userState }) => {
               onClick={toggleSearchMode}
             >
               <div>
-                <RefreshCw size={20} strokeWidth={1.6} />
+                <RefreshCw size={16} strokeWidth={1.6} />
               </div>
-              <div>
+              <div className="text-sm">
                 {searchMode === "books"
                   ? "or switch to authors"
                   : "switch to books"}

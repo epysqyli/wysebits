@@ -51,8 +51,8 @@ const CreateBook = ({ categories, userState }) => {
 
     const assignExistingAuthor = (author) => {
       const newAuthor = {
-        full_name: author._source.full_name,
-        id: author._source.id,
+        full_name: author.full_name,
+        id: author.id,
       };
 
       setBook({ ...book, author: newAuthor });
@@ -176,7 +176,7 @@ const CreateBook = ({ categories, userState }) => {
                       key={author._id}
                       onClick={() => assignExistingAuthor(author)}
                     >
-                      {author._source.full_name}
+                      {author.full_name}
                     </div>
                   );
                 })
