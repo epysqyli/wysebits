@@ -4,6 +4,7 @@ import axios from "axios";
 import Layout from "../layouts/layout";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import FullScreenLoader from "../components/navigation/FullScreenLoader";
 
 const MyApp = ({ Component, pageProps }) => {
   const [userLoading, setUserLoading] = useState(true);
@@ -41,12 +42,20 @@ const MyApp = ({ Component, pageProps }) => {
       .catch((error) => console.log(error));
   };
 
+  const [loading, setLoading] = useState(false);
+
   const router = useRouter();
 
   useEffect(() => {
+    router.events.on("routeChangeStart", () => {
+      setLoading(true);
+    });
+
     router.events.on("routeChangeComplete", () => {
       loginStatus();
+      setLoading(false);
     });
+
     return () => {
       router.events.off("routeChangeComplete", () => {
         console.log("stopped");
@@ -59,6 +68,7 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
     <Layout userState={userState} userLoading={userLoading}>
+      {loading === true ? <FullScreenLoader /> : null}
       <Component
         {...pageProps}
         userState={userState}
