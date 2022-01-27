@@ -34,14 +34,14 @@ const UserBooks = ({ books, pagy, username }) => {
         </div>
 
         <div>
-          <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+          <div className="py-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
             {books.map((book) => {
               return (
                 <Link
                   href={`/books/${slug(book.title, book.id)}/1`}
                   key={book.id}
                 >
-                  <div className="rounded-md shadow-md bg-gray-50 hover:bg-gray-200 animate-show-up cursor-pointer active:shadow-inner">
+                  <div className="rounded-md bg-gray-50 transition-colors animate-show-up cursor-pointer active:shadow-inner border-2 border-gray-300 hover:border-gray-400">
                     <BookCard bookData={book} />
                   </div>
                 </Link>
@@ -49,7 +49,7 @@ const UserBooks = ({ books, pagy, username }) => {
             })}
           </div>
 
-          <div className="flex justify-around py-16 lg:py-32 md:w-4/5 lg:w-1/2 mx-auto">
+          <div className="flex justify-around py-16 md:w-4/5 lg:w-1/2 mx-auto">
             <div className="w-1/3">
               <PageNavButton
                 direction="left"

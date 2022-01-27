@@ -42,7 +42,7 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
                 href={`/books/${slug(book.title, book.id)}/1`}
                 key={book.id}
               >
-                <div className="rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:shadow-inner">
+                <div className="rounded-md bg-gray-50 transition-colors animate-show-up cursor-pointer active:shadow-inner border-2 border-gray-300 hover:border-gray-400">
                   <BookCard bookData={book} />
                 </div>
               </Link>
@@ -50,7 +50,7 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
           })}
         </div>
 
-        <div className="flex items-center py-16 lg:py-32 w-4/5 md:w-2/6 mx-auto gap-x-4 md:gap-x-20">
+        <div className="flex items-center py-16 w-4/5 md:w-2/6 mx-auto gap-x-4 md:gap-x-20">
           <div className="w-1/2">
             <PageNavButton
               direction="left"

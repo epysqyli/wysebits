@@ -54,7 +54,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
             <div className="mt-10 mb-3">
               <SearchInput
                 pageDest="/books/search/"
-              placeholder="Any book in mind?"
+                placeholder="Any book in mind?"
                 searchMode="books"
               />
             </div>
@@ -74,7 +74,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
                 href={`/books/${slug(item.book.title, item.book.id)}/1`}
                 key={item.book.id}
               >
-                <div className="rounded-md bg-gray-50 hover:bg-gray-200 animate-show-up cursor-pointer active:shadow-inner border-2 border-gray-300">
+                <div className="rounded-md bg-gray-50 transition-colors animate-show-up cursor-pointer active:shadow-inner border-2 border-gray-300 hover:border-gray-400">
                   <BookCard bookData={item.book} />
                 </div>
               </Link>
@@ -82,7 +82,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
           })}
         </div>
 
-        <div className="flex justify-around py-16 lg:py-32 md:w-4/5 lg:w-1/2 mx-auto">
+        <div className="flex justify-around py-16 md:w-4/5 lg:w-1/2 mx-auto">
           <div className="w-1/3">
             <PageNavButton
               direction="left"
