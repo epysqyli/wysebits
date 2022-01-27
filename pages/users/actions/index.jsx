@@ -5,7 +5,7 @@ import NoAccess from "../../../components/users/NoAccess";
 const Actions = ({ userState }) => {
   if (userState.isLogged) {
     return (
-      <div className="bg-gradient-to-br from-gray-50 via-gray-100 to-blue-100">
+      <div className="bg-gradient-to-br from-gray-50 via-blue-100 to-gray-200">
         <Head>
           <title>User Homepage</title>
           <link rel="icon" href="/favicon.ico" />
@@ -18,7 +18,7 @@ const Actions = ({ userState }) => {
           </div>
         </div>
 
-        <div className="mx-auto w-4/5 lg:w-4/6 xl:w-5/6 2xl:w-2/3 py-8 lg:py-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-10 gap-y-6 lg:gap-y-10 lg:gap-x-12">
+        <div className="mx-auto w-4/5 lg:w-4/6 xl:w-5/6 2xl:w-2/3 py-12 lg:pt-10 lg:pb-28 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-1 md:gap-y-1 md:gap-x-1">
           <div>
             <UserAction
               text="Share your knowledge"
