@@ -65,7 +65,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
 
   if (userState.isLogged && books.length !== 0)
     return (
-      <div className="pb-20 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
+      <div className="pb-60 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
         <div className="py-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {books.map((item) => {

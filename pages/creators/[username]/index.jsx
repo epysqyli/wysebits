@@ -69,7 +69,7 @@ const Username = ({
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
 
   return (
-    <div className="pb-20 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
+    <div className="pb-60 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
       <div>
         <BasicInfo
           user={user}
@@ -79,11 +79,11 @@ const Username = ({
         />
       </div>
 
-      <div className="mt-10">
+      <div className="mt-20">
         <LatestBooks books={user.book_tiles.map((tile) => tile.book)} />
       </div>
 
-      <div className="mt-10">
+      <div className="mt-20">
         <LatestEntries
           entries={latestEntries}
           userState={userState}
