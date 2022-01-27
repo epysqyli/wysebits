@@ -181,7 +181,7 @@ const Book = ({
               Recommeded books from the {book.category.name} category
             </div>
           </div>
-          <div className="mx-auto pt-10 pb-16 w-4/6 lg:w-4/5 grid grid-cols-1 md:grid-cols-2 gap-x-2 lg:gap-x-10 gap-y-10 mt-10">
+          <div className="mx-auto pt-10 pb-16 w-4/6 md:w-5/6 xl:w-4/6 grid grid-cols-1 md:grid-cols-2 gap-x-2 lg:gap-x-10 gap-y-10 mt-10">
             <Recommendations recommendations={recommendations} />
           </div>
         </div>
