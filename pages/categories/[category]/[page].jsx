@@ -28,7 +28,7 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
 
   if (books.length !== 0)
     return (
-      <div>
+      <div className="pb-20 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <div className="bg-categories bg-cover bg-center shadow">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16">
             {capitalize(categoryName)}
@@ -71,15 +71,16 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
 
   if (books.length === 0)
     return (
-      <div>
+      <div className="pb-24 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <div className="bg-categories bg-cover bg-center shadow">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16">
             {capitalize(categoryName)}
           </div>
         </div>
-        <div className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 xl:w-2/6 2xl:w-1/3 py-20 lg:py-40 2xl:py-48">
+
+        <div className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 xl:w-1/2 2xl:w-1/3 py-20 lg:py-40 2xl:py-48">
           <NoItem message="This category is empty, meaning no books have been assigned to it. Explore books and contribute insights to improve WyseBits for all." />
-          <div className="border px-5 mt-20 lg:mt-32 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
+          <div className="border px-5 mt-20 lg:mt-32 bg-gray-50 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
             <div className="px-3 pt-5">
               Start contributing now by choosing the first book for which you
               want to add your own personal insights
