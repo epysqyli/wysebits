@@ -36,14 +36,14 @@ const WorkInProgress = ({ books, pagy, userState }) => {
 
   if (userState.isLogged && books.length === 0)
     return (
-      <div>
+      <div className="pb-20 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <WelcomeTop
           text="Contributions you are working on"
           bcgImg="bg-wip-contributions"
         />
         <div className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 xl:w-2/6 2xl:w-1/3 py-20 lg:py-40 2xl:py-48">
           <NoItem message="You have no contributions you are working on at the moment" />
-          <div className="border px-5 pt-3 md:px-8 md:pt-5 mt-20 lg:mt-32 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md text-center">
+          <div className="border px-5 pt-3 md:px-8 md:pt-5 mt-20 lg:mt-32 bg-gray-50 rounded-md shadow group transition-all cursor-pointer hover:shadow-md text-center">
             <div>
               You can save individual contributions for a book without having to
               publish it immediately on the create page.
@@ -65,7 +65,7 @@ const WorkInProgress = ({ books, pagy, userState }) => {
 
   if (userState.isLogged && books.length !== 0)
     return (
-      <div>
+      <div className="pb-20 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <WelcomeTop
           text="Contributions you are working on"
           bcgImg="bg-wip-contributions"
