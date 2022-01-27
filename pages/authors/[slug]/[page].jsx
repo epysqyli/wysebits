@@ -56,22 +56,24 @@ const Author = ({ books, pagy, authorName, urlSlug }) => {
           })}
         </div>
 
-        <div className="flex items-center py-16 w-4/5 md:w-2/6 mx-auto gap-x-4 md:gap-x-20">
-          <div className="w-1/2">
-            <PageNavButton
-              direction="left"
-              url={pagy.prev_url}
-              clientUrl={clientUrl}
-            />
+        {pagy.prev === null && pagy.next === null ? null : (
+          <div className="flex justify-around py-16 md:w-4/5 lg:w-1/2 mx-auto">
+            <div className="w-1/3">
+              <PageNavButton
+                direction="left"
+                clientUrl={clientUrl}
+                url={pagy.prev_url}
+              />
+            </div>
+            <div className="w-1/3">
+              <PageNavButton
+                direction="right"
+                clientUrl={clientUrl}
+                url={pagy.next_url}
+              />
+            </div>
           </div>
-          <div className="w-1/2">
-            <PageNavButton
-              direction="right"
-              url={pagy.next_url}
-              clientUrl={clientUrl}
-            />
-          </div>
-        </div>
+        )}
       </div>
     );
 

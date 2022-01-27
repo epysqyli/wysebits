@@ -62,12 +62,12 @@ const Following = ({ following, userState, pagy, unpagedFollowing }) => {
         </div>
       </div>
     );
-    
+
   if (userState.isLogged && following.length !== 0) {
     return (
-      <div>
+      <div className="pb-60 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <WelcomeTop text="Users you are following" bcgImg="bg-following" />
-        <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+        <div className="pt-20 pb-32 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {following.map((user) => {
             return (
               <div
@@ -85,22 +85,24 @@ const Following = ({ following, userState, pagy, unpagedFollowing }) => {
           })}
         </div>
 
-        <div className="flex items-center py-16 lg:py-32 w-4/5 md:w-2/6 mx-auto gap-x-4 md:gap-x-20">
-          <div className="w-1/2">
-            <PageNavButton
-              direction="left"
-              url={pagy.prev_url}
-              clientUrl={clientUrl}
-            />
+        {pagy.prev === null && pagy.next === null ? null : (
+          <div className="flex justify-around py-16 md:w-4/5 lg:w-1/2 mx-auto">
+            <div className="w-1/3">
+              <PageNavButton
+                direction="left"
+                clientUrl={clientUrl}
+                url={pagy.prev_url}
+              />
+            </div>
+            <div className="w-1/3">
+              <PageNavButton
+                direction="right"
+                clientUrl={clientUrl}
+                url={pagy.next_url}
+              />
+            </div>
           </div>
-          <div className="w-1/2">
-            <PageNavButton
-              direction="right"
-              url={pagy.next_url}
-              clientUrl={clientUrl}
-            />
-          </div>
-        </div>
+        )}
       </div>
     );
   }
