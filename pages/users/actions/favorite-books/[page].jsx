@@ -67,14 +67,14 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
     return (
       <div className="pb-52 md:pb-60 lg:pb-72 2xl:pb-80 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
-        <div className="pt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+        <div className="pt-16 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {books.map((item) => {
             return (
               <Link
                 href={`/books/${slug(item.book.title, item.book.id)}/1`}
                 key={item.book.id}
               >
-                <div className="rounded-md bg-gray-50 transition-colors animate-show-up cursor-pointer active:shadow-inner border-2 border-gray-300 hover:border-gray-400">
+                <div className="rounded-md bg-white shadow-lg hover:bg-gray-50 hover:shadow-xl transition-all cursor-pointer active:shadow-inner">
                   <BookCard bookData={item.book} />
                 </div>
               </Link>
@@ -83,7 +83,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
         </div>
 
         {pagy.prev === null && pagy.next === null ? null : (
-          <div className="flex justify-around pt-16 md:w-4/5 lg:w-1/2 mx-auto">
+          <div className="flex justify-around mt-32 md:w-4/5 lg:w-1/2 mx-auto">
             <div className="w-1/3">
               <PageNavButton
                 direction="left"

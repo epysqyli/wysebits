@@ -35,14 +35,14 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
           </div>
         </div>
 
-        <div className="pt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+        <div className="pt-10 pb-20 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {books.map((book) => {
             return (
               <Link
                 href={`/books/${slug(book.title, book.id)}/1`}
                 key={book.id}
               >
-                <div className="rounded-md bg-gray-50 transition-colors animate-show-up cursor-pointer active:shadow-inner border-2 border-gray-300 hover:border-gray-400">
+                <div className="rounded-md bg-white shadow-lg hover:bg-gray-50 hover:shadow-xl transition-all cursor-pointer active:shadow-inner">
                   <BookCard bookData={book} />
                 </div>
               </Link>

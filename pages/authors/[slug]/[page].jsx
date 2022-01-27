@@ -48,7 +48,7 @@ const Author = ({ books, pagy, authorName, urlSlug }) => {
                 href={`/books/${slug(book.title, book.id)}/1`}
                 key={book.id}
               >
-                <div className="rounded-md bg-gray-50 transition-colors animate-show-up cursor-pointer active:shadow-inner border-2 border-gray-300 hover:border-gray-400">
+                <div className="rounded-md bg-white shadow-lg hover:bg-gray-50 hover:shadow-xl transition-all cursor-pointer active:shadow-inner">
                   <BookCard bookData={book} />
                 </div>
               </Link>
