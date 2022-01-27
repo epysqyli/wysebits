@@ -49,22 +49,24 @@ const UserBooks = ({ books, pagy, username }) => {
             })}
           </div>
 
-          <div className="flex justify-around py-16 md:w-4/5 lg:w-1/2 mx-auto">
-            <div className="w-1/3">
-              <PageNavButton
-                direction="left"
-                clientUrl={clientUrl}
-                url={pagy.prev_url}
-              />
+          {pagy.prev === null && pagy.next === null ? null : (
+            <div className="flex justify-around py-16 md:w-4/5 lg:w-1/2 mx-auto">
+              <div className="w-1/3">
+                <PageNavButton
+                  direction="left"
+                  clientUrl={clientUrl}
+                  url={pagy.prev_url}
+                />
+              </div>
+              <div className="w-1/3">
+                <PageNavButton
+                  direction="right"
+                  clientUrl={clientUrl}
+                  url={pagy.next_url}
+                />
+              </div>
             </div>
-            <div className="w-1/3">
-              <PageNavButton
-                direction="right"
-                clientUrl={clientUrl}
-                url={pagy.next_url}
-              />
-            </div>
-          </div>
+          )}
         </div>
       </div>
     );
