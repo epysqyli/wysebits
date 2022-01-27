@@ -24,10 +24,10 @@ export const getServerSideProps = async (context) => {
 const AuthorSearch = ({ searchResults, keywords, pagy }) => {
   const clientUrl = `/authors/search/${keywords}`;
 
-  if (searchResults !== null)
+  if (searchResults.length !== 0)
     return (
-      <div>
-        <div className="my-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
+      <div className="pb-52 md:pb-60 lg:pb-72 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
+        <div className="py-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
           <SearchInput
             pageDest="/authors/search/"
             placeholder="Search for any author"
@@ -35,32 +35,38 @@ const AuthorSearch = ({ searchResults, keywords, pagy }) => {
           />
         </div>
 
-        <div className="mt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+        <div className="py-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {searchResults.map((author) => {
             return <AuthorResult author={author} key={author.id} />;
           })}
         </div>
 
-        <div className="flex items-center py-16 lg:py-32 w-4/5 md:w-2/6 mx-auto gap-x-4 md:gap-x-20">
-          <div className="w-1/2">
-            <PageNavButton
-              direction="left"
-              url={pagy.prev_url}
-              clientUrl={clientUrl}
-            />
+        {pagy.prev === null && pagy.next === null ? null : (
+          <div className="flex justify-around pt-16 md:w-4/5 lg:w-1/2 mx-auto">
+            <div className="w-1/3">
+              <PageNavButton
+                direction="left"
+                clientUrl={clientUrl}
+                url={pagy.prev_url}
+              />
+            </div>
+            <div className="w-1/3">
+              <PageNavButton
+                direction="right"
+                clientUrl={clientUrl}
+                url={pagy.next_url}
+              />
+            </div>
           </div>
-          <div className="w-1/2">
-            <PageNavButton
-              direction="right"
-              url={pagy.next_url}
-              clientUrl={clientUrl}
-            />
-          </div>
-        </div>
+        )}
       </div>
     );
 
-  return <NoSearchResults searchMode="authors" />;
+  return (
+    <div className="pb-52 md:pb-60 lg:pb-72 2xl:pb-80 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
+      <NoSearchResults searchMode="authors" />
+    </div>
+  );
 };
 
 export default AuthorSearch;

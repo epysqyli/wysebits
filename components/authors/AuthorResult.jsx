@@ -12,7 +12,7 @@ const AuthorResult = ({ author }) => {
 
   return (
     <Link href={`/authors/${slug(author.full_name, author.id)}/1`}>
-      <div className="bg-gray-100 flex justify-between items-center px-2 py-2 rounded-md shadow cursor-pointer hover:shadow-md active:shadow-inner">
+      <div className="flex justify-between items-center bg-gray-50 px-2 py-2 rounded-md cursor-pointer border-2 border-gray-200 hover:border-gray-400 active:bg-gray-100 active:shadow-inner">
         <div className="w-1/4 relative">
           {imageIsLoaded == false ? (
             <ImageLoader
