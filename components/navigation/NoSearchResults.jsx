@@ -5,7 +5,7 @@ import Link from "next/dist/client/link";
 const NoSearchResults = ({ searchMode }) => {
   if (searchMode === "books")
     return (
-      <div className="my-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
+      <div className="py-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
         <SearchInput
           pageDest="/books/search/"
           placeholder="Search for any book"
@@ -45,7 +45,7 @@ const NoSearchResults = ({ searchMode }) => {
 
   if (searchMode === "authors")
     return (
-      <div className="my-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
+      <div className="py-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
         <SearchInput
           pageDest="/authors/search/"
           placeholder="Search for any author"

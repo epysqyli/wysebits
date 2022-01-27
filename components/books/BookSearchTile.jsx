@@ -10,7 +10,7 @@ const BookSearchTile = ({ bookData, destPage }) => {
 
   return (
     <Link href={destPage}>
-      <div className="p-5 rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:shadow-inner">
+      <div className="p-5 rounded-md bg-gray-50 transition-colors animate-show-up cursor-pointer active:shadow-inner border-2 border-gray-300 hover:border-gray-400">
         <div className="flex justify-between">
           <div className="w-2/3 mr-5 flex flex-col justify-around">
             <div

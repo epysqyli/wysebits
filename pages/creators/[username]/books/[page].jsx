@@ -24,7 +24,7 @@ const UserBooks = ({ books, pagy, username }) => {
 
   if (books.length !== 0)
     return (
-      <div className="pb-20 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
+      <div className="pb-52 md:pb-60 lg:pb-72 2xl:pb-80 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <div className="bg-check-book-tiles bg-cover bg-center shadow">
           <div className="bg-gray-800 bg-opacity-70 text-white text-2xl md:text-3xl font-bold text-center py-12">
             <div className="mx-auto w-4/5">
@@ -34,7 +34,7 @@ const UserBooks = ({ books, pagy, username }) => {
         </div>
 
         <div>
-          <div className="py-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+          <div className="pt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
             {books.map((book) => {
               return (
                 <Link
@@ -73,7 +73,7 @@ const UserBooks = ({ books, pagy, username }) => {
 
   if (books.length === 0)
     return (
-      <div>
+      <div className="pb-52 md:pb-60 lg:pb-72 2xl:pb-80 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <div className="bg-check-book-tiles bg-cover bg-center shadow">
           <div className="bg-gray-800 bg-opacity-70 text-white text-2xl md:text-3xl font-bold text-center py-12">
             <div className="mx-auto w-4/5">

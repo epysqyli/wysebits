@@ -28,14 +28,14 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
 
   if (books.length !== 0)
     return (
-      <div className="pb-60 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
+      <div className="pb-52 md:pb-60 lg:pb-72 2xl:pb-80 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <div className="bg-categories bg-cover bg-center shadow">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16">
             {capitalize(categoryName)}
           </div>
         </div>
 
-        <div className="py-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+        <div className="pt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {books.map((book) => {
             return (
               <Link
@@ -73,7 +73,7 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
 
   if (books.length === 0)
     return (
-      <div className="pb-24 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
+      <div className="pb-52 md:pb-60 lg:pb-72 2xl:pb-80 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <div className="bg-categories bg-cover bg-center shadow">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16">
             {capitalize(categoryName)}

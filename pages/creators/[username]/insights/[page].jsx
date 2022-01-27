@@ -83,14 +83,14 @@ const UserInsights = ({
 
   if (entries.length !== 0)
     return (
-      <div className="pb-20 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
+      <div className="pb-52 md:pb-60 lg:pb-72 2xl:pb-80 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <div className="bg-saved-tiles bg-cover bg-center shadow">
           <div className="bg-gray-800 bg-opacity-70 text-white text-2xl md:text-3xl font-bold text-center py-12">
             <div className="mx-auto w-4/5">All insights from {username}</div>
           </div>
         </div>
 
-        <div className="my-10 w-4/5 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
+        <div className="mt-10 w-4/5 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
           {entries.map((entry) => {
             return (
               <div
@@ -136,7 +136,7 @@ const UserInsights = ({
 
   if (entries.length === 0)
     return (
-      <div>
+      <div className="pb-52 md:pb-60 lg:pb-72 2xl:pb-80 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <div className="bg-saved-tiles bg-cover bg-center shadow">
           <div className="bg-gray-800 bg-opacity-70 text-white text-2xl md:text-3xl font-bold text-center py-12">
             <div className="mx-auto w-4/5">All insights from {username}</div>
