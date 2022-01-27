@@ -83,7 +83,7 @@ const UserInsights = ({
 
   if (entries.length !== 0)
     return (
-      <div>
+      <div className="pb-20 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <div className="bg-saved-tiles bg-cover bg-center shadow">
           <div className="bg-gray-800 bg-opacity-70 text-white text-2xl md:text-3xl font-bold text-center py-12">
             <div className="mx-auto w-4/5">All insights from {username}</div>

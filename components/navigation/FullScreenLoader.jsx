@@ -3,7 +3,7 @@ import { Loader } from "react-feather";
 const FullScreenLoader = () => {
   return (
     <div className="fixed w-full h-screen z-30 bg-gray-200 bg-opacity-50">
-      <div className="w-min animate-spin mx-auto mt-16 lg:mt-20 lg:ml-20 mr-auto">
+      <div className="w-min animate-spin mx-auto mt-12">
         <Loader
           size={40}
           color="black"

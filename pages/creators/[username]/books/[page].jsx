@@ -24,7 +24,7 @@ const UserBooks = ({ books, pagy, username }) => {
 
   if (books.length !== 0)
     return (
-      <div>
+      <div className="pb-20 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <div className="bg-check-book-tiles bg-cover bg-center shadow">
           <div className="bg-gray-800 bg-opacity-70 text-white text-2xl md:text-3xl font-bold text-center py-12">
             <div className="mx-auto w-4/5">
@@ -41,7 +41,7 @@ const UserBooks = ({ books, pagy, username }) => {
                   href={`/books/${slug(book.title, book.id)}/1`}
                   key={book.id}
                 >
-                  <div className="rounded-md shadow-md bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:shadow-inner">
+                  <div className="rounded-md shadow-md bg-gray-50 hover:bg-gray-200 animate-show-up cursor-pointer active:shadow-inner">
                     <BookCard bookData={book} />
                   </div>
                 </Link>

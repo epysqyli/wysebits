@@ -21,7 +21,7 @@ import {
 const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
   return (
     <div>
-      <div className="md:flex items-center justify-around mt-4">
+      <div className="md:flex items-center justify-around">
         <div className="flex justify-around items-center gap-x-5">
           {user.user.avatar_url !== null ? (
             <Image
