@@ -46,7 +46,7 @@ const LogIn = ({ handleLogin }) => {
         </div>
       </div>
 
-      <form className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 py-10" onSubmit={logIn}>
+      <form className="mx-auto md:w-4/6 lg:w-3/6 py-10" onSubmit={logIn}>
         <div className="w-4/6 mx-auto my-4">
           <label htmlFor="email" className="pl-1">
             Email

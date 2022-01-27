@@ -49,19 +49,19 @@ const UserBooks = ({ books, pagy, username }) => {
             })}
           </div>
 
-          <div className="flex justify-around my-16 md:w-4/5 mx-auto">
+          <div className="flex justify-around py-16 lg:py-32 md:w-4/5 lg:w-1/2 mx-auto">
             <div className="w-1/3">
               <PageNavButton
-                btnText="Previous page"
-                url={pagy.prev_url}
+                direction="left"
                 clientUrl={clientUrl}
+                url={pagy.prev_url}
               />
             </div>
             <div className="w-1/3">
               <PageNavButton
-                btnText="Next page"
-                url={pagy.next_url}
+                direction="right"
                 clientUrl={clientUrl}
+                url={pagy.next_url}
               />
             </div>
           </div>
