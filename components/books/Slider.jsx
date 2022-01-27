@@ -25,7 +25,7 @@ const Slider = ({ entries }) => {
   };
 
   return (
-    <div className="flex justify-around items-center mx-auto py-5 bg-gray-100 cursor-default">
+    <div className="flex justify-around items-center mx-auto py-5 bg-gray-50 cursor-default">
       <ChevronLeft
         className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
         onClick={decrement}

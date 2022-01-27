@@ -47,7 +47,7 @@ const Home = ({ categories, userState }) => {
   };
 
   return (
-    <div className="pb-10 bg-gradient-to-br from-gray-50 via-gray-100 to-blue-100">
+    <div className="pb-10 bg-gradient-to-br from-gray-50 via-gray-100 to-blue-50">
       <Head>
         <title>Wysebits</title>
         <link rel="icon" href="/favicon.ico" />
@@ -113,7 +113,7 @@ const Home = ({ categories, userState }) => {
       </div>
 
       <Link href="/feed">
-        <div className="my-16 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/5 px-2 py-3 border-b-2 pb-10 hover:bg-gray-100 active:shadow-inner active:bg-white transition-colors cursor-pointer hover:rounded-md group">
+        <div className="my-16 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/5 px-2 py-5 shadow-md rounded-md border-t-2 border-blue-400 bg-blue-50 hover:bg-gray-100 active:shadow-inner active:bg-white transition-colors cursor-pointer hover:rounded-md group">
           <div className="flex justify-center items-center gap-x-10">
             <Layers size={36} strokeWidth={1.5} />
             <div className="text-4xl text-gray-700">Go to Feed ...</div>

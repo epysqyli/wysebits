@@ -122,7 +122,7 @@ const Book = ({
 
   if (entries && entries.length !== 0)
     return (
-      <div>
+      <div className="bg-gradient-to-br from-gray-50 via-gray-100 to-blue-100">
         <Head>
           <title>WyseBits - {book.title}</title>
         </Head>
@@ -181,7 +181,7 @@ const Book = ({
               Recommeded books from the {book.category.name} category
             </div>
           </div>
-          <div className="mx-auto py-10 w-4/6 lg:w-4/5 grid grid-cols-1 md:grid-cols-2 gap-x-2 lg:gap-x-10 gap-y-10 mt-10">
+          <div className="mx-auto pt-10 pb-16 w-4/6 lg:w-4/5 grid grid-cols-1 md:grid-cols-2 gap-x-2 lg:gap-x-10 gap-y-10 mt-10">
             <Recommendations recommendations={recommendations} />
           </div>
         </div>
@@ -189,7 +189,7 @@ const Book = ({
     );
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200">
+    <div className="bg-gradient-to-br from-gray-50 via-gray-100 to-blue-100">
       <Head>
         <title>WyseBits - {book.title}</title>
       </Head>

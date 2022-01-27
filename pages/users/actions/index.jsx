@@ -5,20 +5,20 @@ import NoAccess from "../../../components/users/NoAccess";
 const Actions = ({ userState }) => {
   if (userState.isLogged) {
     return (
-      <div className="bg-gradient-to-r md:bg-gradient-to-br from-yellow-50 via-blue-100 to-gray-300">
+      <div className="bg-gradient-to-br from-gray-50 via-gray-100 to-blue-100">
         <Head>
           <title>User Homepage</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
         <div className="bg-user-welcome bg-cover bg-center shadow-lg">
-          <div className="bg-gray-800 bg-opacity-70 text-white text-2xl font-bold text-center py-12 xl:py-6">
+          <div className="bg-gray-800 bg-opacity-70 text-white text-2xl font-bold text-center py-12 lg:py-16">
             <div>Welcome back, {userState.user.username}.</div>
             <div className="mt-2">What are you up to today?</div>
           </div>
         </div>
 
-        <div className="w-4/5 xl:w-5/6 2xl:w-2/3 py-10 lg:py-20 grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 lg:gap-y-10 mx-auto">
+        <div className="mx-auto w-4/5 xl:w-5/6 2xl:w-2/3 py-14 lg:py-24 grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 lg:gap-y-10">
           <div>
             <UserAction
               text="Share your knowledge"

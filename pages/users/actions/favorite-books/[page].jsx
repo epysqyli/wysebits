@@ -39,7 +39,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
 
   if (userState.isLogged && books.length == 0)
     return (
-      <div>
+      <div className="pb-20 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
         <div className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 xl:w-2/6 2xl:w-1/3 py-20 lg:py-40 2xl:py-48">
           <NoItem message="You have no favorite books yet" />
@@ -54,7 +54,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
             <div className="mt-10 mb-3">
               <SearchInput
                 pageDest="/books/search/"
-                placeholder="Any book in mind?"
+              placeholder="Any book in mind?"
                 searchMode="books"
               />
             </div>
@@ -65,7 +65,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
 
   if (userState.isLogged && books.length !== 0)
     return (
-      <div className="bg-gradient-to-b from-gray-50 to-gray-200">
+      <div className="pb-20 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
         <div className="py-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {books.map((item) => {
@@ -74,7 +74,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
                 href={`/books/${slug(item.book.title, item.book.id)}/1`}
                 key={item.book.id}
               >
-                <div className="rounded-md shadow-md  bg-gray-100 hover:bg-gray-200 animate-show-up cursor-pointer active:shadow-inner border-2 border-blue-200">
+                <div className="rounded-md bg-gray-50 hover:bg-gray-200 animate-show-up cursor-pointer active:shadow-inner border-2 border-gray-300">
                   <BookCard bookData={item.book} />
                 </div>
               </Link>

@@ -61,7 +61,7 @@ const UserBookTiles = ({ bookTiles, pagy, userState }) => {
 
   if (userState.isLogged && bookTiles.length !== 0)
     return (
-      <div>
+      <div className="pb-20 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <WelcomeTop
           text="Books for which you have shared insights"
           bcgImg="bg-check-book-tiles"
@@ -79,6 +79,7 @@ const UserBookTiles = ({ bookTiles, pagy, userState }) => {
             );
           })}
         </div>
+
         <div className="flex items-center py-16 lg:py-32 w-4/5 md:w-2/6 mx-auto gap-x-4 md:gap-x-20">
           <div className="w-1/2">
             <PageNavButton
