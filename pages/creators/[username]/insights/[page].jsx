@@ -115,7 +115,7 @@ const UserInsights = ({
             );
           })}
         </div>
-        <div className="flex justify-around py-16 lg:py-32 md:w-4/5 lg:w-1/2 mx-auto">
+        <div className="flex justify-around pt-16 md:w-4/5 lg:w-1/2 mx-auto">
           <div className="w-1/3">
             <PageNavButton
               direction="left"
