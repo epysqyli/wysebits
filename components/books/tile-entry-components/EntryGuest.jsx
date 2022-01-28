@@ -32,8 +32,8 @@ const EntryGuest = ({ entryProp, feed }) => {
     );
 
   return (
-    <div>
-      <div className="border-b-2 py-5 px-10 md:px-16 whitespace-pre-line font-light">
+    <div className="flex flex-col justify-around h-full">
+      <div className="border-b-2 py-5 px-10 md:px-16 font-light whitespace-pre-line flex-grow">
         {entryProp.content}
       </div>
 
