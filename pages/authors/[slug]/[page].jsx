@@ -41,7 +41,7 @@ const Author = ({ books, pagy, authorName, urlSlug }) => {
           </div>
         </div>
 
-        <div className="py-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+        <div className="py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {books.map((book) => {
             return (
               <Link
@@ -89,8 +89,8 @@ const Author = ({ books, pagy, authorName, urlSlug }) => {
         <NoItem message="This author has no books assigned to him/her." />
         <div className="border px-5 mt-20 lg:mt-32 bg-gray-100 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
           <div className="px-3 pt-5">
-            It might be that the author's books need to be assigned to him/her. You
-            can do this while posting your insights for a specific book.
+            It might be that the author's books need to be assigned to him/her.
+            You can do this while posting your insights for a specific book.
           </div>
           <div className="mt-10">
             <SearchInput

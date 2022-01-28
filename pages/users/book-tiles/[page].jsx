@@ -66,7 +66,7 @@ const UserBookTiles = ({ bookTiles, pagy, userState }) => {
           text="Books for which you have shared insights"
           bcgImg="bg-check-book-tiles"
         />
-        <div className="pt-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+        <div className="pt-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {bookTiles.map((bookTile) => {
             return (
               <div key={bookTile.book.id}>

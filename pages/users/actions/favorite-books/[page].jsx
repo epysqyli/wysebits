@@ -67,7 +67,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
     return (
       <div className="pb-52 md:pb-60 lg:pb-72 2xl:pb-80 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
-        <div className="pt-16 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+        <div className="pt-16 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {books.map((item) => {
             return (
               <Link
