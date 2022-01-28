@@ -40,7 +40,7 @@ export const getServerSideProps = async (context) => {
     const upvotedEntries = await getUpvotedEntries(loggedUser, context);
     const downvotedEntries = await getDownvotedEntries(loggedUser, context);
 
-    if (entries.data.entries.length != 0) {
+    if (entries.data.entries.length !== 0)
       return {
         props: {
           entries: entries.data.entries,
@@ -56,20 +56,19 @@ export const getServerSideProps = async (context) => {
           recommendations: recommendations.data,
         },
       };
-    } else {
-      return {
-        props: {
-          entries: false,
-          title: capTitle,
-          book: book.data,
-          favBooks: favBooks.data.books,
-          pagy: entries.data.pagy,
-          slug: slug,
-          following: following.data,
-          recommendations: recommendations.data,
-        },
-      };
-    }
+
+    return {
+      props: {
+        entries: false,
+        title: capTitle,
+        book: book.data,
+        favBooks: favBooks.data,
+        pagy: entries.data.pagy,
+        slug: slug,
+        following: following.data,
+        recommendations: recommendations.data,
+      },
+    };
   } catch (error) {
     if (entries.data.entries != null) {
       return {

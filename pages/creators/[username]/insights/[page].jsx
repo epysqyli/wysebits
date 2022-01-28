@@ -7,8 +7,8 @@ import TileEntry from "../../../../components/books/TileEntry";
 import {
   getAllFollowing,
   getLoggedUser,
-  getFavBooks,
-  getFavEntries,
+  getAllFavBooks,
+  getAllFavEntries,
   getUpvotedEntries,
   getDownvotedEntries,
 } from "../../../../lib/serverSideMethods";
@@ -24,17 +24,17 @@ export const getServerSideProps = async (context) => {
   try {
     const loggedUser = await getLoggedUser(context);
     const following = await getAllFollowing(loggedUser, context);
-    const favBooks = await getFavBooks(loggedUser, context);
-    const favInsights = await getFavEntries(loggedUser, context);
+    const favBooks = await getAllFavBooks(loggedUser, context);
+    const favInsights = await getAllFavEntries(loggedUser, context);
     const upvotedEntries = await getUpvotedEntries(loggedUser, context);
     const downvotedEntries = await getDownvotedEntries(loggedUser, context);
 
-    if (entries.data.entries.length != 0) {
+    if (entries.data.entries.length !== 0) {
       return {
         props: {
           username: username,
           entries: entries.data.entries,
-          favBooks: favBooks.data.books,
+          favBooks: favBooks.data,
           pagy: pagy,
           following: following.data,
           favInsights: favInsights.data.tile_entries,
