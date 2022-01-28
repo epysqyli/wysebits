@@ -148,7 +148,7 @@ const Feed = ({
   };
 
   const feedEnd = (
-    <div className="flex justify-around items-center mx-auto w-3/5 md:w-2/5 xl:w-1/4 py-4 my-16 pt-10 border-t-2">
+    <div className="flex justify-around items-center mx-auto w-3/5 md:w-2/5 xl:w-1/4 mt-5 py-20 border-t-2">
       <Info size={32} strokeWidth={1.5} />
       <div>No more entries available</div>
     </div>
@@ -177,7 +177,7 @@ const Feed = ({
     };
 
     return (
-      <div>
+      <div className="pb-72 2xl:pb-80 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <div className="bg-feed bg-cover bg-center shadow">
           <div className="bg-gray-800 bg-opacity-70 text-white text-2xl md:text-3xl font-medium text-center py-12">
             Latest insights
