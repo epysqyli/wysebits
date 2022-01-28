@@ -32,6 +32,7 @@ const EntryLoggedTitle = ({
           </div>
         </Link>
       </div>
+
       <div className="flex-grow">
         <EntryLogged
           entryProp={entryProp}
