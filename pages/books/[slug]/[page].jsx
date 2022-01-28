@@ -18,6 +18,7 @@ import {
   getDownvotedEntries,
   getBook,
   getCategoryRecommendations,
+  getAllFavBooks,
 } from "../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
@@ -35,7 +36,7 @@ export const getServerSideProps = async (context) => {
   try {
     const loggedUser = await getLoggedUser(context);
     const following = await getAllFollowing(loggedUser, context);
-    const favBooks = await getFavBooks(loggedUser, context);
+    const favBooks = await getAllFavBooks(loggedUser, context);
     const favInsights = await getFavEntries(loggedUser, context);
     const upvotedEntries = await getUpvotedEntries(loggedUser, context);
     const downvotedEntries = await getDownvotedEntries(loggedUser, context);
@@ -46,7 +47,7 @@ export const getServerSideProps = async (context) => {
           entries: entries.data.entries,
           title: capTitle,
           book: book.data,
-          favBooks: favBooks.data.books,
+          favBooks: favBooks.data,
           pagy: entries.data.pagy,
           slug: slug,
           following: following.data,
@@ -183,7 +184,7 @@ const Book = ({
               Recommeded books from the {book.category.name} category
             </div>
           </div>
-          <div className="mx-auto pt-10 pb-16 w-4/6 md:w-5/6 xl:w-4/6 grid grid-cols-1 md:grid-cols-2 gap-x-2 lg:gap-x-10 gap-y-10 mt-10">
+          <div className="mx-auto pt-10 pb-16 w-11/12 md:w-5/6 xl:w-4/6 grid grid-cols-1 md:grid-cols-2 gap-x-2 lg:gap-x-10 gap-y-10 mt-10">
             <Recommendations recommendations={recommendations} />
           </div>
         </div>
