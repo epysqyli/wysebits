@@ -5,8 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import {
   getLoggedUser,
   getAllFollowing,
-  getFavBooks,
-  getFavEntries,
+  getAllFavEntries,
   getUpvotedEntries,
   getDownvotedEntries,
   getGuestFeed,
@@ -26,8 +25,7 @@ export const getServerSideProps = async (context) => {
     const favCatsEntries = await getFavCategoriesFeed(loggedUser, context, 1);
     const followingEntries = await getFollowingFeed(loggedUser, context, 1);
     const following = await getAllFollowing(loggedUser, context);
-    const favBooks = await getFavBooks(loggedUser, context);
-    const favInsights = await getFavEntries(loggedUser, context);
+    const favInsights = await getAllFavEntries(loggedUser, context);
     const upvotedEntries = await getUpvotedEntries(loggedUser, context);
     const downvotedEntries = await getDownvotedEntries(loggedUser, context);
 
@@ -42,7 +40,6 @@ export const getServerSideProps = async (context) => {
         feedType: "user_feed",
 
         following: following.data,
-        favBooks: favBooks.data.books,
         favInsights: favInsights.data.tile_entries,
         entriesUp: upvotedEntries.data.upvoted_entries,
         entriesDown: downvotedEntries.data.downvoted_entries,
