@@ -70,31 +70,17 @@ export const getServerSideProps = async (context) => {
       },
     };
   } catch (error) {
-    if (entries.data.entries != null) {
-      return {
-        props: {
-          entries: entries.data.entries,
-          title: capTitle,
-          book: book.data,
-          favBooks: [],
-          pagy: entries.data.pagy,
-          slug: slug,
-          recommendations: recommendations.data,
-        },
-      };
-    } else {
-      return {
-        props: {
-          entries: false,
-          title: capTitle,
-          book: book.data,
-          favBooks: [],
-          pagy: entries.data.pagy,
-          slug: slug,
-          recommendations: recommendations.data,
-        },
-      };
-    }
+    return {
+      props: {
+        entries: entries.data.entries || null,
+        title: capTitle,
+        book: book.data,
+        favBooks: [],
+        pagy: entries.data.pagy,
+        slug: slug,
+        recommendations: recommendations.data,
+      },
+    };
   }
 };
 
