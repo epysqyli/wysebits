@@ -14,12 +14,12 @@ export const getServerSideProps = async (context) => {
 
     const loggedUser = await getLoggedUser(context);
 
-    const booksResp = await getFavBooks(loggedUser, context, pageNum);
+    const books = await getFavBooks(loggedUser, context, pageNum);
 
     return {
       props: {
-        books: booksResp.data.books,
-        pagy: booksResp.data.pagy,
+        books: books.data.books,
+        pagy: books.data.pagy,
       },
     };
   } catch (error) {
