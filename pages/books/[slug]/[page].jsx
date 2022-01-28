@@ -12,8 +12,7 @@ import {
   getBookEntries,
   getAllFollowing,
   getLoggedUser,
-  getFavBooks,
-  getFavEntries,
+  getAllFavEntries,
   getUpvotedEntries,
   getDownvotedEntries,
   getBook,
@@ -37,7 +36,7 @@ export const getServerSideProps = async (context) => {
     const loggedUser = await getLoggedUser(context);
     const following = await getAllFollowing(loggedUser, context);
     const favBooks = await getAllFavBooks(loggedUser, context);
-    const favInsights = await getFavEntries(loggedUser, context);
+    const favInsights = await getAllFavEntries(loggedUser, context);
     const upvotedEntries = await getUpvotedEntries(loggedUser, context);
     const downvotedEntries = await getDownvotedEntries(loggedUser, context);
 

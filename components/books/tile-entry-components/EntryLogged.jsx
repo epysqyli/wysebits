@@ -42,7 +42,7 @@ const EntryLogged = ({
   const entryUser = entryProp.book_tile.user;
 
   const isFavInsight = () =>
-    insights.some((insight) => insight.id === entryProp.id);
+    insights.some((insight) => insight.tile_entry_id === entryProp.id);
 
   if (feed === true)
     return (
