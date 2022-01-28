@@ -34,7 +34,7 @@ const Author = ({ books, pagy, authorName, urlSlug }) => {
 
   if (books.length !== 0)
     return (
-      <div className="pb-60 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
+      <div className="pb-52 md:pb-60 lg:pb-80 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
         <div className="bg-author bg-cover bg-center shadow">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl text-center py-16">
             {authorName}
