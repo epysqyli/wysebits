@@ -46,7 +46,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-around mt-5 md:block">
+        <div className="flex items-center justify-around mt-10 md:block">
           <Link href={`/creators/${user.user.username}/books/1`}>
             <div className="flex items-center gap-x-2 group p-1 cursor-pointer hover:shadow-md hover:rounded-md active:shadow-inner">
               <BookOpen size={20} />
