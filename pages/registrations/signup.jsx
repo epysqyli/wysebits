@@ -47,7 +47,7 @@ const SignUp = () => {
     });
 
     console.log(resp);
-    if (resp.status === 200) router.push("/users/actions");
+    // if (resp.status === 200) router.push("/users/actions");
   };
 
   return (
