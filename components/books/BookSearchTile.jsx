@@ -12,7 +12,7 @@ const BookSearchTile = ({ bookData, destPage }) => {
     <Link href={destPage}>
       <div className="py-3 px-4 rounded-md bg-white shadow-lg hover:bg-gradient-to-b hover:from-white hover:to-gray-50 hover:shadow-xl transition-all cursor-pointer active:shadow-inner border-b-2 border-blue-200 hover:border-blue-300">
         <div className="flex justify-between">
-          <div className="w-2/3 mr-5 flex flex-col justify-around">
+          <div className="w-2/3 mr-5 flex flex-col justify-between">
             <div
               className="text-lg font-medium mb-2 tracking-tight"
               dangerouslySetInnerHTML={{ __html: bookData.pg_search_highlight }}
