@@ -41,12 +41,8 @@ const EntryLogged = ({
 }) => {
   const entryUser = entryProp.book_tile.user;
 
-  const isFavInsight = () => {
-    if (insights.length !== 0 && insights[0].tile_entry_id === undefined)
-      return insights.some((insight) => insight.id === entryProp.id);
-    else
-      return insights.some((insight) => insight.tile_entry_id === entryProp.id);
-  };
+  const isFavInsight = () =>
+    insights.some((insight) => insight.id === entryProp.id);
 
   if (feed === true)
     return (
