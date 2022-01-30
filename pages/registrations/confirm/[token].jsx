@@ -1,5 +1,7 @@
 import axios from "axios";
 import { CheckCircle, Compass } from "react-feather";
+import { useState } from "react";
+import Link from "next/dist/client/link";
 
 export const getServerSideProps = (context) => {
   const token = context.query.token;
@@ -8,14 +10,18 @@ export const getServerSideProps = (context) => {
 };
 
 const ConfirmToken = ({ token }) => {
-  const sendConfirmation = async () => {
-    const resp = await axios({
-      method: "POST",
-      url: "http://localhost:3001/api/confirm",
-      data: { token: token },
-    });
+  const [confirmed, setConfirmed] = useState(false);
 
-    console.log(resp);
+  const sendConfirmation = async () => {
+    try {
+      const resp = await axios({
+        method: "POST",
+        url: "http://localhost:3001/api/confirm",
+        data: { token: token },
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -33,12 +39,28 @@ const ConfirmToken = ({ token }) => {
           </div>
         </div>
 
-        <div
-          onClick={sendConfirmation}
-          className="w-4/5 mx-auto mt-40 text-center text-2xl py-20 border-b-2 border-blue-500 rounded-md bg-white shadow-md cursor-pointer hover:bg-gray-50 active:bg-gray-200 transition-colors"
-        >
-          Confirm now
-        </div>
+        {confirmed === false ? (
+          <div
+            className="text-center text-3xl font-light py-20 w-4/5 mx-auto mt-40 border-b-2 border-blue-500 rounded-md bg-white shadow-md cursor-pointer hover:bg-gray-50 active:bg-gray-200 transition-colors"
+            onClick={sendConfirmation}
+          >
+            Activate your account
+          </div>
+        ) : (
+          <div className="text-center font-light w-4/5 mx-auto mt-40 rounded-md bg-gradient-to-br from-white to-green-100 py-1 shadow-lg">
+            <CheckCircle
+              size={36}
+              strokeWidth={1.75}
+              className="w-min mx-auto my-10"
+            />
+            <div className="text-2xl">Your account is now active!</div>
+            <Link href="/registrations/login">
+              <div className="my-10 py-3 text-3xl cursor-pointer w-3/5 mx-auto shadow-md bg-white rounded-md hover:bg-gray-100 active:shadow-inner">
+                Go to login
+              </div>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
