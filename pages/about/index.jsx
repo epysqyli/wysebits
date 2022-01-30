@@ -71,7 +71,7 @@ const About = ({ userState }) => {
 
           {userState.isLogged ? null : (
             <Link href="/registrations/signup">
-              <a className="block mt-10">
+              <a className="block mt-20 md:w-4/5 mx-auto">
                 <Button text="Sign up now and start contributing your insights to the community!" />
               </a>
             </Link>
