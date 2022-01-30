@@ -7,7 +7,7 @@ const LogIn = ({ handleLogin }) => {
     emailAddress: null,
     password: null,
   });
-  
+
   const router = useRouter();
   const logInUrl = "http://localhost:3001/api/login";
 
@@ -31,7 +31,7 @@ const LogIn = ({ handleLogin }) => {
       .then((resp) => {
         console.log(resp);
         handleLogin(resp.data);
-        router.push("/users/actions");
+        router.push("/");
       })
       .catch((error) => console.log(error));
   };
