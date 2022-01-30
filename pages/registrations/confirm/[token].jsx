@@ -19,6 +19,8 @@ const ConfirmToken = ({ token }) => {
         url: "http://localhost:3001/api/confirm",
         data: { token: token },
       });
+
+      setConfirmed(true);
     } catch (error) {
       console.log(error);
     }
