@@ -19,25 +19,37 @@ const ResetPassword = ({ token }) => {
     });
   };
 
-  const isConfirmed = () => {
+  const isMatching = () => {
     if (psws.password !== "" && psws.password === psws.passwordConfirmation) {
-      console.log(true);
       return true;
     }
 
-    console.log(false);
     return false;
+  };
+
+  const changePassword = async () => {
+    return await axios({
+      method: "put",
+      url: "http://localhost:3001/api/password/reset",
+      data: {
+        password: psws.password,
+        token: token,
+      },
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const resp = await changePassword();
+
+    console.log(resp);
   };
 
-  useEffect(() => isConfirmed(), [psws.passwordConfirmation]);
+  useEffect(() => isMatching(), [psws.passwordConfirmation]);
 
   return (
     <div className="py-10">
-      <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2">
+      <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2 md:border-none">
         <Key size={36} className="text-gray-700" />
         <div className="text-3xl text-gray-800">Choose a new password</div>
       </div>
@@ -72,7 +84,7 @@ const ResetPassword = ({ token }) => {
             name="passwordConfirmation"
             id="password-confirmation"
             className={`block mt-4 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md ${
-              isConfirmed()
+              isMatching()
                 ? "bg-green-100"
                 : psws.passwordConfirmation !== ""
                 ? "bg-red-100"
@@ -83,12 +95,22 @@ const ResetPassword = ({ token }) => {
           />
         </div>
 
-        <button
-          type="submit"
-          className="block mx-auto w-4/6 bg-white my-10 rounded-lg px-5 py-3 text-gray-800 shadow-md hover:shadow-lg transition-shadow active:shadow-inner"
-        >
-          Confirm password change
-        </button>
+        {isMatching() ? (
+          <button
+            type="submit"
+            className="block mx-auto w-4/6 bg-white my-10 rounded-lg px-5 py-3 text-gray-800 shadow-md hover:shadow-lg transition-shadow active:shadow-inner"
+          >
+            Confirm password change
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className="block mx-auto w-4/6 bg-gray-50 text-gray-500 my-10 rounded-lg px-5 py-3 shadow cursor-default"
+            disabled
+          >
+            Confirm password change
+          </button>
+        )}
       </form>
     </div>
   );
