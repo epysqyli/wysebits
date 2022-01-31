@@ -11,16 +11,19 @@ const ForgotPassword = () => {
   };
 
   const sendEmail = async () => {
-    const resp = await axios({
+    return await axios({
       method: "post",
       url: "http://localhost:3001/api/password/forgot",
       data: { email_address: emailAddress },
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  }
+
+    const resp = await sendEmail();
+    console.log(resp);
+  };
 
   return (
     <div className="py-10">

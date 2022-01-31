@@ -47,7 +47,7 @@ const LogIn = ({ handleLogin }) => {
         </div>
       </div>
 
-      <div className="mx-auto md:w-4/6 lg:w-3/6 py-10">
+      <div className="md:w-4/6 lg:w-3/6 mx-auto mt-10">
         <form onSubmit={logIn}>
           <div className="w-4/6 mx-auto my-4">
             <label htmlFor="email" className="pl-1">
@@ -85,7 +85,7 @@ const LogIn = ({ handleLogin }) => {
           </button>
         </form>
 
-        <div className="text-center mx-auto py-4 underline cursor-pointer">
+        <div className="text-center mx-auto w-2/5 py-4 underline cursor-pointer">
           <Link href="/registrations/forgot_password">Forgot password?</Link>
         </div>
       </div>
