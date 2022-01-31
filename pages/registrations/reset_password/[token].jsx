@@ -43,9 +43,15 @@ const ResetPassword = ({ token }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const resp = await changePassword();
+    
+    try {
+      const resp = await changePassword();
 
-    console.log(resp);
+      console.log(resp);
+      if (resp.status === 200) setConfirmed(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => isMatching(), [psws.passwordConfirmation]);
