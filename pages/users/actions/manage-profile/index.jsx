@@ -44,24 +44,18 @@ const ManageProfile = ({ userState }) => {
           </div>
 
           <div className="mx-auto my-6">
-            <ManageBox
-              text="Update current username"
-              href="#"
-            />
+            <ManageBox text="Update current username" href="#" />
           </div>
 
           <div className="mx-auto my-6">
-            <ManageBox
-              text="Update current email address"
-              href="#"
-            />
+            <ManageBox text="Update current email address" href="#" />
           </div>
         </div>
       </div>
     );
   }
 
-  if (userState.isLogged === false) return <NoAccess />;
+  return <NoAccess />;
 };
 
 export default ManageProfile;
