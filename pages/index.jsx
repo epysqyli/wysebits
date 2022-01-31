@@ -67,7 +67,7 @@ const Home = ({ categories, userState }) => {
       </div>
 
       <div className="xl:flex xl:w-11/12 xl:mx-auto 2xl:w-5/6">
-        <div className="mx-auto mb-20 xl:mb-10 w-11/12 md:w-4/6 lg:w-4/6 xl:w-2/5 px-4 xl:py-0 xl:border-b-2">
+        <div className="mx-auto mb-20 xl:mb-10 w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 px-4 xl:py-0 xl:border-b-2">
           <div className="text-gray-700 mb-10 md:mb-8 py-8 border-blue-400 border-t-4 border-l-4 shadow-md rounded rounded-tl-md xl:rounded  xl:rounded-tl-xl bg-white">
             <div className="text-5xl mb-5 text-center">
               Search {capitalize(searchMode)}
