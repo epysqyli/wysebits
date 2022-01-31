@@ -38,7 +38,7 @@ const BookSearchResults = ({ searchResults, userState, keywords, pagy }) => {
 
   useEffect(() => setTimeout(showBtn, 2000), []);
 
-  if (userState.isLogged && searchResults !== null) {
+  if (userState.isLogged && searchResults.length !== 0) {
     return (
       <div>
         <div className="my-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
@@ -84,8 +84,8 @@ const BookSearchResults = ({ searchResults, userState, keywords, pagy }) => {
     );
   }
 
-  if (userState.isLogged && searchResults === null) {
-    return <NoSearchResults />;
+  if (userState.isLogged && searchResults.length === 0) {
+    return <NoSearchResults searchMode="books" />;
   }
 
   if (userState.isLogged === false) {

@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Box, Layers, ArrowUpRight, RefreshCw } from "react-feather";
 
 import { capitalize } from "../lib/utils";
-import Button from "../components/navigation/Button";
 import CategoryButton from "../components/navigation/CategoryButton";
 import SearchInput from "../components/navigation/SearchInput";
 import Link from "next/link";

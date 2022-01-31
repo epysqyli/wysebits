@@ -64,7 +64,7 @@ const BookSearchResults = ({ searchResults, keywords, pagy }) => {
         </div>
 
         {pagy.prev === null && pagy.next === null ? null : (
-          <div className="flex justify-around pt-32 md:w-4/5 lg:w-1/2 mx-auto">
+          <div className="flex justify-around my-16 md:w-4/5 lg:w-1/2 mx-auto">
             <div className="w-1/3">
               <PageNavButton
                 direction="left"
@@ -85,11 +85,7 @@ const BookSearchResults = ({ searchResults, keywords, pagy }) => {
     );
   }
 
-  return (
-    <div className="pb-52 md:pb-60 lg:pb-72 2xl:pb-80 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
-      <NoSearchResults searchMode="books" />
-    </div>
-  );
+  return <NoSearchResults searchMode="books" />;
 };
 
 export default BookSearchResults;
