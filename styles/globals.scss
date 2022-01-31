@@ -18,5 +18,10 @@
 }
 
 body {
-  background-color: #f9fafb;
+  background: linear-gradient(
+    120deg,
+    rgb(219, 234, 254) 0%,
+    rgb(243, 244, 246) 50%,
+    rgb(229, 231, 235) 100%
+  );
 }
