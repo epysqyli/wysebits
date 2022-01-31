@@ -22,10 +22,7 @@ const UpdatePassword = () => {
     return await axios({
       method: "put",
       url: "http://localhost:3001/api/password/update",
-      data: {
-        password: psws.password,
-        token: token,
-      },
+      data: { password: psws.password },
       withCredentials: true,
     });
   };
@@ -121,7 +118,6 @@ const UpdatePassword = () => {
             )}
           </form>
         </div>
-        );
       </div>
     );
 
