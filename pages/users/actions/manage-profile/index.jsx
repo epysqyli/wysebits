@@ -42,6 +42,20 @@ const ManageProfile = ({ userState }) => {
               href="/users/actions/manage-profile/update-password"
             />
           </div>
+
+          <div className="mx-auto my-6">
+            <ManageBox
+              text="Update current username"
+              href="/users/actions/manage-profile/update-password"
+            />
+          </div>
+
+          <div className="mx-auto my-6">
+            <ManageBox
+              text="Update current email address"
+              href="/users/actions/manage-profile/update-password"
+            />
+          </div>
         </div>
       </div>
     );
