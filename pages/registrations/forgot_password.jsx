@@ -1,7 +1,15 @@
 import axios from "axios";
 import { Terminal } from "react-feather";
+import { useState } from "react/cjs/react.development";
 
 const ForgotPassword = () => {
+  const [emailAddress, setEmailAddress] = useState("");
+
+  const handleChange = (e) => {
+    const newEmailAddress = e.target.value;
+    setEmailAddress(newEmailAddress);
+  };
+
   const sendEmail = async () => {
     const resp = await axios({
       method: "post",
@@ -10,15 +18,19 @@ const ForgotPassword = () => {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
   return (
-    <div>
-      <div className="flex justify-between items-center w-3/5 mx-auto pt-10 pb-5 border-b-2">
+    <div className="py-10">
+      <div className="flex justify-between items-center w-3/5 mx-auto my-5 pb-5 border-b-2">
         <Terminal size={36} />
         <div className="text-3xl text-gray-800">reset password</div>
       </div>
 
-      <form className="mx-auto md:w-4/6 lg:w-3/6 py-10">
-        <div className="w-4/6 mx-auto my-4">
+      <form className="mx-auto md:w-4/6 lg:w-3/6 py-10" onSubmit={handleSubmit}>
+        <div className="w-4/6 mx-auto mt-5 mb-20">
           <label htmlFor="email" className="pl-1 text-xl text-gray-800">
             Email address
           </label>
@@ -27,6 +39,7 @@ const ForgotPassword = () => {
             name="emailAddress"
             id="email"
             className="block mt-4 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md"
+            onChange={handleChange}
             required
           />
         </div>
