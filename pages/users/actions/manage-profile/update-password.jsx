@@ -1,7 +1,6 @@
 import { CheckCircle, Key } from "react-feather";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Link from "next/dist/client/link";
 
 const UpdatePassword = () => {
   const [psws, setPsws] = useState({
