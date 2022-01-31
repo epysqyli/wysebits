@@ -27,12 +27,15 @@ const ForgotPassword = () => {
 
   return (
     <div className="py-10">
-      <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto my-5 pb-5 border-b-2">
+      <div className="flex justify-around items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto my-5 pb-5 border-b-2 md:border-none">
         <Terminal size={36} />
-        <div className="text-3xl text-gray-800">reset password</div>
+        <div className="text-3xl text-gray-800">Reset password</div>
       </div>
 
-      <form className="mx-auto md:w-4/6 lg:w-3/6 xl:w-2/5 py-10 md:border md:shadow rounded" onSubmit={handleSubmit}>
+      <form
+        className="mx-auto md:w-4/6 lg:w-3/6 xl:w-2/5 py-10 md:border md:shadow rounded"
+        onSubmit={handleSubmit}
+      >
         <div className="w-4/6 mx-auto mt-5 mb-20">
           <label htmlFor="email" className="pl-1 text-xl text-gray-800">
             Email address
