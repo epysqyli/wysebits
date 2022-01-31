@@ -5,6 +5,7 @@ import Link from "next/dist/client/link";
 
 const UpdatePassword = () => {
   const [psws, setPsws] = useState({
+    oldPassword: "",
     password: "",
     passwordConfirmation: "",
   });
@@ -22,7 +23,10 @@ const UpdatePassword = () => {
     return await axios({
       method: "put",
       url: "http://localhost:3001/api/password/update",
-      data: { password: psws.password },
+      data: {
+        old_password: psws.oldPassword,
+        password: psws.password,
+      },
       withCredentials: true,
     });
   };
@@ -32,8 +36,6 @@ const UpdatePassword = () => {
 
     try {
       const resp = await changePassword();
-
-      console.log(resp);
       if (resp.status === 200) setConfirmed(true);
     } catch (error) {
       console.log(error);
@@ -63,6 +65,23 @@ const UpdatePassword = () => {
             className="mx-auto md:w-4/6 lg:w-3/6 xl:w-2/5 py-10 md:border md:shadow rounded"
             onSubmit={handleSubmit}
           >
+            <div className="w-4/6 mx-auto my-10">
+              <label
+                htmlFor="old-password"
+                className="pl-1 text-xl text-gray-800"
+              >
+                Current password
+              </label>
+              <input
+                type="password"
+                name="oldPassword"
+                id="old-password"
+                className="block mt-4 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md"
+                onChange={handleChange}
+                required
+              />
+            </div>
+
             <div className="w-4/6 mx-auto my-10">
               <label htmlFor="password" className="pl-1 text-xl text-gray-800">
                 New password
