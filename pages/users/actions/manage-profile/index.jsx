@@ -37,7 +37,7 @@ const ManageProfile = ({ userState }) => {
           </div>
 
           <div className="mx-auto my-6">
-            <ManageBox text="Change current password" href="#" />
+            <ManageBox text="Update current password" href="#" />
           </div>
         </div>
       </div>
