@@ -35,7 +35,7 @@ const UserBookTiles = ({ bookTiles, pagy, userState }) => {
 
   if (userState.isLogged && bookTiles.length === 0)
     return (
-      <div className="pb-52 md:pb-60 lg:pb-72 2xl:pb-80 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
+      <div>
         <WelcomeTop
           text="Books for which you have shared insights"
           bcgImg="bg-check-book-tiles"
@@ -61,12 +61,12 @@ const UserBookTiles = ({ bookTiles, pagy, userState }) => {
 
   if (userState.isLogged && bookTiles.length !== 0)
     return (
-      <div className="pb-52 md:pb-60 lg:pb-72 2xl:pb-80 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
+      <div>
         <WelcomeTop
           text="Books for which you have shared insights"
           bcgImg="bg-check-book-tiles"
         />
-        <div className="pt-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+        <div className="py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {bookTiles.map((bookTile) => {
             return (
               <div key={bookTile.book.id}>
@@ -81,7 +81,7 @@ const UserBookTiles = ({ bookTiles, pagy, userState }) => {
         </div>
 
         {pagy.prev === null && pagy.next === null ? null : (
-          <div className="flex justify-around pt-16 md:w-4/5 lg:w-1/2 mx-auto">
+          <div className="flex justify-around my-16 md:w-4/5 lg:w-1/2 mx-auto">
             <div className="w-1/3">
               <PageNavButton
                 direction="left"

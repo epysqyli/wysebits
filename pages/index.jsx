@@ -47,7 +47,7 @@ const Home = ({ categories, userState }) => {
   };
 
   return (
-    <div className="pb-10 bg-gradient-to-br from-gray-50 via-gray-100 to-blue-50">
+    <div>
       <Head>
         <title>Wysebits</title>
         <link rel="icon" href="/favicon.ico" />

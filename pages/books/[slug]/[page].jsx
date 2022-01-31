@@ -107,7 +107,7 @@ const Book = ({
 
   if (entries && entries.length !== 0)
     return (
-      <div className="pb-20 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
+      <div>
         <Head>
           <title>WyseBits - {book.title}</title>
         </Head>
@@ -138,7 +138,7 @@ const Book = ({
         </div>
 
         {pagy.prev === null && pagy.next === null ? null : (
-          <div className="flex justify-around py-16 md:w-4/5 lg:w-1/2 mx-auto">
+          <div className="flex justify-around my-16 md:w-4/5 lg:w-1/2 mx-auto">
             <div className="w-1/3">
               <PageNavButton
                 direction="left"
@@ -176,7 +176,7 @@ const Book = ({
     );
 
   return (
-    <div className="pb-20 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
+    <div>
       <Head>
         <title>WyseBits - {book.title}</title>
       </Head>

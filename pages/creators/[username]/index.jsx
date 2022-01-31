@@ -69,7 +69,7 @@ const Username = ({
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
 
   return (
-    <div className="pb-60 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
+    <div>
       <div>
         <BasicInfo
           user={user}
