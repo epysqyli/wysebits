@@ -203,7 +203,7 @@ const CreateBook = ({ categories, userState }) => {
           ) : (
             <button
               type="submit"
-              className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-100 rounded-md hover:shadow-md hover:bg-gray-200 active:bg-gray-300 active:shadow-md"
+              className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-50 rounded-md hover:shadow hover:bg-gray-100 active:shadow-inner transition-colors"
             >
               Create book
             </button>
