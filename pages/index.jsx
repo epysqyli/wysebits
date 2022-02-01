@@ -67,12 +67,12 @@ const Home = ({ categories, userState }) => {
 
       <div className="xl:flex xl:w-11/12 xl:mx-auto 2xl:w-5/6">
         <div className="mx-auto mb-20 xl:mb-10 w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 px-4 xl:py-0 xl:border-b-2">
-          <div className="text-gray-700 mb-10 md:mb-8 py-8 border-blue-400 border-t-4 border-l-4 shadow-md rounded rounded-tl-md xl:rounded  xl:rounded-tl-xl bg-white">
+          <div className="text-gray-700 mb-10 md:mb-8 py-8 rounded md:bg-white md:border-blue-400 md:border-t-2 md:shadow-md">
             <div className="text-5xl mb-5 text-center">
               Search {capitalize(searchMode)}
             </div>
             <div
-              className="flex justify-between w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 border-2 border-gray-200 mx-auto px-3 items-center text-gray-400 cursor-pointer bg-gray-50 hover:shadow xl:hover:shadow-none hover:px-5 active:shadow-inner active:bg-gray-200 transition-all rounded-md py-2"
+              className="flex justify-between w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 md:border-2 md:border-gray-200 mx-auto mt-7 px-3 py-2 items-center text-gray-400 cursor-pointer md:bg-gray-50 shadow md:hover:shadow xl:hover:shadow-none hover:px-5 active:shadow-inner active:bg-gray-200 transition-all rounded-md"
               onClick={toggleSearchMode}
             >
               <div>
@@ -86,7 +86,7 @@ const Home = ({ categories, userState }) => {
             </div>
           </div>
 
-          <div className="mb-5">
+          <div className="md:mt-16 mb-32 lg:w-5/6 xl:w-full mx-auto">
             <SearchInput
               pageDest={searchConfig.pageDest}
               placeholder={searchConfig.placeholder}
@@ -99,7 +99,7 @@ const Home = ({ categories, userState }) => {
         </div>
 
         <div className="mb-10 w-11/12 mx-auto md:w-5/6 lg:w-4/6 xl:w-1/2 border-b-2 pb-10">
-          <div className="flex justify-around items-center text-gray-700 gap-x-5 mb-10 md:mb-16 border-blue-400 border-r-4 border-b-4 shadow-md rounded bg-white py-8 xl:py-16 xl:rounded-br-xl">
+          <div className="flex justify-around items-center text-gray-700 bg-white gap-x-5 mb-10 md:mb-16 md:bg-white border-blue-400 border-t-2 shadow-md rounded py-8 xl:py-16">
             <div className="text-4xl xl:text-5xl">Categories</div>
             <Box size={52} strokeWidth={1.5} />
           </div>
@@ -112,7 +112,7 @@ const Home = ({ categories, userState }) => {
       </div>
 
       <Link href="/feed">
-        <div className="my-16 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/5 2xl:w-2/6 px-2 py-5 shadow-md rounded-md border-t-2 border-blue-400 bg-white hover:bg-blue-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer hover:rounded-md group">
+        <div className="mt-16 mb-24 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/5 2xl:w-2/6 px-2 py-5 shadow-md rounded-md border-t-2 border-blue-400 bg-white hover:bg-blue-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer hover:rounded-md group">
           <div className="flex justify-center items-center gap-x-10">
             <Layers size={36} strokeWidth={1.5} />
             <div className="text-4xl text-gray-700">Go to Feed ...</div>
