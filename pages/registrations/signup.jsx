@@ -9,6 +9,7 @@ const SignUp = () => {
   const [emailSent, setEmailSent] = useState(false);
 
   const [usernameAvailable, setUsernameAvailable] = useState(false);
+  const [emailAvailable, setEmailAvailable] = useState(false);
 
   const [userData, setUserData] = useState({
     username: "",
@@ -23,7 +24,15 @@ const SignUp = () => {
     return await axios({
       method: "post",
       url: "http://localhost:3001/api/users/username_available",
-      data: { username: userData.username },
+      data: { user: { username: userData.username } },
+    });
+  };
+
+  const isEmailAvailable = async () => {
+    return await axios({
+      method: "post",
+      url: "http://localhost:3001/api/users/email_address_available",
+      data: { user: { email_address: userData.emailAddress } },
     });
   };
 
@@ -83,6 +92,13 @@ const SignUp = () => {
     }
   }, [userData.username]);
 
+  useEffect(async () => {
+    if (userData.emailAddress.length > 5) {
+      const resp = await isEmailAvailable();
+      setEmailAvailable(resp.data);
+    }
+  }, [userData.emailAddress]);
+
   if (emailSent === false)
     return (
       <div>
@@ -124,7 +140,14 @@ const SignUp = () => {
               type="email"
               name="emailAddress"
               id="email"
-              className="block mt-2 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md"
+              className={`block mt-2 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md ${
+                emailAvailable
+                  ? "bg-green-100"
+                  : userData.emailAddress !== "" &&
+                    userData.emailAddress.length > 5
+                  ? "bg-red-100"
+                  : null
+              }`}
               onChange={handleChange}
               required
             />
@@ -175,7 +198,7 @@ const SignUp = () => {
             />
           </div>
 
-          {isMatching() && usernameAvailable ? (
+          {isMatching() && usernameAvailable && emailAvailable ? (
             <button
               type="submit"
               className="block mx-auto w-1/2 bg-white my-10 rounded-lg px-5 py-3 text-gray-800 shadow-md hover:shadow-lg transition-shadow active:shadow-inner"

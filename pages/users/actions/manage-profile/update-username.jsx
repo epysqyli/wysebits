@@ -20,7 +20,7 @@ const UpdateUsername = () => {
     return await axios({
       method: "put",
       url: "http://localhost:3001/api/users/update_username",
-      data: { username: username },
+      data: { user: { username: username } },
       withCredentials: true,
     });
   };
