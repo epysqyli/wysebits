@@ -52,9 +52,7 @@ const UpdateEmail = () => {
         <div className="py-10">
           <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2 md:border-none">
             <Mail size={36} className="text-gray-700" />
-            <div className="text-3xl text-gray-800">
-              Update email address
-            </div>
+            <div className="text-3xl text-gray-800">Update email address</div>
           </div>
 
           <form
@@ -85,7 +83,7 @@ const UpdateEmail = () => {
                 type="submit"
                 className="block mx-auto w-4/6 bg-white my-10 rounded-lg px-5 py-3 text-gray-800 shadow-md hover:shadow-lg transition-shadow active:shadow-inner"
               >
-                Confirm username change
+                Confirm email address change{" "}
               </button>
             ) : (
               <button
