@@ -136,7 +136,7 @@ const Home = ({ categories, userState }) => {
       </Link>
 
       {userState.isLogged ? null : (
-        <div className="mx-auto md:w-4/5 lg:w-3/5">
+        <div className="mx-auto md:w-4/5 lg:w-3/5 my-5">
           <Link href="/about">
             <div className="underline text-center mx-auto w-4/5 cursor-pointer">
               Wyse what? Click here to know more about it!
