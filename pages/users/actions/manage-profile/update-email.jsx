@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Mail } from "react-feather";
+import { CheckCircle, Mail } from "react-feather";
 
 const UpdateEmail = () => {
   const [email, setEmail] = useState("");
@@ -53,7 +53,7 @@ const UpdateEmail = () => {
           <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2 md:border-none">
             <Mail size={36} className="text-gray-700" />
             <div className="text-3xl text-gray-800">
-              Choose a new email address
+              Update email address
             </div>
           </div>
 
@@ -105,16 +105,16 @@ const UpdateEmail = () => {
     <div className="py-10">
       <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2">
         <Mail size={36} className="text-gray-700" />
-        <div className="text-3xl text-gray-800">Choose a new email address</div>
+        <div className="text-3xl text-gray-800">Update email address</div>
       </div>
 
-      <div className="text-center font-light w-4/5 md:w-4/6 lg:w-1/2 xl:w-1/3 mx-auto mt-20 rounded-md bg-gradient-to-br from-white to-green-100 py-10 shadow-lg animate-show-up-slow">
+      <div className="text-center font-light w-4/5 md:w-4/6 lg:w-1/2 xl:w-1/3 mx-auto mt-20 rounded-md bg-gradient-to-br from-white to-blue-100 py-10 shadow-lg animate-show-up-slow">
         <CheckCircle
           size={36}
           strokeWidth={1.75}
           className="w-min mx-auto my-10"
         />
-        <div className="text-2xl">
+        <div className="text-2xl w-4/5 mx-auto">
           Check your new email address for a confirmation link!
         </div>
       </div>
