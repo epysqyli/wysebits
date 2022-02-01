@@ -4,18 +4,28 @@ import { useRouter } from "next/router";
 import axios from "axios";
 
 const SignUp = () => {
+  const router = useRouter();
+
   const [emailSent, setEmailSent] = useState(false);
 
+  const [usernameAvailable, setUsernameAvailable] = useState(false);
+
   const [userData, setUserData] = useState({
-    username: null,
-    emailAddress: null,
+    username: "",
+    emailAddress: "",
     password: "",
     passwordConfirmation: "",
   });
 
   const [file, setFile] = useState(null);
 
-  const router = useRouter();
+  const isUsernameAvailable = async () => {
+    return await axios({
+      method: "post",
+      url: "http://localhost:3001/api/users/username_available",
+      data: { username: userData.username },
+    });
+  };
 
   const handleChange = (e) => {
     setUserData({
@@ -66,6 +76,13 @@ const SignUp = () => {
 
   useEffect(() => isMatching(), [userData.passwordConfirmation]);
 
+  useEffect(async () => {
+    if (userData.username.length > 3) {
+      const resp = await isUsernameAvailable();
+      setUsernameAvailable(resp.data);
+    }
+  }, [userData.username]);
+
   if (emailSent === false)
     return (
       <div>
@@ -87,7 +104,13 @@ const SignUp = () => {
               type="text"
               name="username"
               id="username"
-              className="block mt-2 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md"
+              className={`block mt-2 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md ${
+                usernameAvailable
+                  ? "bg-green-100"
+                  : userData.username !== "" && userData.username.length > 3
+                  ? "bg-red-100"
+                  : null
+              }`}
               onChange={handleChange}
               required
             />
@@ -152,7 +175,7 @@ const SignUp = () => {
             />
           </div>
 
-          {isMatching() ? (
+          {isMatching() && usernameAvailable ? (
             <button
               type="submit"
               className="block mx-auto w-1/2 bg-white my-10 rounded-lg px-5 py-3 text-gray-800 shadow-md hover:shadow-lg transition-shadow active:shadow-inner"
