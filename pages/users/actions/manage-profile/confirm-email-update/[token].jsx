@@ -43,7 +43,7 @@ const ConfirmToken = ({ token }) => {
             className="text-center text-3xl font-light py-20 w-4/5 mx-auto mt-40 border-b-2 border-blue-500 rounded-md bg-white shadow-md cursor-pointer hover:bg-gray-50 active:bg-gray-200 transition-colors"
             onClick={sendConfirmation}
           >
-            Activate your account
+            Confirm email
           </div>
         ) : (
           <div className="text-center font-light w-4/5 mx-auto mt-40 rounded-md bg-gradient-to-br from-white to-green-100 py-1 shadow-lg">

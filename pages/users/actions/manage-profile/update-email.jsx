@@ -61,7 +61,7 @@ const UpdateEmail = () => {
           >
             <div className="w-4/6 mx-auto my-10">
               <label htmlFor="email" className="pl-1 text-xl text-gray-800">
-                Email address
+                New email address
               </label>
               <input
                 type="email"
