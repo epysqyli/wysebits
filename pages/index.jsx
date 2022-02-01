@@ -67,7 +67,7 @@ const Home = ({ categories, userState }) => {
 
       <div className="xl:flex xl:w-11/12 xl:mx-auto 2xl:w-5/6">
         <div className="mx-auto mb-20 xl:mb-10 w-11/12 md:w-4/6 lg:w-1/2 xl:w-2/5 px-4 xl:py-0 xl:border-b-2">
-          <div className="text-gray-700 mb-10 md:mb-8 py-8 rounded md:bg-white md:border-blue-400 md:border-t-2 md:shadow-md">
+          <div className="text-gray-700 mb-10 md:mb-8 py-8 rounded-md md:bg-white md:border-blue-400 md:border-t-2 md:shadow-md">
             <div className="text-5xl mb-5 text-center">
               Search {capitalize(searchMode)}
             </div>
@@ -99,7 +99,7 @@ const Home = ({ categories, userState }) => {
         </div>
 
         <div className="mb-10 w-11/12 mx-auto md:w-5/6 lg:w-4/6 xl:w-1/2 border-b-2 pb-10">
-          <div className="flex justify-around items-center text-gray-700 bg-white gap-x-5 mb-10 md:mb-16 md:bg-white border-blue-400 border-t-2 shadow-md rounded py-8 xl:py-16">
+          <div className="flex justify-around items-center text-gray-700 bg-white gap-x-5 mb-10 md:mb-16 md:bg-white border-blue-400 border-t-2 shadow-md rounded-md py-8 xl:py-16">
             <div className="text-4xl xl:text-5xl">Categories</div>
             <Box size={52} strokeWidth={1.5} />
           </div>
@@ -112,7 +112,7 @@ const Home = ({ categories, userState }) => {
       </div>
 
       <Link href="/feed">
-        <div className="mt-16 mb-24 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/5 2xl:w-2/6 px-2 py-5 shadow-md rounded-md border-t-2 border-blue-400 bg-white hover:bg-blue-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer hover:rounded-md group">
+        <div className="mt-16 mb-24 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/5 2xl:w-2/6 px-2 py-5 shadow-md rounded-md border-t-2 border-blue-400 bg-white hover:bg-blue-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer group">
           <div className="flex justify-center items-center gap-x-10">
             <Layers size={36} strokeWidth={1.5} />
             <div className="text-4xl text-gray-700">Go to Feed ...</div>
