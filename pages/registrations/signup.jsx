@@ -89,6 +89,8 @@ const SignUp = () => {
     if (userData.username.length > 3) {
       const resp = await isUsernameAvailable();
       setUsernameAvailable(resp.data);
+    } else {
+      setUsernameAvailable(false);
     }
   }, [userData.username]);
 
@@ -96,6 +98,8 @@ const SignUp = () => {
     if (userData.emailAddress.length > 5) {
       const resp = await isEmailAvailable();
       setEmailAvailable(resp.data);
+    } else {
+      setEmailAvailable(false);
     }
   }, [userData.emailAddress]);
 
