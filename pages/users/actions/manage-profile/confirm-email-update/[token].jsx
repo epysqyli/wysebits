@@ -1,6 +1,6 @@
 import axios from "axios";
 import { CheckCircle, Compass } from "react-feather";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/dist/client/link";
 
 export const getServerSideProps = (context) => {
@@ -9,7 +9,7 @@ export const getServerSideProps = (context) => {
   return { props: { token } };
 };
 
-const ConfirmToken = ({ token }) => {
+const ConfirmToken = ({ token, userState }) => {
   const [confirmed, setConfirmed] = useState(false);
 
   const sendConfirmation = async () => {
@@ -25,6 +25,21 @@ const ConfirmToken = ({ token }) => {
       console.log(error);
     }
   };
+
+  const logout = async () => {
+    return await axios({
+      method: "get",
+      url: "http://localhost:3001/api/logout",
+      withCredentials: true,
+    });
+  };
+
+  useEffect(async () => {
+    if (userState.isLogged) {
+      const res = await logout();
+      if (res.data.status === "success") location.reload();
+    }
+  });
 
   return (
     <div className="pb-52 md:pb-60 lg:pb-72 2xl:pb-80 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">

@@ -11,7 +11,6 @@ const Header = ({ userState, userLoading }) => {
     axios
       .get("http://localhost:3001/api/logout", { withCredentials: true })
       .then((res) => {
-        console.log(res);
         if (res.data.status === "success") window.location = "/";
       })
       .catch((err) => console.log(err));
