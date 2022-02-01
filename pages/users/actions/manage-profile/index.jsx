@@ -44,7 +44,10 @@ const ManageProfile = ({ userState }) => {
           </div>
 
           <div className="mx-auto my-6">
-            <ManageBox text="Update current username" href="#" />
+            <ManageBox
+              text="Update current username"
+              href="/users/actions/manage-profile/update-username"
+            />
           </div>
 
           <div className="mx-auto my-6">
