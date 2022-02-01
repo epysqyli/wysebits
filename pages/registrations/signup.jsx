@@ -1,5 +1,5 @@
 import { Mail } from "react-feather";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 
@@ -9,8 +9,8 @@ const SignUp = () => {
   const [userData, setUserData] = useState({
     username: null,
     emailAddress: null,
-    password: null,
-    passwordConfirmation: null,
+    password: "",
+    passwordConfirmation: "",
   });
 
   const [file, setFile] = useState(null);
@@ -22,6 +22,17 @@ const SignUp = () => {
       ...userData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const isMatching = () => {
+    if (
+      userData.password !== "" &&
+      userData.password === userData.passwordConfirmation
+    ) {
+      return true;
+    }
+
+    return false;
   };
 
   const createFormData = () => {
@@ -53,6 +64,8 @@ const SignUp = () => {
     if (resp.status === 200) setEmailSent(true);
   };
 
+  useEffect(() => isMatching(), [userData.passwordConfirmation]);
+
   if (emailSent === false)
     return (
       <div>
@@ -74,7 +87,7 @@ const SignUp = () => {
               type="text"
               name="username"
               id="username"
-              className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow focus:shadow-md"
+              className="block mt-2 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md"
               onChange={handleChange}
               required
             />
@@ -88,7 +101,7 @@ const SignUp = () => {
               type="email"
               name="emailAddress"
               id="email"
-              className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow focus:shadow-md"
+              className="block mt-2 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md"
               onChange={handleChange}
               required
             />
@@ -102,7 +115,7 @@ const SignUp = () => {
               type="password"
               name="password"
               id="password"
-              className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow focus:shadow-md"
+              className="block mt-2 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md"
               onChange={handleChange}
               required
             />
@@ -116,7 +129,13 @@ const SignUp = () => {
               type="password"
               name="passwordConfirmation"
               id="password_confirmation"
-              className="block mt-2 w-full border-none focus:ring-0 rounded-lg shadow focus:shadow-md"
+              className={`block mt-2 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md ${
+                isMatching()
+                  ? "bg-green-100"
+                  : userData.passwordConfirmation !== ""
+                  ? "bg-red-100"
+                  : null
+              }`}
               onChange={handleChange}
               required
             />
@@ -133,12 +152,22 @@ const SignUp = () => {
             />
           </div>
 
-          <button
-            type="submit"
-            className="block mx-auto w-1/2 border rounded-lg px-5 py-2 bg-white my-10 hover:shadow-md focus:bg-gray-200 focus:shadow-md"
-          >
-            Let's go!
-          </button>
+          {isMatching() ? (
+            <button
+              type="submit"
+              className="block mx-auto w-1/2 bg-white my-10 rounded-lg px-5 py-3 text-gray-800 shadow-md hover:shadow-lg transition-shadow active:shadow-inner"
+            >
+              Let's go
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="block mx-auto w-1/2 bg-gray-50 text-gray-500 my-10 rounded-lg px-5 py-3 shadow cursor-default"
+              disabled
+            >
+              Let's go
+            </button>
+          )}
         </form>
       </div>
     );
