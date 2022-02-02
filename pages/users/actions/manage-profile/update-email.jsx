@@ -1,19 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { CheckCircle, Mail } from "react-feather";
+import { isEmailAvailable } from "../../../../lib/manageProfileMethods";
 
 const UpdateEmail = () => {
   const [email, setEmail] = useState("");
   const [available, setAvailable] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
-
-  const isEmailAvailable = async () => {
-    return await axios({
-      method: "post",
-      url: "http://localhost:3001/api/users/email_address_available",
-      data: { user: { email_address: email } },
-    });
-  };
 
   const changeEmail = async () => {
     return await axios({
@@ -39,7 +32,7 @@ const UpdateEmail = () => {
 
   useEffect(async () => {
     if (email.length > 5) {
-      const resp = await isEmailAvailable();
+      const resp = await isEmailAvailable(email);
       setAvailable(resp.data);
     } else {
       setAvailable(false);

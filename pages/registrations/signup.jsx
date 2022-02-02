@@ -1,7 +1,12 @@
 import { Mail } from "react-feather";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { isMatching } from "../../lib/manageProfileMethods";
+import {
+  isEmailAvailable,
+  isMatching,
+  isUsernameAvailable,
+} from "../../lib/manageProfileMethods";
+
 import axios from "axios";
 
 const SignUp = () => {
@@ -20,22 +25,6 @@ const SignUp = () => {
   });
 
   const [file, setFile] = useState(null);
-
-  const isUsernameAvailable = async () => {
-    return await axios({
-      method: "post",
-      url: "http://localhost:3001/api/users/username_available",
-      data: { user: { username: userData.username } },
-    });
-  };
-
-  const isEmailAvailable = async () => {
-    return await axios({
-      method: "post",
-      url: "http://localhost:3001/api/users/email_address_available",
-      data: { user: { email_address: userData.emailAddress } },
-    });
-  };
 
   const handleChange = (e) => {
     setUserData({
@@ -75,7 +64,7 @@ const SignUp = () => {
 
   useEffect(async () => {
     if (userData.username.length > 3) {
-      const resp = await isUsernameAvailable();
+      const resp = await isUsernameAvailable(userData.username);
       setUsernameAvailable(resp.data);
     } else {
       setUsernameAvailable(false);
@@ -84,7 +73,7 @@ const SignUp = () => {
 
   useEffect(async () => {
     if (userData.emailAddress.length > 5) {
-      const resp = await isEmailAvailable();
+      const resp = await isEmailAvailable(userData.emailAddress);
       setEmailAvailable(resp.data);
     } else {
       setEmailAvailable(false);
