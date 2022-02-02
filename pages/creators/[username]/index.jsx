@@ -7,7 +7,7 @@ import {
   getLoggedUser,
   getAllFollowing,
   getFavBooks,
-  getFavEntries,
+  getAllFavEntries,
   getUpvotedEntries,
   getDownvotedEntries,
 } from "../../../lib/serverSideMethods";
@@ -20,7 +20,7 @@ export const getServerSideProps = async (context) => {
     const loggedUser = await getLoggedUser(context);
     const following = await getAllFollowing(loggedUser, context);
     const favBooks = await getFavBooks(loggedUser, context);
-    const favInsights = await getFavEntries(loggedUser, context);
+    const favInsights = await getAllFavEntries(loggedUser, context);
     const upvotedEntries = await getUpvotedEntries(loggedUser, context);
     const downvotedEntries = await getDownvotedEntries(loggedUser, context);
 
