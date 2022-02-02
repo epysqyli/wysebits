@@ -23,11 +23,11 @@ const Stats = ({ entries }) => {
       </div>
 
       <div className="mx-auto my-20 grid grid-cols-1 lg:grid-cols-3 lg:gap-x-5 gap-y-10">
-        <div className="bg-gradient-to-t from-blue-50 to-gray-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow">
+        <div className="bg-gradient-to-br from-blue-50 to-blue-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow">
           <div className="flex items-start justify-around border-b pb-4">
             <Award size={50} strokeWidth={1.25} className="text-gray-700" />
             <div>
-              <div className="text-xl p-2 bg-blue-100 rounded-md">
+              <div className="text-xl p-2 bg-blue-100 rounded-md shadow">
                 Best net entry
               </div>
               <div className="my-2 text-center">
@@ -71,11 +71,11 @@ const Stats = ({ entries }) => {
           </p>
         </div>
 
-        <div className="bg-gradient-to-t from-green-50 to-gray-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow">
+        <div className="bg-gradient-to-br from-green-50 to-green-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow">
           <div className="flex items-start justify-around border-b pb-4">
             <Smile size={50} strokeWidth={1.25} className="text-gray-700" />
             <div>
-              <div className="text-xl p-2 bg-green-100 rounded-md">
+              <div className="text-xl p-2 bg-green-100 rounded-md shadow">
                 Most upvoted
               </div>
               <div className="my-2 text-center">
@@ -119,11 +119,11 @@ const Stats = ({ entries }) => {
           </p>
         </div>
 
-        <div className="bg-gradient-to-t from-red-50 to-gray-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow">
+        <div className="bg-gradient-to-br from-red-50 to-red-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow">
           <div className="flex items-start justify-around border-b pb-4">
             <Frown size={50} strokeWidth={1.25} className="text-gray-700" />
             <div>
-              <div className="text-xl p-2 bg-red-100 rounded-md">
+              <div className="text-xl p-2 bg-red-100 rounded-md shadow">
                 Most downvoted
               </div>
               <div className="my-2 text-center">
