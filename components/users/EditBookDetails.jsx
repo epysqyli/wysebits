@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Loader } from "react-feather";
 import { useRouter } from "next/dist/client/router";
@@ -41,8 +41,8 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
 
   const assignExistingAuthor = (author) => {
     const newAuthor = {
-      full_name: author._source.full_name,
-      id: author._source.id,
+      full_name: author.full_name,
+      id: author.id,
     };
 
     setBook({ ...book, author: newAuthor });
@@ -92,6 +92,10 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
       })
       .catch((err) => console.log(err));
   };
+
+  useEffect(async () => {
+    await updateAuthorsSuggestions();
+  }, [book.author.full_name]);
 
   return (
     <div className="fixed z-30 bg-white pt-10 px-3 w-full min-h-screen shadow-lg border-gray-400 animate-show-up">
@@ -145,10 +149,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
               type="text"
               name="full_name"
               id="author-full-name"
-              onChange={(e) => {
-                handleAuthorChange(e);
-                updateAuthorsSuggestions();
-              }}
+              onChange={handleAuthorChange}
               value={book.author.full_name}
               className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow focus:shadow-md"
               placeholder="Enter the full name and select it below if present"
@@ -164,7 +165,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
                       key={author._id}
                       onClick={() => assignExistingAuthor(author)}
                     >
-                      {author._source.full_name}
+                      {author.full_name}
                     </div>
                   );
                 })
