@@ -229,7 +229,7 @@ const TileCreation = ({
               <button
                 type="submit"
                 disabled
-                className="w-3/5 mx-auto block border mt-10 py-2 rounded-md text-gray-200"
+                className="w-3/5 mx-auto block border border-gray-300 mt-10 py-2 rounded-md text-gray-400 cursor-default"
               >
                 Publish your thoughts!
               </button>
