@@ -24,8 +24,8 @@ const Stats = ({ entries }) => {
 
       <div className="mx-auto my-20 grid grid-cols-1 lg:grid-cols-3 lg:gap-x-5 gap-y-10">
         <div className="bg-gray-50 py-5 rounded text-gray-800 shadow">
-          <div className="flex items-center justify-around">
-            <Award size={36} strokeWidth={1.5} className="text-gray-700" />
+          <div className="flex items-start justify-around">
+            <Award size={50} strokeWidth={1.25} className="text-gray-700" />
             <div>
               <div className="text-xl p-2 bg-blue-100 rounded-md">
                 Best net entry
@@ -72,8 +72,8 @@ const Stats = ({ entries }) => {
         </div>
 
         <div className="bg-gray-50 py-5 rounded text-gray-800 shadow">
-          <div className="flex items-center justify-around">
-            <Smile size={36} strokeWidth={1.5} className="text-gray-700" />
+          <div className="flex items-start justify-around">
+            <Smile size={50} strokeWidth={1.25} className="text-gray-700" />
             <div>
               <div className="text-xl p-2 bg-green-100 rounded-md">
                 Most upvoted
@@ -120,8 +120,8 @@ const Stats = ({ entries }) => {
         </div>
 
         <div className="bg-gray-50 py-5 rounded text-gray-800 shadow">
-          <div className="flex items-center justify-around">
-            <Frown size={36} strokeWidth={1.5} className="text-gray-700" />
+          <div className="flex items-start justify-around">
+            <Frown size={50} strokeWidth={1.25} className="text-gray-700" />
             <div>
               <div className="text-xl p-2 bg-red-100 rounded-md">
                 Most downvoted
