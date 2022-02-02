@@ -1,5 +1,6 @@
-import axios from "axios";
 import { getLoggedUser, getUserStats } from "../../../lib/serverSideMethods";
+import { Activity, Award, Smile, Frown } from "react-feather";
+import { shortenText } from "../../../lib/utils";
 
 export const getServerSideProps = async (context) => {
   const loggedUser = await getLoggedUser(context);
@@ -11,7 +12,43 @@ export const getServerSideProps = async (context) => {
 };
 
 const Stats = ({ entries }) => {
-  return <div></div>;
+  return (
+    <div className="w-5/6 mx-auto py-10">
+      <div className="flex justify-between items-center md:justify-around md:border-b-2 md:border-gray-300 md:pb-2">
+        <Activity size={36} className="text-gray-800" />
+        <div className="text-gray-800 text-2xl">
+          Some stats for your profile
+        </div>
+      </div>
+
+      <div className="mx-auto my-10 grid grid-cols-1 gap-y-10">
+        <div className="bg-gray-50 py-5 rounded text-gray-800 shadow">
+          <div className="flex items-center justify-around">
+            <Award size={36} strokeWidth={1.5} className="text-gray-700" />
+            <div>
+              <div className="text-xl">Best net entry</div>
+              <div className="my-2">
+                Total net votes: {entries.best_net_entry.net_votes}
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center my-8">
+            <div className="my-2">
+              {entries.best_net_entry.book_tile.book.title}
+            </div>
+            <div className="my-2">
+              {entries.best_net_entry.book_tile.book.authors[0].full_name}
+            </div>
+          </div>
+
+          <p className="mt-5 p-3 text-justify font-light text-black">
+            {shortenText(entries.best_net_entry.content, 50)}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Stats;
