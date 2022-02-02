@@ -75,7 +75,7 @@ const Stats = ({ entries }) => {
             <div>
               <div className="text-xl">Most upvoted</div>
               <div className="my-2">
-                Total net votes: {entries.most_upvoted.upvotes}
+                Total upvotes: {entries.most_upvoted.upvotes}
               </div>
             </div>
           </div>
@@ -121,7 +121,7 @@ const Stats = ({ entries }) => {
             <div>
               <div className="text-xl">Most downvoted</div>
               <div className="my-2">
-                Total net votes: {entries.most_downvoted.downvotes}
+                Total downvotes: {entries.most_downvoted.downvotes}
               </div>
             </div>
           </div>
