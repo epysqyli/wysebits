@@ -120,6 +120,7 @@ const SignUp = () => {
               type="text"
               name="username"
               id="username"
+              minLength={4}
               className={`block mt-2 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md ${
                 usernameAvailable
                   ? "bg-green-100"
@@ -140,6 +141,7 @@ const SignUp = () => {
               type="email"
               name="emailAddress"
               id="email"
+              minLength={8}
               className={`block mt-2 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md ${
                 emailAvailable
                   ? "bg-green-100"
@@ -161,6 +163,7 @@ const SignUp = () => {
               type="password"
               name="password"
               id="password"
+              minLength={8}
               className="block mt-2 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md"
               onChange={handleChange}
               required
