@@ -27,7 +27,7 @@ const Stats = ({ entries }) => {
           <div className="flex items-start justify-around border-b pb-4">
             <Award size={50} strokeWidth={1.25} className="text-gray-700" />
             <div>
-              <div className="text-xl p-2 bg-blue-100 rounded-md shadow">
+              <div className="text-xl p-2 bg-gray-50 rounded-md shadow">
                 Best net entry
               </div>
               <div className="my-2 text-center">
@@ -75,7 +75,7 @@ const Stats = ({ entries }) => {
           <div className="flex items-start justify-around border-b pb-4">
             <Smile size={50} strokeWidth={1.25} className="text-gray-700" />
             <div>
-              <div className="text-xl p-2 bg-green-100 rounded-md shadow">
+              <div className="text-xl p-2 bg-gray-50 rounded-md shadow">
                 Most upvoted
               </div>
               <div className="my-2 text-center">
@@ -123,7 +123,7 @@ const Stats = ({ entries }) => {
           <div className="flex items-start justify-around border-b pb-4">
             <Frown size={50} strokeWidth={1.25} className="text-gray-700" />
             <div>
-              <div className="text-xl p-2 bg-red-100 rounded-md shadow">
+              <div className="text-xl p-2 bg-gray-50 rounded-md shadow">
                 Most downvoted
               </div>
               <div className="my-2 text-center">
