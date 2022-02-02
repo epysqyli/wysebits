@@ -76,7 +76,11 @@ const Actions = ({ userState }) => {
           </div>
 
           <div>
-            <UserAction text="Statistics" href="#" bcgImg="bg-stats" />
+            <UserAction
+              text="Statistics"
+              href="/users/actions/stats"
+              bcgImg="bg-stats"
+            />
           </div>
 
           <div>
