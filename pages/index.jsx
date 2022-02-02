@@ -98,7 +98,7 @@ const Home = ({ categories, userState }) => {
           </div>
         </div>
 
-        <div className="mb-10 w-11/12 mx-auto md:w-5/6 lg:w-4/6 xl:w-1/2 border-b-2 pb-10">
+        <div className="mb-10 w-11/12 mx-auto md:w-5/6 lg:w-3/4 xl:w-1/2 border-b-2 pb-10">
           <div className="flex justify-around items-center text-gray-700 bg-white gap-x-5 mb-10 md:mb-16 md:bg-white border-blue-400 border-t-2 shadow-md rounded-md py-8 xl:py-16">
             <div className="text-4xl xl:text-5xl">Categories</div>
             <Box size={52} strokeWidth={1.5} />
