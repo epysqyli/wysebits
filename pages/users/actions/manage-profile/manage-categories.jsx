@@ -39,7 +39,7 @@ const ManageCategories = ({ cats, favCats, userState }) => {
 
   const removeFromFav = async (cat) => {
     await axios({
-      method: "post",
+      method: "delete",
       url: `http://localhost:3001/api/users/${userState.user.id}/categories/${cat.id}/remove_from_fav`,
       withCredentials: true,
     });
