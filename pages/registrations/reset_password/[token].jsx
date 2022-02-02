@@ -2,6 +2,7 @@ import axios from "axios";
 import { CheckCircle, Key } from "react-feather";
 import { useEffect, useState } from "react";
 import Link from "next/dist/client/link";
+import { isMatching } from "../../../lib/manageProfileMethods";
 
 export const getServerSideProps = (context) => {
   return { props: { token: context.query.token } };
@@ -22,14 +23,6 @@ const ResetPassword = ({ token }) => {
     });
   };
 
-  const isMatching = () => {
-    if (psws.password !== "" && psws.password === psws.passwordConfirmation) {
-      return true;
-    }
-
-    return false;
-  };
-
   const changePassword = async () => {
     return await axios({
       method: "put",
@@ -43,7 +36,7 @@ const ResetPassword = ({ token }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       const resp = await changePassword();
 
@@ -54,7 +47,9 @@ const ResetPassword = ({ token }) => {
     }
   };
 
-  useEffect(() => isMatching(), [psws.passwordConfirmation]);
+  useEffect(() => {
+    isMatching(psws.password, psws.passwordConfirmation);
+  }, [psws.passwordConfirmation]);
 
   if (confirmed === false)
     return (
@@ -96,7 +91,7 @@ const ResetPassword = ({ token }) => {
               id="password-confirmation"
               minLength={8}
               className={`block mt-4 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md ${
-                isMatching()
+                isMatching(psws.password, psws.passwordConfirmation)
                   ? "bg-green-100"
                   : psws.passwordConfirmation !== ""
                   ? "bg-red-100"
@@ -107,7 +102,7 @@ const ResetPassword = ({ token }) => {
             />
           </div>
 
-          {isMatching() ? (
+          {isMatching(psws.password, psws.passwordConfirmation) ? (
             <button
               type="submit"
               className="block mx-auto w-4/6 bg-white my-10 rounded-lg px-5 py-3 text-gray-800 shadow-md hover:shadow-lg transition-shadow active:shadow-inner"

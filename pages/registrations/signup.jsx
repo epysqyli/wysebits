@@ -1,6 +1,7 @@
 import { Mail } from "react-feather";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { isMatching } from "../../lib/manageProfileMethods";
 import axios from "axios";
 
 const SignUp = () => {
@@ -43,17 +44,6 @@ const SignUp = () => {
     });
   };
 
-  const isMatching = () => {
-    if (
-      userData.password !== "" &&
-      userData.password === userData.passwordConfirmation
-    ) {
-      return true;
-    }
-
-    return false;
-  };
-
   const createFormData = () => {
     const formData = new FormData();
 
@@ -79,7 +69,9 @@ const SignUp = () => {
     if (resp.status === 200) setEmailSent(true);
   };
 
-  useEffect(() => isMatching(), [userData.passwordConfirmation]);
+  useEffect(() => {
+    isMatching(userData.password, userData.passwordConfirmation);
+  }, [userData.passwordConfirmation]);
 
   useEffect(async () => {
     if (userData.username.length > 3) {
@@ -179,7 +171,7 @@ const SignUp = () => {
               name="passwordConfirmation"
               id="password_confirmation"
               className={`block mt-2 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md ${
-                isMatching()
+                isMatching(userData.password, userData.passwordConfirmation)
                   ? "bg-green-100"
                   : userData.passwordConfirmation !== ""
                   ? "bg-red-100"
@@ -201,7 +193,9 @@ const SignUp = () => {
             />
           </div>
 
-          {isMatching() && usernameAvailable && emailAvailable ? (
+          {isMatching(userData.password, userData.passwordConfirmation) &&
+          usernameAvailable &&
+          emailAvailable ? (
             <button
               type="submit"
               className="block mx-auto w-1/2 bg-white my-10 rounded-lg px-5 py-3 text-gray-800 shadow-md hover:shadow-lg transition-shadow active:shadow-inner"
