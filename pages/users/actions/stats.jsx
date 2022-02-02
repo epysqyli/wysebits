@@ -1,6 +1,7 @@
 import { getLoggedUser, getUserStats } from "../../../lib/serverSideMethods";
 import { Activity, Award, Smile, Frown } from "react-feather";
-import { shortenText } from "../../../lib/utils";
+import { shortenText, slug } from "../../../lib/utils";
+import Link from "next/dist/client/link";
 
 export const getServerSideProps = async (context) => {
   const loggedUser = await getLoggedUser(context);
@@ -13,7 +14,7 @@ export const getServerSideProps = async (context) => {
 
 const Stats = ({ entries }) => {
   return (
-    <div className="w-5/6 mx-auto py-10">
+    <div className="w-5/6 md:w-4/6 lg:w-11/12 xl:w-5/6 mx-auto py-10">
       <div className="flex justify-between items-center md:justify-around md:border-b-2 md:border-gray-300 md:pb-2">
         <Activity size={36} className="text-gray-800" />
         <div className="text-gray-800 text-2xl">
@@ -21,7 +22,7 @@ const Stats = ({ entries }) => {
         </div>
       </div>
 
-      <div className="mx-auto my-10 grid grid-cols-1 gap-y-10">
+      <div className="mx-auto my-20 grid grid-cols-1 lg:grid-cols-3 lg:gap-x-5 gap-y-10">
         <div className="bg-gray-50 py-5 rounded text-gray-800 shadow">
           <div className="flex items-center justify-around">
             <Award size={36} strokeWidth={1.5} className="text-gray-700" />
@@ -34,12 +35,33 @@ const Stats = ({ entries }) => {
           </div>
 
           <div className="text-center my-8">
-            <div className="my-2">
-              {entries.best_net_entry.book_tile.book.title}
-            </div>
-            <div className="my-2">
-              {entries.best_net_entry.book_tile.book.authors[0].full_name}
-            </div>
+            <Link
+              href={`/books/${slug(
+                entries.best_net_entry.book_tile.book.title,
+                entries.best_net_entry.book_tile.book.id
+              )}/1`}
+            >
+              <div className="my-2 cursor-pointer">
+                {entries.best_net_entry.book_tile.book.title}
+              </div>
+            </Link>
+            <Link
+              href={`/authors/${slug(
+                entries.best_net_entry.book_tile.book.authors[0].full_name,
+                entries.best_net_entry.book_tile.book.authors[0].id
+              )}/1`}
+            >
+              <div className="my-2 text-sm italic cursor-pointer hover:text-black">
+                {entries.best_net_entry.book_tile.book.authors[0].full_name}
+              </div>
+            </Link>
+            <Link
+              href={`/categories/${entries.best_net_entry.book_tile.book.category.slug}/1`}
+            >
+              <div className="my-2 text-sm italic cursor-pointer hover:text-black">
+                {entries.best_net_entry.book_tile.book.category.name}
+              </div>
+            </Link>
           </div>
 
           <p className="mt-5 p-3 text-justify font-light text-black">
@@ -51,20 +73,41 @@ const Stats = ({ entries }) => {
           <div className="flex items-center justify-around">
             <Smile size={36} strokeWidth={1.5} className="text-gray-700" />
             <div>
-              <div className="text-xl">Most upvoted entry</div>
+              <div className="text-xl">Most upvoted</div>
               <div className="my-2">
-                Total upvotes: {entries.most_upvoted.upvotes}
+                Total net votes: {entries.most_upvoted.upvotes}
               </div>
             </div>
           </div>
 
           <div className="text-center my-8">
-            <div className="my-2">
-              {entries.most_upvoted.book_tile.book.title}
-            </div>
-            <div className="my-2">
-              {entries.most_upvoted.book_tile.book.authors[0].full_name}
-            </div>
+            <Link
+              href={`/books/${slug(
+                entries.most_upvoted.book_tile.book.title,
+                entries.most_upvoted.book_tile.book.id
+              )}/1`}
+            >
+              <div className="my-2 cursor-pointer">
+                {entries.most_upvoted.book_tile.book.title}
+              </div>
+            </Link>
+            <Link
+              href={`/authors/${slug(
+                entries.most_upvoted.book_tile.book.authors[0].full_name,
+                entries.most_upvoted.book_tile.book.authors[0].id
+              )}/1`}
+            >
+              <div className="my-2 text-sm italic cursor-pointer hover:text-black">
+                {entries.most_upvoted.book_tile.book.authors[0].full_name}
+              </div>
+            </Link>
+            <Link
+              href={`/categories/${entries.most_upvoted.book_tile.book.category.slug}/1`}
+            >
+              <div className="my-2 text-sm italic cursor-pointer hover:text-black">
+                {entries.most_upvoted.book_tile.book.category.name}
+              </div>
+            </Link>
           </div>
 
           <p className="mt-5 p-3 text-justify font-light text-black">
@@ -76,20 +119,41 @@ const Stats = ({ entries }) => {
           <div className="flex items-center justify-around">
             <Frown size={36} strokeWidth={1.5} className="text-gray-700" />
             <div>
-              <div className="text-xl">Most downvoted entry</div>
+              <div className="text-xl">Most downvoted</div>
               <div className="my-2">
-                Total downvotes: {entries.most_downvoted.downvotes}
+                Total net votes: {entries.most_downvoted.downvotes}
               </div>
             </div>
           </div>
 
           <div className="text-center my-8">
-            <div className="my-2">
-              {entries.most_downvoted.book_tile.book.title}
-            </div>
-            <div className="my-2">
-              {entries.most_downvoted.book_tile.book.authors[0].full_name}
-            </div>
+            <Link
+              href={`/books/${slug(
+                entries.most_downvoted.book_tile.book.title,
+                entries.most_downvoted.book_tile.book.id
+              )}/1`}
+            >
+              <div className="my-2 cursor-pointer">
+                {entries.most_downvoted.book_tile.book.title}
+              </div>
+            </Link>
+            <Link
+              href={`/authors/${slug(
+                entries.most_downvoted.book_tile.book.authors[0].full_name,
+                entries.most_downvoted.book_tile.book.authors[0].id
+              )}/1`}
+            >
+              <div className="my-2 text-sm italic cursor-pointer hover:text-black">
+                {entries.most_downvoted.book_tile.book.authors[0].full_name}
+              </div>
+            </Link>
+            <Link
+              href={`/categories/${entries.most_downvoted.book_tile.book.category.slug}/1`}
+            >
+              <div className="my-2 text-sm italic cursor-pointer hover:text-black">
+                {entries.most_downvoted.book_tile.book.category.name}
+              </div>
+            </Link>
           </div>
 
           <p className="mt-5 p-3 text-justify font-light text-black">
