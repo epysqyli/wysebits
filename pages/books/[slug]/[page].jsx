@@ -30,7 +30,12 @@ export const getServerSideProps = async (context) => {
 
   const book = await getBook(id);
   const entries = await getBookEntries(id, pageNum);
-  const recommendations = await getCategoryRecommendations(book.data.id);
+
+  let recommendations = [];
+  if (book.data.category_id !== 25) {
+    recommendations = await getCategoryRecommendations(book.data.id);
+    recommendations = recommendations.data;
+  }
 
   try {
     const loggedUser = await getLoggedUser(context);
@@ -53,7 +58,7 @@ export const getServerSideProps = async (context) => {
           favInsights: favInsights.data.tile_entries,
           entriesUp: upvotedEntries.data.upvoted_entries,
           entriesDown: downvotedEntries.data.downvoted_entries,
-          recommendations: recommendations.data,
+          recommendations: recommendations,
         },
       };
 
@@ -66,7 +71,7 @@ export const getServerSideProps = async (context) => {
         pagy: entries.data.pagy,
         slug: slug,
         following: following.data,
-        recommendations: recommendations.data,
+        recommendations: recommendations,
       },
     };
   } catch (error) {
@@ -78,7 +83,7 @@ export const getServerSideProps = async (context) => {
         favBooks: [],
         pagy: entries.data.pagy,
         slug: slug,
-        recommendations: recommendations.data,
+        recommendations: recommendations,
       },
     };
   }
@@ -156,22 +161,24 @@ const Book = ({
           </div>
         )}
 
-        <div>
-          <div className="w-4/5 mx-auto flex items-center justify-around border-t pt-5 lg:pt-10">
-            <Bookmark
-              className="w-1/5"
-              size={48}
-              strokeWidth={1.5}
-              color="gray"
-            />
-            <div className="w-3/5 text-2xl text-gray-800">
-              Recommeded books from the {book.category.name} category
+        {recommendations.length !== 0 ? (
+          <div>
+            <div className="w-4/5 mx-auto flex items-center justify-around border-t pt-5 lg:pt-10">
+              <Bookmark
+                className="w-1/5"
+                size={48}
+                strokeWidth={1.5}
+                color="gray"
+              />
+              <div className="w-3/5 text-2xl text-gray-800">
+                Recommeded books from the {book.category.name} category
+              </div>
+            </div>
+            <div className="mx-auto pt-10 pb-16 w-11/12 md:w-5/6 xl:w-4/6 grid grid-cols-1 md:grid-cols-2 gap-x-2 lg:gap-x-10 gap-y-10 mt-10">
+              <Recommendations recommendations={recommendations} />
             </div>
           </div>
-          <div className="mx-auto pt-10 pb-16 w-11/12 md:w-5/6 xl:w-4/6 grid grid-cols-1 md:grid-cols-2 gap-x-2 lg:gap-x-10 gap-y-10 mt-10">
-            <Recommendations recommendations={recommendations} />
-          </div>
-        </div>
+        ) : null}
       </div>
     );
 
