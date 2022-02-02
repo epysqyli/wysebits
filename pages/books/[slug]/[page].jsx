@@ -30,12 +30,7 @@ export const getServerSideProps = async (context) => {
 
   const book = await getBook(id);
   const entries = await getBookEntries(id, pageNum);
-
-  let recommendations = [];
-  if (book.data.category_id !== 25) {
-    recommendations = await getCategoryRecommendations(book.data.id);
-    recommendations = recommendations.data;
-  }
+  const recommendations = await getCategoryRecommendations(book.data.id);
 
   try {
     const loggedUser = await getLoggedUser(context);
@@ -58,7 +53,7 @@ export const getServerSideProps = async (context) => {
           favInsights: favInsights.data.tile_entries,
           entriesUp: upvotedEntries.data.upvoted_entries,
           entriesDown: downvotedEntries.data.downvoted_entries,
-          recommendations: recommendations,
+          recommendations: recommendations.data,
         },
       };
 
@@ -71,7 +66,7 @@ export const getServerSideProps = async (context) => {
         pagy: entries.data.pagy,
         slug: slug,
         following: following.data,
-        recommendations: recommendations,
+        recommendations: recommendations.data,
       },
     };
   } catch (error) {
@@ -83,7 +78,7 @@ export const getServerSideProps = async (context) => {
         favBooks: [],
         pagy: entries.data.pagy,
         slug: slug,
-        recommendations: recommendations,
+        recommendations: recommendations.data,
       },
     };
   }
