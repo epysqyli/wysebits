@@ -60,10 +60,6 @@ const SignUp = () => {
     formData.append("user[username]", userData.username);
     formData.append("user[email_address]", userData.emailAddress);
     formData.append("user[password]", userData.password);
-    formData.append(
-      "user[password_confirmation]",
-      userData.passwordConfirmation
-    );
     if (file) formData.append("user[avatar]", file);
 
     return formData;
