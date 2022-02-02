@@ -76,6 +76,18 @@ const Actions = ({ userState }) => {
           </div>
 
           <div>
+            <UserAction text="Statistics" href="#" bcgImg="bg-stats" />
+          </div>
+
+          <div>
+            <UserAction
+              text="Conversations"
+              href="#"
+              bcgImg="bg-conversations"
+            />
+          </div>
+
+          <div>
             <UserAction
               text="Manage profile"
               href="/users/actions/manage-profile"
