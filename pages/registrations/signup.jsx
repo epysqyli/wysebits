@@ -13,18 +13,15 @@ const SignUp = () => {
   const router = useRouter();
 
   const [emailSent, setEmailSent] = useState(false);
-
   const [usernameAvailable, setUsernameAvailable] = useState(false);
   const [emailAvailable, setEmailAvailable] = useState(false);
-
+  const [file, setFile] = useState(null);
   const [userData, setUserData] = useState({
     username: "",
     emailAddress: "",
     password: "",
     passwordConfirmation: "",
   });
-
-  const [file, setFile] = useState(null);
 
   const handleChange = (e) => {
     setUserData({
