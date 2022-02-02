@@ -46,6 +46,56 @@ const Stats = ({ entries }) => {
             {shortenText(entries.best_net_entry.content, 50)}
           </p>
         </div>
+
+        <div className="bg-gray-50 py-5 rounded text-gray-800 shadow">
+          <div className="flex items-center justify-around">
+            <Smile size={36} strokeWidth={1.5} className="text-gray-700" />
+            <div>
+              <div className="text-xl">Most upvoted entry</div>
+              <div className="my-2">
+                Total upvotes: {entries.most_upvoted.upvotes}
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center my-8">
+            <div className="my-2">
+              {entries.most_upvoted.book_tile.book.title}
+            </div>
+            <div className="my-2">
+              {entries.most_upvoted.book_tile.book.authors[0].full_name}
+            </div>
+          </div>
+
+          <p className="mt-5 p-3 text-justify font-light text-black">
+            {shortenText(entries.most_upvoted.content, 50)}
+          </p>
+        </div>
+
+        <div className="bg-gray-50 py-5 rounded text-gray-800 shadow">
+          <div className="flex items-center justify-around">
+            <Frown size={36} strokeWidth={1.5} className="text-gray-700" />
+            <div>
+              <div className="text-xl">Most downvoted entry</div>
+              <div className="my-2">
+                Total downvotes: {entries.most_downvoted.downvotes}
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center my-8">
+            <div className="my-2">
+              {entries.most_downvoted.book_tile.book.title}
+            </div>
+            <div className="my-2">
+              {entries.most_downvoted.book_tile.book.authors[0].full_name}
+            </div>
+          </div>
+
+          <p className="mt-5 p-3 text-justify font-light text-black">
+            {shortenText(entries.most_downvoted.content, 50)}
+          </p>
+        </div>
       </div>
     </div>
   );
