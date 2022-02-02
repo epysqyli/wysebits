@@ -24,11 +24,14 @@ const EntryLoggedTitle = ({
             entryProp.book_tile.book.id
           )}/1`}
         >
-          <div className="px-2 pt-4 flex justify-center items-center gap-x-5 hover:scale-105 active:text-black transition-transform cursor-pointer">
+          <div className="px-2 pt-4 flex justify-center items-center gap-x-5 active:text-black transition-transform cursor-pointer group">
             <div className="text-sm text-gray-600">
               {shortenText(entryProp.book_tile.book.title, 5)}
             </div>
-            <ArrowUpRight size={18} className="text-gray-600" />
+            <ArrowUpRight
+              size={18}
+              className="text-gray-600 group-hover:scale-125 transition-transform"
+            />
           </div>
         </Link>
       </div>
