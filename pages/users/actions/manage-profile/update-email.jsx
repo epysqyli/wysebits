@@ -67,6 +67,7 @@ const UpdateEmail = () => {
                 type="email"
                 name="email"
                 id="email"
+                minLength={8}
                 className={`block mt-4 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md ${
                   available
                     ? "bg-green-100"
