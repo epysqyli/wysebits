@@ -24,7 +24,7 @@ const Stats = ({ entries }) => {
 
       <div className="mx-auto my-20 grid grid-cols-1 lg:grid-cols-3 lg:gap-x-5 gap-y-10">
         <div className="bg-gradient-to-t from-blue-50 to-gray-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow">
-          <div className="flex items-start justify-around">
+          <div className="flex items-start justify-around border-b pb-4">
             <Award size={50} strokeWidth={1.25} className="text-gray-700" />
             <div>
               <div className="text-xl p-2 bg-blue-100 rounded-md">
@@ -72,7 +72,7 @@ const Stats = ({ entries }) => {
         </div>
 
         <div className="bg-gradient-to-t from-green-50 to-gray-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow">
-          <div className="flex items-start justify-around">
+          <div className="flex items-start justify-around border-b pb-4">
             <Smile size={50} strokeWidth={1.25} className="text-gray-700" />
             <div>
               <div className="text-xl p-2 bg-green-100 rounded-md">
@@ -120,7 +120,7 @@ const Stats = ({ entries }) => {
         </div>
 
         <div className="bg-gradient-to-t from-red-50 to-gray-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow">
-          <div className="flex items-start justify-around">
+          <div className="flex items-start justify-around border-b pb-4">
             <Frown size={50} strokeWidth={1.25} className="text-gray-700" />
             <div>
               <div className="text-xl p-2 bg-red-100 rounded-md">
