@@ -15,7 +15,7 @@ export const getServerSideProps = async (context) => {
 const Stats = ({ entries }) => {
   return (
     <div className="w-5/6 md:w-4/6 lg:w-11/12 xl:w-5/6 mx-auto py-10">
-      <div className="flex justify-between items-center md:justify-around md:border-b-2 md:border-gray-300 md:pb-2">
+      <div className="flex justify-between items-center md:justify-around md:border-b-2 md:border-gray-300 md:pb-5">
         <Activity size={36} className="text-gray-800" />
         <div className="text-gray-800 text-2xl">
           Some stats for your profile
@@ -23,7 +23,7 @@ const Stats = ({ entries }) => {
       </div>
 
       <div className="mx-auto my-20 grid grid-cols-1 lg:grid-cols-3 lg:gap-x-5 gap-y-10">
-        <div className="bg-gray-50 py-5 rounded text-gray-800 shadow">
+        <div className="bg-gradient-to-t from-blue-50 to-gray-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow">
           <div className="flex items-start justify-around">
             <Award size={50} strokeWidth={1.25} className="text-gray-700" />
             <div>
@@ -66,12 +66,12 @@ const Stats = ({ entries }) => {
             </Link>
           </div>
 
-          <p className="mt-5 p-3 text-justify font-light text-black">
+          <p className="mt-5 py-3 px-5 text-justify font-light text-black">
             {shortenText(entries.best_net_entry.content, 50)}
           </p>
         </div>
 
-        <div className="bg-gray-50 py-5 rounded text-gray-800 shadow">
+        <div className="bg-gradient-to-t from-green-50 to-gray-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow">
           <div className="flex items-start justify-around">
             <Smile size={50} strokeWidth={1.25} className="text-gray-700" />
             <div>
@@ -114,12 +114,12 @@ const Stats = ({ entries }) => {
             </Link>
           </div>
 
-          <p className="mt-5 p-3 text-justify font-light text-black">
+          <p className="mt-5 py-3 px-5 text-justify font-light text-black">
             {shortenText(entries.most_upvoted.content, 50)}
           </p>
         </div>
 
-        <div className="bg-gray-50 py-5 rounded text-gray-800 shadow">
+        <div className="bg-gradient-to-t from-red-50 to-gray-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow">
           <div className="flex items-start justify-around">
             <Frown size={50} strokeWidth={1.25} className="text-gray-700" />
             <div>
@@ -162,7 +162,7 @@ const Stats = ({ entries }) => {
             </Link>
           </div>
 
-          <p className="mt-5 p-3 text-justify font-light text-black">
+          <p className="mt-5 py-3 px-5 text-justify font-light text-black">
             {shortenText(entries.most_downvoted.content, 50)}
           </p>
         </div>
