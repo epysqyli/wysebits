@@ -1,6 +1,7 @@
 import { CheckCircle, Key } from "react-feather";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { isMatching } from "../../../../lib/manageProfileMethods";
 
 const UpdatePassword = () => {
   const [psws, setPsws] = useState({
@@ -41,15 +42,10 @@ const UpdatePassword = () => {
     }
   };
 
-  const isMatching = () => {
-    if (psws.password !== "" && psws.password === psws.passwordConfirmation) {
-      return true;
-    }
-
-    return false;
-  };
-
-  useEffect(() => isMatching(), [psws.passwordConfirmation]);
+  useEffect(
+    () => isMatching(psws.password, psws.passwordConfirmation),
+    [psws.passwordConfirmation]
+  );
 
   if (confirmed === false)
     return (
@@ -107,7 +103,7 @@ const UpdatePassword = () => {
                 name="passwordConfirmation"
                 id="password-confirmation"
                 className={`block mt-4 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md ${
-                  isMatching()
+                  isMatching(psws.password, psws.passwordConfirmation)
                     ? "bg-green-100"
                     : psws.passwordConfirmation !== ""
                     ? "bg-red-100"
@@ -118,7 +114,7 @@ const UpdatePassword = () => {
               />
             </div>
 
-            {isMatching() ? (
+            {isMatching(psws.password, psws.passwordConfirmation) ? (
               <button
                 type="submit"
                 className="block mx-auto w-4/6 bg-white my-10 rounded-lg px-5 py-3 text-gray-800 shadow-md hover:shadow-lg transition-shadow active:shadow-inner"
