@@ -2,8 +2,8 @@ export const getServerSideProps = () => {
   return { props: {} };
 };
 
-const OtherUser = () => {
+const Conversation = () => {
   return <div></div>;
 };
 
-export default OtherUser;
+export default Conversation;
