@@ -86,7 +86,7 @@ const Actions = ({ userState }) => {
           <div>
             <UserAction
               text="Conversations"
-              href="/users/actions/conversations/1"
+              href="/users/actions/conversations"
               bcgImg="bg-conversations"
             />
           </div>
