@@ -50,7 +50,9 @@ const FavoriteInsights = ({
   entriesDown,
 }) => {
   const [followedUsers, setFollowedUsers] = useState(following);
-  const [insights, setInsights] = useState(favInsights);
+  const [insights, setInsights] = useState(
+    favInsights.filter((insight) => insight !== null)
+  );
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
 
