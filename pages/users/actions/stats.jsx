@@ -27,7 +27,7 @@ const Stats = ({ entries }) => {
         </div>
 
         <div className="mx-auto my-20 grid grid-cols-1 lg:grid-cols-3 lg:gap-x-5 gap-y-10">
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow">
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow border-2 border-white">
             <div className="flex items-start justify-around border-b pb-4">
               <Award size={50} strokeWidth={1.25} className="text-gray-700" />
               <div>
@@ -75,7 +75,7 @@ const Stats = ({ entries }) => {
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-green-50 to-green-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow">
+          <div className="bg-gradient-to-br from-green-50 to-green-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow border-2 border-white">
             <div className="flex items-start justify-around border-b pb-4">
               <Smile size={50} strokeWidth={1.25} className="text-gray-700" />
               <div>
@@ -123,7 +123,7 @@ const Stats = ({ entries }) => {
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-red-50 to-red-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow">
+          <div className="bg-gradient-to-br from-red-50 to-red-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow border-2 border-white">
             <div className="flex items-start justify-around border-b pb-4">
               <Frown size={50} strokeWidth={1.25} className="text-gray-700" />
               <div>
