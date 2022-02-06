@@ -2,7 +2,9 @@ import Link from "next/dist/client/link";
 
 const ConvUnit = ({ conversation }) => {
   return (
-    <Link href={`/users/actions/conversations/${conversation.id}`}>
+    <Link
+      href={`/users/actions/conversations/${conversation.partner.username}-${conversation.id}`}
+    >
       <div className="flex items-start justify-between border rounded px-5 py-2 text-gray-800 bg-gray-50">
         <div className="text-lg text-center">
           {conversation.partner.username}
