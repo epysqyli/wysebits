@@ -5,13 +5,17 @@ const ConvUnit = ({ conversation }) => {
     <Link
       href={`/users/actions/conversations/${conversation.partner.username}-${conversation.id}`}
     >
-      <div className="flex items-start justify-between border rounded px-5 py-2 text-gray-800 bg-gray-50">
+      <div className="flex justify-between items-start border rounded px-5 py-2 text-gray-800 bg-gray-50">
         <div className="text-lg text-center">
           {conversation.partner.username}
         </div>
         <div className="text-sm">
-          <div>{conversation.messages.length} messages</div>
-          <div>Last message timestamp: ...</div>
+          <div className="text-right">{conversation.messages_count} message(s)</div>
+          <div>
+            {conversation.last_message !== undefined
+              ? "Last: " + conversation.last_message.created_at
+              : null}
+          </div>
         </div>
       </div>
     </Link>
