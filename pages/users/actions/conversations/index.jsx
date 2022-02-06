@@ -26,9 +26,9 @@ const Conversations = ({ conversations }) => {
       </div>
 
       <div className="my-10">
-        {conversations.map((conv) => {
-          return <ConvUnit conversation={conv} />;
-        })}
+        {conversations.map((conv) => (
+          <ConvUnit conversation={conv} key={conv.id} />
+        ))}
       </div>
     </div>
   );
