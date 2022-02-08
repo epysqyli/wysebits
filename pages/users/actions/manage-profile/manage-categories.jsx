@@ -31,7 +31,8 @@ const ManageCategories = ({ cats, favCats, userState }) => {
   const addToFav = async (cat) => {
     await axios({
       method: "post",
-      url: `http://localhost:3001/api/users/${userState.user.id}/categories/${cat.id}/add_to_fav`,
+      url: `http://localhost:3001/api/users/${userState.user.id}/fav_categories`,
+      data: { id: cat.id },
       withCredentials: true,
     });
     addToState(cat);
@@ -40,7 +41,7 @@ const ManageCategories = ({ cats, favCats, userState }) => {
   const removeFromFav = async (cat) => {
     await axios({
       method: "delete",
-      url: `http://localhost:3001/api/users/${userState.user.id}/categories/${cat.id}/remove_from_fav`,
+      url: `http://localhost:3001/api/users/${userState.user.id}/fav_categories/${cat.id}`,
       withCredentials: true,
     });
     removeFromState(cat);
