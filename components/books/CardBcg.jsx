@@ -29,8 +29,8 @@ const CardBcg = ({ bookData, userState, favBooks }) => {
   const addToFavBooks = () => {
     axios
       .post(
-        `http://localhost:3001/api/users/${userState.user.id}/fav_books/${bookData.id}`,
-        {},
+        `http://localhost:3001/api/users/${userState.user.id}/fav_books`,
+        { id: bookData.id },
         { withCredentials: true }
       )
       .then((resp) => updateFavs(resp.data.fav_books))
@@ -54,7 +54,11 @@ const CardBcg = ({ bookData, userState, favBooks }) => {
         />
 
         <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 2xl:w-2/6 shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10">
-          <BookCard bookData={bookData} showCategoryLink={true} showAuthorLink={true} />
+          <BookCard
+            bookData={bookData}
+            showCategoryLink={true}
+            showAuthorLink={true}
+          />
         </div>
         <div className="flex mt-5 justify-center gap-x-5">
           <div
@@ -92,7 +96,11 @@ const CardBcg = ({ bookData, userState, favBooks }) => {
         />
 
         <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10">
-          <BookCard bookData={bookData} showCategoryLink={true} showAuthorLink={true} />
+          <BookCard
+            bookData={bookData}
+            showCategoryLink={true}
+            showAuthorLink={true}
+          />
         </div>
       </div>
     );
