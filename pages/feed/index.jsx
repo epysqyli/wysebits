@@ -8,13 +8,15 @@ import {
   getAllFavEntries,
   getUpvotedEntries,
   getDownvotedEntries,
+} from "../../lib/serverSideMethods";
+
+import {
+  updateFeed,
   getGuestFeed,
   getUserFeed,
   getFavCategoriesFeed,
   getFollowingFeed,
-} from "../../lib/serverSideMethods";
-
-import { updateFeed } from "../../lib/feedMethods";
+} from "../../lib/feedMethods";
 
 import { Grid, Globe, Users, Info } from "react-feather";
 
