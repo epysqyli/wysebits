@@ -1,9 +1,13 @@
 import { MessageCircle } from "react-feather";
 import { getMessages } from "../../../../lib/conversationMethods";
+import Message from "../../../../components/conversations/Message";
 
 export const getServerSideProps = async (context) => {
   const query = context.params.partner;
-  const partner = query.split("-").slice(0, query.split("-").length - 1).join("-")
+  const partner = query
+    .split("-")
+    .slice(0, query.split("-").length - 1)
+    .join("-");
   const id = query.split("-")[query.split("-").length - 1];
   const messages = await getMessages(id, context);
 
@@ -15,7 +19,7 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-const Conversation = ({ messages, partner }) => {
+const Conversation = ({ messages, partner, userState }) => {
   return (
     <div className="w-5/6 md:w-4/6 lg:w-11/12 xl:w-5/6 mx-auto py-10">
       <div className="flex justify-between items-center md:justify-around md:border-b-2 md:border-gray-300 md:pb-10">
@@ -23,6 +27,12 @@ const Conversation = ({ messages, partner }) => {
         <div className="text-gray-800 text-2xl">
           Conversation with {partner}
         </div>
+      </div>
+
+      <div>
+        {messages.map((msg) => {
+          return <Message message={msg} currentUserId={userState.user.id} />;
+        })}
       </div>
     </div>
   );
