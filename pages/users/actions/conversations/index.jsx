@@ -1,6 +1,6 @@
 import { getLoggedUser } from "../../../../lib/serverSideMethods";
 import { getUserConversations } from "../../../../lib/conversationMethods";
-import ConvUnit from "../../../../components/conversations/ConvUnit";
+import Conversation from "../../../../components/conversations/Conversation";
 import { MessageSquare } from "react-feather";
 
 export const getServerSideProps = async (context) => {
@@ -27,7 +27,7 @@ const Conversations = ({ conversations }) => {
 
       <div className="my-10">
         {conversations.map((conv) => (
-          <ConvUnit conversation={conv} key={conv.id} />
+          <Conversation conversation={conv} key={conv.id} />
         ))}
       </div>
     </div>

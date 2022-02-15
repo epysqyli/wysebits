@@ -117,7 +117,7 @@ const Home = ({ categories, userState }) => {
             <Layers size={36} strokeWidth={1.5} />
             <div className="text-4xl text-gray-700">Go to Feed ...</div>
           </div>
-          <div className="text-sm text-gray-500 mt-10 w-4/5 mx-auto text-justify">
+          <div className="text-sm text-gray-600 mt-10 w-4/5 mx-auto text-justify">
             ... at your own peril of potentially wasting a lot of time scrolling
             through users' insights convincing yourself that you are learning
             valuable things while you are instead most probably mindlessly
