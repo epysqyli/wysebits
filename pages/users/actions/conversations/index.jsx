@@ -19,15 +19,17 @@ export const getServerSideProps = async (context) => {
 
 const Conversations = ({ conversations }) => {
   return (
-    <div className="w-5/6 md:w-4/6 lg:w-11/12 xl:w-5/6 mx-auto py-10">
+    <div className="w-5/6 md:w-3/5 2xl:w-1/2 mx-auto py-10">
       <div className="flex justify-between items-center md:justify-around md:border-b-2 md:border-gray-300 md:pb-10">
         <MessageSquare size={36} strokeWidth={1.5} className="text-gray-800" />
         <div className="text-gray-800 text-2xl">Your conversations</div>
       </div>
 
-      <div className="my-10">
+      <div className="my-10 ">
         {conversations.map((conv) => (
-          <Conversation conversation={conv} key={conv.id} />
+          <div className="my-2 shadow cursor-pointer hover:shadow-md transition-shadow">
+            <Conversation conversation={conv} key={conv.id} />
+          </div>
         ))}
       </div>
     </div>
