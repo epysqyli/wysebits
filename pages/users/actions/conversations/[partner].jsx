@@ -29,7 +29,7 @@ const Conversation = ({ messages, partner, userState }) => {
         </div>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-10 lg:w-4/5 mx-auto">
         {messages.map((msg) => {
           return <Message message={msg} currentUserId={userState.user.id} />;
         })}

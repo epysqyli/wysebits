@@ -25,7 +25,7 @@ const Conversations = ({ conversations }) => {
         <div className="text-gray-800 text-2xl">Your conversations</div>
       </div>
 
-      <div className="my-10">
+      <div className="my-10 ">
         {conversations.map((conv) => (
           <div className="my-2 shadow cursor-pointer hover:shadow-md transition-shadow">
             <Conversation conversation={conv} key={conv.id} />
