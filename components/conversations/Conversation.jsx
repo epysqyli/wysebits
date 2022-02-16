@@ -14,7 +14,7 @@ const ConvUnit = ({ conversation }) => {
           <div className="text-right">{conversation.messages_count} message(s)</div>
           <div>
             {conversation.last_message !== undefined
-              ? "Last: " + dayjs(conversation.last_message.created_at).toString()
+              ? dayjs(conversation.last_message.created_at).toString()
               : null}
           </div>
         </div>
