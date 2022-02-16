@@ -17,7 +17,9 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-const Conversations = ({ conversations }) => {
+const Conversations = ({ conversations, pagy }) => {
+  const clientUrl = "users/actions/conversations";
+  
   return (
     <div className="w-5/6 md:w-3/5 2xl:w-1/2 mx-auto py-10">
       <div className="flex justify-between items-center md:justify-around md:border-b-2 md:border-gray-300 md:pb-10">
@@ -35,6 +37,25 @@ const Conversations = ({ conversations }) => {
           </div>
         ))}
       </div>
+
+      {pagy.prev === null && pagy.next === null ? null : (
+          <div className="flex justify-around my-16 md:w-4/5 lg:w-1/2 mx-auto">
+            <div className="w-1/3">
+              <PageNavButton
+                direction="left"
+                clientUrl={clientUrl}
+                url={pagy.prev_url}
+              />
+            </div>
+            <div className="w-1/3">
+              <PageNavButton
+                direction="right"
+                clientUrl={clientUrl}
+                url={pagy.next_url}
+              />
+            </div>
+          </div>
+        )}
     </div>
   );
 };
