@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import Link from "next/dist/client/link";
 
 const ConvUnit = ({ conversation }) => {
@@ -13,7 +14,7 @@ const ConvUnit = ({ conversation }) => {
           <div className="text-right">{conversation.messages_count} message(s)</div>
           <div>
             {conversation.last_message !== undefined
-              ? "Last: " + conversation.last_message.created_at
+              ? "Last: " + dayjs(conversation.last_message.created_at).toString()
               : null}
           </div>
         </div>
