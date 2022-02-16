@@ -5,7 +5,7 @@ import SearchInput from "../../../../components/navigation/SearchInput";
 import CreateBookBtn from "../../../../components/users/CreateBookBtn";
 import { searchBooks } from "../../../../lib/serverSideMethods";
 import NoSearchResults from "../../../../components/navigation/NoSearchResults";
-import PageNavButton from "../../../../components/navigation/PageNavButton";
+import Pagination from "../../../../components/navigation/Pagination";
 
 export const getServerSideProps = async (context) => {
   try {
@@ -64,22 +64,7 @@ const BookSearchResults = ({ searchResults, userState, keywords, pagy }) => {
           {btnVisible ? <CreateBookBtn /> : null}
         </div>
 
-        <div className="flex items-center py-16 lg:py-32 w-4/5 md:w-2/6 mx-auto gap-x-4 md:gap-x-20">
-          <div className="w-1/2">
-            <PageNavButton
-              direction="left"
-              url={pagy.prev_url}
-              clientUrl={clientUrl}
-            />
-          </div>
-          <div className="w-1/2">
-            <PageNavButton
-              direction="right"
-              url={pagy.next_url}
-              clientUrl={clientUrl}
-            />
-          </div>
-        </div>
+        <Pagination clientUrl={clientUrl} pagy={pagy} />
       </div>
     );
   }

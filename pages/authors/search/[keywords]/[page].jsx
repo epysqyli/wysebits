@@ -1,6 +1,6 @@
 import { searchAuthors } from "../../../../lib/serverSideMethods";
 import AuthorResult from "../../../../components/authors/AuthorResult";
-import PageNavButton from "../../../../components/navigation/PageNavButton";
+import Pagination from "../../../../components/navigation/Pagination";
 import NoSearchResults from "../../../../components/navigation/NoSearchResults";
 import SearchInput from "../../../../components/navigation/SearchInput";
 
@@ -41,24 +41,7 @@ const AuthorSearch = ({ searchResults, keywords, pagy }) => {
           })}
         </div>
 
-        {pagy.prev === null && pagy.next === null ? null : (
-          <div className="flex justify-around pt-16 md:w-4/5 lg:w-1/2 mx-auto">
-            <div className="w-1/3">
-              <PageNavButton
-                direction="left"
-                clientUrl={clientUrl}
-                url={pagy.prev_url}
-              />
-            </div>
-            <div className="w-1/3">
-              <PageNavButton
-                direction="right"
-                clientUrl={clientUrl}
-                url={pagy.next_url}
-              />
-            </div>
-          </div>
-        )}
+        <Pagination clientUrl={clientUrl} pagy={pagy} />
       </div>
     );
 

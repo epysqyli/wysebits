@@ -4,7 +4,7 @@ import NoAccess from "../../../../components/users/NoAccess";
 import NoItem from "../../../../components/users/NoItem";
 import TileEntry from "../../../../components/books/TileEntry";
 import SearchInput from "../../../../components/navigation/SearchInput";
-import PageNavButton from "../../../../components/navigation/PageNavButton";
+import Pagination from "../../../../components/navigation/Pagination";
 import {
   getLoggedUser,
   getAllFollowing,
@@ -112,24 +112,7 @@ const FavoriteInsights = ({
           })}
         </div>
 
-        {pagy.prev === null && pagy.next === null ? null : (
-          <div className="flex justify-around pt-16 md:w-4/5 lg:w-1/2 mx-auto">
-            <div className="w-1/3">
-              <PageNavButton
-                direction="left"
-                clientUrl={clientUrl}
-                url={pagy.prev_url}
-              />
-            </div>
-            <div className="w-1/3">
-              <PageNavButton
-                direction="right"
-                clientUrl={clientUrl}
-                url={pagy.next_url}
-              />
-            </div>
-          </div>
-        )}
+        <Pagination clientUrl={clientUrl} pagy={pagy} />
       </div>
     );
 

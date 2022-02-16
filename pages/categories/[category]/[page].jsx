@@ -1,6 +1,6 @@
 import BookCard from "../../../components/books/BookCard";
 import Link from "next/link";
-import PageNavButton from "../../../components/navigation/PageNavButton";
+import Pagination from "../../../components/navigation/Pagination";
 import NoItem from "../../../components/users/NoItem";
 import SearchInput from "../../../components/navigation/SearchInput";
 import { getCategoryBooks } from "../../../lib/serverSideMethods";
@@ -50,24 +50,7 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
           })}
         </div>
 
-        {pagy.prev === null && pagy.next === null ? null : (
-          <div className="flex justify-around py-16 md:w-4/5 lg:w-1/2 mx-auto">
-            <div className="w-1/3">
-              <PageNavButton
-                direction="left"
-                clientUrl={clientUrl}
-                url={pagy.prev_url}
-              />
-            </div>
-            <div className="w-1/3">
-              <PageNavButton
-                direction="right"
-                clientUrl={clientUrl}
-                url={pagy.next_url}
-              />
-            </div>
-          </div>
-        )}
+        <Pagination clientUrl={clientUrl} pagy={pagy} />
       </div>
     );
 

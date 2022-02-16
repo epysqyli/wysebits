@@ -1,11 +1,12 @@
 import { capitalize } from "../../../lib/utils";
 import { getAuthor } from "../../../lib/serverSideMethods";
 import BookCard from "../../../components/books/BookCard";
-import PageNavButton from "../../../components/navigation/PageNavButton";
+import Pagination from "../../../components/navigation/Pagination";
 import NoItem from "../../../components/users/NoItem";
 import SearchInput from "../../../components/navigation/SearchInput";
 import Link from "next/dist/client/link";
 import { slug } from "../../../lib/utils";
+import Pagination from "../../../components/navigation/Pagination";
 
 export const getServerSideProps = async (context) => {
   const urlSlug = context.query.slug;
@@ -56,24 +57,7 @@ const Author = ({ books, pagy, authorName, urlSlug }) => {
           })}
         </div>
 
-        {pagy.prev === null && pagy.next === null ? null : (
-          <div className="flex justify-around my-16 md:w-4/5 lg:w-1/2 mx-auto">
-            <div className="w-1/3">
-              <PageNavButton
-                direction="left"
-                clientUrl={clientUrl}
-                url={pagy.prev_url}
-              />
-            </div>
-            <div className="w-1/3">
-              <PageNavButton
-                direction="right"
-                clientUrl={clientUrl}
-                url={pagy.next_url}
-              />
-            </div>
-          </div>
-        )}
+        <Pagination clientUrl={clientUrl} pagy={pagy} />
       </div>
     );
 
