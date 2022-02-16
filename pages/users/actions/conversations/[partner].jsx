@@ -39,7 +39,7 @@ const Conversation = ({ messages, partner, userState, conversationId }) => {
           </div>
         </div>
 
-        <div className="mt-10 lg:w-4/5 mx-auto">
+        <div className="mt-10 lg:w-4/5 mx-auto h-1/2 max-h-96 overflow-y-scroll pr-3">
           {messagesState.map((msg) => {
             return (
               <Message
@@ -51,7 +51,8 @@ const Conversation = ({ messages, partner, userState, conversationId }) => {
           })}
         </div>
       </div>
-      <div className="mt-20">
+
+      <div className="mt-16">
         <MessageForm
           messagesState={messagesState}
           setMessagesState={setMessagesState}
