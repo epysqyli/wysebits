@@ -44,8 +44,11 @@ const MessageForm = ({
         rows="5"
         required
       ></textarea>
-      <button className="border p-2 rounded bg-gray-50" type="submit">
-        <Send size={28} strokeWidth={1.75} className="text-gray-600" />
+      <button
+        className="border p-2 rounded-md bg-gray-50 hover:bg-gray-200 hover:shadow-md active:shadow-inner group"
+        type="submit"
+      >
+        <Send size={26} strokeWidth={1.75} className="text-gray-600 group-hover:scale-110 group-active:scale-100 transition-transform" />
       </button>
     </form>
   );
