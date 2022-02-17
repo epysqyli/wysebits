@@ -55,7 +55,7 @@ const MessageForm = ({
         <Send
           size={26}
           strokeWidth={1.75}
-          className="text-gray-600 group-hover:scale-110 group-active:scale-100 transition-transform"
+          className="text-gray-600 group-hover:scale-90 group-active:scale-75 transition-transform"
         />
       </button>
     </form>
