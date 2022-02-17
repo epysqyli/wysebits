@@ -13,6 +13,9 @@ import Link from "next/dist/client/link";
 import Image from "next/dist/client/image";
 import { countTotalInsights } from "../../lib/creatorMethods";
 
+import { findOrCreateConversation } from "../../lib/conversationMethods";
+import { useRouter } from "next/dist/client/router";
+
 import {
   isFollowed,
   followAndUpdateState,
@@ -20,6 +23,20 @@ import {
 } from "../../lib/followMethods";
 
 const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
+  const router = useRouter();
+
+  const redirectToConversation = (partner, conversationId) => {
+    router.push(`/users/actions/conversations/${partner}-${conversationId}`);
+  };
+
+  const sendMessage = async () => {
+    const resp = await findOrCreateConversation(
+      userState.user.id,
+      user.user.id
+    );
+    redirectToConversation(resp.data.partner.username, resp.data.id);
+  };
+
   return (
     <div>
       <div className="md:flex items-center justify-around">
@@ -83,52 +100,57 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
         </div>
       </div>
 
-      <div className="flex justify-around items-center mt-10 mx-auto md:w-3/5 lg:w-2/5">
-        {userState.isLogged && userState.user.id !== user.user.id ? (
-          isFollowed(following, user.user) ? (
-            <div
-              onClick={() =>
-                unfollowAndUpdateState(
-                  userState.user,
-                  user.user,
-                  following,
-                  setFollowedUsers
-                )
-              }
-              className="flex items-center justify-center gap-x-5 cursor-pointer p-2 rounded-md shadow bg-white group active:shadow-inner"
-            >
-              <UserMinus
-                size={20}
-                className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
-              />
-              <div className="text-gray-700 group-hover:text-black">
-                Unfollow user
+      {userState.user.id === user.user.id ||
+      userState.isLogged === false ? null : (
+        <div className="flex justify-around items-center mt-10 mx-auto md:w-3/5 lg:w-2/5">
+          {userState.isLogged && userState.user.id !== user.user.id ? (
+            isFollowed(following, user.user) ? (
+              <div
+                onClick={() =>
+                  unfollowAndUpdateState(
+                    userState.user,
+                    user.user,
+                    following,
+                    setFollowedUsers
+                  )
+                }
+                className="flex items-center justify-center gap-x-5 cursor-pointer p-2 rounded-md shadow bg-white group active:shadow-inner"
+              >
+                <UserMinus
+                  size={20}
+                  className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
+                />
+                <div className="text-gray-700 group-hover:text-black">
+                  Unfollow user
+                </div>
               </div>
-            </div>
-          ) : (
-            <div
-              onClick={() =>
-                followAndUpdateState(
-                  userState.user,
-                  user.user,
-                  following,
-                  setFollowedUsers
-                )
-              }
-              className="flex items-center justify-center gap-x-5 cursor-pointer p-2 rounded-md shadow bg-white group active:shadow-inner"
-            >
-              <UserPlus
-                size={20}
-                className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
-              />
-              <div className="text-gray-700 group-hover:text-black">
-                Follow user
+            ) : (
+              <div
+                onClick={() =>
+                  followAndUpdateState(
+                    userState.user,
+                    user.user,
+                    following,
+                    setFollowedUsers
+                  )
+                }
+                className="flex items-center justify-center gap-x-5 cursor-pointer p-2 rounded-md shadow bg-white group active:shadow-inner"
+              >
+                <UserPlus
+                  size={20}
+                  className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
+                />
+                <div className="text-gray-700 group-hover:text-black">
+                  Follow user
+                </div>
               </div>
-            </div>
-          )
-        ) : null}
-        <div>
-          <div className="flex items-center justify-center gap-x-5 cursor-pointer p-2 rounded-md shadow bg-white group active:shadow-inner">
+            )
+          ) : null}
+
+          <div
+            onClick={sendMessage}
+            className="flex items-center justify-center gap-x-5 cursor-pointer p-2 rounded-md shadow bg-white group active:shadow-inner"
+          >
             <Send
               size={20}
               className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
@@ -138,7 +160,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
