@@ -190,7 +190,7 @@ const Feed = ({
           <div
             className={`text-gray-600 w-1/2 py-4 text-center transition-all hover:text-black ${
               currentSelection === "following_feed"
-                ? "bg-gray-200 inner-shadow text-black rounded-br-md md:rounded-md"
+                ? "bg-blue-100 inner-shadow text-black rounded-br-md md:rounded-md"
                 : "cursor-pointer opacity-30"
             }`}
             onClick={selectFollowingEntries}
@@ -202,19 +202,19 @@ const Feed = ({
           <div
             className={`text-gray-600 w-1/2 py-4 text-center transition-all hover:text-black ${
               currentSelection === "categories_feed"
-                ? "bg-gray-200 inner-shadow text-black rounded-bl-md rounded-br-md md:rounded-md"
+                ? "bg-blue-100 inner-shadow text-black rounded-bl-md rounded-br-md md:rounded-md"
                 : "cursor-pointer opacity-30"
             }`}
             onClick={selectFavCatsEntries}
           >
             <Grid size={32} strokeWidth={1.5} className="mx-auto" />
-            <div className="mt-3">Favorite categories</div>
+            <div className="mt-3">Liked categories</div>
           </div>
 
           <div
             className={`text-gray-600 w-1/2 py-4 text-center transition-all hover:text-black ${
               currentSelection === "user_feed"
-                ? "bg-gray-200 inner-shadow text-black rounded-bl-md md:rounded-md"
+                ? "bg-blue-100 inner-shadow text-black rounded-bl-md md:rounded-md"
                 : "cursor-pointer opacity-30"
             }`}
             onClick={selectGlobalEntries}
