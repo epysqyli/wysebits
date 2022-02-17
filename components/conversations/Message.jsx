@@ -18,20 +18,12 @@ const Message = ({ message, currentUserId, isLastMsg }) => {
     return "";
   };
 
-<<<<<<< HEAD
-  if (isLastMsg(message)) {
-    useEffect(() => {
-      msgRef.current.scrollIntoView({ block: "end", behavior: "smooth" });
-    }, []);
-
-=======
   useEffect(() => {
     if (isLastMsg(message))
       msgRef.current.scrollIntoView({ block: "end", behavior: "smooth" });
   }, []);
 
   if (isLastMsg(message)) {
->>>>>>> dev
     return (
       <div
         ref={msgRef}
