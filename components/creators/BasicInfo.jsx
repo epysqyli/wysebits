@@ -5,6 +5,7 @@ import {
   Users,
   UserPlus,
   UserMinus,
+  Send,
   ArrowUpRight,
 } from "react-feather";
 
@@ -82,49 +83,62 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
         </div>
       </div>
 
-      {userState.isLogged && userState.user.id !== user.user.id ? (
-        isFollowed(following, user.user) ? (
-          <div
-            onClick={() =>
-              unfollowAndUpdateState(
-                userState.user,
-                user.user,
-                following,
-                setFollowedUsers
-              )
-            }
-            className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-2/5 md:w-1/3 lg:w-1/4 xl:w-1/5 mt-10 py-1 rounded-md shadow bg-white group active:shadow-inner"
-          >
-            <UserMinus
+      <div className="flex justify-around items-center mt-10 mx-auto md:w-3/5 lg:w-2/5">
+        {userState.isLogged && userState.user.id !== user.user.id ? (
+          isFollowed(following, user.user) ? (
+            <div
+              onClick={() =>
+                unfollowAndUpdateState(
+                  userState.user,
+                  user.user,
+                  following,
+                  setFollowedUsers
+                )
+              }
+              className="flex items-center justify-center gap-x-5 cursor-pointer p-2 rounded-md shadow bg-white group active:shadow-inner"
+            >
+              <UserMinus
+                size={20}
+                className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
+              />
+              <div className="text-gray-700 group-hover:text-black">
+                Unfollow user
+              </div>
+            </div>
+          ) : (
+            <div
+              onClick={() =>
+                followAndUpdateState(
+                  userState.user,
+                  user.user,
+                  following,
+                  setFollowedUsers
+                )
+              }
+              className="flex items-center justify-center gap-x-5 cursor-pointer p-2 rounded-md shadow bg-white group active:shadow-inner"
+            >
+              <UserPlus
+                size={20}
+                className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
+              />
+              <div className="text-gray-700 group-hover:text-black">
+                Follow user
+              </div>
+            </div>
+          )
+        ) : null}
+        <div>
+          <div className="flex items-center justify-center gap-x-5 cursor-pointer p-2 rounded-md shadow bg-white group active:shadow-inner">
+            <Send
               size={20}
               className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
             />
             <div className="text-gray-700 group-hover:text-black">
-              Unfollow user
+              Send Message
             </div>
           </div>
-        ) : (
-          <div
-            onClick={() =>
-              followAndUpdateState(
-                userState.user,
-                user.user,
-                following,
-                setFollowedUsers
-              )
-            }
-            className="flex items-center justify-center gap-x-5 mx-auto cursor-pointer w-2/5 md:w-1/3 lg:w-1/4 xl:w-1/5 mt-10 py-1 rounded-md shadow bg-white group active:shadow-inner"
-          >
-            <UserPlus
-              size={20}
-              className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
-            />
-            <div className="text-gray-700 group-hover:text-black">
-              Follow user
-            </div>
-          </div>
-        )
-      ) : null}
+        </div>
+      </div>
     </div>
   );
 };
