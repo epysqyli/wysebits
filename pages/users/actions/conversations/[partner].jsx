@@ -3,6 +3,7 @@ import { getMessages } from "../../../../lib/conversationMethods";
 import { useState } from "react";
 import Message from "../../../../components/conversations/Message";
 import MessageForm from "../../../../components/conversations/MessageForm";
+import Link from "next/dist/client/link";
 
 export const getServerSideProps = async (context) => {
   const query = context.params.partner;
@@ -36,14 +37,17 @@ const Conversation = ({ messages, partner, userState, conversationId }) => {
   return (
     <div className="w-5/6 md:w-4/6 xl:w-3/5 2xl:w-1/2 mx-auto pt-10">
       <div>
-        <div className="flex justify-between items-center md:justify-around md:border-b-2 md:border-gray-300 md:pb-10">
+        <div className="flex justify-around items-center md:justify-around md:border-b-2 md:border-gray-300 md:pb-10">
           <MessageCircle
             size={36}
             strokeWidth={1.5}
-            className="text-gray-800"
+            className="text-gray-700"
           />
           <div className="text-gray-800 text-2xl">
-            Conversation with {partner}
+            Conversation with{" "}
+            <span className="underline hover:text-gray-600 active:text-gray-800">
+              <Link href={`/creators/${partner}`}>{partner}</Link>
+            </span>
           </div>
         </div>
 
