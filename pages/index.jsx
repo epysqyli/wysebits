@@ -111,7 +111,7 @@ const Home = ({ categories, userState }) => {
       </div>
 
       <Link href="/feed">
-        <div className="mt-16 mb-24 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/5 2xl:w-2/6 px-2 py-5 shadow-md rounded-md border-t-2 border-blue-400 bg-white hover:bg-blue-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer group">
+        <div className="mt-16 mb-24 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/5 2xl:w-2/6 px-2 py-5 lg:py-10 shadow-md rounded-md border-t-2 border-blue-400 bg-white hover:bg-blue-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer group">
           <div className="flex justify-center items-center gap-x-10">
             <Layers size={36} strokeWidth={1.5} />
             <div className="text-4xl text-gray-700">Go to Feed ...</div>

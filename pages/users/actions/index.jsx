@@ -18,7 +18,7 @@ const Actions = ({ userState }) => {
           </div>
         </div>
 
-        <div className="mx-auto w-4/5 lg:w-4/6 xl:w-5/6 2xl:w-2/3 py-16 lg:pt-18 lg:pb-28 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-1 md:gap-y-1 md:gap-x-1">
+        <div className="mx-auto w-4/5 lg:w-4/6 xl:w-5/6 2xl:w-2/3 py-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-1 md:gap-y-1 md:gap-x-1">
           <div>
             <UserAction
               text="Share your knowledge"
