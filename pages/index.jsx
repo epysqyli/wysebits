@@ -67,7 +67,7 @@ const Home = ({ categories, userState }) => {
 
       <div className="xl:flex xl:w-11/12 xl:mx-auto 2xl:w-5/6">
         <div className="mx-auto mb-20 xl:mb-10 w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 px-4 py-0 xl:border-b-2">
-          <div className="text-gray-700 mb-10 md:mb-8 py-10 xl:py-5 rounded-md md:bg-white md:border-blue-400 md:border-t-2 md:shadow-md">
+          <div className="text-gray-700 md:mb-8 py-10 xl:py-5 rounded-md md:bg-white md:border-blue-400 md:border-t-2 md:shadow-md">
             <div className="text-5xl mb-5 md:mb-12 text-center">
               Search {capitalize(searchMode)}
             </div>
@@ -86,7 +86,7 @@ const Home = ({ categories, userState }) => {
             </div>
           </div>
 
-          <div className="md:mt-16 mb-32 mx-auto">
+          <div className="mb-36 mx-auto"> 
             <SearchInput
               pageDest={searchConfig.pageDest}
               placeholder={searchConfig.placeholder}

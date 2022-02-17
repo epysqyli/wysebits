@@ -6,7 +6,6 @@ import NoItem from "../../../components/users/NoItem";
 import SearchInput from "../../../components/navigation/SearchInput";
 import Link from "next/dist/client/link";
 import { slug } from "../../../lib/utils";
-import Pagination from "../../../components/navigation/Pagination";
 
 export const getServerSideProps = async (context) => {
   const urlSlug = context.query.slug;
