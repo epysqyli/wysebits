@@ -45,9 +45,9 @@ const Conversation = ({ messages, partner, userState, conversationId }) => {
           />
           <div className="text-gray-800 text-2xl">
             Conversation with{" "}
-            <span className="underline hover:text-gray-600 active:text-gray-800">
+            <div className="underline hover:text-gray-600 active:text-gray-800 text-right">
               <Link href={`/creators/${partner}`}>{partner}</Link>
-            </span>
+            </div>
           </div>
         </div>
 
