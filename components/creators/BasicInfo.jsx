@@ -100,7 +100,8 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
         </div>
       </div>
 
-      {userState.user.id === user.user.id ? null : (
+      {userState.user.id === user.user.id ||
+      userState.isLogged === false ? null : (
         <div className="flex justify-around items-center mt-10 mx-auto md:w-3/5 lg:w-2/5">
           {userState.isLogged && userState.user.id !== user.user.id ? (
             isFollowed(following, user.user) ? (
