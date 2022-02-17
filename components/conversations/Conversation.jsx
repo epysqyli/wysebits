@@ -1,12 +1,12 @@
 import dayjs from "dayjs";
 import Link from "next/dist/client/link";
 
-const ConvUnit = ({ conversation }) => {
+const Conversation = ({ conversation }) => {
   return (
     <Link
       href={`/users/actions/conversations/${conversation.partner.username}-${conversation.id}`}
     >
-      <div className="flex justify-between items-start border rounded px-5 py-2 text-gray-800 bg-gray-50">
+      <div className="flex justify-between items-start px-5 py-2">
         <div className="text-lg text-center">
           {conversation.partner.username}
         </div>
@@ -23,4 +23,4 @@ const ConvUnit = ({ conversation }) => {
   );
 };
 
-export default ConvUnit;
+export default Conversation;

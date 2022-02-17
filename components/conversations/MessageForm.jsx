@@ -16,11 +16,14 @@ const MessageForm = ({
     setMessage(newMessage);
   };
 
+  const cleanForm = () => setMessage("");
+
   const sendMsg = async () => {
     const res = await sendMessage(conversationId, message, userId);
     if (res.status === 200) {
       const newMessage = res.data.message;
       setMessagesState([...messagesState, newMessage]);
+      cleanForm();
     }
   };
 
@@ -42,13 +45,18 @@ const MessageForm = ({
         placeholder={`Write something to ${partner}`}
         className="w-full mx-auto my-10 block rounded border-none"
         rows="5"
+        value={message}
         required
       ></textarea>
       <button
         className="border p-2 rounded-md bg-gray-50 hover:bg-gray-200 hover:shadow-md active:shadow-inner group"
         type="submit"
       >
-        <Send size={26} strokeWidth={1.75} className="text-gray-600 group-hover:scale-110 group-active:scale-100 transition-transform" />
+        <Send
+          size={26}
+          strokeWidth={1.75}
+          className="text-gray-600 group-hover:scale-110 group-active:scale-100 transition-transform"
+        />
       </button>
     </form>
   );
