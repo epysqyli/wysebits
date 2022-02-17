@@ -67,8 +67,8 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
           <NoItem message="This category is empty, meaning no books have been assigned to it. Explore books and contribute insights to improve WyseBits for all." />
           <div className="border px-5 mt-20 lg:mt-32 bg-gray-50 rounded-md shadow group transition-all cursor-pointer hover:shadow-md">
             <div className="px-3 pt-5">
-              Start contributing now by choosing the first book for which you
-              want to add your own personal insights
+              You can assign books to specific categories before you write
+              insights for them
             </div>
             <div className="mt-10">
               <SearchInput
