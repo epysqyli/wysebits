@@ -6,17 +6,13 @@ import Pagination from "../../../../components/navigation/Pagination";
 import SearchInput from "../../../../components/navigation/SearchInput";
 import CreateBookBtn from "../../../../components/users/CreateBookBtn";
 import NoSearchResults from "../../../../components/navigation/NoSearchResults";
+import { searchBooks } from "../../../../lib/searchMethods";
 
 export const getServerSideProps = async (context) => {
   const keywords = context.query.keywords;
   const splitKeywords = context.query.keywords.split("-").join(" ");
   const pageNum = context.query.page;
-
-  const searchResults = await axios({
-    method: "post",
-    data: { keywords: JSON.stringify(splitKeywords) },
-    url: `http://localhost:3001/api/search/books?page=${pageNum}`,
-  });
+  const searchResults = await searchBooks(splitKeywords, pageNum);
 
   return {
     props: {
