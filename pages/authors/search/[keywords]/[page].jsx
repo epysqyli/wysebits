@@ -1,4 +1,4 @@
-import { searchAuthors } from "../../../../lib/serverSideMethods";
+import { searchAuthors } from "../../../../lib/searchMethods";
 import AuthorResult from "../../../../components/authors/AuthorResult";
 import Pagination from "../../../../components/navigation/Pagination";
 import NoSearchResults from "../../../../components/navigation/NoSearchResults";

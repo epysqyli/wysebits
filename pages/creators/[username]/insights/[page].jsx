@@ -7,7 +7,6 @@ import TileEntry from "../../../../components/books/TileEntry";
 import {
   getAllFollowing,
   getLoggedUser,
-  getAllFavBooks,
   getAllFavEntries,
   getUpvotedEntries,
   getDownvotedEntries,

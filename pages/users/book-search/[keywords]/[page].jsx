@@ -3,7 +3,7 @@ import BookSearchTile from "../../../../components/books/BookSearchTile";
 import NoAccess from "../../../../components/users/NoAccess";
 import SearchInput from "../../../../components/navigation/SearchInput";
 import CreateBookBtn from "../../../../components/users/CreateBookBtn";
-import { searchBooks } from "../../../../lib/serverSideMethods";
+import { searchBooks } from "../../../../lib/searchMethods";
 import NoSearchResults from "../../../../components/navigation/NoSearchResults";
 import Pagination from "../../../../components/navigation/Pagination";
 
@@ -24,7 +24,7 @@ export const getServerSideProps = async (context) => {
     };
   } catch (error) {
     return {
-      props: {},
+      props: { error: error.message },
     };
   }
 };
