@@ -118,7 +118,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
               >
                 <UserMinus
                   size={20}
-                  className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
+                  className="text-gray-600 group-hover:scale-90 group-active:scale-75 transition-transform"
                 />
                 <div className="text-gray-700 group-hover:text-black">
                   Unfollow user
@@ -138,7 +138,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
               >
                 <UserPlus
                   size={20}
-                  className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
+                  className="text-gray-600 group-hover:scale-90 group-active:scale-75 transition-transform"
                 />
                 <div className="text-gray-700 group-hover:text-black">
                   Follow user
@@ -153,7 +153,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
           >
             <Send
               size={20}
-              className="hover:scale-110 text-gray-600 group-hover:scale-110 transition-transform"
+              className="text-gray-600 group-hover:scale-90 group-active:scale-75 transition-transform"
             />
             <div className="text-gray-700 group-hover:text-black">
               Send Message
