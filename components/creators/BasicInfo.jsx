@@ -10,7 +10,6 @@ import {
 } from "react-feather";
 
 import Link from "next/dist/client/link";
-import Image from "next/dist/client/image";
 import { countTotalInsights } from "../../lib/creatorMethods";
 
 import { findOrCreateConversation } from "../../lib/conversationMethods";
@@ -28,7 +27,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
   const router = useRouter();
 
   const redirectToConversation = (partner, conversationId) => {
-    router.push(`/users/actions/conversations/${partner}-${conversationId}`);
+    router.push(`/users/actions/conversations/${partner.username}-${conversationId}-${partner.id}`);
   };
 
   const sendMessage = async () => {
@@ -36,7 +35,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
       userState.user.id,
       user.user.id
     );
-    redirectToConversation(resp.data.partner.username, resp.data.id);
+    redirectToConversation(resp.data.partner, resp.data.id);
   };
 
   return (
