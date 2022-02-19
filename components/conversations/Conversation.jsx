@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import Link from "next/dist/client/link";
 import { User } from "react-feather";
 import Image from "next/dist/client/image";
+import Avatar from "../users/Avatar";
 
 const Conversation = ({ conversation }) => {
   return (
@@ -10,22 +11,7 @@ const Conversation = ({ conversation }) => {
     >
       <div className="flex justify-between items-start px-5 py-2">
         <div className="flex items-center gap-x-5">
-          {conversation.partner.avatar_url !== null ? (
-            <Image
-              src={conversation.partner.avatar_url}
-              className="animate-show-up-slow rounded-full"
-              layout="fixed"
-              width="38"
-              height="38"
-            />
-          ) : (
-            <User
-              size={40}
-              strokeWidth={1.5}
-              color="gray"
-              className="bg-gray-300 rounded-full p-2"
-            />
-          )}
+          <Avatar avatarUrl={conversation.partner.avatar_url} size={40} />
           <div className="text-lg text-center">
             {conversation.partner.username}
           </div>

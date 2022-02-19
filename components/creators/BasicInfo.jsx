@@ -22,6 +22,8 @@ import {
   unfollowAndUpdateState,
 } from "../../lib/followMethods";
 
+import Avatar from "../users/Avatar";
+
 const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
   const router = useRouter();
 
@@ -41,22 +43,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
     <div>
       <div className="md:flex items-center justify-around">
         <div className="flex justify-around items-center gap-x-5">
-          {user.user.avatar_url !== null ? (
-            <Image
-              src={user.user.avatar_url}
-              className="animate-show-up-slow rounded-full"
-              layout="fixed"
-              width="60"
-              height="60"
-            />
-          ) : (
-            <User
-              size={60}
-              strokeWidth={1.5}
-              color="gray"
-              className="bg-gray-300 rounded-full p-2"
-            />
-          )}
+          <Avatar avatarUrl={user.user.avatar_url} size={60} />
           <div>
             <div className="text-5xl font-bold text-gray-700">
               {user.user.username}
