@@ -134,13 +134,17 @@ const SignUp = () => {
           </div>
 
           <div className="w-4/6 mx-auto my-4">
-            <label htmlFor="name" className="pl-1">
-              Password
+            <label htmlFor="name" className="pl-1 flex items-center justify-between">
+              <p>Password</p>
+              <p className="text-gray-700 text-sm mt-1 w-4/5 md:w-3/5 mr-0 text-right">
+                At least 8 characters, one uppercase letter, one digit
+              </p>
             </label>
             <input
               type="password"
               name="password"
               id="password"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
               minLength={8}
               className="block mt-2 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md"
               onChange={handleChange}
