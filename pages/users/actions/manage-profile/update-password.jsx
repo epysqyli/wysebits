@@ -79,14 +79,21 @@ const UpdatePassword = () => {
             </div>
 
             <div className="w-4/6 mx-auto my-10">
-              <label htmlFor="password" className="pl-1 text-xl text-gray-800">
-                New password
+              <label
+                htmlFor="password"
+                className="pl-1 text-xl text-gray-800 flex items-center justify-around"
+              >
+                <p>New password</p>
+                <p className="text-gray-700 text-sm mt-1 w-4/5 md:w-3/5 mr-0 text-right">
+                  At least 8 characters, one uppercase letter, one digit
+                </p>
               </label>
               <input
                 type="password"
                 name="password"
                 id="password"
                 minLength={8}
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
                 className="block mt-4 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md"
                 onChange={handleChange}
                 required
