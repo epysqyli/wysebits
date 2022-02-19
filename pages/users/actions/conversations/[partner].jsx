@@ -5,7 +5,7 @@ import { useState } from "react";
 import Message from "../../../../components/conversations/Message";
 import MessageForm from "../../../../components/conversations/MessageForm";
 import Link from "next/dist/client/link";
-import Image from "next/image";
+import Avatar from "../../../../components/users/Avatar";
 
 export const getServerSideProps = async (context) => {
   const query = context.params.partner;
@@ -49,22 +49,7 @@ const Conversation = ({
     <div className="w-5/6 md:w-4/6 xl:w-3/5 2xl:w-1/2 mx-auto pt-10">
       <div>
         <div className="flex justify-around items-center md:justify-around md:border-b-2 md:border-gray-300 md:pb-10">
-          {avatarUrl !== null ? (
-            <Image
-              src={avatarUrl}
-              className="animate-show-up-slow rounded-full"
-              layout="fixed"
-              width="60"
-              height="60"
-            />
-          ) : (
-            <User
-              size={60}
-              strokeWidth={1.5}
-              color="gray"
-              className="bg-gray-300 rounded-full p-2"
-            />
-          )}
+          <Avatar avatarUrl={avatarUrl} size={60} />
           <div className="text-gray-800 text-2xl">
             Conversation with{" "}
             <div className="underline hover:text-gray-600 active:text-gray-800 text-right">
