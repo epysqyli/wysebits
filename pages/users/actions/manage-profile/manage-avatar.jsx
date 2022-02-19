@@ -7,9 +7,11 @@ import {
   XCircle,
   Upload,
 } from "react-feather";
+
+import { createAvatar, deleteAvatar } from "../../../../lib/avatarMethods";
 import Image from "next/dist/client/image";
 
-const ManagePicture = ({ userState, userLoading }) => {
+const ManageAvatar = ({ userState, userLoading }) => {
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [isUploaded, setIsUploaded] = useState(false);
   const [file, setFile] = useState(null);
@@ -24,23 +26,12 @@ const ManagePicture = ({ userState, userLoading }) => {
     setIsUploaded(false);
   };
 
-  const updateImage = async (userId, formData) => {
-    return await axios({
-      method: "PUT",
-      url: `http://localhost:3001/api/users/${userId}/update_avatar`,
-      data: formData,
-      withCredentials: true,
-    });
+  const createImage = async (userId, formData) => {
+    return await createAvatar(userId, formData);
   };
 
-  const deleteAvatar = async (userId) => {
-    const resp = await axios({
-      method: "put",
-      url: `http://localhost:3001/api/users/${userId}/delete_avatar`,
-      data: {},
-      withCredentials: true,
-    });
-
+  const deleteImage = async (userId) => {
+    const resp = await deleteAvatar(userId);
     setAvatarUrl(resp.data.avatar_url);
   };
 
@@ -50,7 +41,7 @@ const ManagePicture = ({ userState, userLoading }) => {
     const formData = new FormData();
     if (file) formData.append("user[avatar]", file);
 
-    const resp = await updateImage(userState.user.id, formData);
+    const resp = await createImage(userState.user.id, formData);
     setIsUploaded(true);
   };
 
@@ -117,10 +108,10 @@ const ManagePicture = ({ userState, userLoading }) => {
         </div>
 
         <form className="my-20" onSubmit={handleSubmit}>
-          <div className="flex items-center justify-around w-4/5 md:w-3/5 lg:w-2/5 mx-auto">
+          <div className="flex items-center justify-around md:w-3/5 lg:w-2/5 mx-auto">
             <div
               className="cursor-pointer border px-5 py-2 rounded-md shadow hover:shadow-md transition-shadow text-gray-800"
-              onClick={() => deleteAvatar(userState.user.id)}
+              onClick={() => deleteImage(userState.user.id)}
             >
               <XCircle className="w-min mx-auto mb-3" />
               <div>Delete current</div>
@@ -148,4 +139,4 @@ const ManagePicture = ({ userState, userLoading }) => {
   );
 };
 
-export default ManagePicture;
+export default ManageAvatar;
