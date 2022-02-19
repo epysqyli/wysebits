@@ -6,7 +6,7 @@ import Image from "next/dist/client/image";
 const Conversation = ({ conversation }) => {
   return (
     <Link
-      href={`/users/actions/conversations/${conversation.partner.username}-${conversation.id}`}
+      href={`/users/actions/conversations/${conversation.partner.username}-${conversation.id}-${conversation.partner.id}`}
     >
       <div className="flex justify-between items-start px-5 py-2">
         <div className="flex items-center gap-x-5">
@@ -30,10 +30,8 @@ const Conversation = ({ conversation }) => {
             {conversation.partner.username}
           </div>
         </div>
-        <div className="text-sm">
-          <div className="text-right">
-            {conversation.messages_count} message(s)
-          </div>
+        <div className="text-sm text-right">
+          <div>{conversation.messages_count} message(s)</div>
           <div>
             {conversation.last_message !== undefined
               ? dayjs(conversation.last_message.created_at).toString()
