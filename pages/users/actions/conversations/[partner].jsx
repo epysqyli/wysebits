@@ -51,7 +51,7 @@ const Conversation = ({ messages, partner, userState, conversationId }) => {
           </div>
         </div>
 
-        <div className="mt-10 lg:w-4/5 mx-auto h-1/2 max-h-96 overflow-auto pr-3">
+        <div className="mt-10 lg:w-4/5 mx-auto h-1/2 max-h-96 overflow-auto px-3 shadow-inner rounded-md">
           {messagesState.map((msg) => {
             return (
               <Message
