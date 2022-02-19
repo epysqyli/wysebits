@@ -188,9 +188,9 @@ const Feed = ({
 
         <div className="flex items-center md:mt-5 md:w-4/5 xl:w-4/6 2xl:w-1/2 mx-auto">
           <div
-            className={`text-gray-600 w-1/2 py-4 text-center border-2 border-transparent transition-all hover:text-black ${
+            className={`text-gray-500 w-1/2 py-4 text-center md:border-2 transition-all hover:text-black ${
               currentSelection === "following_feed"
-                ? "border-gray-300 bg-gray-50 inner-shadow text-black rounded-br-md md:rounded-md"
+                ? "md:border-gray-300 bg-gray-50 inner-shadow text-black rounded-br-md md:rounded-md"
                 : "cursor-pointer opacity-30"
             }`}
             onClick={selectFollowingEntries}
@@ -200,9 +200,9 @@ const Feed = ({
           </div>
 
           <div
-            className={`text-gray-600 w-1/2 py-4 text-center border-2 border-transparent transition-all hover:text-black ${
+            className={`text-gray-500 w-1/2 py-4 text-center md:border-2 transition-all hover:text-black ${
               currentSelection === "categories_feed"
-                ? "border-gray-300 bg-gray-50 inner-shadow text-black rounded-bl-md rounded-br-md md:rounded-md"
+                ? "md:border-gray-300 bg-gray-50 inner-shadow text-black rounded-bl-md rounded-br-md md:rounded-md"
                 : "cursor-pointer opacity-30"
             }`}
             onClick={selectFavCatsEntries}
@@ -212,9 +212,9 @@ const Feed = ({
           </div>
 
           <div
-            className={`text-gray-600 w-1/2 py-4 text-center border-2 border-transparent transition-all hover:text-black ${
+            className={`text-gray-500 w-1/2 py-4 text-center md:border-2 transition-all hover:text-black ${
               currentSelection === "user_feed"
-                ? "border-gray-300 bg-gray-50 inner-shadow text-black rounded-bl-md md:rounded-md"
+                ? "md:border-gray-300 bg-gray-50 inner-shadow text-black rounded-bl-md md:rounded-md"
                 : "cursor-pointer opacity-30"
             }`}
             onClick={selectGlobalEntries}
