@@ -55,6 +55,7 @@ const Header = ({ userState, userLoading }) => {
               src={userState.user.avatar}
               width="20"
               height="20"
+              objectFit="cover"
             />
           ) : (
             <User

@@ -10,6 +10,7 @@ const Avatar = ({ avatarUrl, size }) => {
         layout="fixed"
         width={size}
         height={size}
+        objectFit="cover"
       />
     );
 
