@@ -6,7 +6,7 @@ const Message = ({ message, currentUserId, isLastMsg }) => {
 
   const boxAlignment = (messageSenderId) => {
     if (messageSenderId === currentUserId) {
-      return "ml-auto";
+      return "ml-auto bg-gray-600 text-gray-50";
     }
     return "mr-auto";
   };
