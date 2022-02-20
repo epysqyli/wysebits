@@ -14,7 +14,7 @@ const ManageProfile = ({ userState }) => {
       <div>
         <WelcomeTop text="Manage your profile" bcgImg="bg-settings" />
 
-        <div className="mx-auto w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3 mt-10">
+        <div className="mx-auto w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3 my-10">
           <div className="mx-auto my-6">
             <ManageBox
               text="Check your public page"
