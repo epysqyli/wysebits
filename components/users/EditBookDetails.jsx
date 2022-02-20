@@ -127,7 +127,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
 
   return (
     <div className="z-30 fixed top-0 bottom-0 overflow-y-scroll bg-gray-100 pt-20 pb-10 px-3 shadow-lg border-gray-400 animate-show-up">
-      <div className="mx-auto md:w-4/6">
+      <div className="mx-auto w-5/6 md:w-4/6">
         <div className="text-center text-lg border-b-2 pb-2 px-5">
           Make WyseBits a better place for the community!
         </div>
@@ -167,9 +167,9 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
           </div>
 
           <div className="mt-10">
-            <label htmlFor="author-full-name" className="pl-3">
-              <div>Edit author</div>
-              <div className="mt-1 mb-2 text-sm text-gray-500">
+            <label htmlFor="author-full-name">
+              <div className="pl-3">Edit author</div>
+              <div className="mt-1 mb-2 text-sm text-gray-500 pl-3">
                 It will be created if not present on the search results
               </div>
             </label>
