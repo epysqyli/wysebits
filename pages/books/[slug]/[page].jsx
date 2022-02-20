@@ -163,9 +163,9 @@ const Book = ({
                 className="w-1/5"
                 size={48}
                 strokeWidth={1.5}
-                color="gray"
+                color="white"
               />
-              <div className="w-3/5 text-2xl text-gray-800">
+              <div className="w-3/5 text-2xl text-gray-50">
                 Recommeded books from the {book.category.name} category
               </div>
             </div>
