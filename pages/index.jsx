@@ -67,11 +67,11 @@ const Home = ({ categories, userState }) => {
       <div className="xl:flex xl:w-11/12 xl:mx-auto 2xl:w-5/6">
         <div className="mx-auto mb-20 xl:mb-10 w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 px-4 py-0 xl:border-b-2">
           <div className="text-gray-700 md:mb-8 py-10 xl:py-5 rounded-md md:bg-white md:border-blue-400 md:border-t-2 md:shadow-md">
-            <div className="text-5xl mb-5 md:mb-12 text-center">
+            <div className="text-5xl mb-5 md:mb-12 text-center text-gray-50 md:text-gray-800">
               Search {capitalize(searchMode)}
             </div>
             <div
-              className="flex justify-between w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 bg-gray-100 md:border-2 md:border-gray-200 mx-auto px-3 py-2 mb-2 items-center text-gray-400 cursor-pointer md:bg-gray-50 shadow md:shadow-none md:hover:shadow xl:hover:shadow-none hover:px-5 active:shadow-inner active:bg-gray-200 transition-all rounded-md"
+              className="flex justify-between w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 bg-gray-100 mt-10 md:border-2 md:border-gray-200 mx-auto px-3 py-2 mb-2 items-center text-gray-400 cursor-pointer md:bg-gray-50 shadow md:shadow-none md:hover:shadow xl:hover:shadow-none hover:px-5 active:shadow-inner active:bg-gray-200 transition-all rounded-md"
               onClick={toggleSearchMode}
             >
               <div>
