@@ -1,5 +1,4 @@
 import {
-  User,
   BookOpen,
   AlignCenter,
   Users,
@@ -27,7 +26,9 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
   const router = useRouter();
 
   const redirectToConversation = (partner, conversationId) => {
-    router.push(`/users/actions/conversations/${partner.username}-${conversationId}-${partner.id}`);
+    router.push(
+      `/users/actions/conversations/${partner.username}-${conversationId}-${partner.id}`
+    );
   };
 
   const sendMessage = async () => {
@@ -44,7 +45,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
         <div className="flex justify-around items-center gap-x-5">
           <Avatar avatarUrl={user.user.avatar_url} size={60} />
           <div>
-            <div className="text-5xl font-bold text-gray-700">
+            <div className="text-5xl font-bold text-gray-100">
               {user.user.username}
             </div>
           </div>
@@ -54,7 +55,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
           <Link href={`/creators/${user.user.username}/books/1`}>
             <div className="flex items-center gap-x-2 group p-1 cursor-pointer hover:shadow-md hover:rounded-md active:shadow-inner">
               <BookOpen size={20} />
-              <div className="text-gray-700">
+              <div className="text-gray-200 md:text-gray-700">
                 {user.book_tiles.length} books read
               </div>
               <ArrowUpRight
@@ -66,7 +67,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
           <Link href={`/creators/${user.user.username}/insights/1`}>
             <div className="flex items-center gap-x-2 group p-1 cursor-pointer hover:shadow-md hover:rounded-md active:shadow-inner">
               <AlignCenter size={20} />
-              <div className="text-gray-700">
+              <div className="text-gray-200 md:text-gray-700">
                 {countTotalInsights(user.book_tiles)} total insights
               </div>
               <ArrowUpRight
@@ -78,7 +79,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
           <Link href={`#`}>
             <div className="flex items-center gap-x-2">
               <Users size={20} />
-              <div className="text-gray-700">
+              <div className="text-gray-200 md:text-gray-700">
                 {user.followers.length} followers
               </div>
             </div>
