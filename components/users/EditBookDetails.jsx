@@ -3,6 +3,7 @@ import axios from "axios";
 import { Loader } from "react-feather";
 import { useRouter } from "next/dist/client/router";
 import { createAuthor, searchAuthors } from "../../lib/editMethods";
+import { isCoverValid } from "../../lib/uploadMethods";
 
 const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   const [book, setBook] = useState({
@@ -18,6 +19,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   const [authorSuggestions, setAuthorsSuggestions] = useState(null);
   const [file, setFile] = useState(null);
   const [loader, setLoader] = useState(false);
+  const [fileAllowed, setFileAllowed] = useState(true);
 
   const handleChange = (e) =>
     setBook({ ...book, [e.target.name]: e.target.value });
@@ -50,6 +52,15 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   };
 
   const cleanAuthorSearchState = () => setAuthorsSuggestions(null);
+
+  const handleFileUpload = (e) => {
+    setFile(e.target.files[0]);
+    if (isCoverValid(e.target.files[0])) {
+      setFileAllowed(true);
+    } else {
+      setFileAllowed(false);
+    }
+  };
 
   const createFormData = (author) => {
     const formData = new FormData();
@@ -93,12 +104,29 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
       .catch((err) => console.log(err));
   };
 
+  const submitButton = fileAllowed ? (
+    <button
+      type="submit"
+      className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-white rounded-md hover:shadow-md hover:bg-gray-200 active:bg-gray-300 active:shadow-md"
+    >
+      Edit book details
+    </button>
+  ) : (
+    <button
+      type="submit"
+      disabled
+      className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-50 text-gray-400 rounded-md cursor-default"
+    >
+      Edit book details
+    </button>
+  );
+
   useEffect(async () => {
     await updateAuthorsSuggestions();
   }, [book.author.full_name]);
 
   return (
-    <div className="fixed z-30 bg-white pt-10 px-3 w-full min-h-screen shadow-lg border-gray-400 animate-show-up">
+    <div className="z-30 fixed top-0 bottom-0 overflow-y-scroll bg-gray-100 pt-20 pb-10 px-3 shadow-lg border-gray-400 animate-show-up">
       <div className="mx-auto md:w-4/6">
         <div className="text-center text-lg border-b-2 pb-2 px-5">
           Make WyseBits a better place for the community!
@@ -172,7 +200,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
               : null}
           </div>
 
-          <div className="my-10 rounded shadow">
+          <div className="mt-10 py-2 bg-white rounded shadow">
             <label htmlFor="book-cover" className="mx-2 px-1">
               Book cover
             </label>
@@ -180,14 +208,23 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
               type="file"
               name="book_cover"
               id="book-cover"
-              onChange={(e) => setFile(e.target.files[0])}
+              className="hidden"
+              onChange={handleFileUpload}
               className="bg-white py-2 w-min px-3"
             />
+          </div>
+          <div
+            className={`mt-5 text-center text-sm ${
+              fileAllowed ? "" : "border border-red-400 bg-red-100 py-2 rounded"
+            }`}
+          >
+            <p>Max size: 5mb</p>
+            <p>Accepted types: jpeg, jpg, png</p>
           </div>
 
           <div className="flex justify-between items-center px-2 gap-x-4">
             <div
-              className="w-2/5 mx-auto block text-center mt-10 mb-5 py-2 bg-gray-100 cursor-pointer rounded-md hover:shadow-md hover:bg-gray-200 active:bg-gray-300 active:shadow-md"
+              className="w-2/5 mx-auto block text-center mt-10 mb-5 py-2 bg-white cursor-pointer rounded-md hover:shadow-md hover:bg-gray-200 active:bg-gray-300 active:shadow-md"
               onClick={() => hideEditForm()}
             >
               Cancel
@@ -199,12 +236,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
                 </div>
               </div>
             ) : (
-              <button
-                type="submit"
-                className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-100 rounded-md hover:shadow-md hover:bg-gray-200 active:bg-gray-300 active:shadow-md"
-              >
-                Edit book details
-              </button>
+              submitButton
             )}
           </div>
         </form>
