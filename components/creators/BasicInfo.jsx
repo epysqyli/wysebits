@@ -68,7 +68,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
             <div className="flex items-center gap-x-2 group p-1 cursor-pointer hover:shadow-md hover:rounded-md active:shadow-inner">
               <AlignCenter size={20} />
               <div className="text-gray-200 md:text-gray-700">
-                {countTotalInsights(user.book_tiles)} total
+                {countTotalInsights(user.book_tiles)} insights
               </div>
               <ArrowUpRight
                 size={18}
