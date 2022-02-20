@@ -13,7 +13,7 @@ export const getServerSideProps = async (context) => {
     const splitKeywords = context.query.keywords.split("-").join(" ");
     const pageNum = context.query.page;
 
-    const searchResults = await searchBooks(splitKeywords, context, pageNum);
+    const searchResults = await searchBooks(splitKeywords, pageNum);
 
     return {
       props: {

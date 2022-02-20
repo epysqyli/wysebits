@@ -11,7 +11,7 @@ const CardBcgActions = ({ bookData, showEditForm, bcgImage }) => {
         objectFit="cover"
       />
 
-      <div className="w-4/5 md:w-4/6 lg:w-3/6 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white my-10 rounded-md relative z-10">
+      <div className="w-4/5 md:w-4/6 lg:w-3/6 xl:w-2/6 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white my-10 rounded-md relative z-10">
         <div className="mb-2">
           <BookCard bookData={bookData} />
         </div>
