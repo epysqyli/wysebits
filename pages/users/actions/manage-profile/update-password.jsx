@@ -53,7 +53,7 @@ const UpdatePassword = () => {
         <div className="py-10">
           <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2 md:border-none">
             <Key size={36} className="text-gray-700" />
-            <div className="text-3xl text-gray-800">Choose a new password</div>
+            <div className="text-3xl text-gray-800 text-right">Choose a new password</div>
           </div>
 
           <form
