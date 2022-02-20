@@ -1,10 +1,4 @@
-import {
-  User,
-  BookOpen,
-  AlignCenter,
-  UserMinus,
-  UserPlus,
-} from "react-feather";
+import { BookOpen, AlignCenter, UserMinus, UserPlus } from "react-feather";
 import axios from "axios";
 import Link from "next/dist/client/link";
 import Image from "next/dist/client/image";
@@ -12,6 +6,7 @@ import { countTotalInsights } from "../../lib/creatorMethods";
 import { addFollowedUserToState } from "../../lib/tileEntryMethods";
 import { removeFollowedUserFromState } from "../../lib/tileEntryMethods";
 import { isFollowed } from "../../lib/followMethods";
+import Avatar from "../../components/users/Avatar";
 
 const RelatedUser = ({
   relatedUser,
@@ -52,22 +47,7 @@ const RelatedUser = ({
   return (
     <Link href={`/creators/${relatedUser.username}`}>
       <div className="flex justify-around items-center gap-x-10">
-        {relatedUser.avatar_url !== null ? (
-          <Image
-            src={relatedUser.avatar_url}
-            className="animate-show-up-slow rounded-full"
-            layout="fixed"
-            width="60"
-            height="60"
-          />
-        ) : (
-          <User
-            size={60}
-            strokeWidth={1.5}
-            color="gray"
-            className="bg-gray-300 rounded-full p-2"
-          />
-        )}
+        <Avatar avatarUrl={relatedUser.avatar_url} size={60} />
         <div>
           <div className="flex items-center justify-between mb-5">
             <div className="text-2xl font-bold text-gray-700">
