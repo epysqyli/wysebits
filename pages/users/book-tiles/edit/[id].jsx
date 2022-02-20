@@ -112,7 +112,9 @@ const EditBookTile = ({
     };
 
     const deleteBookTile = () => {
-      const resp = confirm("Are you sure you want to delete these contributions?");
+      const resp = confirm(
+        "Are you sure you want to delete these contributions?"
+      );
       if (resp === true) confirmDelete();
     };
 
@@ -147,7 +149,7 @@ const EditBookTile = ({
           Edit your takeaways for this book
         </div>
 
-        <div className="mx-auto w-11/12 md:w-4/5 lg:w-4/6 xl:w-1/2 2xl:w-1/2 mt-10">
+        <div className="mx-auto w-11/12 md:w-4/5 lg:w-4/6 xl:w-1/2 2xl:w-2/5 mt-10">
           <EditEntrySlider
             entries={Object.values(tileEntries)}
             handleChange={handleChange}
@@ -155,7 +157,10 @@ const EditBookTile = ({
           />
         </div>
 
-        <div className="my-10 w-2/5 mx-auto" onClick={() => deleteBookTile()}>
+        <div
+          className="my-10 w-2/5 xl:w-1/5 mx-auto"
+          onClick={() => deleteBookTile()}
+        >
           <DangerButton text="Delete book tile" />
         </div>
       </div>

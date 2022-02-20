@@ -209,7 +209,7 @@ const TileCreation = ({
           Share your top takeaways for this book
         </div>
 
-        <div className="mx-auto w-11/12 md:w-4/5 lg:w-4/6 xl:w-1/2 2xl:w-1/2 mt-10">
+        <div className="mx-auto w-11/12 md:w-4/5 lg:w-4/6 xl:w-1/2 2xl:w-2/5 mt-10">
           <form onSubmit={handleSubmit}>
             <CreateEntrySlider
               entries={Object.values(tileEntries)}
@@ -221,7 +221,7 @@ const TileCreation = ({
             {allEntriesValid() ? (
               <button
                 type="submit"
-                className="w-3/5 mx-auto block border mt-10 py-2 rounded-md shadow-md hover:shadow-lg hover:bg-gray-100 active:bg-gray-200 active:shadow-lg"
+                className="w-3/5 md:w-2/5 xl:w-2/5 mx-auto block border mt-10 py-2 rounded-md shadow-md hover:shadow-lg hover:bg-gray-100 active:bg-gray-200 active:shadow-lg"
               >
                 Publish your thoughts!
               </button>
@@ -229,7 +229,7 @@ const TileCreation = ({
               <button
                 type="submit"
                 disabled
-                className="w-3/5 mx-auto block border border-gray-300 mt-10 py-2 rounded-md text-gray-400 cursor-default"
+                className="w-3/5 md:w-2/5 xl:w-2/5 mx-auto block border border-gray-300 mt-10 py-2 rounded-md text-gray-400 cursor-default"
               >
                 Publish your thoughts!
               </button>
