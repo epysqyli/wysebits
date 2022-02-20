@@ -192,7 +192,7 @@ const SearchInput = ({
           </button>
         </div>
 
-        <div className="text-center text-sm mt-8 text-gray-400">
+        <div className="text-center text-sm mt-8 text-gray-600">
           {searchError ? (
             <div className="animate-show-up-slow">
               At least 3 characters are needed
