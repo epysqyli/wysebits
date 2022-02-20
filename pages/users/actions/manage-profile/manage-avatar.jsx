@@ -92,15 +92,15 @@ const ManageAvatar = ({ userState, userLoading }) => {
           Current profile picture
         </div>
 
-        <div className="flex items-center justify-around relative">
+        <div className="flex items-center justify-around relative h-60">
           <div>
             {avatarUrl === null || userLoading === true ? (
               <ImageLoader size={60} strokeWidth={1.5} color="gray" />
             ) : (
               <Image
                 src={avatarUrl}
-                width={125}
-                height={125}
+                layout="fill"
+                objectFit="contain"
                 className="rounded-md"
               />
             )}
