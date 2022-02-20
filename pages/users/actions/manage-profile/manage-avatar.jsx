@@ -17,7 +17,7 @@ const ManageAvatar = ({ userState, userLoading }) => {
   const [file, setFile] = useState(null);
 
   const isBtnActive = () => {
-    if (avatarUrl !== userState.user.avatar) return true;
+    if (avatarUrl !== userState.user.avatar && avatarUrl !== null) return true;
     return false;
   };
 
@@ -55,7 +55,7 @@ const ManageAvatar = ({ userState, userLoading }) => {
       </button>
     ) : (
       <button
-        className="block mt-20 mx-auto px-4 py-2 rounded-md text-gray-300 border cursor-default"
+        className="block mt-20 mx-auto px-4 py-2 rounded-md text-gray-500 border border-gray-400 cursor-default"
         type="submit"
         disabled
       >
@@ -64,8 +64,8 @@ const ManageAvatar = ({ userState, userLoading }) => {
     );
 
   const submittedConfirmation = (
-    <div className="mt-20 w-min mx-auto border rounded-md px-20 py-2 animate-show-up-slow">
-      <CheckCircle size={36} strokeWidth={1.5} />
+    <div className="mt-20 w-min mx-auto border rounded-md px-20 py-2 animate-show-up-slow bg-green-100">
+      <CheckCircle size={32} strokeWidth={1.5} />
     </div>
   );
 
