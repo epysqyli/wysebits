@@ -20,7 +20,7 @@ const Stats = ({ entries }) => {
     return (
       <div>
         <WelcomeTop text="Here are some stats for you" bcgImg="bg-stats" />
-        <div className="w-5/6 md:w-4/6 lg:w-11/12 xl:w-5/6 mx-auto py-10">
+        <div className="w-5/6 md:w-4/6 lg:w-11/12 xl:w-5/6 mx-auto md:py-10">
           <div className="mx-auto my-20 grid grid-cols-1 lg:grid-cols-3 lg:gap-x-5 gap-y-10">
             <div className="bg-gradient-to-br from-blue-50 to-blue-100 py-5 rounded text-gray-800 shadow hover:shadow-md transition-shadow border-2 border-white">
               <div className="flex items-start justify-around border-b pb-4">
