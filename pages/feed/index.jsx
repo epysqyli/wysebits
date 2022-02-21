@@ -150,7 +150,7 @@ const Feed = ({
   };
 
   const feedEnd = (
-    <div className="flex justify-around items-center mx-auto w-3/5 md:w-2/5 xl:w-1/4 mt-5 py-20 border-t-2">
+    <div className="flex justify-around items-center mx-auto w-3/5 md:w-2/5 xl:w-1/4 mt-5 py-20 border-t-2 text-white">
       <Info size={32} strokeWidth={1.5} />
       <div>No more entries available</div>
     </div>
@@ -179,18 +179,18 @@ const Feed = ({
     };
 
     return (
-      <div className="pb-72 2xl:pb-80 bg-gradient-to-br from-blue-50 via-gray-100 to-gray-200">
-        <div className="bg-feed bg-cover bg-center shadow">
-          <div className="bg-gray-800 bg-opacity-70 text-white text-2xl md:text-3xl font-medium text-center py-12">
+      <div>
+        <div className="bg-feed bg-cover bg-center shadow md:w-4/5 xl:w-2/3 2xl:w-1/2 lg:mt-5 md:rounded-md mx-auto">
+          <div className="bg-gray-800 bg-opacity-70 text-white text-2xl md:text-3xl font-medium text-center py-12 md:rounded-md md:mt-10">
             Latest insights
           </div>
         </div>
 
-        <div className="flex items-center md:mt-5 md:w-4/5 xl:w-4/6 2xl:w-1/2 mx-auto">
+        <div className="flex items-center md:mt-5 md:w-4/5 xl:w-4/6 2xl:w-1/2 mx-auto lg:gap-x-2 my-1">
           <div
-            className={`text-gray-500 w-1/2 py-4 text-center md:border-2 transition-all hover:text-black ${
+            className={`text-gray-200 w-1/2 py-4 text-center rounded md:border-2 transition-all hover:text-black ${
               currentSelection === "following_feed"
-                ? "md:border-gray-300 bg-gray-50 inner-shadow text-black rounded-br-md md:rounded-md"
+                ? "md:border-gray-300 bg-gray-50 inner-shadow text-black"
                 : "cursor-pointer opacity-30"
             }`}
             onClick={selectFollowingEntries}
@@ -200,9 +200,9 @@ const Feed = ({
           </div>
 
           <div
-            className={`text-gray-500 w-1/2 py-4 text-center md:border-2 transition-all hover:text-black ${
+            className={`text-gray-200 w-1/2 py-4 text-center rounded md:border-2 transition-all hover:text-black ${
               currentSelection === "categories_feed"
-                ? "md:border-gray-300 bg-gray-50 inner-shadow text-black rounded-bl-md rounded-br-md md:rounded-md"
+                ? "md:border-gray-300 bg-gray-50 inner-shadow text-black"
                 : "cursor-pointer opacity-30"
             }`}
             onClick={selectFavCatsEntries}
@@ -212,9 +212,9 @@ const Feed = ({
           </div>
 
           <div
-            className={`text-gray-500 w-1/2 py-4 text-center md:border-2 transition-all hover:text-black ${
+            className={`text-gray-200 w-1/2 py-4 text-center rounded md:border-2 transition-all hover:text-black ${
               currentSelection === "user_feed"
-                ? "md:border-gray-300 bg-gray-50 inner-shadow text-black rounded-bl-md md:rounded-md"
+                ? "md:border-gray-300 bg-gray-50 inner-shadow text-black"
                 : "cursor-pointer opacity-30"
             }`}
             onClick={selectGlobalEntries}
