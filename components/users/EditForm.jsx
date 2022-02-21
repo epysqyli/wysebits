@@ -12,7 +12,7 @@ const EditForm = ({ entry, handleChange, handleSubmit }) => {
       >
         <div className="flex gap-x-2">
           <div>Last updated at:</div>
-          <div>{dayjs(entry.updateTime).format("MM-DD-YYYY HH:mm ")}</div>
+          <div>{dayjs(entry.updateTime).toString()}</div>
         </div>
         {isEntryValid(entry.content) ? (
           <button type="submit" className="hover:scale-110 active:scale-100">
