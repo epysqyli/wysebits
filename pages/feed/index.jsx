@@ -186,7 +186,7 @@ const Feed = ({
           </div>
         </div>
 
-        <div className="flex items-center md:mt-5 md:w-4/5 xl:w-4/6 2xl:w-1/2 mx-auto lg:gap-x-2 my-1">
+        <div className="flex items-center md:mt-5 md:w-4/5 xl:w-4/6 2xl:w-1/2 mx-auto md:gap-x-2 my-1">
           <div
             className={`text-gray-200 w-1/2 py-4 text-center rounded md:border-2 transition-all hover:text-black ${
               currentSelection === "following_feed"
