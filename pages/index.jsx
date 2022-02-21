@@ -51,7 +51,7 @@ const Home = ({ categories, userState }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="h-60 lg:h-54 xl:h-42 mx-auto bg-library bg-cover bg-center md:mb-10 lg:w-4/5 lg:mt-5 lg:rounded-md">
+      <div className="h-60 lg:h-54 xl:h-42 mx-auto bg-library bg-cover bg-center md:mb-12 lg:w-4/5 lg:mt-5 lg:rounded-md">
         <div className="bg-gray-900 h-full bg-opacity-80 relative lg:rounded-md">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <h1 className="text-white text-6xl font-bold text-center">
@@ -71,7 +71,7 @@ const Home = ({ categories, userState }) => {
               Search {capitalize(searchMode)}
             </div>
             <div
-              className="flex justify-between w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 bg-gray-100 mt-10 md:border-2 md:border-gray-200 mx-auto px-3 py-2 mb-2 items-center text-gray-400 cursor-pointer md:bg-gray-50 shadow md:shadow-none md:hover:shadow xl:hover:shadow-none hover:px-5 active:shadow-inner active:bg-gray-200 transition-all rounded-md"
+              className="flex justify-between w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 2xl:w-2/5 bg-gray-100 md:bg-gray-500 md:text-white md:border-2 md:border-gray-200 mx-auto mt-10 px-3 py-2 mb-2 items-center text-gray-400 cursor-pointer shadow md:shadow-none md:hover:shadow xl:hover:shadow-none hover:px-5 active:shadow-inner active:bg-gray-200 transition-all rounded-md"
               onClick={toggleSearchMode}
             >
               <div>
