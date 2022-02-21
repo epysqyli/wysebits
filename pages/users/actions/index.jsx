@@ -11,14 +11,14 @@ const Actions = ({ userState }) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <div className="bg-user-welcome bg-cover bg-center shadow-xl lg:w-4/5 lg:mt-5 lg:rounded-md mx-auto">
+        <div className="bg-user-welcome bg-cover bg-center shadow-xl lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
           <div className="bg-gray-800 bg-opacity-70 text-white text-2xl font-bold text-center py-12 lg:py-16 lg:rounded-md">
             <div>Welcome back, {userState.user.username}.</div>
             <div className="mt-2">What are you up to today?</div>
           </div>
         </div>
 
-        <div className="mx-auto w-4/5 lg:w-4/6 xl:w-5/6 2xl:w-2/3 py-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-1 md:gap-y-1 md:gap-x-1">
+        <div className="mx-auto w-4/5 lg:w-4/6 xl:w-5/6 2xl:w-3/4 py-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-1 md:gap-y-1 md:gap-x-1">
           <div>
             <UserAction
               text="Share your knowledge"
