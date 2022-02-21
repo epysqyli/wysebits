@@ -5,6 +5,7 @@ import { useRouter } from "next/dist/client/router";
 import NoAccess from "../../../../components/users/NoAccess";
 import { getCategories } from "../../../../lib/serverSideMethods";
 import { createAuthor, searchAuthors } from "../../../../lib/editMethods";
+import { isCoverValid } from "../../../../lib/uploadMethods";
 
 export const getServerSideProps = async () => {
   const categories = await getCategories();
@@ -27,12 +28,39 @@ const CreateBook = ({ categories, userState }) => {
     const [file, setFile] = useState(null);
     const [authorSuggestions, setAuthorsSuggestions] = useState(null);
     const [loader, setLoader] = useState(false);
+    const [fileAllowed, setFileAllowed] = useState(true);
+
+    const submitButton = fileAllowed ? (
+      <button
+        type="submit"
+        className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-50 rounded-md hover:shadow hover:bg-gray-100 active:shadow-inner transition-colors"
+      >
+        Create book
+      </button>
+    ) : (
+      <button
+        type="submit"
+        disabled
+        className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-50 text-gray-400 rounded-md cursor-default"
+      >
+        Create book
+      </button>
+    );
 
     const router = useRouter();
 
     const handleChange = (e) => {
       const newFormData = { ...book, [e.target.name]: e.target.value };
       setBook(newFormData);
+    };
+
+    const handleFileUpload = (e) => {
+      setFile(e.target.files[0]);
+      if (isCoverValid(e.target.files[0])) {
+        setFileAllowed(true);
+      } else {
+        setFileAllowed(false);
+      }
     };
 
     const handleAuthorChange = (e) => {
@@ -189,9 +217,18 @@ const CreateBook = ({ categories, userState }) => {
               type="file"
               name="book_cover"
               id="book-cover"
-              onChange={(e) => setFile(e.target.files[0])}
+              onChange={handleFileUpload}
               className="bg-white py-2 w-full px-3 mt-5 rounded-md shadow-sm"
             />
+          </div>
+
+          <div
+            className={`mt-5 text-center text-sm ${
+              fileAllowed ? "" : "border border-red-400 bg-red-100 py-2 rounded"
+            }`}
+          >
+            <p>Max size: 5mb</p>
+            <p>Accepted types: jpeg, jpg, png</p>
           </div>
 
           {loader ? (
@@ -201,12 +238,7 @@ const CreateBook = ({ categories, userState }) => {
               </div>
             </div>
           ) : (
-            <button
-              type="submit"
-              className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-50 rounded-md hover:shadow hover:bg-gray-100 active:shadow-inner transition-colors"
-            >
-              Create book
-            </button>
+            submitButton
           )}
         </form>
       </div>
