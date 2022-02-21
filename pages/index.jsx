@@ -51,8 +51,8 @@ const Home = ({ categories, userState }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="h-60 lg:h-54 xl:h-42 mx-auto bg-library bg-cover bg-center md:mb-10">
-        <div className="bg-gray-900 h-full bg-opacity-80 relative">
+      <div className="h-60 lg:h-54 xl:h-42 mx-auto bg-library bg-cover bg-center md:mb-10 lg:w-4/5 lg:mt-5 lg:rounded-md">
+        <div className="bg-gray-900 h-full bg-opacity-80 relative lg:rounded-md">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <h1 className="text-white text-6xl font-bold text-center">
               Wysebits.
@@ -111,7 +111,7 @@ const Home = ({ categories, userState }) => {
       </div>
 
       <Link href="/feed">
-        <div className="mt-16 mb-24 w-4/5 mx-auto md:w-4/6 lg:w-2/5 xl:w-2/5 2xl:w-2/6 px-2 py-5 lg:py-10 shadow-md rounded-md border-t-2 border-blue-400 bg-white hover:bg-blue-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer group">
+        <div className="mt-16 mb-24 w-4/5 mx-auto md:w-4/6 lg:w-2/5 xl:w-1/4 px-2 py-5 lg:py-10 shadow-md rounded-md border-t-2 border-blue-400 bg-white hover:bg-blue-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer group">
           <div className="flex justify-center items-center gap-x-10">
             <Layers size={36} strokeWidth={1.5} />
             <div className="text-4xl text-gray-700">Go to Feed ...</div>
