@@ -71,11 +71,11 @@ const Home = ({ categories, userState }) => {
               Search {capitalize(searchMode)}
             </div>
             <div
-              className="flex justify-between w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 2xl:w-2/5 bg-gray-100 md:bg-gray-500 md:text-white md:border-2 md:border-gray-200 mx-auto mt-10 px-3 py-2 mb-2 items-center text-gray-400 cursor-pointer shadow md:shadow-none md:hover:shadow xl:hover:shadow-none hover:px-5 active:shadow-inner active:bg-gray-200 transition-all rounded-md"
+              className="flex justify-between px-5 items-center gap-x-5 w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 2xl:w-2/5 mx-auto border md:border-none md:bg-gray-50 py-2 rounded-md cursor-pointer hover:shadow-md transition-all active:shadow-inner active:px-7"
               onClick={toggleSearchMode}
             >
               <div>
-                <RefreshCw size={16} strokeWidth={1.6} />
+                <RefreshCw size={20} strokeWidth={1.6} />
               </div>
               <div className="text-sm">
                 {searchMode === "books"
