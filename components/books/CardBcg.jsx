@@ -89,13 +89,13 @@ const CardBcg = ({ bookData, userState, favBooks }) => {
 
   if (userState.isLogged == false)
     return (
-      <div className="relative py-5">
+      <div className="relative py-5 bg-gray-300 lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
         <img
           src={bcgImage()}
-          className="absolute top-0 left-1/2 -translate-x-1/2 blur-sm backdrop-brightness-50 grayscale-50 contrast-50 max-h-full w-full object-cover"
+          className="absolute top-0 left-1/2 -translate-x-1/2 blur-sm backdrop-brightness-50 grayscale-50 contrast-50 max-h-full w-full object-cover lg:rounded-md"
         />
 
-        <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10">
+        <div className="w-4/5 mx-auto md:w-4/6 lg:w-4/6 xl:w-3/5 2xl:w-1/2 shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10">
           <BookCard
             bookData={bookData}
             showCategoryLink={true}
