@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Terminal } from "react-feather";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 
 const ForgotPassword = () => {
   const [emailAddress, setEmailAddress] = useState("");

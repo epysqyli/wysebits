@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { CheckCircle, User } from "react-feather";
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 
 const UpdateUsername = () => {
   const [username, setUsername] = useState("");
@@ -53,7 +53,9 @@ const UpdateUsername = () => {
         <div className="py-10">
           <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2 md:border-none">
             <User size={36} className="text-gray-700" />
-            <div className="text-3xl text-gray-800 text-right">Choose a new username</div>
+            <div className="text-3xl text-gray-800 text-right">
+              Choose a new username
+            </div>
           </div>
 
           <form
