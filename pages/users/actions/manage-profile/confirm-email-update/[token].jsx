@@ -16,7 +16,7 @@ const ConfirmToken = ({ token, userState }) => {
     try {
       const resp = await axios({
         method: "POST",
-        url: `${process.env.BASE_URL}//users/confirm_email_update`,
+        url: `${process.env.BASE_URL}/users/confirm_email_update`,
         data: { token: token },
       });
 
