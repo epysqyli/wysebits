@@ -77,7 +77,7 @@ const Following = ({ following, userState, pagy, unpagedFollowing }) => {
               >
                 <RelatedUser
                   relatedUser={user.followed}
-                  userId={userState.user.id}
+                  user={userState.user}
                   relatedUsers={followedUsers}
                   setRelatedUsers={setFollowedUsers}
                 />
