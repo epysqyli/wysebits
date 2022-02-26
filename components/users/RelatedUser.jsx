@@ -1,47 +1,22 @@
 import { BookOpen, AlignCenter, UserMinus, UserPlus } from "react-feather";
-import axios from "axios";
 import Link from "next/dist/client/link";
-import Image from "next/dist/client/image";
 import { countTotalInsights } from "../../lib/creatorMethods";
-import { addFollowedUserToState } from "../../lib/tileEntryMethods";
-import { removeFollowedUserFromState } from "../../lib/tileEntryMethods";
-import { isFollowed } from "../../lib/followMethods";
+import {
+  isFollowed,
+  followAndUpdateState,
+  unfollowAndUpdateState,
+} from "../../lib/followMethods";
 import Avatar from "../../components/users/Avatar";
 
-const RelatedUser = ({
-  relatedUser,
-  relatedUsers,
-  setRelatedUsers,
-  userId,
-}) => {
+const RelatedUser = ({ relatedUser, relatedUsers, setRelatedUsers, user }) => {
   const follow = (e) => {
     e.stopPropagation();
-
-    axios
-      .post(
-        `http://localhost:3001/api/users/${userId}/follow/${relatedUser.id}`,
-        {},
-        { withCredentials: true }
-      )
-      .then((res) =>
-        addFollowedUserToState(relatedUser, relatedUsers, setRelatedUsers)
-      )
-      .catch((err) => console.log(err));
+    followAndUpdateState(user, relatedUser, relatedUsers, setRelatedUsers);
   };
 
   const unfollow = (e) => {
     e.stopPropagation();
-
-    axios
-      .post(
-        `http://localhost:3001/api/users/${userId}/unfollow/${relatedUser.id}`,
-        {},
-        { withCredentials: true }
-      )
-      .then((res) =>
-        removeFollowedUserFromState(relatedUser, relatedUsers, setRelatedUsers)
-      )
-      .catch((err) => console.log(err));
+    unfollowAndUpdateState(user, relatedUser, relatedUsers, setRelatedUsers);
   };
 
   return (
