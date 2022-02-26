@@ -3,4 +3,7 @@ module.exports = {
   images: {
     domains: ["covers.openlibrary.org", "localhost"],
   },
+  env: {
+    BASE_URL: process.env.BASE_URL,
+  },
 };
