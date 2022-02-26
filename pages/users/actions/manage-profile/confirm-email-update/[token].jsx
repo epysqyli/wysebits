@@ -16,7 +16,7 @@ const ConfirmToken = ({ token, userState }) => {
     try {
       const resp = await axios({
         method: "POST",
-        url: "http://localhost:3001/api//users/confirm_email_update",
+        url: `${process.env.BASE_URL}//users/confirm_email_update`,
         data: { token: token },
       });
 
@@ -29,7 +29,7 @@ const ConfirmToken = ({ token, userState }) => {
   const logout = async () => {
     return await axios({
       method: "get",
-      url: "http://localhost:3001/api/logout",
+      url: `${process.env.BASE_URL}/logout`,
       withCredentials: true,
     });
   };

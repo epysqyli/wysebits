@@ -16,7 +16,7 @@ const ConfirmToken = ({ token }) => {
     try {
       const resp = await axios({
         method: "POST",
-        url: "http://localhost:3001/api/confirm",
+        url: `${process.env.BASE_URL}/confirm`,
         data: { token: token },
       });
 

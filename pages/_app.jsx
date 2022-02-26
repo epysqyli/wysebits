@@ -30,7 +30,7 @@ const MyApp = ({ Component, pageProps }) => {
 
   const loginStatus = () => {
     axios
-      .get("http://localhost:3001/api/logged_in", { withCredentials: true })
+      .get(`${process.env.BASE_URL}/logged_in`, { withCredentials: true })
       .then((resp) => {
         if (resp.data.logged_in) {
           handleLogin(resp.data);

@@ -89,7 +89,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
     setLoader(true);
 
     axios
-      .put(`http://localhost:3001/api/books/${bookData.id}`, formData, {
+      .put(`${process.env.BASE_URL}/books/${bookData.id}`, formData, {
         withCredentials: true,
       })
       .then(() => {

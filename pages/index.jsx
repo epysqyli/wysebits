@@ -10,7 +10,7 @@ import { getCategories } from "../lib/serverSideMethods";
 
 export const getStaticProps = async () => {
   const categories = await getCategories();
-  
+
   return {
     props: { categories: categories.data },
   };
@@ -85,7 +85,7 @@ const Home = ({ categories, userState }) => {
             </div>
           </div>
 
-          <div className="mb-36 mx-auto"> 
+          <div className="mb-36 mx-auto">
             <SearchInput
               pageDest={searchConfig.pageDest}
               placeholder={searchConfig.placeholder}

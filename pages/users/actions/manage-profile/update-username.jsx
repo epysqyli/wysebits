@@ -11,7 +11,7 @@ const UpdateUsername = () => {
   const isUsernameAvailable = async () => {
     return await axios({
       method: "post",
-      url: "http://localhost:3001/api/users/username_available",
+      url: `${process.env.BASE_URL}/users/username_available`,
       data: { username: username },
     });
   };
@@ -19,7 +19,7 @@ const UpdateUsername = () => {
   const changeUsername = async () => {
     return await axios({
       method: "put",
-      url: "http://localhost:3001/api/users/update_username",
+      url: `${process.env.BASE_URL}/users/update_username`,
       data: { user: { username: username } },
       withCredentials: true,
     });

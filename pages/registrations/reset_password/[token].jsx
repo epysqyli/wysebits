@@ -26,7 +26,7 @@ const ResetPassword = ({ token }) => {
   const changePassword = async () => {
     return await axios({
       method: "put",
-      url: "http://localhost:3001/api/password/reset",
+      url: `${process.env.BASE_URL}/password/reset`,
       data: {
         password: psws.password,
         token: token,

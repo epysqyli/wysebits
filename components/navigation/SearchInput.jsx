@@ -58,7 +58,7 @@ const SearchInput = ({
     const resp = await axios({
       method: "post",
       data: { keywords: JSON.stringify(query) },
-      url: `http://localhost:3001/api/search/${searchMode}`,
+      url: `${process.env.BASE_URL}/search/${searchMode}`,
     });
 
     // avoid UI conflict with search error message

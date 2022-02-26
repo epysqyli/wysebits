@@ -9,7 +9,7 @@ const Header = ({ userState, userLoading }) => {
 
   const logoutCall = () => {
     axios
-      .get("http://localhost:3001/api/logout", { withCredentials: true })
+      .get(`${process.env.BASE_URL}/logout`, { withCredentials: true })
       .then((res) => {
         if (res.data.status === "success") window.location = "/";
       })

@@ -11,7 +11,7 @@ const UpdateEmail = () => {
   const changeEmail = async () => {
     return await axios({
       method: "post",
-      url: "http://localhost:3001/api/users/update_email",
+      url: `${process.env.BASE_URL}/users/update_email`,
       data: { user: { email_address: email } },
       withCredentials: true,
     });

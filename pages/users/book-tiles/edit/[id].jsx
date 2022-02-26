@@ -92,7 +92,7 @@ const EditBookTile = ({
     };
 
     const editEntry = (entry) => {
-      const url = `http://localhost:3001/api/book_tiles/${bookTileId}/tile_entries/${entry.id}`;
+      const url = `${process.env.BASE_URL}/book_tiles/${bookTileId}/tile_entries/${entry.id}`;
       axios
         .put(url, { content: entry.content }, { withCredentials: true })
         .catch((err) => console.log(err));
@@ -101,7 +101,7 @@ const EditBookTile = ({
     const confirmDelete = () => {
       axios
         .delete(
-          `http://localhost:3001/api/users/${userState.user.id}/book_tiles/${bookTileId}`,
+          `${process.env.BASE_URL}/users/${userState.user.id}/book_tiles/${bookTileId}`,
           { withCredentials: true }
         )
         .then((res) => {

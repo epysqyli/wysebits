@@ -120,7 +120,7 @@ const TileCreation = ({
     };
 
     const findOrCreateBookTile = async () => {
-      const url = `http://localhost:3001/api/users/${userState.user.id}/book_tiles`;
+      const url = `${process.env.BASE_URL}/users/${userState.user.id}/book_tiles`;
       const resp = await axios.post(
         url,
         { book_id: bookData.id },
@@ -135,7 +135,7 @@ const TileCreation = ({
 
       axios
         .post(
-          `http://localhost:3001/api/book_tiles/${bookTile.id}/temporary_entries`,
+          `${process.env.BASE_URL}/book_tiles/${bookTile.id}/temporary_entries`,
           { content: entry.content },
           { withCredentials: true }
         )
@@ -147,7 +147,7 @@ const TileCreation = ({
 
       axios
         .put(
-          `http://localhost:3001/api/book_tiles/${bookTile.id}/temporary_entries/${entry.id}`,
+          `${process.env.BASE_URL}/book_tiles/${bookTile.id}/temporary_entries/${entry.id}`,
           { content: entry.content },
           { withCredentials: true }
         )
@@ -165,7 +165,7 @@ const TileCreation = ({
     const createTileEntries = async () => {
       const bookTile = await findOrCreateBookTile();
 
-      const url = `http://localhost:3001/api/book_tiles/${bookTile.id}/tile_entries`;
+      const url = `${process.env.BASE_URL}/book_tiles/${bookTile.id}/tile_entries`;
       const { first_entry, second_entry, third_entry } = tileEntries;
 
       axios

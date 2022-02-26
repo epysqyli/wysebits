@@ -19,7 +19,7 @@ const CardBcg = ({ bookData, userState, favBooks }) => {
   const removeFromFavBooks = () => {
     axios
       .delete(
-        `http://localhost:3001/api/users/${userState.user.id}/fav_books/${bookData.id}`,
+        `${process.env.BASE_URL}/users/${userState.user.id}/fav_books/${bookData.id}`,
         { withCredentials: true }
       )
       .then((resp) => updateFavs(resp.data.fav_books))
@@ -29,7 +29,7 @@ const CardBcg = ({ bookData, userState, favBooks }) => {
   const addToFavBooks = () => {
     axios
       .post(
-        `http://localhost:3001/api/users/${userState.user.id}/fav_books`,
+        `${process.env.BASE_URL}/users/${userState.user.id}/fav_books`,
         { id: bookData.id },
         { withCredentials: true }
       )

@@ -104,7 +104,7 @@ const CreateBook = ({ categories, userState }) => {
       setLoader(true);
 
       axios
-        .post("http://localhost:3001/api/books", formData, {
+        .post(`${process.env.BASE_URL}/books`, formData, {
           withCredentials: true,
         })
         .then((res) => {

@@ -10,7 +10,7 @@ const LogIn = ({ handleLogin }) => {
   });
 
   const router = useRouter();
-  const logInUrl = "http://localhost:3001/api/login";
+  const logInUrl = `${process.env.BASE_URL}/login`;
 
   const handleChange = (e) => {
     setUserData({

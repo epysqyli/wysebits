@@ -22,7 +22,7 @@ const UpdatePassword = () => {
   const changePassword = async () => {
     return await axios({
       method: "put",
-      url: "http://localhost:3001/api/password/update",
+      url: "${process.env.BASE_URL}/password/update",
       data: {
         old_password: psws.oldPassword,
         password: psws.password,

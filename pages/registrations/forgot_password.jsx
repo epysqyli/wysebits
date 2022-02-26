@@ -13,7 +13,7 @@ const ForgotPassword = () => {
   const sendEmail = async () => {
     return await axios({
       method: "post",
-      url: "http://localhost:3001/api/password/forgot",
+      url: `${process.env.BASE_URL}/password/forgot`,
       data: { email_address: emailAddress },
     });
   };
