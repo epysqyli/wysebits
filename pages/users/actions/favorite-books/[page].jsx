@@ -5,16 +5,13 @@ import WelcomeTop from "../../../../components/users/WelcomeTop";
 import NoAccess from "../../../../components/users/NoAccess";
 import NoItem from "../../../../components/users/NoItem";
 import SearchInput from "../../../../components/navigation/SearchInput";
-import PageNavButton from "../../../../components/navigation/PageNavButton";
 import Pagination from "../../../../components/navigation/Pagination";
 import { getLoggedUser, getFavBooks } from "../../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
   try {
     const pageNum = context.query.page;
-
     const loggedUser = await getLoggedUser(context);
-
     const books = await getFavBooks(loggedUser, context, pageNum);
 
     return {
