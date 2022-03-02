@@ -52,7 +52,7 @@ const Home = ({ categories, userState }) => {
       </Head>
 
       <div className="h-60 lg:h-54 xl:h-42 mx-auto bg-library bg-cover bg-center md:mb-12 lg:w-4/5 lg:mt-5 lg:rounded-md">
-        <div className="bg-gray-900 h-full bg-opacity-80 relative lg:rounded-md">
+        <div className="bg-gray-900 h-full bg-opacity-50 relative lg:rounded-md">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <h1 className="text-white text-6xl font-bold text-center">
               Wysebits.
