@@ -66,12 +66,12 @@ const Home = ({ categories, userState }) => {
 
       <div className="xl:flex xl:w-11/12 xl:mx-auto 2xl:w-5/6">
         <div className="mx-auto mb-20 xl:mb-10 w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 px-4 py-0 xl:border-b-2">
-          <div className="text-gray-700 md:mb-8 py-10 xl:py-5 rounded-md md:bg-white md:border-blue-400 md:border-t-2 md:shadow-md">
+          <div className="text-gray-700 md:mb-8 pt-10 pb-5 xl:py-5 rounded-md md:border-blue-400 md:border-2 md:shadow md:bg-gray-50">
             <div className="text-5xl mb-5 md:mb-12 text-center text-gray-50 md:text-gray-800">
               Search {capitalize(searchMode)}
             </div>
             <div
-              className="flex justify-between px-5 items-center gap-x-5 w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 2xl:w-2/5 mx-auto border md:border-none md:bg-gray-50 py-2 rounded-md cursor-pointer hover:shadow-md transition-all active:shadow-inner active:px-7"
+              className="flex justify-between px-5 items-center gap-x-5 w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 2xl:w-2/5 mx-auto border-b md:bg-blue-50 md:rounded-tl md:rounded-tr py-2 cursor-pointer hover:shadow-md transition-all active:shadow-inner active:px-7"
               onClick={toggleSearchMode}
             >
               <div>
@@ -83,17 +83,16 @@ const Home = ({ categories, userState }) => {
                   : "switch to books"}
               </div>
             </div>
-          </div>
-
-          <div className="mb-36 mx-auto">
-            <SearchInput
-              pageDest={searchConfig.pageDest}
-              placeholder={searchConfig.placeholder}
-              suggestLink={searchConfig.suggestLink}
-              searchMode={searchMode}
-              showSuggest={true}
-              showHistory={true}
-            />
+            <div className="mt-10 mx-auto w-5/6">
+              <SearchInput
+                pageDest={searchConfig.pageDest}
+                placeholder={searchConfig.placeholder}
+                suggestLink={searchConfig.suggestLink}
+                searchMode={searchMode}
+                showSuggest={true}
+                showHistory={true}
+              />
+            </div>
           </div>
         </div>
 
