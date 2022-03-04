@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
-import { Box, Layers, ArrowUpRight, RefreshCw } from "react-feather";
-
+import { Box, Layers, ArrowUpRight, Repeat } from "react-feather";
 import { capitalize } from "../lib/utils";
 import CategoryButton from "../components/navigation/CategoryButton";
 import SearchInput from "../components/navigation/SearchInput";
@@ -71,13 +70,13 @@ const Home = ({ categories, userState }) => {
               Search {capitalize(searchMode)}
             </div>
             <div
-              className="flex justify-between px-5 items-center gap-x-5 w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 2xl:w-2/5 mx-auto border-b md:bg-blue-50 md:rounded-tl md:rounded-tr py-2 cursor-pointer hover:shadow-md transition-all active:shadow-inner active:px-7"
+              className="flex justify-between px-5 items-center group gap-x-5 w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 2xl:w-2/5 mx-auto border-b md:border md:bg-blue-100 md:border-blue-400 md:rounded py-2 cursor-pointer hover:bg-blue-200 transition-all active:shadow-inner"
               onClick={toggleSearchMode}
             >
-              <div>
-                <RefreshCw size={20} strokeWidth={1.6} />
+              <div className="transition-transform">
+                <Repeat size={18} strokeWidth={1.6} />
               </div>
-              <div className="text-sm">
+              <div className="text-sm group-active:scale-95">
                 {searchMode === "books"
                   ? "or switch to authors"
                   : "switch to books"}
