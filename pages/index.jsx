@@ -47,7 +47,7 @@ const Home = ({ categories, userState }) => {
     <div>
       <Head>
         <title>Wysebits</title>
-        <link rel="icon" href="/logo.png" />
+        <link rel="icon" href="/gimp-logo.png" />
       </Head>
 
       <div className="h-60 lg:h-54 xl:h-42 mx-auto bg-library bg-cover bg-center md:mb-12 lg:w-4/5 lg:mt-5 lg:rounded-md">
