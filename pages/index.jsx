@@ -82,7 +82,7 @@ const Home = ({ categories, userState }) => {
                   : "switch to books"}
               </div>
             </div>
-            <div className="mt-10 mx-auto w-5/6">
+            <div className="mt-10 mx-auto md:w-5/6">
               <SearchInput
                 pageDest={searchConfig.pageDest}
                 placeholder={searchConfig.placeholder}
