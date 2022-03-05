@@ -25,8 +25,8 @@ const UserBooks = ({ books, pagy, username }) => {
   if (books.length !== 0)
     return (
       <div>
-        <div className="bg-check-book-tiles bg-cover bg-center shadow">
-          <div className="bg-gray-800 bg-opacity-70 text-white text-2xl md:text-3xl font-bold text-center py-12">
+        <div className="bg-check-book-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
+          <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
             <div className="mx-auto w-4/5">
               All books contributed to by {username}
             </div>
@@ -57,8 +57,8 @@ const UserBooks = ({ books, pagy, username }) => {
   if (books.length === 0)
     return (
       <div>
-        <div className="bg-check-book-tiles bg-cover bg-center shadow">
-          <div className="bg-gray-800 bg-opacity-70 text-white text-2xl md:text-3xl font-bold text-center py-12">
+        <div className="bg-check-book-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
+          <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
             <div className="mx-auto w-4/5">
               All books contributed to by {username}
             </div>
