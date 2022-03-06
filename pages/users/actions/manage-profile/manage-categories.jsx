@@ -58,7 +58,7 @@ const ManageCategories = ({ cats, favCats, userState }) => {
   };
 
   const baseClass =
-    "rounded py-2 text-center text-gray-400 hover:text-gray-900 bg-gray-100 cursor-pointer border-2 transition-all";
+    "rounded py-2 text-center text-gray-400 hover:text-gray-900 bg-gray-100 cursor-pointer border-2 transition-all select-none";
   const favClass =
     "rounded py-2 text-center bg-white shadow-inner cursor-pointer transition-all border-2 border-blue-400";
   const noSelection = baseClass + " cursor-default";
