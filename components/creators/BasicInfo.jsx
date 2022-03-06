@@ -40,7 +40,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
   };
 
   return (
-    <div>
+    <>
       <div className="md:flex items-center justify-around">
         <div className="flex justify-around items-center gap-x-5">
           <Avatar avatarUrl={user.user.avatar_url} size={60} />
@@ -148,7 +148,7 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

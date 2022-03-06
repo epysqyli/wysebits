@@ -20,7 +20,7 @@ module.exports = {
         "categories": "url('/images/categories.jpg')",
         "user-welcome": "url('/images/user-welcome.jpg')",
         "wip-contributions": "url('/images/wip-contributions.jpg')",
-        "feed": "url('/images/feed.jpg')",
+        "feed": "url('/images/feed-alt.jpg')",
         "author": "url('/images/author.jpg')",
         "stats": "url('/images/stats.png')",
         "conversations": "url('/images/conversations.png')",

@@ -18,7 +18,7 @@ const EditEntrySlider = ({ entries, handleChange, handleSubmit }) => {
   };
 
   return (
-    <div>
+    <>
       <div className="flex justify-around items-center gap-x-5 mb-5">
         <div
           onClick={decrement}
@@ -52,7 +52,7 @@ const EditEntrySlider = ({ entries, handleChange, handleSubmit }) => {
           handleSubmit={handleSubmit}
         />
       </div>
-    </div>
+    </>
   );
 };
 

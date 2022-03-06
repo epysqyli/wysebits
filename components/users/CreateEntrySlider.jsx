@@ -23,7 +23,7 @@ const CreateEntrySlider = ({
   };
 
   return (
-    <div>
+    <>
       <div className="flex justify-around items-center gap-x-5 mb-5">
         <div
           onClick={decrement}
@@ -58,7 +58,7 @@ const CreateEntrySlider = ({
           saveForLater={saveForLater}
         />
       </div>
-    </div>
+    </>
   );
 };
 

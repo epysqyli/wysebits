@@ -10,7 +10,7 @@ const LatestBooks = ({ books }) => {
     slugify(`${title}-${id}`, { lower: true, strict: true });
 
   return (
-    <div>
+    <>
       <div className="text-center text-gray-800 text-5xl">Latest books</div>
       <div className="my-10 pb-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:gap-x-10 xl:grid-cols-2 lg:w-4/5 xl:w-11/12 2xl:w-3/5 mx-auto border-b-2">
         {latest.map((book) => (
@@ -21,7 +21,7 @@ const LatestBooks = ({ books }) => {
           </Link>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

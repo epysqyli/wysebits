@@ -19,7 +19,7 @@ const SuggestBox = ({ suggestions, suggestLink, searchMode }) => {
 
   if (suggestions !== null && searchMode === "books") {
     return (
-      <div>
+      <>
         {suggestions.map((s) => {
           return (
             <Link key={s.id} href={buildLink(s)}>
@@ -46,13 +46,13 @@ const SuggestBox = ({ suggestions, suggestLink, searchMode }) => {
             </Link>
           );
         })}
-      </div>
+      </>
     );
   }
 
   if (suggestions !== null && searchMode === "authors") {
     return (
-      <div>
+      <>
         {suggestions.map((s) => {
           return (
             <Link key={s.id} href={buildLink(s)}>
@@ -69,7 +69,7 @@ const SuggestBox = ({ suggestions, suggestLink, searchMode }) => {
             </Link>
           );
         })}
-      </div>
+      </>
     );
   }
 

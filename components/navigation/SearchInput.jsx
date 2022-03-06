@@ -162,7 +162,7 @@ const SearchInput = ({
     ) : null;
 
   return (
-    <div>
+    <>
       <div>
         <div
           className="flex gap-x-1 group rounded-md shadow-lg bg-white"
@@ -212,7 +212,7 @@ const SearchInput = ({
           />
         </div>
       ) : null}
-    </div>
+    </>
   );
 };
 
