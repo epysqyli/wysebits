@@ -28,18 +28,22 @@ const MyApp = ({ Component, pageProps }) => {
     });
   };
 
-  const loginStatus = () => {
-    axios
-      .get(`${process.env.BASE_URL}/logged_in`, { withCredentials: true })
-      .then((resp) => {
-        if (resp.data.logged_in) {
-          handleLogin(resp.data);
-          setUserLoading(false);
-        } else {
-          handleLogout();
-        }
-      })
-      .catch((error) => console.log(error));
+  const loginStatus = async () => {
+    try {
+      const resp = await axios({
+        method: "GET",
+        url: `${process.env.BASE_URL}/logged_in`,
+        withCredentials: true,
+      });
+      if (resp.data.logged_in) {
+        handleLogin(resp.data);
+        setUserLoading(false);
+      } else {
+        handleLogout();
+      }
+    } catch (error) {
+      console.warn(error);
+    }
   };
 
   const [loading, setLoading] = useState(false);
