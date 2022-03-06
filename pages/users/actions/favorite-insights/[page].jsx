@@ -60,7 +60,7 @@ const FavoriteInsights = ({
 
   if (userState.isLogged && insights.length == 0)
     return (
-      <div>
+      <>
         <WelcomeTop text="Your favorite insights" bcgImg="bg-saved-tiles" />
         <div className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 xl:w-2/6 2xl:w-1/3 py-20 lg:py-40 2xl:py-48">
           <NoItem message="You have no favorite insights yet" />
@@ -79,12 +79,12 @@ const FavoriteInsights = ({
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
 
   if (userState.isLogged && insights.length !== 0)
     return (
-      <div>
+      <>
         <WelcomeTop text="Your favorite insights" bcgImg="bg-saved-tiles" />
         <div className="py-10 w-5/6 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
           {insights.map((insight) => {
@@ -113,7 +113,7 @@ const FavoriteInsights = ({
         </div>
 
         <Pagination clientUrl={clientUrl} pagy={pagy} />
-      </div>
+      </>
     );
 
   return <NoAccess />;

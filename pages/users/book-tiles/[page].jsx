@@ -35,7 +35,7 @@ const UserBookTiles = ({ bookTiles, pagy, userState }) => {
 
   if (userState.isLogged && bookTiles.length === 0)
     return (
-      <div>
+      <>
         <WelcomeTop
           text="Books for which you have shared insights"
           bcgImg="bg-check-book-tiles"
@@ -56,12 +56,12 @@ const UserBookTiles = ({ bookTiles, pagy, userState }) => {
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
 
   if (userState.isLogged && bookTiles.length !== 0)
     return (
-      <div>
+      <>
         <WelcomeTop
           text="Books for which you have shared insights"
           bcgImg="bg-check-book-tiles"
@@ -81,7 +81,7 @@ const UserBookTiles = ({ bookTiles, pagy, userState }) => {
         </div>
 
         <Pagination clientUrl={clientUrl} pagy={pagy} />
-      </div>
+      </>
     );
 
   return <NoAccess />;

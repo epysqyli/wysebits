@@ -24,7 +24,7 @@ const UserBooks = ({ books, pagy, username }) => {
 
   if (books.length !== 0)
     return (
-      <div>
+      <>
         <div className="bg-check-book-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
             <div className="mx-auto w-4/5">
@@ -51,12 +51,12 @@ const UserBooks = ({ books, pagy, username }) => {
 
           <Pagination clientUrl={clientUrl} pagy={pagy} />
         </div>
-      </div>
+      </>
     );
 
   if (books.length === 0)
     return (
-      <div>
+      <>
         <div className="bg-check-book-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
             <div className="mx-auto w-4/5">
@@ -79,7 +79,7 @@ const UserBooks = ({ books, pagy, username }) => {
             has read
           </div>
         </div>
-      </div>
+      </>
     );
 };
 

@@ -94,7 +94,7 @@ const ManageAvatar = ({ userState, userLoading }) => {
   }, [file]);
 
   return (
-    <div>
+    <>
       <div className="bg-gray-700 flex items-center justify-center gap-x-5 md:gap-x-10 text-white py-14">
         <Sliders size={36} strokeWidth={1.5} />
         <div className="text-2xl">Your avatar</div>
@@ -160,7 +160,7 @@ const ManageAvatar = ({ userState, userLoading }) => {
           {isUploaded === true ? submittedConfirmation : submitButton}
         </form>
       </div>
-    </div>
+    </>
   );
 };
 

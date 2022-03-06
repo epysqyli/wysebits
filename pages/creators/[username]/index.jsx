@@ -69,7 +69,7 @@ const Username = ({
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
 
   return (
-    <div>
+    <>
       <div className="mt-10">
         <BasicInfo
           user={user}
@@ -98,7 +98,7 @@ const Username = ({
           setFollowedUsers={setFollowedUsers}
         />
       </div>
-    </div>
+    </>
   );
 };
 

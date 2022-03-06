@@ -35,7 +35,7 @@ const BookSearchResults = ({ searchResults, keywords, pagy }) => {
 
   if (searchResults.length !== 0) {
     return (
-      <div>
+      <>
         <div className="py-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
           <SearchInput
             pageDest="/books/search/"
@@ -60,7 +60,7 @@ const BookSearchResults = ({ searchResults, keywords, pagy }) => {
         </div>
 
         <Pagination clientUrl={clientUrl} pagy={pagy} />
-      </div>
+      </>
     );
   }
 

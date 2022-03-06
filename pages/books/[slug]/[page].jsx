@@ -107,7 +107,7 @@ const Book = ({
 
   if (entries && entries.length !== 0)
     return (
-      <div>
+      <>
         <Head>
           <title>WyseBits - {book.title}</title>
         </Head>
@@ -174,11 +174,11 @@ const Book = ({
             </div>
           </div>
         ) : null}
-      </div>
+      </>
     );
 
   return (
-    <div>
+    <>
       <Head>
         <title>WyseBits - {book.title}</title>
       </Head>
@@ -197,7 +197,7 @@ const Book = ({
           </div>
         </Link>
       </div>
-    </div>
+    </>
   );
 };
 

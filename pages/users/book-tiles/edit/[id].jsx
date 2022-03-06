@@ -128,7 +128,7 @@ const EditBookTile = ({
     }, []);
 
     return (
-      <div>
+      <>
         {editVisible ? (
           <EditBookDetails
             categories={categories}
@@ -163,7 +163,7 @@ const EditBookTile = ({
         >
           <DangerButton text="Delete book tile" />
         </div>
-      </div>
+      </>
     );
   }
 

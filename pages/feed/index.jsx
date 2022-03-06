@@ -179,7 +179,7 @@ const Feed = ({
     };
 
     return (
-      <div>
+      <>
         <div className="bg-feed bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
             Latest insights
@@ -265,12 +265,12 @@ const Feed = ({
           }
           endMessage={feedEnd}
         />
-      </div>
+      </>
     );
   }
 
   return (
-    <div>
+    <>
       <div className="bg-feed bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
         <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
           Latest insights from all creators
@@ -305,7 +305,7 @@ const Feed = ({
           endMessage={feedEnd}
         />
       </div>
-    </div>
+    </>
   );
 };
 

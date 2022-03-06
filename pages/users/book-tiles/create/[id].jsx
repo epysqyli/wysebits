@@ -242,7 +242,7 @@ const TileCreation = ({
 
   if (userState.isLogged && !isAvailable) {
     return (
-      <div>
+      <>
         {editVisible ? (
           <EditBookDetails
             categories={categories}
@@ -279,7 +279,7 @@ const TileCreation = ({
             </Link>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 

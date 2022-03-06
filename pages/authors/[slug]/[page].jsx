@@ -34,7 +34,7 @@ const Author = ({ books, pagy, authorName, urlSlug }) => {
 
   if (books.length !== 0)
     return (
-      <div>
+      <>
         <div className="bg-author bg-cover bg-center shadow">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl text-center py-16">
             {authorName}
@@ -57,11 +57,11 @@ const Author = ({ books, pagy, authorName, urlSlug }) => {
         </div>
 
         <Pagination clientUrl={clientUrl} pagy={pagy} />
-      </div>
+      </>
     );
 
   return (
-    <div>
+    <>
       <div className="bg-author bg-cover bg-center shadow">
         <div className="bg-gray-800 bg-opacity-70 text-white text-4xl text-center py-16">
           {authorName}
@@ -84,7 +84,7 @@ const Author = ({ books, pagy, authorName, urlSlug }) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

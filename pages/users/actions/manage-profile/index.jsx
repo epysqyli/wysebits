@@ -11,7 +11,7 @@ export const getServerSideProps = async () => {
 const ManageProfile = ({ userState }) => {
   if (userState.isLogged) {
     return (
-      <div>
+      <>
         <WelcomeTop text="Manage your profile" bcgImg="bg-settings" />
 
         <div className="mx-auto w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3 my-10">
@@ -57,7 +57,7 @@ const ManageProfile = ({ userState }) => {
             />
           </div>
         </div>
-      </div>
+      </>
     );
   }
 

@@ -37,7 +37,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
 
   if (userState.isLogged && books.length == 0)
     return (
-      <div>
+      <>
         <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
         <div className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 xl:w-2/6 2xl:w-1/3 py-20 lg:py-40 2xl:py-48">
           <NoItem message="You have no favorite books yet" />
@@ -58,12 +58,12 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
 
   if (userState.isLogged && books.length !== 0)
     return (
-      <div>
+      <>
         <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
         <div className="py-16 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {books.map((item) => {
@@ -81,7 +81,7 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
         </div>
 
         <Pagination clientUrl={clientUrl} pagy={pagy} />
-      </div>
+      </>
     );
 
   return <NoAccess />;

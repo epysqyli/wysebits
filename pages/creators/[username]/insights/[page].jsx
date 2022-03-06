@@ -79,7 +79,7 @@ const UserInsights = ({
 
   if (entries.length !== 0)
     return (
-      <div>
+      <>
         <div className="bg-saved-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
             <div className="mx-auto w-4/5">All insights from {username}</div>
@@ -113,12 +113,12 @@ const UserInsights = ({
         </div>
 
         <Pagination clientUrl={clientUrl} pagy={pagy} />
-      </div>
+      </>
     );
 
   if (entries.length === 0)
     return (
-      <div>
+      <>
         <div className="bg-saved-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
             <div className="mx-auto w-4/5">All insights from {username}</div>
@@ -139,7 +139,7 @@ const UserInsights = ({
             has read
           </div>
         </div>
-      </div>
+      </>
     );
 };
 

@@ -38,7 +38,7 @@ const LogIn = ({ handleLogin }) => {
   };
 
   return (
-    <div>
+    <>
       <div className="h-60 bg-login-top bg-cover bg-center relative">
         <div className="bg-gray-900 h-full bg-opacity-80">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 text-white w-screen text-center text-2xl">
@@ -89,7 +89,7 @@ const LogIn = ({ handleLogin }) => {
           <Link href="/registrations/forgot_password">Forgot password?</Link>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

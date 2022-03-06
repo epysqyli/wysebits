@@ -5,7 +5,7 @@ import NoAccess from "../../../components/users/NoAccess";
 const Actions = ({ userState }) => {
   if (userState.isLogged) {
     return (
-      <div>
+      <>
         <Head>
           <title>User Homepage</title>
           <link rel="icon" href="/favicon.ico" />
@@ -99,7 +99,7 @@ const Actions = ({ userState }) => {
             />
           </div>
         </div>
-      </div>
+      </>
     );
   }
 

@@ -79,7 +79,7 @@ const SignUp = () => {
 
   if (emailSent === false)
     return (
-      <div>
+      <>
         <div className="h-60 bg-signup-top bg-cover bg-center relative">
           <div className="bg-gray-900 h-full bg-opacity-80">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white  text-center text-3xl leading-10">
@@ -202,11 +202,11 @@ const SignUp = () => {
             </button>
           )}
         </form>
-      </div>
+      </>
     );
 
   return (
-    <div>
+    <>
       <div className="h-60 bg-signup-top bg-cover bg-center relative">
         <div className="bg-gray-900 h-full bg-opacity-80">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white  text-center text-3xl leading-10">
@@ -230,7 +230,7 @@ const SignUp = () => {
           with a link to confirm your account on Wysebits!
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

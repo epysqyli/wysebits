@@ -44,7 +44,7 @@ const Home = ({ categories, userState }) => {
   };
 
   return (
-    <div>
+    <>
       <Head>
         <title>Wysebits</title>
         <link rel="icon" href="/logo.png" />
@@ -135,7 +135,7 @@ const Home = ({ categories, userState }) => {
           </Link>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

@@ -42,7 +42,7 @@ const Following = ({ following, userState, pagy, unpagedFollowing }) => {
 
   if (userState.isLogged && following.length == 0)
     return (
-      <div>
+      <>
         <WelcomeTop text="Users you are following" bcgImg="bg-following" />
         <div className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 xl:w-2/6 2xl:w-1/3 py-20 lg:py-40 2xl:py-48">
           <NoItem message="You are not following anybody yet!" />
@@ -61,12 +61,12 @@ const Following = ({ following, userState, pagy, unpagedFollowing }) => {
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
 
   if (userState.isLogged && following.length !== 0) {
     return (
-      <div>
+      <>
         <WelcomeTop text="Users you are following" bcgImg="bg-following" />
         <div className="py-16 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {following.map((user) => {
@@ -87,7 +87,7 @@ const Following = ({ following, userState, pagy, unpagedFollowing }) => {
         </div>
 
         <Pagination clientUrl={clientUrl} pagy={pagy} />
-      </div>
+      </>
     );
   }
 

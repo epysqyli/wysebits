@@ -18,7 +18,7 @@ export const getServerSideProps = async (context) => {
 const Stats = ({ entries }) => {
   if (entries.best_net_entry !== null)
     return (
-      <div>
+      <>
         <WelcomeTop text="Here are some stats for you" bcgImg="bg-stats" />
         <div className="w-5/6 md:w-4/6 lg:w-11/12 xl:w-5/6 mx-auto md:py-10">
           <div className="mx-auto my-20 grid grid-cols-1 lg:grid-cols-3 lg:gap-x-5 gap-y-10">
@@ -167,11 +167,11 @@ const Stats = ({ entries }) => {
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
 
   return (
-    <div>
+    <>
       <WelcomeTop
         text="Here are some stats for you"
         bcgImg="bg-stats"
@@ -192,7 +192,7 @@ const Stats = ({ entries }) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
