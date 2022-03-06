@@ -165,7 +165,7 @@ const SearchInput = ({
     <div>
       <div>
         <div
-          className="flex gap-x-1 group rounded-md shadow-md bg-white"
+          className="flex gap-x-1 group rounded-md shadow-lg bg-white"
           onKeyPress={handleKeyPress}
         >
           <input
