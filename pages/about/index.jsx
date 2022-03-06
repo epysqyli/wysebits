@@ -14,7 +14,7 @@ const About = ({ userState }) => {
         </div>
       </div>
 
-      <div className="pt-10 pb-20 bg-gray-100 shadow">
+      <div className="pt-10 pb-20 shadow">
         <div className="w-4/5 md:w-4/6 lg:w-3/5 xl:w-2/5 mx-auto">
           <h3 className="text-3xl font-bold mb-5">What is Wysebits?</h3>
           <p className="text-justify text-gray-800">
@@ -67,6 +67,15 @@ const About = ({ userState }) => {
             reading suggestions or the like. This is a place for the no-frills
             organization of knowledge, straight from the community. Above all,
             it's not a place for mindless scrolling.
+          </p>
+
+          <h4 className="text-xl text-center text-gray-800 tracking-tight font-bold mt-20 mb-3">
+            Wysebits is possible thanks to OpenLibrary
+          </h4>
+          <p className="text-justify text-gray-800">
+            This project would not be possible in its current form were it not
+            for the data made freely available by{" "}
+            <a href="https://openlibrary.org/about" className="underline">Open Library</a>. I am incredibly grateful.
           </p>
 
           {userState.isLogged ? null : (
