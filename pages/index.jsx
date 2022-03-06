@@ -112,22 +112,16 @@ const Home = ({ categories, userState }) => {
         <div className="mt-16 mb-24 w-4/5 mx-auto md:w-4/6 lg:w-2/5 2xl:w-1/4 px-2 py-5 lg:py-10 shadow-md rounded-md border-t-2 border-blue-400 bg-white hover:bg-blue-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer group">
           <div className="flex justify-center items-center gap-x-10">
             <Layers size={36} strokeWidth={1.5} />
-            <div className="text-4xl text-gray-700">Go to Feed ...</div>
-          </div>
-          <div className="text-sm text-gray-600 mt-10 w-4/5 mx-auto text-justify">
-            ... at your own peril of potentially wasting a lot of time scrolling
-            through users' insights convincing yourself that you are learning
-            valuable things while you are instead most probably mindlessly
-            procrastinating away from your next useful real life task.{" "}
-            <span className="font-medium">It's great!</span>
-          </div>
-          <div className="mx-auto w-min mt-10">
+            <div className="text-4xl text-gray-700">Go to Feed</div>
             <ArrowUpRight
               size={36}
               strokeWidth={1.5}
               color="gray"
               className="group-hover:scale-125 transition-transform group-hover:animate-ping"
             />
+          </div>
+          <div className="text-gray-600 mt-10 w-4/5 mx-auto text-center text-lg">
+            Check the latest insights from all users
           </div>
         </div>
       </Link>

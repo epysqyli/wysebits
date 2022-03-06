@@ -180,7 +180,7 @@ const Feed = ({
 
     return (
       <div>
-        <div className="bg-categories bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
+        <div className="bg-feed bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
             Latest insights
           </div>
@@ -271,7 +271,7 @@ const Feed = ({
 
   return (
     <div>
-      <div className="bg-categories bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
+      <div className="bg-feed bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
         <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
           Latest insights from all creators
         </div>
