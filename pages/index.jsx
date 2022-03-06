@@ -70,7 +70,7 @@ const Home = ({ categories, userState }) => {
               Search {capitalize(searchMode)}
             </div>
             <div
-              className="flex justify-between px-5 items-center group gap-x-5 w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 2xl:w-2/5 mx-auto border-b md:border md:bg-blue-100 md:border-blue-400 md:rounded py-2 cursor-pointer hover:text-white md:hover:text-black md:hover:bg-blue-200 transition-all active:shadow-inner"
+              className="flex justify-between px-5 items-center group gap-x-5 w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 2xl:w-2/5 mx-auto border-b md:border md:bg-gray-50 md:border-blue-400 md:rounded py-2 cursor-pointer hover:text-white md:hover:text-black md:hover:bg-blue-200 transition-all active:shadow-inner"
               onClick={toggleSearchMode}
             >
               <div className="transition-transform">

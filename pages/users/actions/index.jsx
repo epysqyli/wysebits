@@ -13,7 +13,7 @@ const Actions = ({ userState }) => {
 
         <div className="bg-user-welcome bg-cover bg-center shadow-xl lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
           <div className="bg-gray-800 bg-opacity-70 text-white text-2xl font-bold text-center py-12 lg:py-16 lg:rounded-md">
-            <div>Welcome back, {userState.user.username}.</div>
+            <div>Hi {userState.user.username}</div>
             <div className="mt-2">What are you up to today?</div>
           </div>
         </div>
