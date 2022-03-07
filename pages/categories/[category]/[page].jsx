@@ -1,10 +1,11 @@
+import Head from "next/dist/shared/lib/head";
 import BookCard from "../../../components/books/BookCard";
 import Link from "next/link";
 import Pagination from "../../../components/navigation/Pagination";
 import NoItem from "../../../components/users/NoItem";
 import SearchInput from "../../../components/navigation/SearchInput";
 import { getCategoryBooks } from "../../../lib/serverSideMethods";
-import { slug } from "../../../lib/utils";
+import { capitalize, slug } from "../../../lib/utils";
 import HeaderImage from "../../../components/categories/HeaderImage";
 
 export const getServerSideProps = async (context) => {
@@ -30,6 +31,10 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
   if (books.length !== 0)
     return (
       <>
+        <Head>
+          <title>{capitalize(categoryName)} Books</title>
+          <link rel="icon" href="/logo.png" />
+        </Head>
         <HeaderImage name={categoryName} slug={categorySlug} />
         <div className="pt-10 pb-20 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {books.map((book) => {
@@ -53,6 +58,10 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
   if (books.length === 0)
     return (
       <>
+        <Head>
+          <title>{capitalize(categoryName)} Books</title>
+          <link rel="icon" href="/logo.png" />
+        </Head>
         <HeaderImage name={categoryName} slug={categorySlug} />
         <div className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 xl:w-1/2 2xl:w-1/3 py-20 lg:py-40 2xl:py-48">
           <NoItem message="This category is empty, meaning no books have been assigned to it. Explore books and contribute insights to improve WyseBits." />

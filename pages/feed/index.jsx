@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useState, useEffect } from "react";
 import FeedEntry from "../../components/feed/FeedEntry";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -180,6 +181,10 @@ const Feed = ({
 
     return (
       <>
+        <Head>
+          <title>Feed - Wysebits</title>
+          <link rel="icon" href="/logo.png" />
+        </Head>
         <div className="bg-feed bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
             Latest insights
@@ -271,6 +276,10 @@ const Feed = ({
 
   return (
     <>
+      <Head>
+        <title>Feed - Wysebits</title>
+        <link rel="icon" href="/logo.png" />
+      </Head>
       <div className="bg-feed bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
         <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
           Latest insights from all creators

@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { Meh } from "react-feather";
 import { useState } from "react";
 import { getUser, getUserEntries } from "../../../../lib/serverSideMethods";
@@ -80,6 +81,10 @@ const UserInsights = ({
   if (entries.length !== 0)
     return (
       <>
+        <Head>
+          <title>Insights by {username}</title>
+          <link rel="icon" href="/logo.png" />
+        </Head>
         <div className="bg-saved-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
             <div className="mx-auto w-4/5">All insights from {username}</div>
@@ -119,6 +124,10 @@ const UserInsights = ({
   if (entries.length === 0)
     return (
       <>
+        <Head>
+          <title>Insights by {username}</title>
+          <link rel="icon" href="/logo.png" />
+        </Head>
         <div className="bg-saved-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
             <div className="mx-auto w-4/5">All insights from {username}</div>

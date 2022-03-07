@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { getUser, getBookTiles } from "../../../../lib/serverSideMethods";
 import Link from "next/dist/client/link";
 import BookCard from "../../../../components/books/BookCard";
@@ -25,6 +26,10 @@ const UserBooks = ({ books, pagy, username }) => {
   if (books.length !== 0)
     return (
       <>
+        <Head>
+          <title>Books read by {username}</title>
+          <link rel="icon" href="/logo.png" />
+        </Head>
         <div className="bg-check-book-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
             <div className="mx-auto w-4/5">
@@ -57,6 +62,10 @@ const UserBooks = ({ books, pagy, username }) => {
   if (books.length === 0)
     return (
       <>
+        <Head>
+          <title>Books read by {username}</title>
+          <link rel="icon" href="/logo.png" />
+        </Head>
         <div className="bg-check-book-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
             <div className="mx-auto w-4/5">

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { Mail } from "react-feather";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -80,6 +81,10 @@ const SignUp = () => {
   if (emailSent === false)
     return (
       <>
+        <Head>
+          <title>Signup to Wysebits</title>
+          <link rel="icon" href="/logo.png" />
+        </Head>
         <div className="h-60 bg-signup-top bg-cover bg-center relative">
           <div className="bg-gray-900 h-full bg-opacity-80">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white  text-center text-3xl leading-10">
@@ -134,7 +139,10 @@ const SignUp = () => {
           </div>
 
           <div className="w-4/6 mx-auto my-4">
-            <label htmlFor="name" className="pl-1 flex items-center justify-between">
+            <label
+              htmlFor="name"
+              className="pl-1 flex items-center justify-between"
+            >
               <p>Password</p>
               <p className="text-gray-700 text-sm mt-1 w-4/5 md:w-3/5 mr-0 text-right">
                 At least 8 characters, one uppercase letter, one digit
@@ -207,6 +215,10 @@ const SignUp = () => {
 
   return (
     <>
+      <Head>
+        <title>Signup to Wysebits</title>
+        <link rel="icon" href="/logo.png" />
+      </Head>
       <div className="h-60 bg-signup-top bg-cover bg-center relative">
         <div className="bg-gray-900 h-full bg-opacity-80">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white  text-center text-3xl leading-10">

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useState } from "react";
 import BasicInfo from "../../../components/creators/BasicInfo";
 import LatestBooks from "../../../components/creators/LatestBooks";
@@ -70,6 +71,10 @@ const Username = ({
 
   return (
     <>
+      <Head>
+        <title>Creator: {user.user.username}</title>
+        <link rel="icon" href="/logo.png" />
+      </Head>
       <div className="mt-10">
         <BasicInfo
           user={user}

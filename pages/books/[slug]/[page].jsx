@@ -109,7 +109,8 @@ const Book = ({
     return (
       <>
         <Head>
-          <title>WyseBits - {book.title}</title>
+          <title>{book.title}</title>
+          <link rel="icon" href="/logo.png" />
         </Head>
         <CardBcg bookData={book} userState={userState} favBooks={favBooks} />
         <div className="my-10 w-4/5 md:w-3/5 2xl:w-2/3 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
@@ -180,7 +181,8 @@ const Book = ({
   return (
     <>
       <Head>
-        <title>WyseBits - {book.title}</title>
+        <title>{book.title}</title>
+        <link rel="icon" href="/logo.png" />
       </Head>
       <CardBcg bookData={book} userState={userState} favBooks={favBooks} />
       <div className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 2xl:w-1/3 py-20 lg:py-40 2xl:py-48">

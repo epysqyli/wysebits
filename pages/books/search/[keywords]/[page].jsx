@@ -1,6 +1,6 @@
-import axios from "axios";
+import Head from "next/head";
 import { useState, useEffect } from "react";
-import { slug } from "../../../../lib/utils";
+import { capitalize, slug } from "../../../../lib/utils";
 import BookSearchTile from "../../../../components/books/BookSearchTile";
 import Pagination from "../../../../components/navigation/Pagination";
 import SearchInput from "../../../../components/navigation/SearchInput";
@@ -36,6 +36,10 @@ const BookSearchResults = ({ searchResults, keywords, pagy }) => {
   if (searchResults.length !== 0) {
     return (
       <>
+        <Head>
+          <title>{capitalize(keywords.split("-").join(" "))} - Wysebits search</title>
+          <link rel="icon" href="/logo.png" />
+        </Head>
         <div className="py-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
           <SearchInput
             pageDest="/books/search/"

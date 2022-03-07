@@ -1,11 +1,11 @@
-import { capitalize } from "../../../lib/utils";
+import Head from "next/head";
+import { capitalize, slug } from "../../../lib/utils";
 import { getAuthor } from "../../../lib/serverSideMethods";
 import BookCard from "../../../components/books/BookCard";
 import Pagination from "../../../components/navigation/Pagination";
 import NoItem from "../../../components/users/NoItem";
 import SearchInput from "../../../components/navigation/SearchInput";
 import Link from "next/dist/client/link";
-import { slug } from "../../../lib/utils";
 
 export const getServerSideProps = async (context) => {
   const urlSlug = context.query.slug;
@@ -35,6 +35,10 @@ const Author = ({ books, pagy, authorName, urlSlug }) => {
   if (books.length !== 0)
     return (
       <>
+        <Head>
+          <title>{authorName}</title>
+          <link rel="icon" href="/logo.png" />
+        </Head>
         <div className="bg-author bg-cover bg-center shadow">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl text-center py-16">
             {authorName}
@@ -62,6 +66,10 @@ const Author = ({ books, pagy, authorName, urlSlug }) => {
 
   return (
     <>
+      <Head>
+        <title>{authorName}</title>
+        <link rel="icon" href="/logo.png" />
+      </Head>
       <div className="bg-author bg-cover bg-center shadow">
         <div className="bg-gray-800 bg-opacity-70 text-white text-4xl text-center py-16">
           {authorName}
