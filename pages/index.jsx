@@ -5,17 +5,21 @@ import { capitalize } from "../lib/utils";
 import CategoryButton from "../components/navigation/CategoryButton";
 import SearchInput from "../components/navigation/SearchInput";
 import Link from "next/link";
-import { getCategories } from "../lib/serverSideMethods";
+import { getCategories, getWeeklyTrend } from "../lib/serverSideMethods";
+import TrendingBook from "../components/trending/TrendingBook";
+import TrendingUser from "../components/trending/TrendingUser";
+import TrendingEntry from "../components/trending/TrendingEntry";
 
 export const getStaticProps = async () => {
   const categories = await getCategories();
+  const weeklyTrend = await getWeeklyTrend();
 
   return {
-    props: { categories: categories.data },
+    props: { categories: categories.data, trending: weeklyTrend.data },
   };
 };
 
-const Home = ({ categories, userState }) => {
+const Home = ({ categories, userState, trending }) => {
   const booksSearchConfig = {
     pageDest: "/books/search/",
     placeholder: "Search for any book",
@@ -126,8 +130,19 @@ const Home = ({ categories, userState }) => {
         </div>
       </Link>
 
+      <div className="w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 mx-auto mb-20">
+        <span className="block text-gray-50 text-center mb-10 text-4xl">
+          Trending this week
+        </span>
+        <div className="grid gap-y-10">
+          <TrendingBook book={trending.book} />
+          <TrendingUser user={trending.user} />
+          <TrendingEntry entry={trending.insight}/>
+        </div>
+      </div>
+
       {userState.isLogged ? null : (
-        <div className="mx-auto md:w-4/5 lg:w-3/5 mt-5 mb-10">
+        <div className="mx-auto md:w-4/5 lg:w-3/5 mt-5 my-10">
           <Link href="/about">
             <div className="underline text-center mx-auto w-4/5 cursor-pointer">
               Wyse what? Click here to know more about it!
