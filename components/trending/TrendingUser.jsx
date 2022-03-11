@@ -8,11 +8,11 @@ const TrendingUser = ({ user }) => {
       <Banner text="User" iconProp="user" />
       <div className="flex justify-around border rounded-md py-4 mt-5 bg-gray-50">
         <div>
-          <div className="mx-auto w-min mb-3">
-            <Link href={`/creators/${user.username}`}>
+          <Link href={`/creators/${user.username}`}>
+            <div className="cursor-pointer">
               <Avatar avatarUrl={user.avatar_url} size={60} />
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
         <div className="w-1/2">
           <span className="font-bold">{user.username}</span> is the most
