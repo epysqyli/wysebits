@@ -130,7 +130,7 @@ const Home = ({ categories, userState, trending }) => {
         </div>
       </Link>
 
-      <div className="w-11/12 mx-auto mb-20">
+      <div className="w-11/12 2xl:w-5/6 mx-auto mb-20">
         <span className="block text-gray-50 text-center mb-10 text-4xl">
           Trending this week
         </span>
