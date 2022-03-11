@@ -130,14 +130,22 @@ const Home = ({ categories, userState, trending }) => {
         </div>
       </Link>
 
-      <div className="w-11/12 2xl:w-5/6 mx-auto mb-20">
-        <span className="block text-gray-50 text-center mb-10 text-4xl">
+      <div className="w-11/12 2xl:w-4/6 mx-auto mb-20">
+        <span className="block text-gray-50 text-center mb-10 lg:mb-5 text-5xl border-t-2 pt-10">
           Trending this week
         </span>
-        <div className="grid gap-y-10 lg:flex lg:justify-between">
-          <div className="md:w-4/5 md:mx-auto lg:w-1/3"><TrendingBook book={trending.book} /></div>
-          <div className="md:w-4/5 md:mx-auto lg:w-1/4"><TrendingUser user={trending.user} /></div>
-          <div className="md:w-4/5 md:mx-auto lg:w-1/3"><TrendingEntry entry={trending.insight}/></div>
+        <div className="lg:flex">
+          <div className="lg:w-1/2">
+            <div className="md:w-4/5 md:mx-auto mt-10">
+              <TrendingBook book={trending.book} />
+            </div>
+            <div className="md:w-4/5 md:mx-auto mt-10">
+              <TrendingUser user={trending.user} />
+            </div>
+          </div>
+          <div className="md:w-4/5 md:mx-auto mt-10 lg:w-2/5">
+            <TrendingEntry entry={trending.insight} />
+          </div>
         </div>
       </div>
 
