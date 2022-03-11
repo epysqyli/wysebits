@@ -130,14 +130,14 @@ const Home = ({ categories, userState, trending }) => {
         </div>
       </Link>
 
-      <div className="w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 mx-auto mb-20">
+      <div className="w-11/12 mx-auto mb-20">
         <span className="block text-gray-50 text-center mb-10 text-4xl">
           Trending this week
         </span>
-        <div className="grid gap-y-10">
-          <TrendingBook book={trending.book} />
-          <TrendingUser user={trending.user} />
-          <TrendingEntry entry={trending.insight}/>
+        <div className="grid gap-y-10 lg:flex lg:justify-between">
+          <div className="md:w-4/5 md:mx-auto lg:w-1/3"><TrendingBook book={trending.book} /></div>
+          <div className="md:w-4/5 md:mx-auto lg:w-1/4"><TrendingUser user={trending.user} /></div>
+          <div className="md:w-4/5 md:mx-auto lg:w-1/3"><TrendingEntry entry={trending.insight}/></div>
         </div>
       </div>
 

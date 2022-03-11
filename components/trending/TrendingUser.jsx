@@ -5,15 +5,14 @@ import Banner from "./Banner";
 const TrendingUser = ({ user }) => {
   return (
     <div>
-      <Banner text="Weekly user with highest number of new insights" />
+      <Banner text="User" iconProp="user" />
       <div className="flex justify-around border rounded-md py-4 mt-5 bg-gray-50">
         <div>
           <div className="mx-auto w-min mb-3">
-            <Avatar avatarUrl={user.avatar_url} size={60} />
+            <Link href={`/creators/${user.username}`}>
+              <Avatar avatarUrl={user.avatar_url} size={60} />
+            </Link>
           </div>
-          <Link href={`/creators/${user.username}`}>
-            <span className="block text-center underline">Visit user page</span>
-          </Link>
         </div>
         <div className="w-1/2">
           <span className="font-bold">{user.username}</span> is the most
