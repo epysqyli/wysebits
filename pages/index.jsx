@@ -74,7 +74,7 @@ const Home = ({ categories, userState, trending }) => {
       <div className="xl:flex xl:w-11/12 xl:mx-auto 2xl:w-5/6">
         <div className="mx-auto mb-20 xl:mb-10 w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 px-4 py-0 xl:border-b-2">
           <div className="text-gray-700 md:mb-8 pt-10 pb-5 xl:py-5 rounded-md md:border-blue-400 xl:border-2 xl:shadow xl:bg-gray-50">
-            <div className="text-5xl lg:text-6xl mb-5 md:mb-12 text-center text-gray-50 md:text-gray-800">
+            <div className="text-5xl lg:text-6xl mb-5 md:mb-12 text-center text-white lg:font-bold tracking-tight">
               Search {capitalize(searchMode)}
             </div>
             <div
@@ -105,8 +105,8 @@ const Home = ({ categories, userState, trending }) => {
 
         <div className="mb-10 w-11/12 mx-auto md:w-5/6 lg:w-3/5 xl:w-1/2 border-b-2 pb-10">
           <div className="flex justify-around items-center text-gray-700 bg-white gap-x-5 mb-10 md:mb-16 md:bg-white border-blue-400 border-t-2 shadow-md rounded-md py-8 xl:py-16">
-            <div className="text-4xl xl:text-5xl">Categories</div>
-            <Box size={52} strokeWidth={1.5} />
+            <div className="text-4xl lg:text-5xl text-gray-600">Categories</div>
+            <Box size={60} strokeWidth={1.5} fill="white" color="#7F92A0"/>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4">
             {categories.map((category) => {
