@@ -10,7 +10,7 @@ const EditForm = ({ entry, handleChange, handleSubmit }) => {
         htmlFor="entry"
         className="flex justify-between px-3 py-2 text-center bg-gray-100 rounded shadow text-gray-600 text-sm mb-2"
       >
-        <div className="flex gap-x-2">
+        <div className="flex gap-x-2 select-none">
           <div>Last updated at:</div>
           <div>{dayjs(entry.updateTime).toString()}</div>
         </div>

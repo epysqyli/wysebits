@@ -12,7 +12,7 @@ const CreateEntryForm = ({
         htmlFor={entry.name}
         className="flex justify-around text-center py-2 bg-white rounded"
       >
-        <div className="italic text-gray-700">
+        <div className="italic text-gray-700 select-none">
           Enter your {entry.name.split("_")[0]} takeaway
         </div>
         {isEntryValid(entry.content) ? (

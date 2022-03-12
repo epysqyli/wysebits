@@ -205,7 +205,7 @@ const TileCreation = ({
           />
         </div>
 
-        <div className="w-4/5 mx-auto text-3xl text-gray-800 text-center mt-10">
+        <div className="w-4/5 mx-auto text-3xl text-gray-800 text-center mt-10 select-none">
           Share your top takeaways for this book
         </div>
 
