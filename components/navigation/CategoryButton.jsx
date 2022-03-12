@@ -9,7 +9,7 @@ const CategoryButton = ({ category }) => {
         <ArrowRightCircle
           size={18}
           strokeWidth={2}
-          className="absolute bottom-2 right-5 group-active:text-white opacity-0 group-hover:opacity-75 group-hover:right-2 transition-all"
+          className="absolute bottom-2 right-5 text-yellow-500 group-active:text-yellow-300 opacity-0 group-hover:opacity-75 group-hover:right-2 transition-all"
         />
       </div>
     </Link>
