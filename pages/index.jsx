@@ -51,6 +51,10 @@ const Home = ({ categories, userState, trending }) => {
     <>
       <Head>
         <title>Wysebits</title>
+        <meta
+          name="description"
+          content="The no-frills social network for book lovers. Knowledge: distilled. Share your insights for the books you have and explore other users' ideas."
+        />
         <link rel="icon" href="/logo.png" />
       </Head>
 
@@ -70,7 +74,7 @@ const Home = ({ categories, userState, trending }) => {
       <div className="xl:flex xl:w-11/12 xl:mx-auto 2xl:w-5/6">
         <div className="mx-auto mb-20 xl:mb-10 w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 px-4 py-0 xl:border-b-2">
           <div className="text-gray-700 md:mb-8 pt-10 pb-5 xl:py-5 rounded-md md:border-blue-400 xl:border-2 xl:shadow xl:bg-gray-50">
-            <div className="text-5xl mb-5 md:mb-12 text-center text-gray-50 md:text-gray-800">
+            <div className="text-5xl lg:text-6xl mb-5 md:mb-12 text-center text-gray-50 md:text-gray-800">
               Search {capitalize(searchMode)}
             </div>
             <div
