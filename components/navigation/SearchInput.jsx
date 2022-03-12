@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/dist/client/router";
-import { Search } from "react-feather";
+import { Loader, Search } from "react-feather";
 
 import {
   findOrCreateHistory,
@@ -27,6 +27,7 @@ const SearchInput = ({
   const [authorsHistory, setAuthorsHistory] = useState(null);
   const [didLoad, setDidLoad] = useState(false);
   const [activeSearch, setActiveSearch] = useState(false);
+  const [searchLoading, setSearchLoading] = useState(false);
 
   const router = useRouter();
   const getQuery = (query) => query.split(" ").join("-");
@@ -55,6 +56,7 @@ const SearchInput = ({
   };
 
   const getSuggestions = async (query) => {
+    setSearchLoading(true);
     const resp = await axios({
       method: "post",
       data: { keywords: JSON.stringify(query) },
@@ -71,11 +73,14 @@ const SearchInput = ({
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     const newSearchTerms = e.target.value;
     setSearchTerms(newSearchTerms);
 
-    if (newSearchTerms.length > 2) getSuggestions(newSearchTerms);
+    if (newSearchTerms.length > 2) {
+      await getSuggestions(newSearchTerms);
+      setSearchLoading(false);
+    }
   };
 
   const handleKeyPress = (e) => {
@@ -183,12 +188,16 @@ const SearchInput = ({
             type="submit"
             className="w-1/6 text-center bg-white border-l rounded-tr-lg rounded-br-lg hover:bg-gray-100 group-hover:shadow-md transition active:text-white"
           >
-            <Search
-              size={20}
-              className="mx-auto"
-              onClick={() => search()}
-              color="gray"
-            />
+            {searchLoading === true ? (
+              <Loader size={20} color="gray" className="mx-auto animate-spin" />
+            ) : (
+              <Search
+                size={20}
+                className="mx-auto"
+                onClick={() => search()}
+                color="gray"
+              />
+            )}
           </button>
         </div>
 

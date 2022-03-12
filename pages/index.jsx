@@ -72,9 +72,9 @@ const Home = ({ categories, userState, trending }) => {
       </div>
 
       <div className="xl:flex xl:w-11/12 xl:mx-auto 2xl:w-5/6">
-        <div className="mx-auto mb-20 xl:mb-10 w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 px-4 py-0 xl:border-b-2">
+        <div className="mx-auto mb-20 xl:mb-10 px-4 w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 xl:border-b-2">
           <div className="text-gray-700 md:mb-8 pt-10 pb-5 xl:py-7 rounded-md xl:border-t-blue-400 xl:border-t-2 xl:shadow xl:bg-gray-50">
-            <div className="text-5xl lg:text-6xl xl:text-5xl text-white xl:text-gray-600 xl:font-normal mb-5 md:mb-12 text-center lg:font-bold tracking-tight">
+            <div className="text-5xl md:text-6xl xl:text-5xl text-white xl:text-gray-600 xl:font-normal mb-5 md:mb-12 text-center lg:font-bold tracking-tight">
               Search {capitalize(searchMode)}
             </div>
             <div
@@ -103,7 +103,7 @@ const Home = ({ categories, userState, trending }) => {
           </div>
         </div>
 
-        <div className="mb-20 mt-32 w-11/12 mx-auto md:w-5/6 lg:w-3/5 xl:w-1/2 border-b-2 pb-10">
+        <div className="mb-20 mt-32 xl:mt-0 xl:mb-10 w-11/12 mx-auto md:w-5/6 lg:w-3/5 xl:w-1/2 border-b-2 pb-10">
           <div className="flex justify-around items-center text-gray-700 bg-white gap-x-5 mb-10 md:mb-16 md:bg-white border-blue-400 border-t-2 shadow-md rounded-md py-8 xl:py-16">
             <div className="text-4xl lg:text-5xl text-gray-600">Categories</div>
             <Box size={60} strokeWidth={1.5} fill="white" color="#7F92A0" />
@@ -117,7 +117,7 @@ const Home = ({ categories, userState, trending }) => {
       </div>
 
       <Link href="/feed">
-        <div className="mt-16 mb-24 w-4/5 mx-auto md:w-4/6 lg:w-2/5 2xl:w-1/4 px-2 py-5 lg:py-10 shadow-md rounded-md border-t-2 border-blue-400 bg-white hover:bg-blue-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer group">
+        <div className="mx-auto mt-16 mb-24 w-4/5 md:w-4/6 lg:w-2/5 2xl:w-1/4 px-2 py-5 lg:py-12 shadow-md rounded-md border-t-2 border-blue-400 bg-white hover:bg-blue-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer group">
           <div className="flex justify-center items-center gap-x-10">
             <Layers size={36} strokeWidth={1.5} />
             <div className="text-4xl text-gray-700">Feed</div>
@@ -128,7 +128,7 @@ const Home = ({ categories, userState, trending }) => {
               className="group-hover:scale-125 transition-transform group-hover:animate-ping"
             />
           </div>
-          <div className="text-gray-600 mt-10 w-4/5 mx-auto text-center text-lg">
+          <div className="text-gray-600 mt-16 w-4/5 mx-auto text-center text-xl">
             Check the latest insights from all users
           </div>
         </div>
