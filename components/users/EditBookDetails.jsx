@@ -126,7 +126,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   }, [book.author.full_name]);
 
   return (
-    <div className="z-30 fixed top-0 bottom-0 w-full overflow-y-scroll bg-gray-100 pt-20 pb-10 px-3 shadow-lg border-gray-400 animate-show-up">
+    <div className="z-20 fixed top-0 bottom-0 w-full overflow-y-scroll bg-gray-100 pt-20 pb-10 px-3 shadow-lg border-gray-400 animate-show-up">
       <div className="mx-auto w-5/6 md:w-4/6 lg:w-1/2 xl:w-1/3">
         <div className="text-center text-lg border-b-2 pb-2 px-5">
           Make WyseBits a better place for the community!
@@ -208,9 +208,8 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
               type="file"
               name="book_cover"
               id="book-cover"
-              className="hidden"
-              onChange={handleFileUpload}
               className="bg-white py-2 w-min px-3"
+              onChange={handleFileUpload}
             />
           </div>
           <div
