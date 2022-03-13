@@ -25,8 +25,8 @@ export const getServerSideProps = async (context) => {
 
     return {
       props: {
-        favInsights: favTileEntries.data.tile_entries,
         pagy: favTileEntries.data.pagy,
+        favInsights: favTileEntries.data.tile_entries,
         following: following.data,
         entriesUp: upvotedEntries.data.upvoted_entries,
         entriesDown: downvotedEntries.data.downvoted_entries,

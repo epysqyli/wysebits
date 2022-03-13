@@ -1,31 +1,91 @@
+import { useState } from "react";
 import Head from "next/head";
 import { getUser, getBookTiles } from "../../../../lib/serverSideMethods";
-import Link from "next/dist/client/link";
 import BookCard from "../../../../components/books/BookCard";
-import { slug } from "../../../../lib/utils";
 import Pagination from "../../../../components/navigation/Pagination";
+import BookUserInsights from "../../../../components/creators/BookUserInsights";
+import { getBookUserInsights } from "../../../../lib/creatorMethods";
+
+import {
+  getLoggedUser,
+  getAllFollowing,
+  getFavEntries,
+  getUpvotedEntries,
+  getDownvotedEntries,
+} from "../../../../lib/serverSideMethods";
+
 import { Meh } from "react-feather";
 
 export const getServerSideProps = async (context) => {
   const username = context.params.username;
   const pageNum = context.params.page;
-
   const user = await getUser(username);
   const bookTiles = await getBookTiles(user, pageNum);
   const pagy = bookTiles.data.pagy;
   const books = bookTiles.data.tiles.map((tile) => tile.book);
 
-  return {
-    props: { books, pagy, username },
-  };
+  try {
+    const loggedUser = await getLoggedUser(context);
+    const following = await getAllFollowing(loggedUser, context);
+    const favTileEntries = await getFavEntries(loggedUser, context, pageNum);
+    const upvotedEntries = await getUpvotedEntries(loggedUser, context);
+    const downvotedEntries = await getDownvotedEntries(loggedUser, context);
+    return {
+      props: {
+        books: books,
+        pagy: pagy,
+        username: username,
+        userId: user.data.user.id,
+        favInsights: favTileEntries.data.tile_entries,
+        following: following.data,
+        entriesUp: upvotedEntries.data.upvoted_entries,
+        entriesDown: downvotedEntries.data.downvoted_entries,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        books: books,
+        pagy: pagy,
+        username: username,
+        userId: user.data.user.id,
+      },
+    };
+  }
 };
 
-const UserBooks = ({ books, pagy, username }) => {
+const UserBooks = ({
+  books,
+  pagy,
+  username,
+  userId,
+  userState,
+  favInsights,
+  following,
+  entriesUp,
+  entriesDown,
+}) => {
   const clientUrl = `/creators/${username}/books`;
+
+  const [followedUsers, setFollowedUsers] = useState(following);
+  const [insights, setInsights] = useState(
+    favInsights.filter((insight) => insight !== null)
+  );
+  const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
+  const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
+
+  const [showInsights, setShowInsights] = useState(false);
+  const [bookInsights, setBookInsights] = useState([]);
+
+  const showBookInsights = async (bookId) => {
+    const resp = await getBookUserInsights(userId, bookId);
+    setBookInsights(resp.data);
+    showInsights === false ? setShowInsights(true) : setShowInsights(false);
+  };
 
   if (books.length !== 0)
     return (
-      <>
+      <div className="relative">
         <Head>
           <title>Books read by {username}</title>
           <link rel="icon" href="/logo.png" />
@@ -42,21 +102,34 @@ const UserBooks = ({ books, pagy, username }) => {
           <div className="py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
             {books.map((book) => {
               return (
-                <Link
-                  href={`/books/${slug(book.title, book.id)}/1`}
-                  key={book.id}
-                >
-                  <div className="rounded-md bg-white shadow-lg hover:bg-gray-50 hover:shadow-xl transition-all cursor-pointer active:shadow-inner border-b-2 border-blue-200 hover:border-blue-300">
-                    <BookCard bookData={book} />
+                <>
+                  <div onClick={() => showBookInsights(book.id)}>
+                    <div className="rounded-md bg-white shadow-lg hover:bg-gray-50 hover:shadow-xl transition-all cursor-pointer active:shadow-inner border-b-2 border-blue-200 hover:border-blue-300">
+                      <BookCard bookData={book} />
+                    </div>
                   </div>
-                </Link>
+                  {showInsights === true ? (
+                    <BookUserInsights
+                      bookInsights={bookInsights}
+                      user={userState.user}
+                      insights={insights}
+                      setInsights={setInsights}
+                      upvotedEntries={upvotedEntries}
+                      setUpvotesEntries={setUpvotedEntries}
+                      downvotedEntries={downvotedEntries}
+                      setDownvotedEntries={setDownvotedEntries}
+                      followedUsers={followedUsers}
+                      setFollowedUsers={setFollowedUsers}
+                    />
+                  ) : null}
+                </>
               );
             })}
           </div>
 
           <Pagination clientUrl={clientUrl} pagy={pagy} />
         </div>
-      </>
+      </div>
     );
 
   if (books.length === 0)
