@@ -1,5 +1,7 @@
 import { XCircle } from "react-feather";
 import TileEntry from "../books/TileEntry";
+import Link from "next/dist/client/link";
+import { slug } from "../../lib/utils";
 
 const BookUserInsights = ({
   closeInsight,
@@ -15,14 +17,21 @@ const BookUserInsights = ({
   setFollowedUsers,
 }) => {
   return (
-    <div className="z-30 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full lg:w-5/6 xl:w-4/5 2xl:w-1/2 h-full lg:h-2/3 bg-gray-100 pt-20 pb-10 lg:py-5 px-2 lg:rounded-md lg:shadow-sm overflow-auto">
+    <div className="z-30 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full lg:w-5/6 xl:w-3/5 2xl:w-1/2 h-full lg:h-2/3 bg-gray-100 pt-20 pb-10 lg:py-5 px-2 lg:rounded-md lg:shadow-sm overflow-auto animate-show-up-slow">
       <div className="overflow-y-auto max-h-full w-full">
-        <div className="flex justify-around items-center mx-auto w-5/6 pb-5 border-b-2">
-          <h1 className="text-xl w-3/5">
-            {bookInsights[0].book_tile.book.title}
+        <div className="flex justify-around items-center mx-auto w-5/6 py-2 border-b-2 bg-gray-500 rounded">
+          <h1 className="text-xl w-3/5 text-white underline">
+            <Link
+              href={`/books/${slug(
+                bookInsights[0].book_tile.book.title,
+                bookInsights[0].book_tile.book.id
+              )}/1`}
+            >
+              {bookInsights[0].book_tile.book.title}
+            </Link>
           </h1>
           <XCircle
-            className="w-1/5 text-gray-500 hover:text-gray-600 cursor-pointer hover:scale-95 active:scale-90"
+            className="w-1/5 text-gray-50 hover:text-gray-100 cursor-pointer hover:scale-95 active:scale-90"
             size={36}
             strokeWidth={1.5}
             onClick={closeInsight}
