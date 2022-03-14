@@ -85,7 +85,19 @@ const Username = ({
       </div>
 
       <div className="mt-20">
-        <LatestBooks books={user.book_tiles.map((tile) => tile.book)} />
+        <LatestBooks
+          userId={user.user.id}
+          books={user.book_tiles.map((tile) => tile.book)}
+          userState={userState}
+          insights={insights}
+          setInsights={setInsights}
+          upvotedEntries={upvotedEntries}
+          setUpvotedEntries={setUpvotedEntries}
+          downvotedEntries={downvotedEntries}
+          setDownvotedEntries={setDownvotedEntries}
+          followedUsers={followedUsers}
+          setFollowedUsers={setFollowedUsers}
+        />
       </div>
 
       <div className="mt-20">
