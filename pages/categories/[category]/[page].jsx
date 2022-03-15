@@ -7,6 +7,7 @@ import SearchInput from "../../../components/navigation/SearchInput";
 import { getCategoryBooks } from "../../../lib/serverSideMethods";
 import { capitalize, slug } from "../../../lib/utils";
 import HeaderImage from "../../../components/categories/HeaderImage";
+import SpecificSearch from "../../../components/search/SpecificSearch";
 
 export const getServerSideProps = async (context) => {
   const slug = context.query.category;
@@ -36,6 +37,9 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
           <link rel="icon" href="/logo.png" />
         </Head>
         <HeaderImage name={categoryName} slug={categorySlug} />
+        <div>
+          <SpecificSearch />
+        </div>
         <div className="pt-10 pb-20 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {books.map((book) => {
             return (
