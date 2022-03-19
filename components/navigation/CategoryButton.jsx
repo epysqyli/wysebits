@@ -1,9 +1,18 @@
 import { ArrowRightCircle } from "react-feather";
 import Link from "next/dist/client/link";
+import slugify from "slugify";
 
 const CategoryButton = ({ category }) => {
   return (
-    <Link href={`/categories/${category.slug}/1`}>
+    <Link
+      href={{
+        pathname: "/categories/[category]",
+        query: {
+          category: category.slug,
+          page: 1,
+        },
+      }}
+    >
       <div className="text-gray-900 break-words text-lg tracking-tight px-4 pt-2 pb-6 rounded-md cursor-pointer border-blue-300 border-2 bg-gray-100 hover:pl-5 hover:bg-yellow-50 hover:border-yellow-400 active:bg-blue-300 active:shadow-inner active:text-white shadow-md transition-all relative group">
         <div>{category.name}</div>
         <ArrowRightCircle

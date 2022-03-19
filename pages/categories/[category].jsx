@@ -1,13 +1,13 @@
 import Head from "next/dist/shared/lib/head";
-import BookCard from "../../../components/books/BookCard";
+import BookCard from '../../components/books/BookCard';
 import Link from "next/link";
-import Pagination from "../../../components/navigation/Pagination";
-import NoItem from "../../../components/users/NoItem";
-import SearchInput from "../../../components/navigation/SearchInput";
-import { getCategoryBooks } from "../../../lib/serverSideMethods";
-import { capitalize, slug } from "../../../lib/utils";
-import HeaderImage from "../../../components/categories/HeaderImage";
-import SpecificSearch from "../../../components/search/SpecificSearch";
+import Pagination from "../../components/navigation/Pagination";
+import NoItem from "../../components/users/NoItem";
+import SearchInput from "../../components/navigation/SearchInput";
+import { getCategoryBooks } from "../../lib/serverSideMethods";
+import { capitalize, slug } from "../../lib/utils";
+import HeaderImage from "../../components/categories/HeaderImage";
+import SpecificSearch from "../../components/search/SpecificSearch";
 
 export const getServerSideProps = async (context) => {
   const slug = context.query.category;
