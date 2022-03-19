@@ -52,7 +52,15 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
         </div>
 
         <div className="flex items-center justify-around mt-10 md:block">
-          <Link href={`/creators/${user.user.username}/books/1`}>
+          <Link
+            href={{
+              pathname: `/creators/[username]/books`,
+              query: {
+                username: user.user.username,
+                page: 1,
+              },
+            }}
+          >
             <div className="flex items-center gap-x-2 group p-1 cursor-pointer hover:shadow-md hover:rounded-md active:shadow-inner">
               <BookOpen size={20} />
               <div className="text-gray-200 md:text-gray-700">
@@ -64,7 +72,15 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
               />
             </div>
           </Link>
-          <Link href={`/creators/${user.user.username}/insights/1`}>
+          <Link
+            href={{
+              pathname: `/creators/[username]/insights`,
+              query: {
+                username: `${user.user.username}`,
+                page: 1,
+              },
+            }}
+          >
             <div className="flex items-center gap-x-2 group p-1 cursor-pointer hover:shadow-md hover:rounded-md active:shadow-inner">
               <AlignCenter size={20} />
               <div className="text-gray-200 md:text-gray-700">

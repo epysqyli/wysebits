@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Head from "next/head";
-import { getUser, getBookTiles } from "../../../../lib/serverSideMethods";
-import BookCard from "../../../../components/books/BookCard";
-import Pagination from "../../../../components/navigation/Pagination";
-import BookUserInsights from "../../../../components/creators/BookUserInsights";
-import { getBookUserInsights } from "../../../../lib/creatorMethods";
+import { getUser, getBookTiles } from "../../../lib/serverSideMethods";
+import BookCard from "../../../components/books/BookCard";
+import Pagination from "../../../components/navigation/Pagination";
+import BookUserInsights from "../../../components/creators/BookUserInsights";
+import { getBookUserInsights } from "../../../lib/creatorMethods";
 
 import {
   getLoggedUser,
@@ -12,13 +12,13 @@ import {
   getFavEntries,
   getUpvotedEntries,
   getDownvotedEntries,
-} from "../../../../lib/serverSideMethods";
+} from "../../../lib/serverSideMethods";
 
 import { Meh } from "react-feather";
 
 export const getServerSideProps = async (context) => {
   const username = context.params.username;
-  const pageNum = context.params.page;
+  const pageNum = context.query.page;
   const user = await getUser(username);
   const bookTiles = await getBookTiles(user, pageNum);
   const pagy = bookTiles.data.pagy;

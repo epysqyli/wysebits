@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
-import { capitalize, slug } from "../../../../lib/utils";
-import BookSearchTile from "../../../../components/books/BookSearchTile";
-import Pagination from "../../../../components/navigation/Pagination";
-import SearchInput from "../../../../components/navigation/SearchInput";
-import CreateBookBtn from "../../../../components/users/CreateBookBtn";
-import NoSearchResults from "../../../../components/navigation/NoSearchResults";
-import { searchBooks } from "../../../../lib/searchMethods";
+import { capitalize, slug } from "../../../lib/utils";
+import BookSearchTile from "../../../components/books/BookSearchTile";
+import Pagination from "../../../components/navigation/Pagination";
+import SearchInput from "../../../components/navigation/SearchInput";
+import CreateBookBtn from "../../../components/users/CreateBookBtn";
+import NoSearchResults from "../../../components/navigation/NoSearchResults";
+import { searchBooks } from "../../../lib/searchMethods";
 
 export const getServerSideProps = async (context) => {
   const keywords = context.query.keywords;

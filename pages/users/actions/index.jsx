@@ -31,7 +31,10 @@ const Actions = ({ userState }) => {
             <UserAction
               text="Published contributions"
               bcgImg="bg-check-book-tiles"
-              href="/users/book-tiles/1"
+              href={{
+                pathname: "/users/book-tiles",
+                query: { page: 1 },
+              }}
             />
           </div>
 
@@ -39,7 +42,10 @@ const Actions = ({ userState }) => {
             <UserAction
               text="Work in progress contributions"
               bcgImg="bg-wip-contributions"
-              href="/users/book-tiles/wip/1"
+              href={{
+                pathname: "/users/book-tiles/wip",
+                query: { page: 1 },
+              }}
             />
           </div>
 
@@ -47,31 +53,43 @@ const Actions = ({ userState }) => {
             <UserAction
               text="Favorite books"
               bcgImg="bg-liked-books"
-              href="/users/actions/favorite-books/1"
+              href={{
+                pathname: "/users/actions/favorite-books",
+                query: { page: 1 },
+              }}
             />
           </div>
 
           <div>
             <UserAction
               text="Saved book insights"
-              href="/users/actions/favorite-insights/1"
               bcgImg="bg-saved-tiles"
+              href={{
+                pathname: "/users/actions/favorite-insights",
+                query: { page: 1 },
+              }}
             />
           </div>
 
           <div>
             <UserAction
               text="Users you are following"
-              href="/users/actions/following/1"
               bcgImg="bg-following"
+              href={{
+                pathname: "/users/actions/following",
+                query: { page: 1 },
+              }}
             />
           </div>
 
           <div>
             <UserAction
               text="Your followers"
-              href="/users/actions/followers/1"
               bcgImg="bg-followers"
+              href={{
+                pathname: "/users/actions/followers",
+                query: { page: 1 },
+              }}
             />
           </div>
 

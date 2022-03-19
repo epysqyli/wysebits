@@ -68,7 +68,15 @@ const BookCard = ({
           )}
 
           {showAuthorLink && authorName && authorId ? (
-            <Link href={`/authors/${slug(authorName, authorId)}/1`}>
+            <Link
+              href={{
+                pathname: `/authors/[slug]`,
+                query: {
+                  slug: `${slug(authorName, authorId)}`,
+                  page: 1,
+                },
+              }}
+            >
               <div className="italic cursor-pointer hover:text-gray-300 active:text-gray-400">
                 {authorName}
               </div>
@@ -119,7 +127,7 @@ const BookCard = ({
           </div>
         )}
 
-        {showCategoryLink && bookData.category.slug !== "no-category" ?  (
+        {showCategoryLink && bookData.category.slug !== "no-category" ? (
           <Link href={`/categories/${bookData.category.slug}/1`}>
             <div className="flex justify-end items-center gap-x-2 cursor-pointer hover:text-gray-300 active:text-gray-400 mr-0 mx-auto group">
               <div>{bookData.category.name}</div>
@@ -134,7 +142,15 @@ const BookCard = ({
         )}
 
         {showAuthorLink && authorName && authorId ? (
-          <Link href={`/authors/${slug(authorName, authorId)}/1`}>
+          <Link
+            href={{
+              pathname: `/authors/[slug]`,
+              query: {
+                slug: `${slug(authorName, authorId)}`,
+                page: 1,
+              },
+            }}
+          >
             <div className="flex justify-end items-center gap-x-2 cursor-pointer hover:text-gray-300 active:text-gray-400 mr-0 mx-auto group">
               <div className="italic">{authorName}</div>
               <ArrowUpRight

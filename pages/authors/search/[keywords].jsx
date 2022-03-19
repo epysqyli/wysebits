@@ -1,10 +1,10 @@
 import Head from "next/head";
-import { capitalize } from "../../../../lib/utils";
-import { searchAuthors } from "../../../../lib/searchMethods";
-import AuthorResult from "../../../../components/authors/AuthorResult";
-import Pagination from "../../../../components/navigation/Pagination";
-import NoSearchResults from "../../../../components/navigation/NoSearchResults";
-import SearchInput from "../../../../components/navigation/SearchInput";
+import { capitalize } from "../../../lib/utils";
+import { searchAuthors } from "../../../lib/searchMethods";
+import AuthorResult from "../../../components/authors/AuthorResult";
+import Pagination from "../../../components/navigation/Pagination";
+import NoSearchResults from "../../../components/navigation/NoSearchResults";
+import SearchInput from "../../../components/navigation/SearchInput";
 
 export const getServerSideProps = async (context) => {
   const keywords = context.query.keywords;

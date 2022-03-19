@@ -13,7 +13,12 @@ const PageNavButton = ({ direction, url, clientUrl }) => {
 
   if (direction == "left")
     return (
-      <Link href={`${clientUrl}/${pageNum}`}>
+      <Link
+        href={{
+          pathname: clientUrl,
+          query: { page: pageNum },
+        }}
+      >
         <div className="py-2 text-center rounded shadow-md cursor-pointer bg-white hover:shadow-none active:shadow-inner transition-colors group">
           <ArrowLeft className="w-min mx-auto group-hover:pr-2 text-gray-400 group-hover:text-gray-600 transition-all" />
         </div>
@@ -29,7 +34,12 @@ const PageNavButton = ({ direction, url, clientUrl }) => {
 
   if (direction == "right")
     return (
-      <Link href={`${clientUrl}/${pageNum}`}>
+      <Link
+        href={{
+          pathname: clientUrl,
+          query: { page: pageNum },
+        }}
+      >
         <div className="py-2 text-center rounded shadow-md cursor-pointer bg-white hover:shadow-none active:shadow-inner transition-colors group">
           <ArrowRight className="w-min mx-auto group-hover:pl-2 text-gray-400 group-hover:text-gray-600 transition-all" />
         </div>

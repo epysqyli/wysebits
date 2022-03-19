@@ -1,9 +1,9 @@
-import Head from 'next/head';
+import Head from "next/head";
 import { Meh } from "react-feather";
 import { useState } from "react";
-import { getUser, getUserEntries } from "../../../../lib/serverSideMethods";
-import Pagination from "../../../../components/navigation/Pagination";
-import TileEntry from "../../../../components/books/TileEntry";
+import { getUser, getUserEntries } from "../../../lib/serverSideMethods";
+import Pagination from "../../../components/navigation/Pagination";
+import TileEntry from "../../../components/books/TileEntry";
 
 import {
   getAllFollowing,
@@ -11,11 +11,11 @@ import {
   getAllFavEntries,
   getUpvotedEntries,
   getDownvotedEntries,
-} from "../../../../lib/serverSideMethods";
+} from "../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
   const username = context.params.username;
-  const pageNum = context.params.page;
+  const pageNum = context.query.page;
 
   const user = await getUser(username);
   const entries = await getUserEntries(user, pageNum);

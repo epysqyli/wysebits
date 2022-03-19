@@ -5,7 +5,7 @@ const UserAction = ({ href, text, bcgImg }) => {
     <Link href={href}>
       <div className="cursor-pointer group relative group">
         <div
-          className={`h-28 xl:h-36 ${bcgImg} bg-cover bg-center rounded shadow-lg hover:shadow-lg group transition-all`}
+          className={`h-28 xl:h-36 ${bcgImg} bg-cover bg-top rounded shadow-lg hover:shadow-lg group transition-all`}
         >
           <div className="absolute z-10 left-1/2 -translate-x-1/2 top-1 text-center text-xl py-1 text-white mb-1 w-4/5 mx-auto border-b-2 group-hover:bg-gray-50 group-hover:text-gray-800">
             {text}
