@@ -29,6 +29,7 @@ export const getServerSideProps = async (context) => {
       pagy: books.data.pagy,
       categoryName: categoryName,
       categorySlug: slug,
+      currentSearchTerms: context.query.searchTerms ?? null,
       searchParams: context.query.searchTerms
         ? { searchTerms: context.query.searchTerms }
         : null,
@@ -42,6 +43,7 @@ const Category = ({
   categorySlug,
   pagy,
   searchParams,
+  currentSearchTerms,
 }) => {
   const clientUrl = `/categories/${categorySlug}`;
 
@@ -58,6 +60,7 @@ const Category = ({
             baseUrl="/categories"
             searchContext="category"
             dynamicValue={categorySlug}
+            currentSearchTerms={currentSearchTerms}
           />
         </div>
         <div className="pt-10 pb-20 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">

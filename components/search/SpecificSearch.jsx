@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { X, Search } from "react-feather";
 import { useRouter } from "next/dist/client/router";
 
@@ -7,13 +7,12 @@ const SpecificSearch = ({
   baseUrl,
   searchContext,
   dynamicValue,
+  currentSearchTerms,
 }) => {
   const [searchTerms, setSearchTerms] = useState("");
-  const [clearable, setClearable] = useState(false);
-
   const router = useRouter();
 
-  const search = async () => {
+  const search = () => {
     router.push({
       pathname: `${baseUrl}/[${searchContext}]`,
       query: {
@@ -24,9 +23,15 @@ const SpecificSearch = ({
     });
   };
 
-  const clearSearch = async () => {
-    setClearable(false);
+  const clearSearch = () => {
     setSearchTerms("");
+    router.push({
+      pathname: `${baseUrl}/[${searchContext}]`,
+      query: {
+        [searchContext]: dynamicValue,
+        page: 1,
+      },
+    });
   };
 
   const handleKeyPress = (e) => {
@@ -37,6 +42,10 @@ const SpecificSearch = ({
     const newSearchTerms = e.target.value;
     setSearchTerms(newSearchTerms);
   };
+
+  useEffect(() => {
+    if (currentSearchTerms) setSearchTerms(currentSearchTerms);
+  }, []);
 
   return (
     <div
@@ -56,12 +65,12 @@ const SpecificSearch = ({
         name="tmp"
         id="tmp"
         className="border-white border-b border-t-0 border-l-0 border-r-0 focus:ring-0 bg-transparent text-white focus:border-white placeholder-white text-center mb-2"
-        value={searchTerms ?? ""}
+        value={searchTerms}
         onChange={handleChange}
         placeholder={placeholder}
         required
       />
-      {clearable ? (
+      {searchTerms ? (
         <X
           size={26}
           color="white"
