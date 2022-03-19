@@ -1,48 +1,32 @@
 import { useState } from "react";
-import { Loader, X, Search, Underline } from "react-feather";
-import { searchWithinCategory } from "../../lib/searchMethods";
-import { getCategoryBooks } from "../../lib/serverSideMethods";
-import slugify from "slugify";
+import { X, Search } from "react-feather";
 import { useRouter } from "next/dist/client/router";
 
 const SpecificSearch = ({
-  categorySlug,
   placeholder,
-  setResults,
-  url,
-  setUrl,
-  setTmpPagy,
+  baseUrl,
+  searchContext,
+  dynamicValue,
 }) => {
-  const [loading, setLoading] = useState(false);
   const [searchTerms, setSearchTerms] = useState("");
   const [clearable, setClearable] = useState(false);
 
   const router = useRouter();
 
   const search = async () => {
-    setLoading(true);
-    const resp = await searchWithinCategory(categorySlug, searchTerms);
-    setResults(resp.data.results);
-    setUrl(composeSearchUrl());
-    setLoading(false);
-    setClearable(true);
-    // router.push("/categories/[category]/1", `${composeSearchUrl()}/1`);
+    router.push({
+      pathname: `${baseUrl}/[${searchContext}]`,
+      query: {
+        [searchContext]: dynamicValue,
+        page: 1,
+        searchTerms: searchTerms,
+      },
+    });
   };
 
   const clearSearch = async () => {
-    setLoading(true);
-    const books = await getCategoryBooks(categorySlug);
-    setResults(books.data.books);
-    setLoading(false);
     setClearable(false);
     setSearchTerms("");
-    setUrl(`/categories/${categorySlug}`);
-    setTmpPagy(books.data.pagy);
-  };
-
-  const composeSearchUrl = () => {
-    const terms = slugify(searchTerms, { lower: true, strict: true });
-    return `${url}|q=${terms}=q|`;
   };
 
   const handleKeyPress = (e) => {
@@ -60,16 +44,12 @@ const SpecificSearch = ({
       onKeyPress={handleKeyPress}
     >
       <button type="submit" className="">
-        {loading === true ? (
-          <Loader size={26} color="white" className="mx-auto animate-spin" />
-        ) : (
-          <Search
-            size={26}
-            className="mx-auto"
-            onClick={() => search()}
-            color="white"
-          />
-        )}
+        <Search
+          size={26}
+          className="mx-auto"
+          onClick={() => search()}
+          color="white"
+        />
       </button>
       <input
         type="text"

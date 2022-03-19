@@ -5,6 +5,7 @@ import Pagination from "../../components/navigation/Pagination";
 import NoItem from "../../components/users/NoItem";
 import SearchInput from "../../components/navigation/SearchInput";
 import { getCategoryBooks } from "../../lib/serverSideMethods";
+import { searchWithinCategory } from "../../lib/searchMethods";
 import { capitalize, slug } from "../../lib/utils";
 import HeaderImage from "../../components/categories/HeaderImage";
 import SpecificSearch from "../../components/search/SpecificSearch";
@@ -14,11 +15,17 @@ export const getServerSideProps = async (context) => {
   const pageNum = context.query.page;
   const categoryName = slug.split("-").join(" ");
 
-  const books = await getCategoryBooks(slug, pageNum);
+  let books;
+  if (context.query.searchTerms === undefined) {
+    books = await getCategoryBooks(slug, pageNum);
+  } else {
+    const keywords = context.query.searchTerms;
+    books = await searchWithinCategory(slug, keywords, pageNum);
+  }
 
   return {
     props: {
-      books: books.data.books,
+      books: books.data.results,
       pagy: books.data.pagy,
       categoryName: categoryName,
       categorySlug: slug,
@@ -38,7 +45,11 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
         </Head>
         <HeaderImage name={categoryName} slug={categorySlug} />
         <div>
-          <SpecificSearch />
+          <SpecificSearch
+            baseUrl="/categories"
+            searchContext="category"
+            dynamicValue={categorySlug}
+          />
         </div>
         <div className="pt-10 pb-20 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {books.map((book) => {
