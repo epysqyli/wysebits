@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import BookSearchTile from "../../../../components/books/BookSearchTile";
-import NoAccess from "../../../../components/users/NoAccess";
-import SearchInput from "../../../../components/navigation/SearchInput";
-import CreateBookBtn from "../../../../components/users/CreateBookBtn";
-import { searchBooks } from "../../../../lib/searchMethods";
-import NoSearchResults from "../../../../components/navigation/NoSearchResults";
-import Pagination from "../../../../components/navigation/Pagination";
+import BookSearchTile from "../../../components/books/BookSearchTile";
+import NoAccess from "../../../components/users/NoAccess";
+import SearchInput from "../../../components/navigation/SearchInput";
+import CreateBookBtn from "../../../components/users/CreateBookBtn";
+import { searchBooks } from "../../../lib/searchMethods";
+import NoSearchResults from "../../../components/navigation/NoSearchResults";
+import Pagination from "../../../components/navigation/Pagination";
 
 export const getServerSideProps = async (context) => {
   try {

@@ -33,7 +33,13 @@ const SearchInput = ({
   const router = useRouter();
   const getQuery = (query) => query.split(" ").join("-");
   const goToResults = (query = searchTerms) =>
-    router.push(`${pageDest}${getQuery(query)}/1`);
+    router.push({
+      pathname: `${pageDest}[keywords]`,
+      query: {
+        keywords: `${getQuery(query)}`,
+        page: 1,
+      },
+    });
 
   const updateHistory = (terms) => {
     if (searchMode === "books") addToHistory(terms, "booksHistory");
@@ -226,7 +232,9 @@ const SearchInput = ({
           <div>
             No results for these terms. Try another words combination or{" "}
             <Link href="/users/book-tiles/create/create-book">
-              <span className="underline cursor-pointer">add the book you are looking for now if logged</span>
+              <span className="underline cursor-pointer">
+                add the book you are looking for now if logged
+              </span>
             </Link>
           </div>
         )

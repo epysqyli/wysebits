@@ -8,10 +8,22 @@ const SuggestBox = ({ suggestions, suggestLink, searchMode }) => {
 
   const buildLink = (result) => {
     if (suggestLink === "/books/")
-      return `${suggestLink}${slug(result.title, result.id)}/1`;
+      return {
+        pathname: "/books/[slug]",
+        query: {
+          slug: `${slug(result.title, result.id)}`,
+          page: 1,
+        },
+      };
 
     if (suggestLink === "/authors/")
-      return `${suggestLink}${slug(result.full_name, result.id)}/1`;
+      return {
+        pathname: "/authors/[slug]",
+        query: {
+          slug: `${slug(result.full_name, result.id)}`,
+          page: 1,
+        },
+      };
 
     if (suggestLink == "/users/book-tiles/create/")
       return `${suggestLink}${result.id}`;

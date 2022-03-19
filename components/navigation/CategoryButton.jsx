@@ -1,6 +1,5 @@
 import { ArrowRightCircle } from "react-feather";
 import Link from "next/dist/client/link";
-import slugify from "slugify";
 
 const CategoryButton = ({ category }) => {
   return (

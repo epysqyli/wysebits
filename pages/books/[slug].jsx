@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Bookmark, FilePlus } from "react-feather";
-import TileEntry from "../../../components/books/TileEntry";
-import CardBcg from "../../../components/books/CardBcg";
-import NoItem from "../../../components/users/NoItem";
-import PageNavButton from "../../../components/navigation/PageNavButton";
-import Recommendations from "../../../components/books/Recommendations";
+import TileEntry from "../../components/books/TileEntry";
+import CardBcg from "../../components/books/CardBcg";
+import NoItem from "../../components/users/NoItem";
+import PageNavButton from "../../components/navigation/PageNavButton";
+import Recommendations from "../../components/books/Recommendations";
 import Link from "next/dist/client/link";
 import Head from "next/head";
 
@@ -18,7 +18,7 @@ import {
   getBook,
   getCategoryRecommendations,
   getAllFavBooks,
-} from "../../../lib/serverSideMethods";
+} from "../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
   const slug = context.query.slug;
