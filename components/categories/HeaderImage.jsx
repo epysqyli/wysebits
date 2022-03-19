@@ -91,7 +91,7 @@ const HeaderImage = ({ name, slug }) => {
 
   return (
     <div className={style}>
-      <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
+      <div className="bg-gray-800 bg-opacity-70 text-white text-4xl lg:text-5xl font-bold text-center py-16 lg:rounded-md">
         {capitalize(name)}
       </div>
     </div>

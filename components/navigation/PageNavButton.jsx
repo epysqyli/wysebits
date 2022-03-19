@@ -1,8 +1,11 @@
 import { ArrowLeft, ArrowRight } from "react-feather";
 import Link from "next/dist/client/link";
 
-const PageNavButton = ({ direction, url, clientUrl }) => {
+const PageNavButton = ({ direction, url, clientUrl, opts }) => {
   const pageNum = url.split("?page=")[1] || "";
+
+  const optsKey = opts ? [Object.keys(opts)[0]] : "";
+  const optsValue = opts ? [Object.values(opts)[0]] : "";
 
   if (pageNum == "" && direction == "left")
     return (
@@ -16,7 +19,7 @@ const PageNavButton = ({ direction, url, clientUrl }) => {
       <Link
         href={{
           pathname: clientUrl,
-          query: { page: pageNum },
+          query: { page: pageNum, [optsKey]: optsValue },
         }}
       >
         <div className="py-2 text-center rounded shadow-md cursor-pointer bg-white hover:shadow-none active:shadow-inner transition-colors group">
@@ -37,7 +40,7 @@ const PageNavButton = ({ direction, url, clientUrl }) => {
       <Link
         href={{
           pathname: clientUrl,
-          query: { page: pageNum },
+          query: { page: pageNum, [optsKey]: optsValue },
         }}
       >
         <div className="py-2 text-center rounded shadow-md cursor-pointer bg-white hover:shadow-none active:shadow-inner transition-colors group">

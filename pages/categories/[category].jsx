@@ -29,11 +29,20 @@ export const getServerSideProps = async (context) => {
       pagy: books.data.pagy,
       categoryName: categoryName,
       categorySlug: slug,
+      searchParams: context.query.searchTerms
+        ? { searchTerms: context.query.searchTerms }
+        : null,
     },
   };
 };
 
-const Category = ({ books, categoryName, categorySlug, pagy }) => {
+const Category = ({
+  books,
+  categoryName,
+  categorySlug,
+  pagy,
+  searchParams,
+}) => {
   const clientUrl = `/categories/${categorySlug}`;
 
   if (books.length !== 0)
@@ -72,7 +81,7 @@ const Category = ({ books, categoryName, categorySlug, pagy }) => {
           })}
         </div>
 
-        <Pagination clientUrl={clientUrl} pagy={pagy} />
+        <Pagination clientUrl={clientUrl} pagy={pagy} opts={searchParams} />
       </>
     );
 

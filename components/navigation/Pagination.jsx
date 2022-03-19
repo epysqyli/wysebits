@@ -1,6 +1,6 @@
 import PageNavButton from "./PageNavButton";
 
-const Pagination = ({ pagy, clientUrl }) => {
+const Pagination = ({ pagy, clientUrl, opts }) => {
   if (pagy.prev === null && pagy.next === null) return null;
 
   return (
@@ -10,6 +10,7 @@ const Pagination = ({ pagy, clientUrl }) => {
           direction="left"
           clientUrl={clientUrl}
           url={pagy.prev_url}
+          opts={opts}
         />
       </div>
       <div className="w-1/3">
@@ -17,6 +18,7 @@ const Pagination = ({ pagy, clientUrl }) => {
           direction="right"
           clientUrl={clientUrl}
           url={pagy.next_url}
+          opts={opts}
         />
       </div>
     </div>
