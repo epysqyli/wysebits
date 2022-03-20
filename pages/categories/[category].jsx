@@ -88,6 +88,25 @@ const Category = ({
       </>
     );
 
+  if (books.length === 0 && currentSearchTerms !== null)
+    return (
+      <>
+        <Head>
+          <title>{capitalize(categoryName)} Books</title>
+          <link rel="icon" href="/logo.png" />
+        </Head>
+        <HeaderImage name={categoryName} slug={categorySlug} />
+        <div>
+          <SpecificSearch
+            baseUrl="/categories"
+            searchContext="category"
+            dynamicValue={categorySlug}
+            currentSearchTerms={currentSearchTerms}
+          />
+        </div>
+      </>
+    );
+
   if (books.length === 0)
     return (
       <>

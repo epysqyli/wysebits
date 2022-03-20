@@ -47,6 +47,10 @@ const SpecificSearch = ({
     if (currentSearchTerms) setSearchTerms(currentSearchTerms);
   }, []);
 
+  useEffect(() => {
+    if (searchTerms === "") clearSearch();
+  }, [searchTerms]);
+
   return (
     <div
       className="flex justify-center items-center gap-x-5"
