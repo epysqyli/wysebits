@@ -84,9 +84,9 @@ const Home = ({ categories, userState, trending }) => {
               <div className="transition-transform">
                 <Repeat size={18} strokeWidth={1.6} />
               </div>
-              <div className="text-sm group-active:scale-95">
+              <div className="group-active:scale-95 text-gray-700">
                 {searchMode === "books"
-                  ? "or switch to authors"
+                  ? "switch to authors"
                   : "switch to books"}
               </div>
             </div>
