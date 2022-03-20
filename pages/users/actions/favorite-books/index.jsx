@@ -7,17 +7,34 @@ import NoItem from "../../../../components/users/NoItem";
 import SearchInput from "../../../../components/navigation/SearchInput";
 import Pagination from "../../../../components/navigation/Pagination";
 import { getLoggedUser, getFavBooks } from "../../../../lib/serverSideMethods";
+import SpecificSearch from "../../../../components/search/SpecificSearch";
+import { searchWithinFavBooks } from "../../../../lib/searchMethods";
 
 export const getServerSideProps = async (context) => {
   try {
     const pageNum = context.query.page;
     const loggedUser = await getLoggedUser(context);
-    const books = await getFavBooks(loggedUser, context, pageNum);
+
+    let books;
+    if (context.query.searchTerms === undefined) {
+      books = await getFavBooks(loggedUser, context, pageNum);
+    } else {
+      const keywords = context.query.searchTerms;
+      books = await searchWithinFavBooks(
+        loggedUser.data.user.id,
+        keywords,
+        pageNum
+      );
+    }
 
     return {
       props: {
-        books: books.data.books,
+        books: books.data.results,
         pagy: books.data.pagy,
+        currentSearchTerms: context.query.searchTerms ?? null,
+        searchParams: context.query.searchTerms
+          ? { searchTerms: context.query.searchTerms }
+          : null,
       },
     };
   } catch (error) {
@@ -29,13 +46,33 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-const FavoriteBooks = ({ books, pagy, userState }) => {
+const FavoriteBooks = ({
+  books,
+  pagy,
+  userState,
+  currentSearchTerms,
+  searchParams,
+}) => {
   const clientUrl = "/users/actions/favorite-books";
 
   const slug = (title, id) =>
     slugify(`${title}-${id}`, { lower: true, strict: true });
 
-  if (userState.isLogged && books.length == 0)
+  if (userState.isLogged && books.length === 0 && currentSearchTerms !== null)
+    return (
+      <>
+        <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
+        <div className="mt-5">
+          <SpecificSearch
+            placeholder="search within your favorite books"
+            baseUrl="/users/actions/favorite-books"
+            currentSearchTerms={currentSearchTerms}
+          />
+        </div>
+      </>
+    );
+
+  if (userState.isLogged && books.length === 0)
     return (
       <>
         <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
@@ -65,6 +102,13 @@ const FavoriteBooks = ({ books, pagy, userState }) => {
     return (
       <>
         <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
+        <div className="mt-5">
+          <SpecificSearch
+            placeholder="search within your favorite books"
+            baseUrl="/users/actions/favorite-books"
+            currentSearchTerms={currentSearchTerms}
+          />
+        </div>
         <div className="py-16 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {books.map((item) => {
             return (

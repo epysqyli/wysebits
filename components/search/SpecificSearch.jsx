@@ -13,25 +13,37 @@ const SpecificSearch = ({
   const router = useRouter();
 
   const search = () => {
-    router.push({
-      pathname: `${baseUrl}/[${searchContext}]`,
-      query: {
-        [searchContext]: dynamicValue,
-        page: 1,
-        searchTerms: searchTerms,
-      },
-    });
+    if (dynamicValue !== undefined)
+      router.push({
+        pathname: `${baseUrl}/[${searchContext}]`,
+        query: {
+          [searchContext]: dynamicValue,
+          page: 1,
+          searchTerms: searchTerms,
+        },
+      });
+    else
+      router.push({
+        pathname: baseUrl,
+        query: { page: 1, searchTerms: searchTerms },
+      });
   };
 
   const clearSearch = () => {
     setSearchTerms("");
-    router.push({
-      pathname: `${baseUrl}/[${searchContext}]`,
-      query: {
-        [searchContext]: dynamicValue,
-        page: 1,
-      },
-    });
+    if (dynamicValue !== undefined)
+      router.push({
+        pathname: `${baseUrl}/[${searchContext}]`,
+        query: {
+          [searchContext]: dynamicValue,
+          page: 1,
+        },
+      });
+    else
+      router.push({
+        pathname: baseUrl,
+        query: { page: 1 },
+      });
   };
 
   const handleKeyPress = (e) => {
