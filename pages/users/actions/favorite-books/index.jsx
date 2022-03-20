@@ -9,6 +9,7 @@ import Pagination from "../../../../components/navigation/Pagination";
 import { getLoggedUser, getFavBooks } from "../../../../lib/serverSideMethods";
 import SpecificSearch from "../../../../components/search/SpecificSearch";
 import { searchWithinFavBooks } from "../../../../lib/searchMethods";
+import NoResults from "../../../../components/search/NoResults";
 
 export const getServerSideProps = async (context) => {
   try {
@@ -64,11 +65,12 @@ const FavoriteBooks = ({
         <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
         <div className="mt-5">
           <SpecificSearch
-            placeholder="search within your favorite books"
+            placeholder="search favorite books"
             baseUrl="/users/actions/favorite-books"
             currentSearchTerms={currentSearchTerms}
           />
         </div>
+        <NoResults />
       </>
     );
 
@@ -104,7 +106,7 @@ const FavoriteBooks = ({
         <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
         <div className="mt-5">
           <SpecificSearch
-            placeholder="search within your favorite books"
+            placeholder="search favorite books"
             baseUrl="/users/actions/favorite-books"
             currentSearchTerms={currentSearchTerms}
           />
@@ -113,7 +115,7 @@ const FavoriteBooks = ({
           {books.map((item) => {
             return (
               <Link
-                href={`/books/${slug(item.book.title, item.book.id)}/1`}
+                href={`/books/${slug(item.book.title, item.book.id)}?page=1`}
                 key={item.book.id}
               >
                 <div className="rounded-md bg-white shadow-lg hover:bg-gray-50 hover:shadow-xl transition-all cursor-pointer active:shadow-inner border-b-2 border-blue-200 hover:border-blue-300">

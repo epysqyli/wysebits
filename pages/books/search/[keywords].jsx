@@ -53,7 +53,7 @@ const BookSearchResults = ({ searchResults, keywords, pagy }) => {
                 return (
                   <BookSearchTile
                     bookData={book}
-                    destPage={`/books/${slug(book.title, book.id)}/1`}
+                    destPage={`/books/${slug(book.title, book.id)}?page=1`}
                     key={book.id}
                   />
                 );

@@ -25,7 +25,7 @@ const BookUserInsights = ({
               href={`/books/${slug(
                 bookInsights[0].book_tile.book.title,
                 bookInsights[0].book_tile.book.id
-              )}/1`}
+              )}?page=1`}
             >
               {bookInsights[0].book_tile.book.title}
             </Link>

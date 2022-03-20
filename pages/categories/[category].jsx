@@ -9,6 +9,7 @@ import { searchWithinCategory } from "../../lib/searchMethods";
 import { capitalize, slug } from "../../lib/utils";
 import HeaderImage from "../../components/categories/HeaderImage";
 import SpecificSearch from "../../components/search/SpecificSearch";
+import NoResults from "../../components/search/NoResults";
 
 export const getServerSideProps = async (context) => {
   const slug = context.params.category;
@@ -55,15 +56,16 @@ const Category = ({
           <link rel="icon" href="/logo.png" />
         </Head>
         <HeaderImage name={categoryName} slug={categorySlug} />
-        <div>
+        <div className="mt-5">
           <SpecificSearch
+            placeholder="search category"
             baseUrl="/categories"
             searchContext="category"
             dynamicValue={categorySlug}
             currentSearchTerms={currentSearchTerms}
           />
         </div>
-        <div className="pt-10 pb-20 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+        <div className="py-16 pb-20 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {books.map((book) => {
             return (
               <Link
@@ -96,7 +98,7 @@ const Category = ({
           <link rel="icon" href="/logo.png" />
         </Head>
         <HeaderImage name={categoryName} slug={categorySlug} />
-        <div>
+        <div className="mt-5">
           <SpecificSearch
             baseUrl="/categories"
             searchContext="category"
@@ -104,6 +106,7 @@ const Category = ({
             currentSearchTerms={currentSearchTerms}
           />
         </div>
+        <NoResults />
       </>
     );
 

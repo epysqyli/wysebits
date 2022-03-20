@@ -29,7 +29,7 @@ export const getServerSideProps = async (context) => {
       props: {
         user: user.data,
         following: following.data,
-        favBooks: favBooks.data.books,
+        favBooks: favBooks.data.results,
         favInsights: favInsights.data.tile_entries,
         entriesUp: upvotedEntries.data.upvoted_entries,
         entriesDown: downvotedEntries.data.downvoted_entries,

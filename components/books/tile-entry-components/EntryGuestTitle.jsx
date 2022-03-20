@@ -11,7 +11,7 @@ const EntryGuestTitle = ({ entryProp }) => {
           href={`/books/${slug(
             entryProp.book_tile.book.title,
             entryProp.book_tile.book.id
-          )}/1`}
+          )}?page=1`}
         >
           <div className="px-2 pt-4 flex justify-center items-center gap-x-5 transition-transform cursor-pointer group">
             <div className="text-sm text-gray-600">

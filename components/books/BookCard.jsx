@@ -46,7 +46,7 @@ const BookCard = ({
 
         <div className="w-4/6 flex flex-col justify-around text-center tracking-tight lg:w-4/5 lg:mx-auto lg:gap-y-2">
           {showBookLink ? (
-            <Link href={`/books/${slug(bookData.title, bookData.id)}/1`}>
+            <Link href={`/books/${slug(bookData.title, bookData.id)}?page=1`}>
               <div className="text-xl font-medium break-words cursor-pointer hover:text-gray-300 active:text-gray-400">
                 {shortenText(bookData.title, 8)}
               </div>
@@ -58,7 +58,7 @@ const BookCard = ({
           )}
 
           {showCategoryLink && bookData.category.slug !== "no-category" ? (
-            <Link href={`/categories/${bookData.category.slug}/1`}>
+            <Link href={`/categories/${bookData.category.slug}?page=1`}>
               <div className="cursor-pointer hover:text-gray-300 active:text-gray-400">
                 {bookData.category.name}
               </div>
@@ -116,7 +116,7 @@ const BookCard = ({
 
       <div className="w-3/6 flex flex-col justify-around text-right tracking-tight">
         {showBookLink ? (
-          <Link href={`/books/${slug(bookData.title, bookData.id)}/1`}>
+          <Link href={`/books/${slug(bookData.title, bookData.id)}?page=1`}>
             <div className="text-xl font-medium break-words cursor-pointer hover:text-gray-300 active:text-gray-400">
               {shortenText(bookData.title, 8)}
             </div>
@@ -128,7 +128,7 @@ const BookCard = ({
         )}
 
         {showCategoryLink && bookData.category.slug !== "no-category" ? (
-          <Link href={`/categories/${bookData.category.slug}/1`}>
+          <Link href={`/categories/${bookData.category.slug}?page=1`}>
             <div className="flex justify-end items-center gap-x-2 cursor-pointer hover:text-gray-300 active:text-gray-400 mr-0 mx-auto group">
               <div>{bookData.category.name}</div>
               <ArrowUpRight
