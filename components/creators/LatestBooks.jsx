@@ -32,7 +32,7 @@ const LatestBooks = ({
 
   return (
     <>
-      <div className="text-center text-gray-800 text-5xl">Latest books</div>
+      <div className="text-center text-gray-100 font-medium text-5xl">Latest books</div>
       <div className="py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
         {latest.map((book) => {
           return (

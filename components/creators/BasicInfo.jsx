@@ -62,13 +62,13 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
             }}
           >
             <div className="flex items-center gap-x-2 group p-1 cursor-pointer hover:shadow-md hover:rounded-md active:shadow-inner">
-              <BookOpen size={20} />
-              <div className="text-gray-200 md:text-gray-700">
+              <BookOpen size={20} className="text-gray-200" />
+              <div className="text-gray-200 md:text-gray-100">
                 {user.book_tiles.length} books
               </div>
               <ArrowUpRight
                 size={18}
-                className="text-gray-600 group-hover:scale-125 group-active:scale-100 transition-transform hidden md:block"
+                className="text-gray-200 group-hover:scale-125 group-active:scale-100 transition-transform hidden md:block"
               />
             </div>
           </Link>
@@ -82,20 +82,20 @@ const BasicInfo = ({ user, following, setFollowedUsers, userState }) => {
             }}
           >
             <div className="flex items-center gap-x-2 group p-1 cursor-pointer hover:shadow-md hover:rounded-md active:shadow-inner">
-              <AlignCenter size={20} />
-              <div className="text-gray-200 md:text-gray-700">
+              <AlignCenter size={20} className="text-gray-200" />
+              <div className="text-gray-200 md:text-gray-100">
                 {countTotalInsights(user.book_tiles)} insights
               </div>
               <ArrowUpRight
                 size={18}
-                className="text-gray-600 group-hover:scale-125 group-active:scale-100 transition-transform hidden md:block"
+                className="text-gray-200 group-hover:scale-125 group-active:scale-100 transition-transform hidden md:block"
               />
             </div>
           </Link>
           <Link href={`#`}>
             <div className="flex items-center gap-x-2">
-              <Users size={20} />
-              <div className="text-gray-200 md:text-gray-700">
+              <Users size={20} className="text-gray-200" />
+              <div className="text-gray-200 md:text-gray-100">
                 {user.followers.length} followers
               </div>
             </div>

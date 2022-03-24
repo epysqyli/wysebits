@@ -16,7 +16,7 @@ const LatestEntries = ({
   if (userState.isLogged === true)
     return (
       <>
-        <div className="text-center text-gray-800 text-5xl">
+        <div className="text-center text-gray-100 font-medium text-5xl">
           Latest insights
         </div>
         <div className="my-10 w-4/5 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 xl:w-4/5 2xl:w-3/5 lg:grid-cols-2 lg:gap-x-6">
@@ -32,9 +32,7 @@ const LatestEntries = ({
                 upvotedEntries={upvotedEntries}
                 downvotedEntries={downvotedEntries}
                 setInsights={setInsights}
-                upvotedEntries={upvotedEntries}
                 setUpvotedEntries={setUpvotedEntries}
-                downvotedEntries={downvotedEntries}
                 setDownvotedEntries={setDownvotedEntries}
                 followedUsers={followedUsers}
                 setFollowedUsers={setFollowedUsers}
