@@ -126,7 +126,7 @@ const FavoriteBooks = ({
           })}
         </div>
 
-        <Pagination clientUrl={clientUrl} pagy={pagy} />
+        <Pagination clientUrl={clientUrl} pagy={pagy} opts={searchParams} />
       </>
     );
 

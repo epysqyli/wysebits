@@ -5,6 +5,8 @@ import BookCard from "../../../components/books/BookCard";
 import Pagination from "../../../components/navigation/Pagination";
 import BookUserInsights from "../../../components/creators/BookUserInsights";
 import { getBookUserInsights } from "../../../lib/creatorMethods";
+import { searchWithinFavBooks } from "../../../lib/searchMethods";
+import SpecificSearch from "../../../components/search/SpecificSearch";
 
 import {
   getLoggedUser,
