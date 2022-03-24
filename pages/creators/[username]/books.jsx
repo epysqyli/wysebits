@@ -5,7 +5,7 @@ import BookCard from "../../../components/books/BookCard";
 import Pagination from "../../../components/navigation/Pagination";
 import BookUserInsights from "../../../components/creators/BookUserInsights";
 import { getBookUserInsights } from "../../../lib/creatorMethods";
-import { searchWithinFavBooks } from "../../../lib/searchMethods";
+import { searchWithinCreatorBooks } from "../../../lib/searchMethods";
 import SpecificSearch from "../../../components/search/SpecificSearch";
 
 import {
@@ -22,7 +22,19 @@ export const getServerSideProps = async (context) => {
   const username = context.params.username;
   const pageNum = context.query.page;
   const user = await getUser(username);
-  const bookTiles = await getBookTiles(user, pageNum);
+
+  let bookTiles;
+  if (context.query.searchTerms === undefined) {
+    bookTiles = await getBookTiles(user, pageNum);
+  } else {
+    const keywords = context.query.searchTerms;
+    bookTiles = await searchWithinCreatorBooks(
+      user.data.user.id,
+      keywords,
+      pageNum
+    );
+  }
+
   const pagy = bookTiles.data.pagy;
   const books = bookTiles.data.tiles.map((tile) => tile.book);
 
@@ -42,6 +54,10 @@ export const getServerSideProps = async (context) => {
         following: following.data,
         entriesUp: upvotedEntries.data.upvoted_entries,
         entriesDown: downvotedEntries.data.downvoted_entries,
+        currentSearchTerms: context.query.searchTerms ?? null,
+        searchParams: context.query.searchTerms
+          ? { searchTerms: context.query.searchTerms }
+          : null,
       },
     };
   } catch (error) {
@@ -51,6 +67,10 @@ export const getServerSideProps = async (context) => {
         pagy: pagy,
         username: username,
         userId: user.data.user.id,
+        currentSearchTerms: context.query.searchTerms ?? null,
+        searchParams: context.query.searchTerms
+          ? { searchTerms: context.query.searchTerms }
+          : null,
       },
     };
   }
@@ -66,6 +86,8 @@ const UserBooks = ({
   following,
   entriesUp,
   entriesDown,
+  currentSearchTerms,
+  searchParams
 }) => {
   const clientUrl = `/creators/${username}/books`;
 
@@ -102,6 +124,14 @@ const UserBooks = ({
           </div>
         </div>
 
+        <div className="mt-5">
+          <SpecificSearch
+            placeholder="search within books"
+            baseUrl={`/creators/${username}/books`}
+            currentSearchTerms={currentSearchTerms}
+          />
+        </div>
+
         <div>
           <div className="py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
             {books.map((book) => {
@@ -132,7 +162,7 @@ const UserBooks = ({
             })}
           </div>
 
-          <Pagination clientUrl={clientUrl} pagy={pagy} />
+          <Pagination clientUrl={clientUrl} pagy={pagy} opts={searchParams} />
         </div>
       </div>
     );
