@@ -5,7 +5,7 @@ import BookCard from "../../../components/books/BookCard";
 import Pagination from "../../../components/navigation/Pagination";
 import BookUserInsights from "../../../components/creators/BookUserInsights";
 import { getBookUserInsights } from "../../../lib/creatorMethods";
-import { searchWithinCreatorBooks } from "../../../lib/searchMethods";
+import { searchWithinBookTiles } from "../../../lib/searchMethods";
 import SpecificSearch from "../../../components/search/SpecificSearch";
 import NoResults from "../../../components/search/NoResults";
 
@@ -29,7 +29,7 @@ export const getServerSideProps = async (context) => {
     bookTiles = await getBookTiles(user, pageNum);
   } else {
     const keywords = context.query.searchTerms;
-    bookTiles = await searchWithinCreatorBooks(
+    bookTiles = await searchWithinBookTiles(
       user.data.user.id,
       keywords,
       pageNum
