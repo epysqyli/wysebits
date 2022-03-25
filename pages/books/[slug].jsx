@@ -113,7 +113,7 @@ const Book = ({
           <link rel="icon" href="/logo.png" />
         </Head>
         <CardBcg bookData={book} userState={userState} favBooks={favBooks} />
-        <div className="my-10 w-4/5 md:w-3/5 2xl:w-2/3 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
+        <div className="my-10 w-11/12 md:w-3/5 2xl:w-2/3 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
           {entries.map((entry) => {
             return (
               <div
