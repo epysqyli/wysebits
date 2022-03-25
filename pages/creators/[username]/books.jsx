@@ -7,6 +7,7 @@ import BookUserInsights from "../../../components/creators/BookUserInsights";
 import { getBookUserInsights } from "../../../lib/creatorMethods";
 import { searchWithinCreatorBooks } from "../../../lib/searchMethods";
 import SpecificSearch from "../../../components/search/SpecificSearch";
+import NoResults from "../../../components/search/NoResults";
 
 import {
   getLoggedUser,
@@ -87,7 +88,7 @@ const UserBooks = ({
   entriesUp,
   entriesDown,
   currentSearchTerms,
-  searchParams
+  searchParams,
 }) => {
   const clientUrl = `/creators/${username}/books`;
 
@@ -165,6 +166,32 @@ const UserBooks = ({
           <Pagination clientUrl={clientUrl} pagy={pagy} opts={searchParams} />
         </div>
       </div>
+    );
+
+  if (books.length === 0 && currentSearchTerms !== null)
+    return (
+      <>
+        <Head>
+          <title>Books read by {username}</title>
+          <link rel="icon" href="/logo.png" />
+        </Head>
+        <div className="bg-check-book-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
+          <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
+            <div className="mx-auto w-4/5">
+              All books contributed to by {username}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-5">
+          <SpecificSearch
+            placeholder="search within books"
+            baseUrl={`/creators/${username}/books`}
+            currentSearchTerms={currentSearchTerms}
+          />
+        </div>
+        <NoResults />
+      </>
     );
 
   if (books.length === 0)

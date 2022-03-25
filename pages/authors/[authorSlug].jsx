@@ -11,8 +11,8 @@ import SpecificSearch from "../../components/search/SpecificSearch";
 import NoResults from "../../components/search/NoResults";
 
 export const getServerSideProps = async (context) => {
-  const urlSlug = context.query.slug;
-  const splitSlug = context.query.slug.split("-");
+  const urlSlug = context.query.authorSlug;
+  const splitSlug = context.query.authorSlug.split("-");
   const authorName = splitSlug
     .slice(0, splitSlug.length - 1)
     .map((str) => capitalize(str))
@@ -76,7 +76,7 @@ const Author = ({
           <SpecificSearch
             placeholder="search author books"
             baseUrl="/authors"
-            searchContext="slug"
+            searchContext="authorSlug"
             dynamicValue={urlSlug}
             currentSearchTerms={currentSearchTerms}
           />
@@ -124,7 +124,7 @@ const Author = ({
           <SpecificSearch
             placeholder="search author books"
             baseUrl="/authors"
-            searchContext="slug"
+            searchContext="authorSlug"
             dynamicValue={urlSlug}
             currentSearchTerms={currentSearchTerms}
           />

@@ -70,9 +70,9 @@ const BookCard = ({
           {showAuthorLink && authorName && authorId ? (
             <Link
               href={{
-                pathname: `/authors/[slug]`,
+                pathname: `/authors/[authorSlug]`,
                 query: {
-                  slug: `${slug(authorName, authorId)}`,
+                  authorSlug: `${slug(authorName, authorId)}`,
                   page: 1,
                 },
               }}
@@ -144,9 +144,9 @@ const BookCard = ({
         {showAuthorLink && authorName && authorId ? (
           <Link
             href={{
-              pathname: `/authors/[slug]`,
+              pathname: `/authors/[authorSlug]`,
               query: {
-                slug: `${slug(authorName, authorId)}`,
+                authorSlug: `${slug(authorName, authorId)}`,
                 page: 1,
               },
             }}
