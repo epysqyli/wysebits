@@ -110,65 +110,7 @@ const UserBooks = ({
 
   const closeBookInsight = () => setShowInsights(false);
 
-  if (books.length !== 0)
-    return (
-      <div>
-        <Head>
-          <title>Books read by {username}</title>
-          <link rel="icon" href="/logo.png" />
-        </Head>
-        <div className="bg-check-book-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
-          <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
-            <div className="mx-auto w-4/5">
-              All books contributed to by {username}
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-5">
-          <SpecificSearch
-            placeholder="search within books"
-            baseUrl={`/creators/${username}/books`}
-            currentSearchTerms={currentSearchTerms}
-          />
-        </div>
-
-        <div>
-          <div className="py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
-            {books.map((book) => {
-              return (
-                <div key={book.id}>
-                  <div onClick={() => showBookInsights(book.id)}>
-                    <div className="rounded-md bg-white shadow-lg hover:bg-gray-50 hover:shadow-xl transition-all cursor-pointer active:shadow-inner border-b-2 border-blue-200 hover:border-blue-300">
-                      <BookCard bookData={book} />
-                    </div>
-                  </div>
-                  {showInsights === true ? (
-                    <BookUserInsights
-                      closeInsight={closeBookInsight}
-                      bookInsights={bookInsights}
-                      user={userState}
-                      insights={insights}
-                      setInsights={setInsights}
-                      upvotedEntries={upvotedEntries}
-                      setUpvotedEntries={setUpvotedEntries}
-                      downvotedEntries={downvotedEntries}
-                      setDownvotedEntries={setDownvotedEntries}
-                      followedUsers={followedUsers}
-                      setFollowedUsers={setFollowedUsers}
-                    />
-                  ) : null}
-                </div>
-              );
-            })}
-          </div>
-
-          <Pagination clientUrl={clientUrl} pagy={pagy} opts={searchParams} />
-        </div>
-      </div>
-    );
-
-  if (books.length === 0 && currentSearchTerms !== null)
+  if (books.length === 0 && currentSearchTerms)
     return (
       <>
         <Head>
@@ -190,6 +132,7 @@ const UserBooks = ({
             currentSearchTerms={currentSearchTerms}
           />
         </div>
+
         <NoResults />
       </>
     );
@@ -225,6 +168,63 @@ const UserBooks = ({
         </div>
       </>
     );
+
+  return (
+    <div>
+      <Head>
+        <title>Books read by {username}</title>
+        <link rel="icon" href="/logo.png" />
+      </Head>
+      <div className="bg-check-book-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
+        <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
+          <div className="mx-auto w-4/5">
+            All books contributed to by {username}
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-5">
+        <SpecificSearch
+          placeholder="search within books"
+          baseUrl={`/creators/${username}/books`}
+          currentSearchTerms={currentSearchTerms}
+        />
+      </div>
+
+      <div>
+        <div className="py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+          {books.map((book) => {
+            return (
+              <div key={book.id}>
+                <div onClick={() => showBookInsights(book.id)}>
+                  <div className="rounded-md bg-white shadow-lg hover:bg-gray-50 hover:shadow-xl transition-all cursor-pointer active:shadow-inner border-b-2 border-blue-200 hover:border-blue-300">
+                    <BookCard bookData={book} />
+                  </div>
+                </div>
+                {showInsights === true ? (
+                  <BookUserInsights
+                    closeInsight={closeBookInsight}
+                    bookInsights={bookInsights}
+                    user={userState}
+                    insights={insights}
+                    setInsights={setInsights}
+                    upvotedEntries={upvotedEntries}
+                    setUpvotedEntries={setUpvotedEntries}
+                    downvotedEntries={downvotedEntries}
+                    setDownvotedEntries={setDownvotedEntries}
+                    followedUsers={followedUsers}
+                    setFollowedUsers={setFollowedUsers}
+                  />
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
+
+        <Pagination clientUrl={clientUrl} pagy={pagy} opts={searchParams} />
+      </div>
+    </div>
+  );
 };
 
 export default UserBooks;

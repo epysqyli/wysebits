@@ -13,7 +13,7 @@ const SpecificSearch = ({
   const router = useRouter();
 
   const search = () => {
-    if (dynamicValue !== undefined)
+    if (dynamicValue)
       router.push({
         pathname: `${baseUrl}/[${searchContext}]`,
         query: {
