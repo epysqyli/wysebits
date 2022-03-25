@@ -6,6 +6,9 @@ import Pagination from "../../components/navigation/Pagination";
 import NoItem from "../../components/users/NoItem";
 import SearchInput from "../../components/navigation/SearchInput";
 import Link from "next/dist/client/link";
+import { searchWithinAuthor } from "../../lib/searchMethods";
+import SpecificSearch from "../../components/search/SpecificSearch";
+import NoResults from "../../components/search/NoResults";
 
 export const getServerSideProps = async (context) => {
   const urlSlug = context.query.slug;
@@ -14,22 +17,46 @@ export const getServerSideProps = async (context) => {
     .slice(0, splitSlug.length - 1)
     .map((str) => capitalize(str))
     .join(" ");
-  const id = splitSlug[splitSlug.length - 1];
+
+  const authorId = splitSlug[splitSlug.length - 1];
   const pageNum = context.query.page;
 
-  const author = await getAuthor(id, pageNum);
+  let books;
+  let pagy;
+
+  if (context.query.searchTerms === undefined) {
+    const resp = await getAuthor(authorId, pageNum);
+    books = resp.data.books;
+    pagy = resp.data.pagy;
+  } else {
+    const keywords = context.query.searchTerms;
+    const resp = await searchWithinAuthor(authorId, keywords, pageNum);
+    books = resp.data.results;
+    pagy = resp.data.pagy;
+  }
 
   return {
     props: {
-      books: author.data.books,
-      pagy: author.data.pagy,
+      books: books,
+      pagy: pagy,
       authorName: authorName,
       urlSlug: urlSlug,
+      currentSearchTerms: context.query.searchTerms ?? null,
+      searchParams: context.query.searchTerms
+        ? { searchTerms: context.query.searchTerms }
+        : null,
     },
   };
 };
 
-const Author = ({ books, pagy, authorName, urlSlug }) => {
+const Author = ({
+  books,
+  pagy,
+  authorName,
+  urlSlug,
+  currentSearchTerms,
+  searchParams,
+}) => {
   const clientUrl = `/authors/${urlSlug}`;
 
   if (books.length !== 0)
@@ -43,6 +70,16 @@ const Author = ({ books, pagy, authorName, urlSlug }) => {
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl text-center py-16">
             {authorName}
           </div>
+        </div>
+
+        <div className="mt-5">
+          <SpecificSearch
+            placeholder="search author books"
+            baseUrl="/authors"
+            searchContext="slug"
+            dynamicValue={urlSlug}
+            currentSearchTerms={currentSearchTerms}
+          />
         </div>
 
         <div className="py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
@@ -66,7 +103,33 @@ const Author = ({ books, pagy, authorName, urlSlug }) => {
           })}
         </div>
 
-        <Pagination clientUrl={clientUrl} pagy={pagy} />
+        <Pagination clientUrl={clientUrl} pagy={pagy} opts={searchParams} />
+      </>
+    );
+
+  if (books.length === 0 && currentSearchTerms !== null)
+    return (
+      <>
+        <Head>
+          <title>{authorName}</title>
+          <link rel="icon" href="/logo.png" />
+        </Head>
+        <div className="bg-author bg-cover bg-center shadow">
+          <div className="bg-gray-800 bg-opacity-70 text-white text-4xl text-center py-16">
+            {authorName}
+          </div>
+        </div>
+
+        <div className="mt-5">
+          <SpecificSearch
+            placeholder="search author books"
+            baseUrl="/authors"
+            searchContext="slug"
+            dynamicValue={urlSlug}
+            currentSearchTerms={currentSearchTerms}
+          />
+        </div>
+        <NoResults />
       </>
     );
 
