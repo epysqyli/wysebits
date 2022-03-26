@@ -146,9 +146,9 @@ const Home = ({ categories, userState, trending }) => {
             <TrendingUser user={trending.user} />
           </div>
         </div>
-        <div className="md:w-4/5 md:mx-auto mt-10 lg:mt-20 lg:w-3/5">
+        {/* <div className="md:w-4/5 md:mx-auto mt-10 lg:mt-20 lg:w-3/5">
           <TrendingEntry entry={trending.insight} />
-        </div>
+        </div> */}
       </div>
 
       {userState.isLogged ? null : (

@@ -83,11 +83,6 @@ const SearchInput = ({
   const handleChange = async (e) => {
     const newSearchTerms = e.target.value;
     setSearchTerms(newSearchTerms);
-
-    if (newSearchTerms.length > 2) {
-      await getSuggestions(newSearchTerms);
-      setSearchLoading(false);
-    }
   };
 
   const handleKeyPress = (e) => {
@@ -122,16 +117,6 @@ const SearchInput = ({
     setBooksHistory(findOrCreateHistory("booksHistory").reverse());
     setAuthorsHistory(findOrCreateHistory("authorsHistory").reverse());
   }, []);
-
-  // ensures safe toggling between search modes
-  useEffect(() => setSuggestions(null), [searchMode]);
-
-  useEffect(() => {
-    if ((searchTerms && searchTerms.length < 3) || searchTerms == "") {
-      const newSuggestions = null;
-      setSuggestions(newSuggestions);
-    }
-  }, [searchTerms]);
 
   const recentBooksHistory =
     activeSearch &&
