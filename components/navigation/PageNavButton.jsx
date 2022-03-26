@@ -1,13 +1,12 @@
 import { ArrowLeft, ArrowRight } from "react-feather";
 import Link from "next/dist/client/link";
 
-const PageNavButton = ({ direction, url, clientUrl, opts }) => {
-  const pageNum = url.split("?page=")[1] || "";
+const PageNavButton = ({ direction, clientUrl, opts, pagy }) => {
 
   const optsKey = opts ? [Object.keys(opts)[0]] : "";
   const optsValue = opts ? [Object.values(opts)[0]] : "";
 
-  if (pageNum == "" && direction == "left")
+  if (pagy.prev === null && direction == "left")
     return (
       <div className="py-2 text-center text-gray-300 rounded shadow">
         <ArrowLeft className="w-min mx-auto" />
@@ -19,7 +18,7 @@ const PageNavButton = ({ direction, url, clientUrl, opts }) => {
       <Link
         href={{
           pathname: clientUrl,
-          query: { page: pageNum, [optsKey]: optsValue },
+          query: { page: pagy.prev, [optsKey]: optsValue },
         }}
       >
         <div className="py-2 text-center rounded shadow-md cursor-pointer bg-white hover:shadow-none active:shadow-inner transition-colors group">
@@ -28,7 +27,7 @@ const PageNavButton = ({ direction, url, clientUrl, opts }) => {
       </Link>
     );
 
-  if (pageNum == "" && direction == "right")
+  if (pagy.next === null && direction == "right")
     return (
       <div className="py-2 text-center text-gray-300 rounded shadow">
         <ArrowRight className="w-min mx-auto" />
@@ -40,7 +39,7 @@ const PageNavButton = ({ direction, url, clientUrl, opts }) => {
       <Link
         href={{
           pathname: clientUrl,
-          query: { page: pageNum, [optsKey]: optsValue },
+          query: { page: pagy.next, [optsKey]: optsValue },
         }}
       >
         <div className="py-2 text-center rounded shadow-md cursor-pointer bg-white hover:shadow-none active:shadow-inner transition-colors group">

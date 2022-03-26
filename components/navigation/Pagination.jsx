@@ -9,16 +9,16 @@ const Pagination = ({ pagy, clientUrl, opts }) => {
         <PageNavButton
           direction="left"
           clientUrl={clientUrl}
-          url={pagy.prev_url}
           opts={opts}
+          pagy={pagy}
         />
       </div>
       <div className="w-1/3">
         <PageNavButton
           direction="right"
           clientUrl={clientUrl}
-          url={pagy.next_url}
           opts={opts}
+          pagy={pagy}
         />
       </div>
     </div>

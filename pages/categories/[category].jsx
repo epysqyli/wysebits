@@ -24,10 +24,12 @@ export const getServerSideProps = async (context) => {
     books = await searchWithinCategory(slug, keywords, pageNum);
   }
 
+  const pagy = books.data.pagy;
+
   return {
     props: {
       books: books.data.results,
-      pagy: books.data.pagy,
+      pagy: pagy,
       categoryName: categoryName,
       categorySlug: slug,
       currentSearchTerms: context.query.searchTerms ?? null,
@@ -40,9 +42,9 @@ export const getServerSideProps = async (context) => {
 
 const Category = ({
   books,
+  pagy,
   categoryName,
   categorySlug,
-  pagy,
   searchParams,
   currentSearchTerms,
 }) => {
@@ -56,7 +58,7 @@ const Category = ({
           <link rel="icon" href="/logo.png" />
         </Head>
         <HeaderImage name={categoryName} slug={categorySlug} />
-        <div className="mt-5">
+        {/* <div className="mt-5">
           <SpecificSearch
             placeholder="search category"
             baseUrl="/categories"
@@ -64,7 +66,7 @@ const Category = ({
             dynamicValue={categorySlug}
             currentSearchTerms={currentSearchTerms}
           />
-        </div>
+        </div> */}
         <div className="py-16 pb-20 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {books.map((book) => {
             return (
@@ -86,7 +88,7 @@ const Category = ({
           })}
         </div>
 
-        <Pagination clientUrl={clientUrl} pagy={pagy} opts={searchParams} />
+        <Pagination clientUrl={clientUrl} pagy={pagy} />
       </>
     );
 
