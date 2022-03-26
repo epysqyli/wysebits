@@ -65,7 +65,7 @@ const ManageCategories = ({ cats, favCats, userState }) => {
 
   return (
     <>
-      <div className="bg-categories bg-cover bg-center shadow">
+      <div className="bg-categories bg-cover bg-center shadow select-none">
         <div className="bg-gray-800 bg-opacity-70 text-white text-2xl font-medium text-center py-12">
           <div>Update your favorite categories</div>
           <div className="text-sm mt-5 font-normal w-4/5 mx-auto">
