@@ -11,7 +11,7 @@ const About = ({ userState }) => {
       </Head>
       <div className="animate-show-up">
         <div className="h-60 mx-auto bg-discovery bg-no-repeat bg-cover bg-center">
-          <div className="bg-gray-800 h-full bg-opacity-80 relative"></div>
+          <div className="h-full bg-gray-900 opacity-50 relative"></div>
         </div>
 
         <div className="pt-10 pb-20 shadow">
