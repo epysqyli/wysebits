@@ -60,12 +60,12 @@ const ManageCategories = ({ cats, favCats, userState }) => {
   const baseClass =
     "rounded py-2 text-center text-gray-400 hover:text-gray-900 bg-gray-100 cursor-pointer border-2 transition-all select-none";
   const favClass =
-    "rounded py-2 text-center bg-white shadow-inner cursor-pointer transition-all border-2 border-blue-400";
+    "rounded py-2 text-center bg-white shadow-inner cursor-pointer transition-all border-2 border-blue-400 select-none";
   const noSelection = baseClass + " cursor-default";
 
   return (
     <>
-      <div className="bg-categories bg-cover bg-center shadow">
+      <div className="bg-categories bg-cover bg-center shadow select-none">
         <div className="bg-gray-800 bg-opacity-70 text-white text-2xl font-medium text-center py-12">
           <div>Update your favorite categories</div>
           <div className="text-sm mt-5 font-normal w-4/5 mx-auto">
