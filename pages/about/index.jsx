@@ -11,18 +11,14 @@ const About = ({ userState }) => {
       </Head>
       <div className="animate-show-up">
         <div className="h-60 mx-auto bg-discovery bg-no-repeat bg-cover bg-center">
-          <div className="bg-gray-800 h-full bg-opacity-80 relative">
-            <div className="w-4/6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="text-3xl font-bold text-gray-200 text-center">
-                About this place ...
-              </div>
-            </div>
-          </div>
+          <div className="bg-gray-800 h-full bg-opacity-80 relative"></div>
         </div>
 
         <div className="pt-10 pb-20 shadow">
           <div className="w-4/5 md:w-4/6 lg:w-3/5 xl:w-2/5 mx-auto">
-            <h3 className="text-3xl font-bold mb-5">What is Wysebits?</h3>
+            <h3 className="text-3xl text-center font-bold mb-5 text-gray-800">
+              What is Wysebits?
+            </h3>
             <p className="text-justify text-gray-800">
               Wysebits's vision is that of organizing knowledge contained in
               non-fiction books, so that for every book the most important idea
