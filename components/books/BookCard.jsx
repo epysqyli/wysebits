@@ -57,7 +57,7 @@ const BookCard = ({
             </div>
           )}
 
-          {showCategoryLink && bookData.category.slug !== "no-category" ? (
+          {showCategoryLink && bookData.category.slug !== "various" ? (
             <Link href={`/categories/${bookData.category.slug}?page=1`}>
               <div className="cursor-pointer hover:text-gray-300 active:text-gray-400">
                 {bookData.category.name}
@@ -127,7 +127,7 @@ const BookCard = ({
           </div>
         )}
 
-        {showCategoryLink && bookData.category.slug !== "no-category" ? (
+        {showCategoryLink && bookData.category.slug !== "various" ? (
           <Link href={`/categories/${bookData.category.slug}?page=1`}>
             <div className="flex justify-end items-center gap-x-2 cursor-pointer hover:text-gray-300 active:text-gray-400 mr-0 mx-auto group">
               <div>{bookData.category.name}</div>
