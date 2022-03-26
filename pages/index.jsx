@@ -74,7 +74,7 @@ const Home = ({ categories, userState, trending }) => {
       <div className="xl:flex xl:w-11/12 xl:mx-auto 2xl:w-5/6">
         <div className="mx-auto mb-20 xl:mb-10 px-4 w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 xl:border-b-2">
           <div className="text-gray-700 md:mb-8 pt-10 pb-5 xl:py-7 rounded-md xl:border-t-blue-400 xl:border-t-2 xl:shadow xl:bg-gray-50">
-            <div className="text-5xl md:text-6xl xl:text-5xl text-white xl:text-gray-600 xl:font-normal mb-5 md:mb-12 text-center lg:font-bold tracking-tight">
+            <div className="text-5xl md:text-6xl xl:text-5xl text-white xl:text-gray-600 mb-5 md:mb-12 text-center lg:font-medium tracking-tight">
               Search {capitalize(searchMode)}
             </div>
             <div
@@ -134,7 +134,7 @@ const Home = ({ categories, userState, trending }) => {
         </div>
       </Link>
 
-      <div className="w-11/12 2xl:w-4/6 mx-auto mb-20">
+      <div className="w-11/12 xl:w-4/5 mx-auto mb-20">
         <span className="block text-gray-50 text-center mb-10 text-5xl border-t-2 pt-10">
           Trending this week
         </span>
