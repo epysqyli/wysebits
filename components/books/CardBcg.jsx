@@ -67,7 +67,7 @@ const CardBcg = ({ bookData, userState, favBooks }) => {
           >
             {isFav ? (
               <>
-                <div className="text-sm">Remove from favorites</div>
+                <div className="text-sm">Remove favorite</div>
                 <Delete strokeWidth={1.5} size={20} />
               </>
             ) : (
