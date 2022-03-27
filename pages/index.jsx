@@ -58,7 +58,7 @@ const Home = ({ categories, userState, trending }) => {
         <link rel="icon" href="/logo.png" />
       </Head>
 
-      <div className="h-64 xl:h-42 mx-auto bg-library bg-cover bg-center md:mb-12 lg:w-4/5 lg:mt-5 lg:rounded-md shadow-lg">
+      <div className="h-64 xl:h-42 mx-auto bg-library bg-cover bg-center md:mb-12 lg:w-4/5 lg:mt-5 lg:rounded-md lg:shadow-lg border-b-2 border-white">
         <div className="bg-gray-900 h-full bg-opacity-50 relative lg:rounded-md">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <h1 className="text-white text-6xl font-bold text-center">
@@ -73,12 +73,12 @@ const Home = ({ categories, userState, trending }) => {
 
       <div className="xl:flex xl:w-11/12 xl:mx-auto 2xl:w-5/6">
         <div className="mx-auto mb-20 xl:mb-10 px-4 w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 xl:border-b-2">
-          <div className="text-gray-700 md:mb-8 pt-10 pb-5 xl:py-7 rounded-md xl:border-t-blue-400 xl:border-t-2 xl:shadow xl:bg-gray-50">
-            <div className="text-5xl md:text-6xl xl:text-5xl text-white xl:text-gray-600 mb-5 md:mb-12 text-center lg:font-medium tracking-tight">
+          <div className="text-gray-700 md:mb-8 pt-10 pb-5 xl:py-7 rounded-md xl:border-t-blue-400 xl:border-t-2 xl:shadow xl:bg-gray-50 mt-2 lg:mt-0">
+            <div className="text-5xl md:text-6xl xl:text-5xl text-white xl:text-gray-600 mb-5 md:mb-12 text-center font-medium tracking-tight">
               Search {capitalize(searchMode)}
             </div>
             <div
-              className="flex justify-between px-5 items-center group gap-x-5 w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 2xl:w-2/5 mx-auto border-b xl:border xl:bg-gray-50 xl:border-blue-400 xl:rounded py-2 cursor-pointer hover:text-white md:hover:text-black xl:hover:bg-blue-200 transition-all active:shadow-inner tracking-tight"
+              className="flex justify-between px-5 items-center group gap-x-5 w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 2xl:w-2/5 mx-auto border-b xl:border xl:bg-gray-50 xl:border-blue-400 xl:rounded py-2 xl:py-1 cursor-pointer hover:text-white md:hover:text-black xl:hover:bg-blue-200 transition-all active:shadow-inner tracking-tight"
               onClick={toggleSearchMode}
             >
               <div className="transition-transform">
