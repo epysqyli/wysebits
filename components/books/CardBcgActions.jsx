@@ -13,7 +13,11 @@ const CardBcgActions = ({ bookData, showEditForm, bcgImage }) => {
 
       <div className="w-11/12 md:w-4/6 lg:w-4/6 xl:w-3/5 2xl:w-1/2 mx-auto shadow-md backdrop-blur-md backdrop-brightness-75 text-white rounded-md relative z-10">
         <div className="mb-2">
-          <BookCard bookData={bookData} />
+          <BookCard
+            bookData={bookData}
+            showAuthorLink={true}
+            showCategoryLink={true}
+          />
         </div>
 
         <div
