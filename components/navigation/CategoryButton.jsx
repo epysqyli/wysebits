@@ -1,4 +1,3 @@
-import { ArrowRightCircle } from "react-feather";
 import Link from "next/dist/client/link";
 
 const CategoryButton = ({ category }) => {
