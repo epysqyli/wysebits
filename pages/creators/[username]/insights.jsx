@@ -91,7 +91,7 @@ const UserInsights = ({
           </div>
         </div>
 
-        <div className="mt-10 w-4/5 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
+        <div className="mt-10 w-11/12 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
           {entries.map((entry) => {
             return (
               <div
@@ -134,7 +134,7 @@ const UserInsights = ({
           </div>
         </div>
 
-        <div className="mx-auto w-4/5 text-center mt-20 text-xl">
+        <div className="mx-auto w-11/12 text-center mt-20 text-xl">
           <div className="mx-auto w-min mb-20 animate-bounce">
             <Meh
               size={48}
