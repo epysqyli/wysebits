@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   ThumbsUp,
   ThumbsDown,
@@ -6,6 +8,7 @@ import {
   MessageCircle,
   UserMinus,
   UserPlus,
+  X,
 } from "react-feather";
 
 import Link from "next/dist/client/link";
@@ -27,6 +30,10 @@ import {
   unfollowAndUpdateState,
 } from "../../../lib/followMethods";
 
+import { getEntryComments } from "../../../lib/commentsMethods";
+import Comments from "./Comments";
+import CreatorLink from "../../navigation/CreatorLink";
+
 const EntryLogged = ({
   entryProp,
   user,
@@ -40,6 +47,17 @@ const EntryLogged = ({
   setFollowedUsers,
   feed,
 }) => {
+  const [showComments, setShowComments] = useState(false);
+  const [comments, setComments] = useState([]);
+
+  const loadComments = async () => {
+    const resp = await getEntryComments(entryProp.id);
+    setComments([...resp.data]);
+    setShowComments(true);
+  };
+
+  const showInsight = () => setShowComments(false);
+
   const entryUser = entryProp.book_tile.user;
 
   const isFavInsight = () =>
@@ -226,9 +244,9 @@ const EntryLogged = ({
     );
 
   return (
-    <div className="flex flex-col justify-around h-full">
+    <div className="flex flex-col justify-around h-full min-h-24rem">
       <div className="py-5 px-10 md:px-16 font-light whitespace-pre-line flex-grow">
-        {entryProp.content}
+        {showComments ? <Comments comments={comments} /> : entryProp.content}
       </div>
 
       <div className="flex justify-between items-center text-sm px-10 md:px-16 py-4">
@@ -357,27 +375,26 @@ const EntryLogged = ({
           </div>
 
           <div className="flex items-center">
-            <div className="text-gray-700">15</div>
-            <MessageCircle
-              size={16}
-              strokeWidth={1.5}
-              className="ml-1 text-gray-700 transition-all hover:scale-105 active:scale-125 cursor-pointer"
-            />
+            {showComments ? (
+              <X
+                size={16}
+                strokeWidth={1.5}
+                className="ml-1 text-gray-700 transition-all hover:scale-105 active:scale-125 cursor-pointer"
+                onClick={showInsight}
+              />
+            ) : (
+              <MessageCircle
+                size={16}
+                strokeWidth={1.5}
+                className="ml-1 text-gray-700 transition-all hover:scale-105 active:scale-125 cursor-pointer"
+                onClick={loadComments}
+              />
+            )}
           </div>
         </div>
 
         <div className="group flex items-center gap-x-2 transition-all">
-          <Link href={`/creators/${entryProp.book_tile.user.username}`}>
-            <div className="flex items-center gap-x-1">
-              <div className="text-gray-600 active:text-gray-200 cursor-pointer">
-                {entryProp.book_tile.user.username}
-              </div>
-              <ArrowUpRight
-                size={18}
-                className="text-gray-600 group-hover:scale-110"
-              />
-            </div>
-          </Link>
+          <CreatorLink username={entryProp.book_tile.user.username} />
 
           {user.id !== entryUser.id ? (
             isFollowed(followedUsers, entryUser) ? (

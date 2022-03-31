@@ -118,7 +118,7 @@ const Book = ({
             return (
               <div
                 key={entry.id}
-                className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all min-h-24rem"
+                className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all"
               >
                 <TileEntry
                   entryProp={entry}

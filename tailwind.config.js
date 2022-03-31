@@ -70,7 +70,10 @@ module.exports = {
         },
       },
       minHeight: {
-        '24rem': "24rem",
+        "24rem": "24rem",
+      },
+      maxHeight: {
+        "24rem": "24rem",
       },
     },
   },
