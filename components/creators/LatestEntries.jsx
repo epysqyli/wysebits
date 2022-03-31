@@ -23,7 +23,7 @@ const LatestEntries = ({
           {entries.map((entry) => (
             <div
               key={entry.id}
-              className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all"
+              className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all min-h-24rem"
             >
               <EntryLoggedTitle
                 entryProp={entry}

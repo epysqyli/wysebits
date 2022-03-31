@@ -91,7 +91,7 @@ const FavoriteInsights = ({
             return (
               <div
                 key={insight.id}
-                className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all"
+                className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all min-h-24rem"
               >
                 <TileEntry
                   entryProp={insight}
