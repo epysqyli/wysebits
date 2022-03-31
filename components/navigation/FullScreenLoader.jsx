@@ -7,7 +7,7 @@ const FullScreenLoader = () => {
         <Loader
           size={40}
           color="black"
-          className="absolute -translate-x-1/2 -translate-y-1/2 border rounded-full p-2 shadow bg-white"
+          className="absolute -translate-x-1/2 -translate-y-1/2 border rounded-full p-2 bg-white"
         />
       </div>
     </div>
