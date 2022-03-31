@@ -3,6 +3,7 @@ import {
   ThumbsDown,
   Heart,
   ArrowUpRight,
+  MessageCircle,
   UserMinus,
   UserPlus,
 } from "react-feather";
@@ -313,8 +314,10 @@ const EntryLogged = ({
               />
             </div>
           )}
+        </div>
 
-          <div className="ml-3 flex items-center">
+        <div className="flex justify-around items-center w-1/4">
+          <div>
             {isFavInsight() ? (
               <div
                 onClick={() =>
@@ -351,6 +354,15 @@ const EntryLogged = ({
                 />
               </div>
             )}
+          </div>
+
+          <div className="flex items-center">
+            <div className="text-gray-700">15</div>
+            <MessageCircle
+              size={16}
+              strokeWidth={1.5}
+              className="ml-1 text-gray-700 transition-all hover:scale-105 active:scale-125 cursor-pointer"
+            />
           </div>
         </div>
 
