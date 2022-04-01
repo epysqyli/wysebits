@@ -23,6 +23,8 @@ import {
   unfollowAndUpdateState,
 } from "../../../lib/followMethods";
 
+import { loadComments } from "../../../lib/commentsMethods";
+
 import CreatorLink from "../../navigation/CreatorLink";
 
 const EntryActions = ({
@@ -36,9 +38,10 @@ const EntryActions = ({
   setFollowedUsers,
   insights,
   setInsights,
-  showComments,
-  loadComments,
+  commentsView,
+  setComments,
   showInsight,
+  showComments,
   feed,
 }) => {
   const entryUser = entryProp.book_tile.user;
@@ -180,7 +183,7 @@ const EntryActions = ({
         </div>
 
         <div className="flex items-center">
-          {showComments ? (
+          {commentsView ? (
             <X
               size={16}
               strokeWidth={1.5}
@@ -192,7 +195,9 @@ const EntryActions = ({
               size={16}
               strokeWidth={1.5}
               className="ml-1 text-gray-700 transition-all hover:scale-105 active:scale-125 cursor-pointer"
-              onClick={loadComments}
+              onClick={() =>
+                loadComments(entryProp.id, setComments, showComments)
+              }
             />
           )}
         </div>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import EntryActions from "./EntryActions";
-import { getEntryComments } from "../../../lib/commentsMethods";
 import Comments from "./Comments";
 
 const EntryLogged = ({
@@ -16,16 +15,11 @@ const EntryLogged = ({
   setFollowedUsers,
   feed,
 }) => {
-  const [showComments, setShowComments] = useState(false);
+  const [commentsView, setCommentsView] = useState(false);
   const [comments, setComments] = useState([]);
 
-  const loadComments = async () => {
-    const resp = await getEntryComments(entryProp.id);
-    setComments([...resp.data]);
-    setShowComments(true);
-  };
-
-  const showInsight = () => setShowComments(false);
+  const showInsight = () => setCommentsView(false);
+  const showComments = () => setCommentsView(true);
 
   if (feed === true)
     return (
@@ -45,9 +39,10 @@ const EntryLogged = ({
           setFollowedUsers={setFollowedUsers}
           insights={insights}
           setInsights={setInsights}
-          showComments={showComments}
-          loadComments={loadComments}
+          commentsView={commentsView}
+          setComments={setComments}
           showInsight={showInsight}
+          showComments={showComments}
           feed={feed}
         />
       </div>
@@ -56,7 +51,7 @@ const EntryLogged = ({
   return (
     <div className="flex flex-col justify-around h-full min-h-24rem">
       <div className="py-5 px-10 md:px-16 font-light whitespace-pre-line flex-grow">
-        {showComments ? <Comments comments={comments} /> : entryProp.content}
+        {commentsView ? <Comments comments={comments} /> : entryProp.content}
       </div>
 
       <EntryActions
@@ -70,9 +65,10 @@ const EntryLogged = ({
         setFollowedUsers={setFollowedUsers}
         insights={insights}
         setInsights={setInsights}
-        showComments={showComments}
-        loadComments={loadComments}
+        commentsView={commentsView}
+        setComments={setComments}
         showInsight={showInsight}
+        showComments={showComments}
       />
     </div>
   );
