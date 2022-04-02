@@ -73,6 +73,17 @@ const Actions = ({ userState }) => {
 
           <div>
             <UserAction
+              text="Commented insights"
+              bcgImg="bg-comments"
+              href={{
+                pathname: "/users/actions/commented-insights",
+                query: { page: 1 },
+              }}
+            />
+          </div>
+
+          <div>
+            <UserAction
               text="Users you are following"
               bcgImg="bg-following"
               href={{

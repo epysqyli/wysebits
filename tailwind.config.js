@@ -50,6 +50,7 @@ module.exports = {
           "url('/images/categories/economics-and-finance.jpg')",
         various: "url('/images/categories/various.jpg')",
         technology: "url('/images/categories/technology.jpg')",
+        "comments": "url('/images/comments.jpg')"
       },
       grayscale: {
         50: "50%",
