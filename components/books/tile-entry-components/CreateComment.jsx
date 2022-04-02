@@ -42,7 +42,7 @@ const CreateComment = ({ entryId, userId, hideForm, updateCommentsState }) => {
           onChange={handleChange}
           required
         ></textarea>
-        <div className="flex items-center justify-around w-11/12 mx-auto mt-5">
+        <div className="flex items-center justify-around lg:justify-center lg:gap-x-5 w-11/12 mx-auto mt-5">
           <div
             onClick={hideForm}
             className="flex items-center justify-between gap-x-2 border p-2 rounded hover:bg-gray-50 cursor-pointer group"
