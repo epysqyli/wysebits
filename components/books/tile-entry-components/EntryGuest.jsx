@@ -1,12 +1,21 @@
-import { ThumbsUp, ThumbsDown, ArrowUpRight } from "react-feather";
-import Link from "next/dist/client/link";
+import { useState } from "react";
+import { ThumbsUp, ThumbsDown, MessageCircle, X } from "react-feather";
+import { loadComments } from "../../../lib/commentsMethods";
+import CreatorLink from "../../navigation/CreatorLink";
+import Comments from "./Comments";
 
 const EntryGuest = ({ entryProp, feed }) => {
+  const [commentsView, setCommentsView] = useState(false);
+  const [comments, setComments] = useState([]);
+
+  const showInsight = () => setCommentsView(false);
+  const showComments = () => setCommentsView(true);
+
   if (feed === true)
     return (
       <div className="flex flex-col justify-around h-full min-h-24rem">
         <div className="lg:border-b-2 lg:border-l-2 rounded-bl py-5 px-10 md:px-16 whitespace-pre-line font-light flex-grow mt-10 mx-auto text-justify md:text-left lg:mt-0 lg:w-full">
-          {entryProp.content}
+          {commentsView ? <Comments comments={comments} /> : entryProp.content}
         </div>
 
         <div className="flex justify-between items-center text-sm px-10 md:px-16 py-4 lg:bg-gray-100 border-b-2 lg:border-none">
@@ -16,25 +25,35 @@ const EntryGuest = ({ entryProp, feed }) => {
             <ThumbsDown size={16} color="gray" strokeWidth={1.75} />
           </div>
 
-          <Link href={`/creators/${entryProp.book_tile.user.username}`}>
-            <div className="group flex items-center gap-x-1 transition-all">
-              <div className="text-gray-600 active:text-gray-200 cursor-pointer">
-                {entryProp.book_tile.user.username}
-              </div>
-              <ArrowUpRight
-                size={18}
-                className="text-gray-600 group-hover:scale-110"
+          <div className="flex items-center">
+            {commentsView ? (
+              <X
+                size={16}
+                strokeWidth={1.5}
+                className="ml-1 text-gray-700 transition-all hover:scale-105 active:scale-125 cursor-pointer"
+                onClick={showInsight}
               />
-            </div>
-          </Link>
+            ) : (
+              <MessageCircle
+                size={16}
+                strokeWidth={1.5}
+                className="ml-1 text-gray-700 transition-all hover:scale-105 active:scale-125 cursor-pointer"
+                onClick={() =>
+                  loadComments(entryProp.id, setComments, showComments)
+                }
+              />
+            )}
+          </div>
+
+          <CreatorLink username={entryProp.book_tile.user.username} />
         </div>
       </div>
     );
 
   return (
-    <div className="flex flex-col justify-around h-full">
+    <div className="flex flex-col justify-around h-full min-h-24rem">
       <div className="py-5 px-10 md:px-16 font-light whitespace-pre-line flex-grow">
-        {entryProp.content}
+        {commentsView ? <Comments comments={comments} /> : entryProp.content}
       </div>
 
       <div className="flex justify-between items-center text-sm px-10 md:px-16 py-4">
@@ -44,17 +63,27 @@ const EntryGuest = ({ entryProp, feed }) => {
           <ThumbsDown size={16} color="gray" strokeWidth={1.75} />
         </div>
 
-        <Link href={`/creators/${entryProp.book_tile.user.username}`}>
-          <div className="group flex items-center gap-x-1 transition-all">
-            <div className="text-gray-600 active:text-gray-200 cursor-pointer">
-              {entryProp.book_tile.user.username}
-            </div>
-            <ArrowUpRight
-              size={18}
-              className="text-gray-600 group-hover:scale-110"
+        <div className="flex items-center">
+          {commentsView ? (
+            <X
+              size={16}
+              strokeWidth={1.5}
+              className="ml-1 text-gray-700 transition-all hover:scale-105 active:scale-125 cursor-pointer"
+              onClick={showInsight}
             />
-          </div>
-        </Link>
+          ) : (
+            <MessageCircle
+              size={16}
+              strokeWidth={1.5}
+              className="ml-1 text-gray-700 transition-all hover:scale-105 active:scale-125 cursor-pointer"
+              onClick={() =>
+                loadComments(entryProp.id, setComments, showComments)
+              }
+            />
+          )}
+        </div>
+
+        <CreatorLink username={entryProp.book_tile.user.username} />
       </div>
     </div>
   );

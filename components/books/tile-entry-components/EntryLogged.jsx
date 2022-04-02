@@ -1,38 +1,6 @@
 import { useState } from "react";
-
-import {
-  ThumbsUp,
-  ThumbsDown,
-  Heart,
-  ArrowUpRight,
-  MessageCircle,
-  UserMinus,
-  UserPlus,
-  X,
-} from "react-feather";
-
-import Link from "next/dist/client/link";
-
-import {
-  isUpvoted,
-  isDownvoted,
-  upvoteAndUpdateState,
-  downvoteAndUpdateState,
-  removeUpvoteAndUpdateState,
-  removeDownvoteAndUpdateState,
-  addToFavInsightAndUpdateState,
-  removeFromFavInsightsAndUpdateState,
-} from "../../../lib/tileEntryMethods";
-
-import {
-  isFollowed,
-  followAndUpdateState,
-  unfollowAndUpdateState,
-} from "../../../lib/followMethods";
-
-import { getEntryComments } from "../../../lib/commentsMethods";
+import EntryActions from "./EntryActions";
 import Comments from "./Comments";
-import CreatorLink from "../../navigation/CreatorLink";
 
 const EntryLogged = ({
   entryProp,
@@ -47,388 +15,79 @@ const EntryLogged = ({
   setFollowedUsers,
   feed,
 }) => {
-  const [showComments, setShowComments] = useState(false);
+  const [commentsView, setCommentsView] = useState(false);
   const [comments, setComments] = useState([]);
 
-  const loadComments = async () => {
-    const resp = await getEntryComments(entryProp.id);
-    setComments([...resp.data]);
-    setShowComments(true);
-  };
-
-  const showInsight = () => setShowComments(false);
-
-  const entryUser = entryProp.book_tile.user;
-
-  const isFavInsight = () =>
-    insights.some((insight) => insight.id === entryProp.id);
+  const showInsight = () => setCommentsView(false);
+  const showComments = () => setCommentsView(true);
 
   if (feed === true)
     return (
       <div className="flex flex-col justify-around h-full min-h-24rem">
         <div className="lg:border-b-2 lg:border-l-2 rounded-bl py-5 px-10 md:px-16 font-light whitespace-pre-line flex-grow mt-10 mx-auto text-justify md:text-left lg:mt-0 lg:w-full">
-          {entryProp.content}
+          {commentsView ? (
+            <Comments
+              comments={comments}
+              entryId={entryProp.id}
+              setComments={setComments}
+              userId={user.id}
+            />
+          ) : (
+            entryProp.content
+          )}
         </div>
 
-        <div className="flex justify-between items-center text-sm px-10 md:px-16 py-4 lg:bg-gray-100 border-b-2 lg:border-none">
-          <div className="flex justify-center items-center gap-x-3">
-            {isUpvoted(upvotedEntries, entryProp) ? (
-              <div
-                onClick={() =>
-                  removeUpvoteAndUpdateState(
-                    user,
-                    entryProp,
-                    upvotedEntries,
-                    setUpvotedEntries
-                  )
-                }
-              >
-                <ThumbsUp
-                  size={16}
-                  fill="darkgray"
-                  color="darkgray"
-                  className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
-                />
-              </div>
-            ) : (
-              <div
-                onClick={() =>
-                  upvoteAndUpdateState(
-                    user,
-                    entryProp,
-                    upvotedEntries,
-                    downvotedEntries,
-                    setUpvotedEntries,
-                    setDownvotedEntries
-                  )
-                }
-              >
-                <ThumbsUp
-                  size={16}
-                  color="darkgray"
-                  className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
-                />
-              </div>
-            )}
-
-            <div className="text-gray-600">
-              {entryProp.upvotes - entryProp.downvotes}
-            </div>
-
-            {isDownvoted(downvotedEntries, entryProp) ? (
-              <div
-                onClick={() =>
-                  removeDownvoteAndUpdateState(
-                    user,
-                    entryProp,
-                    downvotedEntries,
-                    setDownvotedEntries
-                  )
-                }
-              >
-                <ThumbsDown
-                  size={16}
-                  fill="darkgray"
-                  color="darkgray"
-                  className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
-                />
-              </div>
-            ) : (
-              <div
-                onClick={() =>
-                  downvoteAndUpdateState(
-                    user,
-                    entryProp,
-                    upvotedEntries,
-                    downvotedEntries,
-                    setUpvotedEntries,
-                    setDownvotedEntries
-                  )
-                }
-              >
-                <ThumbsDown
-                  size={16}
-                  color="darkgray"
-                  className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
-                />
-              </div>
-            )}
-
-            <div className="ml-3 flex items-center">
-              {isFavInsight() ? (
-                <div
-                  onClick={() =>
-                    removeFromFavInsightsAndUpdateState(
-                      user,
-                      entryProp,
-                      insights,
-                      setInsights
-                    )
-                  }
-                >
-                  <Heart
-                    size={16}
-                    fill="darkgray"
-                    color="darkgray"
-                    className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
-                  />
-                </div>
-              ) : (
-                <div
-                  onClick={() =>
-                    addToFavInsightAndUpdateState(
-                      user,
-                      entryProp,
-                      insights,
-                      setInsights
-                    )
-                  }
-                >
-                  <Heart
-                    size={16}
-                    color="darkgray"
-                    className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
-                  />
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div className="group flex items-center gap-x-2 transition-all">
-            <Link href={`/creators/${entryProp.book_tile.user.username}`}>
-              <div className="flex items-center gap-x-1">
-                <div className="text-gray-600 active:text-gray-200 cursor-pointer">
-                  {entryProp.book_tile.user.username}
-                </div>
-                <ArrowUpRight
-                  size={18}
-                  className="text-gray-600 group-hover:scale-110"
-                />
-              </div>
-            </Link>
-
-            {user.id !== entryUser.id ? (
-              isFollowed(followedUsers, entryUser) ? (
-                <div
-                  className="cursor-pointer hover:scale-110 text-gray-600"
-                  onClick={() =>
-                    unfollowAndUpdateState(
-                      user,
-                      entryUser,
-                      followedUsers,
-                      setFollowedUsers
-                    )
-                  }
-                >
-                  <UserMinus size={16} />
-                </div>
-              ) : (
-                <div
-                  className="cursor-pointer hover:scale-110 text-gray-600"
-                  onClick={() =>
-                    followAndUpdateState(
-                      user,
-                      entryUser,
-                      followedUsers,
-                      setFollowedUsers
-                    )
-                  }
-                >
-                  <UserPlus size={16} />
-                </div>
-              )
-            ) : null}
-          </div>
-        </div>
+        <EntryActions
+          user={user}
+          entryProp={entryProp}
+          upvotedEntries={upvotedEntries}
+          downvotedEntries={downvotedEntries}
+          setUpvotedEntries={setUpvotedEntries}
+          setDownvotedEntries={setDownvotedEntries}
+          followedUsers={followedUsers}
+          setFollowedUsers={setFollowedUsers}
+          insights={insights}
+          setInsights={setInsights}
+          commentsView={commentsView}
+          setComments={setComments}
+          showInsight={showInsight}
+          showComments={showComments}
+          feed={feed}
+        />
       </div>
     );
 
   return (
     <div className="flex flex-col justify-around h-full min-h-24rem">
       <div className="py-5 px-10 md:px-16 font-light whitespace-pre-line flex-grow">
-        {showComments ? <Comments comments={comments} /> : entryProp.content}
+        {commentsView ? (
+          <Comments
+            comments={comments}
+            setComments={setComments}
+            entryId={entryProp.id}
+            userId={user.id}
+          />
+        ) : (
+          entryProp.content
+        )}
       </div>
 
-      <div className="flex justify-between items-center text-sm px-10 md:px-16 py-4">
-        <div className="flex justify-center items-center gap-x-3">
-          {isUpvoted(upvotedEntries, entryProp) ? (
-            <div
-              onClick={() =>
-                removeUpvoteAndUpdateState(
-                  user,
-                  entryProp,
-                  upvotedEntries,
-                  setUpvotedEntries
-                )
-              }
-            >
-              <ThumbsUp
-                size={16}
-                fill="darkgray"
-                color="darkgray"
-                className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
-              />
-            </div>
-          ) : (
-            <div
-              onClick={() =>
-                upvoteAndUpdateState(
-                  user,
-                  entryProp,
-                  upvotedEntries,
-                  downvotedEntries,
-                  setUpvotedEntries,
-                  setDownvotedEntries
-                )
-              }
-            >
-              <ThumbsUp
-                size={16}
-                color="darkgray"
-                className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
-              />
-            </div>
-          )}
-
-          <div className="text-gray-600">
-            {entryProp.upvotes - entryProp.downvotes}
-          </div>
-
-          {isDownvoted(downvotedEntries, entryProp) ? (
-            <div
-              onClick={() =>
-                removeDownvoteAndUpdateState(
-                  user,
-                  entryProp,
-                  downvotedEntries,
-                  setDownvotedEntries
-                )
-              }
-            >
-              <ThumbsDown
-                size={16}
-                fill="darkgray"
-                color="darkgray"
-                className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
-              />
-            </div>
-          ) : (
-            <div
-              onClick={() =>
-                downvoteAndUpdateState(
-                  user,
-                  entryProp,
-                  upvotedEntries,
-                  downvotedEntries,
-                  setUpvotedEntries,
-                  setDownvotedEntries
-                )
-              }
-            >
-              <ThumbsDown
-                size={16}
-                color="darkgray"
-                className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
-              />
-            </div>
-          )}
-        </div>
-
-        <div className="flex justify-around items-center w-1/4">
-          <div>
-            {isFavInsight() ? (
-              <div
-                onClick={() =>
-                  removeFromFavInsightsAndUpdateState(
-                    user,
-                    entryProp,
-                    insights,
-                    setInsights
-                  )
-                }
-              >
-                <Heart
-                  size={16}
-                  fill="darkgray"
-                  color="darkgray"
-                  className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
-                />
-              </div>
-            ) : (
-              <div
-                onClick={() =>
-                  addToFavInsightAndUpdateState(
-                    user,
-                    entryProp,
-                    insights,
-                    setInsights
-                  )
-                }
-              >
-                <Heart
-                  size={16}
-                  color="darkgray"
-                  className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
-                />
-              </div>
-            )}
-          </div>
-
-          <div className="flex items-center">
-            {showComments ? (
-              <X
-                size={16}
-                strokeWidth={1.5}
-                className="ml-1 text-gray-700 transition-all hover:scale-105 active:scale-125 cursor-pointer"
-                onClick={showInsight}
-              />
-            ) : (
-              <MessageCircle
-                size={16}
-                strokeWidth={1.5}
-                className="ml-1 text-gray-700 transition-all hover:scale-105 active:scale-125 cursor-pointer"
-                onClick={loadComments}
-              />
-            )}
-          </div>
-        </div>
-
-        <div className="group flex items-center gap-x-2 transition-all">
-          <CreatorLink username={entryProp.book_tile.user.username} />
-
-          {user.id !== entryUser.id ? (
-            isFollowed(followedUsers, entryUser) ? (
-              <div
-                className="cursor-pointer hover:scale-110 text-gray-600"
-                onClick={() =>
-                  unfollowAndUpdateState(
-                    user,
-                    entryUser,
-                    followedUsers,
-                    setFollowedUsers
-                  )
-                }
-              >
-                <UserMinus size={16} />
-              </div>
-            ) : (
-              <div
-                className="cursor-pointer hover:scale-110 text-gray-600"
-                onClick={() =>
-                  followAndUpdateState(
-                    user,
-                    entryUser,
-                    followedUsers,
-                    setFollowedUsers
-                  )
-                }
-              >
-                <UserPlus size={16} />
-              </div>
-            )
-          ) : null}
-        </div>
-      </div>
+      <EntryActions
+        user={user}
+        entryProp={entryProp}
+        upvotedEntries={upvotedEntries}
+        downvotedEntries={downvotedEntries}
+        setUpvotedEntries={setUpvotedEntries}
+        setDownvotedEntries={setDownvotedEntries}
+        followedUsers={followedUsers}
+        setFollowedUsers={setFollowedUsers}
+        insights={insights}
+        setInsights={setInsights}
+        commentsView={commentsView}
+        setComments={setComments}
+        showInsight={showInsight}
+        showComments={showComments}
+      />
     </div>
   );
 };
