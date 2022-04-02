@@ -17,7 +17,7 @@ const Comments = ({ comments, setComments, entryId, userId }) => {
       <div className="text-sm font-normal max-h-24rem overflow-y-auto px-4">
         <div
           onClick={showForm}
-          className="flex items-center justify-around border-b py-2 text-gray-700 w-4/5 mx-auto hover:bg-gray-50 active:bg-gray-100 cursor-pointer"
+          className="flex items-center justify-around border-b py-2 text-gray-700 w-full mx-auto hover:bg-gray-50 active:bg-gray-100 cursor-pointer"
         >
           <Edit strokeWidth={1.5} />
           <div>Write your comment</div>
@@ -25,7 +25,7 @@ const Comments = ({ comments, setComments, entryId, userId }) => {
         {comments.map((comment) => {
           return (
             <div key={comment.id} className="my-5 pb-5 border-b">
-              <div className="break-all">{comment.content}</div>
+              <div className="break-words">{comment.content}</div>
               <div className="mt-3">
                 <CreatorLink username={comment.user.username} />
               </div>

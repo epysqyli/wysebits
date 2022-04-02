@@ -45,13 +45,19 @@ const CreateComment = ({ entryId, userId, hideForm, updateCommentsState }) => {
         <div className="flex items-center justify-around w-11/12 mx-auto mt-5">
           <div
             onClick={hideForm}
-            className="flex items-center justify-between gap-x-2 border p-2 rounded"
+            className="flex items-center justify-between gap-x-2 border p-2 rounded hover:bg-gray-50 cursor-pointer group"
           >
-            <XCircle strokeWidth={1.5} className="text-gray-700" />
+            <XCircle
+              strokeWidth={1.5}
+              className="text-gray-700 group-hover:scale-95 group-active:scale-90"
+            />
             <div>discard comment</div>
           </div>
-          <div className="flex items-center justify-between gap-x-2 border p-2 rounded">
-            <PlusCircle strokeWidth={1.5} className="text-gray-700" />
+          <div className="flex items-center justify-between gap-x-2 border p-2 rounded hover:bg-gray-50 cursor-pointer group">
+            <PlusCircle
+              strokeWidth={1.5}
+              className="text-gray-700 group-hover:scale-95 group-active:scale-90"
+            />
             <button type="submit">post comment</button>
           </div>
         </div>
