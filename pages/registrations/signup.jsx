@@ -234,7 +234,7 @@ const SignUp = () => {
           size={60}
           strokeWidth={1.5}
         />
-        <div className="text-center md:text-left text-lg text-gray-800">
+        <div className="text-center md:text-left text-lg text-gray-800 mb-10">
           We have sent you an email to{" "}
           <span className="font-medium tracking-tighter">
             {userData.emailAddress}
