@@ -228,13 +228,13 @@ const SignUp = () => {
         </div>
       </div>
 
-      <div className="mt-20 w-5/6 md:w-1/2 lg:w-1/3 xl:w-1/4 p-10 mx-auto rounded-md shadow-md bg-white animate-show-up-slow">
+      <div className="w-5/6 md:w-1/2 lg:w-1/3 xl:w-1/4 p-10 my-24 mx-auto rounded-md shadow-md bg-white animate-show-up-slow">
         <Mail
           className="w-min mx-auto mb-10 text-gray-700"
           size={60}
           strokeWidth={1.5}
         />
-        <div className="text-center md:text-left text-lg text-gray-800 mb-10">
+        <div className="text-center md:text-left text-lg text-gray-800">
           We have sent you an email to{" "}
           <span className="font-medium tracking-tighter">
             {userData.emailAddress}
