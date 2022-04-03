@@ -228,7 +228,7 @@ const SignUp = () => {
         </div>
       </div>
 
-      <div className="mt-20 w-5/6 md:w-1/2 lg:w-1/3 xl:w-1/4 p-10 mx-auto rounded-md shadow-md bg-white animate-show-up-slow mb-10">
+      <div className="w-5/6 md:w-1/2 lg:w-1/3 xl:w-1/4 p-10 my-24 mx-auto rounded-md shadow-md bg-white animate-show-up-slow">
         <Mail
           className="w-min mx-auto mb-10 text-gray-700"
           size={60}
