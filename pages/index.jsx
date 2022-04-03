@@ -105,8 +105,8 @@ const Home = ({ categories, userState, trending }) => {
 
         <div className="mb-20 mt-32 xl:mt-0 xl:mb-10 w-11/12 mx-auto md:w-5/6 lg:w-3/5 xl:w-1/2 border-b-2 pb-10">
           <div className="flex justify-around items-center text-gray-700 bg-white gap-x-5 mb-10 md:mb-16 md:bg-white border-blue-400 border-t-2 shadow-md rounded-md py-8 xl:py-16">
-            <div className="text-4xl lg:text-5xl text-gray-600 font-medium">Categories</div>
             <Box size={60} strokeWidth={1.5} fill="white" color="#7F92A0" />
+            <div className="text-5xl text-gray-600 font-medium">Categories</div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4">
             {categories.map((category) => {
