@@ -82,9 +82,9 @@ const Home = ({ categories, userState, trending }) => {
               onClick={toggleSearchMode}
             >
               <div className="transition-transform">
-                <Repeat size={18} strokeWidth={1.6} className="text-gray-200" />
+                <Repeat size={18} strokeWidth={1.6} className="text-gray-200 xl:text-gray-500" />
               </div>
-              <div className="group-active:scale-95 text-gray-200">
+              <div className="group-active:scale-95 text-gray-200 xl:text-gray-500">
                 {searchMode === "books"
                   ? "switch to authors"
                   : "switch to books"}
