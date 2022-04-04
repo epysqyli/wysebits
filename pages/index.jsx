@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
-import { Box, Layers, ArrowUpRight, Repeat } from "react-feather";
+import { Archive, Layers, ArrowUpRight, Repeat } from "react-feather";
 import { capitalize } from "../lib/utils";
 import CategoryButton from "../components/navigation/CategoryButton";
 import SearchInput from "../components/navigation/SearchInput";
@@ -58,7 +58,7 @@ const Home = ({ categories, userState, trending }) => {
         <link rel="icon" href="/logo.png" />
       </Head>
 
-      <div className="h-64 xl:h-42 mx-auto bg-library bg-cover bg-center md:mb-12 lg:w-4/5 lg:mt-5 lg:rounded-md lg:shadow-lg border-b-2 border-white">
+      <div className="h-48 md:h-56 xl:h-42 mx-auto bg-library bg-cover bg-center md:mb-12 lg:w-4/5 lg:mt-5 lg:rounded-md lg:shadow-lg border-b-2 border-white">
         <div className="bg-gray-900 h-full bg-opacity-50 relative lg:rounded-md">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <h1 className="text-white text-6xl font-bold text-center">
@@ -104,8 +104,8 @@ const Home = ({ categories, userState, trending }) => {
         </div>
 
         <div className="mb-20 mt-32 xl:mt-0 xl:mb-10 w-11/12 mx-auto md:w-5/6 lg:w-3/5 xl:w-1/2 border-b-2 pb-10">
-          <div className="flex justify-around items-center text-gray-700 bg-white gap-x-5 mb-10 md:mb-16 md:bg-white border-blue-400 border-t-2 shadow-md rounded-md py-8 xl:py-16">
-            <Box size={60} strokeWidth={1.5} fill="white" color="#7F92A0" />
+          <div className="flex justify-center items-center text-gray-700 bg-white gap-x-5 lg:gap-x-10 mb-10 md:mb-16 md:bg-white border-blue-400 border-t-2 shadow-md rounded-md py-8 xl:py-16">
+            <Archive size={60} strokeWidth={1.5} fill="white" className="text-gray-600" />
             <div className="text-5xl text-gray-600 font-medium">Categories</div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4">
