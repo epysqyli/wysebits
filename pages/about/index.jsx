@@ -14,7 +14,7 @@ const About = ({ userState }) => {
           <div className="h-full bg-gray-900 opacity-50 relative"></div>
         </div>
 
-        <div className="pt-10 pb-20 shadow bg-gray-50">
+        <div className="pt-10 pb-20 shadow bg-gray-200">
           <div className="w-4/5 md:w-4/6 lg:w-3/5 xl:w-2/5 mx-auto">
             <h3 className="text-3xl text-center font-bold mb-5 text-gray-800">
               What is Wysebits?
