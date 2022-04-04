@@ -29,11 +29,11 @@ const BookSearch = ({ userState }) => {
             </div>
 
             <div className="mt-60 mb-20 xl:mb-0 xl:mt-0 border-l-2 pl-5 xl:w-2/5">
-              <div className="text-lg">
+              <div className="text-lg text-gray-50">
                 "Books are the treasured wealth of the world and the fit
                 inheritance of generations and nations."
               </div>
-              <div className="text mt-5 pr-10 text-gray-600 italic text-right">
+              <div className="text mt-5 pr-10 text-gray-100 italic text-right">
                 Henry David Thoreau, Walden
               </div>
             </div>
