@@ -85,8 +85,8 @@ const SignUp = () => {
           <title>Signup to Wysebits</title>
           <link rel="icon" href="/logo.png" />
         </Head>
-        <div className="h-60 bg-signup-top bg-cover bg-center relative">
-          <div className="bg-gray-900 h-full bg-opacity-80">
+        <div className="h-60 bg-login-top lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md border-b-2 border-white mx-auto relative rounded-md">
+          <div className="bg-gray-900 h-full bg-opacity-80 lg:rounded-md">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white  text-center text-3xl leading-10">
               Start learning.
               <br /> Start sharing.
