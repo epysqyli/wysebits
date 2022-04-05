@@ -96,7 +96,7 @@ const SignUp = () => {
 
         <form className="mx-auto md:w-4/6 lg:w-3/6 py-10" onSubmit={signUp}>
           <div className="w-4/6 mx-auto my-4">
-            <label htmlFor="username" className="pl-1">
+            <label htmlFor="username" className="pl-1 text-gray-50">
               Username
             </label>
             <input
@@ -117,7 +117,7 @@ const SignUp = () => {
           </div>
 
           <div className="w-4/6 mx-auto my-4">
-            <label htmlFor="email" className="pl-1">
+            <label htmlFor="email" className="pl-1 text-gray-50">
               Email
             </label>
             <input
@@ -141,10 +141,10 @@ const SignUp = () => {
           <div className="w-4/6 mx-auto my-4">
             <label
               htmlFor="name"
-              className="pl-1 flex items-center justify-between"
+              className="pl-1 flex items-center justify-between text-gray-50"
             >
               <p>Password</p>
-              <p className="text-gray-700 text-sm mt-1 w-4/5 md:w-3/5 mr-0 text-right">
+              <p className="text-gray-200 text-sm mt-1 w-4/5 md:w-3/5 mr-0 text-right">
                 At least 8 characters, one uppercase letter, one digit
               </p>
             </label>
@@ -161,7 +161,7 @@ const SignUp = () => {
           </div>
 
           <div className="w-4/6 mx-auto my-4">
-            <label htmlFor="name" className="pl-1">
+            <label htmlFor="name" className="pl-1 text-gray-50">
               Password Confirmation
             </label>
             <input
@@ -181,7 +181,7 @@ const SignUp = () => {
           </div>
 
           <div className="w-4/6 mx-auto my-4">
-            <label htmlFor="user-avatar">Upload an avatar picture</label>
+            <label htmlFor="user-avatar" className="pl-1 text-gray-50">Upload an avatar picture</label>
             <input
               type="file"
               name="user-avatar"

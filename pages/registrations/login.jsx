@@ -55,7 +55,7 @@ const LogIn = ({ handleLogin }) => {
       <div className="md:w-4/6 lg:w-3/6 mx-auto mt-10">
         <form onSubmit={logIn}>
           <div className="w-4/6 mx-auto my-4">
-            <label htmlFor="email" className="pl-1">
+            <label htmlFor="email" className="pl-1 text-gray-50">
               Email
             </label>
             <input
@@ -69,7 +69,7 @@ const LogIn = ({ handleLogin }) => {
           </div>
 
           <div className="w-4/6 mx-auto my-4">
-            <label htmlFor="name" className="pl-1">
+            <label htmlFor="name" className="pl-1 text-gray-50">
               Password
             </label>
             <input
@@ -90,7 +90,7 @@ const LogIn = ({ handleLogin }) => {
           </button>
         </form>
 
-        <div className="text-center mx-auto w-2/5 py-4 underline cursor-pointer">
+        <div className="text-center mx-auto w-2/5 py-4 underline cursor-pointer text-gray-50">
           <Link href="/registrations/forgot_password">Forgot password?</Link>
         </div>
       </div>
