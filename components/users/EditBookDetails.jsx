@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Loader } from "react-feather";
+import { Loader, Upload } from "react-feather";
 import { useRouter } from "next/dist/client/router";
 import { createAuthor, searchAuthors } from "../../lib/editMethods";
 import { isCoverValid } from "../../lib/uploadMethods";
@@ -200,15 +200,16 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
               : null}
           </div>
 
-          <div className="mt-10 py-2 bg-white rounded shadow">
-            <label htmlFor="book-cover" className="mx-2 px-1">
-              Book cover
+          <div className="mt-10 bg-white rounded hover:shadow">
+            <label htmlFor="book-cover" className="text-center py-4 mx-auto block rounded cursor-pointer hover:bg-yellow-50">
+              <div className="mb-4">Upload a book cover</div>
+              <Upload size={30} strokeWidth={1.5} className="w-min mx-auto" />
             </label>
             <input
               type="file"
               name="book_cover"
               id="book-cover"
-              className="bg-white py-2 w-min px-3"
+              className="hidden"
               onChange={handleFileUpload}
             />
           </div>
