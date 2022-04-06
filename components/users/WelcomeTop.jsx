@@ -5,7 +5,7 @@ const WelcomeTop = ({ text, bcgImg }) => {
     >
       <div className="bg-gray-800 h-full bg-opacity-60 relative transition lg:rounded-md">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11/12">
-          <div className="text-white text-3xl lg:text-5xl font-bold text-center transition">
+          <div className="text-white text-4xl lg:text-5xl font-bold text-center transition">
             {text}
           </div>
         </div>
