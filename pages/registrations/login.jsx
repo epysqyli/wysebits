@@ -16,7 +16,7 @@ const LogIn = ({ handleLogin }) => {
   const handleChange = (e) => {
     setUserData({
       ...userData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value.trim(),
     });
   };
 
@@ -44,9 +44,9 @@ const LogIn = ({ handleLogin }) => {
         <title>Login to Wysebits</title>
         <link rel="icon" href="/logo.png" />
       </Head>
-      <div className="h-60 bg-login-top lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md border-b-2 border-white mx-auto relative rounded-md">
+      <div className="h-48 bg-login-top lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md border-b-2 border-white mx-auto relative rounded-md">
         <div className="bg-gray-900 h-full bg-opacity-80 lg:rounded-md">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 text-white w-screen text-center text-2xl">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white w-screen text-center text-3xl lg:text-4xl">
             Keep the knowledge journey going
           </div>
         </div>

@@ -15,7 +15,7 @@ const UpdatePassword = () => {
   const handleChange = (e) => {
     setPsws({
       ...psws,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value.trim(),
     });
   };
 

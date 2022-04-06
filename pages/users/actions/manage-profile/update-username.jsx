@@ -25,7 +25,7 @@ const UpdateUsername = () => {
     });
   };
 
-  const handleChange = async (e) => setUsername(e.target.value);
+  const handleChange = async (e) => setUsername(e.target.value.trim());
 
   const handleSubmit = async (e) => {
     e.preventDefault();
