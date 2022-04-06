@@ -52,8 +52,8 @@ const UpdateUsername = () => {
       <>
         <div className="py-10">
           <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2 md:border-none">
-            <User size={36} className="text-gray-700" />
-            <div className="text-3xl text-gray-800 text-right">
+            <User size={36} className="text-gray-50" />
+            <div className="text-3xl text-gray-50 text-right">
               Choose a new username
             </div>
           </div>
@@ -63,7 +63,7 @@ const UpdateUsername = () => {
             onSubmit={handleSubmit}
           >
             <div className="w-4/6 mx-auto my-10">
-              <label htmlFor="username" className="pl-1 text-xl text-gray-800">
+              <label htmlFor="username" className="pl-1 text-xl text-gray-50">
                 Choose a new username
               </label>
               <input
@@ -85,7 +85,7 @@ const UpdateUsername = () => {
             {available === true ? (
               <button
                 type="submit"
-                className="block mx-auto w-4/6 bg-white my-10 rounded-lg px-5 py-3 text-gray-800 shadow-md hover:shadow-lg transition-shadow active:shadow-inner"
+                className="block mx-auto w-4/6 bg-white my-10 rounded-lg px-5 py-3 text-gray-50 shadow-md hover:shadow-lg transition-shadow active:shadow-inner"
               >
                 Confirm username change
               </button>

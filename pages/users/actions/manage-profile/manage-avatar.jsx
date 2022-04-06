@@ -95,13 +95,8 @@ const ManageAvatar = ({ userState, userLoading }) => {
 
   return (
     <>
-      <div className="bg-gray-700 flex items-center justify-center gap-x-5 md:gap-x-10 text-white py-14">
-        <Sliders size={36} strokeWidth={1.5} />
-        <div className="text-2xl">Your avatar</div>
-      </div>
-
       <div className="w-4/5 mx-auto my-10">
-        <div className="text-center mb-20 text-2xl border-b pb-2 text-gray-700">
+        <div className="text-center mb-20 text-2xl border-b pb-2 text-gray-50">
           Current profile picture
         </div>
 
@@ -127,7 +122,7 @@ const ManageAvatar = ({ userState, userLoading }) => {
           </div>
         )}
 
-        <div className="mt-10 text-center text-sm">
+        <div className="mt-10 text-center text-sm text-gray-100">
           <p>Max size: 3mb</p>
           <p>Accepted types: jpeg, jpg, png</p>
         </div>

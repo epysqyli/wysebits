@@ -52,8 +52,8 @@ const UpdatePassword = () => {
       <>
         <div className="py-10">
           <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2 md:border-none">
-            <Key size={36} className="text-gray-700" />
-            <div className="text-3xl text-gray-800 text-right">Choose a new password</div>
+            <Key size={36} className="text-gray-50" />
+            <div className="text-3xl text-gray-50 text-right">Choose a new password</div>
           </div>
 
           <form
@@ -63,7 +63,7 @@ const UpdatePassword = () => {
             <div className="w-4/6 mx-auto my-10">
               <label
                 htmlFor="old-password"
-                className="pl-1 text-xl text-gray-800"
+                className="pl-1 text-xl text-gray-50"
               >
                 Current password
               </label>
@@ -81,10 +81,10 @@ const UpdatePassword = () => {
             <div className="w-4/6 mx-auto my-10">
               <label
                 htmlFor="password"
-                className="pl-1 text-xl text-gray-800 flex items-center justify-around"
+                className="pl-1 text-xl text-gray-50 flex items-center justify-around"
               >
                 <p>New password</p>
-                <p className="text-gray-700 text-sm mt-1 w-4/5 md:w-3/5 mr-0 text-right">
+                <p className="text-gray-100 text-sm mt-1 w-4/5 md:w-3/5 mr-0 text-right">
                   At least 8 characters, one uppercase letter, one digit
                 </p>
               </label>
@@ -103,7 +103,7 @@ const UpdatePassword = () => {
             <div className="w-4/6 mx-auto my-10">
               <label
                 htmlFor="password-confirmation"
-                className="pl-1 text-xl text-gray-800"
+                className="pl-1 text-xl text-gray-50"
               >
                 Password confirmation
               </label>
