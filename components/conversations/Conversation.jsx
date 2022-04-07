@@ -1,7 +1,5 @@
 import dayjs from "dayjs";
 import Link from "next/dist/client/link";
-import { User } from "react-feather";
-import Image from "next/dist/client/image";
 import Avatar from "../users/Avatar";
 
 const Conversation = ({ conversation }) => {

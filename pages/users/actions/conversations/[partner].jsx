@@ -46,11 +46,11 @@ const Conversation = ({
   };
 
   return (
-    <div className="w-5/6 md:w-4/6 xl:w-3/5 2xl:w-1/2 mx-auto pt-10">
+    <div className="w-11/12 md:w-4/6 xl:w-3/5 2xl:w-1/2 mx-auto pt-10">
       <div>
         <div className="flex justify-around items-center md:justify-around md:border-b-2 md:border-gray-300 md:pb-10">
           <Avatar avatarUrl={avatarUrl} size={60} />
-          <div className="text-gray-800 text-2xl">
+          <div className="text-gray-50 text-2xl">
             Conversation with{" "}
             <div className="underline hover:text-gray-600 active:text-gray-800 text-right">
               <Link href={`/creators/${partner}`}>{partner}</Link>
