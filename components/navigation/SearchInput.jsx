@@ -169,7 +169,7 @@ const SearchInput = ({
             type="text"
             name="tmp"
             id="tmp"
-            className="border-none py-3 bg-white w-5/6 rounded-tl-lg rounded-bl-lg focus:ring-blue-400 focus:ring-2 group-hover:shadow-md transition"
+            className="border-none py-3 bg-white w-5/6 rounded-tl rounded-bl focus:ring-blue-400 focus:ring-2 group-hover:shadow-md transition"
             onChange={handleChange}
             onFocus={() => displayHistory()}
             placeholder={placeholder}
@@ -178,7 +178,7 @@ const SearchInput = ({
 
           <button
             type="submit"
-            className="w-1/6 text-center bg-white border-l rounded-tr-lg rounded-br-lg hover:bg-gray-100 group-hover:shadow-md transition active:text-white"
+            className="w-1/6 text-center bg-white border-l rounded-tr rounded-br hover:bg-gray-100 group-hover:shadow-md transition active:text-white"
           >
             {searchLoading === true ? (
               <Loader size={20} color="gray" className="mx-auto animate-spin" />
