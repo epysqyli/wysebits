@@ -12,6 +12,7 @@ import {
   getUpvotedEntries,
   getDownvotedEntries,
 } from "../../../lib/serverSideMethods";
+import WelcomeTop from "../../../components/users/WelcomeTop";
 
 export const getServerSideProps = async (context) => {
   const username = context.params.username;
@@ -128,22 +129,22 @@ const UserInsights = ({
           <title>Insights by {username}</title>
           <link rel="icon" href="/logo.png" />
         </Head>
-        <div className="bg-saved-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
-          <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
-            <div className="mx-auto w-4/5">All insights from {username}</div>
-          </div>
-        </div>
 
-        <div className="mx-auto w-11/12 text-center mt-20 text-xl">
+        <WelcomeTop
+          bcgImg="bg-saved-tiles"
+          text={`All insights from ${username}`}
+        />
+
+        <div className="mx-auto w-11/12 text-center my-20 text-xl">
           <div className="mx-auto w-min mb-20 animate-bounce">
             <Meh
               size={48}
-              color="gray"
+              color="white"
               strokeWidth={1.75}
               className="animate-spin"
             />
           </div>
-          <div className="md:w-3/5 mx-auto lg:w-2/5">
+          <div className="md:w-3/5 mx-auto lg:w-2/5 text-gray-50">
             {username} is yet to publish contributions to the books he or she
             has read
           </div>
