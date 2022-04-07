@@ -104,7 +104,7 @@ const Home = ({ categories, userState, trending }) => {
         </div>
 
         <div className="mb-20 mt-32 xl:mt-0 xl:mb-10 w-11/12 mx-auto md:w-5/6 lg:w-3/5 xl:w-1/2 border-b-2 pb-10">
-          <div className="flex justify-center items-center lg:bg-white gap-x-5 lg:gap-x-10 mb-10 md:mb-16 border-gray-50 lg:border-blue-400 border-t-2 lg:rounded-md py-8 xl:py-16">
+          <div className="flex justify-center items-center lg:bg-white gap-x-5 lg:gap-x-10 mb-10 md:mb-16 lg:border-blue-400 lg:border-t-2 lg:rounded-md py-8 xl:py-16">
             <List size={60} strokeWidth={2} className="text-white lg:text-gray-600" />
             <div className="text-5xl lg:text-6xl text-gray-50 lg:text-gray-600 font-medium">Categories</div>
           </div>
