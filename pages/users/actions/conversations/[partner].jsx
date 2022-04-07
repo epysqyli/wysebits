@@ -1,4 +1,3 @@
-import { User } from "react-feather";
 import { getMessages } from "../../../../lib/conversationMethods";
 import { getAvatar } from "../../../../lib/avatarMethods";
 import { useState } from "react";

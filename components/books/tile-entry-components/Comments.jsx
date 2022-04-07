@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Edit } from "react-feather";
 import CreatorLink from "../../navigation/CreatorLink";
 import CreateComment from "./CreateComment";
 
 const Comments = ({ comments, setComments, entryId, userId }) => {
+  const commentRef = useRef();
+
   const [showCreate, setShowCreate] = useState(false);
   const showForm = () => setShowCreate(true);
   const hideForm = () => setShowCreate(false);
@@ -12,9 +14,16 @@ const Comments = ({ comments, setComments, entryId, userId }) => {
     setComments([...comments, newComment].reverse());
   };
 
+  useEffect(() => {
+    commentRef.current.scrollIntoView({ block: "center", behavior: "smooth" });
+  }, []);
+
   if (userId)
     return (
-      <div className="text-sm font-normal max-h-24rem overflow-y-auto px-4">
+      <div
+        ref={commentRef}
+        className="text-sm font-normal max-h-24rem overflow-y-auto px-4"
+      >
         <div
           onClick={showForm}
           className="flex items-center justify-around border-b py-2 text-gray-700 w-full mx-auto hover:bg-gray-50 active:bg-gray-100 cursor-pointer"
