@@ -18,7 +18,7 @@ const CreateBook = ({ categories, userState }) => {
   if (userState.isLogged) {
     const [book, setBook] = useState({
       title: "",
-      category_id: categories.find((cat) => cat.slug === "various").id,
+      category_id: categories[0].id,
       author: {
         full_name: "",
         id: null,
@@ -129,7 +129,7 @@ const CreateBook = ({ categories, userState }) => {
 
     return (
       <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 my-20 pb-10">
-        <div className="text-2xl font-medium text-center">
+        <div className="text-3xl font-medium text-center text-gray-50">
           Fill in the required fields to add a book
         </div>
 
@@ -139,7 +139,7 @@ const CreateBook = ({ categories, userState }) => {
           onSubmit={handleSubmit}
         >
           <div className="my-10">
-            <label htmlFor="title" className="pl-3">
+            <label htmlFor="title" className="pl-3 text-lg text-gray-50">
               Enter the book title
             </label>
             <input
@@ -154,14 +154,14 @@ const CreateBook = ({ categories, userState }) => {
           </div>
 
           <div className="my-10">
-            <label htmlFor="title" className="pl-3">
+            <label htmlFor="title" className="pl-3 text-lg text-gray-50">
               Choose a category
             </label>
             <select
               name="category_id"
               id="category"
               className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm"
-              defaultValue={categories.find((cat) => cat.slug === "various").id}
+              defaultValue={categories[0].id}
               onChange={handleChange}
               required
             >
@@ -174,9 +174,12 @@ const CreateBook = ({ categories, userState }) => {
           </div>
 
           <div className="my-10">
-            <label htmlFor="author-full-name" className="pl-3">
+            <label
+              htmlFor="author-full-name"
+              className="pl-3 text-lg text-gray-50"
+            >
               <div>Add the author</div>
-              <div className="mt-1 mb-2 text-sm text-gray-500">
+              <div className="mt-1 mb-2 text-sm text-gray-100">
                 It will be created if not present on the search results
               </div>
             </label>
@@ -212,7 +215,9 @@ const CreateBook = ({ categories, userState }) => {
           </div>
 
           <div className="my-10">
-            <label htmlFor="book-cover">Upload a book cover</label>
+            <label htmlFor="book-cover" className="pl-3 text-lg text-gray-50">
+              Upload a book cover
+            </label>
             <input
               type="file"
               name="book_cover"
@@ -227,8 +232,8 @@ const CreateBook = ({ categories, userState }) => {
               fileAllowed ? "" : "border border-red-400 bg-red-100 py-2 rounded"
             }`}
           >
-            <p>Max size: 5mb</p>
-            <p>Accepted types: jpeg, jpg, png</p>
+            <p className="text-gray-200">Max size: 5mb</p>
+            <p className="text-gray-200">Accepted types: jpeg, jpg, png</p>
           </div>
 
           {loader ? (
