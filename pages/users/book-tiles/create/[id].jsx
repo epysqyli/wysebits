@@ -221,7 +221,7 @@ const TileCreation = ({
             {allEntriesValid() ? (
               <button
                 type="submit"
-                className="w-3/5 md:w-2/5 xl:w-2/5 mx-auto block border mt-10 py-2 rounded-md shadow-md hover:shadow-lg hover:bg-gray-100 active:bg-gray-200 active:shadow-lg"
+                className="w-3/5 md:w-2/5 xl:w-2/5 mx-auto block border mt-10 py-2 rounded-md shadow-md hover:shadow-lg text-gray-50 hover:bg-gray-100 hover:text-gray-600 active:bg-gray-200 active:shadow-lg"
               >
                 Publish your thoughts!
               </button>

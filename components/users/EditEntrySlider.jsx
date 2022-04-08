@@ -30,7 +30,7 @@ const EditEntrySlider = ({ entries, handleChange, handleSubmit }) => {
             className="group-active:scale-90 mx-auto"
           />
         </div>
-        <div className="p-2 text-sm rounded-full text-gray-700 bg-white shadow-md select-none">{`${
+        <div className="p-2 text-sm rounded text-gray-700 bg-white shadow-md select-none">{`${
           current + 1
         } / ${entries.length}`}</div>
         <div
