@@ -121,11 +121,12 @@ const TileCreation = ({
 
     const findOrCreateBookTile = async () => {
       const url = `${process.env.BASE_URL}/users/${userState.user.id}/book_tiles`;
-      const resp = await axios.post(
-        url,
-        { book_id: bookData.id },
-        { withCredentials: true }
-      );
+      const resp = await axios({
+        method: "POST",
+        url: url,
+        data: { book_id: bookData.id },
+        withCredentials: true,
+      });
 
       return resp.data;
     };
@@ -133,32 +134,30 @@ const TileCreation = ({
     const createForLater = async (entry) => {
       const bookTile = await findOrCreateBookTile();
 
-      axios
-        .post(
-          `${process.env.BASE_URL}/book_tiles/${bookTile.id}/temporary_entries`,
-          { content: entry.content },
-          { withCredentials: true }
-        )
-        .catch((err) => console.log(err));
+      await axios({
+        method: "POST",
+        url: `${process.env.BASE_URL}/book_tiles/${bookTile.id}/temporary_entries`,
+        data: { content: entry.content },
+        withCredentials: true,
+      });
     };
 
     const updateForLater = async (entry) => {
       const bookTile = await findOrCreateBookTile();
 
-      axios
-        .put(
-          `${process.env.BASE_URL}/book_tiles/${bookTile.id}/temporary_entries/${entry.id}`,
-          { content: entry.content },
-          { withCredentials: true }
-        )
-        .catch((err) => console.log(err));
+      await axios({
+        method: "PUT",
+        url: `${process.env.BASE_URL}/book_tiles/${bookTile.id}/temporary_entries/${entry.id}`,
+        data: { content: entry.content },
+        withCredentials: true,
+      });
     };
 
-    const saveForLater = (entry) => {
+    const saveForLater = async (entry) => {
       if (entry.id == null) {
-        createForLater(entry);
+        await createForLater(entry);
       } else {
-        updateForLater(entry);
+        await updateForLater(entry);
       }
     };
 
@@ -168,23 +167,23 @@ const TileCreation = ({
       const url = `${process.env.BASE_URL}/book_tiles/${bookTile.id}/tile_entries`;
       const { first_entry, second_entry, third_entry } = tileEntries;
 
-      axios
-        .post(
-          url,
-          {
-            first_entry: first_entry.content,
-            second_entry: second_entry.content,
-            third_entry: third_entry.content,
-          },
-          { withCredentials: true }
-        )
-        .then(() => router.push("/users/book-tiles/1"))
-        .catch((err) => console.log(err));
+      await axios({
+        method: "POST",
+        url: url,
+        data: {
+          first_entry: first_entry.content,
+          second_entry: second_entry.content,
+          third_entry: third_entry.content,
+        },
+        withCredentials: true,
+      });
+
+      router.push("/users/book-tiles/1");
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault();
-      createTileEntries();
+      await createTileEntries();
     };
 
     return (
