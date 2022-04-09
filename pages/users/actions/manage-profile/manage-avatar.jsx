@@ -104,7 +104,11 @@ const ManageAvatar = ({ userState, userLoading }) => {
           <div className="flex items-center justify-around relative h-60">
             <div>
               {avatarUrl === null || userLoading === true ? (
-                <ImageLoader size={60} strokeWidth={1.5} color="gray" />
+                <ImageLoader
+                  size={60}
+                  strokeWidth={1.5}
+                  className="text-gray-50"
+                />
               ) : (
                 <Image
                   src={avatarUrl}
