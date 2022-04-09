@@ -8,6 +8,7 @@ import EditBookDetails from "../../../../components/users/EditBookDetails";
 import NoAccess from "../../../../components/users/NoAccess";
 import CreateEntrySlider from "../../../../components/users/CreateEntrySlider";
 import { isEntryValid } from "../../../../lib/utils";
+import DangerButton from "../../../../components/navigation/DangerButton";
 
 import {
   getBook,
@@ -50,6 +51,9 @@ const TileCreation = ({
 }) => {
   const [editVisible, setEditVisible] = useState(false);
   const [confirmAnimation, setConfirmAnimation] = useState("");
+  const [deletable, setDeletable] = useState(
+    tempEntries !== null ? true : false
+  );
 
   const bcgImage = () => {
     const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
@@ -153,8 +157,50 @@ const TileCreation = ({
       });
     };
 
-    const addConfirmAnimation = () =>
+    const setEntriesToEmptyContent = () => {
+      const emptyEntries = {
+        first_entry: {
+          content: "",
+          id: getEntryId(0),
+          name: "first_entry",
+        },
+        second_entry: {
+          content: "",
+          id: getEntryId(1),
+          name: "second_entry",
+        },
+        third_entry: {
+          content: "",
+          id: getEntryId(2),
+          name: "third_entry",
+        },
+      };
+
+      setTileEntries(emptyEntries);
+    };
+
+    const deleteTempEntries = async (userId, bookTileId) => {
+      return await axios({
+        method: "DELETE",
+        url: `${process.env.BASE_URL}/users/${userId}/book_tiles/${bookTileId}`,
+        withCredentials: true,
+      });
+    };
+
+    const deleteEntriesAndUpdateState = async (userId, bookTileId) => {
+      const resp = confirm(
+        "Are you sure you want to delete these contributions?"
+      );
+
+      if (resp === true) await deleteTempEntries(userId, bookTileId);
+      setEntriesToEmptyContent();
+      setDeletable(false);
+    };
+
+    const addConfirmAnimation = () => {
       setConfirmAnimation("animate-confirm-update");
+    };
+
     const clearConfirmAnimation = () => setConfirmAnimation("");
 
     const saveForLater = async (entry) => {
@@ -165,6 +211,7 @@ const TileCreation = ({
         await updateForLater(entry);
       }
       setTimeout(clearConfirmAnimation, "100");
+      setDeletable(true);
     };
 
     const createTileEntries = async () => {
@@ -241,6 +288,20 @@ const TileCreation = ({
               </button>
             )}
           </form>
+
+          {tempEntries !== null && deletable ? (
+            <div
+              onClick={() =>
+                deleteEntriesAndUpdateState(
+                  userState.user.id,
+                  tempEntries[0].book_tile_id
+                )
+              }
+              className="w-3/5 md:w-2/5 xl:w-2/5 mx-auto my-10"
+            >
+              <DangerButton text="Delete work in progress insights" />
+            </div>
+          ) : null}
         </div>
       </div>
     );
