@@ -120,10 +120,9 @@ const TileCreation = ({
     };
 
     const findOrCreateBookTile = async () => {
-      const url = `${process.env.BASE_URL}/users/${userState.user.id}/book_tiles`;
       const resp = await axios({
         method: "POST",
-        url: url,
+        url: `${process.env.BASE_URL}/users/${userState.user.id}/book_tiles`,
         data: { book_id: bookData.id },
         withCredentials: true,
       });
@@ -154,7 +153,7 @@ const TileCreation = ({
     };
 
     const saveForLater = async (entry) => {
-      if (entry.id == null) {
+      if (entry.id === null) {
         await createForLater(entry);
       } else {
         await updateForLater(entry);
