@@ -192,9 +192,11 @@ const TileCreation = ({
         "Are you sure you want to delete these contributions?"
       );
 
-      if (resp === true) await deleteTempEntries(userId, bookTileId);
-      setEntriesToEmptyContent();
-      setDeletable(false);
+      if (resp === true) {
+        await deleteTempEntries(userId, bookTileId);
+        setEntriesToEmptyContent();
+        setDeletable(false);
+      }
     };
 
     const addConfirmAnimation = () => {
