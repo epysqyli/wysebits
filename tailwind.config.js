@@ -59,7 +59,7 @@ module.exports = {
         "show-up": "appear 300ms ease-out 1",
         "show-up-slow": "appear 600ms ease-out 1",
         "show-up-slow-opaque": "appearOpaque 600ms ease-out 1",
-        "confirm-update": "greenConfirm 300ms ease-out 1",
+        "confirm-update": "greenConfirm 300ms linear 1",
       },
       keyframes: {
         appear: {
