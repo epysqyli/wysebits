@@ -50,7 +50,7 @@ module.exports = {
           "url('/images/categories/economics-and-finance.jpg')",
         various: "url('/images/categories/various.jpg')",
         technology: "url('/images/categories/technology.jpg')",
-        "comments": "url('/images/comments.jpg')"
+        comments: "url('/images/comments.jpg')",
       },
       grayscale: {
         50: "50%",
@@ -59,6 +59,7 @@ module.exports = {
         "show-up": "appear 300ms ease-out 1",
         "show-up-slow": "appear 600ms ease-out 1",
         "show-up-slow-opaque": "appearOpaque 600ms ease-out 1",
+        "confirm-update": "greenConfirm 300ms ease-out 1",
       },
       keyframes: {
         appear: {
@@ -68,6 +69,11 @@ module.exports = {
         appearOpaque: {
           "0%": { opacity: 0.1 },
           "100%": { opacity: 0.5 },
+        },
+        greenConfirm: {
+          "0%": { backgroundColor: "#E1F7E9", opacity: 0.25 },
+          "50%": { backgroundColor: "#E1F7E9", opacity: 0.75 },
+          "100%": { backgroundColor: "#E1F7E9", opacity: 0.25 },
         },
       },
       minHeight: {

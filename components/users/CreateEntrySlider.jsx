@@ -7,6 +7,7 @@ const CreateEntrySlider = ({
   isEntryValid,
   handleChange,
   saveForLater,
+  confirmAnimation,
 }) => {
   const [current, setCurrent] = useState(0);
   const increment = () => setCurrent(handleIncrement(current));
@@ -56,6 +57,7 @@ const CreateEntrySlider = ({
           isEntryValid={isEntryValid}
           handleChange={handleChange}
           saveForLater={saveForLater}
+          confirmAnimation={confirmAnimation}
         />
       </div>
     </>

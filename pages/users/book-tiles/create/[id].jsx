@@ -49,6 +49,7 @@ const TileCreation = ({
   tempEntries,
 }) => {
   const [editVisible, setEditVisible] = useState(false);
+  const [confirmAnimation, setConfirmAnimation] = useState("");
 
   const bcgImage = () => {
     const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
@@ -152,12 +153,18 @@ const TileCreation = ({
       });
     };
 
+    const addConfirmAnimation = () =>
+      setConfirmAnimation("animate-confirm-update");
+    const clearConfirmAnimation = () => setConfirmAnimation("");
+
     const saveForLater = async (entry) => {
+      addConfirmAnimation();
       if (entry.id === null) {
         await createForLater(entry);
       } else {
         await updateForLater(entry);
       }
+      setTimeout(clearConfirmAnimation, "100");
     };
 
     const createTileEntries = async () => {
@@ -214,6 +221,7 @@ const TileCreation = ({
               isEntryValid={isEntryValid}
               handleChange={handleChange}
               saveForLater={saveForLater}
+              confirmAnimation={confirmAnimation}
             />
 
             {allEntriesValid() ? (

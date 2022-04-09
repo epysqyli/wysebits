@@ -5,6 +5,7 @@ const CreateEntryForm = ({
   handleChange,
   saveForLater,
   isEntryValid,
+  confirmAnimation,
 }) => {
   return (
     <div className="pt-2 px-2">
@@ -28,7 +29,11 @@ const CreateEntryForm = ({
         type="text"
         name={entry.name}
         id={entry.name}
-        className="border-none bg-white w-full mt-2 focus:ring-0 focus:shadow-md rounded"
+        className={
+          "border-none bg-white w-full mt-2 focus:ring-0 focus:shadow-md rounded" +
+          " " +
+          confirmAnimation
+        }
         placeholder="Important stuff"
         rows="20"
         onChange={handleChange}
