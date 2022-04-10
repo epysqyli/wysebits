@@ -58,7 +58,7 @@ const Home = ({ categories, userState, trending }) => {
         <link rel="icon" href="/logo.png" />
       </Head>
 
-      <div className="h-48 md:h-56 xl:h-42 mx-auto bg-library bg-cover bg-center md:mb-12 lg:w-4/5 lg:mt-5 lg:rounded-md border-b-2 border-white">
+      <div className="h-48 md:h-56 xl:h-42 mx-auto bg-library bg-cover bg-center md:mb-12 lg:w-4/5 mt-20 lg:rounded-md border-b-2 border-white">
         <div className="bg-gray-900 h-full bg-opacity-50 relative lg:rounded-md">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <h1 className="text-white text-6xl font-bold text-center">

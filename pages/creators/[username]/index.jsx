@@ -69,12 +69,19 @@ const Username = ({
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
 
+  const [activeOverlay, setActiveOverlay] = useState(false);
+  const overlay =
+    "h-full w-full bg-gray-500 opacity-75 absolute top-0 z-20";
+  const addOverlay = () => setActiveOverlay(true);
+  const removeOverlay = () => setActiveOverlay(false);
+
   return (
-    <>
+    <div className="relative">
       <Head>
         <title>Creator: {user.user.username}</title>
         <link rel="icon" href="/logo.png" />
       </Head>
+      <div className={activeOverlay ? overlay : null}></div>
       <div className="mt-10">
         <BasicInfo
           user={user}
@@ -97,6 +104,8 @@ const Username = ({
           setDownvotedEntries={setDownvotedEntries}
           followedUsers={followedUsers}
           setFollowedUsers={setFollowedUsers}
+          addOverlay={addOverlay}
+          removeOverlay={removeOverlay}
         />
       </div>
 
@@ -115,7 +124,7 @@ const Username = ({
           setFollowedUsers={setFollowedUsers}
         />
       </div>
-    </>
+    </div>
   );
 };
 

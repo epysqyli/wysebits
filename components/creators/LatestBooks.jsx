@@ -17,22 +17,30 @@ const LatestBooks = ({
   setDownvotedEntries,
   followedUsers,
   setFollowedUsers,
+  addOverlay,
+  removeOverlay,
 }) => {
   const [latest] = useState(books.slice(0, 4));
   const [showInsights, setShowInsights] = useState(false);
   const [bookInsights, setBookInsights] = useState([]);
 
   const showBookInsights = async (bookId) => {
+    addOverlay();
     const resp = await getBookUserInsights(userId, bookId);
     setBookInsights(resp.data);
     showInsights === false ? setShowInsights(true) : setShowInsights(false);
   };
 
-  const closeBookInsight = () => setShowInsights(false);
+  const closeBookInsight = () => {
+    removeOverlay();
+    setShowInsights(false);
+  };
 
   return (
     <>
-      <div className="text-center text-gray-100 font-medium text-5xl">Latest books</div>
+      <div className="text-center text-gray-100 font-medium text-5xl">
+        Latest books
+      </div>
       <div className="py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
         {latest.map((book) => {
           return (

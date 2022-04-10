@@ -103,13 +103,22 @@ const UserBooks = ({
   const [showInsights, setShowInsights] = useState(false);
   const [bookInsights, setBookInsights] = useState([]);
 
+  const [activeOverlay, setActiveOverlay] = useState(false);
+  const overlay = "h-full w-full bg-gray-500 opacity-75 absolute top-0 z-20";
+  const addOverlay = () => setActiveOverlay(true);
+  const removeOverlay = () => setActiveOverlay(false);
+
   const showBookInsights = async (bookId) => {
+    addOverlay();
     const resp = await getBookUserInsights(userId, bookId);
     setBookInsights(resp.data);
     showInsights === false ? setShowInsights(true) : setShowInsights(false);
   };
 
-  const closeBookInsight = () => setShowInsights(false);
+  const closeBookInsight = () => {
+    removeOverlay();
+    setShowInsights(false);
+  };
 
   if (books.length === 0 && currentSearchTerms)
     return (
@@ -169,18 +178,20 @@ const UserBooks = ({
     );
 
   return (
-    <div>
+    <div className="relative">
       <Head>
         <title>Books read by {username}</title>
         <link rel="icon" href="/logo.png" />
       </Head>
-      <div className="bg-check-book-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
+      <div className="bg-check-book-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 mt-20 lg:rounded-md mx-auto">
         <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
           <div className="mx-auto w-4/5">
             All books contributed to by {username}
           </div>
         </div>
       </div>
+
+      <div className={activeOverlay ? overlay : null}></div>
 
       <div className="mt-5">
         <SpecificSearch
