@@ -128,7 +128,7 @@ const EditBookTile = ({
     }, []);
 
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         {editVisible ? (
           <EditBookDetails
             categories={categories}
@@ -163,11 +163,16 @@ const EditBookTile = ({
         >
           <DangerButton text="Delete book tile" />
         </div>
-      </>
+      </div>
     );
   }
 
-  if (userState.isLogged === false) return <NoAccess />;
+  if (userState.isLogged === false)
+    return (
+      <div className="mx-auto mt-10 w-4/5 md:w-4/6 lg:w-3/6 pt-16">
+        <NoAccess />
+      </div>
+    );
 };
 
 export default EditBookTile;

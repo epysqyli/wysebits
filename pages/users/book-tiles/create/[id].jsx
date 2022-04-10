@@ -242,7 +242,7 @@ const TileCreation = ({
     };
 
     return (
-      <div className="pb-10">
+      <div className="pt-10 lg:pt-16">
         {editVisible ? (
           <EditBookDetails
             categories={categories}
@@ -311,7 +311,7 @@ const TileCreation = ({
 
   if (userState.isLogged && !isAvailable) {
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         {editVisible ? (
           <EditBookDetails
             categories={categories}
@@ -348,12 +348,12 @@ const TileCreation = ({
             </Link>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 
   return (
-    <div className="mx-auto mt-10 w-4/5 md:w-4/6 lg:w-3/6">
+    <div className="mx-auto mt-10 w-4/5 md:w-4/6 lg:w-3/6 pt-16">
       <NoAccess />
     </div>
   );
