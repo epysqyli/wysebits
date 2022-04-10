@@ -78,7 +78,7 @@ const Home = ({ categories, userState, trending }) => {
               Search {capitalize(searchMode)}
             </div>
             <div
-              className="flex justify-between px-5 items-center group gap-x-5 w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 2xl:w-2/5 mx-auto border-b xl:border xl:bg-gray-50 xl:border-blue-400 xl:rounded py-2 xl:py-1 cursor-pointer hover:text-white md:hover:text-black xl:hover:bg-blue-200 transition-all active:shadow-inner tracking-tight"
+              className="flex justify-between px-5 items-center group gap-x-5 w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 2xl:w-1/2 mx-auto border-b xl:border xl:bg-gray-50 xl:border-blue-400 xl:rounded py-2 xl:py-1 cursor-pointer hover:text-white md:hover:text-black xl:hover:bg-blue-200 transition-all active:shadow-inner tracking-tight"
               onClick={toggleSearchMode}
             >
               <div className="transition-transform">
@@ -117,7 +117,7 @@ const Home = ({ categories, userState, trending }) => {
       </div>
 
       <Link href="/feed">
-        <div className="mx-auto my-24 w-11/12 md:w-3/5 lg:w-2/5 2xl:w-1/4 px-2 py-8 lg:py-12 rounded-md border-t-2 border-blue-400 bg-white hover:bg-gray-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer group">
+        <div className="mx-auto my-24 w-11/12 md:w-3/5 lg:w-2/5 2xl:w-1/3 px-2 py-8 lg:py-12 rounded-md border-t-2 border-blue-400 bg-white hover:bg-gray-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer group">
           <div className="flex justify-center items-center gap-x-10">
             <Layers size={36} strokeWidth={1.5} />
             <div className="text-4xl text-gray-700">Feed</div>
