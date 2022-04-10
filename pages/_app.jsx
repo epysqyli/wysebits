@@ -60,11 +60,7 @@ const MyApp = ({ Component, pageProps }) => {
       setLoading(false);
     });
 
-    return () => {
-      router.events.off("routeChangeComplete", () => {
-        console.log("stopped");
-      });
-    };
+    return () => router.events.off("routeChangeComplete", () => {});
   }, [router.events]);
 
   // necessary on page refresh without route change
