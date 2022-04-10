@@ -54,6 +54,10 @@ const Comments = ({ comments, setComments, entryId, userId }) => {
 
   return (
     <div className="text-sm font-normal max-h-24rem overflow-y-auto px-4">
+      <div
+        ref={commentRef}
+        className="text-sm font-normal max-h-24rem overflow-y-auto px-4"
+      ></div>
       {comments.map((comment) => {
         return (
           <div key={comment.id} className="my-5 pb-5 border-b">
