@@ -6,7 +6,7 @@ import Link from "next/dist/client/link";
 const NoSearchResults = ({ searchMode }) => {
   if (searchMode === "books")
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>No results - Wysebits search</title>
           <link rel="icon" href="/logo.png" />
@@ -47,12 +47,12 @@ const NoSearchResults = ({ searchMode }) => {
             </div>
           </Link>
         </div>
-      </>
+      </div>
     );
 
   if (searchMode === "authors")
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>No results - Wysebits search</title>
           <link rel="icon" href="/logo.png" />
@@ -93,7 +93,7 @@ const NoSearchResults = ({ searchMode }) => {
             </div>
           </Link>
         </div>
-      </>
+      </div>
     );
 };
 
