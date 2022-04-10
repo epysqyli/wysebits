@@ -27,7 +27,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <>
+    <div className="pt-10 lg:pt-16">
       <Head>
         <title>Request password reset</title>
         <link rel="icon" href="/logo.png" />
@@ -64,7 +64,7 @@ const ForgotPassword = () => {
           </button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

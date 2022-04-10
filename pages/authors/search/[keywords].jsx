@@ -28,7 +28,7 @@ const AuthorSearch = ({ searchResults, keywords, pagy }) => {
 
   if (searchResults.length !== 0)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>
             {capitalize(keywords.split("-").join(" "))} - Wysebits search
@@ -50,11 +50,11 @@ const AuthorSearch = ({ searchResults, keywords, pagy }) => {
         </div>
 
         <Pagination clientUrl={clientUrl} pagy={pagy} />
-      </>
+      </div>
     );
 
   return (
-    <div>
+    <div className="pt-10 lg:pt-16">
       <NoSearchResults searchMode="authors" />
     </div>
   );

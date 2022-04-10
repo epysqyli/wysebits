@@ -35,7 +35,7 @@ const BookSearchResults = ({ searchResults, keywords, pagy }) => {
 
   if (searchResults.length !== 0) {
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>{capitalize(keywords.split("-").join(" "))} - Wysebits search</title>
           <link rel="icon" href="/logo.png" />
@@ -64,7 +64,7 @@ const BookSearchResults = ({ searchResults, keywords, pagy }) => {
         </div>
 
         <Pagination clientUrl={clientUrl} pagy={pagy} />
-      </>
+      </div>
     );
   }
 

@@ -39,7 +39,7 @@ const LogIn = ({ handleLogin }) => {
   };
 
   return (
-    <>
+    <div className="pt-10 lg:pt-16">
       <Head>
         <title>Login to Wysebits</title>
         <link rel="icon" href="/logo.png" />
@@ -94,7 +94,7 @@ const LogIn = ({ handleLogin }) => {
           <Link href="/registrations/forgot_password">Forgot password?</Link>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

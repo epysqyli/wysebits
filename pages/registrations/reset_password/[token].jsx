@@ -54,7 +54,7 @@ const ResetPassword = ({ token }) => {
 
   if (confirmed === false)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>Reset password - Wysebits</title>
           <link rel="icon" href="/logo.png" />
@@ -126,11 +126,11 @@ const ResetPassword = ({ token }) => {
             )}
           </form>
         </div>
-      </>
+      </div>
     );
 
   return (
-    <>
+    <div className="pt-10 lg:pt-16">
       <Head>
         <title>Reset password - Wysebits</title>
         <link rel="icon" href="/logo.png" />
@@ -155,7 +155,7 @@ const ResetPassword = ({ token }) => {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

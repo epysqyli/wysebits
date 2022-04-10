@@ -61,13 +61,13 @@ const Author = ({
 
   if (books.length !== 0)
     return (
-      <>
+      <div className="pt-10 lg:pt-12">
         <Head>
           <title>{authorName}</title>
           <link rel="icon" href="/logo.png" />
         </Head>
         <div className="bg-author bg-cover bg-center shadow">
-          <div className="bg-gray-800 bg-opacity-70 text-white text-4xl text-center py-16">
+          <div className="bg-gray-800 bg-opacity-70 text-white text-4xl text-center py-20">
             {authorName}
           </div>
         </div>
@@ -104,18 +104,18 @@ const Author = ({
         </div>
 
         <Pagination clientUrl={clientUrl} pagy={pagy} opts={searchParams} />
-      </>
+      </div>
     );
 
   if (books.length === 0 && currentSearchTerms !== null)
     return (
-      <>
+      <div className="pt-10 lg:pt-12">
         <Head>
           <title>{authorName}</title>
           <link rel="icon" href="/logo.png" />
         </Head>
         <div className="bg-author bg-cover bg-center shadow">
-          <div className="bg-gray-800 bg-opacity-70 text-white text-4xl text-center py-16">
+          <div className="bg-gray-800 bg-opacity-70 text-white text-4xl text-center py-20">
             {authorName}
           </div>
         </div>
@@ -130,11 +130,11 @@ const Author = ({
           />
         </div>
         <NoResults />
-      </>
+      </div>
     );
 
   return (
-    <>
+    <div className="pt-10 lg:pt-16">
       <Head>
         <title>{authorName}</title>
         <link rel="icon" href="/logo.png" />
@@ -161,7 +161,7 @@ const Author = ({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

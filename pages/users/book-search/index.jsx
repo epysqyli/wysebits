@@ -6,7 +6,7 @@ import NoAccess from "../../../components/users/NoAccess";
 const BookSearch = ({ userState }) => {
   if (userState.isLogged) {
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>Create book tile</title>
         </Head>
@@ -39,7 +39,7 @@ const BookSearch = ({ userState }) => {
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 

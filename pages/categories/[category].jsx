@@ -50,7 +50,7 @@ const Category = ({
 
   if (books.length !== 0)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>{capitalize(categoryName)} Books</title>
           <link rel="icon" href="/logo.png" />
@@ -87,12 +87,12 @@ const Category = ({
         </div>
 
         <Pagination clientUrl={clientUrl} pagy={pagy} opts={searchParams} />
-      </>
+      </div>
     );
 
   if (books.length === 0 && currentSearchTerms !== null)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>{capitalize(categoryName)} Books</title>
           <link rel="icon" href="/logo.png" />
@@ -107,12 +107,12 @@ const Category = ({
           />
         </div>
         <NoResults />
-      </>
+      </div>
     );
 
   if (books.length === 0)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>{capitalize(categoryName)} Books</title>
           <link rel="icon" href="/logo.png" />
@@ -134,7 +134,7 @@ const Category = ({
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
 };
 

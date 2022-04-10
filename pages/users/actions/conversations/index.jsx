@@ -25,7 +25,7 @@ const Conversations = ({ conversations, pagy }) => {
 
   if (conversations.length === 0) {
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <WelcomeTop text="Your conversations" bcgImg="bg-conversations" />
         <div className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 xl:w-2/6 2xl:w-1/3 py-20 lg:py-40 2xl:py-48">
           <NoItem message="You have no conversations yet" />
@@ -45,12 +45,12 @@ const Conversations = ({ conversations, pagy }) => {
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 
   return (
-    <>
+    <div className="pt-10 lg:pt-16">
       <WelcomeTop text="Your conversations" bcgImg="bg-conversations" />
       <div className="w-5/6 md:w-3/5 2xl:w-1/2 mx-auto py-10">
         <div className="my-10 ">
@@ -66,7 +66,7 @@ const Conversations = ({ conversations, pagy }) => {
 
         <Pagination clientUrl={clientUrl} pagy={pagy} />
       </div>
-    </>
+    </div>
   );
 };
 

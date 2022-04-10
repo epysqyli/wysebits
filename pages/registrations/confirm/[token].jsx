@@ -28,7 +28,7 @@ const ConfirmToken = ({ token }) => {
   };
 
   return (
-    <>
+    <div className="pt-10 lg:pt-16">
       <Head>
         <title>Confirm account - Wysebits</title>
         <link rel="icon" href="/logo.png" />
@@ -71,7 +71,7 @@ const ConfirmToken = ({ token }) => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

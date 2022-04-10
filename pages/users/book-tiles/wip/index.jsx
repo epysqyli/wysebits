@@ -35,7 +35,7 @@ const WorkInProgress = ({ books, pagy, userState }) => {
 
   if (userState.isLogged && books.length === 0)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <WelcomeTop
           text="Contributions you are working on"
           bcgImg="bg-wip-contributions"
@@ -59,12 +59,12 @@ const WorkInProgress = ({ books, pagy, userState }) => {
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
 
   if (userState.isLogged && books.length !== 0)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <WelcomeTop
           text="Contributions you are working on"
           bcgImg="bg-wip-contributions"
@@ -85,7 +85,7 @@ const WorkInProgress = ({ books, pagy, userState }) => {
         </div>
 
         <Pagination clientUrl={clientUrl} pagy={pagy} />
-      </>
+      </div>
     );
 
   return <NoAccess />;

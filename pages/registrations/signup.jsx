@@ -80,7 +80,7 @@ const SignUp = () => {
 
   if (emailSent === false)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>Signup to Wysebits</title>
           <link rel="icon" href="/logo.png" />
@@ -210,11 +210,11 @@ const SignUp = () => {
             </button>
           )}
         </form>
-      </>
+      </div>
     );
 
   return (
-    <>
+    <div className="pt-10 lg:pt-16">
       <Head>
         <title>Signup to Wysebits</title>
         <link rel="icon" href="/logo.png" />
@@ -242,7 +242,7 @@ const SignUp = () => {
           with a link to confirm your account on Wysebits!
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

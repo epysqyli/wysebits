@@ -55,7 +55,7 @@ const UserBookTiles = ({
 
   if (userState.isLogged && bookTiles.length === 0 && currentSearchTerms)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <WelcomeTop
           text="Your contributions"
           bcgImg="bg-check-book-tiles"
@@ -70,12 +70,12 @@ const UserBookTiles = ({
         </div>
 
         <NoResults />
-      </>
+      </div>
     );
 
   if (userState.isLogged && bookTiles.length === 0)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <WelcomeTop
           text="Your contributions"
           bcgImg="bg-check-book-tiles"
@@ -96,12 +96,12 @@ const UserBookTiles = ({
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
 
   if (userState.isLogged && bookTiles.length !== 0)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <WelcomeTop
           text="Your contributions"
           bcgImg="bg-check-book-tiles"
@@ -130,7 +130,7 @@ const UserBookTiles = ({
         </div>
 
         <Pagination clientUrl={clientUrl} pagy={pagy} opts={searchParams} />
-      </>
+      </div>
     );
 
   return <NoAccess />;

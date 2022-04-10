@@ -40,7 +40,7 @@ const BookSearchResults = ({ searchResults, userState, keywords, pagy }) => {
 
   if (userState.isLogged && searchResults.length !== 0) {
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <div className="my-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
           <SearchInput
             pageDest="/users/book-search/"
@@ -65,7 +65,7 @@ const BookSearchResults = ({ searchResults, userState, keywords, pagy }) => {
         </div>
 
         <Pagination clientUrl={clientUrl} pagy={pagy} />
-      </>
+      </div>
     );
   }
 

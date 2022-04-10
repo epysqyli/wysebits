@@ -27,7 +27,7 @@ const NoSearchResults = ({ searchMode }) => {
               strokeWidth={1.5}
               fill="lightgray"
             />
-            <div className="w-4/6 text-gray-800">
+            <div className="w-4/6 text-gray-50">
               Unfortunately your search did not produce any meaningful results
             </div>
           </div>
@@ -73,7 +73,7 @@ const NoSearchResults = ({ searchMode }) => {
               strokeWidth={1.5}
               fill="lightgray"
             />
-            <div className="w-4/6 text-gray-800">
+            <div className="w-4/6 text-gray-50">
               Unfortunately your search did not produce any meaningful results
             </div>
           </div>

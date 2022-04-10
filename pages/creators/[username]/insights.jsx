@@ -81,7 +81,7 @@ const UserInsights = ({
 
   if (entries.length !== 0)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>Insights by {username}</title>
           <link rel="icon" href="/logo.png" />
@@ -119,12 +119,12 @@ const UserInsights = ({
         </div>
 
         <Pagination clientUrl={clientUrl} pagy={pagy} />
-      </>
+      </div>
     );
 
   if (entries.length === 0)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>Insights by {username}</title>
           <link rel="icon" href="/logo.png" />
@@ -149,7 +149,7 @@ const UserInsights = ({
             has read
           </div>
         </div>
-      </>
+      </div>
     );
 };
 

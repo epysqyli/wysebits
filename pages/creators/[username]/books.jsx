@@ -122,7 +122,7 @@ const UserBooks = ({
 
   if (books.length === 0 && currentSearchTerms)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>Books read by {username}</title>
           <link rel="icon" href="/logo.png" />
@@ -144,12 +144,12 @@ const UserBooks = ({
         </div>
 
         <NoResults />
-      </>
+      </div>
     );
 
   if (books.length === 0)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>Books read by {username}</title>
           <link rel="icon" href="/logo.png" />
@@ -174,7 +174,7 @@ const UserBooks = ({
             has read
           </div>
         </div>
-      </>
+      </div>
     );
 
   return (

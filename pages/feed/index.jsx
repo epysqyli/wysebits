@@ -180,7 +180,7 @@ const Feed = ({
     };
 
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>Feed - Wysebits</title>
           <link rel="icon" href="/logo.png" />
@@ -270,12 +270,12 @@ const Feed = ({
           }
           endMessage={feedEnd}
         />
-      </>
+      </div>
     );
   }
 
   return (
-    <>
+    <div className="pt-10 lg:pt-16">
       <Head>
         <title>Feed - Wysebits</title>
         <link rel="icon" href="/logo.png" />
@@ -314,7 +314,7 @@ const Feed = ({
           endMessage={feedEnd}
         />
       </div>
-    </>
+    </div>
   );
 };
 

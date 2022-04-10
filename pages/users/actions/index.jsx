@@ -5,13 +5,13 @@ import NoAccess from "../../../components/users/NoAccess";
 const Actions = ({ userState }) => {
   if (userState.isLogged) {
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>User Homepage</title>
           <link rel="icon" href="/logo.png" />
         </Head>
 
-        <div className="hidden md:block bg-user-welcome bg-cover bg-center lg:shadow-xl lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto border-b-2 border-white">
+        <div className="hidden md:block bg-user-welcome bg-cover bg-center lg:shadow-xl lg:w-4/5 2xl:w-2/3 lg:rounded-md mx-auto border-b-2 border-white">
           <div className="bg-gray-800 bg-opacity-70 text-white text-3xl font-medium text-center py-12 lg:py-16 lg:rounded-md">
             <div>Hi {userState.user.username}</div>
             <div className="mt-2">What are you up to today?</div>
@@ -128,7 +128,7 @@ const Actions = ({ userState }) => {
             />
           </div>
         </div>
-      </>
+      </div>
     );
   }
 

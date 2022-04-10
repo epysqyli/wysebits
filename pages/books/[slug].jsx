@@ -107,7 +107,7 @@ const Book = ({
 
   if (entries && entries.length !== 0)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <Head>
           <title>{book.title}</title>
           <link rel="icon" href="/logo.png" />
@@ -175,11 +175,11 @@ const Book = ({
             </div>
           </div>
         ) : null}
-      </>
+      </div>
     );
 
   return (
-    <>
+    <div className="pt-10 lg:pt-16">
       <Head>
         <title>{book.title}</title>
         <link rel="icon" href="/logo.png" />
@@ -199,7 +199,7 @@ const Book = ({
           </div>
         </Link>
       </div>
-    </>
+    </div>
   );
 };
 
