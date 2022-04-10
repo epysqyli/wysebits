@@ -76,7 +76,7 @@ const Username = ({
   const removeOverlay = () => setActiveOverlay(false);
 
   return (
-    <div className="relative">
+    <div className="relative pt-10">
       <Head>
         <title>Creator: {user.user.username}</title>
         <link rel="icon" href="/logo.png" />
