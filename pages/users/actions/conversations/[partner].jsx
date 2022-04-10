@@ -45,7 +45,7 @@ const Conversation = ({
   };
 
   return (
-    <div className="w-11/12 md:w-4/6 xl:w-3/5 2xl:w-1/2 mx-auto pt-10">
+    <div className="w-11/12 md:w-4/6 xl:w-3/5 2xl:w-1/2 mx-auto pt-16">
       <div>
         <div className="flex justify-around items-center md:justify-around md:border-b-2 md:border-gray-300 md:pb-10">
           <Avatar avatarUrl={avatarUrl} size={60} />
