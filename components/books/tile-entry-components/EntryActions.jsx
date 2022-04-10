@@ -15,6 +15,9 @@ import {
   downvoteAndUpdateState,
   removeUpvoteAndUpdateState,
   removeDownvoteAndUpdateState,
+  addToFavInsightsAndUpdateState,
+  removeFromFavInsightsAndUpdateState,
+  isFavInsight,
 } from "../../../lib/tileEntryMethods";
 
 import {
@@ -45,10 +48,6 @@ const EntryActions = ({
   feed,
 }) => {
   const entryUser = entryProp.book_tile.user;
-
-  const isFavInsight = () => {
-    insights.some((insight) => insight.id === entryProp.id);
-  };
 
   const feedStyle =
     "flex justify-between items-center text-sm px-10 md:px-16 py-4 lg:bg-gray-100 border-b-2 lg:border-none";
@@ -144,7 +143,7 @@ const EntryActions = ({
 
       <div className="flex justify-around items-center w-1/4">
         <div>
-          {isFavInsight() ? (
+          {isFavInsight(entryProp, insights) ? (
             <div
               onClick={() =>
                 removeFromFavInsightsAndUpdateState(
@@ -157,7 +156,7 @@ const EntryActions = ({
             >
               <Heart
                 size={16}
-                fill="darkgray"
+                fill="gray"
                 color="darkgray"
                 className="transition-all hover:scale-105 active:scale-125 cursor-pointer"
               />
@@ -165,7 +164,7 @@ const EntryActions = ({
           ) : (
             <div
               onClick={() =>
-                addToFavInsightAndUpdateState(
+                addToFavInsightsAndUpdateState(
                   user,
                   entryProp,
                   insights,
