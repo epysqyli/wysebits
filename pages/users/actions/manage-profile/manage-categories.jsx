@@ -64,7 +64,7 @@ const ManageCategories = ({ cats, favCats, userState }) => {
   const noSelection = baseClass + " cursor-default";
 
   return (
-    <>
+    <div className="pt-10 lg:pt-16">
       <div className="bg-categories bg-cover bg-center shadow select-none">
         <div className="bg-gray-800 bg-opacity-70 text-white text-2xl font-medium text-center py-12">
           <div>Update your favorite categories</div>
@@ -99,7 +99,7 @@ const ManageCategories = ({ cats, favCats, userState }) => {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

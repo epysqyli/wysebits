@@ -94,7 +94,7 @@ const ManageAvatar = ({ userState, userLoading }) => {
   }, [file]);
 
   return (
-    <>
+    <div className="pt-10 lg:pt-16">
       <div className="w-4/5 mx-auto my-10">
         <div className="text-center mb-20 text-2xl border-b pb-2 text-gray-50">
           Current profile picture
@@ -159,7 +159,7 @@ const ManageAvatar = ({ userState, userLoading }) => {
           {isUploaded === true ? submittedConfirmation : submitButton}
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

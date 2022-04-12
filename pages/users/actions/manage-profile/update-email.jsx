@@ -41,7 +41,7 @@ const UpdateEmail = () => {
 
   if (confirmed === false)
     return (
-      <>
+      <div className="pt-10 lg:pt-16">
         <div className="py-10">
           <div className="flex justify-between items-center w-11/12 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2 md:border-none">
             <Mail size={36} className="text-gray-50" />
@@ -90,7 +90,7 @@ const UpdateEmail = () => {
             )}
           </form>
         </div>
-      </>
+      </div>
     );
 
   return (
