@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import { Edit } from "react-feather";
+import { Edit, UserPlus } from "react-feather";
 import CreatorLink from "../../navigation/CreatorLink";
 import CreateComment from "./CreateComment";
+import Link from "next/dist/client/link";
 
 const Comments = ({ comments, setComments, entryId, userId }) => {
   const commentRef = useRef();
@@ -58,6 +59,14 @@ const Comments = ({ comments, setComments, entryId, userId }) => {
         ref={commentRef}
         className="text-sm font-normal max-h-24rem overflow-y-auto px-4"
       ></div>
+      <Link href="/registrations/signup">
+        <div className="flex items-center justify-center mx-auto w-5/6 gap-x-5 text-gray-700">
+          <UserPlus size={20} />
+          <div className="cursor-pointer underline hover:scale-95 transition-transform">
+            Sign up to leave a comment
+          </div>
+        </div>
+      </Link>
       {comments.map((comment) => {
         return (
           <div key={comment.id} className="my-5 pb-5 border-b">
