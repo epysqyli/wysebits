@@ -65,7 +65,7 @@ const EditBookTile = ({
       },
     });
     const [editVisible, setEditVisible] = useState(false);
-
+    const [confirmAnimation, setConfirmAnimation] = useState("");
     const router = useRouter();
 
     const hideEditForm = () => setEditVisible(false);
@@ -76,6 +76,12 @@ const EditBookTile = ({
       const dbSrc = bookData.cover_url;
       return dbSrc === null ? olSrc : dbSrc;
     };
+
+    const addConfirmAnimation = () => {
+      setConfirmAnimation("animate-confirm-update");
+    };
+
+    const clearConfirmAnimation = () => setConfirmAnimation("");
 
     const handleChange = (e) => {
       console.log(e.target.name);
@@ -91,11 +97,17 @@ const EditBookTile = ({
       setTileEntries(newTileEntries);
     };
 
-    const editEntry = (entry) => {
-      const url = `${process.env.BASE_URL}/book_tiles/${bookTileId}/tile_entries/${entry.id}`;
-      axios
-        .put(url, { content: entry.content }, { withCredentials: true })
-        .catch((err) => console.log(err));
+    const editEntry = async (entry) => {
+      addConfirmAnimation();
+
+      await axios({
+        method: "PUT",
+        url: `${process.env.BASE_URL}/book_tiles/${bookTileId}/tile_entries/${entry.id}`,
+        data: { content: entry.content },
+        withCredentials: true,
+      });
+
+      setTimeout(clearConfirmAnimation, "100");
     };
 
     const confirmDelete = () => {
@@ -154,6 +166,7 @@ const EditBookTile = ({
             entries={Object.values(tileEntries)}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
+            confirmAnimation={confirmAnimation}
           />
         </div>
 

@@ -2,8 +2,7 @@ import dayjs from "dayjs";
 import { Save } from "react-feather";
 import { isEntryValid } from "../../lib/utils";
 
-const EditForm = ({ entry, handleChange, handleSubmit }) => {
-
+const EditForm = ({ entry, handleChange, handleSubmit, confirmAnimation }) => {
   return (
     <form onSubmit={(e) => handleSubmit(e, entry)} className="pt-2 px-2">
       <label
@@ -27,7 +26,11 @@ const EditForm = ({ entry, handleChange, handleSubmit }) => {
         type="text"
         name={entry.name}
         id="entry"
-        className="border-none bg-white w-full rounded focus:ring-0 shadow-sm focus:shadow-md"
+        className={
+          "border-none bg-white w-full mt-2 focus:ring-0 focus:shadow-md rounded" +
+          " " +
+          confirmAnimation
+        }
         placeholder="Important stuff"
         rows="20"
         value={entry.content || ""}

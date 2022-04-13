@@ -2,7 +2,12 @@ import { useState } from "react";
 import EditForm from "./EditForm";
 import { ChevronLeft, ChevronRight } from "react-feather";
 
-const EditEntrySlider = ({ entries, handleChange, handleSubmit }) => {
+const EditEntrySlider = ({
+  entries,
+  handleChange,
+  handleSubmit,
+  confirmAnimation,
+}) => {
   const [current, setCurrent] = useState(0);
   const increment = () => setCurrent(handleIncrement(current));
   const decrement = () => setCurrent(handleDecrement(current));
@@ -50,6 +55,7 @@ const EditEntrySlider = ({ entries, handleChange, handleSubmit }) => {
           entry={entries[current]}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
+          confirmAnimation={confirmAnimation}
         />
       </div>
     </>
