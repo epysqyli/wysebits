@@ -81,7 +81,7 @@ const UserInsights = ({
 
   if (entries.length !== 0)
     return (
-      <div className="pt-10 lg:pt-16">
+      <div className="py-10 lg:py-16">
         <Head>
           <title>Insights by {username}</title>
           <link rel="icon" href="/logo.png" />
@@ -124,7 +124,7 @@ const UserInsights = ({
 
   if (entries.length === 0)
     return (
-      <div className="pt-10 lg:pt-16">
+      <div className="py-10 lg:py-16">
         <Head>
           <title>Insights by {username}</title>
           <link rel="icon" href="/logo.png" />

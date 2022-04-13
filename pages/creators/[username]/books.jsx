@@ -127,13 +127,11 @@ const UserBooks = ({
           <title>Books read by {username}</title>
           <link rel="icon" href="/logo.png" />
         </Head>
-        <div className="bg-check-book-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
-          <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
-            <div className="mx-auto w-4/5">
-              All books contributed to by {username}
-            </div>
-          </div>
-        </div>
+        
+        <WelcomeTop
+          bcgImg="bg-check-book-tiles"
+          text={`All books contributed to by ${username}`}
+        />
 
         <div className="mt-5">
           <SpecificSearch
@@ -178,18 +176,15 @@ const UserBooks = ({
     );
 
   return (
-    <div className="relative">
+    <div className="relative pt-10 lg:pt-16">
       <Head>
         <title>Books read by {username}</title>
         <link rel="icon" href="/logo.png" />
       </Head>
-      <div className="bg-check-book-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 mt-20 lg:rounded-md mx-auto">
-        <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
-          <div className="mx-auto w-4/5">
-            All books contributed to by {username}
-          </div>
-        </div>
-      </div>
+      <WelcomeTop
+        bcgImg="bg-check-book-tiles"
+        text={`All books contributed to by ${username}`}
+      />
 
       <div className={activeOverlay ? overlay : null}></div>
 
