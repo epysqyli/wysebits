@@ -8,7 +8,7 @@ import FullScreenLoader from "../components/navigation/FullScreenLoader";
 
 const MyApp = ({ Component, pageProps }) => {
   const [userLoading, setUserLoading] = useState(true);
-
+  const [activeOverlay, setActiveOverlay] = useState(false);
   const [userState, setUserState] = useState({
     isLogged: false,
     user: {},
@@ -50,6 +50,10 @@ const MyApp = ({ Component, pageProps }) => {
 
   const router = useRouter();
 
+  const overlay = "h-full w-full bg-gray-500 opacity-75 absolute top-0 z-20";
+  const addOverlay = () => setActiveOverlay(true);
+  const removeOverlay = () => setActiveOverlay(false);
+
   useEffect(() => {
     router.events.on("routeChangeStart", () => {
       setLoading(true);
@@ -57,6 +61,7 @@ const MyApp = ({ Component, pageProps }) => {
 
     router.events.on("routeChangeComplete", () => {
       loginStatus();
+      removeOverlay();
       setLoading(false);
     });
 
@@ -76,7 +81,10 @@ const MyApp = ({ Component, pageProps }) => {
         loginStatus={loginStatus}
         handleLogin={handleLogin}
         handleLogout={handleLogout}
+        addOverlay={addOverlay}
+        removeOverlay={removeOverlay}
       />
+      {activeOverlay ? <div className={overlay}></div> : null}
     </Layout>
   );
 };

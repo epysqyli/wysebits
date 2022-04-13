@@ -90,6 +90,8 @@ const UserBooks = ({
   entriesDown,
   currentSearchTerms,
   searchParams,
+  removeOverlay,
+  addOverlay
 }) => {
   const clientUrl = `/creators/${username}/books`;
 
@@ -104,11 +106,6 @@ const UserBooks = ({
 
   const [showInsights, setShowInsights] = useState(false);
   const [bookInsights, setBookInsights] = useState([]);
-
-  const [activeOverlay, setActiveOverlay] = useState(false);
-  const overlay = "h-full w-full bg-gray-500 opacity-75 absolute top-0 z-20";
-  const addOverlay = () => setActiveOverlay(true);
-  const removeOverlay = () => setActiveOverlay(false);
 
   const showBookInsights = async (bookId) => {
     addOverlay();
@@ -187,8 +184,6 @@ const UserBooks = ({
         bcgImg="bg-check-book-tiles"
         text={`All books contributed to by ${username}`}
       />
-
-      <div className={activeOverlay ? overlay : null}></div>
 
       <div className="mt-5">
         <SpecificSearch
