@@ -233,7 +233,7 @@ const TileCreation = ({
         withCredentials: true,
       });
 
-      router.push("/users/book-tiles/1");
+      router.push("/users/book-tiles?page=1");
     };
 
     const handleSubmit = async (e) => {
