@@ -169,7 +169,7 @@ const SearchInput = ({
             type="text"
             name="tmp"
             id="tmp"
-            className="border-none py-3 bg-white w-5/6 rounded-tl rounded-bl focus:ring-blue-400 focus:ring-2 group-hover:shadow-md transition"
+            className="border-none py-3 bg-white w-5/6 rounded-tl rounded-bl focus:ring-blue-400 focus:ring-2 group-hover:shadow-md transition text-lg"
             onChange={handleChange}
             onFocus={() => displayHistory()}
             placeholder={placeholder}
