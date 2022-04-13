@@ -95,7 +95,9 @@ const UserBooks = ({
 
   const [followedUsers, setFollowedUsers] = useState(following);
   const [insights, setInsights] = useState(
-    favInsights.filter((insight) => insight !== null)
+    favInsights !== undefined
+      ? favInsights.filter((insight) => insight !== null)
+      : null
   );
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
@@ -127,7 +129,7 @@ const UserBooks = ({
           <title>Books read by {username}</title>
           <link rel="icon" href="/logo.png" />
         </Head>
-        
+
         <WelcomeTop
           bcgImg="bg-check-book-tiles"
           text={`All books contributed to by ${username}`}
