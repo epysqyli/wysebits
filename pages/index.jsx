@@ -1,6 +1,14 @@
 import Head from "next/head";
 import { useState } from "react";
-import { Archive, Layers, ArrowUpRight, Repeat, Database, HardDrive, List } from "react-feather";
+import {
+  Archive,
+  Layers,
+  ArrowUpRight,
+  Repeat,
+  Database,
+  HardDrive,
+  List,
+} from "react-feather";
 import { capitalize } from "../lib/utils";
 import CategoryButton from "../components/navigation/CategoryButton";
 import SearchInput from "../components/navigation/SearchInput";
@@ -82,7 +90,11 @@ const Home = ({ categories, userState, trending }) => {
               onClick={toggleSearchMode}
             >
               <div className="transition-transform">
-                <Repeat size={18} strokeWidth={1.6} className="text-gray-200 xl:text-gray-500" />
+                <Repeat
+                  size={18}
+                  strokeWidth={1.6}
+                  className="text-gray-200 xl:text-gray-500"
+                />
               </div>
               <div className="group-active:scale-95 text-gray-200 xl:text-gray-500">
                 {searchMode === "books"
@@ -105,8 +117,14 @@ const Home = ({ categories, userState, trending }) => {
 
         <div className="mb-20 mt-32 xl:mt-0 xl:mb-10 w-11/12 mx-auto md:w-5/6 lg:w-3/5 xl:w-1/2 border-b-2 pb-10">
           <div className="flex justify-center items-center xl:bg-white gap-x-5 xl:gap-x-10 mb-10 md:mb-16 xl:border-blue-400 xl:border-t-2 xl:rounded-md py-8 xl:py-16">
-            <List size={60} strokeWidth={2} className="text-white xl:text-gray-600" />
-            <div className="text-5xl lg:text-6xl text-gray-50 xl:text-gray-600 font-medium">Categories</div>
+            <List
+              size={60}
+              strokeWidth={2}
+              className="text-white xl:text-gray-600"
+            />
+            <div className="text-5xl lg:text-6xl text-gray-50 xl:text-gray-600 font-medium">
+              Categories
+            </div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4">
             {categories.map((category) => {
@@ -117,19 +135,13 @@ const Home = ({ categories, userState, trending }) => {
       </div>
 
       <Link href="/feed">
-        <div className="mx-auto my-24 w-11/12 md:w-3/5 lg:w-2/5 2xl:w-1/3 px-2 py-8 lg:py-12 rounded-md border-t-2 border-blue-400 bg-white hover:bg-gray-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer group">
+        <div className="mx-auto my-24 w-11/12 md:w-3/5 lg:w-2/5 2xl:w-1/3 px-2 py-8 lg:py-12 rounded-md border-t-2 border-blue-400 bg-white hover:bg-gray-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer">
           <div className="flex justify-center items-center gap-x-10">
-            <Layers size={36} strokeWidth={1.5} />
-            <div className="text-4xl text-gray-700">Feed</div>
-            <ArrowUpRight
-              size={36}
-              strokeWidth={1.5}
-              color="gray"
-              className="group-hover:scale-125 transition-transform group-hover:animate-ping"
-            />
+            <Layers size={48} strokeWidth={1.5} className="text-gray-700" />
+            <div className="text-5xl text-gray-600">Feed</div>
           </div>
-          <div className="text-gray-600 mt-12 w-4/5 mx-auto text-center text-xl">
-            Check the latest insights from all users
+          <div className="text-gray-600 mt-12 w-4/5 mx-auto text-center text-2xl">
+            Check the latest insights
           </div>
         </div>
       </Link>
@@ -138,7 +150,7 @@ const Home = ({ categories, userState, trending }) => {
         <span className="block text-gray-50 text-center mb-10 text-5xl border-t-2 pt-10">
           Trending this week
         </span>
-        <div className="lg:flex justify-around items-center">
+        <div className="lg:flex justify-around items-start">
           <div className="md:w-4/5 mx-auto lg:w-1/2 2xl:w-1/3 mt-10 lg:mt-0">
             <TrendingBook book={trending.book} />
           </div>
