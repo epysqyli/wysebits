@@ -110,17 +110,14 @@ const EditBookTile = ({
       setTimeout(clearConfirmAnimation, "100");
     };
 
-    const confirmDelete = () => {
-      axios
-        .delete(
-          `${process.env.BASE_URL}/users/${userState.user.id}/book_tiles/${bookTileId}`,
-          { withCredentials: true }
-        )
-        .then((res) => {
-          console.log(res);
-          router.push("/users/book-tiles/1");
-        })
-        .catch((err) => console.log(err));
+    const confirmDelete = async () => {
+      await axios({
+        method: "DELETE",
+        url: `${process.env.BASE_URL}/users/${userState.user.id}/book_tiles/${bookTileId}`,
+        withCredentials: true,
+      });
+
+      router.push("/users/book-tiles?page=1");
     };
 
     const deleteBookTile = () => {
