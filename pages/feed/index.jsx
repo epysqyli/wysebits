@@ -24,13 +24,24 @@ import { Grid, Globe, Users, Info } from "react-feather";
 export const getServerSideProps = async (context) => {
   try {
     const loggedUser = await getLoggedUser(context);
-    const entries = await getUserFeed(loggedUser, context, 1);
-    const favCatsEntries = await getFavCategoriesFeed(loggedUser, context, 1);
-    const followingEntries = await getFollowingFeed(loggedUser, context, 1);
-    const following = await getAllFollowing(loggedUser, context);
-    const favInsights = await getAllFavEntries(loggedUser, context);
-    const upvotedEntries = await getUpvotedEntries(loggedUser, context);
-    const downvotedEntries = await getDownvotedEntries(loggedUser, context);
+    
+    const [
+      entries,
+      favCatsEntries,
+      followingEntries,
+      following,
+      favInsights,
+      upvotedEntries,
+      downvotedEntries,
+    ] = await Promise.all([
+      getUserFeed(loggedUser, context, 1),
+      getFavCategoriesFeed(loggedUser, context, 1),
+      getFollowingFeed(loggedUser, context, 1),
+      getAllFollowing(loggedUser, context),
+      getAllFavEntries(loggedUser, context),
+      getUpvotedEntries(loggedUser, context),
+      getDownvotedEntries(loggedUser, context),
+    ]);
 
     return {
       props: {

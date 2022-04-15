@@ -14,8 +14,11 @@ export const getServerSideProps = async (context) => {
     .join("-");
   const conversationId = query.split("-")[query.split("-").length - 2];
   const partnerId = query.split("-")[query.split("-").length - 1];
-  const messages = await getMessages(conversationId, context);
-  const avatar = await getAvatar(partnerId);
+
+  const [messages, avatar] = await Promise.all([
+    getMessages(conversationId, context),
+    getAvatar(partnerId),
+  ]);
 
   return {
     props: {

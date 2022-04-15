@@ -24,10 +24,13 @@ export const getServerSideProps = async (context) => {
 
   try {
     const loggedUser = await getLoggedUser(context);
-    const following = await getAllFollowing(loggedUser, context);
-    const favInsights = await getAllFavEntries(loggedUser, context);
-    const upvotedEntries = await getUpvotedEntries(loggedUser, context);
-    const downvotedEntries = await getDownvotedEntries(loggedUser, context);
+    const [following, favInsights, upvotedEntries, downvotedEntries] =
+      await Promise.all([
+        getAllFollowing(loggedUser, context),
+        getAllFavEntries(loggedUser, context),
+        getUpvotedEntries(loggedUser, context),
+        getDownvotedEntries(loggedUser, context),
+      ]);
 
     if (entries.data.entries.length !== 0) {
       return {

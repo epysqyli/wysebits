@@ -16,15 +16,15 @@ import {
 export const getServerSideProps = async (context) => {
   try {
     const pageNum = context.query.page;
-
     const loggedUser = await getLoggedUser(context);
-    const following = await getAllFollowing(loggedUser, context);
-    const userCommentedEntries = await getUserCommentedEntries(
-      loggedUser,
-      pageNum
-    );
-    const upvotedEntries = await getUpvotedEntries(loggedUser, context);
-    const downvotedEntries = await getDownvotedEntries(loggedUser, context);
+
+    const [following, userCommentedEntries, upvotedEntries, downvotedEntries] =
+      await Promise.all([
+        getAllFollowing(loggedUser, context),
+        getUserCommentedEntries(loggedUser, pageNum),
+        getUpvotedEntries(loggedUser, context),
+        getDownvotedEntries(loggedUser, context),
+      ]);
 
     return {
       props: {

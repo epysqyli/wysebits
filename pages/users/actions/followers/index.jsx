@@ -14,10 +14,12 @@ import {
 export const getServerSideProps = async (context) => {
   try {
     const pageNum = context.query.page;
-
     const loggedUser = await getLoggedUser(context);
-    const followers = await getFollowers(loggedUser, context, pageNum);
-    const unpagedFollowers = await getAllFollowers(loggedUser, context);
+    
+    const [followers, unpagedFollowers] = await Promise.all([
+      getFollowers(loggedUser, context, pageNum),
+      getAllFollowers(loggedUser, context),
+    ]);
 
     return {
       props: {

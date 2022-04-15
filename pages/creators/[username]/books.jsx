@@ -42,10 +42,14 @@ export const getServerSideProps = async (context) => {
 
   try {
     const loggedUser = await getLoggedUser(context);
-    const following = await getAllFollowing(loggedUser, context);
-    const favTileEntries = await getFavEntries(loggedUser, context, pageNum);
-    const upvotedEntries = await getUpvotedEntries(loggedUser, context);
-    const downvotedEntries = await getDownvotedEntries(loggedUser, context);
+    const [following, favTileEntries, upvotedEntries, downvotedEntries] =
+      await Promise.all([
+        getAllFollowing(loggedUser, context),
+        getFavEntries(loggedUser, context, pageNum),
+        getUpvotedEntries(loggedUser, context),
+        getDownvotedEntries(loggedUser, context),
+      ]);
+
     return {
       props: {
         books: books,
@@ -91,7 +95,7 @@ const UserBooks = ({
   currentSearchTerms,
   searchParams,
   removeOverlay,
-  addOverlay
+  addOverlay,
 }) => {
   const clientUrl = `/creators/${username}/books`;
 
