@@ -24,7 +24,7 @@ import { Grid, Globe, Users, Info } from "react-feather";
 export const getServerSideProps = async (context) => {
   try {
     const loggedUser = await getLoggedUser(context);
-    
+
     const [
       entries,
       favCatsEntries,
@@ -85,6 +85,8 @@ const Feed = ({
   entriesUp,
   entriesDown,
   feedType,
+  addOverlay,
+  removeOverlay,
 }) => {
   const [selectedEntries, setSelectedEntries] = useState([]);
 
@@ -256,6 +258,8 @@ const Feed = ({
                       setUpvotedEntries={setUpvotedEntries}
                       downvotedEntries={downvotedEntries}
                       setDownvotedEntries={setDownvotedEntries}
+                      addOverlay={addOverlay}
+                      removeOverlay={removeOverlay}
                     />
                   </div>
                 );

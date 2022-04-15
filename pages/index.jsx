@@ -27,7 +27,13 @@ export const getStaticProps = async () => {
   };
 };
 
-const Home = ({ categories, userState, trending }) => {
+const Home = ({
+  categories,
+  userState,
+  trending,
+  addOverlay,
+  removeOverlay,
+}) => {
   const booksSearchConfig = {
     pageDest: "/books/search/",
     placeholder: "Search for any book",
@@ -159,7 +165,12 @@ const Home = ({ categories, userState, trending }) => {
           </div>
         </div>
         <div className="md:w-4/5 md:mx-auto mt-10 lg:mt-20 lg:w-3/5">
-          <TrendingEntry entry={trending.insight} userId={userState.user.id} />
+          <TrendingEntry
+            entry={trending.insight}
+            userId={userState.user.id}
+            addOverlay={addOverlay}
+            removeOverlay={removeOverlay}
+          />
         </div>
       </div>
 

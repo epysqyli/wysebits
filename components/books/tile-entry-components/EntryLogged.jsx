@@ -14,6 +14,8 @@ const EntryLogged = ({
   followedUsers,
   setFollowedUsers,
   feed,
+  addOverlay,
+  removeOverlay,
 }) => {
   const [commentsView, setCommentsView] = useState(false);
   const [comments, setComments] = useState([]);
@@ -31,6 +33,8 @@ const EntryLogged = ({
               entryId={entryProp.id}
               setComments={setComments}
               userId={user.id}
+              addOverlay={addOverlay}
+              removeOverlay={removeOverlay}
             />
           ) : (
             entryProp.content

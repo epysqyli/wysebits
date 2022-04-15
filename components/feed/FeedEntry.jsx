@@ -12,6 +12,8 @@ const FeedEntry = ({
   setDownvotedEntries,
   followedUsers,
   setFollowedUsers,
+  addOverlay,
+  removeOverlay,
 }) => {
   return (
     <div className="pb-4 pt-6 md:pt-0 md:pb-0 md:my-4 bg-white md:w-4/5 mx-auto lg:flex xl:w-4/6 2xl:w-1/2 animate-show-up-slow md:shadow">
@@ -38,6 +40,8 @@ const FeedEntry = ({
           followedUsers={followedUsers}
           setFollowedUsers={setFollowedUsers}
           feed={true}
+          addOverlay={addOverlay}
+          removeOverlay={removeOverlay}
         />
       </div>
     </div>

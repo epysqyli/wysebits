@@ -4,12 +4,25 @@ import CreatorLink from "../../navigation/CreatorLink";
 import CreateComment from "./CreateComment";
 import Link from "next/dist/client/link";
 
-const Comments = ({ comments, setComments, entryId, userId }) => {
+const Comments = ({
+  comments,
+  setComments,
+  entryId,
+  userId,
+  addOverlay,
+  removeOverlay,
+}) => {
   const commentRef = useRef();
 
   const [showCreate, setShowCreate] = useState(false);
-  const showForm = () => setShowCreate(true);
-  const hideForm = () => setShowCreate(false);
+  const showForm = () => {
+    setShowCreate(true);
+    addOverlay();
+  };
+  const hideForm = () => {
+    setShowCreate(false);
+    removeOverlay();
+  };
 
   const updateCommentsState = (newComment) => {
     setComments([...comments, newComment].reverse());
