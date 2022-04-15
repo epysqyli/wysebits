@@ -11,6 +11,7 @@ import {
   getUpvotedEntries,
   getDownvotedEntries,
   getUserCommentedEntries,
+  getAllFavEntries,
 } from "../../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
@@ -18,13 +19,19 @@ export const getServerSideProps = async (context) => {
     const pageNum = context.query.page;
     const loggedUser = await getLoggedUser(context);
 
-    const [following, userCommentedEntries, upvotedEntries, downvotedEntries] =
-      await Promise.all([
-        getAllFollowing(loggedUser, context),
-        getUserCommentedEntries(loggedUser, pageNum),
-        getUpvotedEntries(loggedUser, context),
-        getDownvotedEntries(loggedUser, context),
-      ]);
+    const [
+      following,
+      userCommentedEntries,
+      upvotedEntries,
+      downvotedEntries,
+      favEntries,
+    ] = await Promise.all([
+      getAllFollowing(loggedUser, context),
+      getUserCommentedEntries(loggedUser, pageNum),
+      getUpvotedEntries(loggedUser, context),
+      getDownvotedEntries(loggedUser, context),
+      getAllFavEntries(loggedUser, context),
+    ]);
 
     return {
       props: {
@@ -33,6 +40,7 @@ export const getServerSideProps = async (context) => {
         following: following.data,
         entriesUp: upvotedEntries.data.upvoted_entries,
         entriesDown: downvotedEntries.data.downvoted_entries,
+        favEntries: favEntries.data.tile_entries,
       },
     };
   } catch (error) {
@@ -51,17 +59,18 @@ const CommentedInsights = ({
   following,
   entriesUp,
   entriesDown,
+  favEntries,
 }) => {
   const [followedUsers, setFollowedUsers] = useState(following);
   const [insights, setInsights] = useState(
-    userCommentedEntries.filter((entry) => entry !== null)
+    favEntries.filter((entry) => entry !== null)
   );
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
 
   const clientUrl = "/users/actions/commented-insights";
 
-  if (userState.isLogged && insights.length == 0)
+  if (userState.isLogged && userCommentedEntries.length == 0)
     return (
       <div className="pt-10 lg:pt-16">
         <WelcomeTop text="Insights you have commented" bcgImg="bg-comments" />
@@ -85,12 +94,12 @@ const CommentedInsights = ({
       </div>
     );
 
-  if (userState.isLogged && insights.length !== 0)
+  if (userState.isLogged && userCommentedEntries.length !== 0)
     return (
       <div className="pt-10 lg:pt-16">
         <WelcomeTop text="Insights you have commented" bcgImg="bg-comments" />
         <div className="py-10 w-11/12 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
-          {insights.map((insight) => {
+          {userCommentedEntries.map((insight) => {
             return (
               <div
                 key={insight.id}
