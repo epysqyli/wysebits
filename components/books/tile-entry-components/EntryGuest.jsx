@@ -56,7 +56,7 @@ const EntryGuest = ({ entryProp, feed, userId }) => {
 
   return (
     <div className="flex flex-col justify-around h-full min-h-24rem">
-      <div className="py-5 px-10 md:px-16 font-light whitespace-pre-line flex-grow">
+      <div className="py-5 px-5 md:px-16 font-light whitespace-pre-line flex-grow">
         {commentsView ? <Comments comments={comments} userId={userId} /> : entryProp.content}
       </div>
 

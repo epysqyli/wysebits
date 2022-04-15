@@ -70,7 +70,7 @@ const Comments = ({ comments, setComments, entryId, userId }) => {
       {comments.map((comment) => {
         return (
           <div key={comment.id} className="my-5 pb-5 border-b">
-            <div className="break-all">{comment.content}</div>
+            <div className="break-words">{comment.content}</div>
             <div className="mt-3">
               <CreatorLink username={comment.user.username} />
             </div>
