@@ -72,22 +72,24 @@ const EntryLogged = ({
         )}
       </div>
 
-      <EntryActions
-        user={user}
-        entryProp={entryProp}
-        upvotedEntries={upvotedEntries}
-        downvotedEntries={downvotedEntries}
-        setUpvotedEntries={setUpvotedEntries}
-        setDownvotedEntries={setDownvotedEntries}
-        followedUsers={followedUsers}
-        setFollowedUsers={setFollowedUsers}
-        insights={insights}
-        setInsights={setInsights}
-        commentsView={commentsView}
-        setComments={setComments}
-        showInsight={showInsight}
-        showComments={showComments}
-      />
+      <div className="border-b rounded-b-md">
+        <EntryActions
+          user={user}
+          entryProp={entryProp}
+          upvotedEntries={upvotedEntries}
+          downvotedEntries={downvotedEntries}
+          setUpvotedEntries={setUpvotedEntries}
+          setDownvotedEntries={setDownvotedEntries}
+          followedUsers={followedUsers}
+          setFollowedUsers={setFollowedUsers}
+          insights={insights}
+          setInsights={setInsights}
+          commentsView={commentsView}
+          setComments={setComments}
+          showInsight={showInsight}
+          showComments={showComments}
+        />
+      </div>
     </div>
   );
 };
