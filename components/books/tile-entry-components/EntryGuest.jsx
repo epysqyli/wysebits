@@ -4,7 +4,7 @@ import { loadComments } from "../../../lib/commentsMethods";
 import CreatorLink from "../../navigation/CreatorLink";
 import Comments from "./Comments";
 
-const EntryGuest = ({ entryProp, feed }) => {
+const EntryGuest = ({ entryProp, feed, userId }) => {
   const [commentsView, setCommentsView] = useState(false);
   const [comments, setComments] = useState([]);
 
@@ -15,7 +15,11 @@ const EntryGuest = ({ entryProp, feed }) => {
     return (
       <div className="flex flex-col justify-around h-full min-h-24rem">
         <div className="lg:border-b-2 lg:border-l-2 rounded-bl py-5 px-10 md:px-16 whitespace-pre-line font-light flex-grow mt-10 mx-auto text-justify md:text-left lg:mt-0 lg:w-full">
-          {commentsView ? <Comments comments={comments} /> : entryProp.content}
+          {commentsView ? (
+            <Comments comments={comments} />
+          ) : (
+            entryProp.content
+          )}
         </div>
 
         <div className="flex justify-between items-center text-sm px-10 md:px-16 py-4 lg:bg-gray-100 border-b-2 lg:border-none">
@@ -53,7 +57,7 @@ const EntryGuest = ({ entryProp, feed }) => {
   return (
     <div className="flex flex-col justify-around h-full min-h-24rem">
       <div className="py-5 px-10 md:px-16 font-light whitespace-pre-line flex-grow">
-        {commentsView ? <Comments comments={comments} /> : entryProp.content}
+        {commentsView ? <Comments comments={comments} userId={userId} /> : entryProp.content}
       </div>
 
       <div className="flex justify-between items-center text-sm px-10 md:px-16 py-4 border-b rounded-b-md">

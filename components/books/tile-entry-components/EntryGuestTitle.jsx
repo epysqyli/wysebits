@@ -3,7 +3,7 @@ import Link from "next/dist/client/link";
 import { ArrowUpRight } from "react-feather";
 import { slug, shortenText } from "../../../lib/utils";
 
-const EntryGuestTitle = ({ entryProp }) => {
+const EntryGuestTitle = ({ entryProp, userId }) => {
   return (
     <div className="flex flex-col justify-around h-full bg-white rounded-md shadow hover:shadow-md transition-all">
       <div className="text-justify leading-6">
@@ -25,7 +25,7 @@ const EntryGuestTitle = ({ entryProp }) => {
         </Link>
       </div>
       <div className="flex-grow">
-        <EntryGuest entryProp={entryProp} />
+        <EntryGuest entryProp={entryProp} userId={userId} />
       </div>
     </div>
   );

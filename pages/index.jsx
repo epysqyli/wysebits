@@ -139,7 +139,8 @@ const Home = ({ categories, userState, trending }) => {
           <div className="flex justify-around items-center text-gray-600 w-4/5 mx-auto">
             <Layers size={52} strokeWidth={1.5} />
             <div className="text-right lg:text-center text-3xl">
-              Check latest <br/>insights
+              Check latest <br />
+              insights
             </div>
           </div>
         </div>
@@ -158,7 +159,7 @@ const Home = ({ categories, userState, trending }) => {
           </div>
         </div>
         <div className="md:w-4/5 md:mx-auto mt-10 lg:mt-20 lg:w-3/5">
-          <TrendingEntry entry={trending.insight} />
+          <TrendingEntry entry={trending.insight} userId={userState.user.id} />
         </div>
       </div>
 
