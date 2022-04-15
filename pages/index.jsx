@@ -166,7 +166,7 @@ const Home = ({ categories, userState, trending }) => {
         <div className="mx-auto md:w-4/5 lg:w-3/5 mt-5 my-10">
           <Link href="/about">
             <div className="underline text-center mx-auto w-4/5 cursor-pointer text-white">
-              Wyse what? Click here to know more about it!
+              Wyse what? Click here to know more!
             </div>
           </Link>
         </div>

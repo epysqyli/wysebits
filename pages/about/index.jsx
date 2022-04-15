@@ -80,7 +80,8 @@ const About = ({ userState }) => {
               <a href="https://openlibrary.org/about" className="underline">
                 Open Library
               </a>
-              . I am incredibly grateful.
+              . I am incredibly grateful to them for providing this service for
+              free.
             </p>
 
             {userState.isLogged ? null : (
