@@ -84,15 +84,15 @@ const EntryGuest = ({ entryProp, feed, userId, addOverlay, removeOverlay }) => {
           {commentsView ? (
             <X
               size={16}
-              strokeWidth={1.5}
-              className="ml-1 text-gray-700 transition-all hover:scale-105 active:scale-125 cursor-pointer"
+              color="darkgray"
+              className="ml-1 transition-all hover:scale-105 active:scale-125 cursor-pointer"
               onClick={showInsight}
             />
           ) : (
             <MessageCircle
               size={16}
-              strokeWidth={1.5}
-              className="ml-1 text-gray-700 transition-all hover:scale-105 active:scale-125 cursor-pointer"
+              color="darkgray"
+              className="ml-1 transition-all hover:scale-105 active:scale-125 cursor-pointer"
               onClick={() =>
                 loadComments(entryProp.id, setComments, showComments)
               }
