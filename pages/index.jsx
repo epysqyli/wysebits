@@ -1,14 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
-import {
-  Archive,
-  Layers,
-  ArrowUpRight,
-  Repeat,
-  Database,
-  HardDrive,
-  List,
-} from "react-feather";
+import { Layers, Repeat, List } from "react-feather";
 import { capitalize } from "../lib/utils";
 import CategoryButton from "../components/navigation/CategoryButton";
 import SearchInput from "../components/navigation/SearchInput";
@@ -115,7 +107,6 @@ const Home = ({
               placeholder={searchConfig.placeholder}
               suggestLink={searchConfig.suggestLink}
               searchMode={searchMode}
-              showSuggest={true}
               showHistory={true}
             />
           </div>

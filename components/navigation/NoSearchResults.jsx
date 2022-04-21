@@ -17,7 +17,6 @@ const NoSearchResults = ({ searchMode }) => {
             placeholder="Search for any book"
             searchMode="books"
             suggestLink="/books/"
-            showSuggest={true}
             showHistory={true}
           />
           <div className="mt-20 flex justify-around items-center">
@@ -62,7 +61,6 @@ const NoSearchResults = ({ searchMode }) => {
             pageDest="/authors/search/"
             placeholder="Search for any author"
             searchMode="authors"
-            showSuggest={true}
             showHistory={true}
             suggestLink="/authors/"
           />

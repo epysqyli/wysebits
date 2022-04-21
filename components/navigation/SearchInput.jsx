@@ -1,8 +1,6 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/dist/client/router";
 import { Loader, Search } from "react-feather";
-import Link from "next/dist/client/link";
 
 import {
   findOrCreateHistory,
@@ -10,20 +8,16 @@ import {
   removeFromHistory,
 } from "../../lib/searchHistoryMethods";
 
-import SuggestBox from "./SuggestBox";
 import HistoryBox from "./HistoryBox";
 
 const SearchInput = ({
   pageDest,
   placeholder,
   searchMode,
-  showSuggest,
-  suggestLink,
   showHistory,
 }) => {
   const [searchTerms, setSearchTerms] = useState("");
   const [searchError, SetSearchError] = useState(false);
-  const [suggestions, setSuggestions] = useState(null);
   const [booksHistory, setBooksHistory] = useState(null);
   const [authorsHistory, setAuthorsHistory] = useState(null);
   const [didLoad, setDidLoad] = useState(false);
@@ -59,24 +53,6 @@ const SearchInput = ({
       goToResults();
     } else {
       SetSearchError(true);
-    }
-  };
-
-  const getSuggestions = async (query) => {
-    setSearchLoading(true);
-    const resp = await axios({
-      method: "post",
-      data: { keywords: JSON.stringify(query) },
-      url: `${process.env.BASE_URL}/search/${searchMode}`,
-    });
-
-    // avoid UI conflict with search error message
-    SetSearchError(false);
-    try {
-      const newSuggestions = resp.data.results.slice(0, 10);
-      setSuggestions(newSuggestions);
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -121,7 +97,6 @@ const SearchInput = ({
   const recentBooksHistory =
     activeSearch &&
     didLoad &&
-    suggestions === null &&
     showHistory &&
     booksHistory !== null ? (
       <div className="animate-show-up-slow mt-10">
@@ -141,7 +116,6 @@ const SearchInput = ({
   const recentAuthorsHistory =
     activeSearch &&
     didLoad &&
-    suggestions === null &&
     showHistory &&
     authorsHistory !== null ? (
       <div className="animate-show-up-slow mt-10">
@@ -203,27 +177,6 @@ const SearchInput = ({
 
         {searchMode === "books" ? recentBooksHistory : recentAuthorsHistory}
       </div>
-
-      {showSuggest && suggestions !== null ? (
-        suggestions.length > 0 ? (
-          <div>
-            <SuggestBox
-              suggestions={suggestions}
-              suggestLink={suggestLink}
-              searchMode={searchMode}
-            />
-          </div>
-        ) : (
-          <div>
-            No results for these terms. Try another words combination or{" "}
-            <Link href="/users/book-tiles/create/create-book">
-              <span className="underline cursor-pointer">
-                add the book you are looking for now if logged
-              </span>
-            </Link>
-          </div>
-        )
-      ) : null}
     </>
   );
 };
