@@ -62,7 +62,7 @@ const UpdateUsername = () => {
             className="mx-auto w-5/6 md:w-4/6 lg:w-3/6 py-10 md:border md:shadow rounded"
             onSubmit={handleSubmit}
           >
-            <div className="w-4/6 mx-auto my-10">
+            <div className="mx-auto my-10">
               <label htmlFor="username" className="pl-1 text-xl text-gray-50">
                 Choose a new username
               </label>
@@ -85,14 +85,14 @@ const UpdateUsername = () => {
             {available === true ? (
               <button
                 type="submit"
-                className="block mx-auto w-4/6 bg-white my-10 rounded-lg px-5 py-3 text-gray-50 shadow-md hover:shadow-lg transition-shadow active:shadow-inner"
+                className="block mx-auto bg-white my-10 rounded-lg px-5 py-3 text-gray-50 shadow-md hover:shadow-lg transition-shadow active:shadow-inner"
               >
                 Confirm username change
               </button>
             ) : (
               <button
                 type="submit"
-                className="block mx-auto w-4/6 bg-gray-50 my-10 rounded-lg px-5 py-3 text-gray-400"
+                className="block mx-auto bg-gray-50 my-10 rounded-lg px-5 py-3 text-gray-400"
                 disabled
               >
                 Confirm username change
