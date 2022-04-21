@@ -4,8 +4,10 @@ import Link from "next/dist/client/link";
 const PageNavButton = ({ direction, url, clientUrl, opts }) => {
   const pageNum = url.split("?page=")[1] || "";
 
-  const optsKey = opts ? [Object.keys(opts)[0]] : "";
-  const optsValue = opts ? [Object.values(opts)[0]] : "";
+  const optsKeyOne = opts ? [Object.keys(opts)[0]] : "";
+  const optsValueOne = opts ? [Object.values(opts)[0]] : "";
+  const optsKeyTwo = opts ? [Object.keys(opts)[1]] : "";
+  const optsValueTwo = opts ? [Object.values(opts)[1]] : "";
 
   if (pageNum == "" && direction == "left")
     return (
@@ -19,7 +21,11 @@ const PageNavButton = ({ direction, url, clientUrl, opts }) => {
       <Link
         href={{
           pathname: clientUrl,
-          query: { page: pageNum, [optsKey]: optsValue },
+          query: {
+            page: pageNum,
+            [optsKeyOne]: optsValueOne,
+            [optsKeyTwo]: optsValueTwo,
+          },
         }}
       >
         <div className="py-2 text-center rounded shadow-md cursor-pointer bg-white hover:shadow-none active:shadow-inner transition-colors group">
@@ -40,7 +46,11 @@ const PageNavButton = ({ direction, url, clientUrl, opts }) => {
       <Link
         href={{
           pathname: clientUrl,
-          query: { page: pageNum, [optsKey]: optsValue },
+          query: {
+            page: pageNum,
+            [optsKeyOne]: optsValueOne,
+            [optsKeyTwo]: optsValueTwo,
+          },
         }}
       >
         <div className="py-2 text-center rounded shadow-md cursor-pointer bg-white hover:shadow-none active:shadow-inner transition-colors group">

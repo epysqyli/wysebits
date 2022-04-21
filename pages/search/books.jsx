@@ -1,33 +1,56 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
-import { capitalize, slug } from "../../../lib/utils";
-import BookSearchTile from "../../../components/books/BookSearchTile";
-import Pagination from "../../../components/navigation/Pagination";
-import SearchInput from "../../../components/navigation/SearchInput";
-import CreateBookBtn from "../../../components/users/CreateBookBtn";
-import NoSearchResults from "../../../components/navigation/NoSearchResults";
-import { searchBooks } from "../../../lib/searchMethods";
+import { capitalize, slug } from "../../lib/utils";
+import BookSearchTile from "../../components/books/BookSearchTile";
+import Pagination from "../../components/navigation/Pagination";
+import SearchInput from "../../components/navigation/SearchInput";
+import CreateBookBtn from "../../components/users/CreateBookBtn";
+import NoSearchResults from "../../components/navigation/NoSearchResults";
+import { searchBooks, searchAuthorsBooks } from "../../lib/searchMethods";
 
 export const getServerSideProps = async (context) => {
-  const keywords = context.query.keywords;
-  const splitKeywords = context.query.keywords.split("-").join(" ");
-  const pageNum = context.query.page;
-  const searchResults = await searchBooks(splitKeywords, pageNum);
+  let searchResults;
+  let authorKeywords = "";
+  let bookKeywords;
+
+  if (
+    context.query.bookKeywords !== "" &&
+    context.query.authorKeywords !== ""
+  ) {
+    bookKeywords = context.query.bookKeywords;
+    authorKeywords = context.query.authorKeywords;
+    const page = context.query.page;
+    searchResults = await searchAuthorsBooks(
+      bookKeywords,
+      authorKeywords,
+      page
+    );
+  } else {
+    bookKeywords = context.query.bookKeywords;
+    const page = context.query.page;
+    searchResults = await searchBooks(bookKeywords, page);
+  }
 
   return {
     props: {
       searchResults: searchResults.data.results || null,
       pageNum: searchResults.data.page_num || null,
-      keywords: keywords,
       pagy: searchResults.data.pagy,
+      authorKeywords: authorKeywords,
+      bookKeywords: bookKeywords,
     },
   };
 };
 
-const BookSearchResults = ({ searchResults, keywords, pagy }) => {
+const BookSearchResults = ({
+  searchResults,
+  bookKeywords,
+  authorKeywords,
+  pagy,
+}) => {
   const [btnVisible, setBtnVisible] = useState(false);
 
-  const clientUrl = `/books/search/${keywords}`;
+  const clientUrl = `/search/books`;
 
   const showBtn = () => setBtnVisible(true);
 
@@ -37,7 +60,9 @@ const BookSearchResults = ({ searchResults, keywords, pagy }) => {
     return (
       <div className="pt-10 lg:pt-16">
         <Head>
-          <title>{capitalize(keywords.split("-").join(" "))} - Wysebits search</title>
+          <title>
+            {capitalize(bookKeywords.split("-").join(" "))} - Wysebits search
+          </title>
           <link rel="icon" href="/logo.png" />
         </Head>
         <div className="py-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
@@ -63,7 +88,11 @@ const BookSearchResults = ({ searchResults, keywords, pagy }) => {
           {btnVisible ? <CreateBookBtn /> : null}
         </div>
 
-        <Pagination clientUrl={clientUrl} pagy={pagy} />
+        <Pagination
+          clientUrl={clientUrl}
+          pagy={pagy}
+          opts={{ authorKeywords: authorKeywords, bookKeywords: bookKeywords }}
+        />
       </div>
     );
   }

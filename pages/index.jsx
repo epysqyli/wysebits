@@ -4,6 +4,7 @@ import { Layers, Repeat, List } from "react-feather";
 import { capitalize } from "../lib/utils";
 import CategoryButton from "../components/navigation/CategoryButton";
 import SearchInput from "../components/navigation/SearchInput";
+import MultiSearch from "../components/navigation/multiSearch";
 import Link from "next/link";
 import { getCategories, getWeeklyTrend } from "../lib/serverSideMethods";
 import TrendingBook from "../components/trending/TrendingBook";
@@ -83,7 +84,7 @@ const Home = ({
             <div className="text-5xl md:text-6xl xl:text-5xl text-white xl:text-gray-600 mb-5 md:mb-12 text-center font-medium tracking-tight">
               Search {capitalize(searchMode)}
             </div>
-            <div
+            {/* <div
               className="flex justify-between px-5 items-center group gap-x-5 w-4/6 md:w-3/5 lg:w-2/5 xl:w-3/5 2xl:w-1/2 mx-auto border-b xl:border xl:bg-gray-50 xl:border-blue-400 xl:rounded py-2 xl:py-1 cursor-pointer hover:text-white md:hover:text-black xl:hover:bg-blue-200 transition-all active:shadow-inner tracking-tight"
               onClick={toggleSearchMode}
             >
@@ -99,9 +100,9 @@ const Home = ({
                   ? "switch to authors"
                   : "switch to books"}
               </div>
-            </div>
+            </div> */}
           </div>
-          <div className="mt-10 mx-auto md:w-5/6">
+          {/* <div className="mt-10 mx-auto md:w-5/6">
             <SearchInput
               pageDest={searchConfig.pageDest}
               placeholder={searchConfig.placeholder}
@@ -109,6 +110,9 @@ const Home = ({
               searchMode={searchMode}
               showHistory={true}
             />
+          </div> */}
+          <div className="mt-10 mx-auto md:w-5/6">
+            <MultiSearch />
           </div>
         </div>
 
