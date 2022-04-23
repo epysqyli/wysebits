@@ -3,6 +3,7 @@ import WelcomeTop from "../../../../components/users/WelcomeTop";
 import NoAccess from "../../../../components/users/NoAccess";
 import MultiSearch from "../../../../components/navigation/MultiSearch";
 import Pagination from "../../../../components/navigation/Pagination";
+import RelatedUser from "../../../../components/users/RelatedUser";
 import {
   getLoggedUser,
   getFollowers,
@@ -13,7 +14,7 @@ export const getServerSideProps = async (context) => {
   try {
     const pageNum = context.query.page;
     const loggedUser = await getLoggedUser(context);
-    
+
     const [followers, unpagedFollowers] = await Promise.all([
       getFollowers(loggedUser, context, pageNum),
       getAllFollowers(loggedUser, context),
