@@ -4,6 +4,7 @@ import NoAccess from "../../../../components/users/NoAccess";
 import MultiSearch from "../../../../components/navigation/MultiSearch";
 import Pagination from "../../../../components/navigation/Pagination";
 import RelatedUser from "../../../../components/users/RelatedUser";
+import NoItem from "../../../../components/users/NoItem"
 import {
   getLoggedUser,
   getFollowers,
