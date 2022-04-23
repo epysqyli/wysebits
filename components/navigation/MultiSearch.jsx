@@ -15,16 +15,25 @@ const MultiSearch = () => {
   const router = useRouter();
 
   const search = () => {
-    // if (searchTerms.author_keywords && searchTerms.book_keywords) {
-    router.push({
-      pathname: "/search/books",
-      query: {
-        bookKeywords: searchTerms.book_keywords,
-        authorKeywords: searchTerms.author_keywords,
-        page: 1,
-      },
-    });
-    // }
+    if (searchTerms.book_keywords !== "") {
+      router.push({
+        pathname: "/search/books",
+        query: {
+          bookKeywords: searchTerms.book_keywords,
+          authorKeywords: searchTerms.author_keywords,
+          page: 1,
+        },
+      });
+    } else if (searchTerms.author_keywords !== "") {
+      router.push({
+        pathname: "/search/authors",
+        query: {
+          bookKeywords: searchTerms.book_keywords,
+          authorKeywords: searchTerms.author_keywords,
+          page: 1,
+        },
+      });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -34,7 +43,7 @@ const MultiSearch = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="flex gap-x-1">
+      <form onSubmit={handleSubmit} className="flex gap-x-2">
         <div className="w-4/5">
           <input
             type="text"

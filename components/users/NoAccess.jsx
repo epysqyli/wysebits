@@ -3,7 +3,7 @@ import { AlertCircle } from "react-feather";
 
 const NoAccess = () => {
   return (
-    <div className="w-5/6 md:w-3/5 lg:w-4/6 mx-auto">
+    <div className="w-5/6 md:w-3/5 lg:w-4/6 mx-auto pt-20">
       <div className="flex justify-around items-center gap-x-5">
         <AlertCircle
           className="w-1/6"

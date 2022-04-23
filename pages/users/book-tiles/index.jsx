@@ -2,7 +2,7 @@ import BookCardSlider from "../../../components/books/BookCardSlider";
 import WelcomeTop from "../../../components/users/WelcomeTop";
 import NoAccess from "../../../components/users/NoAccess";
 import NoItem from "../../../components/users/NoItem";
-import SearchInput from "../../../components/navigation/SearchInput";
+import MultiSearch from "../../../components/navigation/MultiSearch";
 import Pagination from "../../../components/navigation/Pagination";
 import { getLoggedUser, getBookTiles } from "../../../lib/serverSideMethods";
 import { searchWithinBookTiles } from "../../../lib/searchMethods";
@@ -87,12 +87,8 @@ const UserBookTiles = ({
               Start contributing now by choosing the first book for which you
               want to add your own personal insights
             </div>
-            <div className="mt-10 mb-3">
-              <SearchInput
-                pageDest="/users/book-search/"
-                placeholder="Any book in mind?"
-                searchMode="books"
-              />
+            <div className="my-10">
+              <MultiSearch />
             </div>
           </div>
         </div>

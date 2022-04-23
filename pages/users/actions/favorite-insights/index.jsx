@@ -3,7 +3,7 @@ import WelcomeTop from "../../../../components/users/WelcomeTop";
 import NoAccess from "../../../../components/users/NoAccess";
 import NoItem from "../../../../components/users/NoItem";
 import TileEntry from "../../../../components/books/TileEntry";
-import SearchInput from "../../../../components/navigation/SearchInput";
+import MultiSearch from "../../../../components/navigation/MultiSearch";
 import Pagination from "../../../../components/navigation/Pagination";
 import {
   getLoggedUser,
@@ -67,18 +67,14 @@ const FavoriteInsights = ({
         <WelcomeTop text="Your favorite insights" bcgImg="bg-saved-tiles" />
         <div className="mx-auto w-11/12 md:w-4/6 lg:w-3/6 xl:w-2/6 2xl:w-1/3 py-20 lg:py-40 2xl:py-48">
           <NoItem message="You have no favorite insights yet" />
-          <div className="border px-5 pt-3 md:px-8 md:pt-5 mt-20 lg:mt-32 bg-gray-50 rounded-md shadow group transition-all hover:shadow-md text-center">
+          <div className="border px-5 pt-3 md:px-8 md:pt-5 mt-20 lg:mt-32 bg-gray-100 rounded-md shadow group transition-all hover:shadow-md text-center">
             <div>
               You can add insights to your favorite ones simply by hitting the
               heart on an insight of choice.
               <br /> Start exploring books now
             </div>
-            <div className="mt-10 mb-3">
-              <SearchInput
-                pageDest="/books/search/"
-                placeholder="Any book in mind?"
-                searchMode="books"
-              />
+            <div className="my-10">
+              <MultiSearch />
             </div>
           </div>
         </div>

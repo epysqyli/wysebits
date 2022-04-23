@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import BookSearchTile from "../../../components/books/BookSearchTile";
 import NoAccess from "../../../components/users/NoAccess";
-import SearchInput from "../../../components/navigation/SearchInput";
+import MultiSearch from "../../../components/navigation/MultiSearch";
 import CreateBookBtn from "../../../components/users/CreateBookBtn";
 import { searchBooks } from "../../../lib/searchMethods";
 import NoSearchResults from "../../../components/navigation/NoSearchResults";
@@ -42,11 +42,7 @@ const BookSearchResults = ({ searchResults, userState, keywords, pagy }) => {
     return (
       <div className="pt-10 lg:pt-16">
         <div className="my-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
-          <SearchInput
-            pageDest="/users/book-search/"
-            placeholder="Search for any book"
-            searchMode="books"
-          />
+          <MultiSearch />
         </div>
         <div className="py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {searchResults.length != 0

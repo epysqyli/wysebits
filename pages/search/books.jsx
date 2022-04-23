@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import { capitalize, slug } from "../../lib/utils";
 import BookSearchTile from "../../components/books/BookSearchTile";
 import Pagination from "../../components/navigation/Pagination";
-import SearchInput from "../../components/navigation/SearchInput";
 import CreateBookBtn from "../../components/users/CreateBookBtn";
 import NoSearchResults from "../../components/navigation/NoSearchResults";
 import { searchBooks, searchAuthorsBooks } from "../../lib/searchMethods";
+import MultiSearch from "../../components/navigation/MultiSearch";
 
 export const getServerSideProps = async (context) => {
   let searchResults;
@@ -66,11 +66,7 @@ const BookSearchResults = ({
           <link rel="icon" href="/logo.png" />
         </Head>
         <div className="py-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
-          <SearchInput
-            pageDest="/books/search/"
-            placeholder="Search for any book"
-            searchMode="books"
-          />
+          <MultiSearch />
         </div>
         <div className="pt-10 pb-20 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {searchResults.length != 0

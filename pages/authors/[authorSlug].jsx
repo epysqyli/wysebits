@@ -4,7 +4,7 @@ import { getAuthor } from "../../lib/serverSideMethods";
 import BookCard from "../../components/books/BookCard";
 import Pagination from "../../components/navigation/Pagination";
 import NoItem from "../../components/users/NoItem";
-import SearchInput from "../../components/navigation/SearchInput";
+import MultiSearch from "../../components/navigation/MultiSearch";
 import Link from "next/dist/client/link";
 import { searchWithinAuthor } from "../../lib/searchMethods";
 import SpecificSearch from "../../components/search/SpecificSearch";
@@ -153,7 +153,7 @@ const Author = ({
             You can do this while posting your insights for a specific book.
           </div>
           <div className="mt-10">
-            <SearchInput
+            <MultiSearch
               pageDest="/users/book-search/"
               placeholder="Any book of the author in mind?"
               searchMode="books"

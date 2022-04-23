@@ -4,7 +4,7 @@ import { shortenText, slug } from "../../../lib/utils";
 import Link from "next/dist/client/link";
 import WelcomeTop from "../../../components/users/WelcomeTop";
 import NoItem from "../../../components/users/NoItem";
-import SearchInput from "../../../components/navigation/SearchInput";
+import MultiSearch from "../../../components/navigation/MultiSearch";
 
 export const getServerSideProps = async (context) => {
   const loggedUser = await getLoggedUser(context);
@@ -183,12 +183,8 @@ const Stats = ({ entries }) => {
             Start contributing now by choosing the first book for which you want
             to add your own personal insights
           </div>
-          <div className="mt-10 mb-3">
-            <SearchInput
-              pageDest="/users/book-search/"
-              placeholder="Any book in mind?"
-              searchMode="books"
-            />
+          <div className="my-10">
+            <MultiSearch />
           </div>
         </div>
       </div>
