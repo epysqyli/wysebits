@@ -26,33 +26,6 @@ const Home = ({
   addOverlay,
   removeOverlay,
 }) => {
-  const booksSearchConfig = {
-    pageDest: "/books/search/",
-    placeholder: "Search for any book",
-    suggestLink: "/books/",
-  };
-
-  const authorsSearchConfig = {
-    pageDest: "/authors/search/",
-    placeholder: "Search for any author",
-    suggestLink: "/authors/",
-  };
-
-  const [searchMode, setSearchMode] = useState("books");
-  const [searchConfig, setSearchConfig] = useState(booksSearchConfig);
-
-  const toggleSearchMode = () => {
-    if (searchMode === "books") {
-      setSearchConfig(authorsSearchConfig);
-      setSearchMode("authors");
-    }
-
-    if (searchMode === "authors") {
-      setSearchConfig(booksSearchConfig);
-      setSearchMode("books");
-    }
-  };
-
   return (
     <div className="pt-12 lg:pt-16">
       <Head>
@@ -80,11 +53,11 @@ const Home = ({
       <div className="xl:flex xl:w-11/12 xl:mx-auto 2xl:w-5/6">
         <div className="mx-auto mb-20 xl:mb-10 px-4 w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 xl:border-b-2">
           <div className="text-gray-700 md:mb-8 pt-10 pb-5 xl:py-7 rounded-md xl:border-t-blue-400 xl:border-t-2 xl:bg-gray-50 mt-2 lg:mt-0">
-            <div className="text-5xl md:text-6xl xl:text-5xl text-white xl:text-gray-600 mb-5 md:mb-12 text-center font-medium tracking-tight">
-              Search {capitalize(searchMode)}
+            <div className="text-5xl md:text-6xl text-white xl:text-gray-600 mb-5 md:my-9 text-center font-medium tracking-tight">
+              Search Books
             </div>
           </div>
-          <div className="mt-10 mx-auto md:w-5/6">
+          <div className="mt-10 mx-auto">
             <MultiSearch />
           </div>
         </div>

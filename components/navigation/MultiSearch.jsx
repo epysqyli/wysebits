@@ -64,7 +64,7 @@ const MultiSearch = () => {
           />
         </div>
 
-        <button className="w-1/5 rounded bg-white">
+        <button className="w-1/5 rounded bg-white border-t-4 border-b-4 border-gray-200 hover:border-gray-400 transition-colors">
           <Search size={36} className="mx-auto" color="gray" />
         </button>
       </form>
