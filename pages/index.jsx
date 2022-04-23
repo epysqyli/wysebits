@@ -1,7 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
 import { Layers, List } from "react-feather";
-import { capitalize } from "../lib/utils";
 import CategoryButton from "../components/navigation/CategoryButton";
 import MultiSearch from "../components/navigation/MultiSearch";
 import Link from "next/link";
@@ -86,8 +84,7 @@ const Home = ({
           <div className="flex justify-around items-center text-gray-600 w-4/5 mx-auto">
             <Layers size={52} strokeWidth={1.5} />
             <div className="text-right lg:text-center text-3xl">
-              Check latest <br />
-              insights
+              Latest insights
             </div>
           </div>
         </div>
