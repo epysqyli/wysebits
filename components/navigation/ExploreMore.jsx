@@ -11,7 +11,7 @@ const ExploreMore = ({ message, body, exortation }) => {
           <br />
           <br /> <div className="text-center mt-5">{exortation}</div>
         </div>
-        <div className="my-10">
+        <div className="py-10 border-t-2">
           <MultiSearch />
         </div>
       </div>
