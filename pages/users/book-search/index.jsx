@@ -21,7 +21,7 @@ const BookSearch = ({ userState }) => {
               <MultiSearch />
             </div>
 
-            <div className="mt-60 mb-20 xl:mb-0 xl:mt-0 border-l-2 pl-5 xl:w-2/5">
+            <div className="mt-48 mb-20 xl:mb-0 xl:mt-0 border-l-2 pl-5 xl:w-2/5">
               <div className="text-lg text-gray-50">
                 "Books are the treasured wealth of the world and the fit
                 inheritance of generations and nations."
