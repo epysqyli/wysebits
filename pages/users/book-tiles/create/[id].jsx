@@ -333,7 +333,7 @@ const TileCreation = ({
               size={36}
               strokeWidth={1.5}
               className="rounded-3xl w-1/4 text-gray-100"
-              fill="lightgray"
+              fill="transparent"
             />
             <div className="w-4/6 md:text-lg text-gray-50">
               You have already shared your insights for this book!
