@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { Loader, Upload } from "react-feather";
+import { Loader, Upload, Search } from "react-feather";
 import { useRouter } from "next/dist/client/router";
 import { createAuthor, searchAuthors } from "../../lib/editMethods";
 import { isCoverValid } from "../../lib/uploadMethods";
@@ -19,14 +19,17 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   const [authorSuggestions, setAuthorsSuggestions] = useState(null);
   const [file, setFile] = useState(null);
   const [loader, setLoader] = useState(false);
+  const [authorLoading, setAuthorLoading] = useState(false);
   const [fileAllowed, setFileAllowed] = useState(true);
 
   const handleChange = (e) =>
     setBook({ ...book, [e.target.name]: e.target.value });
 
   const updateAuthorsSuggestions = async () => {
+    setAuthorLoading(true);
     const newAuthorsSuggestions = await searchAuthors(book.author.full_name);
     setAuthorsSuggestions(newAuthorsSuggestions.data.results);
+    setAuthorLoading(false);
   };
 
   const router = useRouter();
@@ -121,10 +124,6 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
     </button>
   );
 
-  useEffect(async () => {
-    await updateAuthorsSuggestions();
-  }, [book.author.full_name]);
-
   return (
     <div className="z-20 fixed top-0 bottom-0 w-full overflow-y-scroll bg-gray-100 pt-20 pb-10 px-3 shadow-lg border-gray-400 animate-show-up">
       <div className="mx-auto w-5/6 md:w-4/6 lg:w-1/2 xl:w-1/3">
@@ -173,15 +172,29 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
                 It will be created if not present on the search results
               </div>
             </label>
-            <input
-              type="text"
-              name="full_name"
-              id="author-full-name"
-              onChange={handleAuthorChange}
-              value={book.author.full_name}
-              className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow focus:shadow-md"
-              placeholder="Enter the full name and select it below if present"
-            />
+            <div className="flex justify-between items-center gap-x-5">
+              <input
+                type="text"
+                name="full_name"
+                id="author-full-name"
+                onChange={handleAuthorChange}
+                value={book.author.full_name}
+                className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow focus:shadow-md"
+                placeholder="Enter the full name and select it below if present"
+              />
+              {authorLoading ? (
+                <div className="animate-spin block w-min mx-auto mt-1">
+                  <Loader size={32} color="gray" />
+                </div>
+              ) : (
+                <Search
+                  size={32}
+                  color="gray"
+                  className="cursor-pointer mt-1"
+                  onClick={updateAuthorsSuggestions}
+                />
+              )}
+            </div>
           </div>
 
           <div className="mt-5 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-1 gap-y-1">
@@ -201,7 +214,10 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
           </div>
 
           <div className="mt-10 bg-white rounded hover:shadow">
-            <label htmlFor="book-cover" className="text-center py-4 mx-auto block rounded cursor-pointer hover:bg-yellow-50">
+            <label
+              htmlFor="book-cover"
+              className="text-center py-4 mx-auto block rounded cursor-pointer hover:bg-yellow-50"
+            >
               <div className="mb-4">Upload a book cover</div>
               <Upload size={30} strokeWidth={1.5} className="w-min mx-auto" />
             </label>

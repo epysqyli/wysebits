@@ -330,12 +330,12 @@ const TileCreation = ({
         <div className="my-20 mx-auto w-4/5 md:w-4/6 lg:w-3/6">
           <div className="flex justify-around items-center">
             <AlertCircle
-              className="w-1/6"
               size={36}
               strokeWidth={1.5}
+              className="rounded-3xl w-1/4 text-gray-100"
               fill="lightgray"
             />
-            <div className="w-4/6">
+            <div className="w-4/6 md:text-lg text-gray-50">
               You have already shared your insights for this book!
             </div>
           </div>
