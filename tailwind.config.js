@@ -37,8 +37,8 @@ module.exports = {
           "url('/images/categories/crafts-and-hobbies.jpg')",
         "language-books": "url('/images/categories/language-books.jpg')",
         "arts-books": "url('/images/categories/arts-books.jpg')",
-        "memoirs-and-biographies":
-          "url('/images/categories/memoirs-and-biographies.jpg')",
+        memoirs: "url('/images/categories/memoirs.jpg')",
+        biographies: "url('/images/categories/biographies.jpg')",
         journalism: "url('/images/categories/journalism.jpg')",
         business: "url('/images/categories/business.jpg')",
         politics: "url('/images/categories/politics.jpg')",

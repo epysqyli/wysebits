@@ -80,9 +80,13 @@ const HeaderImage = ({ name, slug }) => {
       style =
         "bg-technology bg-cover bg-center lg:shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto border-b-2 border-white";
       break;
-    case "memoirs-and-biographies":
+    case "memoirs":
       style =
-        "bg-memoirs-and-biographies bg-cover bg-center lg:shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto border-b-2 border-white";
+        "bg-memoirs bg-cover bg-center lg:shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto border-b-2 border-white";
+      break;
+    case "biographies":
+      style =
+        "bg-biographies bg-cover bg-center lg:shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto border-b-2 border-white";
       break;
     default:
       style =
