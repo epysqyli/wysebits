@@ -164,7 +164,7 @@ const Feed = ({
   };
 
   const feedEnd = (
-    <div className="flex justify-around items-center mx-auto w-3/5 md:w-2/5 xl:w-1/4 mt-5 py-20 border-t-2 text-white">
+    <div className="flex justify-around items-center mx-auto w-3/5 md:w-2/5 xl:w-1/4 mt-5 py-20 text-white md:text-lg">
       <Info size={32} strokeWidth={1.5} />
       <div>No more entries available</div>
     </div>
