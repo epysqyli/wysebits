@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Loader } from "react-feather";
+import { Loader, Search } from "react-feather";
 import { useRouter } from "next/dist/client/router";
 import NoAccess from "../../../../components/users/NoAccess";
 import { getCategories } from "../../../../lib/serverSideMethods";
@@ -28,6 +28,7 @@ const CreateBook = ({ categories, userState }) => {
     const [file, setFile] = useState(null);
     const [authorSuggestions, setAuthorsSuggestions] = useState(null);
     const [loader, setLoader] = useState(false);
+    const [authorLoading, setAuthorLoading] = useState(false);
     const [fileAllowed, setFileAllowed] = useState(true);
 
     const submitButton = fileAllowed ? (
@@ -73,8 +74,10 @@ const CreateBook = ({ categories, userState }) => {
     };
 
     const updateAuthorsSuggestions = async () => {
+      setAuthorLoading(true);
       const newAuthorsSuggestions = await searchAuthors(book.author.full_name);
       setAuthorsSuggestions(newAuthorsSuggestions.data.results);
+      setAuthorLoading(false);
     };
 
     const assignExistingAuthor = (author) => {
@@ -183,19 +186,30 @@ const CreateBook = ({ categories, userState }) => {
                 It will be created if not present on the search results
               </div>
             </label>
-            <input
-              type="text"
-              name="full_name"
-              id="author-full-name"
-              className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
-              placeholder="Enter the full name"
-              value={book.author.full_name || ""}
-              onChange={(e) => {
-                handleAuthorChange(e);
-                updateAuthorsSuggestions();
-              }}
-              required
-            />
+            <div className="flex justify-between items-center gap-x-5">
+              <input
+                type="text"
+                name="full_name"
+                id="author-full-name"
+                className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
+                placeholder="Enter the full name"
+                value={book.author.full_name || ""}
+                onChange={handleAuthorChange}
+                required
+              />
+              {authorLoading ? (
+                <div className="animate-spin block w-min mx-auto">
+                  <Loader size={32} color="white" />
+                </div>
+              ) : (
+                <Search
+                  size={32}
+                  color="white"
+                  className="cursor-pointer"
+                  onClick={updateAuthorsSuggestions}
+                />
+              )}
+            </div>
           </div>
 
           <div className="mt-5 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-1 gap-y-1">
@@ -204,7 +218,7 @@ const CreateBook = ({ categories, userState }) => {
                   return (
                     <div
                       className="rounded border p-1 text-sm text-gray-700 bg-white cursor-pointer hover:text-black hover:shadow hover:bg-gray-200 active:scale-95"
-                      key={author._id}
+                      key={author.id}
                       onClick={() => assignExistingAuthor(author)}
                     >
                       {author.full_name}
@@ -232,8 +246,12 @@ const CreateBook = ({ categories, userState }) => {
               fileAllowed ? "" : "border border-red-400 bg-red-100 py-2 rounded"
             }`}
           >
-            <p className="text-gray-200">Max size: 5mb</p>
-            <p className="text-gray-200">Accepted types: jpeg, jpg, png</p>
+            <p className={fileAllowed ? "text-gray-50" : "text-gray-600"}>
+              Max size: 5mb
+            </p>
+            <p className={fileAllowed ? "text-gray-50" : "text-gray-600"}>
+              Accepted types: jpeg, jpg, png
+            </p>
           </div>
 
           {loader ? (
