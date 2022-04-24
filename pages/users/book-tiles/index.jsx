@@ -1,13 +1,12 @@
 import BookCardSlider from "../../../components/books/BookCardSlider";
 import WelcomeTop from "../../../components/users/WelcomeTop";
 import NoAccess from "../../../components/users/NoAccess";
-import NoItem from "../../../components/users/NoItem";
-import MultiSearch from "../../../components/navigation/MultiSearch";
 import Pagination from "../../../components/navigation/Pagination";
 import { getLoggedUser, getBookTiles } from "../../../lib/serverSideMethods";
 import { searchWithinBookTiles } from "../../../lib/searchMethods";
 import SpecificSearch from "../../../components/search/SpecificSearch";
 import NoResults from "../../../components/search/NoResults";
+import ExploreMore from "../../../components/navigation/ExploreMore";
 
 export const getServerSideProps = async (context) => {
   try {
@@ -56,10 +55,7 @@ const UserBookTiles = ({
   if (userState.isLogged && bookTiles.length === 0 && currentSearchTerms)
     return (
       <div className="pt-10 lg:pt-16">
-        <WelcomeTop
-          text="Your contributions"
-          bcgImg="bg-check-book-tiles"
-        />
+        <WelcomeTop text="Your contributions" bcgImg="bg-check-book-tiles" />
 
         <div className="mt-5">
           <SpecificSearch
@@ -76,32 +72,20 @@ const UserBookTiles = ({
   if (userState.isLogged && bookTiles.length === 0)
     return (
       <div className="pt-10 lg:pt-16">
-        <WelcomeTop
-          text="Your contributions"
-          bcgImg="bg-check-book-tiles"
+        <WelcomeTop text="Your contributions" bcgImg="bg-check-book-tiles" />
+        <ExploreMore
+          message="You have no contributions yet"
+          body="Start contributing now by choosing the first book for which you
+              want to add your own personal insights"
+          exortation=""
         />
-        <div className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 xl:w-2/6 2xl:w-1/3 py-20 lg:py-40 2xl:py-48">
-          <NoItem message="You have no contributions yet" />
-          <div className="border px-5 pt-3 md:px-8 md:pt-5 mt-20 lg:mt-32 bg-gray-100 rounded-md shadow group transition-all hover:shadow-md text-center">
-            <div>
-              Start contributing now by choosing the first book for which you
-              want to add your own personal insights
-            </div>
-            <div className="my-10">
-              <MultiSearch />
-            </div>
-          </div>
-        </div>
       </div>
     );
 
   if (userState.isLogged && bookTiles.length !== 0)
     return (
       <div className="pt-10 lg:pt-16">
-        <WelcomeTop
-          text="Your contributions"
-          bcgImg="bg-check-book-tiles"
-        />
+        <WelcomeTop text="Your contributions" bcgImg="bg-check-book-tiles" />
 
         <div className="mt-5">
           <SpecificSearch

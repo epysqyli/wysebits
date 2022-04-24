@@ -1,8 +1,6 @@
 import { useState } from "react";
 import WelcomeTop from "../../../../components/users/WelcomeTop";
 import NoAccess from "../../../../components/users/NoAccess";
-import MultiSearch from "../../../../components/navigation/MultiSearch";
-import NoItem from "../../../../components/users/NoItem";
 import RelatedUser from "../../../../components/users/RelatedUser";
 import Pagination from "../../../../components/navigation/Pagination";
 
@@ -11,6 +9,7 @@ import {
   getFollowing,
   getAllFollowing,
 } from "../../../../lib/serverSideMethods";
+import ExploreMore from "../../../../components/navigation/ExploreMore";
 
 export const getServerSideProps = async (context) => {
   try {
@@ -46,19 +45,11 @@ const Following = ({ following, userState, pagy, unpagedFollowing }) => {
     return (
       <div className="pt-10 lg:pt-16">
         <WelcomeTop text="Users you are following" bcgImg="bg-following" />
-        <div className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 xl:w-2/6 2xl:w-1/3 py-20 lg:py-40 2xl:py-48">
-          <NoItem message="You are not following anybody yet!" />
-          <div className="border px-5 pt-3 md:px-8 md:pt-5 mt-20 lg:mt-32 bg-gray-100 rounded-md shadow group transition-all hover:shadow-md text-center">
-            <div>
-              Start exploring books so that you can follow the insight
-              contributors that you like the most!
-              <br /> Start exploring books now
-            </div>
-            <div className="my-10">
-              <MultiSearch />
-            </div>
-          </div>
-        </div>
+        <ExploreMore
+          message="You are not following anybody yet!"
+          body="Start exploring books so that you can follow the insight contributors that you like the most!"
+          exortation="Start exploring books now!"
+        />
       </div>
     );
 
