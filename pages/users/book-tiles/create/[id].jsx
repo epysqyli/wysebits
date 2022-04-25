@@ -138,12 +138,14 @@ const TileCreation = ({
     const createForLater = async (entry) => {
       const bookTile = await findOrCreateBookTile();
 
-      await axios({
+      const createdEntry = await axios({
         method: "POST",
         url: `${process.env.BASE_URL}/book_tiles/${bookTile.id}/temporary_entries`,
         data: { content: entry.content },
         withCredentials: true,
       });
+
+      tileEntries[entry.name].id = createdEntry.data.id;
     };
 
     const updateForLater = async (entry) => {
