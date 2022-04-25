@@ -3,7 +3,7 @@ import { AlertCircle, FilePlus } from "react-feather";
 import Link from "next/dist/client/link";
 import MultiSearch from "./MultiSearch";
 
-const NoSearchResults = ({ searchMode }) => {
+const NoSearchResults = ({ searchMode, bookKeywords, authorKeywords }) => {
   if (searchMode === "books")
     return (
       <div className="pt-10 lg:pt-16">
@@ -12,7 +12,10 @@ const NoSearchResults = ({ searchMode }) => {
           <link rel="icon" href="/logo.png" />
         </Head>
         <div className="py-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
-          <MultiSearch />
+          <MultiSearch
+            bookKeywords={bookKeywords}
+            authorKeywords={authorKeywords}
+          />
           <div className="mt-20 flex justify-around items-center">
             <AlertCircle
               className="w-1/6"
@@ -51,7 +54,10 @@ const NoSearchResults = ({ searchMode }) => {
           <link rel="icon" href="/logo.png" />
         </Head>
         <div className="py-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
-          <MultiSearch />
+          <MultiSearch
+            bookKeywords={bookKeywords}
+            authorKeywords={authorKeywords}
+          />
           <div className="mt-20 flex justify-around items-center">
             <AlertCircle
               className="w-1/6"

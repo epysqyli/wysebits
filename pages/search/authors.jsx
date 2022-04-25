@@ -54,7 +54,7 @@ const AuthorSearch = ({ searchResults, authorKeywords, pagy }) => {
 
   return (
     <div className="pt-10 lg:pt-16">
-      <NoSearchResults searchMode="authors" />
+      <NoSearchResults searchMode="authors" authorKeywords={authorKeywords} />
     </div>
   );
 };
