@@ -96,7 +96,13 @@ const BookSearchResults = ({
     );
   }
 
-  return <NoSearchResults searchMode="books" />;
+  return (
+    <NoSearchResults
+      searchMode="books"
+      bookKeywords={bookKeywords}
+      authorKeywords={authorKeywords}
+    />
+  );
 };
 
 export default BookSearchResults;

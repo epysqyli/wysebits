@@ -69,21 +69,6 @@ const NoSearchResults = ({ searchMode, bookKeywords, authorKeywords }) => {
               Unfortunately your search did not produce any meaningful results
             </div>
           </div>
-
-          <Link href="#">
-            <div className="mt-24 flex justify-around items-center bg-white shadow py-5 rounded-md cursor-pointer hover:shadow-md active:shadow-inner">
-              <div className="w-4/6 text-gray-800">
-                Create a new author from scratch if you are sure that the author
-                you are looking for is not in our database
-              </div>
-              <FilePlus
-                className="w-1/6"
-                size={36}
-                strokeWidth={1.5}
-                color="gray"
-              />
-            </div>
-          </Link>
         </div>
       </div>
     );
