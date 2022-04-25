@@ -18,12 +18,12 @@ const NoSearchResults = ({ searchMode, bookKeywords, authorKeywords }) => {
           />
           <div className="mt-20 flex justify-around items-center">
             <AlertCircle
-              className="w-1/6"
               size={36}
               strokeWidth={1.5}
-              fill="lightgray"
+              className="rounded-3xl w-1/4 text-gray-100"
+              fill="transparent"
             />
-            <div className="w-4/6 text-gray-50">
+            <div className="w-3/4 md:text-lg text-gray-100 text-center">
               Unfortunately your search did not produce any meaningful results
             </div>
           </div>
@@ -60,12 +60,12 @@ const NoSearchResults = ({ searchMode, bookKeywords, authorKeywords }) => {
           />
           <div className="mt-20 flex justify-around items-center">
             <AlertCircle
-              className="w-1/6"
               size={36}
               strokeWidth={1.5}
-              fill="lightgray"
+              className="rounded-3xl w-1/4 text-gray-100"
+              fill="transparent"
             />
-            <div className="w-4/6 text-gray-50">
+            <div className="w-3/4 md:text-lg text-gray-100 text-center">
               Unfortunately your search did not produce any meaningful results
             </div>
           </div>
