@@ -39,7 +39,7 @@ const Stats = ({ entries }) => {
                   href={`/books/${slug(
                     entries.best_net_entry.book_tile.book.title,
                     entries.best_net_entry.book_tile.book.id
-                  )}/1`}
+                  )}?page=1`}
                 >
                   <div className="my-2 cursor-pointer">
                     {entries.best_net_entry.book_tile.book.title}
@@ -49,14 +49,14 @@ const Stats = ({ entries }) => {
                   href={`/authors/${slug(
                     entries.best_net_entry.book_tile.book.authors[0].full_name,
                     entries.best_net_entry.book_tile.book.authors[0].id
-                  )}/1`}
+                  )}?page=1`}
                 >
                   <div className="my-2 text-sm italic cursor-pointer hover:text-black">
                     {entries.best_net_entry.book_tile.book.authors[0].full_name}
                   </div>
                 </Link>
                 <Link
-                  href={`/categories/${entries.best_net_entry.book_tile.book.category.slug}/1`}
+                  href={`/categories/${entries.best_net_entry.book_tile.book.category.slug}?page=1`}
                 >
                   <div className="my-2 text-sm italic cursor-pointer hover:text-black">
                     {entries.best_net_entry.book_tile.book.category.name}
