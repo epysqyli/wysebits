@@ -2,10 +2,10 @@ import { Search } from "react-feather";
 import { useState } from "react";
 import { useRouter } from "next/dist/client/router";
 
-const MultiSearch = () => {
+const MultiSearch = ({ authorKeywords, bookKeywords }) => {
   const [searchTerms, setSearchTerms] = useState({
-    author_keywords: "",
-    book_keywords: "",
+    author_keywords: authorKeywords || "",
+    book_keywords: bookKeywords || "",
   });
 
   const handleChange = (e) => {
@@ -49,6 +49,7 @@ const MultiSearch = () => {
             type="text"
             name="book_keywords"
             id="book_keywords"
+            value={searchTerms.book_keywords}
             className="block w-full rounded border-none py-3 focus:ring-blue-400 focus:ring-2 text-lg"
             placeholder="book title"
             onChange={handleChange}
@@ -58,6 +59,7 @@ const MultiSearch = () => {
             type="text"
             name="author_keywords"
             id="author_keywords"
+            value={searchTerms.author_keywords}
             className="mt-2 w-full block rounded border-none py-3 focus:ring-blue-400 focus:ring-2 text-lg"
             placeholder="author name"
             onChange={handleChange}

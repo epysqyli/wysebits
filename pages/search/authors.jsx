@@ -35,7 +35,7 @@ const AuthorSearch = ({ searchResults, authorKeywords, pagy }) => {
           <link rel="icon" href="/logo.png" />
         </Head>
         <div className="py-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/6">
-          <MultiSearch />
+          <MultiSearch authorKeywords={authorKeywords} />
         </div>
 
         <div className="py-10 w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
