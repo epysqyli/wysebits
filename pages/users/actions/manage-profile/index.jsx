@@ -2,12 +2,6 @@ import WelcomeTop from "../../../../components/users/WelcomeTop";
 import NoAccess from "../../../../components/users/NoAccess";
 import ManageBox from "../../../../components/users/manageBox";
 
-export const getServerSideProps = async () => {
-  return {
-    props: {},
-  };
-};
-
 const ManageProfile = ({ userState }) => {
   if (userState.isLogged) {
     return (

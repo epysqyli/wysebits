@@ -5,9 +5,10 @@ import NoAccess from "../../../../components/users/NoAccess";
 import Pagination from "../../../../components/navigation/Pagination";
 import { getLoggedUser, getWipTiles } from "../../../../lib/serverSideMethods";
 import ExploreMore from "../../../../components/navigation/ExploreMore";
+import { isLogged } from "../../../../lib/auth";
 
 export const getServerSideProps = async (context) => {
-  try {
+  if (isLogged(context.req.headers)) {
     const pageNum = context.query.page;
 
     const loggedUser = await getLoggedUser(context);
@@ -19,7 +20,7 @@ export const getServerSideProps = async (context) => {
         pagy: tempTiles.data.pagy,
       },
     };
-  } catch (error) {
+  } else {
     return {
       props: {
         books: null,

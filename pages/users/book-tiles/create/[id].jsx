@@ -9,6 +9,7 @@ import NoAccess from "../../../../components/users/NoAccess";
 import CreateEntrySlider from "../../../../components/users/CreateEntrySlider";
 import { isEntryValid } from "../../../../lib/utils";
 import DangerButton from "../../../../components/navigation/DangerButton";
+import { isLogged } from "../../../../lib/auth";
 
 import {
   getBook,
@@ -21,7 +22,7 @@ export const getServerSideProps = async (context) => {
   const categories = await getCategories();
   const bookData = await getBook(context.params.id);
 
-  try {
+  if (isLogged(context.req.headers)) {
     const loggedUser = await getLoggedUser(context);
     const isAvailable = await isBookTileAvailable(loggedUser, context);
 
@@ -34,7 +35,7 @@ export const getServerSideProps = async (context) => {
         existingTile: isAvailable.data.existing_book_tile || null,
       },
     };
-  } catch (error) {
+  } else {
     return {
       props: {},
     };

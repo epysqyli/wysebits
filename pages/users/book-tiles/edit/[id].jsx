@@ -6,6 +6,7 @@ import CardBcgActions from "../../../../components/books/CardBcgActions";
 import DangerButton from "../../../../components/navigation/DangerButton";
 import NoAccess from "../../../../components/users/NoAccess";
 import { useRouter } from "next/dist/client/router";
+import { isLogged } from "../../../../lib/auth";
 
 import {
   getLoggedUser,
@@ -14,7 +15,7 @@ import {
 } from "../../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
-  try {
+  if (isLogged(context.req.headers)) {
     const { id } = context.params;
 
     const loggedUser = await getLoggedUser(context);
@@ -29,7 +30,7 @@ export const getServerSideProps = async (context) => {
         categories: categories.data,
       },
     };
-  } catch (error) {
+  } else {
     return {
       props: { error: error.message },
     };

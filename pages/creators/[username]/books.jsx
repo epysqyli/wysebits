@@ -9,6 +9,8 @@ import { searchWithinBookTiles } from "../../../lib/searchMethods";
 import SpecificSearch from "../../../components/search/SpecificSearch";
 import NoResults from "../../../components/search/NoResults";
 
+import { isLogged } from "../../../lib/auth";
+
 import {
   getLoggedUser,
   getAllFollowing,
@@ -40,7 +42,7 @@ export const getServerSideProps = async (context) => {
   const pagy = bookTiles.data.pagy;
   const books = bookTiles.data.tiles.map((tile) => tile.book);
 
-  try {
+  if (isLogged(context.req.headers)) {
     const loggedUser = await getLoggedUser(context);
     const [following, favTileEntries, upvotedEntries, downvotedEntries] =
       await Promise.all([
@@ -66,7 +68,7 @@ export const getServerSideProps = async (context) => {
           : null,
       },
     };
-  } catch (error) {
+  } else {
     return {
       props: {
         books: books,

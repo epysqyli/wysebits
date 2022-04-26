@@ -9,9 +9,10 @@ import SpecificSearch from "../../../../components/search/SpecificSearch";
 import { searchWithinFavBooks } from "../../../../lib/searchMethods";
 import NoResults from "../../../../components/search/NoResults";
 import ExploreMore from "../../../../components/navigation/ExploreMore";
+import { isLogged } from "../../../../lib/auth";
 
 export const getServerSideProps = async (context) => {
-  try {
+  if (isLogged(context.req.headers)) {
     const pageNum = context.query.page;
     const loggedUser = await getLoggedUser(context);
 
@@ -37,7 +38,7 @@ export const getServerSideProps = async (context) => {
           : null,
       },
     };
-  } catch (error) {
+  } else {
     return {
       props: {
         books: null,

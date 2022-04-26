@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import FeedEntry from "../../components/feed/FeedEntry";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { isLogged } from "../../lib/auth";
 
 import {
   getLoggedUser,
@@ -22,7 +23,7 @@ import {
 import { Grid, Globe, Users, Info } from "react-feather";
 
 export const getServerSideProps = async (context) => {
-  try {
+  if (isLogged(context.req.headers)) {
     const loggedUser = await getLoggedUser(context);
 
     const [
@@ -59,7 +60,7 @@ export const getServerSideProps = async (context) => {
         entriesDown: downvotedEntries.data.downvoted_entries,
       },
     };
-  } catch (error) {
+  } else {
     const entries = await getGuestFeed(1);
 
     return {

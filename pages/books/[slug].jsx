@@ -8,6 +8,8 @@ import Recommendations from "../../components/books/Recommendations";
 import Link from "next/dist/client/link";
 import Head from "next/head";
 
+import { isLogged } from "../../lib/auth";
+
 import {
   getBookEntries,
   getAllFollowing,
@@ -32,7 +34,7 @@ export const getServerSideProps = async (context) => {
   const entries = await getBookEntries(id, pageNum);
   const recommendations = await getCategoryRecommendations(book.data.id);
 
-  try {
+  if (isLogged(context.req.headers)) {
     const loggedUser = await getLoggedUser(context);
 
     const [following, favBooks, favInsights, upvotedEntries, downvotedEntries] =
@@ -44,36 +46,22 @@ export const getServerSideProps = async (context) => {
         getDownvotedEntries(loggedUser, context),
       ]);
 
-    if (entries.data.entries.length !== 0)
-      return {
-        props: {
-          entries: entries.data.entries,
-          title: capTitle,
-          book: book.data,
-          favBooks: favBooks.data,
-          pagy: entries.data.pagy,
-          slug: slug,
-          following: following.data,
-          favInsights: favInsights.data.tile_entries,
-          entriesUp: upvotedEntries.data.upvoted_entries,
-          entriesDown: downvotedEntries.data.downvoted_entries,
-          recommendations: recommendations.data,
-        },
-      };
-
     return {
       props: {
-        entries: false,
+        entries: entries.data.entries,
         title: capTitle,
         book: book.data,
         favBooks: favBooks.data,
         pagy: entries.data.pagy,
         slug: slug,
         following: following.data,
+        favInsights: favInsights.data.tile_entries,
+        entriesUp: upvotedEntries.data.upvoted_entries,
+        entriesDown: downvotedEntries.data.downvoted_entries,
         recommendations: recommendations.data,
       },
     };
-  } catch (error) {
+  } else {
     return {
       props: {
         entries: entries.data.entries || null,

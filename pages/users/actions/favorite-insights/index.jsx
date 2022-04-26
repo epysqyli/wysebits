@@ -3,6 +3,7 @@ import WelcomeTop from "../../../../components/users/WelcomeTop";
 import NoAccess from "../../../../components/users/NoAccess";
 import TileEntry from "../../../../components/books/TileEntry";
 import Pagination from "../../../../components/navigation/Pagination";
+import { isLogged } from "../../../../lib/auth";
 import {
   getLoggedUser,
   getAllFollowing,
@@ -13,7 +14,7 @@ import {
 import ExploreMore from "../../../../components/navigation/ExploreMore";
 
 export const getServerSideProps = async (context) => {
-  try {
+  if (isLogged(context.req.headers)) {
     const pageNum = context.query.page;
     const loggedUser = await getLoggedUser(context);
 
@@ -34,7 +35,7 @@ export const getServerSideProps = async (context) => {
         entriesDown: downvotedEntries.data.downvoted_entries,
       },
     };
-  } catch (error) {
+  } else {
     return {
       props: {
         favInsights: null,

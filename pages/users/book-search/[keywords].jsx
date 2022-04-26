@@ -6,9 +6,10 @@ import CreateBookBtn from "../../../components/users/CreateBookBtn";
 import { searchBooks } from "../../../lib/searchMethods";
 import NoSearchResults from "../../../components/navigation/NoSearchResults";
 import Pagination from "../../../components/navigation/Pagination";
+import { isLogged } from "../../../lib/auth";
 
 export const getServerSideProps = async (context) => {
-  try {
+  if (isLogged(context.req.headers)) {
     const keywords = context.query.keywords;
     const splitKeywords = context.query.keywords.split("-").join(" ");
     const pageNum = context.query.page;
@@ -22,9 +23,9 @@ export const getServerSideProps = async (context) => {
         keywords: keywords,
       },
     };
-  } catch (error) {
+  } else {
     return {
-      props: { error: error.message },
+      props: {},
     };
   }
 };

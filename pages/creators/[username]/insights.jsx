@@ -4,6 +4,7 @@ import { useState } from "react";
 import { getUser, getUserEntries } from "../../../lib/serverSideMethods";
 import Pagination from "../../../components/navigation/Pagination";
 import TileEntry from "../../../components/books/TileEntry";
+import { isLogged } from "../../../lib/auth";
 
 import {
   getAllFollowing,
@@ -22,7 +23,7 @@ export const getServerSideProps = async (context) => {
   const entries = await getUserEntries(user, pageNum);
   const pagy = entries.data.pagy;
 
-  try {
+  if (isLogged(context.req.headers)) {
     const loggedUser = await getLoggedUser(context);
     const [following, favInsights, upvotedEntries, downvotedEntries] =
       await Promise.all([
@@ -32,29 +33,18 @@ export const getServerSideProps = async (context) => {
         getDownvotedEntries(loggedUser, context),
       ]);
 
-    if (entries.data.entries.length !== 0) {
-      return {
-        props: {
-          username: username,
-          entries: entries.data.entries,
-          pagy: pagy,
-          following: following.data,
-          favInsights: favInsights.data.tile_entries,
-          entriesUp: upvotedEntries.data.upvoted_entries,
-          entriesDown: downvotedEntries.data.downvoted_entries,
-        },
-      };
-    } else {
-      return {
-        props: {
-          entries: entries.data.entries,
-          username: username,
-          pagy: entries.data.pagy,
-          following: following.data,
-        },
-      };
-    }
-  } catch (error) {
+    return {
+      props: {
+        username: username,
+        entries: entries.data.entries,
+        pagy: pagy,
+        following: following.data,
+        favInsights: favInsights.data.tile_entries,
+        entriesUp: upvotedEntries.data.upvoted_entries,
+        entriesDown: downvotedEntries.data.downvoted_entries,
+      },
+    };
+  } else {
     return {
       props: {
         entries: entries.data.entries,

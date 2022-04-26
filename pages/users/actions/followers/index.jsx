@@ -3,6 +3,7 @@ import WelcomeTop from "../../../../components/users/WelcomeTop";
 import NoAccess from "../../../../components/users/NoAccess";
 import Pagination from "../../../../components/navigation/Pagination";
 import RelatedUser from "../../../../components/users/RelatedUser";
+import { isLogged } from "../../../../lib/auth";
 import {
   getLoggedUser,
   getFollowers,
@@ -11,7 +12,7 @@ import {
 import ExploreMore from "../../../../components/navigation/ExploreMore";
 
 export const getServerSideProps = async (context) => {
-  try {
+  if (isLogged(context.req.headers)) {
     const pageNum = context.query.page;
     const loggedUser = await getLoggedUser(context);
 
@@ -27,7 +28,7 @@ export const getServerSideProps = async (context) => {
         pagy: followers.data.pagy,
       },
     };
-  } catch (error) {
+  } else {
     return {
       props: {
         error: error.message,

@@ -3,6 +3,8 @@ import { useState } from "react";
 import BasicInfo from "../../../components/creators/BasicInfo";
 import LatestBooks from "../../../components/creators/LatestBooks";
 import LatestEntries from "../../../components/creators/LatestEntries";
+import { isLogged } from "../../../lib/auth";
+
 import {
   getUser,
   getLoggedUser,
@@ -17,7 +19,7 @@ export const getServerSideProps = async (context) => {
   const username = context.query.username;
   const user = await getUser(username);
 
-  try {
+  if (isLogged(context.req.headers)) {
     const loggedUser = await getLoggedUser(context);
     const [following, favBooks, favInsights, upvotedEntries, downvotedEntries] =
       await Promise.all([
@@ -38,7 +40,7 @@ export const getServerSideProps = async (context) => {
         entriesDown: downvotedEntries.data.downvoted_entries,
       },
     };
-  } catch (error) {
+  } else {
     return {
       props: { user: user.data },
     };
