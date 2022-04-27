@@ -17,7 +17,7 @@ const Header = ({ userState, userLoading }) => {
   };
 
   const guest = (
-    <div className="flex gap-x-2 text-sm bg-gray-100 py-1 px-2 rounded shadow">
+    <div className="flex gap-x-2 text-sm bg-gray-100 py-1 px-2 rounded-md shadow">
       <Link href="/registrations/login">
         <a className="flex items-center group cursor-pointer">
           <LogIn
@@ -46,7 +46,7 @@ const Header = ({ userState, userLoading }) => {
   );
 
   const loggedUser = (
-    <div className="flex justify-around items-center rounded px-2 py-1 shadow bg-gray-100">
+    <div className="flex justify-around items-center rounded-md px-2 py-1 shadow bg-gray-100">
       <Link href="/users/actions">
         <a className="flex items-center mr-3 group cursor-pointer">
           {userLoading === false && userState.user.avatar !== null ? (
