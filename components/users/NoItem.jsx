@@ -5,12 +5,12 @@ const NoItem = ({ message }) => {
     <>
       <div className="flex items-center">
         <AlertCircle
-          size={40}
+          size={48}
           strokeWidth={1.5}
-          className="rounded-3xl w-1/3 text-gray-100"
+          className="rounded-3xl w-1/4 text-gray-100"
           fill="transparent"
         />
-        <div className="w-2/3 md:text-lg text-gray-100">{message}</div>
+        <div className="w-3/4 md:text-lg text-gray-100">{message}</div>
       </div>
     </>
   );
