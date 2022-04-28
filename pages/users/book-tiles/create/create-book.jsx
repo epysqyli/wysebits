@@ -18,7 +18,7 @@ const CreateBook = ({ categories, userState }) => {
   if (userState.isLogged) {
     const [book, setBook] = useState({
       title: "",
-      category_id: categories[0].id,
+      category_id: categories.find((c) => c.slug === "various"),
       author: {
         full_name: "",
         id: null,
@@ -164,7 +164,7 @@ const CreateBook = ({ categories, userState }) => {
               name="category_id"
               id="category"
               className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm"
-              defaultValue={categories[0].id}
+              defaultValue={categories.find((c) => c.slug === "various").id}
               onChange={handleChange}
               required
             >

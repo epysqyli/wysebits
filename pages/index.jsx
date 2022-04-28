@@ -13,7 +13,12 @@ export const getStaticProps = async () => {
   const weeklyTrend = await getWeeklyTrend();
 
   return {
-    props: { categories: categories.data, trending: weeklyTrend.data },
+    props: {
+      categories: categories.data.filter(
+        (category) => category.name !== "Various"
+      ),
+      trending: weeklyTrend.data,
+    },
   };
 };
 
