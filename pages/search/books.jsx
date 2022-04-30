@@ -5,7 +5,11 @@ import BookSearchTile from "../../components/books/BookSearchTile";
 import Pagination from "../../components/navigation/Pagination";
 import CreateBookBtn from "../../components/users/CreateBookBtn";
 import NoSearchResults from "../../components/navigation/NoSearchResults";
-import { searchBooks, searchAuthorsBooks } from "../../lib/searchMethods";
+import {
+  searchBooks,
+  searchAuthorsBooks,
+  searchAuthors,
+} from "../../lib/searchMethods";
 import MultiSearch from "../../components/navigation/MultiSearch";
 
 export const getServerSideProps = async (context) => {
@@ -25,10 +29,20 @@ export const getServerSideProps = async (context) => {
       authorKeywords,
       page
     );
-  } else {
+  } else if (
+    context.query.bookKeywords !== "" &&
+    context.query.authorKeywords == ""
+  ) {
     bookKeywords = context.query.bookKeywords;
     const page = context.query.page;
     searchResults = await searchBooks(bookKeywords, page);
+  } else if (
+    context.query.bookKeywords == "" &&
+    context.query.authorKeywords !== ""
+  ) {
+    authorKeywords = context.query.authorKeywords;
+    const page = context.query.page;
+    searchResults = await searchAuthors(authorKeywords, page);
   }
 
   return {
@@ -36,8 +50,8 @@ export const getServerSideProps = async (context) => {
       searchResults: searchResults.data.results || null,
       pageNum: searchResults.data.page_num || null,
       pagy: searchResults.data.pagy,
-      authorKeywords: authorKeywords,
-      bookKeywords: bookKeywords,
+      authorKeywords: authorKeywords || null,
+      bookKeywords: bookKeywords || null,
     },
   };
 };
@@ -61,7 +75,10 @@ const BookSearchResults = ({
       <div className="pt-10 lg:pt-16">
         <Head>
           <title>
-            {capitalize(bookKeywords.split("-").join(" "))} - Wysebits search
+            {bookKeywords
+              ? capitalize(bookKeywords.split("-").join(" "))
+              : capitalize(authorKeywords.split("-").join(" "))}{" "}
+            - Wysebits search
           </title>
           <link rel="icon" href="/logo.png" />
         </Head>

@@ -15,18 +15,12 @@ const MultiSearch = ({ authorKeywords, bookKeywords }) => {
   const router = useRouter();
 
   const search = () => {
-    if (searchTerms.book_keywords !== "") {
+    if (
+      searchTerms.book_keywords !== "" ||
+      searchTerms.author_keywords !== ""
+    ) {
       router.push({
         pathname: "/search/books",
-        query: {
-          bookKeywords: searchTerms.book_keywords,
-          authorKeywords: searchTerms.author_keywords,
-          page: 1,
-        },
-      });
-    } else if (searchTerms.author_keywords !== "") {
-      router.push({
-        pathname: "/search/authors",
         query: {
           bookKeywords: searchTerms.book_keywords,
           authorKeywords: searchTerms.author_keywords,
