@@ -60,13 +60,13 @@ const Home = ({
               Search Books
             </div>
           </div>
-          <div className="mt-10 mx-auto">
+          <div className="mt-10 xl:mt-16 mx-auto">
             <MultiSearch />
           </div>
         </div>
 
         <div className="mb-20 mt-32 xl:mt-0 xl:mb-10 w-11/12 mx-auto md:w-5/6 lg:w-3/5 xl:w-1/2 border-b-2 pb-10">
-          <div className="flex justify-center items-center xl:bg-white gap-x-5 xl:gap-x-10 mb-10 md:mb-16 xl:border-blue-400 xl:border-t-2 xl:rounded-md py-8 xl:py-16">
+          <div className="hidden xl:flex justify-center items-center xl:bg-white gap-x-5 xl:gap-x-10 mb-10 md:mb-16 xl:border-blue-400 xl:border-t-2 xl:rounded-md py-8 xl:py-16">
             <List
               size={60}
               strokeWidth={2}
