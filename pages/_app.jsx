@@ -29,6 +29,7 @@ const MyApp = ({ Component, pageProps }) => {
   };
 
   const loginStatus = async () => {
+    console.log("running loginStatus()");
     try {
       const resp = await axios({
         method: "GET",
@@ -40,9 +41,10 @@ const MyApp = ({ Component, pageProps }) => {
         setUserLoading(false);
       } else {
         handleLogout();
+        window.location = "/";
       }
     } catch (error) {
-      console.warn(error);
+      handleLogout();
     }
   };
 
@@ -57,10 +59,11 @@ const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     router.events.on("routeChangeStart", () => {
       setLoading(true);
+      loginStatus();
     });
 
     router.events.on("routeChangeComplete", () => {
-      loginStatus();
+      // loginStatus();
       removeOverlay();
       setLoading(false);
     });
