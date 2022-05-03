@@ -29,7 +29,6 @@ const MyApp = ({ Component, pageProps }) => {
   };
 
   const loginStatus = async () => {
-    console.log("running loginStatus()");
     try {
       const resp = await axios({
         method: "GET",
