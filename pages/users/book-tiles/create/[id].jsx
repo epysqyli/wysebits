@@ -22,7 +22,7 @@ export const getServerSideProps = async (context) => {
   const categories = await getCategories();
   const bookData = await getBook(context.params.id);
 
-  if (isLogged(context.req.headers)) {
+  if (isLogged(context)) {
     const loggedUser = await getLoggedUser(context);
     const isAvailable = await isBookTileAvailable(loggedUser, context);
 

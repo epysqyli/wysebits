@@ -42,7 +42,7 @@ export const getServerSideProps = async (context) => {
   const pagy = bookTiles.data.pagy;
   const books = bookTiles.data.tiles.map((tile) => tile.book);
 
-  if (isLogged(context.req.headers)) {
+  if (isLogged(context)) {
     const loggedUser = await getLoggedUser(context);
     const [following, favTileEntries, upvotedEntries, downvotedEntries] =
       await Promise.all([

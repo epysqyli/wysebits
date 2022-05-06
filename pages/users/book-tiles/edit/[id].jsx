@@ -15,7 +15,7 @@ import {
 } from "../../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
-  if (isLogged(context.req.headers)) {
+  if (isLogged(context)) {
     const { id } = context.params;
 
     const loggedUser = await getLoggedUser(context);

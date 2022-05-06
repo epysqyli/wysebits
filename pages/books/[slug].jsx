@@ -34,7 +34,7 @@ export const getServerSideProps = async (context) => {
   const entries = await getBookEntries(id, pageNum);
   const recommendations = await getCategoryRecommendations(book.data.id);
 
-  if (isLogged(context.req.headers)) {
+  if (isLogged(context)) {
     const loggedUser = await getLoggedUser(context);
 
     const [following, favBooks, favInsights, upvotedEntries, downvotedEntries] =

@@ -23,7 +23,7 @@ export const getServerSideProps = async (context) => {
   const entries = await getUserEntries(user, pageNum);
   const pagy = entries.data.pagy;
 
-  if (isLogged(context.req.headers)) {
+  if (isLogged(context)) {
     const loggedUser = await getLoggedUser(context);
     const [following, favInsights, upvotedEntries, downvotedEntries] =
       await Promise.all([

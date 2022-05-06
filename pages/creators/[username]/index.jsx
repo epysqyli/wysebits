@@ -19,7 +19,7 @@ export const getServerSideProps = async (context) => {
   const username = context.query.username;
   const user = await getUser(username);
 
-  if (isLogged(context.req.headers)) {
+  if (isLogged(context)) {
     const loggedUser = await getLoggedUser(context);
     const [following, favBooks, favInsights, upvotedEntries, downvotedEntries] =
       await Promise.all([

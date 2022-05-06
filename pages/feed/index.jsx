@@ -23,7 +23,7 @@ import {
 import { Grid, Globe, Users, Info } from "react-feather";
 
 export const getServerSideProps = async (context) => {
-  if (isLogged(context.req.headers)) {
+  if (isLogged(context)) {
     const loggedUser = await getLoggedUser(context);
 
     const [

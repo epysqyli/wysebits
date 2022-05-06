@@ -12,7 +12,7 @@ import ExploreMore from "../../../../components/navigation/ExploreMore";
 import { isLogged } from "../../../../lib/auth";
 
 export const getServerSideProps = async (context) => {
-  if (isLogged(context.req.headers)) {
+  if (isLogged(context)) {
     const pageNum = context.query.page;
     const loggedUser = await getLoggedUser(context);
 
