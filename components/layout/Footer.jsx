@@ -8,9 +8,7 @@ const Footer = () => {
           <div className="w-4/6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <div className="text-3xl font-bold text-gray-200 text-center">
               <Link href="/about">
-                <div className="hover:scale-105 active:scale-110 cursor-pointer">
-                  Wbits.
-                </div>
+                <div className="cursor-pointer">Wbits.</div>
               </Link>
             </div>
           </div>
