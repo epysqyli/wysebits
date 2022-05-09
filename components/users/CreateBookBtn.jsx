@@ -9,9 +9,7 @@ export default () => {
           <div className="text-sm font-medium">
             No results? Add your book now!
           </div>
-          <div className="group-active:scale-90 transition-transform">
-            <PlusCircle strokeWidth={1.5} color="gray" />
-          </div>
+          <PlusCircle strokeWidth={1.5} color="gray" />
         </div>
       </div>
     </Link>
