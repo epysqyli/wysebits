@@ -13,12 +13,13 @@ const Comments = ({
   removeOverlay,
 }) => {
   const commentRef = useRef();
-
   const [showCreate, setShowCreate] = useState(false);
+
   const showForm = () => {
     setShowCreate(true);
     addOverlay();
   };
+
   const hideForm = () => {
     setShowCreate(false);
     removeOverlay();

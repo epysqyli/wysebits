@@ -89,6 +89,8 @@ const Book = ({
   entriesUp,
   entriesDown,
   recommendations,
+  addOverlay,
+  removeOverlay
 }) => {
   const [followedUsers, setFollowedUsers] = useState(following);
   const [insights, setInsights] = useState(favInsights);
@@ -124,6 +126,8 @@ const Book = ({
                   setDownvotedEntries={setDownvotedEntries}
                   followedUsers={followedUsers}
                   setFollowedUsers={setFollowedUsers}
+                  addOverlay={addOverlay}
+                  removeOverlay={removeOverlay}
                 />
               </div>
             );

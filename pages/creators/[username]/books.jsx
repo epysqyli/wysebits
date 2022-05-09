@@ -222,6 +222,8 @@ const UserBooks = ({
                     setDownvotedEntries={setDownvotedEntries}
                     followedUsers={followedUsers}
                     setFollowedUsers={setFollowedUsers}
+                    addOverlay={addOverlay}
+                    removeOverlay={removeOverlay}
                   />
                 ) : null}
               </div>
