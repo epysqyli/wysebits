@@ -70,6 +70,8 @@ const EntryLogged = ({
             setComments={setComments}
             entryId={entryProp.id}
             userId={user.id}
+            addOverlay={addOverlay}
+            removeOverlay={removeOverlay}
           />
         ) : (
           entryProp.content

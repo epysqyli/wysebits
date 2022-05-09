@@ -1,7 +1,5 @@
 import { useState } from "react";
 import BookCard from "../books/BookCard";
-import Link from "next/dist/client/link";
-import slugify from "slugify";
 import BookUserInsights from "./BookUserInsights";
 import { getBookUserInsights } from "../../lib/creatorMethods";
 
@@ -63,6 +61,8 @@ const LatestBooks = ({
                   setDownvotedEntries={setDownvotedEntries}
                   followedUsers={followedUsers}
                   setFollowedUsers={setFollowedUsers}
+                  addOverlay={addOverlay}
+                  removeOverlay={removeOverlay}
                 />
               ) : null}
             </div>

@@ -15,6 +15,8 @@ const BookUserInsights = ({
   setDownvotedEntries,
   followedUsers,
   setFollowedUsers,
+  addOverlay,
+  removeOverlay,
 }) => {
   return (
     <div className="z-30 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full lg:w-5/6 xl:w-3/5 2xl:w-1/2 h-full lg:h-2/3 bg-white pt-20 pb-10 lg:py-5 px-2 lg:rounded lg:shadow overflow-auto border-2 border-gray-700">
@@ -39,6 +41,7 @@ const BookUserInsights = ({
         </div>
         {bookInsights.map((bookInsight) => (
           <TileEntry
+            key={bookInsight.id}
             entryProp={bookInsight}
             user={user.user}
             isLogged={user.isLogged}
@@ -50,6 +53,8 @@ const BookUserInsights = ({
             setDownvotedEntries={setDownvotedEntries}
             followedUsers={followedUsers}
             setFollowedUsers={setFollowedUsers}
+            addOverlay={addOverlay}
+            removeOverlay={removeOverlay}
           />
         ))}
       </div>
