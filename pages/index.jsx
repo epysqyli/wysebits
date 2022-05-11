@@ -85,10 +85,10 @@ const Home = ({
       </div>
 
       <Link href="/feed">
-        <div className="mx-auto my-24 w-11/12 md:w-3/5 lg:w-2/5 2xl:w-1/3 px-2 py-12 rounded-md border-t-2 border-blue-400 bg-white hover:bg-gray-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer">
+        <div className="mx-auto my-24 lg:my-16 w-11/12 md:w-3/5 lg:w-2/5 2xl:w-1/3 px-2 py-12 lg:py-20 rounded-md border-t-2 border-blue-400 bg-white hover:bg-gray-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer">
           <div className="flex justify-around items-center text-gray-600 w-4/5 mx-auto">
             <Layers size={52} strokeWidth={1.5} />
-            <div className="text-right lg:text-center text-3xl">
+            <div className="text-right lg:text-center text-3xl lg:text-4xl">
               Latest insights
             </div>
           </div>
