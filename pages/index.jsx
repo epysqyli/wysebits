@@ -100,10 +100,10 @@ const Home = ({
           Trending this week
         </span>
         <div className="lg:flex justify-around items-start">
-          <div className="md:w-4/5 mx-auto lg:w-1/2 2xl:w-2/5 mt-10 lg:mt-0">
+          <div className="md:w-4/5 mx-auto lg:w-1/2 xl:w-1/2 2xl:w-2/5 mt-10 lg:mt-0">
             <TrendingBook book={trending.book} />
           </div>
-          <div className="md:w-4/5 mx-auto lg:w-1/3 mt-10 lg:mt-0">
+          <div className="md:w-4/5 mx-auto lg:w-1/3 xl:w-2/5 mt-10 lg:mt-0">
             <TrendingUser user={trending.user} />
           </div>
         </div>
