@@ -65,7 +65,7 @@ const Home = ({
           </div>
         </div>
 
-        <div className="mb-20 mt-32 xl:mt-0 xl:mb-10 w-11/12 mx-auto md:w-5/6 lg:w-3/5 xl:w-1/2 border-b-2 pb-10">
+        <div className="mb-12 mt-32 xl:mt-0 xl:mb-10 w-11/12 mx-auto md:w-5/6 lg:w-3/5 xl:w-1/2 border-b-2 pb-10">
           <div className="hidden xl:flex justify-center items-center xl:bg-white gap-x-5 xl:gap-x-10 mb-10 md:mb-16 xl:border-blue-400 xl:border-t-2 xl:rounded-md py-8 xl:py-16">
             <List
               size={60}
@@ -85,10 +85,10 @@ const Home = ({
       </div>
 
       <Link href="/feed">
-        <div className="mx-auto my-24 lg:my-16 w-11/12 md:w-3/5 lg:w-2/5 2xl:w-1/3 px-2 py-12 lg:py-20 rounded-md border-t-2 border-blue-400 bg-white hover:bg-gray-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer">
-          <div className="flex justify-around items-center text-gray-600 w-4/5 mx-auto">
-            <Layers size={52} strokeWidth={1.5} />
-            <div className="text-right lg:text-center text-3xl lg:text-4xl">
+        <div className="mx-auto my-12 w-11/12 md:w-3/5 lg:w-2/5 2xl:w-1/3 px-2 py-12 rounded-md border-t-2 border-blue-400 bg-white hover:bg-gray-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer">
+          <div className="text-gray-600 mx-auto">
+            <Layers size={60} strokeWidth={1.5} className="mb-10 mx-auto" />
+            <div className="text-center text-4xl font-medium">
               Latest insights
             </div>
           </div>
