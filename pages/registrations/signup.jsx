@@ -94,7 +94,7 @@ const SignUp = () => {
           </div>
         </div>
 
-        <form className="mx-auto md:w-4/6 lg:w-3/6 py-10" onSubmit={signUp}>
+        <form className="mx-auto md:w-4/6 lg:w-3/6 2xl:w-1/3 py-10" onSubmit={signUp}>
           <div className="w-4/6 mx-auto my-4">
             <label htmlFor="username" className="pl-1 text-gray-50">
               Username
