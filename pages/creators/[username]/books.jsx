@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Head from "next/head";
 import { getUser, getBookTiles } from "../../../lib/serverSideMethods";
 import BookCard from "../../../components/books/BookCard";
 import Pagination from "../../../components/navigation/Pagination";
@@ -21,6 +20,7 @@ import {
 
 import { Meh } from "react-feather";
 import WelcomeTop from "../../../components/users/WelcomeTop";
+import IconAndTitle from "../../../components/layout/IconAndTitle";
 
 export const getServerSideProps = async (context) => {
   const username = context.params.username;
@@ -128,10 +128,7 @@ const UserBooks = ({
   if (books.length === 0 && currentSearchTerms)
     return (
       <div className="pt-10 lg:pt-16">
-        <Head>
-          <title>Books read by {username}</title>
-          <link rel="icon" href="/logo.png" />
-        </Head>
+        <IconAndTitle title={`Books read by ${username}`}/>
 
         <WelcomeTop
           bcgImg="bg-check-book-tiles"
@@ -153,10 +150,7 @@ const UserBooks = ({
   if (books.length === 0)
     return (
       <div className="pt-10 lg:pt-16">
-        <Head>
-          <title>Books read by {username}</title>
-          <link rel="icon" href="/logo.png" />
-        </Head>
+        <IconAndTitle title={`Books read by ${username}`}/>
 
         <WelcomeTop
           bcgImg="bg-check-book-tiles"
@@ -182,10 +176,7 @@ const UserBooks = ({
 
   return (
     <div className="relative pt-10 lg:pt-16">
-      <Head>
-        <title>Books read by {username}</title>
-        <link rel="icon" href="/logo.png" />
-      </Head>
+      <IconAndTitle title={`Books read by ${username}`}/>
       <WelcomeTop
         bcgImg="bg-check-book-tiles"
         text={`All books contributed to by ${username}`}

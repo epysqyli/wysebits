@@ -1,8 +1,8 @@
-import Head from "next/head";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/dist/client/link";
+import IconAndTitle from "../../components/layout/IconAndTitle";
 
 const LogIn = ({ handleLogin }) => {
   const [userData, setUserData] = useState({
@@ -40,10 +40,7 @@ const LogIn = ({ handleLogin }) => {
 
   return (
     <div className="pt-10 lg:pt-16">
-      <Head>
-        <title>Login to Wysebits</title>
-        <link rel="icon" href="/logo.png" />
-      </Head>
+      <IconAndTitle title="Login to Wysebits"/>
       <div className="h-48 bg-login-top lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md border-b-2 border-white mx-auto relative rounded-md">
         <div className="bg-gray-900 h-full bg-opacity-80 lg:rounded-md">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white w-screen text-center text-3xl lg:text-4xl">

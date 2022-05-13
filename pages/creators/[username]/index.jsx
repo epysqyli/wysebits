@@ -1,8 +1,8 @@
-import Head from "next/head";
 import { useState } from "react";
 import BasicInfo from "../../../components/creators/BasicInfo";
 import LatestBooks from "../../../components/creators/LatestBooks";
 import LatestEntries from "../../../components/creators/LatestEntries";
+import IconAndTitle from "../../../components/layout/IconAndTitle";
 import { isLogged } from "../../../lib/auth";
 
 import {
@@ -78,10 +78,7 @@ const Username = ({
 
   return (
     <div className="relative pt-10">
-      <Head>
-        <title>Creator: {user.user.username}</title>
-        <link rel="icon" href="/logo.png" />
-      </Head>
+      <IconAndTitle title={`Creator: ${user.user.username}`}/>
 
       <div className="mt-10">
         <BasicInfo

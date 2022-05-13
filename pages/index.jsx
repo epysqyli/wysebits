@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { Layers, List } from "react-feather";
 import CategoryButton from "../components/navigation/CategoryButton";
 import MultiSearch from "../components/navigation/MultiSearch";
@@ -7,6 +6,7 @@ import { getCategories, getWeeklyTrend } from "../lib/serverSideMethods";
 import TrendingBook from "../components/trending/TrendingBook";
 import TrendingUser from "../components/trending/TrendingUser";
 import TrendingEntry from "../components/trending/TrendingEntry";
+import IconAndTitle from "../components/layout/IconAndTitle";
 
 export const getStaticProps = async () => {
   const categories = await getCategories();
@@ -31,14 +31,7 @@ const Home = ({
 }) => {
   return (
     <div className="pt-12 lg:pt-16 2xl:pt-20">
-      <Head>
-        <title>Wysebits</title>
-        <meta
-          name="description"
-          content="The no-frills social network for book lovers. Knowledge: distilled. Share your insights for the books you have and explore other users' ideas."
-        />
-        <link rel="icon" href="/logo.png" />
-      </Head>
+      <IconAndTitle title="Wysebits" />
 
       <div className="h-48 md:h-56 xl:h-42 mx-auto bg-library bg-cover bg-center md:mb-12 lg:w-4/5 lg:rounded-md border-b-2 border-white">
         <div className="bg-gray-900 h-full bg-opacity-50 relative lg:rounded-md">

@@ -1,7 +1,7 @@
-import Head from 'next/head';
 import axios from "axios";
 import { Terminal } from "react-feather";
 import { useState } from "react";
+import IconAndTitle from '../../components/layout/IconAndTitle';
 
 const ForgotPassword = () => {
   const [emailAddress, setEmailAddress] = useState("");
@@ -28,10 +28,7 @@ const ForgotPassword = () => {
 
   return (
     <div className="pt-10 lg:pt-16">
-      <Head>
-        <title>Request password reset</title>
-        <link rel="icon" href="/logo.png" />
-      </Head>
+      <IconAndTitle title="Request password reset"/>
       <div className="py-10">
         <div className="flex justify-around items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto my-5 pb-5 border-b-2 md:border-none">
           <Terminal size={36} className="text-gray-50" />

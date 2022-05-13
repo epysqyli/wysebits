@@ -1,3 +1,4 @@
+import IconAndTitle from "../../../../components/layout/IconAndTitle";
 import { useState } from "react";
 import WelcomeTop from "../../../../components/users/WelcomeTop";
 import NoAccess from "../../../../components/users/NoAccess";
@@ -44,6 +45,7 @@ const Following = ({ following, userState, pagy, unpagedFollowing }) => {
   if (userState.isLogged && following.length == 0)
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Users you follow"/>
         <WelcomeTop text="Users you are following" bcgImg="bg-following" />
         <ExploreMore
           message="You are not following anybody yet!"
@@ -56,6 +58,8 @@ const Following = ({ following, userState, pagy, unpagedFollowing }) => {
   if (userState.isLogged && following.length !== 0) {
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Users you follow"/>
+
         <WelcomeTop text="Users you are following" bcgImg="bg-following" />
         <div className="py-16 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
           {following.map((user) => {

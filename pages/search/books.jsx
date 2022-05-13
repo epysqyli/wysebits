@@ -1,5 +1,5 @@
-import Head from "next/head";
 import { useState, useEffect } from "react";
+import IconAndTitle from "../../components/layout/IconAndTitle";
 import { capitalize, slug } from "../../lib/utils";
 import BookSearchTile from "../../components/books/BookSearchTile";
 import Pagination from "../../components/navigation/Pagination";
@@ -73,15 +73,14 @@ const BookSearchResults = ({
   if (searchResults.length !== 0) {
     return (
       <div className="pt-10 lg:pt-16">
-        <Head>
-          <title>
-            {bookKeywords
+        <IconAndTitle
+          title={`${
+            bookKeywords
               ? capitalize(bookKeywords.split("-").join(" "))
-              : capitalize(authorKeywords.split("-").join(" "))}{" "}
-            - Wysebits search
-          </title>
-          <link rel="icon" href="/logo.png" />
-        </Head>
+              : capitalize(authorKeywords.split("-").join(" "))
+          }{" "}
+            - Wysebits search`}
+        />
         <div className="py-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/5">
           <MultiSearch
             bookKeywords={bookKeywords}

@@ -4,6 +4,7 @@ import NoAccess from "../../../../components/users/NoAccess";
 import TileEntry from "../../../../components/books/TileEntry";
 import Pagination from "../../../../components/navigation/Pagination";
 import { isLogged } from "../../../../lib/auth";
+import IconAndTitle from "../../../../components/layout/IconAndTitle";
 
 import {
   getLoggedUser,
@@ -74,6 +75,8 @@ const CommentedInsights = ({
   if (userState.isLogged && userCommentedEntries.length == 0)
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Insights you have commented"/>
+        
         <WelcomeTop text="Insights you have commented" bcgImg="bg-comments" />
         <ExploreMore
           message="You have not commented any insights yet"
@@ -86,6 +89,8 @@ const CommentedInsights = ({
   if (userState.isLogged && userCommentedEntries.length !== 0)
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Insights you have commented"/>
+
         <WelcomeTop text="Insights you have commented" bcgImg="bg-comments" />
         <div className="py-10 w-11/12 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
           {userCommentedEntries.map((insight) => {

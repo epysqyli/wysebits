@@ -1,4 +1,4 @@
-import Head from "next/head";
+import IconAndTitle from "../../../components/layout/IconAndTitle";
 import WelcomeTop from "../../../components/users/WelcomeTop";
 import MultiSearch from "../../../components/navigation/MultiSearch";
 import NoAccess from "../../../components/users/NoAccess";
@@ -7,9 +7,7 @@ const BookSearch = ({ userState }) => {
   if (userState.isLogged) {
     return (
       <div className="pt-10 lg:pt-16">
-        <Head>
-          <title>Create book tile</title>
-        </Head>
+        <IconAndTitle title="Search for books"/>
 
         <WelcomeTop
           bcgImg="bg-create-tile"

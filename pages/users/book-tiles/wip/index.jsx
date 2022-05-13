@@ -1,3 +1,4 @@
+import IconAndTitle from "../../../../components/layout/IconAndTitle";
 import Link from "next/link";
 import BookCard from "../../../../components/books/BookCard";
 import WelcomeTop from "../../../../components/users/WelcomeTop";
@@ -36,6 +37,8 @@ const WorkInProgress = ({ books, pagy, userState }) => {
   if (userState.isLogged && books.length === 0)
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Work in progress contributions"/>
+        
         <WelcomeTop
           text="Contributions you are working on"
           bcgImg="bg-wip-contributions"
@@ -51,6 +54,8 @@ const WorkInProgress = ({ books, pagy, userState }) => {
   if (userState.isLogged && books.length !== 0)
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Work in progress contributions"/>
+        
         <WelcomeTop
           text="Contributions you are working on"
           bcgImg="bg-wip-contributions"

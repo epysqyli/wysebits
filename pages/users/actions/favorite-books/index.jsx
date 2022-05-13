@@ -1,3 +1,4 @@
+import IconAndTitle from "../../../../components/layout/IconAndTitle";
 import slugify from "slugify";
 import Link from "next/link";
 import BookCard from "../../../../components/books/BookCard";
@@ -62,6 +63,8 @@ const FavoriteBooks = ({
   if (userState.isLogged && books.length === 0 && currentSearchTerms !== null)
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Favorite books"/>
+
         <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
         <div className="mt-5">
           <SpecificSearch
@@ -77,6 +80,8 @@ const FavoriteBooks = ({
   if (userState.isLogged && books.length === 0)
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Favorite books"/>
+
         <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
         <ExploreMore
           message="You have no favorite books yet"
@@ -89,6 +94,8 @@ const FavoriteBooks = ({
   if (userState.isLogged && books.length !== 0)
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Favorite books"/>
+
         <WelcomeTop text="Your favorite books" bcgImg="bg-liked-books" />
         <div className="mt-5">
           <SpecificSearch

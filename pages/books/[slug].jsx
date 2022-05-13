@@ -6,7 +6,6 @@ import NoItem from "../../components/users/NoItem";
 import PageNavButton from "../../components/navigation/PageNavButton";
 import Recommendations from "../../components/books/Recommendations";
 import Link from "next/dist/client/link";
-import Head from "next/head";
 
 import { isLogged } from "../../lib/auth";
 
@@ -21,6 +20,7 @@ import {
   getCategoryRecommendations,
   getAllFavBooks,
 } from "../../lib/serverSideMethods";
+import IconAndTitle from "../../components/layout/IconAndTitle";
 
 export const getServerSideProps = async (context) => {
   const slug = context.query.slug;
@@ -102,10 +102,7 @@ const Book = ({
   if (entries && entries.length !== 0)
     return (
       <div className="pt-10 lg:pt-16">
-        <Head>
-          <title>{book.title}</title>
-          <link rel="icon" href="/logo.png" />
-        </Head>
+        <IconAndTitle title={book.title}/>
         <CardBcg bookData={book} userState={userState} favBooks={favBooks} />
         <div className="my-10 w-11/12 md:w-3/5 2xl:w-2/3 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
           {entries.map((entry) => {
@@ -176,10 +173,7 @@ const Book = ({
 
   return (
     <div className="pt-10 lg:pt-16">
-      <Head>
-        <title>{book.title}</title>
-        <link rel="icon" href="/logo.png" />
-      </Head>
+      <IconAndTitle title={book.title}/>
       <CardBcg bookData={book} userState={userState} favBooks={favBooks} />
       <div className="mx-auto w-4/5 md:w-4/6 lg:w-3/6 2xl:w-1/3 py-20 lg:py-40 2xl:py-48">
         <NoItem message="There are no insights for this book yet" />

@@ -1,9 +1,9 @@
-import Head from "next/head";
 import axios from "axios";
 import { CheckCircle, Key } from "react-feather";
 import { useEffect, useState } from "react";
 import Link from "next/dist/client/link";
 import { isMatching } from "../../../lib/manageProfileMethods";
+import IconAndTitle from "../../../components/layout/IconAndTitle";
 
 export const getServerSideProps = (context) => {
   return { props: { token: context.query.token } };
@@ -40,8 +40,6 @@ const ResetPassword = ({ token }) => {
 
     try {
       const resp = await changePassword();
-
-      console.log(resp);
       if (resp.status === 200) setConfirmed(true);
     } catch (error) {
       console.log(error);
@@ -55,10 +53,8 @@ const ResetPassword = ({ token }) => {
   if (confirmed === false)
     return (
       <div className="pt-10 lg:pt-16">
-        <Head>
-          <title>Reset password - Wysebits</title>
-          <link rel="icon" href="/logo.png" />
-        </Head>
+        <IconAndTitle title="Reset password - Wysebits" />
+
         <div className="py-10">
           <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2 md:border-none">
             <Key size={36} className="text-gray-700" />
@@ -131,10 +127,8 @@ const ResetPassword = ({ token }) => {
 
   return (
     <div className="pt-10 lg:pt-16">
-      <Head>
-        <title>Reset password - Wysebits</title>
-        <link rel="icon" href="/logo.png" />
-      </Head>
+      <IconAndTitle title="Reset password - Wysebits" />
+
       <div className="py-10">
         <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2">
           <Key size={36} className="text-gray-700" />

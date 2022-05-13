@@ -1,4 +1,3 @@
-import Head from "next/dist/shared/lib/head";
 import BookCard from "../../components/books/BookCard";
 import Link from "next/link";
 import Pagination from "../../components/navigation/Pagination";
@@ -9,6 +8,7 @@ import HeaderImage from "../../components/categories/HeaderImage";
 import SpecificSearch from "../../components/search/SpecificSearch";
 import NoResults from "../../components/search/NoResults";
 import ExploreMore from "../../components/navigation/ExploreMore";
+import IconAndTitle from "../../components/layout/IconAndTitle";
 
 export const getServerSideProps = async (context) => {
   const slug = context.params.category;
@@ -50,10 +50,7 @@ const Category = ({
   if (books.length !== 0)
     return (
       <div className="pt-10 lg:pt-16">
-        <Head>
-          <title>{capitalize(categoryName)} Books</title>
-          <link rel="icon" href="/logo.png" />
-        </Head>
+        <IconAndTitle title={`${capitalize(categoryName)} Books`}/>
         <HeaderImage name={categoryName} slug={categorySlug} />
         <div className="mt-5">
           <SpecificSearch
@@ -92,10 +89,7 @@ const Category = ({
   if (books.length === 0 && currentSearchTerms !== null)
     return (
       <div className="pt-10 lg:pt-16">
-        <Head>
-          <title>{capitalize(categoryName)} Books</title>
-          <link rel="icon" href="/logo.png" />
-        </Head>
+        <IconAndTitle title={`${capitalize(categoryName)} Books`}/>
         <HeaderImage name={categoryName} slug={categorySlug} />
         <div className="mt-5">
           <SpecificSearch
@@ -112,10 +106,7 @@ const Category = ({
   if (books.length === 0)
     return (
       <div className="pt-10 lg:pt-16">
-        <Head>
-          <title>{capitalize(categoryName)} Books</title>
-          <link rel="icon" href="/logo.png" />
-        </Head>
+        <IconAndTitle title={`${capitalize(categoryName)} Books`}/>
         <HeaderImage name={categoryName} slug={categorySlug} />
         <ExploreMore
           message="This category is empty, meaning no books have been assigned to it. Explore books and contribute insights to improve WyseBits."

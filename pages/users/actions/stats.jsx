@@ -1,3 +1,4 @@
+import IconAndTitle from "../../../components/layout/IconAndTitle";
 import { getLoggedUser, getUserStats } from "../../../lib/serverSideMethods";
 import { Award, Smile, Frown } from "react-feather";
 import { shortenText, slug } from "../../../lib/utils";
@@ -18,6 +19,7 @@ const Stats = ({ entries }) => {
   if (entries.best_net_entry !== null)
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Stats for you"/>
         <WelcomeTop text="Here are some stats for you" bcgImg="bg-stats" />
         <div className="w-5/6 md:w-4/6 lg:w-11/12 xl:w-5/6 mx-auto md:py-10">
           <div className="mx-auto my-20 grid grid-cols-1 lg:grid-cols-3 lg:gap-x-5 gap-y-10">
@@ -171,6 +173,7 @@ const Stats = ({ entries }) => {
 
   return (
     <div className="pt-10 lg:pt-16">
+      <IconAndTitle title="Stats for you"/>
       <WelcomeTop text="Here are some stats for you" bcgImg="bg-stats" />
       <ExploreMore
         message="You have no contributions yet"

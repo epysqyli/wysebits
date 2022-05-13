@@ -10,6 +10,7 @@ import CreateEntrySlider from "../../../../components/users/CreateEntrySlider";
 import { isEntryValid } from "../../../../lib/utils";
 import DangerButton from "../../../../components/navigation/DangerButton";
 import { isLogged } from "../../../../lib/auth";
+import IconAndTitle from "../../../../components/layout/IconAndTitle";
 
 import {
   getBook,
@@ -246,6 +247,7 @@ const TileCreation = ({
 
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title={`Share your insights for ${bookData.title}`}/>
         {editVisible ? (
           <EditBookDetails
             categories={categories}
@@ -315,6 +317,7 @@ const TileCreation = ({
   if (userState.isLogged && !isAvailable) {
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title={`Share your insights for ${bookData.title}`}/>
         {editVisible ? (
           <EditBookDetails
             categories={categories}

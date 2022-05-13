@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { useState, useEffect } from "react";
 import FeedEntry from "../../components/feed/FeedEntry";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -21,6 +20,7 @@ import {
 } from "../../lib/feedMethods";
 
 import { Grid, Globe, Users, Info } from "react-feather";
+import IconAndTitle from "../../components/layout/IconAndTitle";
 
 export const getServerSideProps = async (context) => {
   if (isLogged(context)) {
@@ -195,10 +195,7 @@ const Feed = ({
 
     return (
       <div className="pt-10 lg:pt-16">
-        <Head>
-          <title>Feed - Wysebits</title>
-          <link rel="icon" href="/logo.png" />
-        </Head>
+        <IconAndTitle title="Insights"/>
         <div className="bg-feed bg-cover bg-center lg:shadow border-b-2 border-white lg:w-4/5 2xl:w-1/2 lg:mt-5 lg:rounded-md mx-auto lg:mb-20">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
             Latest insights
@@ -292,10 +289,7 @@ const Feed = ({
 
   return (
     <div className="pt-10 lg:pt-16">
-      <Head>
-        <title>Feed - Wysebits</title>
-        <link rel="icon" href="/logo.png" />
-      </Head>
+      <IconAndTitle title="Insights"/>
       <div className="bg-feed bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:my-5 lg:rounded-md mx-auto lg:mb-20">
         <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
           Latest insights

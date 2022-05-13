@@ -1,3 +1,4 @@
+import IconAndTitle from "../../../../components/layout/IconAndTitle";
 import WelcomeTop from "../../../../components/users/WelcomeTop";
 import NoAccess from "../../../../components/users/NoAccess";
 import ManageBox from "../../../../components/users/manageBox";
@@ -6,6 +7,7 @@ const ManageProfile = ({ userState }) => {
   if (userState.isLogged) {
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Profile settings"/>
         <WelcomeTop text="Manage your profile" bcgImg="bg-settings" />
 
         <div className="mx-auto w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3 my-10">

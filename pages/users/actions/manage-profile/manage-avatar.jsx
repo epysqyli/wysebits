@@ -1,7 +1,7 @@
+import IconAndTitle from "../../../../components/layout/IconAndTitle";
 import { useState, useEffect } from "react";
 import {
   CheckCircle,
-  Sliders,
   Image as ImageLoader,
   XCircle,
   Upload,
@@ -95,6 +95,7 @@ const ManageAvatar = ({ userState, userLoading }) => {
 
   return (
     <div className="pt-10 lg:pt-16">
+      <IconAndTitle title="Manange avatar"/>
       <div className="w-4/5 mx-auto my-10">
         <div className="text-center mb-20 text-2xl border-b pb-2 text-gray-50">
           Current profile picture

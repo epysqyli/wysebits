@@ -1,3 +1,4 @@
+import IconAndTitle from "../../../../components/layout/IconAndTitle";
 import { useState } from "react";
 import axios from "axios";
 import { Loader, Search } from "react-feather";
@@ -132,6 +133,7 @@ const CreateBook = ({ categories, userState }) => {
 
     return (
       <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 my-20 pb-10">
+        <IconAndTitle title="Add a new book to Wysebits"/>
         <div className="text-3xl font-medium text-center text-gray-50">
           Fill in the required fields to add a book
         </div>

@@ -1,3 +1,4 @@
+import IconAndTitle from "../../../components/layout/IconAndTitle";
 import BookCardSlider from "../../../components/books/BookCardSlider";
 import WelcomeTop from "../../../components/users/WelcomeTop";
 import NoAccess from "../../../components/users/NoAccess";
@@ -55,6 +56,7 @@ const UserBookTiles = ({
   if (userState.isLogged && bookTiles.length === 0 && currentSearchTerms)
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Your contributions"/>
         <WelcomeTop text="Your contributions" bcgImg="bg-check-book-tiles" />
 
         <div className="mt-5">
@@ -72,6 +74,7 @@ const UserBookTiles = ({
   if (userState.isLogged && bookTiles.length === 0)
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Your contributions"/>
         <WelcomeTop text="Your contributions" bcgImg="bg-check-book-tiles" />
         <ExploreMore
           message="You have no contributions yet"
@@ -85,6 +88,7 @@ const UserBookTiles = ({
   if (userState.isLogged && bookTiles.length !== 0)
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Your contributions"/>
         <WelcomeTop text="Your contributions" bcgImg="bg-check-book-tiles" />
 
         <div className="mt-5">

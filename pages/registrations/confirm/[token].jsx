@@ -1,8 +1,8 @@
-import Head from "next/head";
 import axios from "axios";
 import { CheckCircle, Compass } from "react-feather";
 import { useState } from "react";
 import Link from "next/dist/client/link";
+import IconAndTitle from "../../../components/layout/IconAndTitle";
 
 export const getServerSideProps = (context) => {
   const token = context.query.token;
@@ -29,10 +29,7 @@ const ConfirmToken = ({ token }) => {
 
   return (
     <div className="pt-10 lg:pt-16">
-      <Head>
-        <title>Confirm account - Wysebits</title>
-        <link rel="icon" href="/logo.png" />
-      </Head>
+      <IconAndTitle title="Confirm account - Wysebits"/>
       <div className="mx-auto w-11/12 md:w-4/6 lg:w-1/2 xl:w-2/5">
         <div className="pt-16">
           <Compass

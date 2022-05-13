@@ -1,3 +1,4 @@
+import IconAndTitle from "../../../../components/layout/IconAndTitle";
 import { useState } from "react";
 import WelcomeTop from "../../../../components/users/WelcomeTop";
 import NoAccess from "../../../../components/users/NoAccess";
@@ -64,6 +65,8 @@ const FavoriteInsights = ({
   if (userState.isLogged && insights.length == 0)
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Favorite insights"/>
+        
         <WelcomeTop text="Your favorite insights" bcgImg="bg-saved-tiles" />
         <ExploreMore
           message="You have no favorite insights yet"
@@ -76,6 +79,8 @@ const FavoriteInsights = ({
   if (userState.isLogged && insights.length !== 0)
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Favorite insights"/>
+
         <WelcomeTop text="Your favorite insights" bcgImg="bg-saved-tiles" />
         <div className="py-10 w-11/12 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
           {insights.map((insight) => {

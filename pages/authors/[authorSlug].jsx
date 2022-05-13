@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { capitalize, slug } from "../../lib/utils";
 import { getAuthor } from "../../lib/serverSideMethods";
 import BookCard from "../../components/books/BookCard";
@@ -9,6 +8,7 @@ import Link from "next/dist/client/link";
 import { searchWithinAuthor } from "../../lib/searchMethods";
 import SpecificSearch from "../../components/search/SpecificSearch";
 import NoResults from "../../components/search/NoResults";
+import IconAndTitle from "../../components/layout/IconAndTitle";
 
 export const getServerSideProps = async (context) => {
   const urlSlug = context.query.authorSlug;
@@ -62,10 +62,7 @@ const Author = ({
   if (books.length !== 0)
     return (
       <div className="pt-10 lg:pt-12">
-        <Head>
-          <title>{authorName}</title>
-          <link rel="icon" href="/logo.png" />
-        </Head>
+        <IconAndTitle title={authorName} />
         <div className="bg-author bg-cover bg-center shadow">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl text-center py-20">
             {authorName}
@@ -110,10 +107,7 @@ const Author = ({
   if (books.length === 0 && currentSearchTerms !== null)
     return (
       <div className="pt-10 lg:pt-12">
-        <Head>
-          <title>{authorName}</title>
-          <link rel="icon" href="/logo.png" />
-        </Head>
+        <IconAndTitle title={authorName} />
         <div className="bg-author bg-cover bg-center shadow">
           <div className="bg-gray-800 bg-opacity-70 text-white text-4xl text-center py-20">
             {authorName}
@@ -135,10 +129,7 @@ const Author = ({
 
   return (
     <div className="pt-10 lg:pt-16">
-      <Head>
-        <title>{authorName}</title>
-        <link rel="icon" href="/logo.png" />
-      </Head>
+      <IconAndTitle title={authorName} />
       <div className="bg-author bg-cover bg-center shadow">
         <div className="bg-gray-800 bg-opacity-70 text-white text-4xl text-center py-16">
           {authorName}

@@ -1,3 +1,4 @@
+import IconAndTitle from "../../../../components/layout/IconAndTitle";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { CheckCircle, Mail } from "react-feather";
@@ -42,6 +43,8 @@ const UpdateEmail = () => {
   if (confirmed === false)
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Update email address" />
+        
         <div className="py-10">
           <div className="flex justify-between items-center w-11/12 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2 md:border-none">
             <Mail size={36} className="text-gray-50" />
@@ -95,6 +98,8 @@ const UpdateEmail = () => {
 
   return (
     <div className="py-10">
+      <IconAndTitle title="Update email address" />
+
       <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2">
         <Mail size={36} className="text-gray-700" />
         <div className="text-3xl text-gray-800 text-right">

@@ -1,3 +1,4 @@
+import IconAndTitle from "../../../../components/layout/IconAndTitle";
 import { getLoggedUser } from "../../../../lib/serverSideMethods";
 import { getUserConversations } from "../../../../lib/conversationMethods";
 import Conversation from "../../../../components/conversations/Conversation";
@@ -25,6 +26,8 @@ const Conversations = ({ conversations, pagy }) => {
   if (conversations.length === 0) {
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title="Conversations with other users" />
+
         <WelcomeTop text="Your conversations" bcgImg="bg-conversations" />
         <ExploreMore
           message="You have no conversations yet"
@@ -37,6 +40,8 @@ const Conversations = ({ conversations, pagy }) => {
 
   return (
     <div className="pt-10 lg:pt-16">
+      <IconAndTitle title="Conversations with other users" />
+
       <WelcomeTop text="Your conversations" bcgImg="bg-conversations" />
       <div className="w-5/6 md:w-3/5 2xl:w-1/2 mx-auto py-10">
         <div className="my-10 ">

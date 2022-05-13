@@ -1,3 +1,4 @@
+import IconAndTitle from "../../../../components/layout/IconAndTitle";
 import {
   getLoggedUser,
   getFavCategories,
@@ -65,6 +66,8 @@ const ManageCategories = ({ cats, favCats, userState }) => {
 
   return (
     <div className="pt-10 lg:pt-16">
+      <IconAndTitle title="Manage categories" />
+
       <div className="bg-categories bg-cover bg-center shadow select-none">
         <div className="bg-gray-800 bg-opacity-70 text-white text-2xl font-medium text-center py-12">
           <div>Update your favorite categories</div>

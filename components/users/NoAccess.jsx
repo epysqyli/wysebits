@@ -1,9 +1,11 @@
+import IconAndTitle from "../layout/IconAndTitle";
 import Link from "next/link";
 import { AlertCircle } from "react-feather";
 
 const NoAccess = () => {
   return (
     <div className="w-5/6 md:w-3/5 lg:w-4/6 mx-auto pt-20">
+      <IconAndTitle title="No access"/>
       <div className="flex justify-around items-center gap-x-5">
         <AlertCircle
           className="w-1/6"

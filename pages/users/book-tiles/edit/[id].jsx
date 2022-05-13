@@ -7,6 +7,7 @@ import DangerButton from "../../../../components/navigation/DangerButton";
 import NoAccess from "../../../../components/users/NoAccess";
 import { useRouter } from "next/dist/client/router";
 import { isLogged } from "../../../../lib/auth";
+import IconAndTitle from "../../../../components/layout/IconAndTitle";
 
 import {
   getLoggedUser,
@@ -139,6 +140,8 @@ const EditBookTile = ({
 
     return (
       <div className="pt-10 lg:pt-16">
+        <IconAndTitle title={`Edit your insights for ${bookData.title}`}/>
+
         {editVisible ? (
           <EditBookDetails
             categories={categories}

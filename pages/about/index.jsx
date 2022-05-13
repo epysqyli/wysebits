@@ -1,14 +1,12 @@
 import Head from "next/head";
 import Button from "../../components/navigation/Button";
 import Link from "next/dist/client/link";
+import IconAndTitle from "../../components/layout/IconAndTitle";
 
 const About = ({ userState }) => {
   return (
     <>
-      <Head>
-        <title>About Wysebits</title>
-        <link rel="icon" href="/logo.png" />
-      </Head>
+      <IconAndTitle title="About Wysebits" />
       <div className="animate-show-up">
         <div className="h-60 mx-auto bg-discovery bg-no-repeat bg-cover bg-center">
           <div className="h-full bg-gray-900 opacity-50 relative"></div>
