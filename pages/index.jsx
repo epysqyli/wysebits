@@ -85,7 +85,7 @@ const Home = ({
       </div>
 
       <Link href="/feed">
-        <div className="mx-auto my-12 w-11/12 md:w-3/5 lg:w-2/5 2xl:w-1/3 px-2 py-12 rounded-md border-t-2 border-blue-400 bg-white hover:bg-gray-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer">
+        <div className="mx-auto my-12 w-11/12 md:w-3/5 lg:w-2/5 2xl:w-1/4 px-2 py-14 rounded-md border-t-2 border-blue-400 bg-white hover:bg-gray-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer">
           <div className="text-gray-600 mx-auto">
             <Layers size={60} strokeWidth={1.5} className="mb-10 mx-auto" />
             <div className="text-center text-4xl font-medium">
@@ -95,7 +95,7 @@ const Home = ({
         </div>
       </Link>
 
-      <div className="w-11/12 xl:w-4/5 mx-auto mb-20">
+      <div className="w-11/12 xl:w-4/5 2xl:w-3/4 mx-auto mb-20">
         <span className="block text-gray-50 text-center mb-10 text-5xl border-t-2 pt-10">
           Trending this week
         </span>
@@ -107,7 +107,7 @@ const Home = ({
             <TrendingUser user={trending.user} />
           </div>
         </div>
-        <div className="md:w-4/5 md:mx-auto mt-10 lg:mt-20 lg:w-3/5">
+        <div className="md:w-4/5 md:mx-auto mt-10 lg:mt-20 lg:w-3/5 2xl:w-1/2">
           <TrendingEntry
             entry={trending.insight}
             userId={userState.user.id}
