@@ -78,8 +78,7 @@ const BookSearchResults = ({
             bookKeywords
               ? capitalize(bookKeywords.split("-").join(" "))
               : capitalize(authorKeywords.split("-").join(" "))
-          }{" "}
-            - Wysebits search`}
+          } - Wysebits search`}
         />
         <div className="py-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/5">
           <MultiSearch
