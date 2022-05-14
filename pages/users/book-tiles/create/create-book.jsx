@@ -143,7 +143,7 @@ const CreateBook = ({ categories, userState }) => {
           className="py-5"
           onSubmit={handleSubmit}
         >
-          <div className="my-10">
+          <div className="mx-auto my-10 lg:w-4/5 2xl:w-1/2">
             <label htmlFor="title" className="pl-3 text-lg text-gray-50">
               Enter the book title
             </label>
@@ -158,7 +158,7 @@ const CreateBook = ({ categories, userState }) => {
             />
           </div>
 
-          <div className="my-10">
+          <div className="mx-auto my-10 lg:w-4/5 2xl:w-1/2">
             <label htmlFor="title" className="pl-3 text-lg text-gray-50">
               Choose a category
             </label>
@@ -178,7 +178,7 @@ const CreateBook = ({ categories, userState }) => {
             </select>
           </div>
 
-          <div className="my-10">
+          <div className="mx-auto my-10 lg:w-4/5 2xl:w-1/2">
             <label
               htmlFor="author-full-name"
               className="pl-3 text-lg text-gray-50"
@@ -230,7 +230,7 @@ const CreateBook = ({ categories, userState }) => {
               : null}
           </div>
 
-          <div className="my-10">
+          <div className="mx-auto my-10 lg:w-4/5 2xl:w-1/2">
             <label htmlFor="book-cover" className="pl-3 text-lg text-gray-50">
               Upload a book cover
             </label>
