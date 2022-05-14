@@ -3,7 +3,8 @@ import TileEntry from "../books/TileEntry";
 import Link from "next/dist/client/link";
 import { slug } from "../../lib/utils";
 import { motion } from "framer-motion";
-import useMediaQuery from "../../hooks/UseMediaQuery";
+import { useIsNarrow } from "../../hooks/utils";
+import { BookUserInsightsVariant } from "../../styles/motion/Variants";
 
 const BookUserInsights = ({
   closeInsight,
@@ -19,13 +20,15 @@ const BookUserInsights = ({
   setFollowedUsers,
   addOverlay,
   removeOverlay,
-  variants
 }) => {
+  const isNarrow = useIsNarrow();
+  const { animate, transition, style } = BookUserInsightsVariant(isNarrow);
+
   return (
     <motion.div
-      animate={variants.animate}
-      transition={variants.transition}
-      style={variants.style}
+      animate={animate}
+      transition={transition}
+      style={style}
       className="z-30 w-full lg:w-5/6 xl:w-3/5 2xl:w-1/2 h-full lg:h-1/3 bg-white pt-20 pb-10 lg:py-5 px-2 lg:rounded-md lg:shadow overflow-auto"
     >
       <div className="overflow-y-auto max-h-full w-full">
