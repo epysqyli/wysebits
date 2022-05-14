@@ -1,4 +1,5 @@
 import { useState } from "react";
+import useMediaQuery from "../../hooks/UseMediaQuery";
 import BookCard from "../books/BookCard";
 import BookUserInsights from "./BookUserInsights";
 import { getBookUserInsights } from "../../lib/creatorMethods";
@@ -34,6 +35,40 @@ const LatestBooks = ({
     setCurrentBookId(null);
   };
 
+  const isNarrow = useMediaQuery("(max-width: 768px)");
+
+  const variants = isNarrow
+    ? {
+        animate: {
+          scale: [0.7, 1.05, 1],
+        },
+        transition: {
+          duration: 0.3,
+        },
+        style: {
+          top: "0%",
+          left: "0%",
+          maxHeight: "100vh",
+          position: "fixed",
+        },
+      }
+    : {
+        animate: {
+          scale: [0.7, 1.05, 1],
+        },
+        transition: {
+          duration: 0.3,
+        },
+        style: {
+          top: "50vh",
+          left: "50%",
+          translateX: "-50%",
+          translateY: "-50%",
+          minHeight: "60vh",
+          position: "absolute",
+        },
+      };
+
   return (
     <>
       <div className="text-center text-gray-100 font-medium text-5xl">
@@ -67,6 +102,7 @@ const LatestBooks = ({
             setFollowedUsers={setFollowedUsers}
             addOverlay={addOverlay}
             removeOverlay={removeOverlay}
+            variants={variants}
           />
         ) : null}
       </div>

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { XCircle } from "react-feather";
 import TileEntry from "../books/TileEntry";
 import Link from "next/dist/client/link";
@@ -20,11 +19,15 @@ const BookUserInsights = ({
   setFollowedUsers,
   addOverlay,
   removeOverlay,
+  variants
 }) => {
-  const isNarrow = useMediaQuery("(max-width: 768px)");
-
   return (
-    <motion.div className="z-30 absolute w-full lg:w-5/6 xl:w-3/5 2xl:w-1/2 h-full lg:h-1/3 bg-white pt-20 pb-10 lg:py-5 px-2 lg:rounded-md lg:shadow overflow-auto">
+    <motion.div
+      animate={variants.animate}
+      transition={variants.transition}
+      style={variants.style}
+      className="z-30 w-full lg:w-5/6 xl:w-3/5 2xl:w-1/2 h-full lg:h-1/3 bg-white pt-20 pb-10 lg:py-5 px-2 lg:rounded-md lg:shadow overflow-auto"
+    >
       <div className="overflow-y-auto max-h-full w-full">
         <div className="flex justify-around items-center mx-auto w-5/6 py-4 mb-5 border-b border-gray-400">
           <h1 className="text-xl w-3/5 underline">

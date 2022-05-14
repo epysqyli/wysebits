@@ -1,3 +1,4 @@
+import useMediaQuery from "../../../hooks/UseMediaQuery";
 import { useState } from "react";
 import { getUser, getBookTiles } from "../../../lib/serverSideMethods";
 import BookCard from "../../../components/books/BookCard";
@@ -124,6 +125,40 @@ const UserBooks = ({
     setCurrentBookId(null);
   };
 
+  const isNarrow = useMediaQuery("(max-width: 768px)");
+
+  const variants = isNarrow
+    ? {
+        animate: {
+          scale: [0.7, 1.05, 1],
+        },
+        transition: {
+          duration: 0.3,
+        },
+        style: {
+          top: "0%",
+          left: "0%",
+          maxHeight: "100vh",
+          position: "fixed",
+        },
+      }
+    : {
+        animate: {
+          scale: [0.7, 1.05, 1],
+        },
+        transition: {
+          duration: 0.3,
+        },
+        style: {
+          top: "50vh",
+          left: "50%",
+          translateX: "-50%",
+          translateY: "-50%",
+          minHeight: "60vh",
+          position: "absolute",
+        },
+      };
+
   if (books.length === 0 && currentSearchTerms)
     return (
       <div className="pt-10 lg:pt-16">
@@ -219,9 +254,10 @@ const UserBooks = ({
             setFollowedUsers={setFollowedUsers}
             addOverlay={addOverlay}
             removeOverlay={removeOverlay}
+            variants={variants}
           />
         ) : null}
-        
+
         <Pagination clientUrl={clientUrl} pagy={pagy} opts={searchParams} />
       </div>
     </div>
