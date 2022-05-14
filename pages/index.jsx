@@ -92,7 +92,7 @@ const Home = ({
         <span className="block text-gray-50 text-center mb-10 text-5xl border-t-2 pt-10">
           Trending this week
         </span>
-        <div className="lg:flex justify-around items-start">
+        <div className="lg:flex justify-around items-center">
           <div className="md:w-4/5 mx-auto lg:w-1/2 xl:w-1/2 2xl:w-2/5 mt-10 lg:mt-0">
             <TrendingBook book={trending.book} />
           </div>
