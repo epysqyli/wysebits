@@ -109,26 +109,25 @@ const UserBooks = ({
   );
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
-
-  const [showInsights, setShowInsights] = useState(false);
+  const [currentBookId, setCurrentBookId] = useState(null);
   const [bookInsights, setBookInsights] = useState([]);
 
   const showBookInsights = async (bookId) => {
     addOverlay();
     const resp = await getBookUserInsights(userId, bookId);
     setBookInsights(resp.data);
-    showInsights === false ? setShowInsights(true) : setShowInsights(false);
+    setCurrentBookId(bookId);
   };
 
   const closeBookInsight = () => {
     removeOverlay();
-    setShowInsights(false);
+    setCurrentBookId(null);
   };
 
   if (books.length === 0 && currentSearchTerms)
     return (
       <div className="pt-10 lg:pt-16">
-        <IconAndTitle title={`Books read by ${username}`}/>
+        <IconAndTitle title={`Books read by ${username}`} />
 
         <WelcomeTop
           bcgImg="bg-check-book-tiles"
@@ -150,7 +149,7 @@ const UserBooks = ({
   if (books.length === 0)
     return (
       <div className="pt-10 lg:pt-16">
-        <IconAndTitle title={`Books read by ${username}`}/>
+        <IconAndTitle title={`Books read by ${username}`} />
 
         <WelcomeTop
           bcgImg="bg-check-book-tiles"
@@ -176,7 +175,7 @@ const UserBooks = ({
 
   return (
     <div className="relative pt-10 lg:pt-16">
-      <IconAndTitle title={`Books read by ${username}`}/>
+      <IconAndTitle title={`Books read by ${username}`} />
       <WelcomeTop
         bcgImg="bg-check-book-tiles"
         text={`All books contributed to by ${username}`}
@@ -200,28 +199,29 @@ const UserBooks = ({
                     <BookCard bookData={book} />
                   </div>
                 </div>
-                {showInsights === true ? (
-                  <BookUserInsights
-                    closeInsight={closeBookInsight}
-                    bookInsights={bookInsights}
-                    user={userState}
-                    insights={insights}
-                    setInsights={setInsights}
-                    upvotedEntries={upvotedEntries}
-                    setUpvotedEntries={setUpvotedEntries}
-                    downvotedEntries={downvotedEntries}
-                    setDownvotedEntries={setDownvotedEntries}
-                    followedUsers={followedUsers}
-                    setFollowedUsers={setFollowedUsers}
-                    addOverlay={addOverlay}
-                    removeOverlay={removeOverlay}
-                  />
-                ) : null}
               </div>
             );
           })}
         </div>
 
+        {currentBookId ? (
+          <BookUserInsights
+            closeInsight={closeBookInsight}
+            bookInsights={bookInsights}
+            user={userState}
+            insights={insights}
+            setInsights={setInsights}
+            upvotedEntries={upvotedEntries}
+            setUpvotedEntries={setUpvotedEntries}
+            downvotedEntries={downvotedEntries}
+            setDownvotedEntries={setDownvotedEntries}
+            followedUsers={followedUsers}
+            setFollowedUsers={setFollowedUsers}
+            addOverlay={addOverlay}
+            removeOverlay={removeOverlay}
+          />
+        ) : null}
+        
         <Pagination clientUrl={clientUrl} pagy={pagy} opts={searchParams} />
       </div>
     </div>

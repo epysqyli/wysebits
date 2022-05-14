@@ -19,19 +19,19 @@ const LatestBooks = ({
   removeOverlay,
 }) => {
   const [latest] = useState(books.slice(0, 4));
-  const [showInsights, setShowInsights] = useState(false);
   const [bookInsights, setBookInsights] = useState([]);
+  const [currentBookId, setCurrentBookId] = useState(null);
 
   const showBookInsights = async (bookId) => {
     addOverlay();
     const resp = await getBookUserInsights(userId, bookId);
     setBookInsights(resp.data);
-    showInsights === false ? setShowInsights(true) : setShowInsights(false);
+    setCurrentBookId(bookId);
   };
 
   const closeBookInsight = () => {
     removeOverlay();
-    setShowInsights(false);
+    setCurrentBookId(null);
   };
 
   return (
@@ -48,26 +48,27 @@ const LatestBooks = ({
                   <BookCard bookData={book} />
                 </div>
               </div>
-              {showInsights === true ? (
-                <BookUserInsights
-                  closeInsight={closeBookInsight}
-                  bookInsights={bookInsights}
-                  user={userState}
-                  insights={insights}
-                  setInsights={setInsights}
-                  upvotedEntries={upvotedEntries}
-                  setUpvotedEntries={setUpvotedEntries}
-                  downvotedEntries={downvotedEntries}
-                  setDownvotedEntries={setDownvotedEntries}
-                  followedUsers={followedUsers}
-                  setFollowedUsers={setFollowedUsers}
-                  addOverlay={addOverlay}
-                  removeOverlay={removeOverlay}
-                />
-              ) : null}
             </div>
           );
         })}
+
+        {currentBookId ? (
+          <BookUserInsights
+            closeInsight={closeBookInsight}
+            bookInsights={bookInsights}
+            user={userState}
+            insights={insights}
+            setInsights={setInsights}
+            upvotedEntries={upvotedEntries}
+            setUpvotedEntries={setUpvotedEntries}
+            downvotedEntries={downvotedEntries}
+            setDownvotedEntries={setDownvotedEntries}
+            followedUsers={followedUsers}
+            setFollowedUsers={setFollowedUsers}
+            addOverlay={addOverlay}
+            removeOverlay={removeOverlay}
+          />
+        ) : null}
       </div>
     </>
   );
