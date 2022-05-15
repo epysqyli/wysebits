@@ -13,7 +13,7 @@ const CategoryButton = ({ category }) => {
       }}
     >
       <motion.div
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.05 }}
         className="text-xl tracking-tight h-16 cursor-pointer transition-all relative group shadow-lg text-gray-50 border-gray-50 border-2 hover:bg-gray-50 hover:text-gray-700 hover:border-blue-300 rounded-md"
       >
