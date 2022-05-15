@@ -48,8 +48,8 @@ const Home = ({
 
       <div className="xl:flex xl:w-11/12 xl:mx-auto 2xl:w-3/4">
         <div className="mx-auto mb-20 xl:mb-10 px-4 w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 xl:border-b-2">
-          <div className="text-gray-700 md:mb-8 pt-10 pb-5 xl:py-7 rounded-md xl:bg-white mt-2 lg:mt-0">
-            <div className="text-5xl md:text-6xl text-white xl:text-gray-600 mb-5 md:my-9 text-center font-medium tracking-tight">
+          <div className="text-gray-700 md:mb-8 pt-10 pb-5 xl:py-7 xl:border-b-2 mt-2 lg:mt-0">
+            <div className="text-5xl md:text-6xl text-white mb-5 md:my-9 text-center font-medium tracking-tight">
               Search Books
             </div>
           </div>
@@ -59,19 +59,15 @@ const Home = ({
         </div>
 
         <div className="mb-12 mt-32 xl:mt-0 xl:mb-10 w-11/12 mx-auto md:w-5/6 lg:w-3/5 xl:w-1/2 border-b-2 pb-10">
-          <div className="hidden xl:flex justify-center items-center xl:bg-white gap-x-5 xl:gap-x-10 mb-10 md:mb-16 xl:rounded-md py-8 xl:py-16">
-            <List
-              size={60}
-              strokeWidth={2}
-              className="text-white xl:text-gray-600"
-            />
-            <div className="text-5xl lg:text-6xl text-gray-50 xl:text-gray-600 font-medium">
+          <div className="hidden xl:flex justify-center items-center xl:border-b-2 gap-x-5 xl:gap-x-10 mb-10 md:mb-16 py-8 xl:py-16">
+            <List size={60} strokeWidth={2} className="text-white" />
+            <div className="text-5xl lg:text-6xl text-gray-50 font-medium">
               Categories
             </div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4">
             {categories.map((category) => {
-              return <CategoryButton category={category} key={category.id} />;
+              return <CategoryButton category={category} key={category.id} />;s
             })}
           </div>
         </div>
