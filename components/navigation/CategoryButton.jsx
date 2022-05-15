@@ -15,7 +15,7 @@ const CategoryButton = ({ category }) => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11/12">
           <div className="text-center select-none">{category.name}</div>
         </div>
-        <div className="bg-gradient-to-br from-white to-blue-300 h-full w-full opacity-20"></div>
+        <div className="h-full w-full bg-gradient-to-r from-transparent to-white opacity-20"></div>
       </div>
     </Link>
   );
