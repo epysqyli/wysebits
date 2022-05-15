@@ -28,7 +28,7 @@ const BookUserInsightsVariant = (hook) => {
         translateX: "-50%",
         translateY: "-50%",
         minHeight: "60vh",
-        position: "absolute",
+        position: "fixed",
       },
     };
   }
