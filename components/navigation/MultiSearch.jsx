@@ -44,7 +44,7 @@ const MultiSearch = ({ authorKeywords, bookKeywords }) => {
             name="book_keywords"
             id="book_keywords"
             value={searchTerms.book_keywords}
-            className="block w-full rounded border-none py-3 focus:ring-blue-400 focus:ring-2 text-lg"
+            className="block w-full rounded border-none py-3 focus:ring-blue-400 focus:ring-2 shadow-md text-lg"
             placeholder="book title"
             onChange={handleChange}
           />
@@ -54,13 +54,13 @@ const MultiSearch = ({ authorKeywords, bookKeywords }) => {
             name="author_keywords"
             id="author_keywords"
             value={searchTerms.author_keywords}
-            className="mt-2 w-full block rounded border-none py-3 focus:ring-blue-400 focus:ring-2 text-lg"
+            className="mt-2 w-full block rounded border-none py-3 focus:ring-blue-400 focus:ring-2 shadow-md text-lg"
             placeholder="author name"
             onChange={handleChange}
           />
         </div>
 
-        <button className="w-1/5 rounded bg-white border-t-4 border-b-4 border-gray-200 hover:border-gray-400 transition-colors">
+        <button className="w-1/5 rounded bg-white border-t-4 border-b-4 border-gray-200 hover:border-gray-400 shadow-md transition-colors">
           <Search size={36} className="mx-auto" color="gray" />
         </button>
       </form>
