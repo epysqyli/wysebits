@@ -2,7 +2,7 @@ const BookUserInsightsVariant = (hook) => {
   if (hook) {
     return {
       animate: {
-        scale: [0.7, 1.05, 1],
+        scale: [0.3, 1.1, 1],
       },
       transition: {
         duration: 0.3,
@@ -17,7 +17,7 @@ const BookUserInsightsVariant = (hook) => {
   } else {
     return {
       animate: {
-        scale: [0.7, 1.05, 1],
+        scale: [0.3, 1.1, 1],
       },
       transition: {
         duration: 0.3,
