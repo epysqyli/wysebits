@@ -7,6 +7,7 @@ import TrendingBook from "../components/trending/TrendingBook";
 import TrendingUser from "../components/trending/TrendingUser";
 import TrendingEntry from "../components/trending/TrendingEntry";
 import IconAndTitle from "../components/layout/IconAndTitle";
+import FloatingBubble from "../components/decorations/FloatingBubble";
 
 export const getStaticProps = async () => {
   const categories = await getCategories();
@@ -67,22 +68,47 @@ const Home = ({
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4">
             {categories.map((category) => {
-              return <CategoryButton category={category} key={category.id} />;s
+              return <CategoryButton category={category} key={category.id} />;
+              s;
             })}
           </div>
         </div>
       </div>
 
-      <Link href="/feed">
-        <div className="mx-auto my-16 lg:my-20 w-11/12 md:w-3/5 lg:w-2/5 2xl:w-1/4 px-2 py-14 rounded-md bg-white hover:bg-gray-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer">
-          <div className="text-gray-600 mx-auto">
-            <Layers size={60} strokeWidth={1.5} className="mb-10 mx-auto" />
-            <div className="text-center text-4xl font-medium">
-              Latest insights
+      <div>
+        <div className="md:flex justify-center items-center">
+          <div className="hidden md:block relative h-80 w-20">
+            <FloatingBubble addStyle="-top-4 -right-4" />
+            <FloatingBubble addStyle="-top-4 right-5" />
+            <FloatingBubble addStyle="-top-4 right-14" />
+            <FloatingBubble addStyle="top-4 right-5" />
+            <FloatingBubble addStyle="top-4 -right-4" />
+            <FloatingBubble addStyle="top-4 right-14" />
+            <FloatingBubble addStyle="top-12 right-14" />
+            <FloatingBubble addStyle="top-12 right-5" />
+          </div>
+          <Link href="/feed">
+            <div className="mx-auto md:mx-0 my-16 lg:my-20 w-11/12 md:w-3/5 lg:w-2/5 2xl:w-1/4 px-2 py-14 rounded-md bg-white hover:bg-gray-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer">
+              <div className="text-gray-600 mx-auto">
+                <Layers size={60} strokeWidth={1.5} className="mb-10 mx-auto" />
+                <div className="text-center text-4xl font-medium">
+                  Latest insights
+                </div>
+              </div>
             </div>
+          </Link>
+          <div className="hidden md:block relative h-80 w-20">
+            <FloatingBubble addStyle="-bottom-4 -left-4" />
+            <FloatingBubble addStyle="-bottom-4 left-5" />
+            <FloatingBubble addStyle="-bottom-4 left-14" />
+            <FloatingBubble addStyle="bottom-4 left-5" />
+            <FloatingBubble addStyle="bottom-4 -left-4" />
+            <FloatingBubble addStyle="bottom-4 left-14" />
+            <FloatingBubble addStyle="bottom-12 left-14" />
+            <FloatingBubble addStyle="bottom-12 left-5" />
           </div>
         </div>
-      </Link>
+      </div>
 
       <div className="w-11/12 xl:w-4/5 2xl:w-3/4 mx-auto mb-20">
         <span className="block text-gray-50 text-center mb-10 text-5xl pt-16">
