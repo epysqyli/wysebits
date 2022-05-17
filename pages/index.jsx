@@ -74,7 +74,7 @@ const Home = ({
       </div>
 
       <Link href="/feed">
-        <div className="mx-auto my-16 lg:my-20 w-11/12 md:w-3/5 lg:w-2/5 2xl:w-1/4 px-2 py-14 rounded-md border-t-2 border-blue-400 bg-white hover:bg-gray-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer">
+        <div className="mx-auto my-16 lg:my-20 w-11/12 md:w-3/5 lg:w-2/5 2xl:w-1/4 px-2 py-14 rounded-md bg-white hover:bg-gray-50 active:shadow-inner active:bg-blue-100 transition-colors cursor-pointer">
           <div className="text-gray-600 mx-auto">
             <Layers size={60} strokeWidth={1.5} className="mb-10 mx-auto" />
             <div className="text-center text-4xl font-medium">
