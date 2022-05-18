@@ -37,7 +37,7 @@ const MultiSearch = ({ authorKeywords, bookKeywords }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="flex gap-x-2">
+      <form onSubmit={handleSubmit} className="flex gap-x-3">
         <div className="w-4/5">
           <input
             type="text"
@@ -54,7 +54,7 @@ const MultiSearch = ({ authorKeywords, bookKeywords }) => {
             name="author_keywords"
             id="author_keywords"
             value={searchTerms.author_keywords}
-            className="mt-2 w-full block rounded border-none py-3 focus:ring-blue-400 focus:ring-2 shadow-md text-lg"
+            className="mt-2 md:mt-3 w-full block rounded border-none py-3 focus:ring-blue-400 focus:ring-2 shadow-md text-lg"
             placeholder="author name"
             onChange={handleChange}
           />
