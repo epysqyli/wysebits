@@ -50,7 +50,7 @@ const Home = ({
       <div className="xl:flex xl:w-11/12 xl:mx-auto 2xl:w-3/4">
         <div className="mx-auto mb-20 xl:mb-10 mt-10 xl:mt-0 px-4 w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 relative py-10 xl:py-0">
           <div className="text-gray-700 md:mb-8 pb-5 xl:py-7 xl:border-b-2 mt-2 lg:mt-0">
-            <div className="text-5xl md:text-6xl text-white mb-5 md:my-9 text-center font-medium tracking-tight">
+            <div className="text-5xl md:text-6xl lg:text-7xl xl:text-6xl text-white mb-5 md:my-9 text-center font-medium tracking-tight">
               Search Books
             </div>
           </div>
