@@ -35,7 +35,7 @@ const CreateBook = ({ categories, userState }) => {
     const submitButton = fileAllowed ? (
       <button
         type="submit"
-        className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-50 rounded-md hover:shadow hover:bg-gray-100 active:shadow-inner transition-colors"
+        className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-50 rounded hover:shadow hover:bg-gray-100 active:shadow-inner transition-colors"
       >
         Create book
       </button>
@@ -43,7 +43,7 @@ const CreateBook = ({ categories, userState }) => {
       <button
         type="submit"
         disabled
-        className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-50 text-gray-400 rounded-md cursor-default"
+        className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-50 text-gray-400 rounded cursor-default"
       >
         Create book
       </button>
@@ -132,7 +132,7 @@ const CreateBook = ({ categories, userState }) => {
     };
 
     return (
-      <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 my-20 pb-10">
+      <div className="w-4/5 mx-auto md:w-4/6 lg:w-3/6 my-20">
         <IconAndTitle title="Add a new book to Wysebits"/>
         <div className="text-3xl font-medium text-center text-gray-50">
           Fill in the required fields to add a book
@@ -140,7 +140,7 @@ const CreateBook = ({ categories, userState }) => {
 
         <form
           encType="multipart/form-data"
-          className="py-5"
+          className="py-5 md:border border-white md:rounded md:mt-5 md:shadow-md"
           onSubmit={handleSubmit}
         >
           <div className="mx-auto my-10 lg:w-4/5 2xl:w-1/2">
@@ -151,7 +151,7 @@ const CreateBook = ({ categories, userState }) => {
               type="text"
               name="title"
               id="title"
-              className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
+              className="border-none bg-white w-full mt-2 py-3 rounded focus:ring-0 shadow-sm focus:shadow-md"
               placeholder="Book title"
               onChange={handleChange}
               required
@@ -165,7 +165,7 @@ const CreateBook = ({ categories, userState }) => {
             <select
               name="category_id"
               id="category"
-              className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm"
+              className="border-none bg-white w-full mt-2 py-3 rounded-md focus:ring-0 shadow-sm"
               defaultValue={categories.find((c) => c.slug === "various").id}
               onChange={handleChange}
               required
@@ -193,7 +193,7 @@ const CreateBook = ({ categories, userState }) => {
                 type="text"
                 name="full_name"
                 id="author-full-name"
-                className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
+                className="border-none bg-white w-full mt-2 py-3 rounded-md focus:ring-0 shadow-sm focus:shadow-md"
                 placeholder="Enter the full name"
                 value={book.author.full_name || ""}
                 onChange={handleAuthorChange}
@@ -239,7 +239,7 @@ const CreateBook = ({ categories, userState }) => {
               name="book_cover"
               id="book-cover"
               onChange={handleFileUpload}
-              className="bg-white py-2 w-full px-3 mt-5 rounded-md shadow-sm"
+              className="bg-white py-3 w-full px-3 mt-5 rounded-md shadow-sm"
             />
           </div>
 
