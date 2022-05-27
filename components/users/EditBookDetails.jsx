@@ -203,7 +203,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
                   return (
                     <div
                       className="rounded border p-1 text-sm text-gray-700 bg-white cursor-pointer hover:text-black hover:shadow hover:bg-gray-200 active:scale-95"
-                      key={author._id}
+                      key={author.id}
                       onClick={() => assignExistingAuthor(author)}
                     >
                       {author.full_name}
