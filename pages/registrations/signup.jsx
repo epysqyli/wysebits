@@ -81,7 +81,7 @@ const SignUp = () => {
   if (emailSent === false)
     return (
       <div className="pt-10 lg:pt-16">
-        <IconAndTitle title="Signup to Wysebits"/>
+        <IconAndTitle title="Signup to Wysebits" />
 
         <div className="h-48 bg-login-top lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md border-b-2 border-white mx-auto relative rounded-md">
           <div className="bg-gray-900 h-full bg-opacity-80 lg:rounded-md">
@@ -92,7 +92,10 @@ const SignUp = () => {
           </div>
         </div>
 
-        <form className="mx-auto md:w-4/6 lg:w-3/6 2xl:w-1/3 py-10" onSubmit={signUp}>
+        <form
+          className="mx-auto md:w-4/6 lg:w-3/6 2xl:w-1/3 py-10"
+          onSubmit={signUp}
+        >
           <div className="w-4/6 mx-auto my-4">
             <label htmlFor="username" className="pl-1 text-gray-50">
               Username
@@ -179,7 +182,9 @@ const SignUp = () => {
           </div>
 
           <div className="w-4/6 mx-auto my-4">
-            <label htmlFor="user-avatar" className="pl-1 text-gray-50">Upload an avatar picture</label>
+            <label htmlFor="user-avatar" className="pl-1 text-gray-50">
+              Upload an avatar picture
+            </label>
             <input
               type="file"
               name="user-avatar"
@@ -213,11 +218,11 @@ const SignUp = () => {
 
   return (
     <div className="pt-10 lg:pt-16">
-      <IconAndTitle title="Signup to Wysebits"/>
+      <IconAndTitle title="Signup to Wysebits" />
 
-      <div className="h-60 bg-signup-top bg-cover bg-center relative">
-        <div className="bg-gray-900 h-full bg-opacity-80">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white  text-center text-3xl leading-10">
+      <div className="h-48 bg-login-top lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md border-b-2 border-white mx-auto relative rounded-md">
+        <div className="bg-gray-900 h-full bg-opacity-80 lg:rounded-md">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-center text-3xl lg:text-4xl">
             Start learning.
             <br /> Start sharing.
           </div>
