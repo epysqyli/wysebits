@@ -6,7 +6,7 @@ const IconAndTitle = ({ title }) => {
       <title>{title}</title>
       <meta
         name="description"
-        content="The no-frills social network for book lovers. Knowledge: distilled. Share your insights for the books you have and explore other users' ideas."
+        content="The no-frills social network for book lovers. Share your insights for the books you have read and explore other users' ideas."
       />
       <link rel="icon" href="/logo.png" />
     </Head>
