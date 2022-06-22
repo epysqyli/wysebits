@@ -62,7 +62,6 @@ const MyApp = ({ Component, pageProps }) => {
     });
 
     router.events.on("routeChangeComplete", () => {
-      // loginStatus();
       removeOverlay();
       setLoading(false);
     });
