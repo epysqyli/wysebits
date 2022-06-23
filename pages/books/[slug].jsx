@@ -159,7 +159,7 @@ const Book = ({
                 strokeWidth={1.5}
                 color="white"
               />
-              <div className="w-3/5 text-2xl text-gray-50">
+              <div className="w-3/5 xl:w-4/6 2xl:w-1/2 text-2xl text-gray-50">
                 Recommeded books from the {book.category.name} category
               </div>
             </div>
