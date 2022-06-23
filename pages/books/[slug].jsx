@@ -151,7 +151,7 @@ const Book = ({
         )}
 
         {recommendations.length !== 0 ? (
-          <div>
+          <div className="mt-5 lg:mt-16">
             <div className="w-4/5 md:w-5/6 xl:w-4/6 2xl:w-1/2 mx-auto flex items-center justify-around border-t pt-5 lg:pt-10">
               <Bookmark
                 className="w-1/5"
