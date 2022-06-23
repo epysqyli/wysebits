@@ -152,14 +152,14 @@ const Book = ({
 
         {recommendations.length !== 0 ? (
           <div>
-            <div className="w-4/5 mx-auto flex items-center justify-around border-t pt-5 lg:pt-10">
+            <div className="w-4/5 md:w-5/6 xl:w-4/6 2xl:w-1/2 mx-auto flex items-center justify-around border-t pt-5 lg:pt-10">
               <Bookmark
                 className="w-1/5"
                 size={48}
                 strokeWidth={1.5}
                 color="white"
               />
-              <div className="w-3/5 xl:w-4/6 2xl:w-1/2 text-2xl text-gray-50">
+              <div className="w-3/5 text-2xl lg:text-3xl text-gray-50">
                 Recommeded books from the {book.category.name} category
               </div>
             </div>
