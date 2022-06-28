@@ -204,7 +204,24 @@ const UserBooks = ({
           })}
         </div>
 
-        {currentBookId ? (
+        <BookUserInsights
+          closeInsight={closeBookInsight}
+          bookInsights={bookInsights}
+          user={userState}
+          insights={insights}
+          setInsights={setInsights}
+          upvotedEntries={upvotedEntries}
+          setUpvotedEntries={setUpvotedEntries}
+          downvotedEntries={downvotedEntries}
+          setDownvotedEntries={setDownvotedEntries}
+          followedUsers={followedUsers}
+          setFollowedUsers={setFollowedUsers}
+          addOverlay={addOverlay}
+          removeOverlay={removeOverlay}
+          currentBookId={currentBookId}
+        />
+
+        {currentBookId && (
           <BookUserInsights
             closeInsight={closeBookInsight}
             bookInsights={bookInsights}
@@ -219,8 +236,9 @@ const UserBooks = ({
             setFollowedUsers={setFollowedUsers}
             addOverlay={addOverlay}
             removeOverlay={removeOverlay}
+            currentBookId={currentBookId}
           />
-        ) : null}
+        )}
 
         <Pagination clientUrl={clientUrl} pagy={pagy} opts={searchParams} />
       </div>
