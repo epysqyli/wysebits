@@ -65,7 +65,7 @@ const ManageCategories = ({ cats, favCats, userState }) => {
   const noSelection = baseClass + " cursor-default";
 
   return (
-    <div className="pt-10 lg:pt-16">
+    <div className="pt-10 lg:pt-12">
       <IconAndTitle title="Manage categories" />
 
       <div className="bg-categories bg-cover bg-center shadow select-none">

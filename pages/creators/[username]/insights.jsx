@@ -76,11 +76,7 @@ const UserInsights = ({
     return (
       <div className="py-10 lg:py-16">
         <IconAndTitle title={`Insights by ${username}`}/>
-        <div className="bg-saved-tiles bg-cover bg-center shadow lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto">
-          <div className="bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-16 lg:rounded-md">
-            <div className="mx-auto w-4/5">All insights from {username}</div>
-          </div>
-        </div>
+        <WelcomeTop bcgImg="bg-saved-tiles" text={`All insights from ${username}`} />
 
         <div className="mt-10 w-11/12 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
           {entries.map((entry) => {
@@ -116,11 +112,7 @@ const UserInsights = ({
     return (
       <div className="py-10 lg:py-16">
         <IconAndTitle title={`Insights by ${username}`}/>
-
-        <WelcomeTop
-          bcgImg="bg-saved-tiles"
-          text={`All insights from ${username}`}
-        />
+        <WelcomeTop bcgImg="bg-saved-tiles" text={`All insights from ${username}`} />
 
         <div className="mx-auto w-11/12 text-center my-20 text-xl">
           <div className="mx-auto w-min mb-20 animate-bounce">
