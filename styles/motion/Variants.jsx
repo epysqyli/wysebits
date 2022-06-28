@@ -6,7 +6,7 @@ const BookUserInsightsVariant = (hook) => {
         scale: [0.9, 1.05, 1],
       },
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         ease: "easeOut",
       },
       style: {
