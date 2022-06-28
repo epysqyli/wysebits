@@ -52,7 +52,24 @@ const LatestBooks = ({
           );
         })}
 
-        {currentBookId ? (
+        <BookUserInsights
+          closeInsight={closeBookInsight}
+          bookInsights={bookInsights}
+          user={userState}
+          insights={insights}
+          setInsights={setInsights}
+          upvotedEntries={upvotedEntries}
+          setUpvotedEntries={setUpvotedEntries}
+          downvotedEntries={downvotedEntries}
+          setDownvotedEntries={setDownvotedEntries}
+          followedUsers={followedUsers}
+          setFollowedUsers={setFollowedUsers}
+          addOverlay={addOverlay}
+          removeOverlay={removeOverlay}
+          currentBookId={currentBookId}
+        />
+
+        {currentBookId && (
           <BookUserInsights
             closeInsight={closeBookInsight}
             bookInsights={bookInsights}
@@ -67,8 +84,9 @@ const LatestBooks = ({
             setFollowedUsers={setFollowedUsers}
             addOverlay={addOverlay}
             removeOverlay={removeOverlay}
+            currentBookId={currentBookId}
           />
-        ) : null}
+        )}
       </div>
     </>
   );
