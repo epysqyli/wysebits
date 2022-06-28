@@ -2,15 +2,17 @@ const BookUserInsightsVariant = (hook) => {
   if (hook) {
     return {
       animate: {
-        scale: [0.3, 1.1, 1],
+        y: ["100vh", "-5vh", "0vh"],
+        scale: [0.9, 1.05, 1],
       },
       transition: {
-        duration: 0.3,
+        duration: 0.5,
+        ease: "easeOut",
       },
       style: {
         top: "0%",
         left: "0%",
-        maxHeight: "100vh",
+        height: "100vh",
         position: "fixed",
       },
     };
