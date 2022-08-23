@@ -42,7 +42,7 @@ const Home = ({
               Wysebits.
             </h1>
             <p className="text-white text-center text-2xl my-5">
-              Knowledge. Distilled.
+              The best idea for every book
             </p>
           </div>
         </div>
