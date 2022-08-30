@@ -1,4 +1,4 @@
-import { Layers, List } from "react-feather";
+import { List } from "react-feather";
 import CategoryButton from "../components/navigation/CategoryButton";
 import MultiSearch from "../components/navigation/MultiSearch";
 import Link from "next/link";
@@ -7,7 +7,6 @@ import TrendingBook from "../components/trending/TrendingBook";
 import TrendingUser from "../components/trending/TrendingUser";
 import TrendingEntry from "../components/trending/TrendingEntry";
 import IconAndTitle from "../components/layout/IconAndTitle";
-import FloatingBubble from "../components/decorations/FloatingBubble";
 import IndexFloatingFeed from "../components/feed/IndexFloatingFeed";
 
 export const getStaticProps = async () => {
