@@ -33,7 +33,10 @@ const Home = ({
 }) => {
   return (
     <div className="pt-12 lg:pt-16 2xl:pt-20">
-      <IconAndTitle title="Wysebits" />
+      <IconAndTitle
+        title="Wysebits"
+        description="The best idea for every book. Ever felt like you keep forgetting what the personal key takeaways from a book are? Wysebits provides a simple way to share and rank ideas. No quotes, summaries, or other shortcuts. Just ideas."
+      />
 
       <div className="h-48 md:h-56 xl:h-42 mx-auto bg-library bg-cover bg-center md:mb-12 lg:w-4/5 lg:rounded-md border-b-2 border-white">
         <div className="bg-gray-900 h-full bg-opacity-50 relative lg:rounded-md">
