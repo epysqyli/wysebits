@@ -11,7 +11,7 @@ const TrendingUser = ({ user }) => {
           <div className="mt-2 w-min mx-auto">
             <Avatar avatarUrl={user.avatar_url} size={60} />
           </div>
-          <div className="w-1/2 mx-auto my-5 text-center">
+          <div className="w-1/2 mx-auto my-5 text-center text-lg lg:text-xl">
             <span className="font-bold">{user.username}</span> is the most prolific user
           </div>
         </div>
