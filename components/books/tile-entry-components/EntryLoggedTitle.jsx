@@ -13,30 +13,20 @@ const EntryLoggedTitle = ({
   downvotedEntries,
   setDownvotedEntries,
   followedUsers,
-  setFollowedUsers,
+  setFollowedUsers
 }) => {
   return (
-    <div className="flex flex-col justify-around h-full">
+    <div className='flex flex-col justify-around h-full'>
       <div>
-        <Link
-          href={`/books/${slug(
-            entryProp.book_tile.book.title,
-            entryProp.book_tile.book.id
-          )}?page=1`}
-        >
-          <div className="px-2 pt-4 flex justify-center items-center gap-x-5 active:text-black transition-transform cursor-pointer group">
-            <div className="text-sm text-gray-600">
-              {shortenText(entryProp.book_tile.book.title, 5)}
-            </div>
-            <ArrowUpRight
-              size={18}
-              className="text-gray-600 group-hover:scale-125 transition-transform"
-            />
+        <Link href={`/books/${slug(entryProp.book_tile.book.title, entryProp.book_tile.book.id)}?page=1`}>
+          <div className='px-2 pt-4 flex justify-center items-center gap-x-5 active:text-black transition-transform cursor-pointer group'>
+            <div className='text-sm text-gray-600'>{shortenText(entryProp.book_tile.book.title, 5)}</div>
+            <ArrowUpRight size={18} className='text-gray-600 group-hover:scale-125 transition-transform' />
           </div>
         </Link>
       </div>
 
-      <div className="flex-grow">
+      <div className='flex-grow'>
         <EntryLogged
           entryProp={entryProp}
           user={user}

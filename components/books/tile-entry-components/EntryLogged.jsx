@@ -15,7 +15,7 @@ const EntryLogged = ({
   setFollowedUsers,
   feed,
   addOverlay,
-  removeOverlay,
+  removeOverlay
 }) => {
   const [commentsView, setCommentsView] = useState(false);
   const [comments, setComments] = useState([]);
@@ -25,8 +25,8 @@ const EntryLogged = ({
 
   if (feed === true)
     return (
-      <div className="flex flex-col justify-around h-full min-h-24rem">
-        <div className="lg:border-b-2 lg:border-l-2 rounded-bl py-5 px-5 md:px-16 font-light whitespace-pre-line flex-grow mt-10 mx-auto text-justify md:text-left lg:mt-0 lg:w-full">
+      <div className='flex flex-col justify-around h-full min-h-24rem'>
+        <div className='lg:border-b-2 lg:border-l-2 rounded-bl py-5 px-5 md:px-16 font-light whitespace-pre-line flex-grow mt-10 mx-auto text-justify md:text-left lg:mt-0 lg:w-full'>
           {commentsView ? (
             <Comments
               comments={comments}
@@ -62,8 +62,8 @@ const EntryLogged = ({
     );
 
   return (
-    <div className="flex flex-col justify-around h-full min-h-24rem">
-      <div className="py-5 px-5 md:px-16 font-light whitespace-pre-line flex-grow">
+    <div className='flex flex-col justify-around h-full min-h-24rem'>
+      <div className='py-5 px-5 md:px-16 font-light whitespace-pre-line flex-grow'>
         {commentsView ? (
           <Comments
             comments={comments}
@@ -78,7 +78,7 @@ const EntryLogged = ({
         )}
       </div>
 
-      <div className="border-b rounded-b-md">
+      <div className='border-b rounded-b-md'>
         <EntryActions
           user={user}
           entryProp={entryProp}

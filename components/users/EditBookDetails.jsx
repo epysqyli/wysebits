@@ -10,10 +10,9 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
     title: bookData.title,
     categoryId: bookData.category_id,
     author: {
-      full_name:
-        bookData.authors.length != 0 ? bookData.authors[0].full_name : "",
-      id: bookData.authors.length != 0 ? bookData.authors[0].id : null,
-    },
+      full_name: bookData.authors.length != 0 ? bookData.authors[0].full_name : "",
+      id: bookData.authors.length != 0 ? bookData.authors[0].id : null
+    }
   });
 
   const [authorSuggestions, setAuthorsSuggestions] = useState(null);
@@ -22,8 +21,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   const [authorLoading, setAuthorLoading] = useState(false);
   const [fileAllowed, setFileAllowed] = useState(true);
 
-  const handleChange = (e) =>
-    setBook({ ...book, [e.target.name]: e.target.value });
+  const handleChange = (e) => setBook({ ...book, [e.target.name]: e.target.value });
 
   const updateAuthorsSuggestions = async () => {
     setAuthorLoading(true);
@@ -38,7 +36,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   const handleAuthorChange = (e) => {
     const newAuthor = {
       [e.target.name]: e.target.value,
-      id: null,
+      id: null
     };
 
     setBook({ ...book, author: newAuthor });
@@ -47,7 +45,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
   const assignExistingAuthor = (author) => {
     const newAuthor = {
       full_name: author.full_name,
-      id: author.id,
+      id: author.id
     };
 
     setBook({ ...book, author: newAuthor });
@@ -93,7 +91,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
 
     axios
       .put(`${process.env.BASE_URL}/books/${bookData.id}`, formData, {
-        withCredentials: true,
+        withCredentials: true
       })
       .then(() => {
         setLoader(false);
@@ -101,7 +99,7 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
         router.push({
           pathname: "/users/book-tiles/create/[id]",
           query: { id: bookData.id },
-          asPath: makeSlug(bookData.title),
+          asPath: makeSlug(bookData.title)
         });
       })
       .catch((err) => console.log(err));
@@ -109,52 +107,52 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
 
   const submitButton = fileAllowed ? (
     <button
-      type="submit"
-      className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-white rounded-md hover:shadow-md hover:bg-gray-200 active:bg-gray-300 active:shadow-md"
+      type='submit'
+      className='w-3/5 mx-auto block mt-10 mb-5 py-2 bg-white rounded-md hover:shadow-md hover:bg-gray-200 active:bg-gray-300 active:shadow-md'
     >
       Edit book details
     </button>
   ) : (
     <button
-      type="submit"
+      type='submit'
       disabled
-      className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-50 text-gray-400 rounded-md cursor-default"
+      className='w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-50 text-gray-400 rounded-md cursor-default'
     >
       Edit book details
     </button>
   );
 
   return (
-    <div className="z-20 fixed top-0 bottom-0 w-full overflow-y-scroll bg-gray-100 pt-20 pb-10 px-3 shadow-lg border-gray-400 animate-show-up">
-      <div className="mx-auto w-5/6 md:w-4/6 lg:w-1/2 xl:w-1/3">
-        <div className="text-center text-lg border-b-2 pb-2 px-5">
+    <div className='z-20 fixed top-0 bottom-0 w-full overflow-y-scroll bg-gray-100 pt-20 pb-10 px-3 shadow-lg border-gray-400 animate-show-up'>
+      <div className='mx-auto w-5/6 md:w-4/6 lg:w-1/2 xl:w-1/3'>
+        <div className='text-center text-lg border-b-2 pb-2 px-5'>
           Make WyseBits a better place for the community!
         </div>
         <form onSubmit={handleSubmit}>
-          <div className="my-10">
-            <label htmlFor="title" className="pl-3">
+          <div className='my-10'>
+            <label htmlFor='title' className='pl-3'>
               Enter the book title
             </label>
             <input
-              type="text"
-              name="title"
-              id="title"
+              type='text'
+              name='title'
+              id='title'
               onChange={handleChange}
-              className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow focus:shadow-md"
-              placeholder="Book title"
+              className='border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow focus:shadow-md'
+              placeholder='Book title'
               defaultValue={bookData.title}
             />
           </div>
 
-          <div className="my-10">
-            <label htmlFor="title" className="pl-3">
+          <div className='my-10'>
+            <label htmlFor='title' className='pl-3'>
               Choose a category
             </label>
             <select
-              name="categoryId"
-              id="category"
+              name='categoryId'
+              id='category'
               onChange={handleChange}
-              className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow"
+              className='border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow'
               defaultValue={bookData.category_id}
             >
               {categories.map((category) => (
@@ -165,44 +163,44 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
             </select>
           </div>
 
-          <div className="mt-10">
-            <label htmlFor="author-full-name">
-              <div className="pl-3">Edit author</div>
-              <div className="mt-1 mb-2 text-sm text-gray-500 pl-3">
+          <div className='mt-10'>
+            <label htmlFor='author-full-name'>
+              <div className='pl-3'>Edit author</div>
+              <div className='mt-1 mb-2 text-sm text-gray-500 pl-3'>
                 It will be created if not present on the search results
               </div>
             </label>
-            <div className="flex justify-between items-center gap-x-5">
+            <div className='flex justify-between items-center gap-x-5'>
               <input
-                type="text"
-                name="full_name"
-                id="author-full-name"
+                type='text'
+                name='full_name'
+                id='author-full-name'
                 onChange={handleAuthorChange}
                 value={book.author.full_name}
-                className="border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow focus:shadow-md"
-                placeholder="Enter the full name and select it below if present"
+                className='border-none bg-white w-full mt-2 rounded-md focus:ring-0 shadow focus:shadow-md'
+                placeholder='Enter the full name and select it below if present'
               />
               {authorLoading ? (
-                <div className="animate-spin block w-min mx-auto mt-1">
-                  <Loader size={32} color="gray" />
+                <div className='animate-spin block w-min mx-auto mt-1'>
+                  <Loader size={32} color='gray' />
                 </div>
               ) : (
                 <Search
                   size={32}
-                  color="gray"
-                  className="cursor-pointer mt-1"
+                  color='gray'
+                  className='cursor-pointer mt-1'
                   onClick={updateAuthorsSuggestions}
                 />
               )}
             </div>
           </div>
 
-          <div className="mt-5 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-1 gap-y-1">
+          <div className='mt-5 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-1 gap-y-1'>
             {authorSuggestions
               ? authorSuggestions.map((author) => {
                   return (
                     <div
-                      className="rounded border p-1 text-sm text-gray-700 bg-white cursor-pointer hover:text-black hover:shadow hover:bg-gray-200 active:scale-95"
+                      className='rounded border p-1 text-sm text-gray-700 bg-white cursor-pointer hover:text-black hover:shadow hover:bg-gray-200 active:scale-95'
                       key={author.id}
                       onClick={() => assignExistingAuthor(author)}
                     >
@@ -213,19 +211,19 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
               : null}
           </div>
 
-          <div className="mt-10 bg-white rounded hover:shadow">
+          <div className='mt-10 bg-white rounded hover:shadow'>
             <label
-              htmlFor="book-cover"
-              className="text-center py-4 mx-auto block rounded cursor-pointer hover:bg-yellow-50"
+              htmlFor='book-cover'
+              className='text-center py-4 mx-auto block rounded cursor-pointer hover:bg-yellow-50'
             >
-              <div className="mb-4">Upload a book cover</div>
-              <Upload size={30} strokeWidth={1.5} className="w-min mx-auto" />
+              <div className='mb-4'>Upload a book cover</div>
+              <Upload size={30} strokeWidth={1.5} className='w-min mx-auto' />
             </label>
             <input
-              type="file"
-              name="book_cover"
-              id="book-cover"
-              className="hidden"
+              type='file'
+              name='book_cover'
+              id='book-cover'
+              className='hidden'
               onChange={handleFileUpload}
             />
           </div>
@@ -238,16 +236,16 @@ const EditBookDetails = ({ bookData, categories, hideEditForm }) => {
             <p>Accepted types: jpeg, jpg, png</p>
           </div>
 
-          <div className="flex justify-between items-center px-2 gap-x-4">
+          <div className='flex justify-between items-center px-2 gap-x-4'>
             <div
-              className="w-2/5 mx-auto block text-center mt-10 mb-5 py-2 bg-white cursor-pointer rounded-md hover:shadow-md hover:bg-gray-200 active:bg-gray-300 active:shadow-md"
+              className='w-2/5 mx-auto block text-center mt-10 mb-5 py-2 bg-white cursor-pointer rounded-md hover:shadow-md hover:bg-gray-200 active:bg-gray-300 active:shadow-md'
               onClick={() => hideEditForm()}
             >
               Cancel
             </div>
             {loader ? (
-              <div className="w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-100">
-                <div className="animate-spin block w-min mx-auto">
+              <div className='w-3/5 mx-auto block mt-10 mb-5 py-2 bg-gray-100'>
+                <div className='animate-spin block w-min mx-auto'>
                   <Loader />
                 </div>
               </div>

@@ -10,7 +10,7 @@ import {
   getLoggedUser,
   getAllFavEntries,
   getUpvotedEntries,
-  getDownvotedEntries,
+  getDownvotedEntries
 } from "../../../lib/serverSideMethods";
 import WelcomeTop from "../../../components/users/WelcomeTop";
 import IconAndTitle from "../../../components/layout/IconAndTitle";
@@ -25,13 +25,12 @@ export const getServerSideProps = async (context) => {
 
   if (isLogged(context)) {
     const loggedUser = await getLoggedUser(context);
-    const [following, favInsights, upvotedEntries, downvotedEntries] =
-      await Promise.all([
-        getAllFollowing(loggedUser, context),
-        getAllFavEntries(loggedUser, context),
-        getUpvotedEntries(loggedUser, context),
-        getDownvotedEntries(loggedUser, context),
-      ]);
+    const [following, favInsights, upvotedEntries, downvotedEntries] = await Promise.all([
+      getAllFollowing(loggedUser, context),
+      getAllFavEntries(loggedUser, context),
+      getUpvotedEntries(loggedUser, context),
+      getDownvotedEntries(loggedUser, context)
+    ]);
 
     return {
       props: {
@@ -41,16 +40,16 @@ export const getServerSideProps = async (context) => {
         following: following.data,
         favInsights: favInsights.data.tile_entries,
         entriesUp: upvotedEntries.data.upvoted_entries,
-        entriesDown: downvotedEntries.data.downvoted_entries,
-      },
+        entriesDown: downvotedEntries.data.downvoted_entries
+      }
     };
   } else {
     return {
       props: {
         entries: entries.data.entries,
         pagy: pagy,
-        username: username,
-      },
+        username: username
+      }
     };
   }
 };
@@ -63,7 +62,7 @@ const UserInsights = ({
   entries,
   pagy,
   username,
-  userState,
+  userState
 }) => {
   const [followedUsers, setFollowedUsers] = useState(following);
   const [insights, setInsights] = useState(favInsights);
@@ -74,16 +73,16 @@ const UserInsights = ({
 
   if (entries.length !== 0)
     return (
-      <div className="py-10 lg:py-16">
-        <IconAndTitle title={`Insights by ${username}`}/>
-        <WelcomeTop bcgImg="bg-saved-tiles" text={`All insights from ${username}`} />
+      <div className='py-10 lg:py-16'>
+        <IconAndTitle title={`Insights by ${username}`} />
+        <WelcomeTop bcgImg='bg-saved-tiles' text={`All insights from ${username}`} />
 
-        <div className="mt-10 w-11/12 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6">
+        <div className='mt-10 w-11/12 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 lg:grid-cols-2 lg:gap-x-6'>
           {entries.map((entry) => {
             return (
               <div
                 key={entry.id}
-                className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all min-h-24rem"
+                className='bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all min-h-24rem'
               >
                 <TileEntry
                   entryProp={entry}
@@ -110,22 +109,16 @@ const UserInsights = ({
 
   if (entries.length === 0)
     return (
-      <div className="py-10 lg:py-16">
-        <IconAndTitle title={`Insights by ${username}`}/>
-        <WelcomeTop bcgImg="bg-saved-tiles" text={`All insights from ${username}`} />
+      <div className='py-10 lg:py-16'>
+        <IconAndTitle title={`Insights by ${username}`} />
+        <WelcomeTop bcgImg='bg-saved-tiles' text={`All insights from ${username}`} />
 
-        <div className="mx-auto w-11/12 text-center my-20 text-xl">
-          <div className="mx-auto w-min mb-20 animate-bounce">
-            <Meh
-              size={48}
-              color="white"
-              strokeWidth={1.75}
-              className="animate-spin"
-            />
+        <div className='mx-auto w-11/12 text-center my-20 text-xl'>
+          <div className='mx-auto w-min mb-20 animate-bounce'>
+            <Meh size={48} color='white' strokeWidth={1.75} className='animate-spin' />
           </div>
-          <div className="md:w-3/5 mx-auto lg:w-2/5 text-gray-50">
-            {username} is yet to publish contributions to the books he or she
-            has read
+          <div className='md:w-3/5 mx-auto lg:w-2/5 text-gray-50'>
+            {username} is yet to publish contributions to the books he or she has read
           </div>
         </div>
       </div>

@@ -7,14 +7,12 @@ const Conversation = ({ conversation }) => {
     <Link
       href={`/users/actions/conversations/${conversation.partner.username}-${conversation.id}-${conversation.partner.id}`}
     >
-      <div className="flex justify-between items-start px-5 py-2">
-        <div className="flex items-center gap-x-5">
+      <div className='flex justify-between items-start px-5 py-2'>
+        <div className='flex items-center gap-x-5'>
           <Avatar avatarUrl={conversation.partner.avatar_url} size={40} />
-          <div className="text-lg text-center">
-            {conversation.partner.username}
-          </div>
+          <div className='text-lg text-center'>{conversation.partner.username}</div>
         </div>
-        <div className="text-sm text-right">
+        <div className='text-sm text-right'>
           <div>{conversation.messages_count} message(s)</div>
           <div>
             {conversation.last_message !== undefined

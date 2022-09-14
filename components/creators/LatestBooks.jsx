@@ -16,7 +16,7 @@ const LatestBooks = ({
   followedUsers,
   setFollowedUsers,
   addOverlay,
-  removeOverlay,
+  removeOverlay
 }) => {
   const [latest] = useState(books.slice(0, 4));
   const [bookInsights, setBookInsights] = useState([]);
@@ -36,15 +36,13 @@ const LatestBooks = ({
 
   return (
     <>
-      <div className="text-center text-gray-100 font-medium text-5xl">
-        Latest books
-      </div>
-      <div className="py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+      <div className='text-center text-gray-100 font-medium text-5xl'>Latest books</div>
+      <div className='py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto'>
         {latest.map((book) => {
           return (
             <div key={book.id}>
               <div onClick={() => showBookInsights(book.id)}>
-                <div className="rounded-md bg-white shadow-lg hover:bg-gray-50 hover:shadow-xl transition-all cursor-pointer active:shadow-inner border-b-2 border-blue-200 hover:border-blue-300">
+                <div className='rounded-md bg-white shadow-lg hover:bg-gray-50 hover:shadow-xl transition-all cursor-pointer active:shadow-inner border-b-2 border-blue-200 hover:border-blue-300'>
                   <BookCard bookData={book} />
                 </div>
               </div>

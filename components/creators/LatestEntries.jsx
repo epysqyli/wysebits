@@ -11,19 +11,17 @@ const LatestEntries = ({
   downvotedEntries,
   setDownvotedEntries,
   followedUsers,
-  setFollowedUsers,
+  setFollowedUsers
 }) => {
   if (userState.isLogged === true)
     return (
       <>
-        <div className="text-center text-gray-100 font-medium text-5xl">
-          Latest insights
-        </div>
-        <div className="mt-10 pb-10 w-11/12 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 xl:w-4/5 2xl:w-3/5 lg:grid-cols-2 lg:gap-x-6">
+        <div className='text-center text-gray-100 font-medium text-5xl'>Latest insights</div>
+        <div className='mt-10 pb-10 w-11/12 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 xl:w-4/5 2xl:w-3/5 lg:grid-cols-2 lg:gap-x-6'>
           {entries.map((entry) => (
             <div
               key={entry.id}
-              className="bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all min-h-24rem"
+              className='bg-white text-justify leading-6 shadow rounded-md hover:shadow-md transition-all min-h-24rem'
             >
               <EntryLoggedTitle
                 entryProp={entry}
@@ -45,8 +43,8 @@ const LatestEntries = ({
 
   return (
     <>
-      <div className="text-center text-gray-100 font-medium text-5xl">Latest insights</div>
-      <div className="my-10 w-11/12 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 xl:w-4/5 2xl:w-3/5 lg:grid-cols-2 lg:gap-x-6">
+      <div className='text-center text-gray-100 font-medium text-5xl'>Latest insights</div>
+      <div className='my-10 w-11/12 md:w-3/5 mx-auto grid gap-y-10 lg:w-4/5 xl:w-4/5 2xl:w-3/5 lg:grid-cols-2 lg:gap-x-6'>
         {entries.map((entry) => {
           return (
             <div key={entry.id}>

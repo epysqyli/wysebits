@@ -2,13 +2,7 @@ import { useState } from "react";
 import CreateEntryForm from "./CreateEntryForm";
 import { ChevronLeft, ChevronRight } from "react-feather";
 
-const CreateEntrySlider = ({
-  entries,
-  isEntryValid,
-  handleChange,
-  saveForLater,
-  confirmAnimation,
-}) => {
+const CreateEntrySlider = ({ entries, isEntryValid, handleChange, saveForLater, confirmAnimation }) => {
   const [current, setCurrent] = useState(0);
   const increment = () => setCurrent(handleIncrement(current));
   const decrement = () => setCurrent(handleDecrement(current));
@@ -25,33 +19,25 @@ const CreateEntrySlider = ({
 
   return (
     <>
-      <div className="flex justify-around items-center gap-x-5 mb-5">
+      <div className='flex justify-around items-center gap-x-5 mb-5'>
         <div
           onClick={decrement}
-          className="bg-white text-gray-500 shadow hover:shadow-md hover:text-black cursor-pointer rounded active:shadow-inner group flex-grow py-1"
+          className='bg-white text-gray-500 shadow hover:shadow-md hover:text-black cursor-pointer rounded active:shadow-inner group flex-grow py-1'
         >
-          <ChevronLeft
-            size={30}
-            strokeWidth={1.5}
-            className="group-active:scale-90 mx-auto"
-          />
+          <ChevronLeft size={30} strokeWidth={1.5} className='group-active:scale-90 mx-auto' />
         </div>
-        <div className="p-2 text-sm rounded text-gray-700 bg-white shadow-md select-none">{`${
+        <div className='p-2 text-sm rounded text-gray-700 bg-white shadow-md select-none'>{`${
           current + 1
         } / ${entries.length}`}</div>
         <div
           onClick={increment}
-          className="bg-white text-gray-500 shadow hover:shadow-md hover:text-black cursor-pointer rounded active:shadow-inner group flex-grow py-1"
+          className='bg-white text-gray-500 shadow hover:shadow-md hover:text-black cursor-pointer rounded active:shadow-inner group flex-grow py-1'
         >
-          <ChevronRight
-            size={30}
-            strokeWidth={1.5}
-            className="group-active:scale-90 mx-auto"
-          />
+          <ChevronRight size={30} strokeWidth={1.5} className='group-active:scale-90 mx-auto' />
         </div>
       </div>
 
-      <div className="flex-grow bg-gray-200 rounded-md shadow-md">
+      <div className='flex-grow bg-gray-200 rounded-md shadow-md'>
         <CreateEntryForm
           entry={entries[current]}
           isEntryValid={isEntryValid}
