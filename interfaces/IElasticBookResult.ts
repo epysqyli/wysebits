@@ -11,12 +11,12 @@ interface IElasticBookResult {
     cover_url?: string;
     tiles_count: number;
     elastic_tile_entries: Array<IElasticTileEntry>;
+    category: {
+      id: number;
+      slug: string;
+    };
+    authors: Array<IAuthor>;
   };
-  category: {
-    id: number;
-    slug: string;
-  };
-  authors: Array<IAuthor>;
   highlight: {
     title: Array<string>;
   };
