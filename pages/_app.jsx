@@ -70,7 +70,9 @@ const MyApp = ({ Component, pageProps }) => {
   }, [router.events]);
 
   // necessary on page refresh without route change
-  useEffect(() => loginStatus(), []);
+  useEffect(() => {
+    loginStatus();
+  }, []);
 
   return (
     <Layout userState={userState} userLoading={userLoading}>
