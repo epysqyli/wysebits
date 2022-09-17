@@ -16,7 +16,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       categories: categories.data.filter((category) => category.name !== "Various"),
-      trending: weeklyTrend.data
+      trending: weeklyTrend.data,
     }
   };
 };
@@ -45,9 +45,9 @@ const Home = ({ categories, userState, trending, addOverlay, removeOverlay }) =>
               Search Books
             </div>
           </div>
-          <div className='mt-10 xl:mt-16 mx-auto lg:w-4/5 xl:w-full'>
+          {/* <div className='mt-10 xl:mt-16 mx-auto lg:w-4/5 xl:w-full'>
             <MultiSearch />
-          </div>
+          </div> */}
         </div>
 
         <div className='mb-12 mt-30 xl:mt-0 xl:mb-10 w-11/12 mx-auto md:w-5/6 lg:w-3/5 xl:w-1/2 pb-10'>
@@ -58,7 +58,6 @@ const Home = ({ categories, userState, trending, addOverlay, removeOverlay }) =>
           <div className='grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4'>
             {categories.map((category) => {
               return <CategoryButton category={category} key={category.id} />;
-              s;
             })}
           </div>
         </div>

@@ -9,6 +9,8 @@ import { searchBooks, searchAuthorsBooks, searchAuthors } from "../../lib/search
 import MultiSearch from "../../components/navigation/MultiSearch";
 
 export const getServerSideProps = async (context) => {
+  
+
   let searchResults;
   let authorKeywords = "";
   let bookKeywords;
@@ -40,6 +42,7 @@ export const getServerSideProps = async (context) => {
 };
 
 const BookSearchResults = ({ searchResults, bookKeywords, authorKeywords, pagy }) => {
+  return <></>;
   const [btnVisible, setBtnVisible] = useState(false);
 
   const clientUrl = `/search/books`;
