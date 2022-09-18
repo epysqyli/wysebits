@@ -3,7 +3,6 @@ import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import IconAndTitle from "../../components/layout/IconAndTitle";
 import { capitalize, slug } from "../../lib/utils";
 import BookSearchTile from "../../components/books/BookSearchTile";
-import Pagination from "../../components/navigation/Pagination";
 import CreateBookBtn from "../../components/users/CreateBookBtn";
 import NoSearchResults from "../../components/navigation/NoSearchResults";
 import MultiSearch from "../../components/navigation/MultiSearch";
@@ -11,6 +10,7 @@ import IElasticQuery from "../../interfaces/elastic/IElasticQuery";
 import { searchBooks } from "../../lib/elastic/search";
 import IElasticBookResult from "../../interfaces/elastic/IElasticBookResult";
 import { AxiosResponse } from "axios";
+import ElasticPagination from "../../components/navigation/ElasticPagination";
 
 interface ServerSideProps extends GetServerSidePropsContext {
   query: {
@@ -24,7 +24,6 @@ export const getServerSideProps: GetServerSideProps = async (context: ServerSide
   let searchResults: AxiosResponse<Array<IElasticBookResult>>;
   const { authorKeywords, bookKeywords, page } = context.query;
 
-  // manage pagination via elasticsearch
   if (authorKeywords !== "" && bookKeywords !== "") {
     const query: IElasticQuery = {
       match: {
@@ -121,11 +120,11 @@ const BookSearchResults = ({ searchResults, bookKeywords, authorKeywords, page }
           {btnVisible ? <CreateBookBtn /> : null}
         </div>
 
-        {/* <Pagination
+        <ElasticPagination
+          page={page}
           clientUrl={clientUrl}
-          pagy={pagy}
           opts={{ authorKeywords: authorKeywords, bookKeywords: bookKeywords }}
-        /> */}
+        />
       </div>
     );
   }
