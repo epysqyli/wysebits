@@ -3,10 +3,11 @@ import Link from "next/link";
 import { Image as ImageLoader } from "react-feather";
 import { useState } from "react";
 import IElasticBookResult from "../../interfaces/elastic/IElasticBookResult";
+import { capitalize } from "../../lib/utils";
 
 interface Props {
-  bookData: IElasticBookResult,
-  destPage: any
+  bookData: IElasticBookResult;
+  destPage: any;
 }
 
 const BookSearchTile = ({ bookData, destPage }: Props) => {
@@ -31,7 +32,9 @@ const BookSearchTile = ({ bookData, destPage }: Props) => {
             )}
 
             <div className='text-gray-600'>
-              {bookData._source.category.slug == "CATCHALL" ? "No category" : bookData._source.category.slug}
+              {bookData._source.category.slug == "CATCHALL"
+                ? "No category"
+                : capitalize(bookData._source.category.slug.split("-").join(" "))}
             </div>
 
             <div className='text italic text-gray-600'>
