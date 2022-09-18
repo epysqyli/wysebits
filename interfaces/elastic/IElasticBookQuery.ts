@@ -1,4 +1,4 @@
-interface IBookQuery {
+interface IElasticBookQuery {
   title?: string;
   "category.id"?: number;
   "category.slug"?: string;
@@ -6,4 +6,4 @@ interface IBookQuery {
   "authors.full_name"?: string;
 }
 
-export default IBookQuery;
+export default IElasticBookQuery;

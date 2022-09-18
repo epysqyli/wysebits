@@ -2,34 +2,40 @@ import Image from "next/dist/client/image";
 import Link from "next/link";
 import { Image as ImageLoader } from "react-feather";
 import { useState } from "react";
+import IElasticBookResult from "../../interfaces/elastic/IElasticBookResult";
 
-const BookSearchTile = ({ bookData, destPage }) => {
+interface Props {
+  bookData: IElasticBookResult,
+  destPage: any
+}
+
+const BookSearchTile = ({ bookData, destPage }: Props) => {
   const [imageIsLoaded, setImageIsLoaded] = useState(false);
-  const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
-  const dbSrc = bookData.cover_url;
+  const olSrc = `https://covers.openlibrary.org/w/olid/${bookData._source.ol_key}-M.jpg`;
+  const dbSrc = bookData._source.cover_url;
 
   return (
     <Link href={destPage}>
       <div className='py-3 px-4 rounded-md bg-white shadow-lg hover:bg-gradient-to-b hover:from-white hover:to-gray-50 hover:shadow-xl transition-all cursor-pointer active:shadow-inner border-b-2 border-blue-200 hover:border-blue-300'>
         <div className='flex justify-between'>
           <div className='w-2/3 mr-5 flex flex-col justify-between'>
-            {bookData.pg_search_highlight ? (
+            {bookData.highlight ? (
               <div
                 className='text-lg font-medium mb-2 tracking-tight'
                 dangerouslySetInnerHTML={{
-                  __html: bookData.pg_search_highlight
+                  __html: bookData.highlight.title[0]
                 }}
               ></div>
             ) : (
-              <div className='text-lg font-medium mb-2 tracking-tight'>{bookData.title}</div>
+              <div className='text-lg font-medium mb-2 tracking-tight'>{bookData._source.title}</div>
             )}
 
             <div className='text-gray-600'>
-              {bookData.category.name == "CATCHALL" ? "No category" : bookData.category.name}
+              {bookData._source.category.slug == "CATCHALL" ? "No category" : bookData._source.category.slug}
             </div>
 
             <div className='text italic text-gray-600'>
-              {bookData.authors.length ? bookData.authors[0].full_name : "No authors found"}
+              {bookData._source.authors.length ? bookData._source.authors[0].full_name : "No authors found"}
             </div>
           </div>
 

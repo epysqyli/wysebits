@@ -1,10 +1,10 @@
 interface IElasticQuery {
   match?: {
-    must?: any;
-    filter?: any;
+    must?: Array<any>;
+    filter?: Array<any>;
   };
   term?: {
-    filter: any;
+    filter: Array<any>;
   };
 }
 
