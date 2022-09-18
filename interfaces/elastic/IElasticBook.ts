@@ -1,4 +1,4 @@
-import IAuthor from "./IAuthor";
+import IAuthor from "../IAuthor";
 import IElasticTileEntry from "./IElasticTileEntry";
 
 interface IElasticBook {
