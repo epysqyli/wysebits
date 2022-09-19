@@ -1,7 +1,7 @@
 import IElasticBook from "./IElasticBook";
-import IElasticBase from "./IElasticBase";
+import IElasticRespBase from "./IElasticRespBase";
 
-interface IElasticBookResult extends IElasticBase {
+interface IElasticBookResult extends IElasticRespBase {
   _source: IElasticBook;
   highlight: {
     title: Array<string>;

@@ -41,7 +41,7 @@ const Category = ({ books, categoryName, categorySlug, pagy, searchParams, curre
   if (books.length !== 0)
     return (
       <div className='pt-10 lg:pt-16'>
-        <IconAndTitle title={`${capitalize(categoryName)} Books`} />
+        <IconAndTitle title={`${capitalize(categoryName)} Books`} description='' />
         <HeaderImage name={categoryName} slug={categorySlug} />
         <div className='mt-5'>
           <SpecificSearch
@@ -66,7 +66,13 @@ const Category = ({ books, categoryName, categorySlug, pagy, searchParams, curre
                 key={book.id}
               >
                 <div className='rounded-md bg-white shadow-lg hover:bg-gray-50 hover:shadow-xl transition-all cursor-pointer active:shadow-inner border-b-2 border-blue-200 hover:border-blue-300'>
-                  <BookCard bookData={book} />
+                  <BookCard
+                    bookData={book}
+                    showCategoryLink={false}
+                    feed={false}
+                    showAuthorLink={false}
+                    showBookLink={false}
+                  />
                 </div>
               </Link>
             );
@@ -80,7 +86,7 @@ const Category = ({ books, categoryName, categorySlug, pagy, searchParams, curre
   if (books.length === 0 && currentSearchTerms !== null)
     return (
       <div className='pt-10 lg:pt-16'>
-        <IconAndTitle title={`${capitalize(categoryName)} Books`} />
+        <IconAndTitle title={`${capitalize(categoryName)} Books`} description='' />
         <HeaderImage name={categoryName} slug={categorySlug} />
         <div className='mt-5'>
           <SpecificSearch
@@ -88,6 +94,7 @@ const Category = ({ books, categoryName, categorySlug, pagy, searchParams, curre
             searchContext='category'
             dynamicValue={categorySlug}
             currentSearchTerms={currentSearchTerms}
+            placeholder=''
           />
         </div>
         <NoResults />
@@ -97,11 +104,12 @@ const Category = ({ books, categoryName, categorySlug, pagy, searchParams, curre
   if (books.length === 0)
     return (
       <div className='pt-10 lg:pt-16'>
-        <IconAndTitle title={`${capitalize(categoryName)} Books`} />
+        <IconAndTitle title={`${capitalize(categoryName)} Books`} description='' />
         <HeaderImage name={categoryName} slug={categorySlug} />
         <ExploreMore
           message='This category is empty, meaning no books have been assigned to it. Explore books and contribute insights to improve WyseBits.'
           body='You can assign books to specific categories on the same page you write insights, by clicking below the book cover'
+          exortation=''
         />
       </div>
     );

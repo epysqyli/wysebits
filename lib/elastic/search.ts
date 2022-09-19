@@ -1,15 +1,15 @@
 import axios, { AxiosResponse } from "axios";
 import IElasticBookResult from "../../interfaces/elastic/IElasticBookResult";
-import IElasticQuery from "../../interfaces/elastic/IElasticQuery";
+import IElasticRequest from "../../interfaces/elastic/IElasticRequest";
 
 const searchBooks = async (
-  searchQuery: IElasticQuery,
+  searchRequest: IElasticRequest,
   page: string
 ): Promise<AxiosResponse<Array<IElasticBookResult>>> => {
   return await axios({
     method: "POST",
     url: `${process.env.BASE_URL}/elastic_search/books?page=${page}`,
-    data: { search_query: searchQuery }
+    data: { search_request: searchRequest }
   });
 };
 

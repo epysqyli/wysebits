@@ -6,11 +6,11 @@ import BookSearchTile from "../../components/books/BookSearchTile";
 import CreateBookBtn from "../../components/users/CreateBookBtn";
 import NoSearchResults from "../../components/navigation/NoSearchResults";
 import MultiSearch from "../../components/navigation/MultiSearch";
-import IElasticQuery from "../../interfaces/elastic/IElasticQuery";
 import { searchBooks } from "../../lib/elastic/search";
 import IElasticBookResult from "../../interfaces/elastic/IElasticBookResult";
 import { AxiosResponse } from "axios";
 import ElasticPagination from "../../components/navigation/ElasticPagination";
+import IElasticRequest from "../../interfaces/elastic/IElasticRequest";
 
 interface ServerSideProps extends GetServerSidePropsContext {
   query: {
@@ -25,39 +25,48 @@ export const getServerSideProps: GetServerSideProps = async (context: ServerSide
   const { authorKeywords, bookKeywords, page } = context.query;
 
   if (authorKeywords !== "" && bookKeywords !== "") {
-    const query: IElasticQuery = {
-      match: {
-        must: [
-          {
-            title: bookKeywords,
-            "authors.full_name": authorKeywords
-          }
-        ]
-      }
+    const query: IElasticRequest = {
+      query: {
+        match: {
+          must: [
+            {
+              title: bookKeywords,
+              "authors.full_name": authorKeywords
+            }
+          ]
+        }
+      },
+      sort: []
     };
 
     searchResults = await searchBooks(query, page);
   } else if (bookKeywords !== "" && authorKeywords == "") {
-    const query: IElasticQuery = {
-      match: {
-        must: [
-          {
-            title: bookKeywords
-          }
-        ]
-      }
+    const query: IElasticRequest = {
+      query: {
+        match: {
+          must: [
+            {
+              title: bookKeywords
+            }
+          ]
+        }
+      },
+      sort: []
     };
 
     searchResults = await searchBooks(query, page);
   } else if (bookKeywords == "" && authorKeywords !== "") {
-    const query: IElasticQuery = {
-      match: {
-        must: [
-          {
-            "authors.full_name": authorKeywords
-          }
-        ]
-      }
+    const query: IElasticRequest = {
+      query: {
+        match: {
+          must: [
+            {
+              "authors.full_name": authorKeywords
+            }
+          ]
+        }
+      },
+      sort: []
     };
 
     searchResults = await searchBooks(query, page);
