@@ -1,7 +1,7 @@
 interface IElasticBookQuery {
   title?: string;
   "category.id"?: number;
-  "category.slug"?: string;
+  "category.slug.keyword"?: string;
   "authors.id"?: number;
   "authors.full_name"?: string;
 }

@@ -1,13 +1,18 @@
 import { motion } from "framer-motion";
 import Link from "next/dist/client/link";
+import ICategory from "../../interfaces/ICategory";
 
-const CategoryButton = ({ category }) => {
+interface Props {
+  category: ICategory;
+}
+
+const CategoryButton = ({ category }: Props) => {
   return (
     <Link
       href={{
-        pathname: "/categories/[category]",
+        pathname: "/categories/[slug]",
         query: {
-          category: category.slug,
+          slug: category.slug,
           page: 1
         }
       }}

@@ -1,3 +1,4 @@
+// use generics to type this interface?
 interface IElasticQuery {
   match?: {
     must?: Array<any>;
