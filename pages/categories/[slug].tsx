@@ -27,6 +27,7 @@ interface PageProps {
   categoryName: string;
   categorySlug: string;
   page: string;
+  amount: number;
   searchTerms?: string;
 }
 
@@ -53,10 +54,11 @@ export const getServerSideProps: GetServerSideProps = async (context: ServerSide
   const elasticResponse = await searchBooks(elasticRequest, page);
 
   const _props: PageProps = {
-    books: elasticResponse.data,
+    books: elasticResponse.data.results,
     categoryName: categoryName,
     categorySlug: slug,
-    page: page
+    page: page,
+    amount: elasticResponse.data.total
   };
 
   if (context.query.searchTerms) _props.searchTerms = context.query.searchTerms;
@@ -64,7 +66,7 @@ export const getServerSideProps: GetServerSideProps = async (context: ServerSide
   return { props: _props };
 };
 
-const Category = ({ books, categoryName, categorySlug, page, searchTerms }: PageProps): ReactElement => {
+const Category = ({ books, categoryName, categorySlug, page, searchTerms, amount }: PageProps): ReactElement => {
   const [bookResults, setBookResults] = useState<Array<IElasticBookResult>>(books);
   useEffect(() => {
     setBookResults(books);

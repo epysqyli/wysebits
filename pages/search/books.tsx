@@ -11,6 +11,7 @@ import IElasticBookResult from "../../interfaces/elastic/IElasticBookResult";
 import { AxiosResponse } from "axios";
 import ElasticPagination from "../../components/navigation/ElasticPagination";
 import IElasticRequest from "../../interfaces/elastic/IElasticRequest";
+import IElasticResponse from "../../interfaces/elastic/IElasticResponse";
 
 interface ServerSideProps extends GetServerSidePropsContext {
   query: {
@@ -20,8 +21,16 @@ interface ServerSideProps extends GetServerSidePropsContext {
   };
 }
 
+interface Props {
+  searchResults: Array<IElasticBookResult>;
+  bookKeywords: string;
+  authorKeywords: string;
+  page: string;
+  amount: number;
+}
+
 export const getServerSideProps: GetServerSideProps = async (context: ServerSideProps) => {
-  let searchResults: AxiosResponse<Array<IElasticBookResult>>;
+  let searchResults: AxiosResponse<IElasticResponse>;
   const { authorKeywords, bookKeywords, page } = context.query;
 
   if (authorKeywords !== "" && bookKeywords !== "") {
@@ -72,24 +81,18 @@ export const getServerSideProps: GetServerSideProps = async (context: ServerSide
     searchResults = await searchBooks(query, page);
   }
 
-  return {
-    props: {
-      searchResults: searchResults.data,
-      bookKeywords: bookKeywords,
-      authorKeywords: authorKeywords,
-      page: page
-    }
+  const _props: Props = {
+    searchResults: searchResults.data.results,
+    bookKeywords: bookKeywords,
+    authorKeywords: authorKeywords,
+    page: page,
+    amount: searchResults.data.total
   };
+
+  return { props: _props };
 };
 
-interface Props {
-  searchResults: Array<IElasticBookResult>;
-  bookKeywords: string;
-  authorKeywords: string;
-  page: string;
-}
-
-const BookSearchResults = ({ searchResults, bookKeywords, authorKeywords, page }: Props) => {
+const BookSearchResults = ({ searchResults, bookKeywords, authorKeywords, page, amount }: Props) => {
   const [btnVisible, setBtnVisible] = useState(false);
   const showBtn = () => setBtnVisible(true);
 
