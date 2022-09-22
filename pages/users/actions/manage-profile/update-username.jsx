@@ -39,10 +39,12 @@ const UpdateUsername = () => {
     }
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     if (username.length > 3) {
-      const resp = await isUsernameAvailable();
-      setAvailable(resp.data);
+      (async () => {
+        const resp = await isUsernameAvailable();
+        setAvailable(resp.data);
+      })();
     } else {
       setAvailable(false);
     }

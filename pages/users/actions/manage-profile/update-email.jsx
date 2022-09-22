@@ -31,10 +31,12 @@ const UpdateEmail = () => {
     }
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     if (email.length > 5) {
-      const resp = await isEmailAvailable(email);
-      setAvailable(resp.data);
+      (async () => {
+        const resp = await isEmailAvailable(email);
+        setAvailable(resp.data);
+      })();
     } else {
       setAvailable(false);
     }

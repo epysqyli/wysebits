@@ -43,7 +43,9 @@ const UpdatePassword = () => {
     }
   };
 
-  useEffect(() => isMatching(psws.password, psws.passwordConfirmation), [psws.passwordConfirmation]);
+  useEffect(() => {
+    isMatching(psws.password, psws.passwordConfirmation);
+  }, [psws.passwordConfirmation]);
 
   if (confirmed === false)
     return (
