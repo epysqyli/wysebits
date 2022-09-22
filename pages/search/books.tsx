@@ -27,6 +27,7 @@ interface Props {
   authorKeywords: string;
   page: string;
   amount: number;
+  perPage: number;
 }
 
 export const getServerSideProps: GetServerSideProps = async (context: ServerSideProps) => {
@@ -86,13 +87,14 @@ export const getServerSideProps: GetServerSideProps = async (context: ServerSide
     bookKeywords: bookKeywords,
     authorKeywords: authorKeywords,
     page: page,
-    amount: searchResults.data.total
+    amount: searchResults.data.total,
+    perPage: searchResults.data.per_page
   };
 
   return { props: _props };
 };
 
-const BookSearchResults = ({ searchResults, bookKeywords, authorKeywords, page, amount }: Props) => {
+const BookSearchResults = ({ searchResults, bookKeywords, authorKeywords, page, amount, perPage }: Props) => {
   const [btnVisible, setBtnVisible] = useState(false);
   const showBtn = () => setBtnVisible(true);
 
@@ -136,6 +138,8 @@ const BookSearchResults = ({ searchResults, bookKeywords, authorKeywords, page, 
           page={page}
           clientUrl={clientUrl}
           opts={{ authorKeywords: authorKeywords, bookKeywords: bookKeywords }}
+          amountOfResults={amount}
+          perPage={perPage}
         />
       </div>
     );

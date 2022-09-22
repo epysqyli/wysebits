@@ -28,6 +28,7 @@ interface PageProps {
   categorySlug: string;
   page: string;
   amount: number;
+  perPage: number;
   searchTerms?: string;
 }
 
@@ -58,7 +59,8 @@ export const getServerSideProps: GetServerSideProps = async (context: ServerSide
     categoryName: categoryName,
     categorySlug: slug,
     page: page,
-    amount: elasticResponse.data.total
+    amount: elasticResponse.data.total,
+    perPage: elasticResponse.data.per_page
   };
 
   if (context.query.searchTerms) _props.searchTerms = context.query.searchTerms;
@@ -66,7 +68,15 @@ export const getServerSideProps: GetServerSideProps = async (context: ServerSide
   return { props: _props };
 };
 
-const Category = ({ books, categoryName, categorySlug, page, searchTerms, amount }: PageProps): ReactElement => {
+const Category = ({
+  books,
+  categoryName,
+  categorySlug,
+  page,
+  searchTerms,
+  amount,
+  perPage
+}: PageProps): ReactElement => {
   const [bookResults, setBookResults] = useState<Array<IElasticBookResult>>(books);
   useEffect(() => {
     setBookResults(books);
@@ -114,7 +124,13 @@ const Category = ({ books, categoryName, categorySlug, page, searchTerms, amount
           })}
         </div>
 
-        <ElasticPagination clientUrl={clientUrl} page={page} opts={{ searchTerms: searchTerms }} />
+        <ElasticPagination
+          clientUrl={clientUrl}
+          page={page}
+          opts={{ searchTerms: searchTerms }}
+          amountOfResults={amount}
+          perPage={perPage}
+        />
       </div>
     );
 

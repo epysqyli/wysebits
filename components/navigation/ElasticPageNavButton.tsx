@@ -7,9 +7,10 @@ interface Props {
   clientUrl: string;
   page: string;
   opts: any;
+  isLastPage: boolean;
 }
 
-const ElasticPageNavButton = ({ direction, clientUrl, page, opts }: Props): ReactElement => {
+const ElasticPageNavButton = ({ direction, clientUrl, page, opts, isLastPage }: Props): ReactElement => {
   const optsKeyOne: string = opts ? Object.keys(opts)[0] : "";
   const optsValueOne: string = opts ? (Object.values(opts)[0] as string) : "";
   const optsKeyTwo: string = opts ? Object.keys(opts)[1] : "";
@@ -40,7 +41,7 @@ const ElasticPageNavButton = ({ direction, clientUrl, page, opts }: Props): Reac
       </Link>
     );
 
-  if (page == "" && direction == "right")
+  if (direction == "right" && isLastPage)
     return (
       <div className='py-2 text-center text-gray-300 rounded shadow'>
         <ArrowRight className='w-min mx-auto' />
