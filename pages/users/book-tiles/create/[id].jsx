@@ -16,7 +16,7 @@ import {
   getBook,
   getCategories,
   getLoggedUser,
-  isBookTileAvailable,
+  isBookTileAvailable
 } from "../../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
@@ -33,29 +33,20 @@ export const getServerSideProps = async (context) => {
         categories: categories.data,
         isAvailable: isAvailable.data.res,
         tempEntries: isAvailable.data.temporary_entries || null,
-        existingTile: isAvailable.data.existing_book_tile || null,
-      },
+        existingTile: isAvailable.data.existing_book_tile || null
+      }
     };
   } else {
     return {
-      props: {},
+      props: {}
     };
   }
 };
 
-const TileCreation = ({
-  bookData,
-  userState,
-  categories,
-  isAvailable,
-  existingTile,
-  tempEntries,
-}) => {
+const TileCreation = ({ bookData, userState, categories, isAvailable, existingTile, tempEntries }) => {
   const [editVisible, setEditVisible] = useState(false);
   const [confirmAnimation, setConfirmAnimation] = useState("");
-  const [deletable, setDeletable] = useState(
-    tempEntries !== null ? true : false
-  );
+  const [deletable, setDeletable] = useState(tempEntries !== null ? true : false);
 
   const bcgImage = () => {
     const olSrc = `https://covers.openlibrary.org/w/olid/${bookData.ol_key}-M.jpg`;
@@ -67,37 +58,29 @@ const TileCreation = ({
   const hideEditForm = () => setEditVisible(false);
 
   const getEntryContent = (entryIndex) => {
-    return tempEntries
-      ? tempEntries[entryIndex]
-        ? tempEntries[entryIndex].content
-        : ""
-      : "";
+    return tempEntries ? (tempEntries[entryIndex] ? tempEntries[entryIndex].content : "") : "";
   };
 
   const getEntryId = (entryIndex) => {
-    return tempEntries
-      ? tempEntries[entryIndex]
-        ? tempEntries[entryIndex].id
-        : null
-      : null;
+    return tempEntries ? (tempEntries[entryIndex] ? tempEntries[entryIndex].id : null) : null;
   };
 
   const [tileEntries, setTileEntries] = useState({
     first_entry: {
       content: getEntryContent(0),
       id: getEntryId(0),
-      name: "first_entry",
+      name: "first_entry"
     },
     second_entry: {
       content: getEntryContent(1),
       id: getEntryId(1),
-      name: "second_entry",
+      name: "second_entry"
     },
     third_entry: {
       content: getEntryContent(2),
       id: getEntryId(2),
-      name: "third_entry",
-    },
+      name: "third_entry"
+    }
   });
 
   const allEntriesValid = () => {
@@ -120,8 +103,8 @@ const TileCreation = ({
         [e.target.name]: {
           content: e.target.value,
           id: tileEntries[e.target.name].id,
-          name: tileEntries[e.target.name].name,
-        },
+          name: tileEntries[e.target.name].name
+        }
       };
       setTileEntries(newTileEntries);
     };
@@ -131,7 +114,7 @@ const TileCreation = ({
         method: "POST",
         url: `${process.env.BASE_URL}/users/${userState.user.id}/book_tiles`,
         data: { book_id: bookData.id },
-        withCredentials: true,
+        withCredentials: true
       });
 
       return resp.data;
@@ -144,7 +127,7 @@ const TileCreation = ({
         method: "POST",
         url: `${process.env.BASE_URL}/book_tiles/${bookTile.id}/temporary_entries`,
         data: { content: entry.content },
-        withCredentials: true,
+        withCredentials: true
       });
 
       tileEntries[entry.name].id = createdEntry.data.id;
@@ -157,7 +140,7 @@ const TileCreation = ({
         method: "PUT",
         url: `${process.env.BASE_URL}/book_tiles/${bookTile.id}/temporary_entries/${entry.id}`,
         data: { content: entry.content },
-        withCredentials: true,
+        withCredentials: true
       });
     };
 
@@ -166,18 +149,18 @@ const TileCreation = ({
         first_entry: {
           content: "",
           id: getEntryId(0),
-          name: "first_entry",
+          name: "first_entry"
         },
         second_entry: {
           content: "",
           id: getEntryId(1),
-          name: "second_entry",
+          name: "second_entry"
         },
         third_entry: {
           content: "",
           id: getEntryId(2),
-          name: "third_entry",
-        },
+          name: "third_entry"
+        }
       };
 
       setTileEntries(emptyEntries);
@@ -187,14 +170,12 @@ const TileCreation = ({
       return await axios({
         method: "DELETE",
         url: `${process.env.BASE_URL}/users/${userId}/book_tiles/${bookTileId}`,
-        withCredentials: true,
+        withCredentials: true
       });
     };
 
     const deleteEntriesAndUpdateState = async (userId, bookTileId) => {
-      const resp = confirm(
-        "Are you sure you want to delete these contributions?"
-      );
+      const resp = confirm("Are you sure you want to delete these contributions?");
 
       if (resp === true) {
         await deleteTempEntries(userId, bookTileId);
@@ -232,9 +213,9 @@ const TileCreation = ({
         data: {
           first_entry: first_entry.content,
           second_entry: second_entry.content,
-          third_entry: third_entry.content,
+          third_entry: third_entry.content
         },
-        withCredentials: true,
+        withCredentials: true
       });
 
       router.push("/users/book-tiles?page=1");
@@ -246,29 +227,21 @@ const TileCreation = ({
     };
 
     return (
-      <div className="pt-10 lg:pt-16">
-        <IconAndTitle title={`Share your insights for ${bookData.title}`}/>
+      <div className='pt-10 lg:pt-16'>
+        <IconAndTitle title={`Share your insights for ${bookData.title}`} />
         {editVisible ? (
-          <EditBookDetails
-            categories={categories}
-            bookData={bookData}
-            hideEditForm={hideEditForm}
-          />
+          <EditBookDetails categories={categories} bookData={bookData} hideEditForm={hideEditForm} />
         ) : null}
 
-        <div className="relative">
-          <CardBcgActions
-            bookData={bookData}
-            bcgImage={bcgImage}
-            showEditForm={showEditForm}
-          />
+        <div className='relative'>
+          <CardBcgActions bookData={bookData} bcgImage={bcgImage} showEditForm={showEditForm} />
         </div>
 
-        <div className="w-11/12 mx-auto text-3xl text-gray-50 text-center font-medium mt-10 select-none">
+        <div className='w-11/12 mx-auto text-3xl text-gray-50 text-center font-medium mt-10 select-none'>
           Share your top takeaways for this book
         </div>
 
-        <div className="mx-auto w-11/12 md:w-4/5 lg:w-4/6 xl:w-1/2 2xl:w-2/5 mt-10 pb-10">
+        <div className='mx-auto w-11/12 md:w-4/5 lg:w-4/6 xl:w-1/2 2xl:w-2/5 mt-10 pb-10'>
           <form onSubmit={handleSubmit}>
             <CreateEntrySlider
               entries={Object.values(tileEntries)}
@@ -280,16 +253,16 @@ const TileCreation = ({
 
             {allEntriesValid() ? (
               <button
-                type="submit"
-                className="w-3/5 md:w-2/5 xl:w-2/5 mx-auto block border mt-10 py-2 rounded-md shadow-md hover:shadow-lg text-gray-50 hover:bg-gray-100 hover:text-gray-600 active:bg-gray-200 active:shadow-lg"
+                type='submit'
+                className='w-3/5 md:w-2/5 xl:w-2/5 mx-auto block border mt-10 py-2 rounded-md shadow-md hover:shadow-lg text-gray-50 hover:bg-gray-100 hover:text-gray-600 active:bg-gray-200 active:shadow-lg'
               >
                 Publish your thoughts!
               </button>
             ) : (
               <button
-                type="submit"
+                type='submit'
                 disabled
-                className="w-3/5 md:w-2/5 xl:w-2/5 mx-auto block border border-gray-300 mt-10 py-2 rounded-md text-gray-400 cursor-default"
+                className='w-3/5 md:w-2/5 xl:w-2/5 mx-auto block border border-gray-300 mt-10 py-2 rounded-md text-gray-400 cursor-default'
               >
                 Publish your thoughts!
               </button>
@@ -298,15 +271,10 @@ const TileCreation = ({
 
           {tempEntries !== null && deletable ? (
             <div
-              onClick={() =>
-                deleteEntriesAndUpdateState(
-                  userState.user.id,
-                  tempEntries[0].book_tile_id
-                )
-              }
-              className="w-3/5 md:w-2/5 xl:w-2/5 mx-auto my-10"
+              onClick={() => deleteEntriesAndUpdateState(userState.user.id, tempEntries[0].book_tile_id)}
+              className='w-3/5 md:w-2/5 xl:w-2/5 mx-auto my-10'
             >
-              <DangerButton text="Delete work in progress insights" />
+              <DangerButton text='Delete work in progress insights' />
             </div>
           ) : null}
         </div>
@@ -316,41 +284,31 @@ const TileCreation = ({
 
   if (userState.isLogged && !isAvailable) {
     return (
-      <div className="pt-10 lg:pt-16">
-        <IconAndTitle title={`Share your insights for ${bookData.title}`}/>
+      <div className='pt-10 lg:pt-16'>
+        <IconAndTitle title={`Share your insights for ${bookData.title}`} />
         {editVisible ? (
-          <EditBookDetails
-            categories={categories}
-            bookData={bookData}
-            hideEditForm={hideEditForm}
-          />
+          <EditBookDetails categories={categories} bookData={bookData} hideEditForm={hideEditForm} />
         ) : null}
 
-        <div className="relative">
-          <CardBcgActions
-            bookData={bookData}
-            bcgImage={bcgImage}
-            showEditForm={showEditForm}
-          />
+        <div className='relative'>
+          <CardBcgActions bookData={bookData} bcgImage={bcgImage} showEditForm={showEditForm} />
         </div>
-        <div className="my-20 mx-auto w-4/5 md:w-4/6 lg:w-3/6">
-          <div className="flex justify-around items-center">
+        <div className='my-20 mx-auto w-4/5 md:w-4/6 lg:w-3/6'>
+          <div className='flex justify-around items-center'>
             <AlertCircle
               size={36}
               strokeWidth={1.5}
-              className="rounded-3xl w-1/4 text-gray-100"
-              fill="transparent"
+              className='rounded-3xl w-1/4 text-gray-100'
+              fill='transparent'
             />
-            <div className="w-4/6 md:text-lg text-gray-50">
+            <div className='w-4/6 md:text-lg text-gray-50'>
               You have already shared your insights for this book!
             </div>
           </div>
 
-          <div className="mt-20 bg-gray-100 p-10 text-center text-lg rounded-md shadow hover:bg-gray-200 hover:shadow-md active:bg-gray-300 cursor-pointer transition">
+          <div className='mt-20 bg-gray-100 p-10 text-center text-lg rounded-md shadow hover:bg-gray-200 hover:shadow-md active:bg-gray-300 cursor-pointer transition'>
             <Link href={`/users/book-tiles/edit/${existingTile.id}`}>
-              <div>
-                Click here to check and edit your insights for this book now
-              </div>
+              <div>Click here to check and edit your insights for this book now</div>
             </Link>
           </div>
         </div>
@@ -359,7 +317,7 @@ const TileCreation = ({
   }
 
   return (
-    <div className="mx-auto mt-10 w-4/5 md:w-4/6 lg:w-3/6 pt-16">
+    <div className='mx-auto mt-10 w-4/5 md:w-4/6 lg:w-3/6 pt-16'>
       <NoAccess />
     </div>
   );

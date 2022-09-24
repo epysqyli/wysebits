@@ -18,7 +18,7 @@ const TileEntry = ({
   setFollowedUsers,
   feed,
   addOverlay,
-  removeOverlay,
+  removeOverlay
 }) => {
   if (isLogged && showTitle) {
     return (
@@ -57,8 +57,7 @@ const TileEntry = ({
     );
   }
 
-  if (isLogged == false && showTitle)
-    return <EntryGuestTitle entryProp={entryProp} />;
+  if (isLogged == false && showTitle) return <EntryGuestTitle entryProp={entryProp} />;
 
   return <EntryGuest entryProp={entryProp} feed={feed} />;
 };

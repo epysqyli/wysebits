@@ -12,7 +12,7 @@ import {
   getFavBooks,
   getAllFavEntries,
   getUpvotedEntries,
-  getDownvotedEntries,
+  getDownvotedEntries
 } from "../../../lib/serverSideMethods";
 
 export const getServerSideProps = async (context) => {
@@ -21,14 +21,13 @@ export const getServerSideProps = async (context) => {
 
   if (isLogged(context)) {
     const loggedUser = await getLoggedUser(context);
-    const [following, favBooks, favInsights, upvotedEntries, downvotedEntries] =
-      await Promise.all([
-        getAllFollowing(loggedUser, context),
-        getFavBooks(loggedUser, context),
-        getAllFavEntries(loggedUser, context),
-        getUpvotedEntries(loggedUser, context),
-        getDownvotedEntries(loggedUser, context),
-      ]);
+    const [following, favBooks, favInsights, upvotedEntries, downvotedEntries] = await Promise.all([
+      getAllFollowing(loggedUser, context),
+      getFavBooks(loggedUser, context),
+      getAllFavEntries(loggedUser, context),
+      getUpvotedEntries(loggedUser, context),
+      getDownvotedEntries(loggedUser, context)
+    ]);
 
     return {
       props: {
@@ -37,12 +36,12 @@ export const getServerSideProps = async (context) => {
         favBooks: favBooks.data.results,
         favInsights: favInsights.data.tile_entries,
         entriesUp: upvotedEntries.data.upvoted_entries,
-        entriesDown: downvotedEntries.data.downvoted_entries,
-      },
+        entriesDown: downvotedEntries.data.downvoted_entries
+      }
     };
   } else {
     return {
-      props: { user: user.data },
+      props: { user: user.data }
     };
   }
 };
@@ -56,16 +55,14 @@ const Username = ({
   entriesUp,
   entriesDown,
   addOverlay,
-  removeOverlay,
+  removeOverlay
 }) => {
   const selectLatestEntries = () => {
     const definedBookTiles = user.book_tiles
       .filter((book_tile) => book_tile.tile_entries.length != 0)
       .slice(0, 3);
 
-    const recentEntries = definedBookTiles.map(
-      (book_tile) => book_tile.tile_entries[0]
-    );
+    const recentEntries = definedBookTiles.map((book_tile) => book_tile.tile_entries[0]);
 
     return recentEntries;
   };
@@ -77,10 +74,10 @@ const Username = ({
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
 
   return (
-    <div className="relative pt-10">
-      <IconAndTitle title={`Creator: ${user.user.username}`}/>
+    <div className='relative pt-10'>
+      <IconAndTitle title={`Creator: ${user.user.username}`} />
 
-      <div className="mt-10">
+      <div className='mt-10'>
         <BasicInfo
           user={user}
           following={followedUsers}
@@ -89,7 +86,7 @@ const Username = ({
         />
       </div>
 
-      <div className="mt-20">
+      <div className='mt-20'>
         <LatestBooks
           userId={user.user.id}
           books={user.book_tiles.map((tile) => tile.book)}
@@ -107,7 +104,7 @@ const Username = ({
         />
       </div>
 
-      <div className="mt-20">
+      <div className='mt-20'>
         <LatestEntries
           entries={latestEntries}
           userState={userState}

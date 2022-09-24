@@ -11,20 +11,20 @@ const MyApp = ({ Component, pageProps }) => {
   const [activeOverlay, setActiveOverlay] = useState(false);
   const [userState, setUserState] = useState({
     isLogged: false,
-    user: {},
+    user: {}
   });
 
   const handleLogin = (data) => {
     setUserState({
       isLogged: true,
-      user: data.user,
+      user: data.user
     });
   };
 
   const handleLogout = () => {
     setUserState({
       isLogged: false,
-      user: {},
+      user: {}
     });
   };
 
@@ -33,7 +33,7 @@ const MyApp = ({ Component, pageProps }) => {
       const resp = await axios({
         method: "GET",
         url: `${process.env.BASE_URL}/logged_in`,
-        withCredentials: true,
+        withCredentials: true
       });
       if (resp.data.logged_in) {
         handleLogin(resp.data);

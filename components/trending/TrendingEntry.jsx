@@ -4,8 +4,8 @@ import Banner from "./Banner";
 const TrendingEntry = ({ entry, userId, addOverlay, removeOverlay }) => {
   return (
     <div>
-      <Banner text="Insight" iconProp="insight" />
-      <div className="mt-5">
+      <Banner text='Insight' iconProp='insight' />
+      <div className='mt-5'>
         <EntryGuestTitle
           entryProp={entry}
           userId={userId}

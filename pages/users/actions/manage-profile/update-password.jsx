@@ -8,7 +8,7 @@ const UpdatePassword = () => {
   const [psws, setPsws] = useState({
     oldPassword: "",
     password: "",
-    passwordConfirmation: "",
+    passwordConfirmation: ""
   });
 
   const [confirmed, setConfirmed] = useState(false);
@@ -16,7 +16,7 @@ const UpdatePassword = () => {
   const handleChange = (e) => {
     setPsws({
       ...psws,
-      [e.target.name]: e.target.value.trim(),
+      [e.target.name]: e.target.value.trim()
     });
   };
 
@@ -26,9 +26,9 @@ const UpdatePassword = () => {
       url: "${process.env.BASE_URL}/password/update",
       data: {
         old_password: psws.oldPassword,
-        password: psws.password,
+        password: psws.password
       },
-      withCredentials: true,
+      withCredentials: true
     });
   };
 
@@ -43,78 +43,66 @@ const UpdatePassword = () => {
     }
   };
 
-  useEffect(
-    () => isMatching(psws.password, psws.passwordConfirmation),
-    [psws.passwordConfirmation]
-  );
+  useEffect(() => {
+    isMatching(psws.password, psws.passwordConfirmation);
+  }, [psws.passwordConfirmation]);
 
   if (confirmed === false)
     return (
-      <div className="pt-10 lg:pt-16">
-        <IconAndTitle title="Update password" />
-        <div className="py-10">
-          <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2 md:border-none">
-            <Key size={36} className="text-gray-50" />
-            <div className="text-3xl text-gray-50 text-right">
-              Choose a new password
-            </div>
+      <div className='pt-10 lg:pt-16'>
+        <IconAndTitle title='Update password' />
+        <div className='py-10'>
+          <div className='flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2 md:border-none'>
+            <Key size={36} className='text-gray-50' />
+            <div className='text-3xl text-gray-50 text-right'>Choose a new password</div>
           </div>
 
-          <form
-            className="mx-auto w-5/6 md:w-4/6 lg:w-3/6 p-10 md:shadow rounded"
-            onSubmit={handleSubmit}
-          >
-            <div className="mx-auto my-10 lg:w-4/5 2xl:w-1/2">
-              <label
-                htmlFor="old-password"
-                className="pl-1 text-xl text-gray-50"
-              >
+          <form className='mx-auto w-5/6 md:w-4/6 lg:w-3/6 p-10 md:shadow rounded' onSubmit={handleSubmit}>
+            <div className='mx-auto my-10 lg:w-4/5 2xl:w-1/2'>
+              <label htmlFor='old-password' className='pl-1 text-xl text-gray-50'>
                 Current password
               </label>
               <input
-                type="password"
-                name="oldPassword"
-                id="old-password"
+                type='password'
+                name='oldPassword'
+                id='old-password'
                 minLength={8}
-                className="block mt-4 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md"
+                className='block mt-4 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md'
                 onChange={handleChange}
                 required
               />
             </div>
 
-            <div className="mx-auto my-10 lg:w-4/5 2xl:w-1/2">
+            <div className='mx-auto my-10 lg:w-4/5 2xl:w-1/2'>
               <label
-                htmlFor="password"
-                className="pl-1 text-xl text-gray-50 flex items-center justify-around"
+                htmlFor='password'
+                className='pl-1 text-xl text-gray-50 flex items-center justify-around'
               >
                 <p>New password</p>
-                <p className="text-gray-100 text-sm mt-1 w-4/5 md:w-3/5 mr-0 text-right">
+                <p className='text-gray-100 text-sm mt-1 w-4/5 md:w-3/5 mr-0 text-right'>
                   At least 8 characters, one uppercase letter, one digit
                 </p>
               </label>
               <input
-                type="password"
-                name="password"
-                id="password"
+                type='password'
+                name='password'
+                id='password'
                 minLength={8}
-                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
-                className="block mt-4 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md"
+                pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+                className='block mt-4 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md'
                 onChange={handleChange}
                 required
               />
             </div>
 
-            <div className="mx-auto my-10 lg:w-4/5 2xl:w-1/2">
-              <label
-                htmlFor="password-confirmation"
-                className="pl-1 text-xl text-gray-50"
-              >
+            <div className='mx-auto my-10 lg:w-4/5 2xl:w-1/2'>
+              <label htmlFor='password-confirmation' className='pl-1 text-xl text-gray-50'>
                 Password confirmation
               </label>
               <input
-                type="password"
-                name="passwordConfirmation"
-                id="password-confirmation"
+                type='password'
+                name='passwordConfirmation'
+                id='password-confirmation'
                 minLength={8}
                 className={`block mt-4 w-full border-none focus:ring-blue-400 ring-0 focus:ring-2 rounded-lg shadow-sm focus:shadow-md ${
                   isMatching(psws.password, psws.passwordConfirmation)
@@ -130,15 +118,15 @@ const UpdatePassword = () => {
 
             {isMatching(psws.password, psws.passwordConfirmation) ? (
               <button
-                type="submit"
-                className="block mx-auto bg-white my-10 rounded-lg px-5 py-3 text-gray-800 shadow-md hover:shadow-lg transition-shadow active:shadow-inner"
+                type='submit'
+                className='block mx-auto bg-white my-10 rounded-lg px-5 py-3 text-gray-800 shadow-md hover:shadow-lg transition-shadow active:shadow-inner'
               >
                 Confirm password change
               </button>
             ) : (
               <button
-                type="submit"
-                className="block mx-auto bg-gray-50 text-gray-500 my-10 rounded-lg px-5 py-3 shadow cursor-default"
+                type='submit'
+                className='block mx-auto bg-gray-50 text-gray-500 my-10 rounded-lg px-5 py-3 shadow cursor-default'
                 disabled
               >
                 Confirm password change
@@ -150,21 +138,17 @@ const UpdatePassword = () => {
     );
 
   return (
-    <div className="py-10">
-      <IconAndTitle title="Update password" />
+    <div className='py-10'>
+      <IconAndTitle title='Update password' />
 
-      <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2">
-        <Key size={36} className="text-gray-700" />
-        <div className="text-3xl text-gray-800">Choose a new password</div>
+      <div className='flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 mx-auto mt-5 pb-5 border-b-2'>
+        <Key size={36} className='text-gray-700' />
+        <div className='text-3xl text-gray-800'>Choose a new password</div>
       </div>
 
-      <div className="text-center font-light w-4/5 md:w-4/6 lg:w-1/2 xl:w-1/3 mx-auto mt-20 rounded-md bg-gradient-to-br from-white to-green-100 py-10 shadow-lg animate-show-up-slow">
-        <CheckCircle
-          size={36}
-          strokeWidth={1.75}
-          className="w-min mx-auto my-10"
-        />
-        <div className="text-2xl">Your password has been changed!</div>
+      <div className='text-center font-light w-4/5 md:w-4/6 lg:w-1/2 xl:w-1/3 mx-auto mt-20 rounded-md bg-gradient-to-br from-white to-green-100 py-10 shadow-lg animate-show-up-slow'>
+        <CheckCircle size={36} strokeWidth={1.75} className='w-min mx-auto my-10' />
+        <div className='text-2xl'>Your password has been changed!</div>
       </div>
     </div>
   );

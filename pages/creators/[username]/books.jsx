@@ -15,7 +15,7 @@ import {
   getAllFollowing,
   getFavEntries,
   getUpvotedEntries,
-  getDownvotedEntries,
+  getDownvotedEntries
 } from "../../../lib/serverSideMethods";
 
 import { Meh } from "react-feather";
@@ -32,11 +32,7 @@ export const getServerSideProps = async (context) => {
     bookTiles = await getBookTiles(user, pageNum);
   } else {
     const keywords = context.query.searchTerms;
-    bookTiles = await searchWithinBookTiles(
-      user.data.user.id,
-      keywords,
-      pageNum
-    );
+    bookTiles = await searchWithinBookTiles(user.data.user.id, keywords, pageNum);
   }
 
   const pagy = bookTiles.data.pagy;
@@ -44,13 +40,12 @@ export const getServerSideProps = async (context) => {
 
   if (isLogged(context)) {
     const loggedUser = await getLoggedUser(context);
-    const [following, favTileEntries, upvotedEntries, downvotedEntries] =
-      await Promise.all([
-        getAllFollowing(loggedUser, context),
-        getFavEntries(loggedUser, context, pageNum),
-        getUpvotedEntries(loggedUser, context),
-        getDownvotedEntries(loggedUser, context),
-      ]);
+    const [following, favTileEntries, upvotedEntries, downvotedEntries] = await Promise.all([
+      getAllFollowing(loggedUser, context),
+      getFavEntries(loggedUser, context, pageNum),
+      getUpvotedEntries(loggedUser, context),
+      getDownvotedEntries(loggedUser, context)
+    ]);
 
     return {
       props: {
@@ -63,10 +58,8 @@ export const getServerSideProps = async (context) => {
         entriesUp: upvotedEntries.data.upvoted_entries,
         entriesDown: downvotedEntries.data.downvoted_entries,
         currentSearchTerms: context.query.searchTerms ?? null,
-        searchParams: context.query.searchTerms
-          ? { searchTerms: context.query.searchTerms }
-          : null,
-      },
+        searchParams: context.query.searchTerms ? { searchTerms: context.query.searchTerms } : null
+      }
     };
   } else {
     return {
@@ -76,10 +69,8 @@ export const getServerSideProps = async (context) => {
         username: username,
         userId: user.data.user.id,
         currentSearchTerms: context.query.searchTerms ?? null,
-        searchParams: context.query.searchTerms
-          ? { searchTerms: context.query.searchTerms }
-          : null,
-      },
+        searchParams: context.query.searchTerms ? { searchTerms: context.query.searchTerms } : null
+      }
     };
   }
 };
@@ -97,15 +88,13 @@ const UserBooks = ({
   currentSearchTerms,
   searchParams,
   removeOverlay,
-  addOverlay,
+  addOverlay
 }) => {
   const clientUrl = `/creators/${username}/books`;
 
   const [followedUsers, setFollowedUsers] = useState(following);
   const [insights, setInsights] = useState(
-    favInsights !== undefined
-      ? favInsights.filter((insight) => insight !== null)
-      : null
+    favInsights !== undefined ? favInsights.filter((insight) => insight !== null) : null
   );
   const [upvotedEntries, setUpvotedEntries] = useState(entriesUp);
   const [downvotedEntries, setDownvotedEntries] = useState(entriesDown);
@@ -126,21 +115,18 @@ const UserBooks = ({
 
   if (books.length === 0 && currentSearchTerms)
     return (
-      <div className="pt-10 lg:pt-16">
+      <div className='pt-10 lg:pt-16'>
         <IconAndTitle title={`Books read by ${username}`} />
 
-        <WelcomeTop
-          bcgImg="bg-check-book-tiles"
-          text={`All books contributed to by ${username}`}
-        />
+        <WelcomeTop bcgImg='bg-check-book-tiles' text={`All books contributed to by ${username}`} />
 
-        <div className="mt-5">
+        {/* <div className='mt-5'>
           <SpecificSearch
-            placeholder="search within books"
+            placeholder='search within books'
             baseUrl={`/creators/${username}/books`}
             currentSearchTerms={currentSearchTerms}
           />
-        </div>
+        </div> */}
 
         <NoResults />
       </div>
@@ -148,54 +134,42 @@ const UserBooks = ({
 
   if (books.length === 0)
     return (
-      <div className="pt-10 lg:pt-16">
+      <div className='pt-10 lg:pt-16'>
         <IconAndTitle title={`Books read by ${username}`} />
 
-        <WelcomeTop
-          bcgImg="bg-check-book-tiles"
-          text={`All books contributed to by ${username}`}
-        />
+        <WelcomeTop bcgImg='bg-check-book-tiles' text={`All books contributed to by ${username}`} />
 
-        <div className="mx-auto w-4/5 text-center my-20 text-xl">
-          <div className="mx-auto w-min mb-20 animate-bounce">
-            <Meh
-              size={48}
-              color="white"
-              strokeWidth={1.75}
-              className="animate-spin"
-            />
+        <div className='mx-auto w-4/5 text-center my-20 text-xl'>
+          <div className='mx-auto w-min mb-20 animate-bounce'>
+            <Meh size={48} color='white' strokeWidth={1.75} className='animate-spin' />
           </div>
-          <div className="md:w-3/5 mx-auto lg:w-2/5 text-gray-50">
-            {username} is yet to publish contributions to the books he or she
-            has read
+          <div className='md:w-3/5 mx-auto lg:w-2/5 text-gray-50'>
+            {username} is yet to publish contributions to the books he or she has read
           </div>
         </div>
       </div>
     );
 
   return (
-    <div className="relative pt-10 lg:pt-16">
+    <div className='relative pt-10 lg:pt-16'>
       <IconAndTitle title={`Books read by ${username}`} />
-      <WelcomeTop
-        bcgImg="bg-check-book-tiles"
-        text={`All books contributed to by ${username}`}
-      />
+      <WelcomeTop bcgImg='bg-check-book-tiles' text={`All books contributed to by ${username}`} />
 
-      <div className="mt-5">
+      {/* <div className='mt-5'>
         <SpecificSearch
-          placeholder="search within books"
+          placeholder='search within books'
           baseUrl={`/creators/${username}/books`}
           currentSearchTerms={currentSearchTerms}
         />
-      </div>
+      </div> */}
 
       <div>
-        <div className="py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto">
+        <div className='py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto'>
           {books.map((book) => {
             return (
               <div key={book.id}>
                 <div onClick={() => showBookInsights(book.id)}>
-                  <div className="rounded-md bg-white shadow-lg hover:bg-gray-50 hover:shadow-xl transition-all cursor-pointer active:shadow-inner border-b-2 border-blue-200 hover:border-blue-300">
+                  <div className='rounded-md bg-white shadow-lg hover:bg-gray-50 hover:shadow-xl transition-all cursor-pointer active:shadow-inner border-b-2 border-blue-200 hover:border-blue-300'>
                     <BookCard bookData={book} />
                   </div>
                 </div>

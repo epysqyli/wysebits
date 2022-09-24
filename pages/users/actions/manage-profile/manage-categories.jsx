@@ -1,9 +1,5 @@
 import IconAndTitle from "../../../../components/layout/IconAndTitle";
-import {
-  getLoggedUser,
-  getFavCategories,
-  getCategories,
-} from "../../../../lib/serverSideMethods";
+import { getLoggedUser, getFavCategories, getCategories } from "../../../../lib/serverSideMethods";
 
 import axios from "axios";
 import { useState } from "react";
@@ -17,8 +13,8 @@ export const getServerSideProps = async (context) => {
   return {
     props: {
       cats: categories.data,
-      favCats: favCategories.data,
-    },
+      favCats: favCategories.data
+    }
   };
 };
 
@@ -34,7 +30,7 @@ const ManageCategories = ({ cats, favCats, userState }) => {
       method: "post",
       url: `${process.env.BASE_URL}/users/${userState.user.id}/fav_categories`,
       data: { id: cat.id },
-      withCredentials: true,
+      withCredentials: true
     });
     addToState(cat);
   };
@@ -43,7 +39,7 @@ const ManageCategories = ({ cats, favCats, userState }) => {
     await axios({
       method: "delete",
       url: `${process.env.BASE_URL}/users/${userState.user.id}/fav_categories/${cat.id}`,
-      withCredentials: true,
+      withCredentials: true
     });
     removeFromState(cat);
   };
@@ -65,35 +61,30 @@ const ManageCategories = ({ cats, favCats, userState }) => {
   const noSelection = baseClass + " cursor-default";
 
   return (
-    <div className="pt-10 lg:pt-12">
-      <IconAndTitle title="Manage categories" />
+    <div className='pt-10 lg:pt-12'>
+      <IconAndTitle title='Manage categories' />
 
-      <div className="bg-categories bg-cover bg-center shadow select-none">
-        <div className="bg-gray-800 bg-opacity-70 text-white text-2xl font-medium text-center py-12">
+      <div className='bg-categories bg-cover bg-center shadow select-none'>
+        <div className='bg-gray-800 bg-opacity-70 text-white text-2xl font-medium text-center py-12'>
           <div>Update your favorite categories</div>
-          <div className="text-sm mt-5 font-normal w-4/5 mx-auto">
-            This will influence the suggestions that you get on the category
-            section of the feed
+          <div className='text-sm mt-5 font-normal w-4/5 mx-auto'>
+            This will influence the suggestions that you get on the category section of the feed
           </div>
         </div>
       </div>
 
-      <div className="mx-auto w-11/12 md:w-4/6 py-10 animate-show-up-slow">
-        <div className="text-center text-2xl text-gray-50 mb-10 border-b pb-2">
+      <div className='mx-auto w-11/12 md:w-4/6 py-10 animate-show-up-slow'>
+        <div className='text-center text-2xl text-gray-50 mb-10 border-b pb-2'>
           Choose up to three categories
         </div>
-        <div className="grid grid-cols-2 gap-y-2 gap-x-2 lg:grid-cols-3 lg:gap-y-3 lg:gap-x-3 xl:grid-cols-4">
+        <div className='grid grid-cols-2 gap-y-2 gap-x-2 lg:grid-cols-3 lg:gap-y-3 lg:gap-x-3 xl:grid-cols-4'>
           {categories.map((cat) => {
             return (
               <div
                 key={cat.id}
-                className={
-                  isFav(cat) ? favClass : !isAddable() ? noSelection : baseClass
-                }
+                className={isFav(cat) ? favClass : !isAddable() ? noSelection : baseClass}
                 onClick={() => {
-                  isFav(cat)
-                    ? removeFromFav(cat)
-                    : isAddable() && addToFav(cat);
+                  isFav(cat) ? removeFromFav(cat) : isAddable() && addToFav(cat);
                 }}
               >
                 {cat.name}

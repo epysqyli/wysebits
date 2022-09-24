@@ -6,22 +6,15 @@ const Avatar = ({ avatarUrl, size }) => {
     return (
       <Image
         src={avatarUrl}
-        className="animate-show-up-slow rounded-full"
-        layout="fixed"
+        className='animate-show-up-slow rounded-full'
+        layout='fixed'
         width={size}
         height={size}
-        objectFit="cover"
+        objectFit='cover'
       />
     );
 
-  return (
-    <User
-      size={size}
-      strokeWidth={1.5}
-      color="gray"
-      className="bg-gray-300 rounded-full p-2"
-    />
-  );
+  return <User size={size} strokeWidth={1.5} color='gray' className='bg-gray-300 rounded-full p-2' />;
 };
 
 export default Avatar;

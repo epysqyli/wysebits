@@ -25,16 +25,16 @@ const Slider = ({ entries }) => {
   };
 
   return (
-    <div className="flex justify-around items-center mx-auto py-5 bg-gray-50 cursor-default">
+    <div className='flex justify-around items-center mx-auto py-5 bg-gray-50 cursor-default'>
       <ChevronLeft
-        className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
+        className='text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105'
         onClick={decrement}
         size={30}
         strokeWidth={1.75}
       />
       <EntryPreview entry={entries[count]} />
       <ChevronRight
-        className="text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105"
+        className='text-gray-500 cursor-pointer hover:text-gray-700 active:scale-105'
         onClick={increment}
         size={30}
         strokeWidth={1.75}

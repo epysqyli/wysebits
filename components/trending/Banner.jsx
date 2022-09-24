@@ -15,9 +15,9 @@ const Banner = ({ text, iconProp }) => {
   }
 
   return (
-    <div className="flex justify-around items-center w-3/5 mx-auto border-b-2 py-2 px-5 text-white">
+    <div className='flex justify-around items-center w-3/5 mx-auto border-b-2 py-2 px-5 text-white'>
       {icon}
-      <span className="block bg-gray text-3xl">{text}</span>
+      <span className='block bg-gray text-3xl'>{text}</span>
     </div>
   );
 };
