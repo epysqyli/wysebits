@@ -5,7 +5,6 @@ import NoAccess from "../../../components/users/NoAccess";
 import Pagination from "../../../components/navigation/Pagination";
 import { getLoggedUser, getBookTiles } from "../../../lib/serverSideMethods";
 import { searchWithinBookTiles } from "../../../lib/searchMethods";
-import SpecificSearch from "../../../components/search/SpecificSearch";
 import NoResults from "../../../components/search/NoResults";
 import ExploreMore from "../../../components/navigation/ExploreMore";
 
@@ -47,14 +46,6 @@ const UserBookTiles = ({ bookTiles, pagy, userState, currentSearchTerms, searchP
         <IconAndTitle title='Your contributions' />
         <WelcomeTop text='Your contributions' bcgImg='bg-check-book-tiles' />
 
-        <div className='mt-5'>
-          <SpecificSearch
-            placeholder='search within books'
-            baseUrl={`/users/book-tiles`}
-            currentSearchTerms={currentSearchTerms}
-          />
-        </div>
-
         <NoResults />
       </div>
     );
@@ -78,14 +69,6 @@ const UserBookTiles = ({ bookTiles, pagy, userState, currentSearchTerms, searchP
       <div className='pt-10 lg:pt-16'>
         <IconAndTitle title='Your contributions' />
         <WelcomeTop text='Your contributions' bcgImg='bg-check-book-tiles' />
-
-        <div className='mt-5'>
-          <SpecificSearch
-            placeholder='search within books'
-            baseUrl={`/users/book-tiles`}
-            currentSearchTerms={currentSearchTerms}
-          />
-        </div>
 
         <div className='py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto'>
           {bookTiles.map((bookTile) => {

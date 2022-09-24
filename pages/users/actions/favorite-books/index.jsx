@@ -6,7 +6,6 @@ import WelcomeTop from "../../../../components/users/WelcomeTop";
 import NoAccess from "../../../../components/users/NoAccess";
 import Pagination from "../../../../components/navigation/Pagination";
 import { getLoggedUser, getFavBooks } from "../../../../lib/serverSideMethods";
-import SpecificSearch from "../../../../components/search/SpecificSearch";
 import { searchWithinFavBooks } from "../../../../lib/searchMethods";
 import NoResults from "../../../../components/search/NoResults";
 import ExploreMore from "../../../../components/navigation/ExploreMore";
@@ -53,13 +52,6 @@ const FavoriteBooks = ({ books, pagy, userState, currentSearchTerms, searchParam
         <IconAndTitle title='Favorite books' />
 
         <WelcomeTop text='Your favorite books' bcgImg='bg-liked-books' />
-        <div className='mt-5'>
-          <SpecificSearch
-            placeholder='search favorite books'
-            baseUrl='/users/actions/favorite-books'
-            currentSearchTerms={currentSearchTerms}
-          />
-        </div>
         <NoResults />
       </div>
     );
@@ -84,13 +76,6 @@ const FavoriteBooks = ({ books, pagy, userState, currentSearchTerms, searchParam
         <IconAndTitle title='Favorite books' />
 
         <WelcomeTop text='Your favorite books' bcgImg='bg-liked-books' />
-        <div className='mt-5'>
-          <SpecificSearch
-            placeholder='search favorite books'
-            baseUrl='/users/actions/favorite-books'
-            currentSearchTerms={currentSearchTerms}
-          />
-        </div>
         <div className='py-16 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto'>
           {books.map((item) => {
             return (

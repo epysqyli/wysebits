@@ -120,13 +120,13 @@ const UserBooks = ({
 
         <WelcomeTop bcgImg='bg-check-book-tiles' text={`All books contributed to by ${username}`} />
 
-        <div className='mt-5'>
+        {/* <div className='mt-5'>
           <SpecificSearch
             placeholder='search within books'
             baseUrl={`/creators/${username}/books`}
             currentSearchTerms={currentSearchTerms}
           />
-        </div>
+        </div> */}
 
         <NoResults />
       </div>
@@ -155,13 +155,13 @@ const UserBooks = ({
       <IconAndTitle title={`Books read by ${username}`} />
       <WelcomeTop bcgImg='bg-check-book-tiles' text={`All books contributed to by ${username}`} />
 
-      <div className='mt-5'>
+      {/* <div className='mt-5'>
         <SpecificSearch
           placeholder='search within books'
           baseUrl={`/creators/${username}/books`}
           currentSearchTerms={currentSearchTerms}
         />
-      </div>
+      </div> */}
 
       <div>
         <div className='py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto'>
