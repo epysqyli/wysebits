@@ -134,7 +134,7 @@ const Category = ({
       </div>
     );
 
-  if (books.length === 0 && searchTerms !== "")
+  if (books.length === 0 && searchTerms)
     return (
       <div className='pt-10 lg:pt-16'>
         <IconAndTitle title={`${capitalize(categoryName)} Books`} description='' />
