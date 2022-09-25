@@ -3,7 +3,7 @@ import Image from "next/dist/client/image";
 
 const CardBcgActions = ({ bookData, showEditForm, bcgImage }) => {
   return (
-    <div className='relative py-6 lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto'>
+    <div className='relative py-6 lg:w-4/5 2xl:w-2/3 lg:mt-5 lg:rounded-md mx-auto border-b-2 lg:border-2 border-white'>
       <Image
         src={bcgImage()}
         className='absolute blur backdrop-brightness-50 grayscale-25 contrast-50 lg:rounded-md'
