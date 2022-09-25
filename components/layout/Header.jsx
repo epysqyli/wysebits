@@ -17,17 +17,15 @@ const Header = ({ userState, userLoading }) => {
   };
 
   const guest = (
-    <div className='flex gap-x-2 text-sm bg-gray-100 py-1 px-2 rounded-md shadow'>
+    <div className='flex gap-x-5 text-sm py-1 px-2 rounded-md shadow text-slate-50'>
       <Link href='/registrations/login'>
-        <a className='flex items-center group cursor-pointer'>
-          <LogIn size={18} strokeWidth={1.75} className='group-hover:scale-110 transition-all' />
-          <div className='mx-3 group-active:text-white transition-all'>Login</div>
+        <a className='flex items-center cursor-pointer'>
+          <LogIn size={20} strokeWidth={2} className='hover:scale-110 transition-all' />
         </a>
       </Link>
       <Link href='/registrations/signup'>
-        <a className='flex items-center group cursor-pointer'>
-          <UserPlus size={18} strokeWidth={1.75} className='group-hover:scale-110 transition-all' />
-          <div className='mx-3 group-active:text-white transition-all'>Sign Up</div>
+        <a className='flex items-center cursor-pointer'>
+          <UserPlus size={20} strokeWidth={2} className='hover:scale-110 transition-all' />
         </a>
       </Link>
     </div>
@@ -69,7 +67,7 @@ const Header = ({ userState, userLoading }) => {
   );
 
   return (
-    <header className='flex justify-between items-center backdrop-blur backdrop-brightness-50 border-b-2 border-gray-300 px-2 md:px-5 py-2 text-center w-screen fixed shadow-sm z-50'>
+    <header className='flex justify-between items-center backdrop-blur backdrop-brightness-50 border-b-2 border-slate-300 px-2 md:px-5 py-2 text-center w-screen fixed shadow-sm z-50'>
       <Link href='/'>
         <div className='text-2xl bg-white rounded px-2 font-bold cursor-pointer hover:scale-105 transition-all active:text-white active:bg-gray-800'>
           Wbits.
