@@ -18,8 +18,6 @@ const BookUserInsights = ({
   setDownvotedEntries,
   followedUsers,
   setFollowedUsers,
-  addOverlay,
-  removeOverlay,
   currentBookId
 }) => {
   const isNarrow = useIsNarrow();
@@ -68,8 +66,6 @@ const BookUserInsights = ({
                 setDownvotedEntries={setDownvotedEntries}
                 followedUsers={followedUsers}
                 setFollowedUsers={setFollowedUsers}
-                addOverlay={addOverlay}
-                removeOverlay={removeOverlay}
               />
             ))}
           </div>

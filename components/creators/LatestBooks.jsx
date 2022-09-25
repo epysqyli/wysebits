@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import BookCard from "../books/BookCard";
 import BookUserInsights from "./BookUserInsights";
 import { getBookUserInsights } from "../../lib/creatorMethods";
+import { OverlayContext } from "../../hooks/OverlayContext";
 
 const LatestBooks = ({
   userId,
@@ -14,23 +15,22 @@ const LatestBooks = ({
   downvotedEntries,
   setDownvotedEntries,
   followedUsers,
-  setFollowedUsers,
-  addOverlay,
-  removeOverlay
+  setFollowedUsers
 }) => {
   const [latest] = useState(books.slice(0, 4));
   const [bookInsights, setBookInsights] = useState([]);
   const [currentBookId, setCurrentBookId] = useState(null);
+  const { showOverlay, hideOverlay } = useContext(OverlayContext);
 
   const showBookInsights = async (bookId) => {
-    addOverlay();
+    showOverlay();
     const resp = await getBookUserInsights(userId, bookId);
     setBookInsights(resp.data);
     setCurrentBookId(bookId);
   };
 
   const closeBookInsight = () => {
-    removeOverlay();
+    hideOverlay();
     setCurrentBookId(null);
   };
 
@@ -62,8 +62,6 @@ const LatestBooks = ({
           setDownvotedEntries={setDownvotedEntries}
           followedUsers={followedUsers}
           setFollowedUsers={setFollowedUsers}
-          addOverlay={addOverlay}
-          removeOverlay={removeOverlay}
           currentBookId={currentBookId}
         />
 
@@ -80,8 +78,6 @@ const LatestBooks = ({
             setDownvotedEntries={setDownvotedEntries}
             followedUsers={followedUsers}
             setFollowedUsers={setFollowedUsers}
-            addOverlay={addOverlay}
-            removeOverlay={removeOverlay}
             currentBookId={currentBookId}
           />
         )}

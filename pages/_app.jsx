@@ -4,11 +4,11 @@ import axios from "axios";
 import Layout from "../layouts/layout";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { OverlayProvider } from "../hooks/OverlayContext";
 import FullScreenLoader from "../components/navigation/FullScreenLoader";
 
 const MyApp = ({ Component, pageProps }) => {
   const [userLoading, setUserLoading] = useState(true);
-  const [activeOverlay, setActiveOverlay] = useState(false);
   const [userState, setUserState] = useState({
     isLogged: false,
     user: {}
@@ -51,9 +51,20 @@ const MyApp = ({ Component, pageProps }) => {
 
   const router = useRouter();
 
-  const overlay = "h-full w-full bg-gray-500 opacity-75 absolute top-0 z-20";
-  const addOverlay = () => setActiveOverlay(true);
-  const removeOverlay = () => setActiveOverlay(false);
+  const [activeOverlay, setActiveOverlay] = useState(false);
+  const [secondaryLayer, setSecondaryLayer] = useState(false);
+
+  const showOverlay = () => {
+    if (activeOverlay) setSecondaryLayer(true);
+    setActiveOverlay(true);
+  };
+
+  const hideOverlay = () => {
+    setActiveOverlay(false);
+    setSecondaryLayer(false);
+  };
+
+  const overlayStyle = "h-full w-full bg-slate-500 opacity-90 fixed top-0 z-10";
 
   useEffect(() => {
     router.events.on("routeChangeStart", () => {
@@ -62,7 +73,7 @@ const MyApp = ({ Component, pageProps }) => {
     });
 
     router.events.on("routeChangeComplete", () => {
-      removeOverlay();
+      hideOverlay();
       setLoading(false);
     });
 
@@ -75,20 +86,20 @@ const MyApp = ({ Component, pageProps }) => {
   }, []);
 
   return (
-    <Layout userState={userState} userLoading={userLoading}>
-      {loading === true ? <FullScreenLoader /> : null}
-      <Component
-        {...pageProps}
-        userState={userState}
-        userLoading={userLoading}
-        loginStatus={loginStatus}
-        handleLogin={handleLogin}
-        handleLogout={handleLogout}
-        addOverlay={addOverlay}
-        removeOverlay={removeOverlay}
-      />
-      {activeOverlay ? <div className={overlay}></div> : null}
-    </Layout>
+    <OverlayProvider value={{ showOverlay, hideOverlay, secondaryLayer: secondaryLayer }}>
+      <Layout userState={userState} userLoading={userLoading}>
+        {loading === true ? <FullScreenLoader /> : null}
+        <Component
+          {...pageProps}
+          userState={userState}
+          userLoading={userLoading}
+          loginStatus={loginStatus}
+          handleLogin={handleLogin}
+          handleLogout={handleLogout}
+        />
+        {activeOverlay ? <div className={overlayStyle}></div> : null}
+      </Layout>
+    </OverlayProvider>
   );
 };
 

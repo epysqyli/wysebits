@@ -46,17 +46,7 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-const Username = ({
-  user,
-  userState,
-  following,
-  favBooks,
-  favInsights,
-  entriesUp,
-  entriesDown,
-  addOverlay,
-  removeOverlay
-}) => {
+const Username = ({ user, userState, following, favBooks, favInsights, entriesUp, entriesDown }) => {
   const selectLatestEntries = () => {
     const definedBookTiles = user.book_tiles
       .filter((book_tile) => book_tile.tile_entries.length != 0)
@@ -99,8 +89,6 @@ const Username = ({
           setDownvotedEntries={setDownvotedEntries}
           followedUsers={followedUsers}
           setFollowedUsers={setFollowedUsers}
-          addOverlay={addOverlay}
-          removeOverlay={removeOverlay}
         />
       </div>
 

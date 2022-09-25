@@ -1,21 +1,23 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { Edit, UserPlus } from "react-feather";
 import CreatorLink from "../../navigation/CreatorLink";
 import CreateComment from "./CreateComment";
+import { OverlayContext } from "../../../hooks/OverlayContext";
 import Link from "next/dist/client/link";
 
-const Comments = ({ comments, setComments, entryId, userId, addOverlay, removeOverlay }) => {
+const Comments = ({ comments, setComments, entryId, userId }) => {
   const commentRef = useRef();
   const [showCreate, setShowCreate] = useState(false);
+  const { showOverlay, hideOverlay, secondaryLayer } = useContext(OverlayContext);
 
   const showForm = () => {
     setShowCreate(true);
-    addOverlay();
+    showOverlay();
   };
 
   const hideForm = () => {
     setShowCreate(false);
-    removeOverlay();
+    if (secondaryLayer === false) hideOverlay();
   };
 
   const updateCommentsState = (newComment) => {

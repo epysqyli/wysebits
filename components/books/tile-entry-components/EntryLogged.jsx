@@ -13,9 +13,7 @@ const EntryLogged = ({
   setDownvotedEntries,
   followedUsers,
   setFollowedUsers,
-  feed,
-  addOverlay,
-  removeOverlay
+  feed
 }) => {
   const [commentsView, setCommentsView] = useState(false);
   const [comments, setComments] = useState([]);
@@ -28,14 +26,7 @@ const EntryLogged = ({
       <div className='flex flex-col justify-around h-full min-h-24rem'>
         <div className='lg:border-b-2 lg:border-l-2 rounded-bl py-5 px-5 md:px-16 font-light whitespace-pre-line flex-grow mt-10 mx-auto text-justify md:text-left lg:mt-0 lg:w-full'>
           {commentsView ? (
-            <Comments
-              comments={comments}
-              entryId={entryProp.id}
-              setComments={setComments}
-              userId={user.id}
-              addOverlay={addOverlay}
-              removeOverlay={removeOverlay}
-            />
+            <Comments comments={comments} entryId={entryProp.id} setComments={setComments} userId={user.id} />
           ) : (
             entryProp.content
           )}
@@ -65,14 +56,7 @@ const EntryLogged = ({
     <div className='flex flex-col justify-around h-full min-h-24rem'>
       <div className='py-5 px-5 md:px-16 font-light whitespace-pre-line flex-grow'>
         {commentsView ? (
-          <Comments
-            comments={comments}
-            setComments={setComments}
-            entryId={entryProp.id}
-            userId={user.id}
-            addOverlay={addOverlay}
-            removeOverlay={removeOverlay}
-          />
+          <Comments comments={comments} setComments={setComments} entryId={entryProp.id} userId={user.id} />
         ) : (
           entryProp.content
         )}
