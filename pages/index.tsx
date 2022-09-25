@@ -46,7 +46,7 @@ const Home = ({ categories, userState, trending, addOverlay, removeOverlay }) =>
             </div>
           </div>
           <div className='mt-10 xl:mt-16 mx-auto lg:w-4/5 xl:w-full'>
-            <MultiSearch authorKeywords="" bookKeywords="" />
+            <MultiSearch />
           </div>
         </div>
 

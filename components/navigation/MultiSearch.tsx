@@ -1,15 +1,20 @@
 import { Search } from "react-feather";
-import { useState } from "react";
+import { ReactElement, useState, FormEvent } from "react";
 import { useRouter } from "next/dist/client/router";
 
-const MultiSearch = ({ authorKeywords, bookKeywords }) => {
+interface Props {
+  authorKeywords?: string;
+  bookKeywords?: string;
+}
+
+const MultiSearch = ({ authorKeywords, bookKeywords }: Props): ReactElement => {
   const [searchTerms, setSearchTerms] = useState({
     author_keywords: authorKeywords || "",
     book_keywords: bookKeywords || ""
   });
 
-  const handleChange = (e) => {
-    setSearchTerms({ ...searchTerms, [e.target.name]: e.target.value });
+  const handleChange = (e: FormEvent<HTMLInputElement>) => {
+    setSearchTerms({ ...searchTerms, [e.currentTarget.name]: e.currentTarget.value });
   };
 
   const router = useRouter();
@@ -27,7 +32,7 @@ const MultiSearch = ({ authorKeywords, bookKeywords }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     search();
   };
