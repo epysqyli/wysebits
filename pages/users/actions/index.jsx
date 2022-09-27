@@ -15,7 +15,7 @@ const Actions = ({ userState }) => {
           </div>
         </div>
 
-        <div className='mx-auto w-4/5 lg:w-4/6 xl:w-5/6 2xl:w-3/4 py-4 md:py-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-2 md:gap-y-4 md:gap-x-2'>
+        <div className='mx-auto w-11/12 lg:w-4/6 xl:w-5/6 2xl:w-3/4 py-4 md:py-16 grid grid-cols-2 xl:grid-cols-3 gap-y-2 md:gap-y-4 gap-x-2'>
           <div>
             <UserAction text='Share your knowledge' bcgImg='bg-create-tile' href='/users/book-search/' />
           </div>
