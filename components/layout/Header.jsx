@@ -17,7 +17,7 @@ const Header = ({ userState, userLoading }) => {
   };
 
   const guest = (
-    <div className='flex gap-x-5 text-sm py-1 px-2 rounded-md shadow text-slate-50'>
+    <div className='flex gap-x-5 text-sm py-1 px-2 rounded-md text-slate-50'>
       <Link href='/registrations/login'>
         <a className='flex items-center cursor-pointer'>
           <LogIn size={20} strokeWidth={2} className='hover:scale-110 transition-all' />
