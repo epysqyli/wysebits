@@ -77,7 +77,7 @@ const Stats = ({ entries }) => {
                   href={`/books/${slug(
                     entries.most_upvoted.book_tile.book.title,
                     entries.most_upvoted.book_tile.book.id
-                  )}/1`}
+                  )}?page=1`}
                 >
                   <div className='my-2 cursor-pointer'>{entries.most_upvoted.book_tile.book.title}</div>
                 </Link>
@@ -85,7 +85,7 @@ const Stats = ({ entries }) => {
                   href={`/authors/${slug(
                     entries.most_upvoted.book_tile.book.authors[0].full_name,
                     entries.most_upvoted.book_tile.book.authors[0].id
-                  )}/1`}
+                  )}?page=1`}
                 >
                   <div className='my-2 text-sm italic cursor-pointer hover:text-black'>
                     {entries.most_upvoted.book_tile.book.authors[0].full_name}
@@ -117,7 +117,7 @@ const Stats = ({ entries }) => {
                   href={`/books/${slug(
                     entries.most_downvoted.book_tile.book.title,
                     entries.most_downvoted.book_tile.book.id
-                  )}/1`}
+                  )}?page=1`}
                 >
                   <div className='my-2 cursor-pointer'>{entries.most_downvoted.book_tile.book.title}</div>
                 </Link>
@@ -125,7 +125,7 @@ const Stats = ({ entries }) => {
                   href={`/authors/${slug(
                     entries.most_downvoted.book_tile.book.authors[0].full_name,
                     entries.most_downvoted.book_tile.book.authors[0].id
-                  )}/1`}
+                  )}?page=1`}
                 >
                   <div className='my-2 text-sm italic cursor-pointer hover:text-black'>
                     {entries.most_downvoted.book_tile.book.authors[0].full_name}
