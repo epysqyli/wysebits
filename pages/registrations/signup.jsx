@@ -55,19 +55,23 @@ const SignUp = () => {
     isMatching(userData.password, userData.passwordConfirmation);
   }, [userData.passwordConfirmation]);
 
-  useEffect(async () => {
+  useEffect(() => {
     if (userData.username.length > 3) {
-      const resp = await isUsernameAvailable(userData.username);
-      setUsernameAvailable(resp.data);
+      (async () => {
+        const resp = await isUsernameAvailable(userData.username);
+        setUsernameAvailable(resp.data);
+      })();
     } else {
       setUsernameAvailable(false);
     }
   }, [userData.username]);
 
-  useEffect(async () => {
+  useEffect(() => {
     if (userData.emailAddress.length > 5) {
-      const resp = await isEmailAvailable(userData.emailAddress);
-      setEmailAvailable(resp.data);
+      (async () => {
+        const resp = await isEmailAvailable(userData.emailAddress);
+        setEmailAvailable(resp.data);
+      })();
     } else {
       setEmailAvailable(false);
     }
