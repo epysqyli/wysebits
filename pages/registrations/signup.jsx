@@ -48,7 +48,6 @@ const SignUp = () => {
       data: formData
     });
 
-    console.log(resp);
     if (resp.status === 200) setEmailSent(true);
   };
 
