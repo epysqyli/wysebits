@@ -55,7 +55,7 @@ const Home = ({ categories, userState, trending, addOverlay, removeOverlay }) =>
             <List size={60} strokeWidth={2} className='text-white' />
             <div className='text-5xl lg:text-6xl text-gray-50 font-medium'>Categories</div>
           </div>
-          <div className='grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4'>
+          <div className='grid grid-cols-2 md:grid-cols-3 gap-x-4 lg:gap-x-8 gap-y-4'>
             {categories.map((category) => {
               return <CategoryButton category={category} key={category.id} />;
             })}

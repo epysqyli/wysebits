@@ -16,13 +16,11 @@ const CategoryButton = ({ category }: Props) => {
         }
       }}
     >
-      <div
-        className='text-xl tracking-tight h-16 cursor-pointer transition-all relative group shadow-lg text-gray-50 border-gray-50 border-2 hover:bg-gray-50 hover:text-gray-700 hover:border-blue-300 rounded-md'
-      >
+      <div className='text-xl tracking-tight h-16 cursor-pointer relative text-white border-slate-400 border-2 rounded-md hover:shadow-md group'>
         <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11/12'>
           <div className='text-center select-none'>{category.name}</div>
         </div>
-        <div className='h-full w-full bg-gradient-to-l to-transparent from-white opacity-20'></div>
+        <div className='h-full w-full rounded-md bg-gradient-to-r from-slate-600 to-slate-700 group-hover:to-slate-800  group-active:to-slate-900'></div>
       </div>
     </Link>
   );
