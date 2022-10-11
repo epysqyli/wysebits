@@ -21,7 +21,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const Home = ({ categories, userState, trending, addOverlay, removeOverlay }) => {
+const Home = ({ categories, userState, trending }) => {
   return (
     <div className='pt-12 lg:pt-16 2xl:pt-20'>
       <IconAndTitle
