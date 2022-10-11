@@ -23,7 +23,7 @@ export const getStaticProps = async () => {
 
 const Home = ({ categories, userState, trending }) => {
   return (
-    <div className='pt-12 lg:pt-16 2xl:pt-20'>
+    <div className='pt-10 lg:pt-14 2xl:pt-20'>
       <IconAndTitle
         title='Wysebits'
         description='The best idea for every book. Ever felt like you keep forgetting what the personal key takeaways from a book are? Wysebits provides a simple way to share and rank ideas. No quotes, summaries, or other shortcuts. Just ideas.'
