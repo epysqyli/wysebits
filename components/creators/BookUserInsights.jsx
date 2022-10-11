@@ -31,7 +31,7 @@ const BookUserInsights = ({
           transition={transition}
           style={style}
           exit={{ opacity: [0.8, 0], scale: [1, 0.95] }}
-          className='z-30 w-full lg:w-5/6 xl:w-3/5 2xl:w-1/2 h-full lg:h-1/3 bg-white md:pt-20 md:pb-10 lg:py-5 px-2 lg:rounded-md lg:shadow overflow-auto'
+          className='z-30 w-full lg:w-5/6 xl:w-3/5 2xl:w-1/2 h-full lg:h-1/3 2xl:h-2/3 bg-white md:pt-20 md:pb-10 lg:py-5 px-2 lg:rounded-md lg:shadow overflow-auto'
         >
           <div className='overflow-y-auto max-h-full w-full'>
             <div className='flex justify-around items-center mx-auto w-5/6 py-4 mt-14 md:mt-0 mb-5 border-b border-gray-400'>
