@@ -16,7 +16,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       categories: categories.data.filter((category) => category.name !== "Various"),
-      trending: weeklyTrend.data,
+      trending: weeklyTrend.data
     }
   };
 };
@@ -76,12 +76,7 @@ const Home = ({ categories, userState, trending, addOverlay, removeOverlay }) =>
           </div>
         </div>
         <div className='md:w-4/5 md:mx-auto mt-10 lg:mt-20 lg:w-3/5 2xl:w-1/2'>
-          <TrendingEntry
-            entry={trending.insight}
-            userId={userState.user.id}
-            addOverlay={addOverlay}
-            removeOverlay={removeOverlay}
-          />
+          <TrendingEntry entry={trending.insight} userId={userState.user.id} />
         </div>
       </div>
 
