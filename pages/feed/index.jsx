@@ -166,7 +166,7 @@ const Feed = ({
     return (
       <div className='pt-10 lg:pt-16'>
         <IconAndTitle title='Insights' />
-        <div className='bg-feed bg-cover bg-center shadow lg:w-4/5 2xl:w-3/5 lg:my-5 lg:rounded-md mx-auto lg:mb-20'>
+        <div className='bg-feed bg-cover bg-center shadow lg:w-4/5 xl:w-2/3 2xl:w-3/5 lg:my-5 lg:rounded-md mx-auto lg:mb-20'>
           <div className='bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-20 lg:rounded-md'>
             Latest insights
           </div>
@@ -256,7 +256,7 @@ const Feed = ({
   return (
     <div className='pt-10 lg:pt-16'>
       <IconAndTitle title='Insights' />
-      <div className='bg-feed bg-cover bg-center shadow lg:w-4/5 2xl:w-3/5 lg:my-5 lg:rounded-md mx-auto lg:mb-20'>
+      <div className='bg-feed bg-cover bg-center shadow lg:w-4/5 xl:w-2/3 2xl:w-3/5 lg:my-5 lg:rounded-md mx-auto lg:mb-20'>
         <div className='bg-gray-800 bg-opacity-70 text-white text-4xl font-bold text-center py-20 lg:rounded-md'>
           Latest insights
         </div>
