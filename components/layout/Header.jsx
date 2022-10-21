@@ -62,7 +62,7 @@ const Header = ({ userState, userLoading }) => {
   return (
     <header className='flex justify-between items-center backdrop-blur backdrop-brightness-50 border-b-2 border-slate-300 px-2 md:px-5 py-1 text-center w-screen fixed shadow-sm z-50'>
       <Link href='/'>
-        <div className='text-2xl scale-95 bg-white rounded px-3 font-bold cursor-pointer hover:scale-105 transition-all active:text-white active:bg-gray-800'>
+        <div className='text-2xl scale-95 bg-white rounded px-1 font-bold cursor-pointer transition-all active:text-white active:bg-gray-800'>
           Wbits.
         </div>
       </Link>
