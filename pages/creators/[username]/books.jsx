@@ -5,8 +5,8 @@ import Pagination from "../../../components/navigation/Pagination";
 import BookUserInsights from "../../../components/creators/BookUserInsights";
 import { getBookUserInsights } from "../../../lib/creatorMethods";
 import { searchWithinBookTiles } from "../../../lib/searchMethods";
-import SpecificSearch from "../../../components/search/SpecificSearch";
 import NoResults from "../../../components/search/NoResults";
+import { OverlayContext } from "../../../hooks/OverlayContext";
 
 import { isLogged } from "../../../lib/auth";
 
@@ -21,6 +21,7 @@ import {
 import { Meh } from "react-feather";
 import WelcomeTop from "../../../components/users/WelcomeTop";
 import IconAndTitle from "../../../components/layout/IconAndTitle";
+import { useContext } from "react";
 
 export const getServerSideProps = async (context) => {
   const username = context.params.username;
@@ -86,11 +87,10 @@ const UserBooks = ({
   entriesUp,
   entriesDown,
   currentSearchTerms,
-  searchParams,
-  removeOverlay,
-  addOverlay
+  searchParams
 }) => {
   const clientUrl = `/creators/${username}/books`;
+  const { showOverlay, hideOverlay } = useContext(OverlayContext);
 
   const [followedUsers, setFollowedUsers] = useState(following);
   const [insights, setInsights] = useState(
@@ -102,14 +102,14 @@ const UserBooks = ({
   const [bookInsights, setBookInsights] = useState([]);
 
   const showBookInsights = async (bookId) => {
-    addOverlay();
+    showOverlay();
     const resp = await getBookUserInsights(userId, bookId);
     setBookInsights(resp.data);
     setCurrentBookId(bookId);
   };
 
   const closeBookInsight = () => {
-    removeOverlay();
+    hideOverlay();
     setCurrentBookId(null);
   };
 
@@ -117,17 +117,7 @@ const UserBooks = ({
     return (
       <div className='pt-10 lg:pt-16'>
         <IconAndTitle title={`Books read by ${username}`} />
-
         <WelcomeTop bcgImg='bg-check-book-tiles' text={`All books contributed to by ${username}`} />
-
-        {/* <div className='mt-5'>
-          <SpecificSearch
-            placeholder='search within books'
-            baseUrl={`/creators/${username}/books`}
-            currentSearchTerms={currentSearchTerms}
-          />
-        </div> */}
-
         <NoResults />
       </div>
     );
@@ -154,15 +144,6 @@ const UserBooks = ({
     <div className='relative pt-10 lg:pt-16'>
       <IconAndTitle title={`Books read by ${username}`} />
       <WelcomeTop bcgImg='bg-check-book-tiles' text={`All books contributed to by ${username}`} />
-
-      {/* <div className='mt-5'>
-        <SpecificSearch
-          placeholder='search within books'
-          baseUrl={`/creators/${username}/books`}
-          currentSearchTerms={currentSearchTerms}
-        />
-      </div> */}
-
       <div>
         <div className='py-10 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto'>
           {books.map((book) => {
@@ -190,8 +171,6 @@ const UserBooks = ({
           setDownvotedEntries={setDownvotedEntries}
           followedUsers={followedUsers}
           setFollowedUsers={setFollowedUsers}
-          addOverlay={addOverlay}
-          removeOverlay={removeOverlay}
           currentBookId={currentBookId}
         />
 
@@ -208,8 +187,6 @@ const UserBooks = ({
             setDownvotedEntries={setDownvotedEntries}
             followedUsers={followedUsers}
             setFollowedUsers={setFollowedUsers}
-            addOverlay={addOverlay}
-            removeOverlay={removeOverlay}
             currentBookId={currentBookId}
           />
         )}
