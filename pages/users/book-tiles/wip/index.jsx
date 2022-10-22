@@ -54,7 +54,7 @@ const WorkInProgress = ({ books, pagy, userState }) => {
         <IconAndTitle title='Work in progress contributions' />
 
         <WelcomeTop text='Contributions you are working on' bcgImg='bg-wip-contributions' />
-        <div className='py-16 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto'>
+        <div className='py-16 pb-20 w-11/12 lg:w-4/5 xl:w-11/12 2xl:w-3/4 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 mx-auto'>
           {books.map((item) => {
             return (
               <Link href={`/users/book-tiles/create/${item.book.id}`} key={item.book.id}>

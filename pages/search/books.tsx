@@ -118,7 +118,7 @@ const BookSearchResults = ({ searchResults, bookKeywords, authorKeywords, page, 
         <div className='py-10 w-4/5 mx-auto md:w-4/6 lg:w-3/6 xl:w-2/5'>
           <MultiSearch bookKeywords={bookKeywords} authorKeywords={authorKeywords} />
         </div>
-        <div className='pt-10 pb-20 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto'>
+        <div className='py-16 pb-20 w-11/12 lg:w-4/5 xl:w-11/12 2xl:w-3/4 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 mx-auto'>
           {searchResults.length != 0
             ? searchResults.map((book) => {
                 return (

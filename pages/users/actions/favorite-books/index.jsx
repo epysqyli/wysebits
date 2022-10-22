@@ -76,7 +76,7 @@ const FavoriteBooks = ({ books, pagy, userState, currentSearchTerms, searchParam
         <IconAndTitle title='Favorite books' />
 
         <WelcomeTop text='Your favorite books' bcgImg='bg-liked-books' />
-        <div className='py-16 w-11/12 lg:w-4/5 xl:w-11/12 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4 mx-auto'>
+        <div className='py-16 pb-20 w-11/12 lg:w-4/5 xl:w-11/12 2xl:w-3/4 grid gap-y-12 md:grid-cols-2 md:gap-x-6 xl:grid-cols-3 xl:gap-x-10 mx-auto'>
           {books.map((item) => {
             return (
               <Link href={`/books/${slug(item.book.title, item.book.id)}?page=1`} key={item.book.id}>
