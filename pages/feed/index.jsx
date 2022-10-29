@@ -172,11 +172,11 @@ const Feed = ({
           </div>
         </div>
 
-        <div className='flex items-center md:mt-5 md:w-4/5 xl:w-4/6 2xl:w-1/2 mx-auto md:gap-x-2 my-1'>
+        <div className='flex items-center md:mt-5 w-11/12 md:w-4/5 xl:w-4/6 2xl:w-1/2 mx-auto gap-x-1 md:gap-x-2 my-2 md:my-1'>
           <div
-            className={`text-gray-200 w-1/2 py-4 text-center rounded md:border-2 transition-all hover:text-black ${
+            className={`text-gray-200 w-1/2 py-2 text-center transition-all border-b-2 border-transparent hover:border-slate-100  ${
               currentSelection === "following_feed"
-                ? "md:border-gray-300 bg-gray-50 inner-shadow text-black"
+                ? " inner-shadow text-slate-50 border-b border-slate-100"
                 : "cursor-pointer opacity-30"
             }`}
             onClick={selectFollowingEntries}
@@ -186,9 +186,9 @@ const Feed = ({
           </div>
 
           <div
-            className={`text-gray-200 w-1/2 py-4 text-center rounded md:border-2 transition-all hover:text-black ${
+            className={`text-gray-200 w-1/2 py-2 text-center transition-all border-b-2 border-transparent hover:border-slate-100 ${
               currentSelection === "categories_feed"
-                ? "md:border-gray-300 bg-gray-50 inner-shadow text-black"
+                ? " inner-shadow text-slate-50"
                 : "cursor-pointer opacity-30"
             }`}
             onClick={selectFavCatsEntries}
@@ -198,10 +198,8 @@ const Feed = ({
           </div>
 
           <div
-            className={`text-gray-200 w-1/2 py-4 text-center rounded md:border-2 transition-all hover:text-black ${
-              currentSelection === "user_feed"
-                ? "md:border-gray-300 bg-gray-50 inner-shadow text-black"
-                : "cursor-pointer opacity-30"
+            className={`text-gray-200 w-1/2 py-2 text-center transition-all border-b-2 border-transparent hover:border-slate-100 ${
+              currentSelection === "user_feed" ? " inner-shadow text-slate-50" : "cursor-pointer opacity-30"
             }`}
             onClick={selectGlobalEntries}
           >
