@@ -63,7 +63,9 @@ const Home = ({ categories, userState, trending }) => {
         </div>
       </div>
 
-      <IndexFloatingFeed />
+      <div className="mt-28 lg:my-32">
+        <IndexFloatingFeed />
+      </div>
 
       <div className='w-11/12 xl:w-4/5 2xl:w-3/4 mx-auto mb-20'>
         <span className='block text-gray-50 text-center mb-10 text-5xl pt-16'>Trending this week</span>
