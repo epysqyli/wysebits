@@ -23,7 +23,7 @@ export const getStaticProps = async () => {
 
 const Home = ({ categories, userState, trending }) => {
   return (
-    <div className='pt-10 lg:pt-14 2xl:pt-20'>
+    <div className='pt-10 lg:pt-14 2xl:pt-20 relative'>
       <IconAndTitle
         title='Wysebits'
         description='The best idea for every book. Ever felt like you keep forgetting what the personal key takeaways from a book are? Wysebits provides a simple way to share and rank ideas. No quotes, summaries, or other shortcuts. Just ideas.'
@@ -63,7 +63,7 @@ const Home = ({ categories, userState, trending }) => {
         </div>
       </div>
 
-      <div className="mt-28 lg:my-32">
+      <div className='mt-28 lg:my-32'>
         <IndexFloatingFeed />
       </div>
 
@@ -91,6 +91,12 @@ const Home = ({ categories, userState, trending }) => {
           </Link>
         </div>
       )}
+
+      <div className='absolute h-72 w-5/6 lg:w-11/12 bg-slate-700 opacity-50 -bottom-20 left-0 -z-10 rounded-tr-full'/>
+      <div className='absolute h-40 w-full lg:w-1/2 bg-slate-700 opacity-70 -bottom-20 right-50 -z-10 rounded-tl-full rounded-tr-full'/>
+      <div className='absolute h-96 w-4/5 lg:w-9/12 bg-slate-700 opacity-50 -bottom-20 right-0 -z-10 rounded-tl-full'/>
+      <div className='absolute h-96 w-4/5 lg:w-2/5 bg-slate-400 opacity-90 lg:opacity-75 -bottom-20 left-0 -z-10 rounded-tr-full'/>
+      <div className='absolute h-48 w-2/5 lg:w-1/5 bg-slate-700 opacity-90 lg:opacity-75 -bottom-20 left-0 -z-10 rounded-tr-full'/>
     </div>
   );
 };
