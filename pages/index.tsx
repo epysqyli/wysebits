@@ -39,7 +39,7 @@ const Home = ({ categories, userState, trending }) => {
       </div>
 
       <div className='xl:flex xl:w-11/12 xl:mx-auto 2xl:w-3/4'>
-        <div className='mx-auto mb-20 xl:mb-10 mt-10 xl:mt-0 px-4 w-11/12 md:w-4/6 lg:w-3/5 xl:w-2/5 relative py-10 xl:py-0'>
+        <div className='mx-auto mb-20 xl:mb-10 mt-10 xl:mt-0 px-4 md:w-4/6 lg:w-3/5 xl:w-2/5 relative py-10 xl:py-0'>
           <div className='text-gray-700 md:mb-8 pb-5 xl:py-7 xl:border-b-2 mt-2 lg:mt-0'>
             <div className='text-5xl md:text-6xl lg:text-7xl xl:text-6xl text-white mb-5 md:my-9 text-center font-medium tracking-tight'>
               Search Books
@@ -48,6 +48,10 @@ const Home = ({ categories, userState, trending }) => {
           <div className='mt-10 xl:mt-16 mx-auto lg:w-4/5 xl:w-full'>
             <MultiSearch />
           </div>
+          <div className='absolute h-40 w-1/2 bg-slate-800 opacity-40 top-0 md:top-4 xl:top-5 left-0 -z-10 rounded-tl-3xl xl:rounded-bl-3xl' />
+          <div className='absolute h-40 w-1/2 bg-slate-800 opacity-40 top-0 md:top-4 xl:top-5 left-1/2 -z-10 rounded-tr-3xl rounded-br-3xl' />
+          <div className='absolute h-48 w-1/2 bg-neutral-900 opacity-25 top-1/3 lg:top-40 xl:top-1/4 left-0 -z-10 rounded-tl-3xl rounded-bl-3xl' />
+          <div className='absolute h-48 w-1/2 bg-neutral-900 opacity-25 top-1/3 lg:top-40 xl:top-1/4 left-1/2 -z-10 xl:rounded-tr-3xl rounded-br-3xl' />
         </div>
 
         <div className='mb-12 mt-30 xl:mt-0 xl:mb-10 w-11/12 mx-auto md:w-5/6 lg:w-3/5 xl:w-1/2 pb-10'>
@@ -92,11 +96,11 @@ const Home = ({ categories, userState, trending }) => {
         </div>
       )}
 
-      <div className='absolute h-72 w-5/6 lg:w-11/12 bg-slate-700 opacity-50 -bottom-20 left-0 -z-10 rounded-tr-full'/>
-      <div className='absolute h-40 w-full lg:w-1/2 bg-slate-700 opacity-70 -bottom-20 right-50 -z-10 rounded-tl-full rounded-tr-full'/>
-      <div className='absolute h-96 w-4/5 lg:w-9/12 bg-slate-700 opacity-50 -bottom-20 right-0 -z-10 rounded-tl-full'/>
-      <div className='absolute h-96 w-4/5 lg:w-2/5 bg-slate-400 opacity-90 lg:opacity-75 -bottom-20 left-0 -z-10 rounded-tr-full'/>
-      <div className='absolute h-48 w-2/5 lg:w-1/5 bg-slate-700 opacity-90 lg:opacity-75 -bottom-20 left-0 -z-10 rounded-tr-full'/>
+      <div className='absolute h-72 w-5/6 lg:w-11/12 bg-slate-700 opacity-50 -bottom-20 left-0 -z-10 rounded-tr-full' />
+      <div className='absolute h-40 w-full lg:w-1/2 bg-slate-700 opacity-70 -bottom-20 right-50 -z-10 rounded-tl-full rounded-tr-full' />
+      <div className='absolute h-96 w-4/5 lg:w-9/12 bg-slate-700 opacity-50 -bottom-20 right-0 -z-10 rounded-tl-full' />
+      <div className='absolute h-96 w-4/5 lg:w-2/5 bg-slate-400 opacity-90 lg:opacity-75 -bottom-20 left-0 -z-10 rounded-tr-full' />
+      <div className='absolute h-48 w-2/5 lg:w-1/5 bg-slate-700 opacity-90 lg:opacity-75 -bottom-20 left-0 -z-10 rounded-tr-full' />
     </div>
   );
 };
