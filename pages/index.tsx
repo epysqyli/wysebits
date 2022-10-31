@@ -48,10 +48,10 @@ const Home = ({ categories, userState, trending }) => {
           <div className='mt-10 xl:mt-16 mx-auto lg:w-4/5 xl:w-full'>
             <MultiSearch />
           </div>
-          <div className='absolute h-40 w-1/2 bg-slate-800 opacity-40 top-0 md:top-4 xl:top-5 left-0 -z-10 rounded-tl-3xl xl:rounded-bl-3xl' />
-          <div className='absolute h-40 w-1/2 bg-slate-800 opacity-40 top-0 md:top-4 xl:top-5 left-1/2 -z-10 rounded-tr-3xl rounded-br-3xl' />
-          <div className='absolute h-48 w-1/2 bg-neutral-900 opacity-25 top-1/3 lg:top-40 xl:top-1/4 left-0 -z-10 rounded-tl-3xl rounded-bl-3xl' />
-          <div className='absolute h-48 w-1/2 bg-neutral-900 opacity-25 top-1/3 lg:top-40 xl:top-1/4 left-1/2 -z-10 xl:rounded-tr-3xl rounded-br-3xl' />
+          <div className='absolute h-40 w-1/2 bg-slate-600 opacity-50 top-9 md:top-4 xl:top-5 left-0 -z-10 rounded-tl-3xl' />
+          <div className='absolute h-40 w-1/2 bg-slate-600 opacity-50 top-9 md:top-4 xl:top-5 left-1/2 -z-10 rounded-tr-3xl' />
+          <div className='absolute h-36 w-1/2 bg-neutral-800 opacity-25 top-1/2 lg:top-40 lg:h-48 xl:top-1/4 left-0 -z-10 rounded-bl-3xl' />
+          <div className='absolute h-36 w-1/2 bg-neutral-800 opacity-25 top-1/2 lg:top-40 lg:h-48 xl:top-1/4 left-1/2 -z-10 rounded-br-3xl' />
         </div>
 
         <div className='mb-12 mt-30 xl:mt-0 xl:mb-10 w-11/12 mx-auto md:w-5/6 lg:w-3/5 xl:w-1/2 pb-10'>
