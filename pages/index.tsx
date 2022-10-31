@@ -39,8 +39,8 @@ const Home = ({ categories, userState, trending }) => {
       </div>
 
       <div className='xl:flex xl:w-11/12 xl:mx-auto 2xl:w-3/4'>
-        <div className='mx-auto mb-20 xl:mb-10 mt-10 xl:mt-0 px-4 md:w-4/6 lg:w-3/5 xl:w-2/5 relative py-10 xl:py-0'>
-          <div className='text-gray-700 md:mb-8 pb-5 xl:py-7 xl:border-b-2 mt-2 lg:mt-0'>
+        <div className='mx-auto mb-20 xl:mb-10 md:mt-10 xl:mt-0 px-4 md:w-4/6 lg:w-3/5 xl:w-2/5 relative py-10 xl:py-0'>
+          <div className='text-gray-700 md:mb-8 pb-5 xl:py-7 xl:border-b-2'>
             <div className='text-5xl md:text-6xl lg:text-7xl xl:text-6xl text-white mb-5 md:my-9 text-center font-medium tracking-tight'>
               Search Books
             </div>
@@ -48,16 +48,24 @@ const Home = ({ categories, userState, trending }) => {
           <div className='mt-10 xl:mt-16 mx-auto lg:w-4/5 xl:w-full'>
             <MultiSearch />
           </div>
-          <div className='absolute h-40 w-1/2 bg-slate-600 opacity-50 top-9 md:top-4 xl:top-5 left-0 -z-10 rounded-tl-3xl' />
-          <div className='absolute h-40 w-1/2 bg-slate-600 opacity-50 top-9 md:top-4 xl:top-5 left-1/2 -z-10 rounded-tr-3xl' />
-          <div className='absolute h-36 w-1/2 bg-neutral-800 opacity-25 top-1/2 lg:top-40 lg:h-48 xl:top-1/4 left-0 -z-10 rounded-bl-3xl' />
-          <div className='absolute h-36 w-1/2 bg-neutral-800 opacity-25 top-1/2 lg:top-40 lg:h-48 xl:top-1/4 left-1/2 -z-10 rounded-br-3xl' />
+          <div className='absolute h-40 md:rounded-md w-full top-0 left-0 bg-slate-600 opacity-5 -z-10' />
+            <div className='absolute h-36 md:rounded-md w-full top-0 left-0 bg-slate-700 opacity-10 -z-10' />
+            <div className='absolute h-32 md:rounded-md w-full top-0 left-0 bg-slate-800 opacity-20 -z-10' />
+            <div className='absolute h-28 md:rounded-md w-full top-0 left-0 bg-slate-900 opacity-25 -z-10' />
+            <div className='absolute h-24 md:rounded-md w-full top-0 left-0 bg-slate-900 opacity-30 -z-10' />
+            <div className='absolute h-20 md:rounded-md w-full top-0 left-0 bg-slate-900 opacity-30 -z-10' />
         </div>
 
         <div className='mb-12 mt-30 xl:mt-0 xl:mb-10 w-11/12 mx-auto md:w-5/6 lg:w-3/5 xl:w-1/2 pb-10'>
-          <div className='hidden xl:flex justify-center items-center xl:border-b-2 gap-x-5 xl:gap-x-10 mb-10 md:mb-16 py-8 xl:py-16'>
+          <div className='hidden xl:flex justify-center items-center xl:border-b-2 gap-x-5 xl:gap-x-10 mb-10 md:mb-16 py-8 xl:py-16 relative'>
             <List size={60} strokeWidth={2} className='text-white' />
             <div className='text-5xl lg:text-6xl text-gray-50 font-medium'>Categories</div>
+            <div className='absolute h-40 md:rounded-md w-full top-0 left-0 bg-slate-600 opacity-5 -z-10' />
+            <div className='absolute h-36 md:rounded-md w-full top-0 left-0 bg-slate-700 opacity-10 -z-10' />
+            <div className='absolute h-32 md:rounded-md w-full top-0 left-0 bg-slate-800 opacity-20 -z-10' />
+            <div className='absolute h-28 md:rounded-md w-full top-0 left-0 bg-slate-900 opacity-25 -z-10' />
+            <div className='absolute h-24 md:rounded-md w-full top-0 left-0 bg-slate-900 opacity-30 -z-10' />
+            <div className='absolute h-20 md:rounded-md w-full top-0 left-0 bg-slate-900 opacity-30 -z-10' />
           </div>
           <div className='grid grid-cols-2 md:grid-cols-3 gap-x-4 lg:gap-x-8 gap-y-4'>
             {categories.map((category) => {
