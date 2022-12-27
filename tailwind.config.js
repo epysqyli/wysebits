@@ -4,7 +4,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "bottom-home": "url('/images/ai-banner.jpg')",
-        library: "url('/images/library.jpg')",
+        library: "url('/images/library.webp')",
         "signup-top": "url('/images/signup-top.jpg')",
         "login-top": "url('/images/progress.jpg')",
         "check-book-tiles": "url('/images/create-book-tile.jpg')",
