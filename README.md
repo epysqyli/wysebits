@@ -1,7 +1,12 @@
-# TBD
+# Wysebits 
 
-Next.js Tailwind frontend for wysebits
+Frontend for [wysebits](https://github.com/epysqyli/wysebits-api)
 
-Api here:
+Built with:
 
-https://github.com/epysqyli/wysebits-api
+- Next.js (with a bit of TypeScript)
+- Tailwind
+- FramerMotion
+
+Check live on [wysebits.com](https://www.wysebits.com/) and become the 2nd and last user right now!
+
